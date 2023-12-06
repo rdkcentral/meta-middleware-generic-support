@@ -6,7 +6,5 @@ LICENSE = "CLOSED"
 inherit packagegroup
 inherit versioned-packagegroup-install-support
 
-PV = "2.0.0"
+PV = "1.0.0"
 PR = "r0"
-
-DEPENDS = "grpc boost curl wayland glib-2.0 cairo libpcre2 libzip bluez5 alsa-lib gawk yajl libtinyxml safec "
