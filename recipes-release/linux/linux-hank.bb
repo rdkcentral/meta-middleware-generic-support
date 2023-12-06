@@ -1,4 +1,4 @@
-DESCRIPTION = "Relaese uImage and dtb"
+DESCRIPTION = "Relaese iImage and dtb"
 SECTION = "core"
 LICENSE = "CLOSED"
 
@@ -15,6 +15,7 @@ SRC_URI = "\
    ${VENDOR_IPK_SERVER_PATH}/kernel-image-${KERNEL_IMAGETYPE}-${LINUX_VERSION}_${PV}-${PR}_${MACHINE}-vendor.ipk;subdir=${BP};name=vendor-linux \
    ${VENDOR_IPK_SERVER_PATH}/kernel-devicetree_${PV}-${PR}_${MACHINE}-vendor.ipk;subdir=${BP};name=vendor-dtb \
    "
+
 SRC_URI[vendor-linux.md5sum] = "${KERNEL_REL_MD5SUM}"
 SRC_URI[vendor-linux.sha256sum] = "${KERNEL_REL_SHA256}"
 SRC_URI[vendor-dtb.md5sum] = "${DTB_REL_MD5}"
@@ -64,7 +65,7 @@ addtask do_custom_package after do_install_image before do_build
 
 do_install_image () {
         install -d ${DEPLOY_DIR_IMAGE}
-        install -m 0644 ${WORKDIR}/${PREFERRED_VERSION_stblinux}-${PV}/boot/* ${DEPLOY_DIR_IMAGE}
+        install -m 0644 ${WORKDIR}/${PREFERRED_PROVIDER_virtual/kernel}-${PV}/boot/* ${DEPLOY_DIR_IMAGE}
 }
 addtask do_install_image after do_unpack before do_build
 
