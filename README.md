@@ -53,15 +53,17 @@ Note:
 1. Currently we used the gerrit repo's from "topic/rdke_rtkxione" branch for the component from vendor layer.
 2. Following components we included in test server to avoid the interlayer dependencies from "topic/rdke_rtkxione". These ipk's are maintained in the below path
 	"https://partners.artifactory.comcast.com/ui/repos/tree/General/opkg/xione-uk/RDK-47090/xione-uk-middleware"
-	a. iarmbus
-	b. libbreakpadwrapper0
-	c. devicesettings
-	d. qtbase
-	e. rmfosal
-	f. qtbase-mkspecs
+        |Component|
+	|---------|
+	|iarmbus|
+	|libbreakpadwrapper0|
+	|devicesettings|
+	|qtbase|
+	|rmfosal|
+	|qtbase-mkspecs|
+
 	Also to avoid compilation issue we created the "feature/RDK-47632-MW-IPK-Consume-Test_Feed" and keep the feed info in the middleware.inc file.
     
-
 ### Limitations
 
 It should be noted that some services may not run as they have dependencies with other layers. Additionally, the exclusion of inter-layer bbappends/patches might result in the failure to start some services. These limitations should be taken into consideration during the verification process. These Limitations will be addressed in Future Releases.
