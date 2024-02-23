@@ -13,4 +13,5 @@ IPK_FEED_URIS += " \
                 ${VENDOR_LAYER_ARCH}##${VENDOR_IPK_SERVER_PATH} "
 
 require conf/machine/include/arm/arch-arm64.inc
+require conf/include/vendor_pkg_versions.inc
 
