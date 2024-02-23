@@ -112,12 +112,12 @@ We will not be able to flash the image through `FlashApp`, as it is initial rele
 |gstreamer1.0-plugins-good|1.18.5|
 |gstreamer1.0-plugins-bad|1.18.5|
 |gstreamer1.0-plugins-base|1.18.5|
-|gstreamer1.0-omx|1.18.5|
+|gstreamer1.0-omx|1.10.4|
 |gstreamer1.0-plugins-bad-mpegtsdemux|1.18.5|
 |gstreamer1.0-plugins-bad-videoparsersbad|1.18.5|
 |gstreamer1.0-plugins-bad-dashdemux|1.18.5|
 |gstreamer1.0-plugins-bad-opusparse|1.18.5|
-|gst-plugins-mediarite|1.18.5|
+|gst-plugins-mediarite|1.0.0|
 |gstreamer1.0-libav|1.18.5|
 |rtk-audio-service|1.0.0|
 |libdrm|2.4.100|
