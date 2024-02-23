@@ -30,9 +30,9 @@ XiOne UK RDKE Vendor Layer Release Notes
 
 ## Release Description
 
-The aim of this release is to integrate the vendor layer with middleware and the image assembler build projects.
+The aim of this release is to integrate all the vendor layer with middleware and the image assembler build projects.
 
-This release will provide a versioned "meta-vendor-release" that will be used by the middleware, image assembler to remove the interlayer dependencies.
+This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware, image assembler to remove the interlayer dependencies.
 
 The scope of this release includes:
 
@@ -40,17 +40,27 @@ The scope of this release includes:
 - Capturing all the inter-layer dependencies.
   [We have created the needed mw ipk's from the "topic/rdke_rtkxione" branch and uploaded in the artifacotory test server to avoid interlayer dependency ]
 - Capturing all the inter-layer ".bbappends"
-- Generating the versioned "meta-vendor-release" to be consumed by the image assembler for generating the full stack image.
+- Generating the versioned "meta-vendor-xione-realtek-release" to be consumed by the image assembler for generating the full stack image.
 
 This release we moved some of the OSS and Middleware components to Vendor layer
 
 - Gstreamer,westeros and mentioned in the ticket RDK-46827
-- New build framework changes to avoid use of LAYER_DEPENDS in recipes to point to dependencies from other layers
 - secauthn,secapi3-rtk,secapi2-adapter,secapi-common-hw,secapi-rtk,secapi-common-crypto moved to Vendor layer
 - Mediarite removed from Vendor layer
 - Changes to accommodate Vendor specific base-files bbappend contents in Vendor layer
 
-Note: Currently we used the gerrit repo's from "topic/rdke_rtkxione" branch.
+Note: 
+1. Currently we used the gerrit repo's from "topic/rdke_rtkxione" branch for the component from vendor layer.
+2. Following components we included in test server to avoid the interlayer dependencies from "topic/rdke_rtkxione". These ipk's are maintained in the below path
+	"https://partners.artifactory.comcast.com/ui/repos/tree/General/opkg/xione-uk/RDK-47090/xione-uk-middleware"
+	a. iarmbus
+	b. libbreakpadwrapper0
+	c. devicesettings
+	d. qtbase
+	e. rmfosal
+	f. qtbase-mkspecs
+	Also to avoid compilation issue we created the "feature/RDK-47632-MW-IPK-Consume-Test_Feed" and keep the feed info in the middleware.inc file.
+    
 
 ### Limitations
 
@@ -83,11 +93,14 @@ We will not be able to flash the image through `FlashApp`, as it is initial rele
 
 ## Release layer and components
 
+|Layer				|		Tag     |
+|-------------------|---------------|
+|meta-vendor-layer|1.0.0|
+
 ### Stack layer
 
 | Vendor-layer Component | (=version) |
 |------------------------|------------|
-|meta-vendor-layer|1.0.0|
 |iarmmgrs-hal-realtek|1.0.0|		
 |testagentlib|2.9.0|							
 |emmc-read-util|1.0.0|
