@@ -12,6 +12,7 @@ XiOne UK RDKE Vendor Layer Release Notes
 |----------|--------|
 | Linux | 4.9.119.01-r0|
 | DTB | 4.9.119.01-r0|
+| packagegroup-vendor-layer| 1.0.0-r0|
 
 ---
 
