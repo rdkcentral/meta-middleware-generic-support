@@ -8,11 +8,17 @@ XiOne UK RDKE Vendor Layer Release Notes
 |Date|23 February 2024|
 |Author|Pothiraj Paulraj|
 
+| Platform supported |
+|-------------------|
+|XiOne-UK UHD - 1310|
+
+
 | Components | Tag |
 |----------|--------|
 | Linux | 4.9.119.01-r0|
 | DTB | 4.9.119.01-r0|
 | packagegroup-vendor-layer| 1.0.0-r0|
+| meta-rdk-halif-headers|1.2.0|
 
 ---
 
