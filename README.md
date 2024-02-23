@@ -6,7 +6,7 @@ XiOne UK RDKE Vendor Layer Release Notes
 |---|----|
 |Classification|Confidential|
 |Date|23 February 2024|
-|Author|Pothiraj|
+|Author|Pothiraj Paulraj|
 
 | Components | Tag |
 |----------|--------|
