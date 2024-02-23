@@ -30,9 +30,8 @@ XiOne UK RDKE Vendor Layer Release Notes
 
 ## Release Description
 
-The aim of this release is to integrate all the vendor layer with middleware and the image assembler build projects.
-
-This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware, image assembler to remove the interlayer dependencies.
+The aim of this release is to integrate all the vendor layer component and generate ipk from RDK-E build environment and provide to middleware, image assembler build projects to start to remove the interlayer dependencies.
+This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware, image assembler.
 
 The scope of this release includes:
 
@@ -95,8 +94,8 @@ We will not be able to flash the image through `FlashApp`, as it is initial rele
 
 ## Release layer and components
 
-|Layer				|		Tag     |
-|-------------------|---------------|
+|Layer|Tag|
+|-----|---|
 |meta-vendor-layer|1.0.0|
 
 ### Stack layer
