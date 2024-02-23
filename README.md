@@ -10,7 +10,7 @@ XiOne UK RDKE Vendor Layer Release Notes
 
 | Platform supported |
 |-------------------|
-|XiOne-UK UHD - 1310|
+|XiOne-UK UHD - 1319|
 
 
 | Components | Tag |
