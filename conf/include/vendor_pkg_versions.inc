@@ -65,6 +65,18 @@ PV_pn-gstreamer1.0-libav = "${GST_VERSION}"
 PR_pn-gstreamer1.0-libav = "${GST_REVISION}"
 PACKAGE_ARCH_pn-gstreamer1.0-libav = "${VENDOR_LAYER_EXTENSION}"
 
+PV_pn-gstreamer1.0-plugins-good-autodetect  = "${GST_VERSION}"
+PR_pn-gstreamer1.0-plugins-good-autodetect  = "${GST_REVISION}"
+PACKAGE_ARCH_pn-gstreamer1.0-plugins-good-autodetect = "${VENDOR_LAYER_EXTENSION}"
+
+PV_pn-gstreamer1.0-plugins-base-videoscale  = "${GST_VERSION}"
+PR_pn-gstreamer1.0-plugins-base-videoscale  = "${GST_REVISION}"
+PACKAGE_ARCH_pn-gstreamer1.0-plugins-base-videoscale = "${VENDOR_LAYER_EXTENSION}"
+
+PV_pn-gstreamer1.0-plugins-good-soup = "${GST_VERSION}"
+PR_pn-gstreamer1.0-plugins-good-soup = "${GST_REVISION}"
+PACKAGE_ARCH_pn-gstreamer1.0-plugins-good-soup = "${VENDOR_LAYER_EXTENSION}"
+
 PV_pn-rtk-audio-service = "1.0.0"
 PR_pn-rtk-audio-service = "r0"
 PACKAGE_ARCH_pn-rtk-audio-service = "${VENDOR_LAYER_EXTENSION}"
@@ -135,9 +147,13 @@ PV_pn-xsign = "4.0.1"
 PR_pn-xsign = "r0"
 PACKAGE_ARCH_pn-xsign = "${VENDOR_LAYER_EXTENSION}"
 
-PV_pn-mfrlib-hal-xione = "7.0"
-PR_pn-mfrlib-hal-xione = "r0"
-PACKAGE_ARCH_pn-mfrlib-hal-xione = "${VENDOR_LAYER_EXTENSION}"
+#PV_pn-mfrlib-hal-xione = "7.0"
+#PR_pn-mfrlib-hal-xione = "r0"
+#PACKAGE_ARCH_pn-mfrlib-hal-xione = "${VENDOR_LAYER_EXTENSION}"
+
+PV_pn-librdkmfrlib0 = "7.0"
+PR_pn-librdkmfrlib0 = "r0"
+PACKAGE_ARCH_pn-librdkmfrlib0 = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-wipe-disk-partitions = "1.0.0"
 PR_pn-wipe-disk-partitions = "r0"
@@ -172,9 +188,13 @@ PV_pn-secapi-rtk = "2.1.0"
 PR_pn-secapi-rtk = "r0"
 PACKAGE_ARCH_pn-secapi-rtk = "${VENDOR_LAYER_EXTENSION}"
 
-PV_pn-closedcaption-hal-realtek = "1.0.0"
-PR_pn-closedcaption-hal-realtek = "r0"
-PACKAGE_ARCH_pn-closedcaption-hal-realtek = "${VENDOR_LAYER_EXTENSION}"
+#PV_pn-closedcaption-hal-realtek = "1.0.0"
+#PR_pn-closedcaption-hal-realtek = "r0"
+#PACKAGE_ARCH_pn-closedcaption-hal-realtek = "${VENDOR_LAYER_EXTENSION}"
+
+PV_pn-librdkccreader0 = "1.0.0"
+PR_pn-librdkccreader0 = "r0"
+PACKAGE_ARCH_pn-librdkccreader0 = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-dvrmgr-hal-realtek = "1.0.0"
 PR_pn-dvrmgr-hal-realtek = "r0"
