@@ -23,6 +23,10 @@ PV_pn-gstreamer1.0 = "${GST_VERSION}"
 PR_pn-gstreamer1.0 = "${GST_REVISION}"
 PACKAGE_ARCH_pn-gstreamer1.0 = "${VENDOR_LAYER_EXTENSION}"
 
+PV_pn-gstreamer1.0-meta-base = "${GST_VERSION}"
+PR_pn-gstreamer1.0-meta-base = "${GST_REVISION}"
+PACKAGE_ARCH_pn-gstreamer1.0-meta-base = "${VENDOR_LAYER_EXTENSION}"
+
 PV_pn-gstreamer1.0-omx = "1.10.4"
 PR_pn-gstreamer1.0-omx = "r0"
 PACKAGE_ARCH_pn-gstreamer1.0-omx = "${VENDOR_LAYER_EXTENSION}"
@@ -144,6 +148,10 @@ PV_pn-gstreamer1.0-plugins-bad-opusparse  = "${GST_VERSION}"
 PR_pn-gstreamer1.0-plugins-bad-opusparse  = "${GST_REVISION}"
 PACKAGE_ARCH_pn-gstreamer1.0-plugins-bad-opusparse = "${VENDOR_LAYER_EXTENSION}"
 
+PV_pn-gstreamer1.0-plugins-bad-dashdemux = "${GST_VERSION}"
+PR_pn-gstreamer1.0-plugins-bad-dashdemux = "${GST_REVISION}"
+PACKAGE_ARCH_pn-gstreamer1.0-plugins-bad-dashdemux = "${VENDOR_LAYER_EXTENSION}"
+
 PV_pn-gstreamer1.0-plugins-good-matroska  = "${GST_VERSION}"
 PR_pn-gstreamer1.0-plugins-good-matroska  = "${GST_REVISION}"
 PACKAGE_ARCH_pn-gstreamer1.0-plugins-good-matroska = "${VENDOR_LAYER_EXTENSION}"
@@ -177,7 +185,7 @@ PR_pn-westeros-simplebuffer = "r0"
 PACKAGE_ARCH_pn-westeros-simplebuffer = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-westeros-soc = "1.3.0"
-PR_pn-westeros-soc = "r0"
+PR_pn-westeros-soc = "r1"
 PACKAGE_ARCH_pn-westeros-soc = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-westeros-sink = "1.0.0"
@@ -193,7 +201,7 @@ PR_pn-essos = "r0"
 PACKAGE_ARCH_pn-essos = "${VENDOR_LAYER_EXTENSION}"
 
 #oss components
-PV_pn-cairo = "1.16.0"
+PV_pn-cairo = "1.14.6"
 PR_pn-cairo = "r0"
 PACKAGE_ARCH_pn-cairo = "${VENDOR_LAYER_EXTENSION}"
 
@@ -230,9 +238,9 @@ PV_pn-xsign = "4.0.1"
 PR_pn-xsign = "r0"
 PACKAGE_ARCH_pn-xsign = "${VENDOR_LAYER_EXTENSION}"
 
-PV_pn-librdkmfrlib0 = "7.0"
-PR_pn-librdkmfrlib0 = "r0"
-PACKAGE_ARCH_pn-librdkmfrlib0 = "${VENDOR_LAYER_EXTENSION}"
+PV_pn-mfrlib-hal-xione = "7.0"
+PR_pn-mfrlib-hal-xione = "r0"
+PACKAGE_ARCH_pn-mfrlib-hal-xione = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-wipe-disk-partitions = "1.0.0"
 PR_pn-wipe-disk-partitions = "r0"
@@ -365,3 +373,23 @@ SRCREV_pn-hdmiservice = "fa70b36fbeb22cd11179f49f74dda4a9360356c9"
 PV_pn-rtkpcrclksink = "1.0.0"
 PR_pn-rtkpcrclksink = "r0"
 PACKAGE_ARCH_pn-rtkpcrclksink = "${VENDOR_LAYER_EXTENSION}"
+
+#Linux kernel components
+
+PV_pn-linux-libc-headers = "4.9"
+PR_pn-linux-libc-headers = "r1"
+PACKAGE_ARCH_pn-linux-libc-headers = "${VENDOR_LAYER_EXTENSION}"
+
+LINUX_HANK_PV = "4.9.119.01"
+LINUX_HANK_PR = "r1"
+PV_pn-packagegroup-kernel-modules = "${LINUX_HANK_PV}"
+PR_pn-packagegroup-kernel-modules = "${LINUX_HANK_PR}"
+PACKAGE_ARCH_pn-packagegroup-kernel-modules = "${VENDOR_LAYER_EXTENSION}"
+
+PV_pn-linux-hank = "${LINUX_HANK_PV}"
+PR_pn-linux-hank = "${LINUX_HANK_PR}"
+PACKAGE_ARCH_pn-linux-hank = "${VENDOR_LAYER_EXTENSION}"
+
+PV_pn-rtkaudiosink = "1.0.0"
+PR_pn-rtkaudiosink = "r1"
+PACKAGE_ARCH_pn-rtkaudiosink = "${VENDOR_LAYER_EXTENSION}"

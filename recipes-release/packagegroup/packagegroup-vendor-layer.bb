@@ -6,5 +6,5 @@ LICENSE = "CLOSED"
 inherit packagegroup
 inherit versioned-packagegroup-install-support
 
-PV = "1.0.0"
+PV = "1.0.2"
 PR = "r0"
