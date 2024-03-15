@@ -5,7 +5,7 @@ XiOne UK RDKE Vendor Layer Release Notes
 |Summary|Content|
 |---|----|
 |Classification|Confidential|
-|Date|23 February 2024|
+|Date|14 March 2024|
 |Author|Pothiraj Paulraj|
 
 | Platform supported |
@@ -15,9 +15,9 @@ XiOne UK RDKE Vendor Layer Release Notes
 
 | Components | Tag |
 |----------|--------|
-| Linux | 4.9.119.01-r0|
-| DTB | 4.9.119.01-r0|
-| packagegroup-vendor-layer| 1.0.0-r0|
+| Linux | 4.9.119.01-r1|
+| DTB | 4.9.119.01-r1|
+| packagegroup-vendor-layer| 1.0.2-r0|
 | meta-rdk-halif-headers|1.2.0|
 
 ---
@@ -36,21 +36,25 @@ XiOne UK RDKE Vendor Layer Release Notes
 
 ## Release Description
 
-The aim of this release is to integrate all the vendor layer component and generate ipk from RDK-E build environment and provide to middleware, image assembler build projects to start to remove the interlayer dependencies.
+The aim of this release is to integrate new release based oss ipk's and  integrate all the vendor layer component and generate ipk from RDK-E build environment and provide to middleware, image assembler build projects to start to remove the interlayer dependencies.
 This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware, image assembler.
 
 The scope of this release includes:
 
-- Integration of all the vendor layer components from "topic/rdke_rtkxione" into the vendor layer project and generation of the versioned IPK.
+- Integration of latest oss-release version of below tag version.
+	1. meta-oss-reference-release - refs/tags/2.1.1
+	2. meta-rdk-oss-reference - refs/tags/2.1.0
+	3. poky - refs/tags/v1.0.2
+	4. meta-openembedded - refs/tags/v1.0.0_dunfell
 - Capturing all the inter-layer dependencies.
   [We have created the needed mw ipk's from the "topic/rdke_rtkxione" branch and uploaded in the artifacotory test server to avoid interlayer dependency ]
 - Capturing all the inter-layer ".bbappends"
 - Generating the versioned "meta-vendor-xione-realtek-release" to be consumed by the image assembler for generating the full stack image.
 
-This release we moved some of the OSS and Middleware components to Vendor layer
+From 1.0.0 release onwards we moved some of the OSS and Middleware components to Vendor layer
 
 - Gstreamer,westeros and mentioned in the ticket RDK-46827
-- secauthn,secapi3-rtk,secapi2-adapter,secapi-common-hw,secapi-rtk,secapi-common-crypto moved to Vendor layer
+- secapi3-rtk,secapi2-adapter,secapi-common-hw,secapi-rtk,secapi-common-crypto moved to Vendor layer
 - Mediarite removed from Vendor layer
 - Changes to accommodate Vendor specific base-files bbappend contents in Vendor layer
 
@@ -94,7 +98,7 @@ We will not be able to flash the image through `FlashApp`, as it is initial rele
 
 ## Testing
 
-- Created the `"vendor test image"` `"SKXI11ADS_vendor_test_20240222202659.bin"` using the vendor layer project.
+- Created the `"vendor test image"` `"SKXI11ADS_vendor_test_20240314172528.bin"` using the vendor layer project.
 - Successfully booted the `"vendor test image"` and obtained the shell prompt.
 
 
@@ -102,7 +106,7 @@ We will not be able to flash the image through `FlashApp`, as it is initial rele
 
 |Layer|Tag|
 |-----|---|
-|meta-vendor-layer|1.0.0|
+|meta-vendor-layer|1.0.2|
 
 ### Stack layer
 
@@ -167,6 +171,7 @@ We will not be able to flash the image through `FlashApp`, as it is initial rele
 |sky-led-driver|1.0.0|
 |fmtsasidlibs|2.4.0|
 |hank-mod-mali|1.0.0|
+|rtkaudiosink|1.0.0|
 |rtkv1sink|1.0.0|
 |led-boot-pattern|1.0.0|
 |rtkmali|2.8.0|

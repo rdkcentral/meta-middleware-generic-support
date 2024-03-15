@@ -9,17 +9,17 @@ COMPATIBLE_MACHINE = "(hank)"
 
 LINUX_VERSION = "${LINUXLIBCVERSION}"
 PV = "${LINUXLIBCVERSION}.${KERNEL_PV}"
-PR = "${KERNEL_PR}"
+PR = "r1"
 
 SRC_URI = "\
    ${VENDOR_IPK_SERVER_PATH}/kernel-image-${KERNEL_IMAGETYPE}-${LINUX_VERSION}_${PV}-${PR}_${MACHINE}-vendor.ipk;subdir=${BP};name=vendor-linux \
    ${VENDOR_IPK_SERVER_PATH}/kernel-devicetree_${PV}-${PR}_${MACHINE}-vendor.ipk;subdir=${BP};name=vendor-dtb \
    "
 
-SRC_URI[vendor-linux.md5sum] = "${KERNEL_REL_MD5SUM}"
-SRC_URI[vendor-linux.sha256sum] = "${KERNEL_REL_SHA256}"
-SRC_URI[vendor-dtb.md5sum] = "${DTB_REL_MD5}"
-SRC_URI[vendor-dtb.sha256sum] = "${DTB_REL_SHA256}"
+SRC_URI[vendor-linux.md5sum] = "ead6411bef8aed5e2d5ece6c57ca2477"
+SRC_URI[vendor-linux.sha256sum] = "8760c384c4136edf0c25581579fd4f3c980dbf34147a3ab77cd8fa92274f6b60"
+SRC_URI[vendor-dtb.md5sum] = "15f326f398cafe4d5796b75481494b91"
+SRC_URI[vendor-dtb.sha256sum] = "e9e95673a6419936e865baabb9823cd0c3c3ec06741b46326fb331594e9dc8c6"
 
 do_unpack_extra() {
     mkdir -p ${S}
