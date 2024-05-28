@@ -383,11 +383,11 @@ SRCREV_pn-rtkpcrclksink= "a03032e9bd33573bd1faaa87c7309ede0169afc4"
 #Linux kernel components
 
 PV_pn-linux-libc-headers = "4.9"
-PR_pn-linux-libc-headers = "r2"
+PR_pn-linux-libc-headers = "r3"
 PACKAGE_ARCH_pn-linux-libc-headers = "${VENDOR_LAYER_EXTENSION}"
 
 LINUX_HANK_PV = "4.9.119.01"
-LINUX_HANK_PR = "r2"
+LINUX_HANK_PR = "r3"
 PV_pn-packagegroup-kernel-modules = "${LINUX_HANK_PV}"
 PR_pn-packagegroup-kernel-modules = "${LINUX_HANK_PR}"
 PACKAGE_ARCH_pn-packagegroup-kernel-modules = "${VENDOR_LAYER_EXTENSION}"
@@ -413,11 +413,6 @@ PR_pn-mfi-ree = "r0"
 PACKAGE_ARCH_pn-mfi-ree = "${VENDOR_LAYER_EXTENSION}"
 SRCREV_pn-mfi-ree = "3fa29a8bcb7e4923758c5042fca4ebd0eb77fbe8"
 
-PV_pn-widevinecdmi = "1.0.0"
-PR_pn-widevinecdmi = "r0"
-PACKAGE_ARCH_pn-widevinecdmi = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-widevinecdmi = "525a0da47c322e44cc85994b93e8ec23a824d832"
-
 PV_pn-sysint-oem = "1.0.0"
 PR_pn-sysint-oem = "r0"
 PACKAGE_ARCH_pn-sysint-oem = "${VENDOR_LAYER_EXTENSION}"
@@ -427,3 +422,19 @@ PV_pn-sysint-soc = "1.0.0"
 PR_pn-sysint-soc = "r0"
 PACKAGE_ARCH_pn-sysint-soc = "${VENDOR_LAYER_EXTENSION}"
 SRCREV_pn-sysint-soc = "c3ae6f44e6254045b50bc1ae3a9250e450496824"
+
+PV_pn-directfb = "1.7.7"
+PR_pn-directfb = "r0"
+PACKAGE_ARCH_pn-directfb = "${VENDOR_LAYER_EXTENSION}"
+
+PV_pn-apparmor-vendor = "1.0"
+PR_pn-apparmor-vendor = "r0"
+PACKAGE_ARCH_pn-apparmor-vendor = "${VENDOR_LAYER_EXTENSION}"
+SRCREV_apparmor-profiles_pn-apparmor-vendor = "80787ee6065e1ac7c05d2be33d82de387e7d1cae"
+
+PV_pn-secapi-netflix = "1.0.0"
+PR_pn-secapi-netflix = "r0"
+SRCREV_com_inc_rtk_pn-secapi-netflix = "0fa3af310fb254d57e55cb79c52c14280b05997b"
+SRCREV_socrealtek_pn-secapi-netflix = "d3c7c87f2d0cb1fdbd2b2536f0686d4b9f2367d3"
+PACKAGE_ARCH_pn-secapi-netflix = "${VENDOR_LAYER_EXTENSION}"
+
