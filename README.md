@@ -106,6 +106,7 @@ We will not be able to flash the image through `FlashApp`, on 1.0.1 release and 
 |apparmor|1.0.0-r0|
 
 ## Consolidated change list from vendor layer repositories
+## changes from previous release [2.0.0](https://github.com/rdk-e/meta-vendor-xione-realtek-release/releases/tag/2.0.0) to current release 2.1.0 are below
 ## [meta-oem-realtek-stream](https://github.com/rdk-e/meta-oem-realtek-stream/blob/main/CHANGELOG.md)
 
 #### [2.1.0](https://github.com/rdk-e/meta-oem-realtek-stream/compare/2.0.0...2.1.0)
