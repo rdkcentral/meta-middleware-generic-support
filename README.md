@@ -19,12 +19,12 @@ XiOne UK REALTEK STB RDKE Vendor Layer Release Notes
 | Linux | 4.9.119.01-r3|
 | DTB | 4.9.119.01-r3|
 | packagegroup-vendor-layer| 2.1.0-r0|
-| meta-rdk-halif-headers|2.1.0|
-|meta-oss-reference-release|2.3.1|
+| [meta-rdk-halif-headers](https://github.com/rdk-e/meta-rdk-halif-headers)|[2.1.0](https://github.com/rdk-e/meta-rdk-halif-headers/releases/tag/2.1.0)|
+|[meta-oss-reference-release](https://github.com/rdk-e/meta-oss-reference-release)|[2.3.1](https://github.com/rdk-e/meta-oss-reference-release/releases/tag/2.3.1)|
 
-## Interface versions
+## Interface versions(meta-rdk-halif-headers)
 
--[No HALIF headers changes between vendor layer release 2.0.0-2.1.0](https://github.com/rdk-e/meta-rdk-halif-headers/compare/2.0.0...2.1.0)
+-The meta-rdk-halif-headers have not changed since the last release and are currently [2.1.0](https://github.com/rdk-e/meta-rdk-halif-headers/releases/tag/2.1.0)
 
 ## Table of Contents
 
@@ -46,8 +46,8 @@ This release will provide a versioned "meta-vendor-xione-realtek-release" that w
 
 The scope of this release includes:
 - Integrated latest oss and removal of widevinecdmi component from vendor layer [RDK-50004](https://ccp.sys.comcast.net/browse/RDK-50004)
-- Integrated alsa sound conf file into vendor layer[RDK-49877](https://ccp.sys.comcast.net/browse/RDK-49877)
-- Integrated directfb component[RDK-48381](https://ccp.sys.comcast.net/browse/RDK-48381)
+- Integrated alsa sound conf file into vendor layer [RDK-49877](https://ccp.sys.comcast.net/browse/RDK-49877)
+- Integrated directfb component [RDK-48381](https://ccp.sys.comcast.net/browse/RDK-48381)
 - Integrated secapi-netflix [RDK-49385](https://ccp.sys.comcast.net/browse/RDK-49385)
 - Integration of latest oss-release version of below tag version.
 	1. meta-oss-reference-release - refs/tags/2.3.1
@@ -105,8 +105,9 @@ We will not be able to flash the image through `FlashApp`, on 1.0.1 release and 
 |directfb|1.7.7-r0|
 |apparmor|1.0.0-r0|
 
-## Consolidated change list from vendor layer repositories
-## changes from previous release [2.0.0](https://github.com/rdk-e/meta-vendor-xione-realtek-release/releases/tag/2.0.0) to current release 2.1.0 are below
+## Changes from previous release
+Consolidated change list from vendor layer repositories changes from release 2.1.0 to previous release 2.0.0 are below
+
 ## [meta-oem-realtek-stream](https://github.com/rdk-e/meta-oem-realtek-stream/blob/main/CHANGELOG.md)
 
 #### [2.1.0](https://github.com/rdk-e/meta-oem-realtek-stream/compare/2.0.0...2.1.0)
@@ -123,9 +124,6 @@ We will not be able to flash the image through `FlashApp`, on 1.0.1 release and 
 - RDK-48217: Enabling Apparmor support in Kernel. [`f36537c`](https://github.com/rdk-e/meta-oem-realtek-stream/commit/f36537ce2e5fe3dc6c4d6cd5746271723c574a81)
 - RDK-48217: Updating apparmor-vendor bb for SKY-Xione based devices and [`3e85f48`](https://github.com/rdk-e/meta-oem-realtek-stream/commit/3e85f48f8934630b3453c75809986cef0b09d0de)
 - RDK-44350: Removal of QT dependency from Realtek secapi component [`ba042ae`](https://github.com/rdk-e/meta-oem-realtek-stream/commit/ba042aed6563ecdd0bcd475984ebd13bbb33ac0c)
-
-## [meta-oem-stream](https://github.com/rdk-e/meta-oem-stream/blob/main/CHANGELOG.md)
-- [No changes in this repo between 2.0.0-2.1.0](https://github.com/rdk-e/meta-oem-stream/blob/main/CHANGELOG.md)
 
 ## [meta-rdk-soc-realtek](https://github.com/rdk-e/meta-rdk-soc-realtek/blob/main/CHANGELOG.md)
 
