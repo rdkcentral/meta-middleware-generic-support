@@ -8,16 +8,14 @@ inherit kernel
 COMPATIBLE_MACHINE = "(hank)"
 
 LINUX_VERSION = "${LINUXLIBCVERSION}"
-PV = "${LINUXLIBCVERSION}.${KERNEL_PV}"
-PR = "r2"
 
 SRC_URI = "\
    ${VENDOR_IPK_SERVER_PATH}/kernel-image-image-${LINUX_VERSION}_${PV}-${PR}_${MACHINE}-vendor.ipk;subdir=${BP};name=vendor-linux \
    ${VENDOR_IPK_SERVER_PATH}/kernel-devicetree_${PV}-${PR}_${MACHINE}-vendor.ipk;subdir=${BP};name=vendor-dtb \
    "
 
-SRC_URI[vendor-linux.sha256sum] = "bf8da10f571a0da6be5d6776fb92a3614f25142bafc9e4368a0a6e52dfd1ddb8"
-SRC_URI[vendor-dtb.sha256sum] = "bbd04dc5546f8cec2ea9b6770d55e19dfc275dc026e55a5000980ef435b85e9b"
+SRC_URI[vendor-linux.sha256sum] = "f5e9acb53a193540380f888b84383bfbdc2da95aff9508ada93ef40f052716dc"
+SRC_URI[vendor-dtb.sha256sum] = "5aab2ca34da36e221bf93997cd8afa65f38273465b950623e696cc2b773513df"
 
 do_unpack_extra() {
     mkdir -p ${S}

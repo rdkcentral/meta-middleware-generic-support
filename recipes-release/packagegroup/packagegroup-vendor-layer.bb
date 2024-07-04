@@ -4,7 +4,6 @@ PACKAGE_ARCH = "${VENDOR_LAYER_EXTENSION}"
 LICENSE = "CLOSED"
 
 inherit packagegroup
-inherit versioned-packagegroup-install-support
 
-PV = "2.1.0"
+PV = "2.3.0"
 PR = "r0"
