@@ -22,7 +22,7 @@ PACKAGE_ARCH_pn-otp-program = "${VENDOR_LAYER_EXTENSION}"
 #gstreamer components
 
 GST_VERSION = "1.18.5"
-GST_REVISION = "r0"
+GST_REVISION = "r2"
 
 PV_pn-gstreamer1.0 = "${GST_VERSION}"
 PR_pn-gstreamer1.0 = "${GST_REVISION}"
@@ -33,7 +33,7 @@ PR_pn-gstreamer1.0-meta-base = "${GST_REVISION}"
 PACKAGE_ARCH_pn-gstreamer1.0-meta-base = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-gstreamer1.0-omx = "1.10.4"
-PR_pn-gstreamer1.0-omx = "r1"
+PR_pn-gstreamer1.0-omx = "${GST_REVISION}"
 PACKAGE_ARCH_pn-gstreamer1.0-omx = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-gstreamer1.0-libav = "${GST_VERSION}"
@@ -209,7 +209,7 @@ PACKAGE_ARCH_pn-essos = "${VENDOR_LAYER_EXTENSION}"
 
 #----------------------------------------------------------------------------------------
 #oss components
-PV_pn-cairo = "1.14.6"
+PV_pn-cairo = "1.16.0"
 PR_pn-cairo = "r0"
 PACKAGE_ARCH_pn-cairo = "${VENDOR_LAYER_EXTENSION}"
 
@@ -243,7 +243,7 @@ PR_pn-sky-fpbutton-driver = "r0"
 PACKAGE_ARCH_pn-sky-fpbutton-driver = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-xsign = "4.0.1"
-PR_pn-xsign = "r0"
+PR_pn-xsign = "r1"
 PACKAGE_ARCH_pn-xsign = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-mfrlib-hal-xione = "7.0.4"
@@ -257,7 +257,7 @@ PACKAGE_ARCH_pn-wipe-disk-partitions = "${VENDOR_LAYER_EXTENSION}"
 PV_pn-early-display = "2.0.0"
 PR_pn-early-display = "r0"
 PACKAGE_ARCH_pn-early-display = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-early-display = "de410057a1756c18480111bce7fa3c7da310dd4b"
+SRCREV_pn-early-display = "GRT_STB_v2"
 
 PV_pn-rtk-tee = "1.0.0"
 PR_pn-rtk-tee = "r0"
@@ -270,7 +270,7 @@ PACKAGE_ARCH_pn-secauthn = "${VENDOR_LAYER_EXTENSION}"
 PV_pn-secapi-rtk = "2.1.0"
 PR_pn-secapi-rtk = "r0"
 PACKAGE_ARCH_pn-secapi-rtk = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-secapi-rtk = "026b7251085598c03ed5e724cbfea2bb6fba00cc"
+SRCREV_pn-secapi-rtk = "95b6bd4145b166b36febd6642d81b13c91a60e2a"
 
 PV_pn-secapi3-rtk = "3.0.0"
 PR_pn-secapi3-rtk = "r0"
@@ -286,14 +286,35 @@ PR_pn-secapi-common-hw = "r0"
 PACKAGE_ARCH_pn-secapi-common-hw = "${VENDOR_LAYER_EXTENSION}"
 SRCREV_pn-secapi-common-hw = "3a51b8831ded9d28eed5150ba6d77508f7c3e1d2"
 
+PV_pn-secapi-netflix = "1.0.0"
+PR_pn-secapi-netflix = "r0"
+SRCREV_com_inc_rtk_pn-secapi-netflix = "0fa3af310fb254d57e55cb79c52c14280b05997b"
+SRCREV_socrealtek_pn-secapi-netflix = "d3c7c87f2d0cb1fdbd2b2536f0686d4b9f2367d3"
+PACKAGE_ARCH_pn-secapi-netflix = "${VENDOR_LAYER_EXTENSION}"
+
 PV_pn-systemaudioplatform = "1.0.0"
 PR_pn-systemaudioplatform = "r0"
 PACKAGE_ARCH_pn-systemaudioplatform = "${VENDOR_LAYER_EXTENSION}"
 SRCREV_pn-systemaudioplatform = "776348dfeab3b10a006ea170d1e21739dbd3e05a"
 
+PV_pn-closedcaption-hal-realtek = "2.0.0"
+PR_pn-closedcaption-hal-realtek = "r0"
+PACKAGE_ARCH_pn-closedcaption-hal-realtek = "${VENDOR_LAYER_EXTENSION}"
+SRCREV_pn-closedcaption-hal-realtek = "GRT_STB_v2"
+
 PV_pn-dvrmgr-hal-realtek = "1.0.0"
 PR_pn-dvrmgr-hal-realtek = "r0"
 PACKAGE_ARCH_pn-dvrmgr-hal-realtek = "${VENDOR_LAYER_EXTENSION}"
+
+PV_pn-media-utils-soc-realtek = "2.0.0"
+PR_pn-media-utils-soc-realtek = "r0"
+PACKAGE_ARCH_pn-media-utils-soc-realtek = "${VENDOR_LAYER_EXTENSION}"
+SRCREV_pn-media-utils-soc-realtek = "GRT_STB_v2"
+
+PV_pn-hdmicec-hal-realtek = "2.0.0"
+PR_pn-hdmicec-hal-realtek = "r0"
+PACKAGE_ARCH_pn-hdmicec-hal-realtek = "${VENDOR_LAYER_EXTENSION}"
+SRCREV_pn-hdmicec-hal-realtek = "GRT_STB_v2"
 
 PV_pn-secapi-crypto-rtk = "2.3.0"
 PR_pn-secapi-crypto-rtk = "r0"
@@ -344,12 +365,12 @@ PACKAGE_ARCH_pn-fmtsasidlibs = "${VENDOR_LAYER_EXTENSION}"
 PV_pn-hank-mod-mali = "1.0.0"
 PR_pn-hank-mod-mali = "r1"
 PACKAGE_ARCH_pn-hank-mod-mali = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-hank-mod-mali = "35b764c2771f3be6daf9720498cf72a26e97840d"
+SRCREV_pn-hank-mod-mali = "GRT_STB_v2"
 
 PV_pn-rtkv1sink = "2.0.0"
 PR_pn-rtkv1sink = "r0"
 PACKAGE_ARCH_pn-rtkv1sink = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-rtkv1sink = "7080ede06cd46d9c38ae932a483cbe1e834f625b"
+SRCREV_pn-rtkv1sink = "GRT_STB_v2"
 
 PV_pn-led-boot-pattern = "1.0.0"
 PR_pn-led-boot-pattern = "r0"
@@ -360,7 +381,7 @@ PR_pn-rtkmali = "r0"
 PACKAGE_ARCH_pn-rtkmali = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-platform-lib = "2.6.0"
-PR_pn-platform-lib = "r1"
+PR_pn-platform-lib = "r2"
 PACKAGE_ARCH_pn-platform-lib = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-rtk-audio-service = "2.0.0"
@@ -371,12 +392,12 @@ SRCREV_pn-rtk-audio-service = "6bb3a0f37357296c4f0697c1c4ecd9d69f45eb02"
 PV_pn-hdmiservice = "2.0.0"
 PR_pn-hdmiservice = "r0"
 PACKAGE_ARCH_pn-hdmiservice = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-hdmiservice = "1af1b56d18aa44bf2fac8a9382335a8f98448205"
+SRCREV_pn-hdmiservice = "GRT_STB_v2"
 
 PV_pn-rtkpcrclksink = "2.0.0"
 PR_pn-rtkpcrclksink = "r0"
 PACKAGE_ARCH_pn-rtkpcrclksink = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-rtkpcrclksink= "a03032e9bd33573bd1faaa87c7309ede0169afc4"
+SRCREV_pn-rtkpcrclksink= "GRT_STB_v2"
 
 #-----------------------------------------------------------------------------
 
@@ -387,7 +408,7 @@ PR_pn-linux-libc-headers = "r3"
 PACKAGE_ARCH_pn-linux-libc-headers = "${VENDOR_LAYER_EXTENSION}"
 
 LINUX_HANK_PV = "4.9.119.01"
-LINUX_HANK_PR = "r3"
+LINUX_HANK_PR = "r4"
 PV_pn-packagegroup-kernel-modules = "${LINUX_HANK_PV}"
 PR_pn-packagegroup-kernel-modules = "${LINUX_HANK_PR}"
 PACKAGE_ARCH_pn-packagegroup-kernel-modules = "${VENDOR_LAYER_EXTENSION}"
@@ -399,10 +420,21 @@ SRCREV_pn-linux-hank = "e608d5faf955cd54a9cb8885d68f192c7e5644d9"
 
 #-----------------------------------------------------------------------------
 
+# MediaRite components
+PV_pn-mediarite-vendor = "10.0.34.0a2"
+PR_pn-mediarite-vendor = "r0"
+PACKAGE_ARCH_pn-mediarite-vendor = "${VENDOR_LAYER_EXTENSION}"
+
+PV_pn-gst-plugins-mediarite = "1.0"
+PR_pn-gst-plugins-mediarite = "r0"
+PACKAGE_ARCH_pn-gst-plugins-mediarite = "${VENDOR_LAYER_EXTENSION}"
+
+#-----------------------------------------------------------------------------
+
 PV_pn-rtkaudiosink = "2.0.0"
 PR_pn-rtkaudiosink = "r0"
 PACKAGE_ARCH_pn-rtkaudiosink = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-rtkaudiosink = "ca2933fa986b1298a5b0aab6fbb4d82366176633"
+SRCREV_pn-rtkaudiosink = "GRT_STB_v2"
 
 PV_pn-sky-dropbear = "1.0.0"
 PR_pn-sky-dropbear = "r0"
@@ -411,7 +443,7 @@ PACKAGE_ARCH_pn-sky-dropbear = "${VENDOR_LAYER_EXTENSION}"
 PV_pn-mfi-ree = "2.0.0"
 PR_pn-mfi-ree = "r0"
 PACKAGE_ARCH_pn-mfi-ree = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-mfi-ree = "3fa29a8bcb7e4923758c5042fca4ebd0eb77fbe8"
+SRCREV_pn-mfi-ree = "GRT_v2"
 
 PV_pn-sysint-oem = "1.0.0"
 PR_pn-sysint-oem = "r0"
@@ -423,18 +455,22 @@ PR_pn-sysint-soc = "r0"
 PACKAGE_ARCH_pn-sysint-soc = "${VENDOR_LAYER_EXTENSION}"
 SRCREV_pn-sysint-soc = "c3ae6f44e6254045b50bc1ae3a9250e450496824"
 
+PV_pn-apparmor-vendor = "1.0.0"
+PR_pn-apparmor-vendor = "r0"
+PACKAGE_ARCH_pn-apparmor-vendor = "${VENDOR_LAYER_EXTENSION}"
+SRCREV_apparmor-profiles_pn-apparmor-vendor = "41e367427f7b647f17a7ad97571b024affae44dd"
+
 PV_pn-directfb = "1.7.7"
 PR_pn-directfb = "r0"
 PACKAGE_ARCH_pn-directfb = "${VENDOR_LAYER_EXTENSION}"
 
-PV_pn-apparmor-vendor = "1.0"
-PR_pn-apparmor-vendor = "r0"
-PACKAGE_ARCH_pn-apparmor-vendor = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_apparmor-profiles_pn-apparmor-vendor = "80787ee6065e1ac7c05d2be33d82de387e7d1cae"
+PV_pn-audiocapturemgr-vendor = "1.0.0"
+PR_pn-audiocapturemgr-vendor = "r0"
+PACKAGE_ARCH_pn-audiocapturemgr-vendor = "${VENDOR_LAYER_EXTENSION}"
+SRCREV_pn-audiocapturemgr-vendor= "a063707e44eb91a3bd66b499b18f45cd5c41014d"
 
-PV_pn-secapi-netflix = "1.0.0"
-PR_pn-secapi-netflix = "r0"
-SRCREV_com_inc_rtk_pn-secapi-netflix = "0fa3af310fb254d57e55cb79c52c14280b05997b"
-SRCREV_socrealtek_pn-secapi-netflix = "d3c7c87f2d0cb1fdbd2b2536f0686d4b9f2367d3"
-PACKAGE_ARCH_pn-secapi-netflix = "${VENDOR_LAYER_EXTENSION}"
-
+PV_pn-gst-svp-ext = "1.0.0"
+PR_pn-gst-svp-ext = "r0"
+PACKAGE_ARCH_pn-gst-svp-ext = "${VENDOR_LAYER_EXTENSION}"
+SRCREV_gst_svp_ext = "2112843d24318e434f8605c1c741244e7623c5f4"
+SRCREV_gst_svp_ext_device = "3b939f94fe7a3e0f62b202699f40a544a275784f"
