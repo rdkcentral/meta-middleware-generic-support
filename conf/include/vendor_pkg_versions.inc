@@ -268,7 +268,7 @@ PR_pn-secauthn = "r0"
 PACKAGE_ARCH_pn-secauthn = "${VENDOR_LAYER_EXTENSION}"
 
 PV_pn-secapi-rtk = "2.1.0"
-PR_pn-secapi-rtk = "r0"
+PR_pn-secapi-rtk = "r1"
 PACKAGE_ARCH_pn-secapi-rtk = "${VENDOR_LAYER_EXTENSION}"
 SRCREV_pn-secapi-rtk = "95b6bd4145b166b36febd6642d81b13c91a60e2a"
 
@@ -297,24 +297,9 @@ PR_pn-systemaudioplatform = "r0"
 PACKAGE_ARCH_pn-systemaudioplatform = "${VENDOR_LAYER_EXTENSION}"
 SRCREV_pn-systemaudioplatform = "776348dfeab3b10a006ea170d1e21739dbd3e05a"
 
-PV_pn-closedcaption-hal-realtek = "2.0.0"
-PR_pn-closedcaption-hal-realtek = "r0"
-PACKAGE_ARCH_pn-closedcaption-hal-realtek = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-closedcaption-hal-realtek = "GRT_STB_v2"
-
 PV_pn-dvrmgr-hal-realtek = "1.0.0"
 PR_pn-dvrmgr-hal-realtek = "r0"
 PACKAGE_ARCH_pn-dvrmgr-hal-realtek = "${VENDOR_LAYER_EXTENSION}"
-
-PV_pn-media-utils-soc-realtek = "2.0.0"
-PR_pn-media-utils-soc-realtek = "r0"
-PACKAGE_ARCH_pn-media-utils-soc-realtek = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-media-utils-soc-realtek = "GRT_STB_v2"
-
-PV_pn-hdmicec-hal-realtek = "2.0.0"
-PR_pn-hdmicec-hal-realtek = "r0"
-PACKAGE_ARCH_pn-hdmicec-hal-realtek = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-hdmicec-hal-realtek = "GRT_STB_v2"
 
 PV_pn-secapi-crypto-rtk = "2.3.0"
 PR_pn-secapi-crypto-rtk = "r0"
@@ -404,7 +389,7 @@ SRCREV_pn-rtkpcrclksink= "GRT_STB_v2"
 #Linux kernel components
 
 PV_pn-linux-libc-headers = "4.9"
-PR_pn-linux-libc-headers = "r3"
+PR_pn-linux-libc-headers = "r4"
 PACKAGE_ARCH_pn-linux-libc-headers = "${VENDOR_LAYER_EXTENSION}"
 
 LINUX_HANK_PV = "4.9.119.01"
@@ -474,3 +459,8 @@ PR_pn-gst-svp-ext = "r0"
 PACKAGE_ARCH_pn-gst-svp-ext = "${VENDOR_LAYER_EXTENSION}"
 SRCREV_gst_svp_ext = "2112843d24318e434f8605c1c741244e7623c5f4"
 SRCREV_gst_svp_ext_device = "3b939f94fe7a3e0f62b202699f40a544a275784f"
+
+PV_pn-realtek-collectd-plugins = "1.0.0"
+PR_pn-realtek-collectd-plugins = "r0"
+PACKAGE_ARCH_pn-realtek-collectd-plugins = "${VENDOR_LAYER_EXTENSION}"
+SRCREV_pn-realtek-collectd-plugins = "032a4bede4be1556be53d86723c2d231b0bf88db"
