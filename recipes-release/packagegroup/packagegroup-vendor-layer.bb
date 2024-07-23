@@ -5,5 +5,5 @@ LICENSE = "CLOSED"
 
 inherit packagegroup
 
-PV = "2.3.0"
+PV = "2.5.0"
 PR = "r0"
