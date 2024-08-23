@@ -22,7 +22,7 @@ PACKAGE_ARCH_pn-otp-program = "${VENDOR_LAYER_EXTENSION}"
 #gstreamer components
 
 GST_VERSION = "1.18.5"
-GST_REVISION = "r2"
+GST_REVISION = "r3"
 
 PV_pn-gstreamer1.0 = "${GST_VERSION}"
 PR_pn-gstreamer1.0 = "${GST_REVISION}"
@@ -292,6 +292,12 @@ SRCREV_com_inc_rtk_pn-secapi-netflix = "0fa3af310fb254d57e55cb79c52c14280b05997b
 SRCREV_socrealtek_pn-secapi-netflix = "d3c7c87f2d0cb1fdbd2b2536f0686d4b9f2367d3"
 PACKAGE_ARCH_pn-secapi-netflix = "${VENDOR_LAYER_EXTENSION}"
 
+PV_pn-gst-svp-ext = "1.0.0"
+PR_pn-gst-svp-ext = "r0"
+PACKAGE_ARCH_pn-gst-svp-ext = "${VENDOR_LAYER_EXTENSION}"
+SRCREV_gst_svp_ext = "2112843d24318e434f8605c1c741244e7623c5f4"
+SRCREV_gst_svp_ext_device = "3b939f94fe7a3e0f62b202699f40a544a275784f"
+
 PV_pn-systemaudioplatform = "1.0.0"
 PR_pn-systemaudioplatform = "r0"
 PACKAGE_ARCH_pn-systemaudioplatform = "${VENDOR_LAYER_EXTENSION}"
@@ -453,14 +459,3 @@ PV_pn-audiocapturemgr-vendor = "1.0.0"
 PR_pn-audiocapturemgr-vendor = "r0"
 PACKAGE_ARCH_pn-audiocapturemgr-vendor = "${VENDOR_LAYER_EXTENSION}"
 SRCREV_pn-audiocapturemgr-vendor= "a063707e44eb91a3bd66b499b18f45cd5c41014d"
-
-PV_pn-gst-svp-ext = "1.0.0"
-PR_pn-gst-svp-ext = "r0"
-PACKAGE_ARCH_pn-gst-svp-ext = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_gst_svp_ext = "2112843d24318e434f8605c1c741244e7623c5f4"
-SRCREV_gst_svp_ext_device = "3b939f94fe7a3e0f62b202699f40a544a275784f"
-
-PV_pn-realtek-collectd-plugins = "1.0.0"
-PR_pn-realtek-collectd-plugins = "r0"
-PACKAGE_ARCH_pn-realtek-collectd-plugins = "${VENDOR_LAYER_EXTENSION}"
-SRCREV_pn-realtek-collectd-plugins = "032a4bede4be1556be53d86723c2d231b0bf88db"
