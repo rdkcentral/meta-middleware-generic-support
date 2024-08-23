@@ -6,14 +6,13 @@ XiOne UK REALTEK STB RDKE Vendor Layer Release Notes
 
 |Platforms supported|
 |-------|
-|XiOne-UK UHD - 1319|
+|XiOne-UK UHD 1319|
 
 |Summary|Content|
 |---|----|
 |Classification|Confidential|
-|Date|22 Jul 2024|
+|Date|23 Aug 2024|
 |Author|pothiraj.paulraj@sky.uk|
-
 
 ---
 
@@ -33,75 +32,75 @@ XiOne UK REALTEK STB RDKE Vendor Layer Release Notes
   - [Release layer and components](#release-layer-and-components)
     - [Stack layer](#stack-layer)
     - [Components details in 'packagegroup-vendor-layer'](#components-details-in-packagegroup-vendor-layer)
-  - [Vendor Layer Component Integration Details](#vendor-layer-component-integration-details)
   - [Consolidated change list from vendor layer repositories](#consolidated-change-list-from-vendor-layer-repositories)
     - [Changes in meta repositories](#changes-in-meta-repositories)
     - [Changes in component repositories](#changes-in-component-repositories)
 
 ## Release Description
 
-The aim of this release to integrate the latest oss release 3.1.0 which has libsoup for HBBTV. This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware, image assembler.
+The aim of this release to integrate the latest oss release 3.2.0. This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware, image assembler.
 
 The scope of this release includes:
 
-- OSS 3.1.0 release integartion [RDK-50924](https://ccp.sys.comcast.net/browse/RDK-50924)
-- Netflix playback lands on "tvq-pb-101(8.1)" error code [XIONE-14855](https://ccp.sys.comcast.net/browse/XIONE-14855)
-- Collectd plugins realtek [RDK-51740](https://ccp.sys.comcast.net/browse/RDK-51740)
+- OSS Release 3.2.0 [RDK-50925](https://ccp.sys.comcast.net/browse/RDK-50925)
+- Iarmmgrs hal recipe restructure [RDK-51506](https://ccp.sys.comcast.net/browse/RDK-51506)
+- Include gstreamer latest sync recipe [RDK-52421](https://ccp.sys.comcast.net/browse/RDK-52421)
+- cleanup closedcaption hal realtek [XIONE-15346](https://ccp.sys.comcast.net/browse/XIONE-15346)
+- Move cairo generic patches to oss [RDK-52174](https://ccp.sys.comcast.net/browse/RDK-52174)
+- Remove RDK component libjpeg-turbo from RDKE [RDK-49606](https://ccp.sys.comcast.net/browse/RDK-49606)
 
 ### Vendor Release Components
 
-| Vendor Release Components | New Version | Version in Previous Release (2.3.0) | ChangeList |
-|------------|---------|------------------------------------|----------------|
-| Linux |  | 4.9.119.01-r4 | |
-| DTB |  | 4.9.119.01-r4 | |
-| packagegroup-vendor-layer | **2.5.0-r0** | 2.3.0-r0 | [2.3.0...2.5.0](https://github.com/rdk-e/meta-oem-realtek-stream/compare/2.3.0...2.5.0) |
+| Vendor Release Components | New Version | Version in Previous Release (2.5.0) | ChangeList |
+|------------|---------|------------------------------------|-------------|
+| Kernel & DTB|  | 4.9.119.01-r4 | |
+| packagegroup-vendor-layer | 2.6.0-r0 | 2.5.0-r0 | [2.6.0...2.50](https://github.com/rdk-e/meta-oem-realtek-stream/compare/release/2.5.0...release/2.6.0) |
 
 ### Meta Repos
 
-#### Meta repos maintained by layers layer 
+#### Meta repos maintained by layers layer
 
-| Meta Repo | New Version | Version in Previous Release (2.3.0) | ChangeList |
+| Meta Repo | New Version | Version in Previous Release (2.5.0) | ChangeList |
 |------------|---------|------------------------------------|--------------|
-| [meta-oss-reference-release](#meta-oss-reference-release) |  **3.1.0** | 3.0.4 | [3.0.4...3.1.0](https://github.com/rdk-e/meta-oss-reference-release/compare/3.0.4...3.1.0) |
-| [meta-rdk-oss-reference](#meta-rdk-oss-reference) |  **3.1.0** | 3.0.4 | [3.0.4...3.1.0](https://github.com/rdk-e/meta-rdk-oss-reference/compare/3.0.4...3.1.0) |
-| [meta-rdk-tools](#meta-rdk-tools) |  **2.1.0** | NA | [2.1.0](https://github.com/rdk-e/meta-rdk-tools/commits/2.1.0) |
+| [meta-oss-reference-release](#meta-oss-reference-release) |  **3.2.0** | 3.1.0 | [3.1.0...3.2.0](https://github.com/rdk-e/meta-oss-reference-release/compare/3.1.0...3.2.0) |
+| [meta-rdk-oss-reference](#meta-rdk-oss-reference) |  **3.2.0** | 3.1.0 | [3.1.0...3.2.0](https://github.com/rdk-e/meta-rdk-oss-reference/compare/3.1.0...3.2.0) |
+| meta-rdk-tools |  | 2.1.0 | |
 | meta-vts |  | 1.1.1 | |
-| [meta-rdk-soc-realtek](#meta-rdk-soc-realtek) |  **2.4.0** | 2.2.0 | [2.2.0...2.4.0](https://github.com/rdk-e/meta-rdk-soc-realtek/compare/2.2.0...2.4.0) |
-| meta-oem-stream |  | 2.2.0 | |
-| [meta-oem-realtek-stream](#meta-oem-realtek-stream) |  **2.5.0** | 2.3.0 | [2.3.0...2.5.0](https://github.com/rdk-e/meta-oem-realtek-stream/compare/2.3.0...2.5.0) |
-| meta-oss-vendor-realtek |  | 2.2.0 | |
+| [meta-rdk-soc-realtek](#meta-rdk-soc-realtek) |  **2.6.0** | 2.4.0 | [2.4.0...2.6.0](https://github.com/rdk-e/meta-rdk-soc-realtek/compare/2.4.0...2.6.0) |
+| [meta-oem-stream](#meta-oem-stream) |  **2.6.0** | 2.2.0 | [2.2.0...2.6.0](https://github.com/rdk-e/meta-oem-stream/compare/2.2.0...2.6.0) |
+| [meta-oem-realtek-stream](#meta-oem-realtek-stream) |  **2.6.0** | 2.5.0 | [2.5.0...2.6.0](https://github.com/rdk-e/meta-oem-realtek-stream/compare/2.5.0...2.6.0) |
+| [meta-oss-vendor-realtek](#meta-oss-vendor-realtek) |  **2.6.0** | 2.2.0 | [2.2.0...2.6.0](https://github.com/rdk-e/meta-oss-vendor-realtek/compare/2.2.0...2.6.0) |
 | meta-mediarite-vendor |  | 10.0.34.0a2-1 | |
-
 
 #### Meta repos common for RDK-E
 
-| Meta Repo | New Version | Version in Previous Release (2.3.0) | ChangeList |
+| Meta Repo | New Version | Version in Previous Release (2.5.0) | ChangeList |
 |------------|---------|------------------------------------|--------------|
 | **buildscripts** ||||
-| build-scripts |  **2.0.5** | 2.0.3 | [2.0.3...2.0.5](https://github.com/rdk-e/build-scripts/compare/2.0.3...2.0.5) |
-| | | | | |
+| build-scripts |  | 2.0.5 | |
+| | | | |
 | **imagebuilder** ||||
-| meta-image-support |  **3.0.3** | 3.0.1 | [3.0.1...3.0.3](https://github.com/rdk-e/meta-image-support/compare/3.0.1...3.0.3) |
-| | | | | |
+| meta-image-support |  | 3.0.3 | |
+| | | | |
 | **oe** ||||
 | meta-openembedded |  | v1.0.0_dunfell | |
-| poky |  | v1.0.4 | |
-| | | | | |
+| poky |  **v1.0.6** | v1.0.4 | [v1.0.4...v1.0.6](https://github.com/rdk-e/poky/compare/v1.0.4...v1.0.6) |
+| | | | |
 | **configs** ||||
-| rdke-region-uk-config |  **2.1.0** | 2.0.2 | [2.0.2...2.1.0](https://github.com/rdk-e/rdke-region-uk-config/compare/2.0.2...2.1.0) |
-| rdke-common-config |  **1.0.8** | 2e690f0 | [2e690f0...1.0.8](https://github.com/rdk-e/rdke-common-config/compare/2e690f0a544394461114d5fe95224c42353d9576...1.0.8) |
-| rdke-stb-config |  **1.0.1** | 1.0.0 | [1.0.0...1.0.1](https://github.com/rdk-e/rdke-stb-config/compare/1.0.0...1.0.1) |
-| | | | | |
+| rdke-region-uk-config |  | 2.1.0 | |
+| rdke-common-config |  | 1.0.8 | |
+| rdke-stb-config |  | 1.0.1 | |
+| | | | |
 | **rdk** ||||
 | meta-rdk-halif-headers |  | 3.0.1 | |
-| | | | | |
+| | | | |
 | **products** ||||
-| meta-product-xione |  **2.3.0** | 2.2.0 | [2.2.0...2.3.0](https://github.com/rdk-e/meta-product-xione/compare/2.2.0...2.3.0) |
-| | | | | |
+| meta-product-xione |  **2.6.0** | 2.3.0 | [2.3.0...2.6.0](https://github.com/rdk-e/meta-product-xione/compare/2.3.0...2.6.0) |
+| | | | |
 
 ### Interface versions
 
-| # | HAL Interface Header (rdkcentral github) | New Version | Versionfrom Previous Release (2.3.0)
+| # | HAL Interface Header (rdkcentral github) | New Version | Versionfrom Previous Release (2.5.0)
 |---|------------------------------------------|-------------|----------------------|
 | 1 | media-utils-headers | | 1.0.4 |
 | 2 | hdmicecheader | | 1.3.7 |
@@ -116,22 +115,25 @@ The scope of this release includes:
 | 8 | closedcaption-hal-headers | | GRT_v2 |
 | 9 | iarmbus-headers | | GRT_v2 |
 | 10 | rdk-gstreamer-utils-headers | | 1.3.0 |
+
 ### Limitations
 
 It should be noted that some services may not run as they have dependencies with other layers. Additionally, the exclusion of inter-layer bbappends/patches might result in the failure to start some services. These limitations should be taken into consideration during the verification process. These Limitations will be addressed in Future Releases.
 
 ### Middleware Integration
 
-Since gst-svp-ext is moved from Middleware to Vendor layer, changes are needed in middleware to remove gst-svp-ext, these changes are avaiable in [RDK-45190](https://ccp.sys.comcast.net/browse/RDK-45190)
-Also it's recommended to use the OSS version 3.0.4 and same versions of the common config repos and product repo.
+1. Since we restructures iarmmgr,power and deepsleep mgr has source code. So MW team expect to include this change into meta-rdk-video layer
+https://github.com/rdk-e/meta-rdk-video/commit/8ed61491ff351ba2c1dee0b5006918abc0f6114b
+2. We have integrated the OSS 3.2.0 into VL layer. So please remove the libjpeg-turbo and add libjpeg into MW layer. 
 
 ## Build instructions
 
-- Steps to check out and build the vendor layer project [https://etwiki.sys.comcast.net/display/RDKAR/Vendor+Layer+Project](https://etwiki.sys.comcast.net/display/RDKAR/Vendor+Layer+Project)
+Steps to check out and build the vendor layer project 
+https://etwiki.sys.comcast.net/display/RDKAR/Vendor+Layer+Project
 
 ### Boot Command
 
-We will not be able to flash the image through `FlashApp`, on 1.0.1 release and We have supported Flash app from 2.0.0 onwards.
+We will not be able to flash the image through FlashApp, on 1.0.1 release and We have supported Flash app from 2.0.0 onwards.
 
 - Copy the image to the usb and connect to the TV
 - Switch on the STB
@@ -145,9 +147,9 @@ We will not be able to flash the image through `FlashApp`, on 1.0.1 release and 
 
 ## Testing
 
-- Created the `"vendor test image"` `"SKXI11ADS_vendor_test_20240722152618.bin"` using the vendor layer project.
-- Successfully booted the `"vendor test image"` and obtained the shell prompt.
-- For this release testing was done by using feature branch feature/RDK-51635-Release-240 for rdke-middleware-manifest/realtek-xione.xml
+Created the "vendor test image" "SKXI11ADS_VENDOR_DEV_develop_20240822143001.bin" using the vendor layer project.
+Successfully booted the "vendor test image" and obtained the shell prompt.
+For this release testing was done by using feature branch feature/RDK-52326-ReleaseActivity2.6.0 for rdke-middleware-manifest/realtek-xione.xml
 
 ## Release layer and components
 
@@ -155,130 +157,136 @@ We will not be able to flash the image through `FlashApp`, on 1.0.1 release and 
 
 | Layer | Tag |
 |------|------|
-| [meta-vendor-xione-realtek-release](https://github.com/rdk-e/meta-vendor-xione-realtek-release) | 2.5.0 |
-#### Artifactory Location for IPKs -  https://partners.artifactory.comcast.com/ui/repos/tree/General/opkg/xione-uk/ipks/xione-uk-vendor/2-5-0
+| [meta-vendor-xione-realtek-release](https://github.com/rdk-e/meta-vendor-xione-realtek-release) | 2.6.0 |
+
+#### Artifactory Location for IPKs - https://partners.artifactory.comcast.com/ui/repos/tree/General/opkg/xione-uk/ipks/xione-uk-vendor/2-6-0
 
 ### Components details in 'packagegroup-vendor-layer'
 
  Components which are prebuilt or the ones which installs config files or scripts from meta layer have SRCREV marked as NA 
 
-
-| # | Vendor layer Component | New PV-PR | PV-PR in Previous Release (2.3.0)| New SRCREV | SRCREV in Previous Release (2.3.0)| Diff |
+| # | Vendor layer Component | New PV-PR | PV-PR in Previous Release (2.5.0)| New SRCREV | SRCREV in Previous Release (2.5.0)| Diff |
 |---|------------------------------------------|-------------|----------------------|-----------|------------|-----|
-| 1 | media-utils-soc-realtek |  | **1.0.4-1.0.0-r0** | | **GRT_STB_v2** | |
-| 2 | closedcaption-hal-realtek | | **1.0.0-1.0.0-r0** | | **GRT_STB_v2** |  |
-| 3 | hdmicec-hal-realtek | | **1.3.7-1.0.0-r0** | | **GRT_STB_v2** | |
-| 4 | iarmmgrs-hal-realtek | | 2.0.1-1.0.0-r0 |  | GRT_STB_v2 | |
+| 1 | media-utils-soc-realtek | | 1.0.4-1.0.0-r0 |  | GRT_STB_v2 | |
+| 2 | [closedcaption-hal-realtek](#closedcaption-hal-realtek) | **1.0.0-2.0.0-r0** | 1.0.0-1.0.0-r0 | **GRT_STB_v2.1.0** | GRT_STB_v2 |  [GRT_STB_v2...GRT_STB_v2.1.0](https://github.com/rdk-e/closedcaption-soc-realtek/compare/GRT_STB_v2...GRT_STB_v2.1.0) |
+| 3 | hdmicec-hal-realtek | | 1.3.7-1.0.0-r0 |  | GRT_STB_v2 | |
+| 4 | [iarmmgrs-hal-realtek](#iarmmgrs-hal-realtek) | **2.0.1-2.0.0-r0** | 2.0.1-1.0.0-r0 | **GRT_STB_v2.1.0** | GRT_STB_v2 |  [GRT_STB_v2...GRT_STB_v2.1.0](https://github.com/rdk-e/iarmmgrs-soc-realtek/compare/GRT_STB_v2...GRT_STB_v2.1.0) |
 | 5 | rdk-gstreamer-utils-platform | | 1.3.0-r0 |  | 739cdb7 | |
 | 6 | devicesettings-hal-realtek | | 2.0.0-1.0.0-r0 |  |  | |
-| - |  - devicesettings-hal-realtek_devicesettingssocrealtek | |  |  | GRT_STB_v2 | |
+| - |  - devicesettings-hal-realtek_devicesettingssocrealtek | |  | **GRT_STB_v2.1.0** | GRT_STB_v2 |  [](https://github.com/rdk-e/iarmmgrs-soc-realtek) |
 | - |  - devicesettings-hal-realtek_devicesettingsskyxione | |  |  | GRT_STB_v2 | |
-| 7 | rtk-platform-conf | | 2.6.0-r0 |  | NA | |
-| 8 | testagentlib | | 2.9.0-r0 |  | NA | |
-| 9 | emmc-read-util | | 3.3.4-r0 |  | NA | |
-| 10 | otp-program | | 2.2-r1 |  | NA | |
-| 11 | gstreamer1.0 | | 1.18.5-r2 |  | NA | |
-| 12 | gstreamer1.0-meta-base | | 1.18.5-r2 |  | NA | |
-| 13 | gstreamer1.0-omx | | 1.10.4-r2 |  | NA | |
-| 14 | gstreamer1.0-libav | | 1.18.5-r2 |  | NA | |
-| 15 | gstreamer1.0-plugins-good | | 1.18.5-r2 |  | NA | |
-| 16 | gstreamer1.0-plugins-good-meta | | 1.18.5-r2 |  | NA | |
-| 17 | gstreamer1.0-plugins-bad | | 1.18.5-r2 |  | NA | |
-| 18 | gstreamer1.0-plugins-bad-meta | | 1.18.5-r2 |  | NA | |
-| 19 | gstreamer1.0-rtsp-server | | 1.18.5-r2 |  | NA | |
-| 20 | gstreamer1.0-plugins-base | | 1.18.5-r2 |  | NA | |
-| 21 | gstreamer1.0-plugins-base-meta | | 1.18.5-r2 |  | NA | |
-| 22 | gstreamer1.0-plugins-base-playback | | 1.18.5-r2 |  | NA | |
-| 23 | gstreamer1.0-plugins-good-wavparse | | 1.18.5-r2 |  | NA | |
-| 24 | gstreamer1.0-plugins-good-audiofx | | 1.18.5-r2 |  | NA | |
-| 25 | gstreamer1.0-plugins-good-isomp4 | | 1.18.5-r2 |  | NA | |
-| 26 | gstreamer1.0-plugins-good-audioparsers | | 1.18.5-r2 |  | NA | |
-| 27 | gstreamer1.0-plugins-good-soup | | 1.18.5-r2 |  | NA | |
-| 28 | gstreamer1.0-plugins-base-gio | | 1.18.5-r2 |  | NA | |
-| 29 | gstreamer1.0-plugins-base-videoconvert | | 1.18.5-r2 |  | NA | |
-| 30 | gstreamer1.0-plugins-base-videoscale | | 1.18.5-r2 |  | NA | |
-| 31 | gstreamer1.0-plugins-base-volume | | 1.18.5-r2 |  | NA | |
-| 32 | gstreamer1.0-plugins-base-typefindfunctions | | 1.18.5-r2 |  | NA | |
-| 33 | gstreamer1.0-plugins-good-autodetect | | 1.18.5-r2 |  | NA | |
-| 34 | gstreamer1.0-plugins-good-avi | | 1.18.5-r2 |  | NA | |
-| 35 | gstreamer1.0-plugins-good-deinterlace | | 1.18.5-r2 |  | NA | |
-| 36 | gstreamer1.0-plugins-good-interleave | | 1.18.5-r2 |  | NA | |
-| 37 | gstreamer1.0-plugins-bad-dash | | 1.18.5-r2 |  | NA | |
-| 38 | gstreamer1.0-plugins-bad-mpegtsdemux | | 1.18.5-r2 |  | NA | |
-| 39 | gstreamer1.0-plugins-bad-smoothstreaming | | 1.18.5-r2 |  | NA | |
-| 40 | gstreamer1.0-plugins-bad-videoparsersbad | | 1.18.5-r2 |  | NA | |
-| 41 | gstreamer1.0-plugins-bad-opusparse | | 1.18.5-r2 |  | NA | |
-| 42 | gstreamer1.0-plugins-bad-dashdemux | | 1.18.5-r2 |  | NA | |
-| 43 | gstreamer1.0-plugins-good-matroska | | 1.18.5-r2 |  | NA | |
-| 44 | gstreamer1.0-plugins-base-app | | 1.18.5-r2 |  | NA | |
-| 45 | gstreamer1.0-plugins-base-audioconvert | | 1.18.5-r2 |  | NA | |
-| 46 | gstreamer1.0-plugins-base-audioresample | | 1.18.5-r2 |  | NA | |
-| 47 | rtk-audio-service | | 2.0.0-r0 |  | e52aef88fc80d0e3b6166000e8553a7b7dc7fa7a & 6bb3a0f37357296c4f0697c1c4ecd9d69f45eb02 | |
-| 48 | libdrm | | 2.4.100-r0 |  | NA | |
-| 49 | westeros-simpleshell | | 1.3.0-r0 |  | NA | |
-| 50 | westeros-simplebuffer | | 1.3.0-r0 |  | NA | |
-| 51 | westeros-soc | | 1.3.0-r1 |  | NA | |
-| 52 | westeros-sink | | 2.0.0-r0 |  | 5724b0f | |
-| 53 | westeros | | 1.0.0-r0 |  | NA | |
-| 54 | essos | | 1.0.0-r0 |  | NA | |
-| 55 | cairo | | 1.16.0-r0 |  | NA | |
-| 56 | libepoxy | | 1.5.4-r1 |  | NA | |
-| 57 | python3-pygobject | | 3.34.0-r0 |  | NA | |
-| 58 | pango | | 1.44.7-r0 |  | NA | |
-| 59 | make-mod-scripts | | 1.0-r0 |  | NA | |
-| 60 | librsvg | | 2.40.21-r0 |  | NA | |
-| 61 | python3-pycairo | | 1.19.0-r0 |  | NA | |
-| 62 | sky-fpbutton-driver | | 2.8-r0 |  | NA | |
-| 63 | xsign | | 4.0.1-r1 |  | NA | |
-| 64 | mfrlib-hal-xione | | 7.0.4-r0 |  | NA | |
-| 65 | wipe-disk-partitions | | 1.0.0-r0 |  | NA | |
-| 66 | early-display | | 2.0.0-r0 |  | GRT_STB_v2 | |
-| 67 | rtk-tee | | 1.0.0-r0 |  | NA | |
-| 68 | secauthn | | 1.0.0-r0 |  | NA | |
-| 69 | secapi-rtk | **2.1.0-r1** | 2.1.0-r0 |  | 95b6bd4 | |
-| 70 | secapi3-rtk | | 3.0.0-r0 |  | aa3c293 | |
-| 71 | secapi2-adapter | | 1.0.0-r0 |  | NA | |
-| 72 | secapi-common-hw | | 2.3.0-r0 |  | 3a51b88 | |
-| 73 | secapi-netflix | | 1.0.0-r0 |  |  | |
+| 7 | deepsleepmgr-hal-realtek | **1.0.3-1.0.0-r0** | NA | **GRT_STB_v1** | NA |  [](https://github.com/rdk-e/iarmmgrs-soc-realtek) |
+| 8 | pwrmgr-hal-realtek | **1.0.2-1.0.0-r0** | NA | **GRT_STB_v1** | NA |  [](https://github.com/rdk-e/iarmmgrs-soc-realtek) |
+| 9 | rtk-platform-conf | | 2.6.0-r0 |  | NA | |
+| 10 | testagentlib | | 2.9.0-r0 |  | NA | |
+| 11 | emmc-read-util | | 3.3.4-r0 |  | NA | |
+| 12 | otp-program | | 2.2-r1 |  | NA | |
+| 13 | gstreamer1.0 | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 14 | gstreamer1.0-meta-base | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 15 | gstreamer1.0-omx | **1.10.4-r3** | 1.10.4-r2 |  | NA | |
+| 16 | gstreamer1.0-libav | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 17 | gstreamer1.0-plugins-good | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 18 | gstreamer1.0-plugins-good-meta | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 19 | gstreamer1.0-plugins-bad | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 20 | gstreamer1.0-plugins-bad-meta | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 21 | gstreamer1.0-rtsp-server | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 22 | gstreamer1.0-plugins-base | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 23 | gstreamer1.0-plugins-base-meta | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 24 | gstreamer1.0-plugins-base-playback | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 25 | gstreamer1.0-plugins-good-wavparse | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 26 | gstreamer1.0-plugins-good-audiofx | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 27 | gstreamer1.0-plugins-good-isomp4 | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 28 | gstreamer1.0-plugins-good-audioparsers | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 29 | gstreamer1.0-plugins-good-soup | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 30 | gstreamer1.0-plugins-base-gio | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 31 | gstreamer1.0-plugins-base-videoconvert | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 32 | gstreamer1.0-plugins-base-videoscale | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 33 | gstreamer1.0-plugins-base-volume | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 34 | gstreamer1.0-plugins-base-typefindfunctions | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 35 | gstreamer1.0-plugins-good-autodetect | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 36 | gstreamer1.0-plugins-good-avi | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 37 | gstreamer1.0-plugins-good-deinterlace | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 38 | gstreamer1.0-plugins-good-interleave | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 39 | gstreamer1.0-plugins-bad-dash | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 40 | gstreamer1.0-plugins-bad-mpegtsdemux | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 41 | gstreamer1.0-plugins-bad-smoothstreaming | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 42 | gstreamer1.0-plugins-bad-videoparsersbad | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 43 | gstreamer1.0-plugins-bad-opusparse | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 44 | gstreamer1.0-plugins-bad-dashdemux | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 45 | gstreamer1.0-plugins-good-matroska | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 46 | gstreamer1.0-plugins-base-app | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 47 | gstreamer1.0-plugins-base-audioconvert | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 48 | gstreamer1.0-plugins-base-audioresample | **1.18.5-r3** | 1.18.5-r2 |  | NA | |
+| 49 | rtk-audio-service | | 2.0.0-r0 |  | e52aef88fc80d0e3b6166000e8553a7b7dc7fa7a & 6bb3a0f37357296c4f0697c1c4ecd9d69f45eb02 | |
+| 50 | libdrm | | 2.4.100-r0 |  | NA | |
+| 51 | westeros-simpleshell | | 1.3.0-r0 |  | NA | |
+| 52 | westeros-simplebuffer | | 1.3.0-r0 |  | NA | |
+| 53 | westeros-soc | | 1.3.0-r1 |  | NA | |
+| 54 | westeros-sink | | 2.0.0-r0 |  | 5724b0f | |
+| 55 | westeros | | 1.0.0-r0 |  | NA | |
+| 56 | essos | | 1.0.0-r0 |  | NA | |
+| 57 | cairo | | 1.16.0-r0 |  | NA | |
+| 58 | libepoxy | | 1.5.4-r1 |  | NA | |
+| 59 | python3-pygobject | | 3.34.0-r0 |  | NA | |
+| 60 | pango | | 1.44.7-r0 |  | NA | |
+| 61 | make-mod-scripts | | 1.0-r0 |  | NA | |
+| 62 | librsvg | | 2.40.21-r0 |  | NA | |
+| 63 | python3-pycairo | | 1.19.0-r0 |  | NA | |
+| 64 | sky-fpbutton-driver | | 2.8-r0 |  | NA | |
+| 65 | xsign | | 4.0.1-r1 |  | NA | |
+| 66 | mfrlib-hal-xione | | 7.0.4-r0 |  | NA | |
+| 67 | wipe-disk-partitions | | 1.0.0-r0 |  | NA | |
+| 68 | early-display | | 2.0.0-r0 |  | GRT_STB_v2 | |
+| 69 | rtk-tee | | 1.0.0-r0 |  | NA | |
+| 70 | secauthn | | 1.0.0-r0 |  | NA | |
+| 71 | secapi-rtk | | 2.1.0-r1 |  | 95b6bd4 | |
+| 72 | secapi3-rtk | | 3.0.0-r0 |  | aa3c293 | |
+| 73 | secapi2-adapter | | 1.0.0-r0 |  | NA | |
+| 74 | secapi-common-hw | | 2.3.0-r0 |  | 3a51b88 | |
+| 75 | secapi-netflix | | 1.0.0-r0 |  |  | |
 | - |  - secapi-netflix_com_inc_rtk | |  |  | 0fa3af3 | |
 | - |  - secapi-netflix_socrealtek | |  |  | d3c7c87 | |
-| 74 | gst-svp-ext | | 1.0.0-r0 |  | NA | |
-| 75 | systemaudioplatform | | 1.0.0-r0 |  | 776348d | |
-| 76 | dvrmgr-hal-realtek | | 1.0.0-r0 |  | NA | |
-| 77 | secapi-crypto-rtk | | 2.3.0-r0 |  | f5eb924 | |
-| 78 | secapi-common-crypto | | 2.3.0-r0 |  | 3a51b88 | |
-| 79 | testagent-loader | | 2.3.0-r0 |  | NA | |
-| 80 | qca6390-mod-wifi | | 1.0.0-r0 |  | NA | |
-| 81 | qca-hciattach | | 1.0.0-r0 |  | NA | |
-| 82 | emmc-fw-update | | 1.0.0-r0 |  | NA | |
-| 83 | mount-disk-partition | | 1.0.0-r0 |  | NA | |
-| 84 | image-verifier-lib | | 6.2.0-r0 |  | NA | |
-| 85 | flashapp | | 5.9.2-r0 |  | NA | |
-| 86 | sky-led-driver | | 1.0.0-r0 |  | NA | |
-| 87 | fmtsasidlibs | | 2.4-r0 |  | NA | |
-| 88 | hank-mod-mali | | 1.0.0-r1 |  | GRT_STB_v2 | |
-| 89 | rtkv1sink | | 2.0.0-r0 |  | GRT_STB_v2 | |
-| 90 | led-boot-pattern | | 1.0.0-r0 |  | NA | |
-| 91 | rtkmali | | 2.8.0-r0 |  | NA | |
-| 92 | platform-lib | | 2.6.0-r2 |  | NA | |
-| 93 | hdmiservice | | 2.0.0-r0 |  | GRT_STB_v2 | |
-| 94 | rtkpcrclksink | | 2.0.0-r0 |  | GRT_STB_v2 | |
-| 95 | linux-libc-headers | | 4.9-r4 |  | NA | |
-| 96 | packagegroup-kernel-modules | | 4.9.119.01-r4 |  | NA | |
-| 97 | linux-hank | | 4.9.119.01-r4 |  | e608d5f | |
-| 98 | mediarite-vendor | | 10.0.34.0a2-r0 |  | NA | |
-| 99 | gst-plugins-mediarite | | 1.0-r0 |  | NA | |
-| 100 | rtkaudiosink | | 2.0.0-r0 |  | GRT_STB_v2 | |
-| 101 | sky-dropbear | | 1.0.0-r0 |  | NA | |
-| 102 | mfi-ree | | 2.0.0-r0 |  | GRT_v2 | |
-| 103 | sysint-oem | | 1.0.0-r0 |  | ec0f597 | |
-| 104 | sysint-soc | | 1.0.0-r0 |  | c3ae6f4 | |
-| 105 | apparmor-vendor | | 1.0.0-r0 |  | 41e3674 | |
-| 106 | directfb | | 1.7.7-r0 |  | NA | |
-| 107 | audiocapturemgr-vendor | | 1.0.0-r0 |  | a063707 | |
-| 108 | realtek-collectd-plugins | **1.0.0-r0** | NA | **032a4be** | NA |  [](https://github.com/rdk-e/hdmicec-soc-realtek) |
+| 76 | gst-svp-ext | | 1.0.0-r0 |  | NA | |
+| 77 | systemaudioplatform | | 1.0.0-r0 |  | 776348d | |
+| 78 | dvrmgr-hal-realtek | | 1.0.0-r0 |  | NA | |
+| 79 | secapi-crypto-rtk | | 2.3.0-r0 |  | f5eb924 | |
+| 80 | secapi-common-crypto | | 2.3.0-r0 |  | 3a51b88 | |
+| 81 | testagent-loader | | 2.3.0-r0 |  | NA | |
+| 82 | qca6390-mod-wifi | | 1.0.0-r0 |  | NA | |
+| 83 | qca-hciattach | | 1.0.0-r0 |  | NA | |
+| 84 | emmc-fw-update | | 1.0.0-r0 |  | NA | |
+| 85 | mount-disk-partition | | 1.0.0-r0 |  | NA | |
+| 86 | image-verifier-lib | | 6.2.0-r0 |  | NA | |
+| 87 | flashapp | | 5.9.2-r0 |  | NA | |
+| 88 | sky-led-driver | | 1.0.0-r0 |  | NA | |
+| 89 | fmtsasidlibs | | 2.4-r0 |  | NA | |
+| 90 | hank-mod-mali | | 1.0.0-r1 |  | GRT_STB_v2 | |
+| 91 | rtkv1sink | | 2.0.0-r0 |  | GRT_STB_v2 | |
+| 92 | led-boot-pattern | | 1.0.0-r0 |  | NA | |
+| 93 | rtkmali | | 2.8.0-r0 |  | NA | |
+| 94 | platform-lib | | 2.6.0-r2 |  | NA | |
+| 95 | hdmiservice | | 2.0.0-r0 |  | GRT_STB_v2 | |
+| 96 | rtkpcrclksink | | 2.0.0-r0 |  | GRT_STB_v2 | |
+| 97 | linux-libc-headers | | 4.9-r4 |  | NA | |
+| 98 | packagegroup-kernel-modules | | 4.9.119.01-r4 |  | NA | |
+| 99 | linux-hank | | 4.9.119.01-r4 |  | e608d5f | |
+| 100 | mediarite-vendor | | 10.0.34.0a2-r0 |  | NA | |
+| 101 | gst-plugins-mediarite | | 1.0-r0 |  | NA | |
+| 102 | rtkaudiosink | | 2.0.0-r0 |  | GRT_STB_v2 | |
+| 103 | sky-dropbear | | 1.0.0-r0 |  | NA | |
+| 104 | mfi-ree | | 2.0.0-r0 |  | GRT_v2 | |
+| 105 | sysint-oem | | 1.0.0-r0 |  | ec0f597 | |
+| 106 | sysint-soc | | 1.0.0-r0 |  | c3ae6f4 | |
+| 107 | apparmor-vendor | | 1.0.0-r0 |  | 41e3674 | |
+| 108 | directfb | | 1.7.7-r0 |  | NA | |
+| 109 | audiocapturemgr-vendor | | 1.0.0-r0 |  | a063707 | |
 
 
+## Components Removed
+
+| # |  Component Name | Reason |
+|----|--------------|------|
+| 1 | realtek-collectd-plugins | Removed as collectd is now added via jenkins option |
 
 
 ## Consolidated change list from vendor layer repositories
@@ -287,84 +295,98 @@ We will not be able to flash the image through `FlashApp`, on 1.0.1 release and 
 
 ## [meta-oss-reference-release](https://github.com/rdk-e/meta-oss-reference-release/blob/main/CHANGELOG.md)
 
-- Merge branch 'release/3.1.0' into main [36c7870](https://github.com/rdk-e/meta-oss-reference-release/commit/36c7870e84eb6c397419a9ee5b95a27ea8adb0ba)
-- RDK-50924: OSS Release 3.1.0 [2a7d93b](https://github.com/rdk-e/meta-oss-reference-release/commit/2a7d93b09f935be97ac09cd38cdf4a7e2b07e1fa)
-- Merge pull request  [#47](https://github.com/rdk-e/meta-oss-reference-release/pull/47) from rdk-e/feature/rel_3_1_0
-- RDK-50924: OSS release 3.1.0 [a57167c](https://github.com/rdk-e/meta-oss-reference-release/commit/a57167c44a88304b690e5b24ae7f0f2ede9f3e64)
-- Merge tag '3.0.4' into develop [20f0f30](https://github.com/rdk-e/meta-oss-reference-release/commit/20f0f302b052dedec8d539c431b415b2678e859f)
+- RDK-50925: OSS Release 3.2.0 [e4bf989](https://github.com/rdk-e/meta-oss-reference-release/commit/e4bf98970e9da70757bf49cc83bdb0ef28c9689b)
 ## [meta-rdk-oss-reference](https://github.com/rdk-e/meta-rdk-oss-reference/blob/main/CHANGELOG.md)
 
-- Merge branch 'release/3.1.0' into main [9295112](https://github.com/rdk-e/meta-rdk-oss-reference/commit/92951123f4258c8c9ae99b307ee579077425897e)
-- RDK-50924: OSS release 3.1.0 [e1c0ddd](https://github.com/rdk-e/meta-rdk-oss-reference/commit/e1c0dddeeb358ebd8d8e6e34c3221483146e416c)
-- RDK-50924: Update oss release version 3.1.0 [a325b11](https://github.com/rdk-e/meta-rdk-oss-reference/commit/a325b116a74061715dc001022c7fa1311e1f5673)
-- RDK-50689: libsoup3 support for HBBTV feature [003cf28](https://github.com/rdk-e/meta-rdk-oss-reference/commit/003cf282e7328f3339df1be174c41bacb06ede63)
-- RDK-50394: Move comcast specific lighttpd certs to comcast meta layer [3cec329](https://github.com/rdk-e/meta-rdk-oss-reference/commit/3cec329f63c9f45bf5e6ebf1bdf7ca5c76932fd5)
-- RDK-50394: Move comcast specific lighttpd certs to comcast meta layer [534b565](https://github.com/rdk-e/meta-rdk-oss-reference/commit/534b5650ac491c84f8ce2150fc17747aff877e2e)
-- RDK-49604 : Remove RDK component pxcore-libnode from RDKE [ad8e788](https://github.com/rdk-e/meta-rdk-oss-reference/commit/ad8e788b93ff3e75d6c43b3f0de86af3ba5182eb)
-- RDK-49791: Remove swap file [7f167d5](https://github.com/rdk-e/meta-rdk-oss-reference/commit/7f167d5764e5bb76290486180fd55207de319b61)
-- Merge tag '3.0.4' into develop [1e3a452](https://github.com/rdk-e/meta-rdk-oss-reference/commit/1e3a4529e3b7bc8e5d6170a3306c2f679d3ed957)
-## [meta-rdk-tools](https://github.com/rdk-e/meta-rdk-tools/blob/main/CHANGELOG.md)
-
-- Merge tag '2.1.0' into develop [6de64dd](https://github.com/rdk-e/meta-rdk-tools/commit/6de64dd5d25cc1951db99717b38aafdfbc3a0a28)
-- Merge branch 'release/2.1.0' into main [566f5cf](https://github.com/rdk-e/meta-rdk-tools/commit/566f5cf4c52d1db7a4ca0b7f70696683062e9186)
-- Changelog updates for 2.1.0 release [96982b6](https://github.com/rdk-e/meta-rdk-tools/commit/96982b60ef76bf2b35e0934d4a6d01a5fc28cb9d)
-- ES1-1476: [RDKE] Custom collectd plugins for ES1/XIONE monitoring ( [#9](https://github.com/rdk-e/meta-rdk-tools/pull/9))
-- Merge pull request  [#8](https://github.com/rdk-e/meta-rdk-tools/pull/8) from rdk-e/feature/RDKTV-30726
-- RDKTV-30726: [collectd] Data metrics not populated in the Dashboard [b166e9e](https://github.com/rdk-e/meta-rdk-tools/commit/b166e9e9ed47834f5494292f319fe51697be0793)
-- Merge pull request  [#7](https://github.com/rdk-e/meta-rdk-tools/pull/7) from rdk-e/feature/RDK-49592-conf
-- RDK-49592: Create layer for performance tools meta-rdk-tools [a2561b0](https://github.com/rdk-e/meta-rdk-tools/commit/a2561b076acafd8c4d61587828697c4925e2cb22)
-- Merge pull request  [#6](https://github.com/rdk-e/meta-rdk-tools/pull/6) from rdk-e/feature/RDK-49592-vol
-- RDK-49592: Create layer for performance tools meta-rdk-tools [922b157](https://github.com/rdk-e/meta-rdk-tools/commit/922b157b333b4dd7c907dfacc8c89db277933c61)
-- Merge pull request  [#4](https://github.com/rdk-e/meta-rdk-tools/pull/4) from rdk-e/feature/RDK-49592
-- Update rdk-collectd-plugins.bb [9c8c937](https://github.com/rdk-e/meta-rdk-tools/commit/9c8c937fd348510cacefcf1467d8500cf7724196)
-- Update amlogic-collectd-plugins.bb [84b2c76](https://github.com/rdk-e/meta-rdk-tools/commit/84b2c76c6f0b54a05bdc4687a8e044dc3d5eef2e)
-- Update package_revisions_tools.inc [627ff72](https://github.com/rdk-e/meta-rdk-tools/commit/627ff72371d420e80341228c858d7fc8e6d2dca9)
-- RDK-49592: Update package_revisions_tools.inc [6fe23fa](https://github.com/rdk-e/meta-rdk-tools/commit/6fe23fae21a6ac7e487aed50c8394169b003f1c8)
-- Update collectd_%.bbappend [33fe452](https://github.com/rdk-e/meta-rdk-tools/commit/33fe4526c7d05a21f5fb919ddfd7170a0bbfd439)
-- Update package_revisions_tools.inc [9a85b0a](https://github.com/rdk-e/meta-rdk-tools/commit/9a85b0a25a94e83ff614102db691f72d49fb4bca)
-- RDK-49592: Move collectd to tools repo [072b2d6](https://github.com/rdk-e/meta-rdk-tools/commit/072b2d62f7d04bf97c1b29d92a5dca4168bc4e2b)
-- Update rdk-collectd-plugins.bb [bf03f6e](https://github.com/rdk-e/meta-rdk-tools/commit/bf03f6eabf0571d91bc005be1975892a91e5cd18)
-- Update amlogic-collectd-plugins.bb [a71920f](https://github.com/rdk-e/meta-rdk-tools/commit/a71920f988c5bfc8d04fd51e935f845fe22aeb24)
-- Update package_revisions_tools.inc [cb9c34f](https://github.com/rdk-e/meta-rdk-tools/commit/cb9c34f26a6c5357b40f620dc3deb62cc2fe49e2)
-- Update rdk-collectd-plugins.bb [dc140ef](https://github.com/rdk-e/meta-rdk-tools/commit/dc140ef89385ffe74df63024b830563da34f11fa)
-- Update package_revisions_tools.inc [ca51532](https://github.com/rdk-e/meta-rdk-tools/commit/ca515321af008e5e053c1510529ea1d5ee110950)
-- Update collectd_%.bbappend [e3980c7](https://github.com/rdk-e/meta-rdk-tools/commit/e3980c7a5ac7f7243e5e1564b03c28ae6960c718)
-- Update collectd_%.bbappend [46fbec8](https://github.com/rdk-e/meta-rdk-tools/commit/46fbec85290844c98ec98508162ef4e199851542)
-- RDK-49592: Move collectd to tools repo [5a7fe1f](https://github.com/rdk-e/meta-rdk-tools/commit/5a7fe1f4db15b66a57af154811b0f1d013f76818)
-- Merge pull request  [#2](https://github.com/rdk-e/meta-rdk-tools/pull/2) from rdk-e/feature/RDK-49082
-- RDK-49082: Update package_revisions_tools.inc [b86d66f](https://github.com/rdk-e/meta-rdk-tools/commit/b86d66f777330afdfc6d5ad9e1609f4819c74a0c)
-- RDK-49082: Add performance to tools to new meta-rdk-tools layer [6a1ccc7](https://github.com/rdk-e/meta-rdk-tools/commit/6a1ccc7b1b0bdeaf09127bb340f4fd5bdddcc704)
-- Update and rename collectd-service.conf to collectd.service [25276e0](https://github.com/rdk-e/meta-rdk-tools/commit/25276e07f6a8508f98c24df59051ce09fd0383e7)
-- RDK-49082: Add performance to tools to new meta-rdk-tools layer [ba1b559](https://github.com/rdk-e/meta-rdk-tools/commit/ba1b559df04a4615fd6baa8e4fc029927621d28f)
-- RDK-49082: Add performance to tools to new meta-rdk-tools layer [818b43d](https://github.com/rdk-e/meta-rdk-tools/commit/818b43d13dd604eb8a63363c5e82c4c218756379)
-- Add CODEOWNERS file [4c78bd8](https://github.com/rdk-e/meta-rdk-tools/commit/4c78bd8e40def5a982eda5223236d28c3687f332)
-- Initial commit [c744e98](https://github.com/rdk-e/meta-rdk-tools/commit/c744e98f1de1367c4396a1d33f9ead921ee13072)
+- LLAMA-14037: playbin3 - don't reconfigure output during flush [35ace52](https://github.com/rdk-e/meta-rdk-oss-reference/commit/35ace52244b29568749a4d59345e7ce29c194558)
+- RDK-50925: Increment module revision for oss 3.2.0 [23ee03d](https://github.com/rdk-e/meta-rdk-oss-reference/commit/23ee03d26a84789e0a4fbd4fb3d0ef3b4bc28307)
+- RDK-50925: OSS release 3.2.0 [bb1d708](https://github.com/rdk-e/meta-rdk-oss-reference/commit/bb1d70896b05fdf2cd8d7aa00d6da0dbb1d40acd)
+- RDK-49789: Update ca-certificate package revision [44deb47](https://github.com/rdk-e/meta-rdk-oss-reference/commit/44deb47bcde96b3a74cf97cd04ff01095b683646)
+- RDK-51858: Enabled wireless tools [192a80c](https://github.com/rdk-e/meta-rdk-oss-reference/commit/192a80c7571825d299a0a9c3d65c484689e7219d)
+- RDK-52174: cairo move the generic patches to oss [7bacaae](https://github.com/rdk-e/meta-rdk-oss-reference/commit/7bacaaefac6e9f4a0ec82a1722acd123e0d90c7d)
+- RDK-51396: Added multi thread support to install components in parellel. [5e04992](https://github.com/rdk-e/meta-rdk-oss-reference/commit/5e049924ab7e30ad688d2ad7ef6299d669e812d1)
+- RDK-51467: Fix wayland-protocol dev packages [42f6ca4](https://github.com/rdk-e/meta-rdk-oss-reference/commit/42f6ca4df6d6790011456ca8e6c3166fbb91e673)
+- RDK-51719: remove core-boot packagegroup form oss [b54dbc0](https://github.com/rdk-e/meta-rdk-oss-reference/commit/b54dbc0b56e0c6072ecabb4ae9dc7720d391082a)
+- RDK-49789: Remove package arch for ca-certificates-default-certs [d144302](https://github.com/rdk-e/meta-rdk-oss-reference/commit/d1443024f78651b2a299443843c1b8b9eb081258)
+- Update ca-certificates_%.bbappend [0fd3941](https://github.com/rdk-e/meta-rdk-oss-reference/commit/0fd3941f2ffa37bb45db7fb005271e17de37bbbe)
+- RDK-49789: Add Package arch for ca-certificates-default-certs [5383981](https://github.com/rdk-e/meta-rdk-oss-reference/commit/5383981f9d6335fe2684b679d157a06b459f06e9)
+- RDK-52021: libjpeg-turbo is replaced by libjpeg [9a0efb3](https://github.com/rdk-e/meta-rdk-oss-reference/commit/9a0efb3cfd76b16eff34fbd7fac282573b98c17d)
+- XIONE-15016: Syncing qtdemux patches with stable2 [3b633d8](https://github.com/rdk-e/meta-rdk-oss-reference/commit/3b633d8dfe8daec9d6080d44506d2008bb9738ba)
+- RDK-52021:  libjpeg-turbo is rebuilding across layers [d55457d](https://github.com/rdk-e/meta-rdk-oss-reference/commit/d55457db6d327ea5c78f7bec848a036df00ed757)
+- RDK-49789: Add ca-certificate-default-certs to packagegroup-oss-layer [ea52d7a](https://github.com/rdk-e/meta-rdk-oss-reference/commit/ea52d7a5c1dd559178d458ad6df414bb74c78c67)
+- RDK-49789: Package ca-certificates from OSS in ${PN}-default-certs [caf0786](https://github.com/rdk-e/meta-rdk-oss-reference/commit/caf078675cb9aed8294a735265511c090a23d72f)
+- RDK-51874: Nothing provides systemd-rfkill-conf [54c2708](https://github.com/rdk-e/meta-rdk-oss-reference/commit/54c2708fcf9cca06c48e8ad43bc287de7eea6206)
+- RDK-49606: Remove RDK component libjpeg-turbo from RDKE [34b539c](https://github.com/rdk-e/meta-rdk-oss-reference/commit/34b539c26dc726d9d98c89736ae49a600bce1f36)
+- RDK-42490 : Remove giflib from RDKE branch [5b93539](https://github.com/rdk-e/meta-rdk-oss-reference/commit/5b93539e9e01eed0d010c487efedc0fa96e8fcc6)
+- Update wpa-supplicant_2.10.bbappend [860a96a](https://github.com/rdk-e/meta-rdk-oss-reference/commit/860a96a2a0edee375f74ef4916fedf6726cc7492)
+- Update wpa-supplicant_2.10.bbappend [1b5d85f](https://github.com/rdk-e/meta-rdk-oss-reference/commit/1b5d85fc450c24c52bb25acf69985dffddf66ee7)
+- Update unii3_country_code_check.patch [58b6b4e](https://github.com/rdk-e/meta-rdk-oss-reference/commit/58b6b4ead95ecdd2f3ffc6379ee479f2744facf0)
+- RDK-50734: Patch rename and editted folder structure in patch files [bbd3b8e](https://github.com/rdk-e/meta-rdk-oss-reference/commit/bbd3b8eb82800d4228db2047677e96ecb3e4c032)
+- XIONE-15199: sync up libsoup2 patches [cb9a3e2](https://github.com/rdk-e/meta-rdk-oss-reference/commit/cb9a3e289ceb0215d5c3c5fc42c0040fd03dd2a6)
+- RDK-51680: move core-boot pkg group to oss layer [0e7e1aa](https://github.com/rdk-e/meta-rdk-oss-reference/commit/0e7e1aad6240552a09861f7001a80727f3cc4da3)
+- RDK-51165: Removed CONFIG_AP disabling from bbappends [4f69a6f](https://github.com/rdk-e/meta-rdk-oss-reference/commit/4f69a6fd7630b16ee3ea2508fee7351a49e1a3cc)
+- RDKTV-28274: wpa status shows wrong interface [b72a6c2](https://github.com/rdk-e/meta-rdk-oss-reference/commit/b72a6c25764b1e10f2022f78511bc6ed86da3b35)
+- RDK-51165: Update PR for wpa-supplicant in package_revisions_oss.inc [e0e415d](https://github.com/rdk-e/meta-rdk-oss-reference/commit/e0e415df34ca74b57723055799e3f3e6295cd899)
+- RDK-48131: Prepare separate wpa p2p conf for Element D4 and X3. [2fcabb6](https://github.com/rdk-e/meta-rdk-oss-reference/commit/2fcabb6edde8e257f741f49ece27f2e0434b41b3)
+- RDKTV-27645 : Miracast changes [1abb867](https://github.com/rdk-e/meta-rdk-oss-reference/commit/1abb8676c0a1fe03d0efc1e7ccd6844d5b43e2c3)
+- Revert "RDK-49789: Remove ca-certificates provided from OSS layer" [fe266c9](https://github.com/rdk-e/meta-rdk-oss-reference/commit/fe266c9c99c6e45f48c0799c537c939b439386d4)
+- RDK-47759: Remove RDM Agent from OSS layer ( [#256](https://github.com/rdk-e/meta-rdk-oss-reference/pull/256))
+- RDK-51587: Exclude qemuwrapper-cross and volatile-binds from oss [a550c9f](https://github.com/rdk-e/meta-rdk-oss-reference/commit/a550c9f71f6bf936fd6b7f33fae4c69630fa5ea0)
+- RDK-49789: Remove ca-certificates installed from OSS layer [2a960b2](https://github.com/rdk-e/meta-rdk-oss-reference/commit/2a960b2ae7c852b29b20929333794e768f8fa998)
+- RDK-49789: Remove ca-certificates provided from OSS layer [b5fd4ff](https://github.com/rdk-e/meta-rdk-oss-reference/commit/b5fd4ff9ba1e18c980c6bd59698722c98cc38f78)
+- Revert "RDK-50310: Remove oss arch for libpcap" [da91a06](https://github.com/rdk-e/meta-rdk-oss-reference/commit/da91a06bf6a9e5e08b6f93d6b6d6d05488e1a19d)
+- RDK-50760: No providers for "sqlite3-dev" packages [1dc6dba](https://github.com/rdk-e/meta-rdk-oss-reference/commit/1dc6dbae3130f495748c7cec26e9388efadf5607)
+- RDKTV-30468:Remove python file installation to Middleware rootFS [6fa2708](https://github.com/rdk-e/meta-rdk-oss-reference/commit/6fa2708152622b57394aa467b6c8f20c73397bf5)
+- RDK-50310: Remove oss arch for libpcap [4a60266](https://github.com/rdk-e/meta-rdk-oss-reference/commit/4a60266a95241f561a1a615466d3c926bd8067fa)
+- RDK-49514: Remove volatile-bind dependency with systemd [935109d](https://github.com/rdk-e/meta-rdk-oss-reference/commit/935109d60dfd7af9e2b2758f1bc5c89d114512aa)
 ## [meta-rdk-soc-realtek](https://github.com/rdk-e/meta-rdk-soc-realtek/blob/main/CHANGELOG.md)
 
-- Merge branch 'release/2.4.0' [e5be784](https://github.com/rdk-e/meta-rdk-soc-realtek/commit/e5be7848610b6bb782447edf30e15c8902937db1)
-- Merge branch 'main' into release/2.4.0 [bfcdd8d](https://github.com/rdk-e/meta-rdk-soc-realtek/commit/bfcdd8d5becacbc0487e1c556255faf6943e7cca)
-- RDK-51635 : Update change log for XiOne UK release 2.4.0 [f7c6b0d](https://github.com/rdk-e/meta-rdk-soc-realtek/commit/f7c6b0df41488df1091dcc488accc3a9d5af7159)
-- XIONE-14855: Netflix playback lands on tvq-pb-101(8.1) error code ( [#67](https://github.com/rdk-e/meta-rdk-soc-realtek/pull/67))
-- RDK-50706 : Update change log for XiOne UK release 2.2.0 ( [#66](https://github.com/rdk-e/meta-rdk-soc-realtek/pull/66))
+- RDK-51506 : iarmmgrs hal recipe restructure ( [#71](https://github.com/rdk-e/meta-rdk-soc-realtek/pull/71))
+- RDK-52421:Include wpeprocess update. ( [#79](https://github.com/rdk-e/meta-rdk-soc-realtek/pull/79))
+- RDK-49606: Remove RDK component libjpeg-turbo from RDKE ( [#70](https://github.com/rdk-e/meta-rdk-soc-realtek/pull/70))
+- RDK-52041 : Disabled INHIBIT_PACKAGE_DEBUG_SPLIT [f97b9d3](https://github.com/rdk-e/meta-rdk-soc-realtek/commit/f97b9d3778f34bdc60ee8210bf0eab1729659a46)
+- XIONE-15346: cleanup closedcaption hal realtek ( [#75](https://github.com/rdk-e/meta-rdk-soc-realtek/pull/75))
+## [meta-oem-stream](https://github.com/rdk-e/meta-oem-stream/blob/main/CHANGELOG.md)
+
+- RDK-51506 : iarmmgrs hal recipe restructure [7a837d8](https://github.com/rdk-e/meta-oem-stream/commit/7a837d806a71a880abe958788a309568beac84ef)
 ## [meta-oem-realtek-stream](https://github.com/rdk-e/meta-oem-realtek-stream/blob/main/CHANGELOG.md)
 
-- Merge branch 'release/2.5.0' [9969732](https://github.com/rdk-e/meta-oem-realtek-stream/commit/996973288f608444a49bb1277473bdeadc3513ef)
-- Merge branch 'main' into release/2.5.0 [3751476](https://github.com/rdk-e/meta-oem-realtek-stream/commit/375147627beeebccc6b0548dc404d6a84bf139a8)
-- RDK-51635 : Update change log for XiOne UK release 2.5.0 [9c57319](https://github.com/rdk-e/meta-oem-realtek-stream/commit/9c573198d1deeaa6271ec7b280c40152a4c515e2)
-- RDK-51742: Display VL Name. ( [#156](https://github.com/rdk-e/meta-oem-realtek-stream/pull/156))
-- RDK-51740: Add realtek collectd plugin version. ( [#155](https://github.com/rdk-e/meta-oem-realtek-stream/pull/155))
-- RDK-51635: Vendor Release 2.4.0. ( [#153](https://github.com/rdk-e/meta-oem-realtek-stream/pull/153))
-- Merge branch 'release/2.4.0' [ea63e7c](https://github.com/rdk-e/meta-oem-realtek-stream/commit/ea63e7c02f347e82c6a25f285a0968533c6774bc)
-- Merge branch 'main' into release/2.4.0 [51946d9](https://github.com/rdk-e/meta-oem-realtek-stream/commit/51946d9a4f98446d6178da36f0c8303eedeedc15)
-- RDK-51635 : Update change log for XiOne UK release 2.4.0 [77ea994](https://github.com/rdk-e/meta-oem-realtek-stream/commit/77ea99402a62e394d01121deef644aba4bc978bb)
-- RDK-51635: Vendor Release 2.4.0. ( [#151](https://github.com/rdk-e/meta-oem-realtek-stream/pull/151))
-- RDK-51444 : Dynamic Halif header version ( [#150](https://github.com/rdk-e/meta-oem-realtek-stream/pull/150))
-- Revert "Revert "XIONE-14866: [RDKE] Custom collectd plugins for ES1/XIONE monitoring ( [#142](https://github.com/rdk-e/meta-oem-realtek-stream/pull/142))" ( [#142](https://github.com/rdk-e/meta-oem-realtek-stream/pull/142))" ( [#142](https://github.com/rdk-e/meta-oem-realtek-stream/pull/142))
-- Merge pull request  [#141](https://github.com/rdk-e/meta-oem-realtek-stream/pull/141) from rdk-e/feature/RDK-48633
-- RDK-50706 : Update change log for XiOne UK release 2.3.0 ( [#148](https://github.com/rdk-e/meta-oem-realtek-stream/pull/148))
-- RDK-48633 :Remove all product/platform/region specific build time configs/variables/distro features [48a6216](https://github.com/rdk-e/meta-oem-realtek-stream/commit/48a62162a4dd28e90a2ba134c61ee8edba3b06f3)
-- RDK-48633 :Remove all product/platform/region specific build time configs/variables/distro features [f9640f4](https://github.com/rdk-e/meta-oem-realtek-stream/commit/f9640f43bd2d384217ec34266915172a11270624)
+- RDK-52326: Vendor Release 2.6.0. ( [#184](https://github.com/rdk-e/meta-oem-realtek-stream/pull/184))
+- RDK-52326: Vendor Release 2.6.0. ( [#183](https://github.com/rdk-e/meta-oem-realtek-stream/pull/183))
+- RDK-52326: Vendor Release 2.6.0. ( [#182](https://github.com/rdk-e/meta-oem-realtek-stream/pull/182))
+- RDK-52116 : Revert watch dog enable patch ( [#180](https://github.com/rdk-e/meta-oem-realtek-stream/pull/180))
+- RDK-50814 : Service file change for IP ( [#181](https://github.com/rdk-e/meta-oem-realtek-stream/pull/181))
+- RDK-51506 : iarmmgrs hal recipe restructure ( [#159](https://github.com/rdk-e/meta-oem-realtek-stream/pull/159))
+- RDK-52421:Include wpeprocess update. ( [#176](https://github.com/rdk-e/meta-oem-realtek-stream/pull/176))
+- RDK-52116 : Bring back watch dog enable patch. ( [#175](https://github.com/rdk-e/meta-oem-realtek-stream/pull/175))
+- RDKE-135: Remove tools from package group vendor layer ( [#174](https://github.com/rdk-e/meta-oem-realtek-stream/pull/174))
+- RDKE-135: Remove tools from package group middleware layer ( [#173](https://github.com/rdk-e/meta-oem-realtek-stream/pull/173))
+- RDK-51794: Add stub api in devicesettings-soc-realtek. ( [#170](https://github.com/rdk-e/meta-oem-realtek-stream/pull/170))
+- RDK-52315:Include volatile bind. ( [#167](https://github.com/rdk-e/meta-oem-realtek-stream/pull/167))
+- RDK-52254:OSS release 3.2.0 inclusion in VL. ( [#166](https://github.com/rdk-e/meta-oem-realtek-stream/pull/166))
+- RDK-52041 : Disabled INHIBIT_PACKAGE_DEBUG_SPLIT [0657761](https://github.com/rdk-e/meta-oem-realtek-stream/commit/0657761113ac1ef24894d990c87f832ab44aed18)
+- RDK-51742: Display VL Name & RM pkg info. ( [#162](https://github.com/rdk-e/meta-oem-realtek-stream/pull/162))
+- XIONE-15346:cleanup closedcaption hal realtek ( [#161](https://github.com/rdk-e/meta-oem-realtek-stream/pull/161))
+## [meta-oss-vendor-realtek](https://github.com/rdk-e/meta-oss-vendor-realtek/blob/main/CHANGELOG.md)
+
+- RDK-52421:Include wpeprocess update. ( [#30](https://github.com/rdk-e/meta-oss-vendor-realtek/pull/30))
+- RDK-52174: cairo move the generic patches to oss ( [#29](https://github.com/rdk-e/meta-oss-vendor-realtek/pull/29))
 
 
 ## Changes in component repositories
 
+## ['closedcaption-hal-realtek'](https://github.com/rdk-e/closedcaption-soc-realtek/blob/main/CHANGELOG.md)
+
+- XIONE-15346: cleanup closedcaption hal realtek [2f87bd6](https://github.com/rdk-e/closedcaption-soc-realtek/commit/2f87bd671a82e919e63a971e3a2797dffbe9e5d0)
+- XIONE-15346: cleanup closedcaption hal realtek [640f1c2](https://github.com/rdk-e/closedcaption-soc-realtek/commit/640f1c2edf859ad1484a56696a2a69dc2e3c649d)
+- Add GitHub Actions workflow file [3181e26](https://github.com/rdk-e/closedcaption-soc-realtek/commit/3181e26d3b0d242bd846264ebf9716731c19ec8d)
+## ['iarmmgrs-hal-realtek'](https://github.com/rdk-e/iarmmgrs-soc-realtek/blob/main/CHANGELOG.md)
+
+- RDK-51506 : Cleanup the iarmmgrs soc hal realtek [f42ceb1](https://github.com/rdk-e/iarmmgrs-soc-realtek/commit/f42ceb123e2a67df3d40e56004117459bc8aedee)
+- Add GitHub Actions workflow file [4b07001](https://github.com/rdk-e/iarmmgrs-soc-realtek/commit/4b07001a4da1f83e51b0a0d0d03042ad01014459)
+## ['powermanager-hal-realtek'](https://github.com/rdk-e/power-manager-soc-realtek/blob/main/CHANGELOG.md)
+
+- RDK-51656: Power manager hal source code [`#1`](https://github.com/rdk-e/power-manager-soc-realtek/pull/1)
+## ['Deepsleep-hal-realtek'](https://github.com/rdk-e/deepsleep-manager-soc-realtek/blob/main/CHANGELOG.md)
+
+- RDK-51657: DEEPSLEEP manager hal source code [`#1`](https://github.com/rdk-e/deepsleep-manager-soc-realtek/pull/1)
