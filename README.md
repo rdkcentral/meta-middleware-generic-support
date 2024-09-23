@@ -11,7 +11,7 @@ XiOne UK REALTEK STB RDKE Vendor Layer Release Notes
 |Summary|Content|
 |---|----|
 |Classification|Confidential|
-|Date|18 Sep 2024|
+|Date|23 Sep 2024|
 |Author|pothiraj.paulraj@sky.uk|
 
 ---
@@ -44,7 +44,8 @@ The aim of this release to integrate the latest oss release 3.3.0. This release 
 The scope of this release includes:
 
 - OSS Release 3.3.0 [RDK-51113](https://ccp.sys.comcast.net/browse/RDK-51113)
-- Include RDK-E Window Manager [RDK-48841](https://ccp.sys.comcast.net/browse/RDK-48841)
+- RDK-E Window Manager version 2.0.0 [RDK-48841](https://ccp.sys.comcast.net/browse/RDK-48841)
+- Include HALIF headers version 3.1.2 [RDK-53159](https://ccp.sys.comcast.net/browse/RDK-53159)
 - Include vendor version in FlashApp [XIONE-15555](https://ccp.sys.comcast.net/browse/XIONE-15555)
 - Include blewakeupenabler [RDK-52599](https://ccp.sys.comcast.net/browse/RDK-52599)
 - Stable2 sync hdmiservice [RDK-52733](https://ccp.sys.comcast.net/browse/RDK-52733)
@@ -129,6 +130,8 @@ It should be noted that some services may not run as they have dependencies with
 ### Middleware Integration
 
 1. Since we included dobby container json file into vendor layer so please modify the corresponding changes into MW as well(https://github.com/rdk-e/meta-rdk/pull/293/files).
+2. Middleware image testing done by using feature branch feature/RDK-53133-Test for https://github.com/rdk-e/rdke-middleware-manifest/blob/feature/RDK-53133-Test/realtek-xione.xml
+3. We removed the files(vendor_pkg_versions.inc, vendor_pkg_versions_halif_impl.inc, linux-hank.bb, packagegroup-vendor-layer.bb) from the release vendor layer. So please use the tag 3.0.10 from meta-image-support, 2.0.0 meta-stack-layering-support repo’s
 
 ## Build instructions
 
@@ -162,7 +165,7 @@ For this release testing was done by using feature branch feature/RDK-53133-Test
 | Layer | Tag |
 |------|------|
 | [meta-vendor-xione-realtek-release](https://github.com/rdk-e/meta-vendor-xione-realtek-release) | 2.7.0 |
-#### Artifactory Location for IPKs - 
+#### Artifactory Location for IPKs - https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-uk-release/2.7.0/xione-uk/ipks/debug 
 
 ### Components details in 'packagegroup-vendor-layer'
 
