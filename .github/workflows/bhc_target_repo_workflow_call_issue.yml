@@ -1,0 +1,14 @@
+name: Issue(Topic) Build Health Check Trigger
+on:
+  workflow_dispatch:
+    inputs:
+      issueNumber:
+        description: 'Issue Number - DEVELOP BRANCH PRS ONLY'
+        required: true
+        type: string
+
+jobs:
+  trigger-verification:
+    uses: rdk-e/build_tools_workflows/.github/workflows/bhc_verification_manual_trigger_issue.yml@issue_merge_prs
+    with:
+      issueNumber: ${{ github.event.inputs.issueNumber }}
