@@ -1,0 +1,13 @@
+name: Auto PR Creation Caller
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - develop
+
+jobs:
+  call_auto_pr_workflow:
+    uses: rdk-e/build_tools_workflows/.github/workflows/auto_pr_creation_manifest.yml@develop
+    secrets:
+      rdke_github_token: ${{ secrets.RDKE_GITHUB_TOKEN }}
