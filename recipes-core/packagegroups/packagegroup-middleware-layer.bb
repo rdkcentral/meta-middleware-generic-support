@@ -14,7 +14,7 @@ PV = "1.9.9"
 PR = "r0"
 
 #Generic components
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
     aamp \
     aampabr \
     aampmetrics \
@@ -147,8 +147,6 @@ RDEPENDS_${PN} = " \
     mtd-utils-ubifs \
     mpg123 \
     mtdev \
-    rdk-collectd-plugins \
-    collectd \
     smcroute \
     speex \
     stunnel \
@@ -158,7 +156,6 @@ RDEPENDS_${PN} = " \
     volatile-binds \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_gdb_support', "gdb ", "", d)} \
     jquery \
-    memcapture \
     ndisc6-rdnssd \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_heaptrack', " heaptrack ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_TV', "tvsettings ", "", d)} \
