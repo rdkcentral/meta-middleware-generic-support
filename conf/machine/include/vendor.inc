@@ -13,4 +13,3 @@ PACKAGE_EXTRA_ARCHS:append = " ${VENDOR_LAYER_EXTENSION}"
 IPK_FEED_URIS += " \
                 ${VENDOR_LAYER_EXTENSION}##${VENDOR_IPK_SERVER_PATH} "
 
-require conf/machine/include/arm/arch-arm64.inc
