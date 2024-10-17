@@ -8,6 +8,10 @@ XiOne UK REALTEK STB RDKE Vendor Layer Release Notes
 |-------|
 |XiOne-UK UHD 1319|
 
+|Yocto version|
+|-------|
+|kirkstone|
+
 |Summary|Content|
 |---|----|
 |Classification|Confidential|
@@ -140,6 +144,14 @@ https://etwiki.sys.comcast.net/display/RDKAR/Vendor+Layer+Project
 
 ### Boot Command
 
+#### Copy image to device and Flash
+
+- Copy image to device /mnt/usb or /opt partitions or connect and mount USB having the image bin
+- Execute FlashApp command
+    - Move to directory containing the image
+    - FlashApp \<dirname\> \<imagename\>
+    - eg. FlashApp /mnt/usb/SKXI11ADS_MIDDLEWARE_DEV_feature_RDK-53646-3.0.0-Release-ipks_20241018104755.bin
+
 We will not be able to flash the image through FlashApp, on 1.0.1 release and We have supported Flash app from 2.0.0 onwards.
 
 - Copy the image to the usb and connect to the TV
@@ -171,18 +183,18 @@ For this release testing was done by using feature branch  feature/RDK-53646-3.0
 
  Components which are prebuilt or the ones which installs config files or scripts from meta layer have SRCREV marked as NA 
 
-| # | Vendor layer Component | New PV-PR | PV-PR in Previous Release (2.7.0)| New SRCREV | SRCREV in Previous Release (3.0.1)| Diff |
+| # | Vendor layer Component | New PV-PR | PV-PR in Previous Release (2.7.0)| New SRCREV | SRCREV in Previous Release (2.7.0)| Diff |
 |---|------------------------------------------|-------------|----------------------|-----------|------------|-----|
-| 1 | media-utils-soc-realtek | | 1.0.4-1.0.0-r0 |  | GRT_STB_v2 | |
-| 2 | closedcaption-hal-realtek | | 1.0.0-2.0.0-r0 |  | GRT_STB_v2.1.0 | |
-| 3 | hdmicec-hal-realtek | | 1.3.7-1.0.0-r0 |  | GRT_STB_v2 | |
-| 4 | iarmmgrs-hal-realtek |  | 2.1.0-2.0.0-r0 |  | GRT_STB_v2.1.0 | |
+| 1 | [media-utils-soc-realtek](#media-utils-soc-realtek) | | 1.0.4-1.0.0-r0 | **5e71382** | GRT_STB_v2 |  [GRT_STB_v2...5e71382](https://github.com/rdk-e/media_utils-soc-realtek/compare/GRT_STB_v2...5e713820e7b55d176cd135eea0f3f2b1ec0756d7) |
+| 2 | [closedcaption-hal-realtek](#closedcaption-hal-realtek) | | 1.0.0-2.0.0-r0 | **e2ae730** | GRT_STB_v2.1.0 |  [GRT_STB_v2.1.0...e2ae730](https://github.com/rdk-e/closedcaption-soc-realtek/compare/GRT_STB_v2.1.0...e2ae73072f3b64d7a4ec78383e4fe16c1b5f9e59) |
+| 3 | [hdmicec-hal-realtek](#hdmicec-hal-realtek) | | 1.3.7-1.0.0-r0 | **3a54a46** | GRT_STB_v2 |  [GRT_STB_v2...3a54a46](https://github.com/rdk-e/hdmicec-soc-realtek/compare/GRT_STB_v2...3a54a46a2d09d0f838153eabca833c99d2640b0b) |
+| 4 | [iarmmgrs-hal-realtek](#iarmmgrs-hal-realtek) | | 2.1.0-2.0.0-r0 | **a15d303** | GRT_STB_v2.1.0 |  [GRT_STB_v2.1.0...a15d303](https://github.com/rdk-e/iarmmgrs-soc-realtek/compare/GRT_STB_v2.1.0...a15d3038ce4ab7e9a8c7fd4026c2eb6ec17cbe21) |
 | 5 | rdk-gstreamer-utils-platform | | 1.3.0-r0 |  | 739cdb7 | |
-| 6 | devicesettings-hal-realtek | 2.0.0-1.0.0-r1 | 2.0.0-1.0.0-r0 |  |  | |
-| - |  - devicesettings-hal-realtek_devicesettingssocrealtek | |  |  | GRT_STB_v2.1.0 | |
-| - |  - devicesettings-hal-realtek_devicesettingsskyxione | |  |  | GRT_STB_v2 | |
-| 7 | deepsleepmgr-hal-realtek | | 1.0.3-1.0.0-r0 |  | GRT_STB_v1 | |
-| 8 | pwrmgr-hal-realtek | | 1.0.2-1.0.0-r0 |  | GRT_STB_v1 | |
+| 6 | devicesettings-hal-realtek | **2.0.0-1.0.0-r1** | 2.0.0-1.0.0-r0 |  |  | [#89](https://github.com/rdk-e/meta-rdk-soc-realtek/pull/89) |
+| - |  - devicesettings-hal-realtek_devicesettingssocrealtek | |  | **1e3edb0** | GRT_STB_v2.1.0 |  [](https://github.com/rdk-e/iarmmgrs-soc-realtek) |
+| - |  - devicesettings-hal-realtek_devicesettingsskyxione | |  | **6929995** | GRT_STB_v2 |  [](https://github.com/rdk-e/iarmmgrs-soc-realtek) |
+| 7 | deepsleepmgr-hal-realtek | | 1.0.3-1.0.0-r0 | **cbe53a0** | GRT_STB_v1 |  [](https://github.com/rdk-e/iarmmgrs-soc-realtek) |
+| 8 | pwrmgr-hal-realtek | | 1.0.2-1.0.0-r0 | **c91e047** | GRT_STB_v1 |  [](https://github.com/rdk-e/iarmmgrs-soc-realtek) |
 | 9 | rtk-platform-conf | | 2.6.0-r0 |  | NA | |
 | 10 | testagentlib | | 2.9.0-r0 |  | NA | |
 | 11 | emmc-read-util | | 3.3.4-r0 |  | NA | |
@@ -224,15 +236,15 @@ For this release testing was done by using feature branch  feature/RDK-53646-3.0
 | 47 | gstreamer1.0-plugins-base-audioconvert | | 1.18.5-r3 |  | NA | |
 | 48 | gstreamer1.0-plugins-base-audioresample | | 1.18.5-r3 |  | NA | |
 | 49 | rtk-audio-service | | 2.0.0-r0 |  | e52aef88fc80d0e3b6166000e8553a7b7dc7fa7a & 6bb3a0f37357296c4f0697c1c4ecd9d69f45eb02 | |
-| 50 | libdrm | | 2.4.100-r0 |  | NA | |
+| 50 | libdrm | **2.4.110-r0** | 2.4.100-r0 |  | NA | [#327](https://github.com/rdk-e/meta-rdk-oss-reference/pull/327) |
 | 51 | westeros-simpleshell | | 1.3.0-r0 |  | NA | |
 | 52 | westeros-simplebuffer | | 1.3.0-r0 |  | NA | |
 | 53 | westeros-soc | | 1.3.0-r1 |  | NA | |
 | 54 | westeros-sink | | 2.0.0-r0 |  | 5724b0f | |
-| 55 | westeros | | 2.0.0-r0 |  | NA | 3d9ccd8 |
+| 55 | westeros | | 2.0.0-r0 |  | 3d9ccd8 | |
 | 56 | essos | | 1.0.0-r0 |  | NA | |
 | 57 | cairo | | 1.16.0-r0 |  | NA | |
-| 58 | libepoxy | 1.5.9-r1 | 1.5.4-r1 |  | NA | |
+| 58 | libepoxy | **1.5.9-r1** | 1.5.4-r1 |  | NA | [#327](https://github.com/rdk-e/meta-rdk-oss-reference/pull/327) |
 | 59 | python3-pygobject | | 3.34.0-r0 |  | NA | |
 | 60 | pango | | 1.44.7-r0 |  | NA | |
 | 61 | make-mod-scripts | | 1.0-r0 |  | NA | |
@@ -242,7 +254,7 @@ For this release testing was done by using feature branch  feature/RDK-53646-3.0
 | 65 | xsign | | 4.0.1-r1 |  | NA | |
 | 66 | mfrlib-hal-xione | | 7.0.4-r0 |  | NA | |
 | 67 | wipe-disk-partitions | | 1.0.0-r0 |  | NA | |
-| 68 | splashscreen-viewer | 2.0.0-r0 |  |  | 41e70a2d13db7163e984b7eb3e7c20da737135ff | |
+| 68 | [splashscreen-viewer](#splashscreen-viewer) | **2.0.0-r0** | NA | **41e70a2** | NA |  [41e70a2](ssh:git@github.com:rdk-e/splashscreen-viewer.git/commits/41e70a2d13db7163e984b7eb3e7c20da737135ff) |
 | 69 | rtk-tee | | 1.0.0-r0 |  | NA | |
 | 70 | secauthn | | 1.0.0-r0 |  | NA | |
 | 71 | secapi-rtk | | 2.1.0-r1 |  | 95b6bd4 | |
@@ -255,39 +267,44 @@ For this release testing was done by using feature branch  feature/RDK-53646-3.0
 | 76 | gst-svp-ext | | 1.0.0-r0 |  | NA | |
 | 77 | systemaudioplatform | | 1.0.0-r0 |  | 776348d | |
 | 78 | dvrmgr-hal-realtek | | 1.0.0-r0 |  | NA | |
-| 79 | secapi-crypto-rtk | 2.3.1-r0 | 2.3.0-r0 |  | f5eb924 | |
+| 79 | [secapi-crypto-rtk](#secapi-crypto-rtk) | **2.3.1-r0** | 2.3.0-r0 | **5241d45** | f5eb924 |  [f5eb924...5241d45](https://github.com/rdk-e/sec-apis-crypto-cpc/compare/f5eb9240383e67fb9aaf0a8d67791ca5ad2b91f7...5241d4573f44dda750f6cad12331f5daa6161245) |
 | 80 | secapi-common-crypto | | 2.3.0-r0 |  | 3a51b88 | |
 | 81 | testagent-loader | | 2.3.0-r0 |  | NA | |
 | 82 | qca6390-mod-wifi | | 1.0.0-r0 |  | NA | |
-| 83 | qca-hciattach | 1.0.0-r1 | 1.0.0-r0 |  | NA | |
+| 83 | qca-hciattach | **1.0.0-r1** | 1.0.0-r0 |  | NA | [#202](https://github.com/rdk-e/meta-oem-realtek-stream/pull/202) |
 | 84 | emmc-fw-update | | 1.0.0-r0 |  | NA | |
 | 85 | mount-disk-partition | | 1.0.0-r0 |  | NA | |
 | 86 | image-verifier-lib | | 6.2.0-r0 |  | NA | |
-| 87 | flashapp | 7.1.0-r0 | 5.9.5-r0 |  | NA | |
+| 87 | flashapp | **7.1-r0** | 5.9.5-r0 |  | NA | [#202](https://github.com/rdk-e/meta-oem-realtek-stream/pull/202) |
 | 88 | sky-led-driver | | 1.0.0-r0 |  | NA | |
-| 89 | fmtsasidlibs | 2.4-r1 | 2.4-r0 |  | NA | |
-| 90 | hank-mod-mali | | 1.0.0-r1 |  | GRT_STB_v2 | |
-| 91 | rtkv1sink | | 2.0.0-r0 |  | GRT_STB_v2 | |
+| 89 | fmtsasidlibs | **2.4-r1** | 2.4-r0 |  | NA | [#205](https://github.com/rdk-e/meta-oem-realtek-stream/pull/205) |
+| 90 | [hank-mod-mali](#hank-mod-mali) | | 1.0.0-r1 | **3ad45d0** | GRT_STB_v2 |  [GRT_STB_v2...3ad45d0](https://github.com/rdk-e/kernel-modules-mali-soc-realtek/compare/GRT_STB_v2...3ad45d0cca66d4bdc06d5fb637784f19435bb223) |
+| 91 | [rtkv1sink](#rtkv1sink) | | 2.0.0-r0 | **67bdf5b** | GRT_STB_v2 |  [GRT_STB_v2...67bdf5b](https://github.com/rdk-e/rtkv1sink-soc-realtek/compare/GRT_STB_v2...67bdf5b0c084fdb466e062d0a14eaa71a93392c2) |
 | 92 | led-boot-pattern | | 1.0.0-r0 |  | NA | |
 | 93 | rtkmali | | 2.8.0-r0 |  | NA | |
 | 94 | platform-lib | | 2.6.0-r2 |  | NA | |
-| 95 | [hdmiservice](#hdmiservice) | | 2.1.0-r0 |  | GRT_STB_v2.1.0 |  |
-| 96 | rtkpcrclksink | | 2.0.0-r0 |  | GRT_STB_v2 | |
-| 97 | blewakeupenabler | | NA | 1.3.0-r0 | NA |  [](https://github.com/rdk-e/hdmiservice-realtek) |
+| 95 | [hdmiservice](#hdmiservice) | | 2.1.0-r0 | **66c8242** | GRT_STB_v2.1.0 |  [GRT_STB_v2.1.0...66c8242](https://github.com/rdk-e/hdmiservice-realtek/compare/GRT_STB_v2.1.0...66c82425431726a7bb4a47295f57bcf60f5e3c3c) |
+| 96 | [rtkpcrclksink](#rtkpcrclksink) | | 2.0.0-r0 | **c8272d9** | GRT_STB_v2 |  [GRT_STB_v2...c8272d9](https://github.com/rdk-e/rtkpcrclksink-soc-realtek/compare/GRT_STB_v2...c8272d9293dc8e1869198a18be0aa9e978936320) |
+| 97 | blewakeupenabler | | 1.3.0-r0 | **7c0eb9c** | 1.3.0 |  [](https://github.com/rdk-e/rtkpcrclksink-soc-realtek) |
 | 98 | linux-libc-headers | | 4.9-r5 |  | NA | |
 | 99 | packagegroup-kernel-modules | | 4.9.119.01-r5 |  | NA | |
 | 100 | linux-hank | | 4.9.119.01-r5 |  | e608d5f | |
 | 101 | mediarite-vendor | | 10.0.34.0a2-r0 |  | NA | |
 | 102 | gst-plugins-mediarite | | 1.0-r0 |  | NA | |
-| 103 | rtkaudiosink | | 2.0.0-r0 |  | GRT_STB_v2 | |
+| 103 | [rtkaudiosink](#rtkaudiosink) | | 2.0.0-r0 | **9000f66** | GRT_STB_v2 |  [GRT_STB_v2...9000f66](https://github.com/rdk-e/rtkaudiosink-soc-realtek/compare/GRT_STB_v2...9000f666fec77f86e620f3abbc516ffbe84c8511) |
 | 104 | sky-dropbear | | 1.0.0-r1 |  | NA | |
-| 105 | mfi-ree | | 2.0.0-r0 |  | GRT_v2 | |
-| 106 | sysint-oem | 1.0.0-r2 | 1.0.0-r1 |  | ec0f597 | |
+| 105 | [mfi-ree](#mfi-ree) | | 2.0.0-r0 | **1f5a100** | GRT_v2 |  [GRT_v2...1f5a100](https://github.com/rdk-e/mfi-ree-cpc/compare/GRT_v2...1f5a100a7c4f26489b54b0fdebc197ba3db047f9) |
+| 106 | sysint-oem | **1.0.0-r2** | 1.0.0-r1 |  | ec0f597 | [#202](https://github.com/rdk-e/meta-oem-realtek-stream/pull/202) |
 | 107 | sysint-soc | | 1.0.0-r0 |  | c3ae6f4 | |
 | 108 | apparmor-vendor | | 1.0.0-r0 |  | 41e3674 | |
 | 109 | directfb | | 1.7.7-r0 |  | NA | |
 | 110 | audiocapturemgr-vendor | | 1.0.0-r0 |  | a063707 | |
 
+## Components Removed
+
+| # |  Component Name | Reason |
+|----|--------------|------|
+| 1 | early-display | Replaced by splash screen |
 
 ## Consolidated change list from vendor layer repositories
 
