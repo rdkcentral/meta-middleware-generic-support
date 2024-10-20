@@ -1,4 +1,3 @@
-## Source revisions used in Build.
 SRCREV_aamp-abr = "605de1d9852413583887384a63ed838333593d8d"
 SRCREV:pn-rdkat = "1c54c22570a15fe96f9b9a54232fb92382026870"
 SRCREV_ctrlm-main = "c16db08b599f73c43685f17f1b96939e2463896c"
