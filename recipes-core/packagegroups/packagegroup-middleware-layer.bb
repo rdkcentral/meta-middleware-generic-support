@@ -6,7 +6,7 @@ LICENSE = "CLOSED"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "1.9.9"
+PV = "1.10.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -76,7 +76,6 @@ RDEPENDS:${PN} = " \
     systimemgr \
     telemetry \
     thunderjs \
-    thunder-rs \
     tr69hostif \
     tr69hostif-conf \
     tr69hostif-headers \
@@ -162,4 +161,16 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_TV', "tvsettings-plugins ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_NETWORKMANAGER', 'networkmanager', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'leak_sanitizer', "leakcheck-msgq ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', "apparmor ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rialto','rialto-client rialto-server rialto-servermanager rialto-gstreamer rialto-ocdm', '', d) } \
+    rdkwpasupplicantconfig \
+    cpeabs \
     "
+
+DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
+             jpeg linenoise nanomsg ne10 nopoll libopus libpam  \
+             paroduscl libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
+             log4c mbedtls rdkperf cjwt nghttp2 ucresolv fcgi glib-openssl libol \
+             graphite2 curl-netflix curl openssl zlib glib-networking glib-2.0 \
+             lighttpd systemd \
+             "
