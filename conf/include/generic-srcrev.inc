@@ -59,5 +59,4 @@ SRCREV_systemtimemgr = "ef745636f72d01f6281ba381e92b1e690806751e"
 SRCREV:pn-wifi-hal-headers = "25fe50b2f57beb80756efb6ac2b114e463460781"
 SRCREV:pn-xupnp = "63317257c684fbab2de617fdb0dbaa698ca90dd9"
 SRCREV:pn-rdkshell = "a0a88b812d39ee57b15b48f00488c4d9ba737f14"
-###
 SRCREV:pn-tvsettings-plugins = "${SRCREV:pn-tvsettings}"
