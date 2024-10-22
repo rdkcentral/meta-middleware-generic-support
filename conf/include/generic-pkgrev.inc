@@ -1,4 +1,4 @@
-PV:pn-devicesettings = "1.3.4"
+rPV:pn-devicesettings = "1.3.4"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -113,6 +113,10 @@ PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 PV:pn-commonutilities = "1.4.2"
 PR:pn-commonutilities = "r0"
 PACKAGE_ARCH:pn-commonutilities = "${MIDDLEWARE_ARCH}"
+
+PV_pn-rdkfwupgrader = "1.3.6"
+PR_pn-rdkfwupgrader = "r0"
+PACKAGE_ARCH_pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
 PV:pn-gst-plugins-rdk-aamp = "1.11.0"
 PR:pn-gst-plugins-rdk-aamp = "r0"
