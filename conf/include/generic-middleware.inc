@@ -22,3 +22,4 @@ PARALLEL_MAKE:pn-qtbase = " -j10 "
 
 BBMASK += "|poky/meta/recipes-multimedia/gstreamer"
 BBMASK += "|meta-openembedded/meta-multimedia/recipes-multimedia/gstreamer-1.0"
+BBMASK += "|meta-rdk/recipes-qt/qt5/qtwebsockets_5.1.1.bb"
