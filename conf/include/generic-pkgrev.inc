@@ -114,6 +114,10 @@ PV:pn-commonutilities = "1.4.2"
 PR:pn-commonutilities = "r0"
 PACKAGE_ARCH:pn-commonutilities = "${MIDDLEWARE_ARCH}"
 
+PV:pn-rdkfwupgrader = "1.3.6"
+PR:pn-rdkfwupgrader = "r0"
+PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
+
 PV:pn-gst-plugins-rdk-aamp = "1.11.0"
 PR:pn-gst-plugins-rdk-aamp = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk-aamp = "${MIDDLEWARE_ARCH}"
@@ -142,7 +146,7 @@ PV:pn-netsrvmgr = "1.0.5"
 PR:pn-netsrvmgr = "r2"
 PACKAGE_ARCH:pn-netsrvmgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices = "6.0.5"
+PV:pn-rdkservices = "6.1.0"
 PR:pn-rdkservices = "r0"
 PACKAGE_ARCH:pn-rdkservices = "${MIDDLEWARE_ARCH}"
 
