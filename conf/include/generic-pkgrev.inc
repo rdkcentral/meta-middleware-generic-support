@@ -1,4 +1,4 @@
-PV:pn-devicesettings = "1.3.4"
+PV:pn-devicesettings = "1.3.7"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
