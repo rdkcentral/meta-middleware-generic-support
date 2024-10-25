@@ -146,7 +146,7 @@ PV:pn-netsrvmgr = "1.0.5"
 PR:pn-netsrvmgr = "r2"
 PACKAGE_ARCH:pn-netsrvmgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices = "6.1.0"
+PV:pn-rdkservices = "6.2.0"
 PR:pn-rdkservices = "r0"
 PACKAGE_ARCH:pn-rdkservices = "${MIDDLEWARE_ARCH}"
 
