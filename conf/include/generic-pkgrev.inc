@@ -336,3 +336,7 @@ PACKAGE_ARCH:pn-rialto-gstreamer = "${MIDDLEWARE_ARCH}"
 pn-rialto-ocdm = "0.6.1"
 PR:pn-rialto-ocdm = "r0"
 PACKAGE_ARCH:pn-rialto-ocdm = "${MIDDLEWARE_ARCH}"
+
+PV:pn-xmidt-agent = "1.0.0"
+PR:pn-xmidt-agent = "r0"
+PACKAGE_ARCH:pn-xmidt-agent-config = "${MIDDLEWARE_ARCH}"
