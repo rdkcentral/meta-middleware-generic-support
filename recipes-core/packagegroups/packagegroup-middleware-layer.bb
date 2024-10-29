@@ -166,7 +166,6 @@ RDEPENDS:${PN} = " \
     rdkwpasupplicantconfig \
     cpeabs \
     virtual/ca-certificates-trust-store \
-    xmidt-agent \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
