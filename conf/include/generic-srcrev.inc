@@ -17,9 +17,15 @@ SRCREV_gstplug-rdk-aamp = "a5054fa7c0eb66550454d51e9ce4b5fe034a9fc7"
 SRCREV_iarmbus = "d75146a750169df38f242c2d22ddd8efb3bbed01"
 SRCREV:pn-rdk-gstreamer-utils = "e784200ec02a5bb03efbc0400f8ce4ce1a51b703"
 SRCREV:pn-iarmmgrs = "7828f6e63aad34fcc8f55cd1dfcb409bcde92861"
+<<<<<<< HEAD
 SRCREV_devicesettings = "9b023250fa717fc992c8f83dbd677b9ad644d8d5"
 SRCREV:pn-bluetooth-mgr = "2abb442c58bd2260d266442c8229858c3b61dbfb"
 SRCREV:pn-bluetooth-core = "affacfc4788a18a3ef8787dabb2c2f458394f6f7"
+=======
+SRCREV_devicesettings = "07c72e02901e414d72723c9bb377fda10883e7b8"
+SRCREV:pn-bluetooth-mgr = "7830520b5ebec5e53096c633b08120ac196f4c08"
+SRCREV:pn-bluetooth-core = "22a9bfe0c4151c67682721c81ea82a7f4c81d9b7"
+>>>>>>> 6cc49d0 (RDKE-331 : Update btmgr to recent.)
 SRCREV:pn-webconfig-framework = "a97c5759cb49614294fa827be0aa6d2f38b087cc"
 SRCREV_rdmgeneric = "3ae2700d6dd44ae04406180dca94b3f87fdf23e5"
 SRCREV_rdkversion = "8c7af76089d537293d899db4b15990813a09e7d8"
