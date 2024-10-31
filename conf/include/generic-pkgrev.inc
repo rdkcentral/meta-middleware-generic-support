@@ -74,11 +74,11 @@ PV:pn-wifi-hal-headers = "1.0.2"
 PR:pn-wifi-hal-headers = "r2"
 PACKAGE_ARCH:pn-wifi-hal-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby = "3.10.3"
+PV:pn-dobby = "3.11.0"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby-thunderplugin = "3.10.3"
+PV:pn-dobby-thunderplugin = "3.11.0"
 PR:pn-dobby-thunderplugin = "r0"
 PACKAGE_ARCH:pn-dobby-thunderplugin = "${MIDDLEWARE_ARCH}"
 
