@@ -1,4 +1,4 @@
-PV:pn-devicesettings = "1.3.4"
+PV:pn-devicesettings = "1.3.6"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -74,11 +74,11 @@ PV:pn-wifi-hal-headers = "1.0.2"
 PR:pn-wifi-hal-headers = "r2"
 PACKAGE_ARCH:pn-wifi-hal-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby = "3.10.3"
+PV:pn-dobby = "3.11.0"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby-thunderplugin = "3.10.3"
+PV:pn-dobby-thunderplugin = "3.11.0"
 PR:pn-dobby-thunderplugin = "r0"
 PACKAGE_ARCH:pn-dobby-thunderplugin = "${MIDDLEWARE_ARCH}"
 
@@ -102,11 +102,11 @@ PV:pn-audiocapturemgr = "1.0.2"
 PR:pn-audiocapturemgr = "r1"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-core = "1.5.0"
+PV:pn-bluetooth-core = "1.6.0"
 PR:pn-bluetooth-core = "r2"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-mgr = "1.5.0"
+PV:pn-bluetooth-mgr = "1.6.0"
 PR:pn-bluetooth-mgr = "r1"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
@@ -336,3 +336,7 @@ PACKAGE_ARCH:pn-rialto-gstreamer = "${MIDDLEWARE_ARCH}"
 pn-rialto-ocdm = "0.6.1"
 PR:pn-rialto-ocdm = "r0"
 PACKAGE_ARCH:pn-rialto-ocdm = "${MIDDLEWARE_ARCH}"
+
+PV:pn-xmidt-agent = "1.0.0"
+PR:pn-xmidt-agent = "r0"
+PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
