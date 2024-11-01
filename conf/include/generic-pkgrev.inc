@@ -196,7 +196,7 @@ PV:pn-rdkat = "1.0.1"
 PR:pn-rdkat = "r0"
 PACKAGE_ARCH:pn-rdkat = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkversion = "1.0.1"
+PV:pn-rdkversion = "1.0.0"
 PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
