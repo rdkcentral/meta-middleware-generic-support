@@ -74,11 +74,11 @@ PV:pn-wifi-hal-headers = "1.0.2"
 PR:pn-wifi-hal-headers = "r2"
 PACKAGE_ARCH:pn-wifi-hal-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby = "3.10.3"
+PV:pn-dobby = "3.11.0"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby-thunderplugin = "3.10.3"
+PV:pn-dobby-thunderplugin = "3.11.0"
 PR:pn-dobby-thunderplugin = "r0"
 PACKAGE_ARCH:pn-dobby-thunderplugin = "${MIDDLEWARE_ARCH}"
 
@@ -86,7 +86,7 @@ PV:pn-qtwayland = "5.12.4"
 PR:pn-qtwayland = "r1"
 PACKAGE_ARCH:pn-qtwayland = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "1.12.0"
+PV:pn-aamp = "1.13.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -118,7 +118,7 @@ PV:pn-rdkfwupgrader = "1.0.0"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
-PV:pn-gst-plugins-rdk-aamp = "1.11.0"
+PV:pn-gst-plugins-rdk-aamp = "1.12.0"
 PR:pn-gst-plugins-rdk-aamp = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk-aamp = "${MIDDLEWARE_ARCH}"
 
