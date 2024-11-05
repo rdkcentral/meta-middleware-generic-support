@@ -1,4 +1,4 @@
-PV:pn-devicesettings = "1.3.6"
+PV:pn-devicesettings = "1.3.7"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -14,7 +14,7 @@ PV:pn-iarmbus = "1.3.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "2.1.1"
+PV:pn-iarmmgrs = "2.1.2"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -196,7 +196,7 @@ PV:pn-rdkat = "1.0.1"
 PR:pn-rdkat = "r0"
 PACKAGE_ARCH:pn-rdkat = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkversion = "1.0.1"
+PV:pn-rdkversion = "1.0.0"
 PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
@@ -207,10 +207,6 @@ PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 PV:pn-libsyswrapper = "1.3.1"
 PR:pn-libsyswrapper = "r0"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
-
-PV:pn-rdk-logger = "2.0.1"
-PR:pn-rdk-logger = "r1"
-PACKAGE_ARCH:pn-rdk-logger = "${MIDDLEWARE_ARCH}"
 
 PV:pn-nlmonitor = "1.4.0"
 PR:pn-nlmonitor = "r0"
@@ -251,8 +247,6 @@ PACKAGE_ARCH:pn-paroduscl = "${MIDDLEWARE_ARCH}"
 PV:pn-sqlite3see = "1.0.0"
 PR:pn-sqlite3see = "r0"
 PACKAGE_ARCH:pn-sqlite3see = "${MIDDLEWARE_ARCH}"
-
-PACKAGE_ARCH:pn-webconfig-framework = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-rdksysctl = "${MIDDLEWARE_ARCH}"
 
