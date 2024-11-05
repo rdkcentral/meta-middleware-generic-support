@@ -256,7 +256,7 @@ PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
 PR:pn-network-hotplug = "r3"
 
-PV:pn-sysint = "1.5.9"
+PV:pn-sysint = "1.5.10"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
