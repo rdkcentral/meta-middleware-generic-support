@@ -192,7 +192,7 @@ PV:pn-rdm = "1.3.3"
 PR:pn-rdm = "r0"
 PACKAGE_ARCH:pn-rdm = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkat = "1.0.1"
+PV:pn-rdkat = "1.0.0"
 PR:pn-rdkat = "r0"
 PACKAGE_ARCH:pn-rdkat = "${MIDDLEWARE_ARCH}"
 
@@ -256,7 +256,7 @@ PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
 PR:pn-network-hotplug = "r3"
 
-PV:pn-sysint = "1.5.9"
+PV:pn-sysint = "1.5.10"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -313,7 +313,7 @@ PACKAGE_ARCH:pn-alsa-plugins =  "${MIDDLEWARE_ARCH}"
 PR:pn-pulseaudio = "r0"
 PACKAGE_ARCH:pn-pulseaudio =  "${MIDDLEWARE_ARCH}"
 
-PV:pn-tts = "1.3.3"
+PV:pn-tts = "1.0.0"
 PR:pn-tts = "r0"
 PACKAGE_ARCH:pn-tts = "${MIDDLEWARE_ARCH}"
 
