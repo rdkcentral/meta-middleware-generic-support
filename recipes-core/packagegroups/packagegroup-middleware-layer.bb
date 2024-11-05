@@ -6,7 +6,7 @@ LICENSE = "CLOSED"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.0.0-alpha"
+PV = "2.0.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -87,7 +87,7 @@ RDEPENDS:${PN} = " \
     wpe-backend-rdk \
     wpeframework \
     wpeframework-clientlibraries \
-    wpeframework-interfaces \
+    rdkservices-apis \
     wpeframework-ui \
     wpe-webkit \
     wpe-webkit-web-inspector-plugin \
@@ -165,12 +165,14 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rialto','rialto-client rialto-server rialto-servermanager rialto-gstreamer rialto-ocdm', '', d) } \
     rdkwpasupplicantconfig \
     cpeabs \
+    virtual/ca-certificates-trust-store \
+    xmidt-agent \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
              jpeg linenoise nanomsg ne10 nopoll libopus libpam  \
              paroduscl libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
              log4c mbedtls rdkperf cjwt nghttp2 ucresolv fcgi glib-openssl libol \
-             graphite2 curl-netflix curl openssl zlib glib-networking glib-2.0 \
+             graphite2 curl openssl zlib glib-networking glib-2.0 \
              lighttpd systemd \
              "
