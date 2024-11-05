@@ -6,7 +6,7 @@ LICENSE = "CLOSED"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.0.0-alpha"
+PV = "2.0.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
