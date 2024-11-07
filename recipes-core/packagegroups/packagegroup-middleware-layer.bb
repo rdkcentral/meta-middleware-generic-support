@@ -33,6 +33,7 @@ RDEPENDS:${PN} = " \
     dobby \
     dobby-thunderplugin \
     ermgr \
+    evtest \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "firebolt-ripple ", "", d)} \
     gst-plugins-rdk \
     gst-plugins-rdk-aamp \
