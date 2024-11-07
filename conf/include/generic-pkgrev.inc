@@ -168,7 +168,7 @@ PV:pn-systimemgrinetrface = "1.0.1"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tvsettings = "3.0.0"
+PV:pn-tvsettings = "3.1.0"
 PR:pn-tvsettings = "r0"
 PACKAGE_ARCH:pn-tvsettings = "${MIDDLEWARE_ARCH}"
 
