@@ -167,6 +167,7 @@ RDEPENDS:${PN} = " \
     cpeabs \
     virtual/ca-certificates-trust-store \
     xmidt-agent \
+    bootversion-loader \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
