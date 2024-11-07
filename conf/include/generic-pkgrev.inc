@@ -208,6 +208,10 @@ PV:pn-libsyswrapper = "1.3.1"
 PR:pn-libsyswrapper = "r0"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
 
+PV_pn-rdk-logger = "1.0.0"
+PR_pn-rdk-logger = "r0"
+PACKAGE_ARCH_pn-rdk-logger = "${MIDDLEWARE_ARCH}"
+
 PV:pn-nlmonitor = "1.4.0"
 PR:pn-nlmonitor = "r0"
 PACKAGE_ARCH:pn-nlmonitor = "${MIDDLEWARE_ARCH}"
@@ -247,6 +251,10 @@ PACKAGE_ARCH:pn-paroduscl = "${MIDDLEWARE_ARCH}"
 PV:pn-sqlite3see = "1.0.0"
 PR:pn-sqlite3see = "r0"
 PACKAGE_ARCH:pn-sqlite3see = "${MIDDLEWARE_ARCH}"
+
+PV_pn-webconfig-framework = "1.0.0"
+PR_pn-webconfig-framework = "r0"
+PACKAGE_ARCH_pn-webconfig-framework = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-rdksysctl = "${MIDDLEWARE_ARCH}"
 
