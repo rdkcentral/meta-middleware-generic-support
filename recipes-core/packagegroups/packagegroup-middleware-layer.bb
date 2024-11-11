@@ -61,6 +61,7 @@ RDEPENDS:${PN} = " \
     rbus \
     rdk-logger \
     rdkat \
+    rdkfwupgrader \
     rdknativescript \
     rdkperf \
     rdkservices \
