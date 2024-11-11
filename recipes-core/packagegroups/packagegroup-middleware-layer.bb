@@ -6,7 +6,7 @@ LICENSE = "CLOSED"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.0.0-alpha"
+PV = "2.0.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -33,6 +33,7 @@ RDEPENDS:${PN} = " \
     dobby \
     dobby-thunderplugin \
     ermgr \
+    evtest \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "firebolt-ripple ", "", d)} \
     gst-plugins-rdk \
     gst-plugins-rdk-aamp \
@@ -172,6 +173,6 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
              jpeg linenoise nanomsg ne10 nopoll libopus libpam  \
              paroduscl libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
              log4c mbedtls rdkperf cjwt nghttp2 ucresolv fcgi glib-openssl libol \
-             graphite2 curl-netflix curl openssl zlib glib-networking glib-2.0 \
+             graphite2 curl openssl zlib glib-networking glib-2.0 \
              lighttpd systemd \
              "

@@ -1,4 +1,4 @@
-PV:pn-devicesettings = "1.3.6"
+PV:pn-devicesettings = "1.3.7"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -14,7 +14,7 @@ PV:pn-iarmbus = "1.3.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "2.1.1"
+PV:pn-iarmmgrs = "2.1.2"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -50,7 +50,7 @@ PV:pn-syslog-helper = "1.0.0"
 PR:pn-syslog-helper = "r2"
 PACKAGE_ARCH:pn-syslog-helper = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.0.0"
+PV:pn-telemetry = "1.0.1"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -86,7 +86,7 @@ PV:pn-qtwayland = "5.12.4"
 PR:pn-qtwayland = "r1"
 PACKAGE_ARCH:pn-qtwayland = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "1.12.0"
+PV:pn-aamp = "1.13.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -118,7 +118,7 @@ PV:pn-rdkfwupgrader = "1.0.0"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
-PV:pn-gst-plugins-rdk-aamp = "1.11.0"
+PV:pn-gst-plugins-rdk-aamp = "1.12.0"
 PR:pn-gst-plugins-rdk-aamp = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -146,7 +146,7 @@ PV:pn-netsrvmgr = "1.0.5"
 PR:pn-netsrvmgr = "r2"
 PACKAGE_ARCH:pn-netsrvmgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices = "6.2.0"
+PV:pn-rdkservices = "6.4.0"
 PR:pn-rdkservices = "r0"
 PACKAGE_ARCH:pn-rdkservices = "${MIDDLEWARE_ARCH}"
 
@@ -168,7 +168,7 @@ PV:pn-systimemgrinetrface = "1.0.1"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tvsettings = "3.0.0"
+PV:pn-tvsettings = "3.1.0"
 PR:pn-tvsettings = "r0"
 PACKAGE_ARCH:pn-tvsettings = "${MIDDLEWARE_ARCH}"
 
@@ -192,11 +192,11 @@ PV:pn-rdm = "1.3.3"
 PR:pn-rdm = "r0"
 PACKAGE_ARCH:pn-rdm = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkat = "1.0.1"
+PV:pn-rdkat = "1.0.0"
 PR:pn-rdkat = "r0"
 PACKAGE_ARCH:pn-rdkat = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkversion = "1.0.1"
+PV:pn-rdkversion = "1.0.0"
 PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
@@ -208,9 +208,9 @@ PV:pn-libsyswrapper = "1.3.1"
 PR:pn-libsyswrapper = "r0"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdk-logger = "2.0.1"
-PR:pn-rdk-logger = "r1"
-PACKAGE_ARCH:pn-rdk-logger = "${MIDDLEWARE_ARCH}"
+PV_pn-rdk-logger = "1.0.0"
+PR_pn-rdk-logger = "r0"
+PACKAGE_ARCH_pn-rdk-logger = "${MIDDLEWARE_ARCH}"
 
 PV:pn-nlmonitor = "1.4.0"
 PR:pn-nlmonitor = "r0"
@@ -252,7 +252,9 @@ PV:pn-sqlite3see = "1.0.0"
 PR:pn-sqlite3see = "r0"
 PACKAGE_ARCH:pn-sqlite3see = "${MIDDLEWARE_ARCH}"
 
-PACKAGE_ARCH:pn-webconfig-framework = "${MIDDLEWARE_ARCH}"
+PV_pn-webconfig-framework = "1.0.0"
+PR_pn-webconfig-framework = "r0"
+PACKAGE_ARCH_pn-webconfig-framework = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-rdksysctl = "${MIDDLEWARE_ARCH}"
 
@@ -262,7 +264,7 @@ PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
 PR:pn-network-hotplug = "r3"
 
-PV:pn-sysint = "1.5.9"
+PV:pn-sysint = "1.5.10"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -317,7 +319,7 @@ PACKAGE_ARCH:pn-alsa-plugins =  "${MIDDLEWARE_ARCH}"
 PR:pn-pulseaudio = "r0"
 PACKAGE_ARCH:pn-pulseaudio =  "${MIDDLEWARE_ARCH}"
 
-PV:pn-tts = "1.3.3"
+PV:pn-tts = "1.0.0"
 PR:pn-tts = "r0"
 PACKAGE_ARCH:pn-tts = "${MIDDLEWARE_ARCH}"
 
