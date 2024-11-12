@@ -99,7 +99,6 @@ RDEPENDS:${PN} = " \
     bind \
     bind-dl \
     bind-named \
-    fdk-aac \
     lcms \
     libunwind \
     wayland \
