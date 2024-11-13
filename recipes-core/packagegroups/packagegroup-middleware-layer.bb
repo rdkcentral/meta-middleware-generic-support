@@ -1,7 +1,7 @@
 SUMMARY = "Packagegroup for middleware layer"
 PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
-LICENSE = "CLOSED"
+LICENSE = "MIT"
 
 inherit packagegroup
 
