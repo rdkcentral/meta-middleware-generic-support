@@ -52,7 +52,7 @@ RDEPENDS:${PN} = " \
     remotedebugger \
     rmfosal \
     nlmonitor \
-    netsrvmgr \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_NETWORKMANAGER', '', 'netsrvmgr', d)} \
     network-hotplug \
     networkmanager-plugin \
     packagemanager \
