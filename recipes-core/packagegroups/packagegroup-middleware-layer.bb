@@ -6,7 +6,7 @@ LICENSE = "CLOSED"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.0.0"
+PV = "2.0.1"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -52,7 +52,7 @@ RDEPENDS:${PN} = " \
     remotedebugger \
     rmfosal \
     nlmonitor \
-    netsrvmgr \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_NETWORKMANAGER', '', 'netsrvmgr', d)} \
     network-hotplug \
     networkmanager-plugin \
     packagemanager \
@@ -99,7 +99,6 @@ RDEPENDS:${PN} = " \
     bind \
     bind-dl \
     bind-named \
-    fdk-aac \
     lcms \
     libunwind \
     wayland \
