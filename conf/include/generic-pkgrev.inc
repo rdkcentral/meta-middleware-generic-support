@@ -14,7 +14,7 @@ PV:pn-iarmbus = "1.3.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "2.1.2"
+PV:pn-iarmmgrs = "2.1.3"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -34,7 +34,7 @@ PV:pn-rbus = "1.0.0"
 PR:pn-rbus = "r1"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.4.1"
+PV:pn-rfc = "1.4.2"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
@@ -146,7 +146,7 @@ PV:pn-netsrvmgr = "1.0.5"
 PR:pn-netsrvmgr = "r2"
 PACKAGE_ARCH:pn-netsrvmgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices = "6.4.0"
+PV:pn-rdkservices = "7.1.0"
 PR:pn-rdkservices = "r0"
 PACKAGE_ARCH:pn-rdkservices = "${MIDDLEWARE_ARCH}"
 
@@ -321,7 +321,7 @@ PACKAGE_ARCH:pn-alsa-plugins =  "${MIDDLEWARE_ARCH}"
 PR:pn-pulseaudio = "r0"
 PACKAGE_ARCH:pn-pulseaudio =  "${MIDDLEWARE_ARCH}"
 
-PV:pn-tts = "1.0.0"
+PV:pn-tts = "1.0.1"
 PR:pn-tts = "r0"
 PACKAGE_ARCH:pn-tts = "${MIDDLEWARE_ARCH}"
 
