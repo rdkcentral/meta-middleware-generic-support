@@ -169,6 +169,7 @@ RDEPENDS:${PN} = " \
     virtual/ca-certificates-trust-store \
     xmidt-agent \
     bootversion-loader \
+    virtual/default-font \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
