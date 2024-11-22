@@ -34,11 +34,11 @@ PV:pn-rbus = "1.0.0"
 PR:pn-rbus = "r1"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.4.1"
+PV:pn-rfc = "1.4.2"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.4.6"
+PV:pn-tr69hostif = "1.4.9"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -62,15 +62,15 @@ PV:pn-dcmd = "1.1.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.4.6"
+PV:pn-tr69hostif-headers = "1.4.8"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-wifi-hal-generic = "1.0.2"
+PV:pn-wifi-hal-generic = "1.0.3"
 PR:pn-wifi-hal-generic = "r2"
 PACKAGE_ARCH:pn-wifi-hal-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-wifi-hal-headers = "1.0.2"
+PV:pn-wifi-hal-headers = "1.0.3"
 PR:pn-wifi-hal-headers = "r2"
 PACKAGE_ARCH:pn-wifi-hal-headers = "${MIDDLEWARE_ARCH}"
 
@@ -142,11 +142,11 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-netsrvmgr = "1.0.5"
+PV:pn-netsrvmgr = "1.0.6"
 PR:pn-netsrvmgr = "r2"
 PACKAGE_ARCH:pn-netsrvmgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices = "6.4.0"
+PV:pn-rdkservices = "7.1.0"
 PR:pn-rdkservices = "r0"
 PACKAGE_ARCH:pn-rdkservices = "${MIDDLEWARE_ARCH}"
 
@@ -238,7 +238,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices-apis = "1.0.1"
+PV:pn-rdkservices-apis = "1.0.3"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -321,7 +321,7 @@ PACKAGE_ARCH:pn-alsa-plugins =  "${MIDDLEWARE_ARCH}"
 PR:pn-pulseaudio = "r0"
 PACKAGE_ARCH:pn-pulseaudio =  "${MIDDLEWARE_ARCH}"
 
-PV:pn-tts = "1.0.0"
+PV:pn-tts = "1.0.1"
 PR:pn-tts = "r0"
 PACKAGE_ARCH:pn-tts = "${MIDDLEWARE_ARCH}"
 
