@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.0.1"
+PV = "2.0.2"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -61,6 +61,7 @@ RDEPENDS:${PN} = " \
     rbus \
     rdk-logger \
     rdkat \
+    rdkfwupgrader \
     rdknativescript \
     rdkperf \
     rdkservices \
@@ -167,6 +168,7 @@ RDEPENDS:${PN} = " \
     cpeabs \
     virtual/ca-certificates-trust-store \
     xmidt-agent \
+    bootversion-loader \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
