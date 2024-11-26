@@ -170,6 +170,7 @@ RDEPENDS:${PN} = " \
     virtual/ca-certificates-trust-store \
     xmidt-agent \
     bootversion-loader \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
