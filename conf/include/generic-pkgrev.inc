@@ -98,8 +98,8 @@ PV:pn-aampmetrics = "1.6.0"
 PR:pn-aampmetrics = "r0"
 PACKAGE_ARCH:pn-aampmetrics = "${MIDDLEWARE_ARCH}"
 
-PV:pn-audiocapturemgr = "1.0.2"
-PR:pn-audiocapturemgr = "r1"
+PV:pn-audiocapturemgr = "1.0.0"
+PR:pn-audiocapturemgr = "r0"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
 
 PV:pn-bluetooth-core = "1.6.0"
