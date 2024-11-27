@@ -1,4 +1,4 @@
-PV:pn-devicesettings = "1.3.7"
+PV:pn-devicesettings = "1.3.8"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -34,11 +34,11 @@ PV:pn-rbus = "1.0.0"
 PR:pn-rbus = "r1"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.4.2"
+PV:pn-rfc = "1.0.0"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.4.9"
+PV:pn-tr69hostif = "1.4.10"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -58,7 +58,7 @@ PV:pn-webcfg = "1.0.0"
 PR:pn-webcfg = "r0"
 PACKAGE_ARCH:pn-webcfg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dcmd = "1.1.0"
+PV:pn-dcmd = "1.0.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
@@ -66,11 +66,11 @@ PV:pn-tr69hostif-headers = "1.4.8"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-wifi-hal-generic = "1.0.2"
+PV:pn-wifi-hal-generic = "1.0.3"
 PR:pn-wifi-hal-generic = "r2"
 PACKAGE_ARCH:pn-wifi-hal-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-wifi-hal-headers = "1.0.2"
+PV:pn-wifi-hal-headers = "1.0.3"
 PR:pn-wifi-hal-headers = "r2"
 PACKAGE_ARCH:pn-wifi-hal-headers = "${MIDDLEWARE_ARCH}"
 
@@ -98,8 +98,8 @@ PV:pn-aampmetrics = "1.6.0"
 PR:pn-aampmetrics = "r0"
 PACKAGE_ARCH:pn-aampmetrics = "${MIDDLEWARE_ARCH}"
 
-PV:pn-audiocapturemgr = "1.0.2"
-PR:pn-audiocapturemgr = "r1"
+PV:pn-audiocapturemgr = "1.0.0"
+PR:pn-audiocapturemgr = "r0"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
 
 PV:pn-bluetooth-core = "1.6.0"
@@ -142,7 +142,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-netsrvmgr = "1.0.5"
+PV:pn-netsrvmgr = "1.0.6"
 PR:pn-netsrvmgr = "r2"
 PACKAGE_ARCH:pn-netsrvmgr = "${MIDDLEWARE_ARCH}"
 
@@ -216,7 +216,7 @@ PV:pn-nlmonitor = "1.4.0"
 PR:pn-nlmonitor = "r0"
 PACKAGE_ARCH:pn-nlmonitor = "${MIDDLEWARE_ARCH}"
 
-PV:pn-remotedebugger = "1.3.5"
+PV:pn-remotedebugger = "1.3.7"
 PR:pn-remotedebugger = "r0"
 PACKAGE_ARCH:pn-remotedebugger = "${MIDDLEWARE_ARCH}"
 
@@ -344,3 +344,11 @@ PACKAGE_ARCH:pn-rialto-ocdm = "${MIDDLEWARE_ARCH}"
 PV:pn-xmidt-agent = "1.0.0"
 PR:pn-xmidt-agent = "r0"
 PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
+
+PV:pn-rdmagent = "1.0.5"
+PR:pn-rdmagent = "r0"
+PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
+
+PV:pn-rdkwindowmanager = "1.0.0"
+PR:pn-rdkwindowmanager = "r0"
+PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"

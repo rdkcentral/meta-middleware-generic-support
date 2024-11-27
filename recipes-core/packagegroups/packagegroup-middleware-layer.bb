@@ -69,6 +69,7 @@ RDEPENDS:${PN} = " \
     rdksysctl \
     rdkversion \
     rdm \
+    rdmagent \
     rfc \
     rtcore \
     rtremote \
@@ -170,6 +171,7 @@ RDEPENDS:${PN} = " \
     xmidt-agent \
     bootversion-loader \
     virtual/default-font \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
