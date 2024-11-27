@@ -58,7 +58,7 @@ PV:pn-webcfg = "1.0.0"
 PR:pn-webcfg = "r0"
 PACKAGE_ARCH:pn-webcfg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dcmd = "1.1.2"
+PV:pn-dcmd = "1.0.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
