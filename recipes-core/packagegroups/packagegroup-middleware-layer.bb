@@ -170,6 +170,7 @@ RDEPENDS:${PN} = " \
     virtual/ca-certificates-trust-store \
     xmidt-agent \
     bootversion-loader \
+    virtual/default-font \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     "
 
