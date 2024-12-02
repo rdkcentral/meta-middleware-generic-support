@@ -82,9 +82,13 @@ PV:pn-dobby-thunderplugin = "3.11.0"
 PR:pn-dobby-thunderplugin = "r0"
 PACKAGE_ARCH:pn-dobby-thunderplugin = "${MIDDLEWARE_ARCH}"
 
-PV:pn-qtwayland = "5.12.4"
+PV:pn-qtwayland = "5.15.7"
 PR:pn-qtwayland = "r1"
 PACKAGE_ARCH:pn-qtwayland = "${MIDDLEWARE_ARCH}"
+
+PV:pn-qtvirtualkeyboard = "5.15.7"
+PR:pn-qtvirtualkeyboard = "r0"
+PACKAGE_ARCH:pn-qtvirtualkeyboard = "${MIDDLEWARE_ARCH}"
 
 PV:pn-aamp = "1.13.0"
 PR:pn-aamp = "r0"
