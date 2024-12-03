@@ -1,6 +1,6 @@
 # Vendor Layer Release Notes
 
-XiOne UK Stream Puck RDKE Vendor Layer Release Notes
+XiOne UK REALTEK STB RDKE Vendor Layer Release Notes
 
 ---
 
@@ -48,12 +48,12 @@ The aim of this release to integrate the latest oss release 4.2.0. This release 
 The scope of this release includes:
 
 - OSS Release 4.2.0 [RDK-54611](https://ccp.sys.comcast.net/browse/RDK-54611)
-- Enabled BL DRV flag [RDK-54975](https://ccp.sys.comcast.net/browse/RDK-54975)
+- Stable2 sync from V to E [RDK-53301](https://ccp.sys.comcast.net/browse/RDK-53301)
+- Enable BL DRV flag [RDK-54975](https://ccp.sys.comcast.net/browse/RDK-54975)
 - Stable2 sync on wifi firmware [RDK-54805](https://ccp.sys.comcast.net/browse/RDK-54805)
 - Stable2 sync code for audio firmware [XIONE-16273](https://ccp.sys.comcast.net/browse/XIONE-16273)
 - Gitlab to github movement [RDK-48018](https://ccp.sys.comcast.net/browse/RDK-48018)
 - Adding ENV variables required for Real-tek SOC [RDK-54545](https://ccp.sys.comcast.net/browse/RDK-54545)
-- Stable2 sync code for all component [RDK-53301](https://ccp.sys.comcast.net/browse/RDK-53301)
 - Include wifi component in VL [RDK-54172](https://ccp.sys.comcast.net/browse/RDK-54172)
 - Vendor Version in Flashapp-kirkstone [XIONE-15555](https://ccp.sys.comcast.net/browse/XIONE-15555)
 - Include gstreamer patch [RDK-54792](https://ccp.sys.comcast.net/browse/RDK-54792)
@@ -75,7 +75,7 @@ The scope of this release includes:
 |------|------|
 | [meta-vendor-xione-realtek-release](https://github.com/rdk-e/meta-vendor-xione-realtek-release) | [4.0.1](https://github.com/rdk-e/meta-vendor-xione-realtek-release/tree/4.0.1) |
 
-#### Artifactory Location for IPKs - https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-uk-release
+#### Artifactory Location for IPKs - https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-uk-release/4.0.1/xione-uk/ipks/debug
 
 ### Meta Repos
 
@@ -148,7 +148,9 @@ It should be noted that some services may not run as they have dependencies with
 
 ### Middleware Integration
 
-Middleware image testing done by using feature branch feature/RDK-54922-Release_Act4.0.0 for https://github.com/rdk-e/rdke-middleware-manifest/blob/feature/RDK-54922-Release_Act4.0.0/realtek-xione.xml
+- Created the  middleware image SKXI11ADS_MIDDLEWARE_DEV_feature_RDK-54922-Release_Act4.0.0_20241203131500.bin from the  https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Middleware-Build/7839 
+- Testing done by using feature branch feature/RDK-54922-Release_Act4.0.0 included of laetst vendor ipk feed info https://github.com/rdk-e/meta-vendor-xione-realtek-release/blob/release/4.0.1/conf/machine/include/vendor.inc and the middleware manifest branched from develop branch on 29Nov24.
+- Feature branch details here  https://github.com/rdk-e/rdke-middleware-manifest/blob/feature/RDK-54922-Release_Act4.0.0/realtek-xione.xml
 
 ## Build instructions
 
@@ -160,10 +162,10 @@ Middleware image testing done by using feature branch feature/RDK-54922-Release_
 #### Copy image to device /mnt/usb or /opt partitions or connect and mount USB having the image binn- Execute FlashApp command
 - Move to directory containing the image
 - FlashApp \<dirname\> \<imagename\>
-- eg. FlashApp /mnt/usb/ 
+- eg. FlashApp /mnt/usb/SKXI11ADS_VENDOR_DEV_refs_tags_4.0.1_20241203115633.bin 
 
 #### USB Flash Method using xboot prompt
-- Copy the image to the usb and connect to the TV
+- Copy the image to the usb and connect to the STB
 - Switch on the STB
 - Press z button multiple time to get the bootloader prompt.
 - From bootloader prompt, need to do below method
@@ -175,9 +177,54 @@ Middleware image testing done by using feature branch feature/RDK-54922-Release_
 
 ## Testing
 
-Created the "vendor test image" "" using the vendor layer project.
+Created the "vendor test image" "SKXI11ADS_VENDOR_DEV_refs_tags_4.0.1_20241203115633.bin" using the vendor layer project.
 Successfully booted the "vendor test image" and obtained the shell prompt.
 For this release testing was done by using feature branch  feature/RDK-54922-Release_Act4.0.0 for rdke-middleware-manifest/realtek-xione.xml
+
+### Vendor image testing
+
+- Created the `"vendor test image"` `"SKXI11ADS_VENDOR_DEV_refs_tags_4.0.1_20241203115633.bin"` using the vendor layer jenkins job https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Vendor-Release-Build/40/
+  - Successfully booted the `"vendor test image"` and obtained the shell prompt.
+  - Verified vendor layer services up and running
+  - Verified IP acquisition via Ethernet
+  - Played clear AV with gst-play-1.0.
+  - Verified image flashing using FlashApp
+
+Testing details in [RDK-54922](https://ccp.sys.comcast.net/browse/RDK-54922)
+
+#### High Level Vendor Memory usage data
+
+- Test results for use case of UHD60FPS playback on Xione Uk puck  with 4GB DDR Size . The device has a dual decode capability with UHD+FHD support. Very minimal services are running in the vendor test image while  running the test.
+
+|      **Field**       |   **Description**    |
+|------------------|-------------------|
+|Vendor Static Reserved   |    Amount of fixed static memory which is used by vendor layer for any UseCase       |
+|Vendor Baseline Memory  | Amount memory used at Boot up minus vendor CMA used |
+|Vendor Dynamic usage on uhd_play      | Dynamically allocated memory during the execution of Usecase |
+|Vendor Dynamic Total      | Dynamically allocated Total Memory system wide |
+|Available Memory       | Available Memory in the system |
+
+| ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
+| --- | --- | --- | --- | --- | --- | --- |
+| Dec 03 2024 |  SKXI11ADS_VENDOR_DEV_refs_tags_4.0.1_20241203115633 | 1547368 | 447008 | 26733 | 473741 | 2172939 |
+
+### Fullstack image testing
+
+- Created Image Assembler build  SKXI11ADS_DEV_feature_RDK-54922-Release_Act4.0.0_20241203154247.bin https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/834/ based on Middleware version 2.0.2 and the latest develop MW manifest branched to feature/RDK-54922-Release_Act4.0.0.
+
+- Included the application release 4.7.0 using [rdke-assembler-manifest](https://github.com/rdk-e/rdke-assembler-manifest) feature branch feature/RDK-54922-Release_Act4.0.0
+
+- Tested below scenarios as part of [RDK-54922](https://ccp.sys.comcast.net/browse/RDK-54922)
+
+  - Successfully booted \"SKXI11ADS_DEV_feature_RDK-54922-Release_Act4.0.0_20241203154247.bin\" and obtained the shell prompt and UI.
+  - Verified UI navigation
+  - Verified AV with Disney+ App
+  - Verified AV with Xumo Play
+  - Verified AV with Netflix
+  - Verified AV with YouTube
+  - Verified remote control pairing
+  - Verified Log files are present in /opt/logs  
+
 
 ## Components details in 'packagegroup-vendor-layer'
 
@@ -405,7 +452,6 @@ For this release testing was done by using feature branch  feature/RDK-54922-Rel
 - REALTEK-759 : Update SecApi 3.3.0 [57d8883](https://github.com/rdk-e/secapi3-soc-realtek-cpc/commit/57d88836723d8c79dd107cd6c139288e4ad7938c)
 - Remove GitHub Actions workflow file [957eb0e](https://github.com/rdk-e/secapi3-soc-realtek-cpc/commit/957eb0eb96479f7707cc0b51fa90f10f119782d9)
 - Add GitHub Actions workflow file [31a4c3a](https://github.com/rdk-e/secapi3-soc-realtek-cpc/commit/31a4c3a60211b2f4566ada2277b2f16776cf0cb6)
-## ['rtk-audio-service'](https://github.com/rdk-e/RtkAudioService-soc-realtek/blob/main/CHANGELOG.md)
 
 ## ['hdmiservice'](https://github.com/rdk-e/hdmiservice-realtek/blob/main/CHANGELOG.md)
 
@@ -417,7 +463,6 @@ For this release testing was done by using feature branch  feature/RDK-54922-Rel
 - XIONE-15915,XIONE-15884 : Adjust sink render interval calculation.(Squash 3) [62e55fd](https://github.com/rdk-e/rtkaudiosink-soc-realtek/commit/62e55fd96472ed906d10672012a351e4c4814ca2)
 - ES1-1408: To fix the thread stack leak. [61a5310](https://github.com/rdk-e/rtkaudiosink-soc-realtek/commit/61a531016724ebd4a0484008d34152ea363c97eb)
 - Add GitHub Actions workflow file [117db21](https://github.com/rdk-e/rtkaudiosink-soc-realtek/commit/117db214a133432d15809f05320e19e094c24ae8)
-## ['sysint-oem'](https://github.com/rdk-e/sysint-xione-rtk/blob/main/CHANGELOG.md)
 
 ## ['sysint-soc'](https://github.com/rdk-e/sysint-soc-rtk/blob/main/CHANGELOG.md)
 
