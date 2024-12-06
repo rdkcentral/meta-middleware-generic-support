@@ -193,7 +193,6 @@ set(LIBAAMP_HEADERS AampCacheHandler.h
 					AampLogManager.h
 					AampMediaType.h
 					AampMemoryUtils.h
-					AampMutex.h
 					AampProfiler.h
 					AampRfc.h
 					AampScheduler.h
