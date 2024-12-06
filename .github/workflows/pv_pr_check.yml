@@ -1,0 +1,160 @@
+name: Check Package Fields
+
+on:
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - 'conf/include/generic-pkgrev.inc'
+
+jobs:
+  check-fields:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Check PV, PR & PACKAGE_ARCH for MW Components
+      - name: Check PV, PR & PACKAGE_ARCH for MW Components
+        run: |
+          set -e
+
+          # Check File existence
+          FILE="conf/include/generic-pkgrev.inc"
+          if [ ! -f "$FILE" ]; then
+            echo "File not found!"
+            exit 1
+          fi
+
+          declare -A components
+          invalid_lines=()
+          invalid_operator_lines=()
+          error_flag=0
+          delimiter=":"
+
+          # Parse through each line
+          while IFS= read -r line; do
+            # Skip empty & commented lines
+            if [[ -z "$line" || $line =~ ^# ]]; then
+              continue
+            fi
+
+            # Check for the correct usage of equivalence operator '=' not '?='
+            if [[ $line =~ \?= ]]; then
+              invalid_operator_lines+=("$line")
+              error_flag=1
+              continue
+            fi
+
+            # Check whether the entry starts with PV/PR/PACKAGE_ARCH and using the correct delimiter or not
+            if [[ ! $line =~ ^(PV|PR|PACKAGE_ARCH)${delimiter}pn- ]]; then
+              invalid_lines+=("$line")
+              error_flag=1
+              continue
+            fi
+
+            if [[ $line =~ ^PV${delimiter}pn-([^ =?]+) ]]; then
+              component="${BASH_REMATCH[1]}"
+              components["$component,PV"]=1
+            fi
+
+            if [[ $line =~ ^PR${delimiter}pn-([^ =?]+) ]]; then
+              component="${BASH_REMATCH[1]}"
+              components["$component,PR"]=1
+            fi
+
+            if [[ $line =~ ^PACKAGE_ARCH${delimiter}pn-([^ =?]+) ]]; then
+              component="${BASH_REMATCH[1]}"
+              components["$component,PACKAGE_ARCH"]=1
+            fi
+          done < "$FILE"
+
+          echo "Processing completed."
+
+          error_count=0
+          # Calculate the error count that includes invalid line formats, wrong usage of equivalence operator and components that lack any of the three fields
+          if [[ ${#invalid_lines[@]} -gt 0 ]]; then
+            error_count=$((error_count + ${#invalid_lines[@]}))
+          fi
+
+          if [[ ${#invalid_operator_lines[@]} -gt 0 ]]; then
+            error_count=$((error_count + ${#invalid_operator_lines[@]}))
+          fi
+
+          # Extract the unique component names from the list
+          declare -A unique_components
+
+          for key in "${!components[@]}"; do
+            IFS=',' read -r component field <<< "$key"
+            unique_components["$component"]=1
+          done
+
+          missing_fields=0
+          declare -A missing_components
+
+          for component in "${!unique_components[@]}"; do
+            missing_fields_list=()
+
+            if [[ -z ${components["$component,PV"]} ]]; then
+              missing_fields_list+=("PV")
+            fi
+
+            if [[ -z ${components["$component,PR"]} ]]; then
+              missing_fields_list+=("PR")
+            fi
+
+            if [[ -z ${components["$component,PACKAGE_ARCH"]} ]]; then
+              missing_fields_list+=("PACKAGE_ARCH")
+            fi
+
+            if [[ ${#missing_fields_list[@]} -gt 0 ]]; then
+              missing_components["$component"]="${missing_fields_list[@]}"
+              missing_fields=1
+              error_flag=1
+              error_count=$((error_count + 1))
+            fi
+          done
+
+          echo "Checking for missing fields..Found $error_count Errors as below:"
+          # Check for the components that lack any of the three fields
+          for component in "${!missing_components[@]}"; do
+            missing_fields_list=(${missing_components["$component"]})
+            if [[ ${#missing_fields_list[@]} -eq 1 ]]; then
+              printf "\033[31mError:\033[0m '${missing_fields_list[0]}' field is missing in '$component'\n"
+            else
+              printf "\033[31mError:\033[0m "
+              for ((i=0; i<${#missing_fields_list[@]}; i++)); do
+                if [[ $i -eq $((${#missing_fields_list[@]} - 1)) ]]; then
+                  echo -n "and '${missing_fields_list[$i]}' field"
+                else
+                  echo -n "'${missing_fields_list[$i]}' "
+                fi
+              done
+              echo " are missing in '$component'"
+            fi
+          done
+
+          # Error out the invalid lines that do not start with PV/PR/PACKAGE_ARCH and use the wrong delimiter
+          if [[ ${#invalid_lines[@]} -gt 0 ]]; then
+            printf "\033[31mError:\033[0m Invalid formats found [Suggestion, Component Entry should start with PV/PR/PACKAGE_ARCH and Use ':' after PV,PR,PACKAGE_ARCH]\n"
+            for line in "${invalid_lines[@]}"; do
+              echo "$line"
+            done
+          fi
+
+          # Error out the invalid lines that use the operator '?='
+          if [[ ${#invalid_operator_lines[@]} -gt 0 ]]; then
+            printf "\033[31mError:\033[0m Invalid formats found [Suggestion, Use '=' operator not '?=']\n"
+            for line in "${invalid_operator_lines[@]}"; do
+              echo "$line"
+            done
+          fi
+
+          if [[ $error_flag -eq 1 ]]; then
+            echo "Errors found. Exiting."
+            exit 1
+          else
+            echo "All components have the required fields."
+          fi

@@ -1,12 +1,12 @@
 SUMMARY = "Packagegroup for middleware layer"
 PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
-LICENSE = "CLOSED"
+LICENSE = "MIT"
 
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.0.2"
+PV = "2.1.1"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -33,6 +33,7 @@ RDEPENDS:${PN} = " \
     dobby \
     dobby-thunderplugin \
     ermgr \
+    evtest \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "firebolt-ripple ", "", d)} \
     gst-plugins-rdk \
     gst-plugins-rdk-aamp \
@@ -51,7 +52,7 @@ RDEPENDS:${PN} = " \
     remotedebugger \
     rmfosal \
     nlmonitor \
-    netsrvmgr \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_NETWORKMANAGER', '', 'netsrvmgr', d)} \
     network-hotplug \
     networkmanager-plugin \
     packagemanager \
@@ -60,6 +61,7 @@ RDEPENDS:${PN} = " \
     rbus \
     rdk-logger \
     rdkat \
+    rdkfwupgrader \
     rdknativescript \
     rdkperf \
     rdkservices \
@@ -67,6 +69,7 @@ RDEPENDS:${PN} = " \
     rdksysctl \
     rdkversion \
     rdm \
+    rdmagent \
     rfc \
     rtcore \
     rtremote \
@@ -98,7 +101,6 @@ RDEPENDS:${PN} = " \
     bind \
     bind-dl \
     bind-named \
-    fdk-aac \
     lcms \
     libunwind \
     wayland \
@@ -167,6 +169,9 @@ RDEPENDS:${PN} = " \
     cpeabs \
     virtual/ca-certificates-trust-store \
     xmidt-agent \
+    bootversion-loader \
+    virtual/default-font \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
