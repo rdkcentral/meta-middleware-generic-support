@@ -1346,7 +1346,6 @@ bool TrackState::FetchFragmentHelper(int &http_error, bool &decryption_error, bo
 			{
 				range = NULL;
 			}
-
 			// if fragment URI uses relative path, we don't want to replace effective URI
 			std::string tempEffectiveUrl;
 			AAMPLOG_TRACE(" Calling Getfile . buffer %p avail %d", &cachedFragment->fragment, (int)cachedFragment->fragment.GetAvail());
@@ -1426,7 +1425,7 @@ bool TrackState::FetchFragmentHelper(int &http_error, bool &decryption_error, bo
 				// DrmDecrypt resets mKeyTagChanged , take a back up here to give back to caller
 				bKeyChanged = mKeyTagChanged;
 				{
-					/* 
+					/*
 					 * From RFC8216 - Section 5.2,
 					 * An EXT-X-KEY tag with a KEYFORMAT of "identity" that does not have an
 					 * IV attribute indicates that the Media Sequence Number is to be used

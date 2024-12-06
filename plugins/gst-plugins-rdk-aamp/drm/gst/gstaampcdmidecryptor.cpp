@@ -1315,14 +1315,14 @@ static gboolean gst_aampcdmidecryptor_sink_event(GstBaseTransform * trans,
 		}
 		if (NULL == aampcdmidecryptor->drmSession)
 		{
-/* For - Avoided setting 'streamReceived' as FALSE if createDrmSession() failed after a successful case.
+/* For  Avoided setting 'streamReceived' as FALSE if createDrmSession() failed after a successful case.
  * Set to FALSE is already handled on gst_aampcdmidecryptor_init() as part of initialization.
  */
 #if 0
 			aampcdmidecryptor->streamReceived = FALSE;
 #endif /* 0 */
 
-			/* -Need to reset canWait to skip conditional wait in "gst_aampcdmidecryptor_transform_ip to avoid deadlock
+			/* Need to reset canWait to skip conditional wait in "gst_aampcdmidecryptor_transform_ip to avoid deadlock
 			 *		scenario on drm session failure
 			 */
 			aampcdmidecryptor->canWait = false;
@@ -1503,7 +1503,7 @@ static gboolean gst_aampcdmidecryptor_accept_caps(GstBaseTransform * trans,
 		gst_caps_unref(allowedCaps);
 	}
 
-	// : Check if these are same as src pad caps in case direction is GST_PAD_SINK,
+	// Check if these are same as src pad caps in case direction is GST_PAD_SINK,
 	// we can let it through in this case
 	if (ret == FALSE && direction == GST_PAD_SINK)
 	{
