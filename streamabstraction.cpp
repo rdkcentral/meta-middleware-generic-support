@@ -267,7 +267,7 @@ void MediaTrack::UpdateSubtitleClockTask()
 	if (warningTimeoutMs<=fastMonitorIntervalMs*5)
 	{
 		warningTimeoutMs=fastMonitorIntervalMs*5;
-		AAMPLOG_WARN("Adjusting initial startup timeout from %d to %d", SUBTITLE_CLOCK_ASSUMED_PLAYSTATE_TIME_MS, warningTimeoutMs);		
+		AAMPLOG_WARN("Adjusting initial startup timeout from %d to %d", SUBTITLE_CLOCK_ASSUMED_PLAYSTATE_TIME_MS, warningTimeoutMs);
 	}
 	monitorIntervalMs = fastMonitorIntervalMs;
 	AAMPLOG_WARN("Starting UpdateSubtitleClockTask using dynamic refresh rate. DownloadsAreEnabled=%d, abort=%d, subtitleClockSyncIntervalMs=%d, fastMonitorIntervalMs=%d, warningTimeoutMs=%d",
@@ -282,10 +282,10 @@ void MediaTrack::UpdateSubtitleClockTask()
 	{
 		pthread_mutex_lock(&mutex);
 		if (aamp->DownloadsAreEnabled() && !abort)
-		{			
+		{
 			// Fetch PTS, send to Subtec
 			// Enable clock sync when mediaprocessor is enabled. For QTDEMUX_OVERRIDE_ENABLED platforms, video pts received from GST is relative from playback start,
-			// so we need mediaprocessor to set the base video pts so that correct pts can be signalled to subtec			
+			// so we need mediaprocessor to set the base video pts so that correct pts can be signalled to subtec
 			if (enabled && aamp->IsGstreamerSubsEnabled() && ISCONFIGSET(eAAMPConfig_EnableMediaProcessor))
 			{
 				bool outputDebug=true;
@@ -785,6 +785,7 @@ bool MediaTrack::WaitForCachedFragmentChunkInjected(int timeoutMs)
 
 			if (ETIMEDOUT == pthreadReturnValue)
 			{
+				AAMPLOG_DEBUG("[%s] pthread_cond_timedwait timed out", name);
 				ret = false;
 			}
 			else if (0 != pthreadReturnValue)
@@ -872,14 +873,14 @@ void MediaTrack::AbortWaitForCachedAndFreeFragment(bool immediate)
 		}
 #endif
 		pthread_cond_signal(&fragmentInjected);
-		if(aamp->GetLLDashServiceData()->lowLatencyMode)
+		if (IsInjectionFromCachedFragmentChunks())
 		{
 			AAMPLOG_DEBUG("[%s] signal fragmentChunkInjected condition", name);
-			// For LLD TSB playback, WaitForCachedFragmentChunkInject is invoked from TSBReader and CacheFragmentChunk threads
+			// For TSB playback, WaitForCachedFragmentChunkInject is invoked from TSBReader and CacheFragmentChunk threads
 			pthread_cond_broadcast(&fragmentChunkInjected);
 		}
 	}
-	if(aamp->GetLLDashServiceData()->lowLatencyMode)
+	if(IsInjectionFromCachedFragmentChunks())
 	{
 		AAMPLOG_DEBUG("[%s] signal fragmentChunkFetched condition", name);
 		pthread_cond_signal(&fragmentChunkFetched);
@@ -899,7 +900,7 @@ void MediaTrack::AbortWaitForCachedFragment()
 {
 	pthread_mutex_lock(&mutex);
 
-	if(aamp->GetLLDashServiceData()->lowLatencyMode)
+	if(IsInjectionFromCachedFragmentChunks())
 	{
 		abortInjectChunk = true;
 		AAMPLOG_DEBUG("[%s] signal fragmentChunkFetched condition", name);
@@ -926,7 +927,7 @@ void MediaTrack::AbortWaitForCachedFragmentChunk()
 {
 	pthread_mutex_lock(&mutex);
 
-	if(aamp->GetLLDashServiceData()->lowLatencyMode)
+	if(IsInjectionFromCachedFragmentChunks())
 	{
 		AAMPLOG_TRACE("[%s] signal fragmentChunkInjected condition", name);
 		pthread_cond_broadcast(&fragmentChunkInjected);
@@ -1480,10 +1481,14 @@ void MediaTrack::ProcessAndInjectFragment(CachedFragment *cachedFragment, bool f
 				aamp->SendErrorEvent(AAMP_TUNE_FAILED_PTS_ERROR);
 			}
 		}
-		if(!aamp->IsLocalAAMPTsb())
+
+		// Release the memory and Update the inject
+		if(IsInjectionFromCachedFragmentChunks())
 		{
-			// Release the memory and Update the inject
-			// For local TSB, it will be freed up from the Fetcher thread
+			UpdateTSAfterChunkInject();
+		}
+		else
+		{
 			UpdateTSAfterInject();
 		}
 	}
@@ -1496,13 +1501,16 @@ bool MediaTrack::InjectFragment()
 {
 	bool ret = true;
 	bool isChunkMode = aamp->GetLLDashChunkMode();
+	bool isChunkBuffer = IsInjectionFromCachedFragmentChunks();
 	bool lowLatency = aamp->GetLLDashServiceData()->lowLatencyMode;
 	StreamAbstractionAAMP* pContext = GetContext();
+
 	if(!isChunkMode) //TBD
 	{
 		aamp->BlockUntilGstreamerWantsData(NULL, 0, type);
 	}
-	bool notAborted = isChunkMode ? WaitForCachedFragmentChunkAvailable() : WaitForCachedFragmentAvailable();
+
+	bool notAborted = isChunkBuffer ? WaitForCachedFragmentChunkAvailable() : WaitForCachedFragmentAvailable();
 
 	if (notAborted)
 	{
@@ -1511,7 +1519,7 @@ bool MediaTrack::InjectFragment()
 		bool isDiscontinuity = false;
 
 		CachedFragment* cachedFragment = nullptr;
-		if(isChunkMode)
+		if(isChunkBuffer)
 		{
 			cachedFragment = &this->mCachedFragmentChunks[fragmentChunkIdxToInject];
 		}
@@ -1540,16 +1548,8 @@ bool MediaTrack::InjectFragment()
 				}
 			}
 #endif
-			if((!aamp->IsLocalAAMPTsb() && !lowLatency) ||  (lowLatency)) // TBD
-			{
-				stopInjection = CheckForDiscontinuity(cachedFragment, fragmentDiscarded, isDiscontinuity, ret);
-			}
-			else
-			{
-				AAMPLOG_WARN("[%s] Local TSB enabled for non LL; Unhandled!!", name);
-				stopInjection = true;
-			}
 
+			stopInjection = CheckForDiscontinuity(cachedFragment, fragmentDiscarded, isDiscontinuity, ret);
 			if (!stopInjection)
 			{
 				ProcessAndInjectFragment(cachedFragment, fragmentDiscarded, isDiscontinuity, ret);
@@ -1714,7 +1714,7 @@ void MediaTrack::RunInjectLoop()
 
 	bool notifyFirstFragment = true;
 	bool keepInjecting = true;
-	bool  lowLatency = aamp->GetLLDashServiceData()->lowLatencyMode;
+	bool lowLatency = aamp->GetLLDashServiceData()->lowLatencyMode;
 	StreamAbstractionAAMP* pContext = GetContext();
 	if ((AAMP_NORMAL_PLAY_RATE == aamp->rate) )
 	{
@@ -1808,7 +1808,9 @@ void MediaTrack::RunInjectLoop()
 			}
 		}
 	}
-	if(lowLatency)
+
+	// Low latency, or injecting from chunk buffer when playing back from local tsb
+	if(IsInjectionFromCachedFragmentChunks())
 	{
 		abortInjectChunk = true;
 	}
@@ -1924,7 +1926,7 @@ int MediaTrack::GetCurrentBandWidth()
 void MediaTrack::FlushFragments()
 {
 	AAMPLOG_WARN("[%s]", name);
-	if(aamp->GetLLDashChunkMode())
+	if(IsInjectionFromCachedFragmentChunks())
 	{
 		for (int i = 0; i < maxCachedFragmentChunksPerTrack; i++)
 		{
@@ -2017,18 +2019,15 @@ MediaTrack::MediaTrack(TrackType type, PrivateInstanceAAMP* aamp, const char* na
 		mCachedFragment[X].fragment.Clear();
 	}
 
-	if(aamp->GetLLDashServiceData()->lowLatencyMode)
+	maxCachedFragmentChunksPerTrack = GETCONFIGVALUE(eAAMPConfig_MaxFragmentChunkCached);
+	mCachedFragmentChunksSize = maxCachedFragmentChunksPerTrack;
+	for (int X = 0; X < maxCachedFragmentChunksPerTrack; ++X)
 	{
-		maxCachedFragmentChunksPerTrack = GETCONFIGVALUE(eAAMPConfig_MaxFragmentChunkCached);
-		mCachedFragmentChunksSize = maxCachedFragmentChunksPerTrack;
-		for(int X =0; X< maxCachedFragmentChunksPerTrack; ++X)
-		{
-			mCachedFragmentChunks[X].fragment.Clear();
-		}
-		pthread_cond_init(&fragmentChunkFetched, NULL);
-		pthread_cond_init(&fragmentChunkInjected, NULL);
+		mCachedFragmentChunks[X].fragment.Clear();
 	}
 
+	pthread_cond_init(&fragmentChunkFetched, NULL);
+	pthread_cond_init(&fragmentChunkInjected, NULL);
 	pthread_cond_init(&fragmentFetched, NULL);
 	pthread_cond_init(&fragmentInjected, NULL);
 	pthread_cond_init(&audioFragmentCached, NULL);
@@ -4604,4 +4603,13 @@ void MediaTrack::HandleFragmentPositionJump(CachedFragment* cachedFragment)
 	}
 }
 
-					  
+bool MediaTrack::IsInjectionFromCachedFragmentChunks()
+{
+	bool isLLDashChunkMode = aamp->GetLLDashChunkMode();
+	bool isLocalTSBInjection = IsLocalTSBInjection();
+	bool isInjectionFromCachedFragmentChunks = isLLDashChunkMode || isLocalTSBInjection;
+
+	AAMPLOG_TRACE("[%s] isLLDashChunkMode %d isLocalTSBInjection %d ret %d",
+				  name, isLLDashChunkMode, isLocalTSBInjection, isInjectionFromCachedFragmentChunks);
+	return isInjectionFromCachedFragmentChunks;
+}
