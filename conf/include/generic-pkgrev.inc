@@ -126,7 +126,7 @@ PV:pn-gst-plugins-rdk-aamp = "1.12.0"
 PR:pn-gst-plugins-rdk-aamp = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk-aamp = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-event-sender = "1.0.0"
+PV:pn-iarm-event-sender = "1.0.7"
 PR:pn-iarm-event-sender = "r3"
 PACKAGE_ARCH:pn-iarm-event-sender = "${MIDDLEWARE_ARCH}"
 
