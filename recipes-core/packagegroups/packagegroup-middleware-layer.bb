@@ -34,7 +34,7 @@ RDEPENDS:${PN} = " \
     dobby-thunderplugin \
     ermgr \
     evtest \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "firebolt-ripple ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
     gst-plugins-rdk-aamp \
     rdk-gstreamer-utils \
