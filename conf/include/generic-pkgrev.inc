@@ -1,4 +1,4 @@
-PV:pn-devicesettings = "1.3.8"
+PV:pn-devicesettings = "1.3.9"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -14,7 +14,7 @@ PV:pn-iarmbus = "1.3.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "2.1.3"
+PV:pn-iarmmgrs = "2.1.4"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
