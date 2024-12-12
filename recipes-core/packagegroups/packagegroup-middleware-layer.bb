@@ -171,6 +171,7 @@ RDEPENDS:${PN} = " \
     bootversion-loader \
     virtual/default-font \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
+    os-release \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
