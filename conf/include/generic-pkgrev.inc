@@ -250,7 +250,6 @@ PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-libunpriv = "${MIDDLEWARE_ARCH}"
 
-PACKAGE_ARCH:pn-paroduscl = "${MIDDLEWARE_ARCH}"
 
 PV:pn-sqlite3see = "1.0.0"
 PR:pn-sqlite3see = "r0"
