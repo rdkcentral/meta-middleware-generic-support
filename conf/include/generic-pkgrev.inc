@@ -2,7 +2,7 @@ PV:pn-devicesettings = "1.3.9"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
-PV:pn-cpeabs = "1.0.0"
+PV:pn-cpeabs = "2.0.0"
 PR:pn-cpeabs = "r0"
 PACKAGE_ARCH:pn-cpeabs = "${MIDDLEWARE_ARCH}"
 
@@ -54,7 +54,7 @@ PV:pn-telemetry = "1.0.1"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
-PV:pn-webcfg = "1.0.0"
+PV:pn-webcfg = "1.1.0"
 PR:pn-webcfg = "r0"
 PACKAGE_ARCH:pn-webcfg = "${MIDDLEWARE_ARCH}"
 
@@ -360,3 +360,4 @@ PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 # Workaround to build allarch packags as mw arch
 MULTILIB_VARIANTS_pn-os-release = " multilib "
 PACKAGE_ARCH_pn-os-release = "${MIDDLEWARE_ARCH}"
+
