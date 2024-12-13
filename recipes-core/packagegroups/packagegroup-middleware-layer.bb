@@ -57,7 +57,6 @@ RDEPENDS:${PN} = " \
     networkmanager-plugin \
     packagemanager \
     parodus \
-    paroduscl \
     rbus \
     rdk-logger \
     rdkat \
@@ -172,11 +171,12 @@ RDEPENDS:${PN} = " \
     bootversion-loader \
     virtual/default-font \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
+    os-release \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
              jpeg linenoise nanomsg ne10 nopoll libopus libpam  \
-             paroduscl libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
+             libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
              log4c mbedtls rdkperf cjwt nghttp2 ucresolv fcgi glib-openssl libol \
              graphite2 curl openssl zlib glib-networking glib-2.0 \
              lighttpd systemd \

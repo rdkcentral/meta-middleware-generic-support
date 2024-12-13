@@ -2,7 +2,7 @@ PV:pn-devicesettings = "1.3.9"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
-PV:pn-cpeabs = "1.0.0"
+PV:pn-cpeabs = "2.0.0"
 PR:pn-cpeabs = "r0"
 PACKAGE_ARCH:pn-cpeabs = "${MIDDLEWARE_ARCH}"
 
@@ -54,7 +54,7 @@ PV:pn-telemetry = "1.0.1"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
-PV:pn-webcfg = "1.0.0"
+PV:pn-webcfg = "1.1.0"
 PR:pn-webcfg = "r0"
 PACKAGE_ARCH:pn-webcfg = "${MIDDLEWARE_ARCH}"
 
@@ -250,7 +250,6 @@ PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-libunpriv = "${MIDDLEWARE_ARCH}"
 
-PACKAGE_ARCH:pn-paroduscl = "${MIDDLEWARE_ARCH}"
 
 PV:pn-sqlite3see = "1.0.0"
 PR:pn-sqlite3see = "r0"
@@ -306,7 +305,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.2"
+PV:pn-thunderstartupservices = "1.0.4"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -357,4 +356,8 @@ PV:pn-rdkwindowmanager = "1.0.0"
 PR:pn-rdkwindowmanager = "r0"
 PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 
+
+# Workaround to build allarch packags as mw arch
+MULTILIB_VARIANTS_pn-os-release = " multilib "
+PACKAGE_ARCH_pn-os-release = "${MIDDLEWARE_ARCH}"
 
