@@ -136,11 +136,11 @@
 //#define SUBTEC_VARIABLE_CLOCK_UPDATE_RATE   /* enable this to make the clock update rate dynamic*/
 #ifdef SUBTEC_VARIABLE_CLOCK_UPDATE_RATE
  #define INITIAL_SUBTITLE_CLOCK_SYNC_INTERVAL_MS (500)     /**< default time interval for the subtitle clock sync 500ms*/
- #define DEFAULT_SUBTITLE_CLOCK_SYNC_INTERVAL_S  (30)      /**< default time interval for the subtitle clock sync 30sec*/
+ #define DEFAULT_SUBTITLE_CLOCK_SYNC_INTERVAL    (30)      /**< default time interval for the subtitle clock sync 30sec*/
 #else
- #define DEFAULT_SUBTITLE_CLOCK_SYNC_INTERVAL_S    (1)     /**< default time interval for the subtitle clock sync 1sec*/
+ #define DEFAULT_SUBTITLE_CLOCK_SYNC_INTERVAL    (1)       /**< default time interval for the subtitle clock sync 1sec*/
 #endif
-#define SUBTITLE_CLOCK_ASSUMED_PLAYSTATE_TIME_MS (20000) /**< period after channel change/seek where we try to sync the subtitle clock quickly, before giving up and falling to slower rate */
+ #define SUBTITLE_CLOCK_ASSUMED_PLAYSTATE_TIME_MS (20000) /**< period after channel change/seek where we try to sync the subtitle clock quickly, before giving up and falling to slower rate */
 
 // the +1 is used to compensate for internal use originally being a > check, now >=
 #if defined(REALTEKCE)

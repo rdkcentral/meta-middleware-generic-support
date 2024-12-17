@@ -243,8 +243,7 @@ void MediaTrack::UpdateSubtitleClockTask()
 	{
 		fastMonitorIntervalMs=subtitleClockSyncIntervalMs;
 	}
-	// make faster retries to sync the clock until it has failed for at least this time (e.g. 20s)
-	int warningTimeoutMs=SUBTITLE_CLOCK_ASSUMED_PLAYSTATE_TIME_MS;
+	// make faster retries to sync the clock until it has failed for atleast this time (e.g. 20s)
 	if (warningTimeoutMs<=fastMonitorIntervalMs*5)
 	{
 		warningTimeoutMs=fastMonitorIntervalMs*5;
