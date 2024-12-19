@@ -2253,7 +2253,7 @@ int StreamAbstractionAAMP::GetDesiredProfile(bool getMidProfile)
 	int desiredProfileIndex = 0;
 	if(GetProfileCount())
 	{
-		if (this->trickplayMode && ABRManager::INVALID_PROFILE != aamp->mhAbrManager.getLowestIframeProfile())
+		if (this->UseIframeTrack() && ABRManager::INVALID_PROFILE != aamp->mhAbrManager.getLowestIframeProfile())
 		{
 			desiredProfileIndex = GetIframeTrack();
 		}
@@ -2602,7 +2602,7 @@ int StreamAbstractionAAMP::GetDesiredProfileBasedOnCache(void)
 			}
 			return desiredProfileIndex;
 		}
-		if (this->trickplayMode)
+		if (this->UseIframeTrack())
 		{
 			int tmpIframeProfile = GetIframeTrack();
 			if(tmpIframeProfile != ABRManager::INVALID_PROFILE)
@@ -2678,7 +2678,7 @@ bool StreamAbstractionAAMP::RampDownProfile(int http_error)
 	bool ret = false;
 	int desiredProfileIndex = currentProfileIndex;
 	MediaTrack *video = GetMediaTrack(eTRACK_VIDEO);
-	if (this->trickplayMode)
+	if (this->UseIframeTrack())
 	{
 		//We use only second last and lowest profiles for iframes
 		int lowestIframeProfile = aamp->mhAbrManager.getLowestIframeProfile();
@@ -2784,7 +2784,7 @@ bool StreamAbstractionAAMP::IsLowestProfile(int currentProfileIndex)
 {
 	bool ret = false;
 
-	if (trickplayMode)
+	if (UseIframeTrack())
 	{
 		if (currentProfileIndex == aamp->mhAbrManager.getLowestIframeProfile())
 		{
