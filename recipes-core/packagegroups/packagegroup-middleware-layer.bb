@@ -16,8 +16,6 @@ PR = "r0"
 #Generic components
 RDEPENDS:${PN} = " \
     aamp \
-    aampabr \
-    aampmetrics \
     audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
@@ -36,7 +34,6 @@ RDEPENDS:${PN} = " \
     evtest \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
-    gst-plugins-rdk-aamp \
     rdk-gstreamer-utils \
     hdmicec \
     iarm-event-sender \
