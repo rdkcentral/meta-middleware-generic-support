@@ -1,12 +1,12 @@
 # Vendor Layer Release Notes
 
-XiOne Foxtel,UK REALTEK STB RDKE Vendor Layer Release Notes
+XiOne Foxtel REALTEK STB RDKE Vendor Layer Release Notes
 
 ---
 
 |Platforms supported|
 |-------|
-|XiOne-UK UHD 1319|
+|XiOne-Foxtel UHD 1319|
 
 |Yocto version|
 |-------|
@@ -73,7 +73,7 @@ The scope of this release includes:
 | Product | Location |
 |---------|----------|
 | XiOne-Foxtel | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-foxtel-release/5.0.0/xione-foxtel/ipks/debug |
-| XiOne-UK | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-uk-release/4.0.1/xione-uk/ipks/debug |
+| XiOne-UK | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-uk-release/5.0.0/xione-uk/ipks/debug |
 
 ### Meta Repos
 
@@ -193,7 +193,7 @@ For this release testing was done by using from the tag refs/tags/5.0.0
   - Played clear AV with gst-play-1.0.
   - Verified image flashing using FlashApp
 
-Testing details in [RDKECD-34](https://ccp.sys.comcast.net/browse/RDKEVD-34)
+Testing details in [RDKEVD-34](https://ccp.sys.comcast.net/browse/RDKEVD-34)
 
 #### High Level Vendor Memory usage data
 
@@ -207,9 +207,18 @@ Testing details in [RDKECD-34](https://ccp.sys.comcast.net/browse/RDKEVD-34)
 |Vendor Dynamic Total      | Dynamically allocated Total Memory system wide |
 |Available Memory       | Available Memory in the system |
 
+##### XiOne-UK
+
 | ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
 | --- | --- | --- | --- | --- | --- | --- |
+| Dec 30 2024 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.0.0_20241224172552 | 1547368 | 445508 | 29135 | 474643 | 2172037 |
 | Dec 03 2024 |  SKXI11ADS_VENDOR_DEV_refs_tags_4.0.1_20241203115633 | 1547368 | 447008 | 26733 | 473741 | 2172939 |
+
+##### XiOne-Foxtel
+
+| ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
+| --- | --- | --- | --- | --- | --- | --- |
+| Dec 30 2024 |  SKXI11ADSSOFT_VENDOR_DEV_refs_tags_5.0.0_20241224173052 | 1547368 | 450228 | 32825 | 483053 | 2163627 |
 
 ### Fullstack image testing
 
@@ -220,12 +229,23 @@ Testing details in [RDKECD-34](https://ccp.sys.comcast.net/browse/RDKEVD-34)
 
   - Successfully booted \"SKXI11ADSSOFT_MIDDLEWARE_DEV_feature_RDK-54039-Foxtel-manifest_20241224194610.bin\" and obtained the shell prompt and UI.
   - Verified UI navigation
+  - Verified Linear channel AV playback
   - Verified AV with YouTube
   - Verified Log files are present in /opt/logs
 
 - Failure case
 
-  - Netflix App launch failure
+  - Netflix App launch failure[RDK-55364](https://ccp.sys.comcast.net/browse/RDK-55364)
+  - Wifi connection failure on reboot [RDK-55365](https://ccp.sys.comcast.net/browse/RDK-55365)
+  - Amazon playback failure [RDK-55366](https://ccp.sys.comcast.net/browse/RDK-55366)
+
+##### Please ensure to include below updates while MW integration and these changes are temprorary and make the changes are properly
+
+- https://github.com/rdk-e/meta-mediarite/pull/50
+- https://github.com/rdk-e/meta-middleware-cspc-support/pull/278
+- https://github.com/rdk-e/meta-middleware-development/pull/2103
+- https://github.com/rdk-e/meta-rdk-sky/pull/229
+
 
 ##### XiOne-UK
 - Created Image Assembler build SKXI11ADS_DEV_feature_RDKEVD-34-ReleaseAct_20241226180048.bin https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1017/ based on Middleware version 2.1.4 and the latest develop MW manifest branched to feature/RDKEVD-34-ReleaseAct.
@@ -308,7 +328,7 @@ Testing details in [RDKECD-34](https://ccp.sys.comcast.net/browse/RDKEVD-34)
 | - |  - westeros-sink_realtek | |  | **ec10aa0** | NA |  [](https://github.com/rdk-e/westeros-sink-soc-realtek) |
 | 54 | westeros | **1.01.57-r0** | 2.0.0-r0 | **3cd00f7** | 3d9ccd8 |  [](https://github.com/rdk-e/westeros-sink-soc-realtek) |
 | 55 | essos | **1.01.57-r0** | 1.0.0-r0 | **3cd00f7** | NA |  [](https://github.com/rdk-e/westeros-sink-soc-realtek) |
-| 56 | cairo | | 1.16.0-r1 |  | NA | |
+| 56 | cairo | | 1.16.0-r1 |  | NA | |https://ccp.sys.comcast.net/issues/?jql=labels%20%3D%20rdke-foxtel-specific
 | 57 | libepoxy | | 1.5.9-r1 |  | NA | |
 | 58 | python3-pygobject | | 3.34.0-r0 |  | NA | |
 | 59 | pango | | 1.44.7-r0 |  | NA | |
