@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.1.2"
+PV = "2.1.4"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -16,8 +16,6 @@ PR = "r0"
 #Generic components
 RDEPENDS:${PN} = " \
     aamp \
-    aampabr \
-    aampmetrics \
     audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
@@ -36,7 +34,6 @@ RDEPENDS:${PN} = " \
     evtest \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
-    gst-plugins-rdk-aamp \
     rdk-gstreamer-utils \
     hdmicec \
     iarm-event-sender \
@@ -48,6 +45,7 @@ RDEPENDS:${PN} = " \
     libparodus \
     libsyswrapper \
     libunpriv \
+    logrotate \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     remotedebugger \
     rmfosal \
