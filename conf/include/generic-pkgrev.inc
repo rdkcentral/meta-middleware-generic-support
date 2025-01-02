@@ -94,13 +94,7 @@ PV:pn-aamp = "1.15.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aampabr = "1.5.0"
-PR:pn-aampabr = "r0"
-PACKAGE_ARCH:pn-aampabr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aampmetrics = "1.6.0"
-PR:pn-aampmetrics = "r0"
-PACKAGE_ARCH:pn-aampmetrics = "${MIDDLEWARE_ARCH}"
 
 PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
@@ -122,9 +116,6 @@ PV:pn-rdkfwupgrader = "1.0.1"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
-PV:pn-gst-plugins-rdk-aamp = "1.12.0"
-PR:pn-gst-plugins-rdk-aamp = "r0"
-PACKAGE_ARCH:pn-gst-plugins-rdk-aamp = "${MIDDLEWARE_ARCH}"
 
 PV:pn-iarm-event-sender = "1.0.7"
 PR:pn-iarm-event-sender = "r3"
