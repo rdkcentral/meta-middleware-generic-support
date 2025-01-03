@@ -203,7 +203,7 @@ PV:pn-crashupload = "1.0.2"
 PR:pn-crashupload = "r0"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
-PV:pn-libsyswrapper = "1.3.1"
+PV:pn-libsyswrapper = "1.3.3"
 PR:pn-libsyswrapper = "r0"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
 
