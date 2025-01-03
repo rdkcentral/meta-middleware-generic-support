@@ -203,7 +203,7 @@ PV:pn-crashupload = "1.0.2"
 PR:pn-crashupload = "r0"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
-PV:pn-libsyswrapper = "1.3.1"
+PV:pn-libsyswrapper = "1.3.3"
 PR:pn-libsyswrapper = "r0"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
 
@@ -237,7 +237,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices-apis = "2.0.0"
+PV:pn-rdkservices-apis = "2.0.2"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
 
