@@ -27,10 +27,12 @@ wpeframework_binding_patch(){
 
 # If vendor layer provides dobby configuration, then remove the generic config
 dobby_generic_config_patch(){
-    if [ -f "${IMAGE_ROOTFS}/etc/dobby.json" ]; then
-        rm ${IMAGE_ROOTFS}/etc/dobby.generic.json
-    else
-        mv ${IMAGE_ROOTFS}/etc/dobby.generic.json ${IMAGE_ROOTFS}/etc/dobby.json
+    if [ -f "${IMAGE_ROOTFS}/etc/dobby.generic.json" ]; then
+        if [ -f "${IMAGE_ROOTFS}/etc/dobby.json" ]; then
+            rm ${IMAGE_ROOTFS}/etc/dobby.generic.json
+        else
+            mv ${IMAGE_ROOTFS}/etc/dobby.generic.json ${IMAGE_ROOTFS}/etc/dobby.json
+        fi
     fi
 }
 
