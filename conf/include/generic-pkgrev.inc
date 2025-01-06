@@ -38,7 +38,7 @@ PV:pn-rfc = "1.0.1"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.0.0"
+PV:pn-tr69hostif = "1.0.1"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -62,7 +62,7 @@ PV:pn-dcmd = "1.0.0"
 PR:pn-dcmd = "r1"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.0.0"
+PV:pn-tr69hostif-headers = "1.0.1"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
@@ -94,13 +94,7 @@ PV:pn-aamp = "1.15.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aampabr = "1.5.0"
-PR:pn-aampabr = "r0"
-PACKAGE_ARCH:pn-aampabr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aampmetrics = "1.6.0"
-PR:pn-aampmetrics = "r0"
-PACKAGE_ARCH:pn-aampmetrics = "${MIDDLEWARE_ARCH}"
 
 PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
@@ -122,9 +116,6 @@ PV:pn-rdkfwupgrader = "1.0.1"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
-PV:pn-gst-plugins-rdk-aamp = "1.12.0"
-PR:pn-gst-plugins-rdk-aamp = "r0"
-PACKAGE_ARCH:pn-gst-plugins-rdk-aamp = "${MIDDLEWARE_ARCH}"
 
 PV:pn-iarm-event-sender = "1.0.7"
 PR:pn-iarm-event-sender = "r3"
@@ -150,7 +141,7 @@ PV:pn-netsrvmgr = "1.0.6"
 PR:pn-netsrvmgr = "r2"
 PACKAGE_ARCH:pn-netsrvmgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices = "7.5.2"
+PV:pn-rdkservices = "7.6.1"
 PR:pn-rdkservices = "r0"
 PACKAGE_ARCH:pn-rdkservices = "${MIDDLEWARE_ARCH}"
 
@@ -208,11 +199,11 @@ PV:pn-rdkversion = "1.0.0"
 PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
-PV:pn-crashupload = "1.0.1"
+PV:pn-crashupload = "1.0.2"
 PR:pn-crashupload = "r0"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
-PV:pn-libsyswrapper = "1.3.1"
+PV:pn-libsyswrapper = "1.3.3"
 PR:pn-libsyswrapper = "r0"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
 
@@ -246,7 +237,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices-apis = "2.0.0"
+PV:pn-rdkservices-apis = "2.0.2"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
 
