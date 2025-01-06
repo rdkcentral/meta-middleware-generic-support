@@ -24,4 +24,17 @@ wpeframework_binding_patch(){
         sed -i "s/127.0.0.1/0.0.0.0/g" ${IMAGE_ROOTFS}/etc/WPEFramework/config.json
     fi
 }
+
+# If vendor layer provides dobby configuration, then remove the generic config
+dobby_generic_config_patch(){
+    if [ -f "${IMAGE_ROOTFS}/etc/dobby.generic.json" ]; then
+        if [ -f "${IMAGE_ROOTFS}/etc/dobby.json" ]; then
+            rm ${IMAGE_ROOTFS}/etc/dobby.generic.json
+        else
+            mv ${IMAGE_ROOTFS}/etc/dobby.generic.json ${IMAGE_ROOTFS}/etc/dobby.json
+        fi
+    fi
+}
+
 ROOTFS_POSTPROCESS_COMMAND += "wpeframework_binding_patch; "
+ROOTFS_POSTPROCESS_COMMAND += "dobby_generic_config_patch; "
