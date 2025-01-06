@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.1.2"
+PV = "2.1.4"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -16,8 +16,6 @@ PR = "r0"
 #Generic components
 RDEPENDS:${PN} = " \
     aamp \
-    aampabr \
-    aampmetrics \
     audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
@@ -36,7 +34,6 @@ RDEPENDS:${PN} = " \
     evtest \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
-    gst-plugins-rdk-aamp \
     rdk-gstreamer-utils \
     hdmicec \
     iarm-event-sender \
@@ -48,6 +45,7 @@ RDEPENDS:${PN} = " \
     libparodus \
     libsyswrapper \
     libunpriv \
+    logrotate \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     remotedebugger \
     rmfosal \
@@ -57,7 +55,6 @@ RDEPENDS:${PN} = " \
     networkmanager-plugin \
     packagemanager \
     parodus \
-    paroduscl \
     rbus \
     rdk-logger \
     rdkat \
@@ -172,11 +169,12 @@ RDEPENDS:${PN} = " \
     bootversion-loader \
     virtual/default-font \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
+    os-release \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
              jpeg linenoise nanomsg ne10 nopoll libopus libpam  \
-             paroduscl libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
+             libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
              log4c mbedtls rdkperf cjwt nghttp2 ucresolv fcgi glib-openssl libol \
              graphite2 curl openssl zlib glib-networking glib-2.0 \
              lighttpd systemd \
