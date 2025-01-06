@@ -4,7 +4,7 @@ RDK_ARTIFACTS_URL = "partners.artifactory.comcast.com/artifactory"
 
 VENDOR_LAYER_EXTENSION = "${MACHINE}-vendor"
 
-VENDOR_IPK_SERVER_PATH = "${RDK_ARTIFACTS_BASE_URL}/${MACHINE}-release/5.0.0/${MACHINE}/ipks/debug"
+VENDOR_IPK_SERVER_PATH = "${RDK_ARTIFACTS_BASE_URL}/xione-uk-release/5.0.1/xione-uk/ipks/debug"
 
 PACKAGE_EXTRA_ARCHS:append = " ${VENDOR_LAYER_EXTENSION}"
 
