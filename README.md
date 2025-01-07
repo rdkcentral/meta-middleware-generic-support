@@ -15,7 +15,7 @@ XiOne UK REALTEK STB RDKE Vendor Layer Release Notes
 |Summary|Content|
 |---|----|
 |Classification|Confidential|
-|Date|06 Jan 2025|
+|Date|07 Jan 2025|
 |Author|pothiraj.paulraj@sky.uk|
 
 ---
@@ -43,7 +43,7 @@ XiOne UK REALTEK STB RDKE Vendor Layer Release Notes
 
 ## Release Description
 
-The aim of this release to integrate the xione uk trail blocker issues. This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
+The aim of this release is to include issues reported in the xione uk realtek puck trail build. This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
 
 The scope of this release includes:
 
@@ -77,7 +77,7 @@ The scope of this release includes:
 
 #### Meta repos maintained by layers layer
 
-| Meta Repo | New Version | Version in Previous Release (5.0.0) | ChangeList |
+| Meta Repo | New Version (5.0.1) | Version in Previous Release (5.0.0) | ChangeList |
 |------------|---------|------------------------------------|--------------|
 | meta-rdk-auxiliary |  | 4.1.2 | |
 | meta-oss-reference-release |  | 4.3.0 | |
@@ -92,7 +92,7 @@ The scope of this release includes:
 
 #### Meta repos common for RDK-E
 
-| Meta Repo | New Version | Version in Previous Release (5.0.0) | ChangeList |
+| Meta Repo | New Version (5.0.1) | Version in Previous Release (5.0.0) | ChangeList |
 |------------|---------|------------------------------------|--------------|
 | **buildscripts** ||||
 | build-scripts |  | 4.1.0 | |
@@ -122,7 +122,7 @@ The scope of this release includes:
 
 ### Interface versions
 
-| # | HAL Interface Header (rdkcentral github) | New Version | Versionfrom Previous Release (5.0.0)
+| # | HAL Interface Header (rdkcentral github) | New Version (5.0.1) | Version in Previous Release (5.0.0)
 |---|------------------------------------------|-------------|----------------------|
 | 1 | media-utils-headers | | 1.0.4 |
 | 2 | hdmicecheader | | 1.3.7 |
@@ -145,10 +145,10 @@ It should be noted that some services may not run as they have dependencies with
 ### Middleware Integration
 
 ##### XiOne-UK
-- Created the  middleware image SKXI11ADS_MIDDLEWARE_DEV_feature_RDKEVD-34-ReleaseAct_20241224195057.bin from the https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Middleware-Build/9117/
+- Created the  middleware image `"SKXI11ADS_MIDDLEWARE_DEV_feature_RDKEVD-65-ReleaseAct-5.0.1_20250106220127.bin"` from the `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Middleware-Build/9367/"`
 
-- Testing done by using feature branch`"feature/RDKEVD-65-ReleaseAct-5.0.1 for Xione-UK"` included of latest vendor ipk feed info https://github.com/rdk-e/meta-vendor-xione-realtek-release/blob/release/5.0.0/conf/machine/include/vendor.inc and the middleware manifest branched from develop branch on 24Dec24.
-- Feature branch details here `"XiOne-UK (https://github.com/rdk-e/rdke-middleware-manifest/blob/feature/RDKEVD-65-ReleaseAct-5.0.1/realtek-xione.xml)"`
+- Testing done by using feature branch`"feature/RDKEVD-65-ReleaseAct-5.0.1 for Xione-UK"` included latest vendor ipk feed info https://github.com/rdk-e/meta-vendor-xione-realtek-release/blob/release/5.0.1/conf/machine/include/vendor.inc and the middleware manifest branched from develop branch on 06Jan25.
+- Feature branch detail here `"XiOne-UK (https://github.com/rdk-e/rdke-middleware-manifest/blob/feature/RDKEVD-65-ReleaseAct-5.0.1/realtek-xione.xml)"`
 
 ## Build instructions
 
@@ -160,7 +160,7 @@ It should be noted that some services may not run as they have dependencies with
 #### Copy image to device /mnt/usb or /opt partitions or connect and mount USB having the image binn- Execute FlashApp command
 - Move to directory containing the image
 - FlashApp \<dirname\> \<imagename\>
-- eg. FlashApp /mnt/usb/SKXI11ADS_VENDOR_DEV_refs_tags_5.0.0_20241224172552.bin
+- eg. FlashApp /mnt/usb/SKXI11ADS_VENDOR_DEV_refs_tags_5.0.1_20250106184824.bin
 
 #### USB Flash Method using xboot prompt
 - Copy the image to the usb and connect to the STB
@@ -175,20 +175,20 @@ It should be noted that some services may not run as they have dependencies with
 
 ## Testing
 
-Created the `"vendor test image"` `"SKXI11ADS_VENDOR_DEV_refs_tags_5.0.0_20241224172552.bin"` using the vendor layer project.
+Created the `"vendor test image"` `"SKXI11ADS_VENDOR_DEV_refs_tags_5.0.1_20250106184824.bin"` using the vendor layer project.
 Successfully booted the "vendor test image" and obtained the shell prompt.
-For this release testing was done by using from the tag refs/tags/5.0.0
+For this release testing was done by using the tag refs/tags/5.0.1
 
 ### Vendor image testing
 
-- Created the `"vendor test image"` `"SKXI11ADS_VENDOR_DEV_refs_tags_5.0.0_20241224172552.bin for XiOne-UK "` using the vendor layer jenkins job `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Vendor-Release-Build/41/"`
+- Created the `"vendor test image"` `"SKXI11ADS_VENDOR_DEV_refs_tags_5.0.1_20250106184824.bin for XiOne-UK "` using the vendor layer jenkins job `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Vendor-Release-Build/43/"`
   - Successfully booted the `"vendor test image"` and obtained the shell prompt.
   - Verified vendor layer services up and running
   - Verified IP acquisition via Ethernet
   - Played clear AV with gst-play-1.0.
   - Verified image flashing using FlashApp
 
-Testing details in [RDKEVD-65](https://ccp.sys.comcast.net/browse/RDKEVD-65)
+Testing details captured here [RDKEVD-65](https://ccp.sys.comcast.net/browse/RDKEVD-65)
 
 #### High Level Vendor Memory usage data
 
@@ -206,6 +206,7 @@ Testing details in [RDKEVD-65](https://ccp.sys.comcast.net/browse/RDKEVD-65)
 
 | ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
 | --- | --- | --- | --- | --- | --- | --- |
+| Jan 07 2025 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.0.1_20250106184824 | 1547368 | 447174 | 29121 | 476295 | 2170385 |
 | Dec 30 2024 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.0.0_20241224172552 | 1547368 | 445508 | 29135 | 474643 | 2172037 |
 | Dec 03 2024 |  SKXI11ADS_VENDOR_DEV_refs_tags_4.0.1_20241203115633 | 1547368 | 447008 | 26733 | 473741 | 2172939 |
 
@@ -213,16 +214,17 @@ Testing details in [RDKEVD-65](https://ccp.sys.comcast.net/browse/RDKEVD-65)
 ### Fullstack image testing
 
 ##### XiOne-UK
-- Created Image Assembler build SKXI11ADS_DEV_feature_RDKEVD-34-ReleaseAct_20241226180048.bin https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1017/ based on Middleware version 2.1.4 and the latest develop MW manifest branched to feature/RDKEVD-34-ReleaseAct.
+- Created Image Assembler build `"SKXI11ADS_DEV_feature_RDKEVD-65-ReleaseAct-5.0.1_20250106220555.bin from the jenkins job https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1055/"` based on Middleware version 2.1.4 and the latest develop MW manifest branched to `"feature/RDKEVD-65-ReleaseAct-5.0.1"`.
 
-- Included the application release 4.12.0 using [rdke-assembler-manifest](https://github.com/rdk-e/rdke-assembler-manifest) feature branch feature/RDKEVD-65-ReleaseAct-5.0.1 
-- Tested below scenarios as part of [RDKEVD-65](https://ccp.sys.comcast.net/browse/RDKEVD-65)
+- Included the application release 4.12.0 using [rdke-assembler-manifest](https://github.com/rdk-e/rdke-assembler-manifest) feature branch `"feature/RDKEVD-65-ReleaseAct-5.0.1"` 
+- Tested the below scenarios as part of [RDKEVD-65](https://ccp.sys.comcast.net/browse/RDKEVD-65)
 
-  - Successfully booted \"SKXI11ADS_DEV_feature_RDKEVD-34-ReleaseAct_20241226180048.bin\" and obtained the shell prompt and UI.
+  - Successfully booted \"SKXI11ADS_DEV_feature_RDKEVD-65-ReleaseAct-5.0.1_20250106220555.bin\" and obtained the shell prompt and UI.
   - Verified UI navigation
   - Verified AV with Disney+ App
   - Verified AV with Xumo Play
   - Verified AV with Netflix
+  - Verified AV with Amazon Prime
   - Verified AV with YouTube
   - Verified remote control pairing
   - Verified Log files are present in /opt/logs
@@ -317,7 +319,7 @@ Testing details in [RDKEVD-65](https://ccp.sys.comcast.net/browse/RDKEVD-65)
 | - |  - secapi-netflix_socrealtek | |  |  | d3c7c87 | |
 | 75 | gst-svp-ext | **1.1.0-r0** | 1.0.0-r0 |  | NA | |
 | 76 | systemaudioplatform | | 1.0.0-r0 |  | 776348d | |
-| 77 | miracast-soc | **1.0.0-r0** | NA | **30cb689** | NA |  [](https://github.com/rdk-e/meta-oem-realtek-stream) |
+| 77 | miracast-soc | **1.0.0-r0** | NA | **30cb689** | NA | |
 | 78 | dvrmgr-hal-realtek | | 1.0.0-r0 |  | NA | |
 | 79 | secapi-crypto-rtk | | 2.3.1-r0 |  | 5241d45 | |
 | 80 | secapi-common-crypto | | 2.3.0-r0 |  | 3a51b88 | |
