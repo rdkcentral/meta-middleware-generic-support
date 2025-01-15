@@ -1304,7 +1304,7 @@ void MediaTrack::TrickModePtsRestamp(AampGrowableBuffer &fragment, double &posit
 		if (discontinuity)
 		{
 			// Remember the discontinuity so that the first media segment can be handled differently
-			// because it's only set on an Init fragmemt
+			// because it's only set on an Init fragment
 			mTrickmodeState = TrickmodeState::DISCONTINUITY;
 			mRestampedPts += mRestampedDuration;
 		}
@@ -4200,7 +4200,7 @@ void MediaTrack::PlaylistDownloader()
 	}
 	else
 	{
-		// Playlist downlader called in loop mode
+		// Playlist downloader called in loop mode
 		AAMPLOG_WARN("[%s] : Enter, track '%s'", trackName.c_str(), name);
 		AAMPLOG_INFO("[%s] Playlist download timeout : %d", trackName.c_str(), updateDuration);
 	}
@@ -4215,7 +4215,7 @@ void MediaTrack::PlaylistDownloader()
 		name,(int)maxSegDuration,(double)maxSegDuration,(int)minUpdateDuration,(double)minUpdateDuration,(int)availTimeOffMs,(double)availTimeOffMs);
 	}
 
-	/* DOWNLODER LOOP */
+	/* DOWNLOADER LOOP */
 	do
 	{
 		/* TIMEOUT WAIT LOGIC
