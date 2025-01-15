@@ -226,6 +226,10 @@ PACKAGE_ARCH:pn-webkitbrowser-plugin = "${MIDDLEWARE_ARCH}"
 PR:pn-firebolt-ripple = "r3"
 PACKAGE_ARCH:pn-firebolt-ripple = "${MIDDLEWARE_ARCH}"
 
+PV:pn-ripple = "${RIPPLE_VERSION}"
+PR:pn-ripple = "r0"
+PACKAGE_ARCH:pn-ripple = "${MIDDLEWARE_ARCH}"
+
 PV:pn-gst-plugins-rdk = "1.0.0"
 PR:pn-gst-plugins-rdk = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk = "${MIDDLEWARE_ARCH}"
