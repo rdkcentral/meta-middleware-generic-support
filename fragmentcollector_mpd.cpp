@@ -9341,16 +9341,7 @@ bool StreamAbstractionAAMP_MPD::SelectSourceOrAdPeriod(bool &periodChanged, bool
 						AAMPLOG_WARN("Period ID not changed WaitForManifestUpdate");
 						if (AAMPStatusType::eAAMPSTATUS_OK != UpdateMPD())
 						{
-							// Update manifest and check for period validity in the next iteration
-							// For CDAI empty period at the end, we should re-iterate the loop
-							AAMPLOG_WARN("Period ID not changed WaitForManifestUpdate");
-							if (AAMPStatusType::eAAMPSTATUS_OK != UpdateMPD())
-							{
-								aamp->interruptibleMsSleep(500); // Sleep for 500ms to avoid tight looping
-							}
-							mpdChanged = true;
-							ret = false;
-							break;
+							aamp->interruptibleMsSleep(500); // Sleep for 500ms to avoid tight looping
 						}
 						mpdChanged = true;
 						ret = false;
