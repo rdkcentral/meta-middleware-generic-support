@@ -9015,7 +9015,7 @@ void PrivateInstanceAAMP::NotifyFirstBufferProcessed(const std::string& videoRec
 	PrivAAMPState state;
 	GetState(state);
 
-	// In the middle of stop processing we can receive state changing callback 
+	// In the middle of stop processing we can receive state changing callback
 	if (state == eSTATE_IDLE)
 	{
 		AAMPLOG_WARN( "skipped as in IDLE state" );
