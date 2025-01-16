@@ -223,7 +223,8 @@ PV:pn-webkitbrowser-plugin = "3.0.0"
 PR:pn-webkitbrowser-plugin = "r2"
 PACKAGE_ARCH:pn-webkitbrowser-plugin = "${MIDDLEWARE_ARCH}"
 
-PR:pn-firebolt-ripple = "r3"
+PV:pn-firebolt-ripple = "${RIPPLE_RELEASE_VER}"
+PR:pn-firebolt-ripple = "r1"
 PACKAGE_ARCH:pn-firebolt-ripple = "${MIDDLEWARE_ARCH}"
 
 PV:pn-ripple = "${RIPPLE_VERSION}"
