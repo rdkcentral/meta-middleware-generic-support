@@ -219,8 +219,8 @@ PV:pn-remotedebugger = "1.0.1"
 PR:pn-remotedebugger = "r0"
 PACKAGE_ARCH:pn-remotedebugger = "${MIDDLEWARE_ARCH}"
 
-PV:pn-webkitbrowser-plugin = "3.0.0"
-PR:pn-webkitbrowser-plugin = "r2"
+PV:pn-webkitbrowser-plugin = "1.1.27"
+PR:pn-webkitbrowser-plugin = "r0"
 PACKAGE_ARCH:pn-webkitbrowser-plugin = "${MIDDLEWARE_ARCH}"
 
 PV:pn-firebolt-ripple = "${RIPPLE_RELEASE_VER}"
