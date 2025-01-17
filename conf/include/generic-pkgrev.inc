@@ -356,6 +356,9 @@ PV:pn-rdkwindowmanager = "1.0.0"
 PR:pn-rdkwindowmanager = "r0"
 PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 
+PV:pn-os-release = "1.0.0"
+PR:pn-os-release = "r0"
+PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
 # Workaround to build allarch packags as mw arch
 MULTILIB_VARIANTS_pn-os-release = " multilib "
