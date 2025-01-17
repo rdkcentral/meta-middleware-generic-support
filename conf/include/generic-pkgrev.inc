@@ -38,7 +38,7 @@ PV:pn-rfc = "1.0.3"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.0.2"
+PV:pn-tr69hostif = "1.0.3"
 PR:pn-tr69hostif = "r1"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -62,7 +62,7 @@ PV:pn-dcmd = "1.0.0"
 PR:pn-dcmd = "r1"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.0.1"
+PV:pn-tr69hostif-headers = "1.0.3"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
