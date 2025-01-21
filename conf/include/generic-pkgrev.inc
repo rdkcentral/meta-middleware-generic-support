@@ -30,8 +30,8 @@ PV:pn-rmfosal = "1.0.0"
 PR:pn-rmfosal = "r3"
 PACKAGE_ARCH:pn-rmfosal = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rbus = "1.0.0"
-PR:pn-rbus = "r1"
+PV:pn-rbus = "2.1.0"
+PR:pn-rbus = "r0"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rfc = "1.0.3"
