@@ -50,7 +50,7 @@ PV:pn-syslog-helper = "1.0.0"
 PR:pn-syslog-helper = "r2"
 PACKAGE_ARCH:pn-syslog-helper = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.0.1"
+PV:pn-telemetry = "1.1.0"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -199,7 +199,7 @@ PV:pn-rdkversion = "1.0.0"
 PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
-PV:pn-crashupload = "1.0.2"
+PV:pn-crashupload = "1.0.3"
 PR:pn-crashupload = "r0"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
@@ -267,7 +267,7 @@ PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
 PR:pn-network-hotplug = "r3"
 
-PV:pn-sysint = "1.0.3"
+PV:pn-sysint = "1.1.0"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
