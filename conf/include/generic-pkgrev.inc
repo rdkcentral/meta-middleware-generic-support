@@ -215,7 +215,7 @@ PV:pn-nlmonitor = "1.4.0"
 PR:pn-nlmonitor = "r0"
 PACKAGE_ARCH:pn-nlmonitor = "${MIDDLEWARE_ARCH}"
 
-PV:pn-remotedebugger = "1.0.1"
+PV:pn-remotedebugger = "1.1.0"
 PR:pn-remotedebugger = "r0"
 PACKAGE_ARCH:pn-remotedebugger = "${MIDDLEWARE_ARCH}"
 
