@@ -361,6 +361,6 @@ PR:pn-os-release = "r0"
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
 # Workaround to build allarch packags as mw arch
-MULTILIB_VARIANTS_pn-os-release = " multilib "
-PACKAGE_ARCH_pn-os-release = "${MIDDLEWARE_ARCH}"
+MULTILIB_VARIANTS:pn-os-release = " multilib "
+PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
