@@ -50,7 +50,7 @@ PV:pn-syslog-helper = "1.0.0"
 PR:pn-syslog-helper = "r2"
 PACKAGE_ARCH:pn-syslog-helper = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.0.1"
+PV:pn-telemetry = "1.1.0"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -90,7 +90,7 @@ PV:pn-qtvirtualkeyboard = "5.15.7"
 PR:pn-qtvirtualkeyboard = "r0"
 PACKAGE_ARCH:pn-qtvirtualkeyboard = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "1.16.1"
+PV:pn-aamp = "2.0.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -100,11 +100,11 @@ PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-core = "1.6.0"
+PV:pn-bluetooth-core = "1.6.1"
 PR:pn-bluetooth-core = "r2"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-mgr = "1.6.0"
+PV:pn-bluetooth-mgr = "1.6.1"
 PR:pn-bluetooth-mgr = "r1"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
@@ -199,7 +199,7 @@ PV:pn-rdkversion = "1.0.0"
 PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
-PV:pn-crashupload = "1.0.2"
+PV:pn-crashupload = "1.0.3"
 PR:pn-crashupload = "r0"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
@@ -361,6 +361,6 @@ PR:pn-os-release = "r0"
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
 # Workaround to build allarch packags as mw arch
-MULTILIB_VARIANTS_pn-os-release = " multilib "
-PACKAGE_ARCH_pn-os-release = "${MIDDLEWARE_ARCH}"
+MULTILIB_VARIANTS:pn-os-release = " multilib "
+PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
