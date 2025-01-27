@@ -1,3 +1,7 @@
+PV:pn-apparmor-generic="1.0.0"
+PR:pn-apparmor-generic = "r1"
+PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
+
 PV:pn-devicesettings = "1.0.0"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
@@ -14,7 +18,7 @@ PV:pn-iarmbus = "1.0.0"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.0.0"
+PV:pn-iarmmgrs = "1.0.2"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -30,16 +34,16 @@ PV:pn-rmfosal = "1.0.0"
 PR:pn-rmfosal = "r3"
 PACKAGE_ARCH:pn-rmfosal = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rbus = "1.0.0"
-PR:pn-rbus = "r1"
+PV:pn-rbus = "2.1.0"
+PR:pn-rbus = "r0"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.0.3"
+PV:pn-rfc = "1.0.4"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.0.2"
-PR:pn-tr69hostif = "r1"
+PV:pn-tr69hostif = "1.0.4"
+PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rtremote = "2.0.0"
@@ -50,7 +54,7 @@ PV:pn-syslog-helper = "1.0.0"
 PR:pn-syslog-helper = "r2"
 PACKAGE_ARCH:pn-syslog-helper = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.0.1"
+PV:pn-telemetry = "1.1.0"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -62,7 +66,7 @@ PV:pn-dcmd = "1.0.0"
 PR:pn-dcmd = "r1"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.0.1"
+PV:pn-tr69hostif-headers = "1.0.4"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
@@ -90,7 +94,7 @@ PV:pn-qtvirtualkeyboard = "5.15.7"
 PR:pn-qtvirtualkeyboard = "r0"
 PACKAGE_ARCH:pn-qtvirtualkeyboard = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "1.16.1"
+PV:pn-aamp = "2.0.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -100,11 +104,11 @@ PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-core = "1.6.0"
+PV:pn-bluetooth-core = "1.6.1"
 PR:pn-bluetooth-core = "r2"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-mgr = "1.6.0"
+PV:pn-bluetooth-mgr = "1.6.1"
 PR:pn-bluetooth-mgr = "r1"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
@@ -141,7 +145,7 @@ PV:pn-netsrvmgr = "1.0.6"
 PR:pn-netsrvmgr = "r2"
 PACKAGE_ARCH:pn-netsrvmgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices = "7.6.1"
+PV:pn-rdkservices = "7.6.6"
 PR:pn-rdkservices = "r0"
 PACKAGE_ARCH:pn-rdkservices = "${MIDDLEWARE_ARCH}"
 
@@ -151,15 +155,15 @@ PACKAGE_ARCH:pn-rdkshell = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-stunnel = "${MIDDLEWARE_ARCH}" 
 
-PV:pn-systimemgrfactory = "1.0.1"
+PV:pn-systimemgrfactory = "1.0.0"
 PR:pn-systimemgrfactory = "r1"
 PACKAGE_ARCH:pn-systimemgrfactory = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgr = "1.3.1"
+PV:pn-systimemgr = "1.0.0"
 PR:pn-systimemgr = "r0"
 PACKAGE_ARCH:pn-systimemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgrinetrface = "1.0.1"
+PV:pn-systimemgrinetrface = "1.0.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
@@ -199,7 +203,7 @@ PV:pn-rdkversion = "1.0.0"
 PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
-PV:pn-crashupload = "1.0.2"
+PV:pn-crashupload = "1.0.3"
 PR:pn-crashupload = "r0"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
@@ -215,7 +219,7 @@ PV:pn-nlmonitor = "1.4.0"
 PR:pn-nlmonitor = "r0"
 PACKAGE_ARCH:pn-nlmonitor = "${MIDDLEWARE_ARCH}"
 
-PV:pn-remotedebugger = "1.0.1"
+PV:pn-remotedebugger = "1.1.0"
 PR:pn-remotedebugger = "r0"
 PACKAGE_ARCH:pn-remotedebugger = "${MIDDLEWARE_ARCH}"
 
@@ -242,7 +246,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices-apis = "2.0.3"
+PV:pn-rdkservices-apis = "2.0.4"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -267,8 +271,8 @@ PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
 PR:pn-network-hotplug = "r3"
 
-PV:pn-sysint = "1.0.3"
-PR:pn-sysint = "r0"
+PV:pn-sysint = "1.1.0"
+PR:pn-sysint = "r1"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
 PV:pn-key-simulator = "1.0.0"
@@ -305,7 +309,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.0"
+PV:pn-thunderstartupservices = "1.0.1"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -348,7 +352,7 @@ PV:pn-xmidt-agent = "1.0.0"
 PR:pn-xmidt-agent = "r0"
 PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdmagent = "1.0.1"
+PV:pn-rdmagent = "1.1.0"
 PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
@@ -361,6 +365,6 @@ PR:pn-os-release = "r0"
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
 # Workaround to build allarch packags as mw arch
-MULTILIB_VARIANTS_pn-os-release = " multilib "
-PACKAGE_ARCH_pn-os-release = "${MIDDLEWARE_ARCH}"
+MULTILIB_VARIANTS:pn-os-release = " multilib "
+PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
