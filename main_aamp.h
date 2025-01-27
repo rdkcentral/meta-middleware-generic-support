@@ -726,11 +726,16 @@ public:
 
 	/**
 	 * @brief Signal the new clock to subtitle module
-	 * @param[in] verboseDebug - enable more debug
 	 * @return - true indicating successful operation in sending the clock update
 	 */
 	virtual bool SignalSubtitleClock() { return false; };
-	virtual bool SignalSubtitleClock(bool verboseDebug) { return false; };
+
+	/**
+	 * @fn SetPauseOnPlayback
+	 * @brief Set to pause on next playback start
+	 * @param[in] enable - Flag to set whether enabled
+	 */
+	virtual void SetPauseOnStartPlayback(bool enable) {};
 };
 
 

@@ -230,33 +230,26 @@ void MediaTrack::UpdateSubtitleClockTask()
 {
 	// Update subtitle clock periodically until downloads are stopped or we're told to abort, starting at a faster rate until we get the first successful update so subtitles are not delayed/out of sync
 	const int subtitleClockSyncIntervalMs = GETCONFIGVALUE(eAAMPConfig_SubtitleClockSyncInterval)*1000;	// rate in ms once we get first successful sync
-	int warningTimeoutMs=SUBTITLE_CLOCK_ASSUMED_PLAYSTATE_TIME_MS;						// warn if synchronisation takes longer than this
-	int monitorIntervalMs=0;
-	bool keepRunning=(!abort && aamp->DownloadsAreEnabled());
-	int timeSinceValidUpdateMs = 0;
-	bool playbackStarted = false;
-	bool previouslyEnabled = enabled;
-	int debugOutputCounter=0;
-#ifdef SUBTEC_VARIABLE_CLOCK_UPDATE_RATE
 	int fastMonitorIntervalMs = INITIAL_SUBTITLE_CLOCK_SYNC_INTERVAL_MS;					// rate until we get first successful sync or give up
 	if (fastMonitorIntervalMs>subtitleClockSyncIntervalMs)
 	{
 		fastMonitorIntervalMs=subtitleClockSyncIntervalMs;
 	}
-	// make faster retries to sync the clock until it has failed for atleast this time (e.g. 20s)
+	// make faster retries to sync the clock until it has failed for at least this time (e.g. 20s)
+	int warningTimeoutMs=SUBTITLE_CLOCK_ASSUMED_PLAYSTATE_TIME_MS;
 	if (warningTimeoutMs<=fastMonitorIntervalMs*5)
 	{
 		warningTimeoutMs=fastMonitorIntervalMs*5;
 		AAMPLOG_WARN("Adjusting initial startup timeout from %d to %d", SUBTITLE_CLOCK_ASSUMED_PLAYSTATE_TIME_MS, warningTimeoutMs);		
 	}
-	monitorIntervalMs = fastMonitorIntervalMs;
-	AAMPLOG_WARN("Starting UpdateSubtitleClockTask using dynamic refresh rate. DownloadsAreEnabled=%d, abort=%d, subtitleClockSyncIntervalMs=%d, fastMonitorIntervalMs=%d, warningTimeoutMs=%d",
+	
+	bool playbackStarted = false;
+	int monitorIntervalMs = fastMonitorIntervalMs;
+	int timeSinceValidUpdateMs = 0;
+	bool keepRunning=(!abort && aamp->DownloadsAreEnabled());
+
+	AAMPLOG_WARN("Starting UpdateSubtitleClockTask. DownloadsAreEnabled=%d, abort=%d, subtitleClockSyncIntervalMs=%d, fastMonitorIntervalMs=%d, warningTimeoutMs=%d",
 		aamp->DownloadsAreEnabled(), abort, subtitleClockSyncIntervalMs, fastMonitorIntervalMs, warningTimeoutMs);
-#else
-	monitorIntervalMs=subtitleClockSyncIntervalMs;
-	AAMPLOG_WARN("Starting UpdateSubtitleClockTask with fixed refresh rate. DownloadsAreEnabled=%d, abort=%d, subtitleClockSyncIntervalMs=%d, warningTimeoutMs=%d",
-		aamp->DownloadsAreEnabled(), abort, subtitleClockSyncIntervalMs, warningTimeoutMs);
-#endif /*SUBTEC_VARIABLE_CLOCK_UPDATE_RATE*/
 
 	while(keepRunning)
 	{
@@ -268,23 +261,16 @@ void MediaTrack::UpdateSubtitleClockTask()
 			// so we need mediaprocessor to set the base video pts so that correct pts can be signalled to subtec			
 			if (enabled && aamp->IsGstreamerSubsEnabled() && ISCONFIGSET(eAAMPConfig_EnableMediaProcessor))
 			{
-				bool outputDebug=true;
-#if !defined(SUBTEC_VARIABLE_CLOCK_UPDATE_RATE)
-				// output pts written then first time we succeed, then every 10 updates
-				outputDebug = (!playbackStarted) || ( !(debugOutputCounter%10) );				
-				debugOutputCounter++;
-#endif
 				// Note: This will fail if pipeline is not in play state, we have underflow, or if video pts is still returning 0 just after we entered play state
-				if (aamp->SignalSubtitleClock(outputDebug))
+				if (aamp->SignalSubtitleClock())
 				{
 					if (!playbackStarted)
 					{
 						// Slow down the update rate now it's first sync'd after we enter play state
-						AAMPLOG_WARN("First subtitle clock update successful. Switching to slow update rate (%d) after %d ms (if enabled)", subtitleClockSyncIntervalMs, timeSinceValidUpdateMs);
-						debugOutputCounter=1;
+						AAMPLOG_WARN("First subtitle clock update successful. Switching to slow update rate (%d) after %d ms", subtitleClockSyncIntervalMs, timeSinceValidUpdateMs);
+						playbackStarted=true;
 					}
 					monitorIntervalMs=subtitleClockSyncIntervalMs;
-					playbackStarted=true;
 					timeSinceValidUpdateMs=0;
 				}
 				else
@@ -294,7 +280,7 @@ void MediaTrack::UpdateSubtitleClockTask()
 						// Underflow/paused/pts not ready/injection blocked?
 						if (!aamp->pipeline_paused)
 						{
-							AAMPLOG_DEBUG("Subtitle clock update failed during startup; paused=%d, timetimeSinceValidUpdateMs=%d ms",
+							AAMPLOG_DEBUG("Subtitle clock update failed during startup; paused=%d, timetimeSinceValidUpdateMs=%d ms. We will retry.",
 							aamp->pipeline_paused, timeSinceValidUpdateMs);
 						}
 					}
@@ -304,7 +290,6 @@ void MediaTrack::UpdateSubtitleClockTask()
 						{
 							AAMPLOG_WARN("Subtitle clock failed unexpectedly; playbackStarted=%d, timeSinceValidUpdateMs=%d ms, paused=%d, mTrackInjectionBlocked. Underflow/paused/injection blocked?",
 								playbackStarted, timeSinceValidUpdateMs, aamp->pipeline_paused);
-#ifdef SUBTEC_VARIABLE_CLOCK_UPDATE_RATE
 							if ((timeSinceValidUpdateMs<warningTimeoutMs) && (monitorIntervalMs!=fastMonitorIntervalMs) )
 							{
 								AAMPLOG_WARN("Something has gone wrong after playback started. Switching to faster refresh rate (%d) after %d ms", subtitleClockSyncIntervalMs, timeSinceValidUpdateMs);
@@ -316,11 +301,10 @@ void MediaTrack::UpdateSubtitleClockTask()
 									subtitleClockSyncIntervalMs, timeSinceValidUpdateMs);
 								monitorIntervalMs = subtitleClockSyncIntervalMs;
 							}
-#endif
 						}
 						else
 						{
-							AAMPLOG_TRACE("Subtitle clock not updated in pause state. No action taken; playbackStarted=%d, timeSinceValidUpdateMs=%d ms, mTrackInjectionBlocked.",
+							AAMPLOG_TRACE("Subtitle clock failure due to pause state. No action taken; playbackStarted=%d, timeSinceValidUpdateMs=%d ms, mTrackInjectionBlocked.",
 								playbackStarted, timeSinceValidUpdateMs );
 						}
 					}
@@ -328,11 +312,8 @@ void MediaTrack::UpdateSubtitleClockTask()
 			}
 			else
 			{
-				if (previouslyEnabled && !enabled )
-				{
-					AAMPLOG_WARN("Subtitles are not active. No clock updates. Switching to low refresh rate (if enabled). enabled=%d, aamp->IsGstreamerSubsEnabled()=%d, eAAMPConfig_EnableMediaProcessor=%d",
-						enabled, aamp->IsGstreamerSubsEnabled(), ISCONFIGSET(eAAMPConfig_EnableMediaProcessor));
-				}
+				AAMPLOG_WARN("Subtitles are not active. No clock update. Switching to low refresh rate. enabled=%d, aamp->IsGstreamerSubsEnabled()=%d, eAAMPConfig_EnableMediaProcessor=%d",
+					enabled, aamp->IsGstreamerSubsEnabled(), ISCONFIGSET(eAAMPConfig_EnableMediaProcessor));
 				monitorIntervalMs = subtitleClockSyncIntervalMs;
 			}
 		}
@@ -340,7 +321,6 @@ void MediaTrack::UpdateSubtitleClockTask()
 		{
 			keepRunning = false;
 		}
-		previouslyEnabled=enabled;
 		pthread_mutex_unlock(&mutex);
 		aamp->interruptibleMsSleep(monitorIntervalMs);
 		timeSinceValidUpdateMs+=monitorIntervalMs;
