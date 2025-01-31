@@ -28,6 +28,7 @@ RDEPENDS:${PN} = " \
     ctrlm-main \
     dcmd \
     devicesettings \
+    dibbler-client \
     dobby \
     dobby-thunderplugin \
     ermgr \
