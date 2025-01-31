@@ -145,9 +145,41 @@ PV:pn-netsrvmgr = "1.0.6"
 PR:pn-netsrvmgr = "r2"
 PACKAGE_ARCH:pn-netsrvmgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices = "7.7.1"
-PR:pn-rdkservices = "r0"
-PACKAGE_ARCH:pn-rdkservices = "${MIDDLEWARE_ARCH}"
+PV:pn-entservices-casting = "1.0.0"
+PR:pn-entservices-casting = "r0"
+PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
+
+PV:pn-entservices-connectivity = "1.0.0"
+PR:pn-entservices-connectivity = "r0"
+PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
+
+PV:pn-entservices-deviceanddisplay = "1.0.0"
+PR:pn-entservices-deviceanddisplay = "r0"
+PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
+
+PV:pn-entservices-infra = "1.0.1"
+PR:pn-entservices-infra = "r0"
+PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
+
+PV:pn-entservices-inputoutput = "1.0.0"
+PR:pn-entservices-inputoutput = "r0"
+PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
+
+PV:pn-entservices-mediaanddrm = "1.0.0"
+PR:pn-entservices-mediaanddrm = "r0"
+PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
+
+PV:pn-entservices-peripherals = "1.0.0"
+PR:pn-entservices-peripherals = "r0"
+PACKAGE_ARCH:pn-entservices-peripherals = "${MIDDLEWARE_ARCH}"
+
+PV:pn-entservices-runtime = "1.0.0"
+PR:pn-entservices-runtime = "r0"
+PACKAGE_ARCH:pn-entservices-runtime = "${MIDDLEWARE_ARCH}"
+
+PV:pn-entservices-softwareupdate = "1.0.0"
+PR:pn-entservices-softwareupdate = "r0"
+PACKAGE_ARCH:pn-entservices-softwareupdate = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdkshell = "1.0.0"
 PR:pn-rdkshell = "r0"

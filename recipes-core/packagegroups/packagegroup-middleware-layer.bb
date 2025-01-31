@@ -62,8 +62,16 @@ RDEPENDS:${PN} = " \
     rdkfwupgrader \
     rdknativescript \
     rdkperf \
-    rdkservices \
-    rdkservices-screencapture \
+    entservices-casting \
+    entservices-connectivity \
+    entservices-deviceanddisplay \
+    entservices-infra \
+    entservices-inputoutput \
+    entservices-mediaanddrm \
+    entservices-peripherals \
+    entservices-runtime \
+    entservices-softwareupdate \
+    entservices-mediaanddrm-screencapture \
     rdksysctl \
     rdkversion \
     rdm \
