@@ -173,6 +173,7 @@ RDEPENDS:${PN} = " \
     virtual/default-font \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     os-release \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_MIRACAST', ' wlan-p2p', '', d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
