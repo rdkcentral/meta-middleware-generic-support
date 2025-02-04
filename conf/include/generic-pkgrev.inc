@@ -278,9 +278,13 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices-apis = "2.0.4"
+PV:pn-rdkservices-apis = "2.1.0"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
+
+PV:pn-rdkservice-lisa = "1.0.0"
+PR:pn-rdkservice-lisa = "r0"
+PACKAGE_ARCH:pn-rdkservice-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
