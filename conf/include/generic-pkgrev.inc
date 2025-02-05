@@ -121,15 +121,15 @@ PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
 
-PV:pn-iarm-event-sender = "1.0.0"
+PV:pn-iarm-event-sender = "1.0.1"
 PR:pn-iarm-event-sender = "r0"
 PACKAGE_ARCH:pn-iarm-event-sender = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-query-powerstate = "1.0.0"
+PV:pn-iarm-query-powerstate = "1.0.1"
 PR:pn-iarm-query-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-query-powerstate = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-set-powerstate = "1.0.0"
+PV:pn-iarm-set-powerstate = "1.0.1"
 PR:pn-iarm-set-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-set-powerstate = "${MIDDLEWARE_ARCH}"
 
@@ -307,7 +307,7 @@ PV:pn-sysint = "1.1.1"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
-PV:pn-key-simulator = "1.0.0"
+PV:pn-key-simulator = "1.0.1"
 PR:pn-key-simulator = "r0"
 PACKAGE_ARCH:pn-key-simulator = "${MIDDLEWARE_ARCH}"
 
@@ -333,7 +333,7 @@ PV:pn-wpeframework-ui = "1.0.0"
 PR:pn-wpeframework-ui = "r0"
 PACKAGE_ARCH:pn-wpeframework-ui = "${MIDDLEWARE_ARCH}"
 
-PV:pn-mfr-utils = "1.0.0"
+PV:pn-mfr-utils = "1.0.1"
 PR:pn-mfr-utils = "r0"
 PACKAGE_ARCH:pn-mfr-utils = "${MIDDLEWARE_ARCH}"
 
