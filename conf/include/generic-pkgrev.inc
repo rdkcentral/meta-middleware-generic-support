@@ -54,7 +54,7 @@ PV:pn-syslog-helper = "1.0.0"
 PR:pn-syslog-helper = "r2"
 PACKAGE_ARCH:pn-syslog-helper = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.1.0"
+PV:pn-telemetry = "1.2.0"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
