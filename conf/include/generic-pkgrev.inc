@@ -50,11 +50,7 @@ PV:pn-rtremote = "2.0.0"
 PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
-PV:pn-syslog-helper = "1.0.0"
-PR:pn-syslog-helper = "r2"
-PACKAGE_ARCH:pn-syslog-helper = "${MIDDLEWARE_ARCH}"
-
-PV:pn-telemetry = "1.1.0"
+PV:pn-telemetry = "1.2.0"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -121,15 +117,15 @@ PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
 
-PV:pn-iarm-event-sender = "1.0.0"
+PV:pn-iarm-event-sender = "1.0.1"
 PR:pn-iarm-event-sender = "r0"
 PACKAGE_ARCH:pn-iarm-event-sender = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-query-powerstate = "1.0.0"
+PV:pn-iarm-query-powerstate = "1.0.1"
 PR:pn-iarm-query-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-query-powerstate = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-set-powerstate = "1.0.0"
+PV:pn-iarm-set-powerstate = "1.0.1"
 PR:pn-iarm-set-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-set-powerstate = "${MIDDLEWARE_ARCH}"
 
@@ -149,7 +145,7 @@ PV:pn-entservices-casting = "1.0.0"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-connectivity = "1.0.0"
+PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
@@ -165,7 +161,7 @@ PV:pn-entservices-inputoutput = "1.0.0"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-mediaanddrm = "1.0.0"
+PV:pn-entservices-mediaanddrm = "1.0.2"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
@@ -278,7 +274,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices-apis = "2.1.0"
+PV:pn-rdkservices-apis = "3.0.0"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -311,7 +307,7 @@ PV:pn-sysint = "1.1.1"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
-PV:pn-key-simulator = "1.0.0"
+PV:pn-key-simulator = "1.0.1"
 PR:pn-key-simulator = "r0"
 PACKAGE_ARCH:pn-key-simulator = "${MIDDLEWARE_ARCH}"
 
@@ -337,7 +333,7 @@ PV:pn-wpeframework-ui = "1.0.0"
 PR:pn-wpeframework-ui = "r0"
 PACKAGE_ARCH:pn-wpeframework-ui = "${MIDDLEWARE_ARCH}"
 
-PV:pn-mfr-utils = "1.0.0"
+PV:pn-mfr-utils = "1.0.1"
 PR:pn-mfr-utils = "r0"
 PACKAGE_ARCH:pn-mfr-utils = "${MIDDLEWARE_ARCH}"
 
