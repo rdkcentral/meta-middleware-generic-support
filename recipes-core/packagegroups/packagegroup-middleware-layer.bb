@@ -81,7 +81,6 @@ RDEPENDS:${PN} = " \
     rtremote \
     safec-common-wrapper \
     sysint \
-    syslog-helper \
     systimemgr \
     telemetry \
     thunderjs \
