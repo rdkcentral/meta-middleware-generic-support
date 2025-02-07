@@ -207,17 +207,13 @@ PV:pn-tvsettings-hal-noop = "1.0.0"
 PR:pn-tvsettings-hal-noop = "r1"
 PACKAGE_ARCH:pn-tvsettings-hal-noop = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ctrlm-main = "1.0.2"
+PV:pn-ctrlm-main = "1.0.3"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"
 
-PV:pn-xr-voice-sdk = "1.0.2"
+PV:pn-xr-voice-sdk = "1.0.3"
 PR:pn-xr-voice-sdk = "r0"
 PACKAGE_ARCH:pn-xr-voice-sdk = "${MIDDLEWARE_ARCH}"
-
-PV:pn-ctrlm-factory = "1.0.1"
-PR:pn-ctrlm-factory = "r0"
-PACKAGE_ARCH:pn-ctrlm-factory = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdm = "1.3.3"
 PR:pn-rdm = "r0"
