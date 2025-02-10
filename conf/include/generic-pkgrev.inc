@@ -339,10 +339,6 @@ PV:pn-thunderstartupservices = "1.0.5"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
-PV:pn-xupnp = "1.3.1"
-PR:pn-xupnp = "r0"
-PACKAGE_ARCH:pn-xupnp = "${MIDDLEWARE_ARCH}"
-
 PACKAGE_ARCH:pn-uwebsockets = "${MIDDLEWARE_ARCH}"
 PACKAGE_ARCH:pn-javascriptcore = "${MIDDLEWARE_ARCH}"
 
