@@ -91,7 +91,6 @@ RDEPENDS:${PN} = " \
     ucresolv \
     webconfig-framework\
     wdmp-c \
-    wifi-hal-generic \
     wpe-backend-rdk \
     wpeframework \
     wpeframework-clientlibraries \
