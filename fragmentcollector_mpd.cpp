@@ -27,7 +27,7 @@
 #include "AampStreamSinkManager.h"
 #include "MediaStreamContext.h"
 #include "priv_aamp.h"
-#include "AampDRMSessionManager.h"
+#include "AampDRMLicManager.h"
 #include "AampConstants.h"
 #include "SubtecFactory.hpp"
 #include "isobmffprocessor.h"
@@ -161,10 +161,10 @@ StreamAbstractionAAMP_MPD::StreamAbstractionAAMP_MPD(class PrivateInstanceAAMP *
 	,mLivePeriodCulledSeconds(0)
 {
 	this->aamp = aamp;
-	if (aamp->mDRMSessionManager)
+	if (aamp->mDRMLicenseManager)
 	{
-		AampDRMSessionManager *sessionMgr = aamp->mDRMSessionManager;
-		sessionMgr->SetLicenseFetcher(this);
+		AampDRMLicenseManager *licenseManager = aamp->mDRMLicenseManager;
+		licenseManager->SetLicenseFetcher(this);
 	}
 	memset(&mMediaStreamContext, 0, sizeof(mMediaStreamContext));
 	GetABRManager().clearProfiles();
@@ -1418,7 +1418,7 @@ bool StreamAbstractionAAMP_MPD::PushNextFragment( class MediaStreamContext *pMed
 								// Logic  to handle the duration option missing case
 								if(!duration)
 								{
-									//If not present, the alternative content section lasts until the start of the next FCS element
+									//If not present, the alternative content section lasts until the start of the next FCS _element_
 									if(i+1 < mFcsSegments.size())
 									{
 										duration =  mFcsSegments.at(i+1)->GetStartTime();
@@ -3065,7 +3065,7 @@ AAMPStatusType StreamAbstractionAAMP_MPD::GetMPDFromManifest( ManifestDownloadRe
 		}
 
 		/* All manifest requests after the first should
-		* reference the url from the Location element. This is per MPEG
+		* reference the url from the Location _element_. This is per MPEG
 		* specification */
 		locationUrl = this->mpd->GetLocations();
 		if( !locationUrl.empty() )
@@ -3393,16 +3393,16 @@ void StreamAbstractionAAMP_MPD::QueueContentProtection(IPeriod* period, uint32_t
 				DrmHelperPtr drmHelper = CreateDrmHelper(adaptationSet, mediaType);
 				if (drmHelper)
 				{
-					if (aamp->mDRMSessionManager)
+					if (aamp->mDRMLicenseManager)
 					{
-						AampDRMSessionManager *sessionMgr = aamp->mDRMSessionManager;
+						AampDRMLicenseManager *licenseMgr = aamp->mDRMLicenseManager;
 						if (qGstProtectEvent)
 						{
 							/** Queue protection event to the pipeline **/
-							sessionMgr->QueueProtectionEvent(drmHelper, period->GetId(), adaptationSetIdx, mediaType);
+							licenseMgr->QueueProtectionEvent(drmHelper, period->GetId(), adaptationSetIdx, mediaType);
 						}
 						/** Queue content protection in DRM license fetcher **/
-						sessionMgr->QueueContentProtection(drmHelper, period->GetId(), adaptationSetIdx, mediaType, isVssPeriod);
+						licenseMgr->QueueContentProtection(drmHelper, period->GetId(), adaptationSetIdx, mediaType, isVssPeriod);
 					}
 					hasDrm = true;
 					aamp->licenceFromManifest = true;
@@ -3520,12 +3520,12 @@ AAMPStatusType StreamAbstractionAAMP_MPD::Init(TuneType tuneType)
 	{
 		sink->ClearProtectionEvent();
 	}
-	AampDRMSessionManager *sessionMgr = aamp->mDRMSessionManager;
+	AampDRMLicenseManager *licenseManager = aamp->mDRMLicenseManager;
 	bool forceClearSession = (!ISCONFIGSET(eAAMPConfig_SetLicenseCaching) && (tuneType == eTUNETYPE_NEW_NORMAL));
-	sessionMgr->clearDrmSession(forceClearSession);
-	sessionMgr->clearFailedKeyIds();
-	sessionMgr->setSessionMgrState(SessionMgrState::eSESSIONMGR_ACTIVE);
-	sessionMgr->setLicenseRequestAbort(false);
+	licenseManager->clearDrmSession(forceClearSession);
+	licenseManager->clearFailedKeyIds();
+	licenseManager->setSessionMgrState(SessionMgrState::eSESSIONMGR_ACTIVE);
+	licenseManager->setLicenseRequestAbort(false);
 	aamp->licenceFromManifest = false;
 	bool newTune = aamp->IsNewTune();
 
@@ -4753,8 +4753,8 @@ void StreamAbstractionAAMP_MPD::FindPeriodGapsAndReport()
 }
 
 /**
- * @brief Read UTCTiming element
- * @retval Return true if UTCTiming element is available in the manifest
+ * @brief Read UTCTiming _element_
+ * @retval Return true if UTCTiming _element_ is available in the manifest
  */
 bool  StreamAbstractionAAMP_MPD::FindServerUTCTime(Node* root)
 {
@@ -7269,18 +7269,18 @@ void StreamAbstractionAAMP_MPD::StreamSelection( bool newTune, bool forceSpeedsC
 		}
 
 	} // next track
-	if (aamp->mDRMSessionManager)
+	if (aamp->mDRMLicenseManager)
 	{
-		AampDRMSessionManager *sessionMgr = aamp->mDRMSessionManager;
+		AampDRMLicenseManager *licenseManager = aamp->mDRMLicenseManager;
 		if (mMultiVideoAdaptationPresent)
 		{
 			// We have multiple video adaptations in the same period and
             // if one of them fails in license acquisition, we can skip error event
-			sessionMgr->SetSendErrorOnFailure(false);
+			licenseManager->SetSendErrorOnFailure(false);
 		}
 		else
 		{
-			sessionMgr->SetSendErrorOnFailure(true);
+			licenseManager->SetSendErrorOnFailure(true);
 		}
 	}
 
@@ -7333,7 +7333,7 @@ int StreamAbstractionAAMP_MPD::GetProfileIdxForBandwidthNotification(uint32_t ba
 
 	if (it != mBitrateIndexVector.end())
 	{
-		// Get index of element from iterator
+		// Get index of _element_ from iterator
 		profileIndex = (int)std::distance(mBitrateIndexVector.begin(), it);
 	}
 
@@ -10250,10 +10250,10 @@ bool StreamAbstractionAAMP_MPD::CheckForVssTags()
 							std::string value = childNode->GetAttributeValue("value");
 							mCommonKeyDuration = std::stoi(value);
 							AAMPLOG_INFO("Received Common Key Duration : %d of VSS stream", mCommonKeyDuration);
-							if (aamp->mDRMSessionManager)
+							if (aamp->mDRMLicenseManager)
 							{
-								AampDRMSessionManager *sessionMgr = aamp->mDRMSessionManager;
-								sessionMgr->SetCommonKeyDuration(mCommonKeyDuration);
+								AampDRMLicenseManager *licenseManager = aamp->mDRMLicenseManager;
+								licenseManager->SetCommonKeyDuration(mCommonKeyDuration);
 							}
 							isVss = true;
 						}
@@ -10437,7 +10437,8 @@ StreamAbstractionAAMP_MPD::~StreamAbstractionAAMP_MPD()
 
 void StreamAbstractionAAMP_MPD::StartFromOtherThanAampLocalTsb(void)
 {
-	aamp->mDRMSessionManager->setSessionMgrState(SessionMgrState::eSESSIONMGR_ACTIVE);
+	aamp->mDRMLicenseManager->setSessionMgrState(SessionMgrState::eSESSIONMGR_ACTIVE);
+	// Start the worker threads for each track
 	try{
 		fragmentCollectorThreadID = std::thread(&StreamAbstractionAAMP_MPD::FetcherLoop, this);
 		fragmentCollectorThreadStarted = true;
@@ -10643,10 +10644,19 @@ void StreamAbstractionAAMP_MPD::Stop(bool clearChannelData)
 		{
 			if(ISCONFIGSET(eAAMPConfig_UseSecManager))
 			{
-				aamp->mDRMSessionManager->notifyCleanup();
+				aamp->mDRMLicenseManager->notifyCleanup();
 			}
 		}
-		aamp->mDRMSessionManager->setSessionMgrState(SessionMgrState::eSESSIONMGR_INACTIVE);
+		aamp->mDRMLicenseManager->setSessionMgrState(SessionMgrState::eSESSIONMGR_INACTIVE);
+		if(tsbReaderThreadStarted)
+		{
+			abortTsbReader = true;
+			if(tsbReaderThreadID.joinable())
+			{
+				tsbReaderThreadID.join();
+			}
+			tsbReaderThreadStarted = false;
+		}
 
 	}
 
@@ -10823,7 +10833,7 @@ int StreamAbstractionAAMP_MPD::GetProfileIndexForBandwidth( BitsPerSecond mTsbBa
 
 			if (it != mBitrateIndexVector.end())
 			{
-					// Get index of element from iterator
+					// Get index of _element_ from iterator
 					profileIndex = (int)std::distance(mBitrateIndexVector.begin(), it);
 			}
 	}
@@ -12545,7 +12555,7 @@ bool StreamAbstractionAAMP_MPD::IsMatchingLanguageAndMimeType(AampMediaType type
 double StreamAbstractionAAMP_MPD::GetEncoderDisplayLatency()
 {
 	/*
-	a. If the ProducerReferenceTime element is present as defined in clause 4.X.3.2, then the
+	a. If the ProducerReferenceTime _element_ is present as defined in clause 4.X.3.2, then the
 	i. WCA is the value of the @wallClockTime
 	ii. PTA is the value of the @presentationTime
 	iii. If the @inband attribute is set to TRUE, then it should parse the segments to continuously
@@ -12575,7 +12585,7 @@ double StreamAbstractionAAMP_MPD::GetEncoderDisplayLatency()
 	tt_utc   = mktime(gmt);
 
 	IProducerReferenceTime *producerReferenceTime = NULL;
-#if 0 //FIX-ME - Handle when ProducerReferenceTime element is not available
+#if 0 //FIX-ME - Handle when ProducerReferenceTime _element_ is not available
 	double presentationOffset = 0;
 #endif
 	uint32_t timeScale = 0;
@@ -12627,7 +12637,7 @@ double StreamAbstractionAAMP_MPD::GetEncoderDisplayLatency()
 					}
 					AAMPLOG_TRACE("timeScale: %" PRIu32 "", timeScale);
 
-#if 0 //FIX-ME - Handle when ProducerReferenceTime element is not available
+#if 0 //FIX-ME - Handle when ProducerReferenceTime _element_ is not available
 					presentationOffset = (double) segmentTemplates.GetPresentationTimeOffset();
 #endif
 					const ISegmentTimeline *segmentTimeline = segmentTemplates.GetSegmentTimeline();
@@ -12733,7 +12743,7 @@ double StreamAbstractionAAMP_MPD::GetEncoderDisplayLatency()
 				else
 				{
 					AAMPLOG_WARN("ProducerReferenceTime Not Found for mCurrentPeriodIdx = [%d]", mCurrentPeriodIdx);
-#if 0 //FIX-ME - Handle when ProducerReferenceTime element is not available
+#if 0 //FIX-ME - Handle when ProducerReferenceTime _element_ is not available
 
 					//Check more for behavior here
 					double periodStartTime = 0;
@@ -13030,7 +13040,7 @@ void StreamAbstractionAAMP_MPD::MonitorLatency()
 				}
 				else
 				{
-					AAMPLOG_WARN("ServiceDescription Element is empty");
+					AAMPLOG_WARN("ServiceDescription _element_ is empty");
 				}
 			}
 		}
@@ -13087,7 +13097,7 @@ bool StreamAbstractionAAMP_MPD::CheckLLProfileAvailable(IMPD *mpd)
 bool StreamAbstractionAAMP_MPD::CheckProducerReferenceTimeUTCTimeMatch(IProducerReferenceTime *pRT)
 {
     bool bMatch = false;
-    //1. Check if UTC Time provider in <ProducerReferenceTime> element is same as stored for MPD already
+    //1. Check if UTC Time provider in <ProducerReferenceTime> _element_ is same as stored for MPD already
 
     if(pRT->GetUTCTimings().size())
     {
@@ -13454,19 +13464,19 @@ bool StreamAbstractionAAMP_MPD::ParseMPDLLData(MPD* mpd, AampLLDashServiceData &
     }
 	else
 	{
-    	//check if <scope> element is available in <ServiceDescription> element->raise error if not
+    	//check if <scope> _element_ is available in <ServiceDescription> _element_->raise error if not
     	if(!mpd->GetServiceDescriptions().at(0)->GetScopes().size())
     	{
-        	AAMPLOG_TRACE("Scope element not available");
+        	AAMPLOG_TRACE("Scope _element_ not available");
        	}
-    	//check if <Latency> element is available in <ServiceDescription> element->raise error if not
+    	//check if <Latency> _element_ is available in <ServiceDescription> _element_->raise error if not
     	if(!mpd->GetServiceDescriptions().at(0)->GetLatencys().size())
     	{
-        	AAMPLOG_TRACE("Latency element not available");
+        	AAMPLOG_TRACE("Latency _element_ not available");
 		}
 		else
 		{
-    		//check if attribute @target is available in <latency> element->raise error if not
+    		//check if attribute @target is available in <latency> _element_->raise error if not
     		ILatency *latency= mpd->GetServiceDescriptions().at(0)->GetLatencys().at(0);
 
     		// Some timeline may not have attribute for target latency , check it .
@@ -13505,7 +13515,7 @@ bool StreamAbstractionAAMP_MPD::ParseMPDLLData(MPD* mpd, AampLLDashServiceData &
 
     	if(!mpd->GetServiceDescriptions().at(0)->GetPlaybackRates().size())
     	{
-        	AAMPLOG_TRACE("Play Rate element not available");
+        	AAMPLOG_TRACE("Play Rate _element_ not available");
     	}
     	else
     	{
@@ -13537,10 +13547,10 @@ bool StreamAbstractionAAMP_MPD::ParseMPDLLData(MPD* mpd, AampLLDashServiceData &
 			}
 		}
 	}
-    //check if UTCTiming element available
+    //check if UTCTiming _element_ available
     if(!mpd->GetUTCTimings().size())
     {
-        AAMPLOG_WARN("UTCTiming element not available");
+        AAMPLOG_WARN("UTCTiming _element_ not available");
     }
 	else
 	{
