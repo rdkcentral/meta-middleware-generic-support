@@ -278,9 +278,9 @@ PV:pn-rdkservices-apis = "1.0.0"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservice-lisa = "1.0.0"
-PR:pn-rdkservice-lisa = "r0"
-PACKAGE_ARCH:pn-rdkservice-lisa = "${MIDDLEWARE_ARCH}"
+PV:pn-entservices-lisa = "1.0.0"
+PR:pn-entservices-lisa = "r0"
+PACKAGE_ARCH:pn-entservices-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
