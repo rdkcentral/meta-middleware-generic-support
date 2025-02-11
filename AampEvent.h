@@ -2399,5 +2399,6 @@ using WatermarkSessionUpdateEventPtr = std::shared_ptr<WatermarkSessionUpdateEve
 using ContentProtectionDataEventPtr = std::shared_ptr<ContentProtectionDataEvent>;
 using ManifestRefreshEventPtr = std::shared_ptr<ManifestRefreshEvent>;
 using TuneTimeMetricsEventPtr = std::shared_ptr<TuneTimeMetricsEvent>;
+
 #endif /* __AAMP_EVENTS_H__ */
 

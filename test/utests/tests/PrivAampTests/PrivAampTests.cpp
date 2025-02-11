@@ -38,6 +38,7 @@
 #include "MockStreamAbstractionAAMP_MPD.h"
 #include "MockAampStreamSinkManager.h"
 #include "MockAampEventManager.h"
+#include "MockAampLicManager.h"
 #include "MockAampDRMSessionManager.h"
 #include "MockAampConfig.h"
 #include "MockCurl.h"
@@ -77,7 +78,8 @@ class PrivAampTests : public ::testing::Test
 		g_mockAampGstPlayer = new NiceMock<MockAAMPGstPlayer>(p_aamp);
 		g_mockAampStreamSinkManager = new NiceMock<MockAampStreamSinkManager>();
 		g_mockAampEventManager = new NiceMock<MockAampEventManager>();
-		g_mockAampDRMSessionManager = new NiceMock<MockAampDRMSessionManager>();
+		g_mockAampLicenseManager = new NiceMock<MockAampLicenseManager>();
+		g_mockDRMSessionManager = new NiceMock<MockDRMSessionManager>();
 		g_mockAampConfig = new NiceMock<MockAampConfig>();
 		g_mockStreamAbstractionAAMP_MPD = new NiceMock<MockStreamAbstractionAAMP_MPD>(p_aamp, 0, 0);
 		g_mockStreamAbstractionAAMP = new NiceMock<MockStreamAbstractionAAMP>(p_aamp);
@@ -102,11 +104,14 @@ class PrivAampTests : public ::testing::Test
 		delete g_mockAampConfig;
 		g_mockAampConfig = nullptr;
 
-		delete g_mockAampDRMSessionManager;
-		g_mockAampDRMSessionManager = nullptr;
+		delete g_mockDRMSessionManager;
+		g_mockDRMSessionManager = nullptr;
 
 		delete g_mockAampEventManager;
 		g_mockAampEventManager = nullptr;
+
+		delete g_mockAampLicenseManager;
+		g_mockAampLicenseManager = nullptr;
 
 		delete g_mockAampStreamSinkManager;
 		g_mockAampStreamSinkManager = nullptr;
@@ -2708,7 +2713,8 @@ TEST_F(PrivAampTests, NotifyFirstBufferProcessedTest)
 
 	EXPECT_CALL(*g_mockAampConfig, IsConfigSet(eAAMPConfig_EnableGstPositionQuery)).WillOnce(Return(false));
 	EXPECT_CALL(*g_mockAampConfig, IsConfigSet(eAAMPConfig_UseSecManager)).WillOnce(Return(true));
-	EXPECT_CALL(*g_mockAampDRMSessionManager, setVideoWindowSize(1024, 768));
+	EXPECT_CALL(*g_mockAampLicenseManager, setVideoWindowSize(1024, 768));
+//PECT_CALL(*g_mockDRMSessionManager, setVideoWindowSize(1024, 768));
 	p_aamp->NotifyFirstBufferProcessed(std::string("0,0,1024,768"));
 }
 
@@ -2720,7 +2726,8 @@ TEST_F(PrivAampTests, NotifyFirstBufferProcessedTest_VideoRectangleEmpty)
 
 	EXPECT_CALL(*g_mockAampConfig, IsConfigSet(eAAMPConfig_EnableGstPositionQuery)).WillOnce(Return(false));
 	EXPECT_CALL(*g_mockAampConfig, IsConfigSet(eAAMPConfig_UseSecManager)).WillOnce(Return(true));
-	EXPECT_CALL(*g_mockAampDRMSessionManager, setVideoWindowSize(0, 0));
+	EXPECT_CALL(*g_mockAampLicenseManager, setVideoWindowSize(0, 0));
+//	EXPECT_CALL(*g_mockDRMSessionManager, setVideoWindowSize(0, 0));
 	p_aamp->NotifyFirstBufferProcessed(std::string());
 }
 

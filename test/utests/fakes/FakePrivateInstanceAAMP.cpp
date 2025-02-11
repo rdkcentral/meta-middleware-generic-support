@@ -69,7 +69,7 @@ PrivateInstanceAAMP::PrivateInstanceAAMP(AampConfig *config) :
 	waitforplaystart(),
 	mMutexPlaystart(),
 	drmParserMutex(),
-	mDRMSessionManager(NULL),
+	mDRMLicenseManager(NULL),
 	mDrmInitData(),
 	mPreferredTextTrack(),
 	midFragmentSeekCache(false),
