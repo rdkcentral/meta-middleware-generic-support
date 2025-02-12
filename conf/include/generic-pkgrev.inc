@@ -243,10 +243,6 @@ PV_pn-rdk-logger = "1.0.0"
 PR_pn-rdk-logger = "r0"
 PACKAGE_ARCH_pn-rdk-logger = "${MIDDLEWARE_ARCH}"
 
-PV:pn-nlmonitor = "1.4.0"
-PR:pn-nlmonitor = "r0"
-PACKAGE_ARCH:pn-nlmonitor = "${MIDDLEWARE_ARCH}"
-
 PV:pn-remotedebugger = "1.2.1"
 PR:pn-remotedebugger = "r0"
 PACKAGE_ARCH:pn-remotedebugger = "${MIDDLEWARE_ARCH}"
