@@ -4497,8 +4497,8 @@ void AAMPGstPlayer::setVolumeOrMuteUnMute(void)
 		}
 		if(aamp->mConfig->GetConfigValue(eAAMPConfig_PlatformType) == ePLATFORM_AMLOGIC)
 		{
-			/* Avoid mute property setting for AMLOGIC as use of "mute" property on pipeline is impacting all other players */
-			/* Using "stream-volume" property of audio-sink for setting volume and mute for AMLOGIC platform */
+			/* Avoid mute property setting for this platform as use of "mute" property on pipeline is impacting all other players */
+			/* Using "stream-volume" property of audio-sink for setting volume and mute  platform */
 			volumePropertyName = "stream-volume";
 		}
 		else
@@ -4892,7 +4892,7 @@ bool AAMPGstPlayer::IsCacheEmpty(AampMediaType mediaType)
 		}
 		else
 		{
-			// Changed to AAMPLOG_TRACE, to avoid log flooding (seen on xi3 and xid).
+			// Changed to AAMPLOG_TRACE, to avoid log flooding 
 			// We're seeing this logged frequently during live linear playback, despite no user-facing problem.
 			AAMPLOG_TRACE("AAMPGstPlayer::Cache level empty");
 			if (privateContext->stream[eMEDIATYPE_VIDEO].bufferUnderrun == true ||
@@ -5521,7 +5521,7 @@ bool AAMPGstPlayer::SetPlayBackRate ( double rate )
 			gst_event_unref(rate_event);
 			AAMPLOG_MIL ("Current rate: %g", rate);
 		}
-		else //Non BRCM/AMLOGIC/REALTEK case
+		else  
 		{
 			return false;
 		}
