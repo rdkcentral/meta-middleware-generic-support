@@ -58,8 +58,8 @@ PV:pn-webcfg = "1.1.0"
 PR:pn-webcfg = "r0"
 PACKAGE_ARCH:pn-webcfg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dcmd = "1.0.0"
-PR:pn-dcmd = "r1"
+PV:pn-dcmd = "1.1.0"
+PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
 PV:pn-tr69hostif-headers = "1.0.4"
@@ -273,6 +273,10 @@ PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 PV:pn-rdkservices-apis = "1.0.0"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
+
+PV:pn-rdkservice-lisa = "1.0.0"
+PR:pn-rdkservice-lisa = "r0"
+PACKAGE_ARCH:pn-rdkservice-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
