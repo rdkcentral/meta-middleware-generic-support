@@ -23,7 +23,6 @@ RDEPENDS:${PN} = " \
     cjwt \
     commonutilities \
     crashupload \
-    ctrlm-factory \
     ctrlm-headers \
     ctrlm-main \
     dcmd \
