@@ -1,8 +1,8 @@
-PV:pn-apparmor-generic="1.0.1"
+PV:pn-apparmor-generic="1.0.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.0"
+PV:pn-devicesettings = "1.0.2"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -10,15 +10,15 @@ PV:pn-cpeabs = "2.0.0"
 PR:pn-cpeabs = "r0"
 PACKAGE_ARCH:pn-cpeabs = "${MIDDLEWARE_ARCH}"
 
-PV:pn-hdmicec = "1.0.0"
+PV:pn-hdmicec = "1.0.1"
 PR:pn-hdmicec = "r0"
 PACKAGE_ARCH:pn-hdmicec = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmbus = "1.0.0"
+PV:pn-iarmbus = "1.0.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.0.4"
+PV:pn-iarmmgrs = "1.0.7"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -58,8 +58,8 @@ PV:pn-webcfg = "1.1.0"
 PR:pn-webcfg = "r0"
 PACKAGE_ARCH:pn-webcfg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dcmd = "1.0.0"
-PR:pn-dcmd = "r1"
+PV:pn-dcmd = "1.1.0"
+PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
 PV:pn-tr69hostif-headers = "1.0.4"
@@ -100,11 +100,11 @@ PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-core = "1.6.2"
+PV:pn-bluetooth-core = "1.0.0"
 PR:pn-bluetooth-core = "r2"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-mgr = "1.6.2"
+PV:pn-bluetooth-mgr = "1.0.0"
 PR:pn-bluetooth-mgr = "r1"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
@@ -274,9 +274,13 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices-apis = "3.0.0"
+PV:pn-rdkservices-apis = "1.0.0"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
+
+PV:pn-entservices-lisa = "1.0.0"
+PR:pn-entservices-lisa = "r0"
+PACKAGE_ARCH:pn-entservices-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
@@ -343,10 +347,6 @@ PV:pn-thunderstartupservices = "1.0.5"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
-PV:pn-xupnp = "1.3.1"
-PR:pn-xupnp = "r0"
-PACKAGE_ARCH:pn-xupnp = "${MIDDLEWARE_ARCH}"
-
 PACKAGE_ARCH:pn-uwebsockets = "${MIDDLEWARE_ARCH}"
 PACKAGE_ARCH:pn-javascriptcore = "${MIDDLEWARE_ARCH}"
 
@@ -366,11 +366,11 @@ PV:pn-rdkwpasupplicantconfig = "1.0.0"
 PR:pn-rdkwpasupplicantconfig = "r0"
 PACKAGE_ARCH:pn-rdkwpasupplicantconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto = "0.9.0"
+PV:pn-rialto = "0.9.3"
 PR:pn-rialto = "r0"
 PACKAGE_ARCH:pn-rialto = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-gstreamer = "0.9.0"
+PV:pn-rialto-gstreamer = "0.9.3"
 PR:pn-rialto-gstreamer = "r0"
 PACKAGE_ARCH:pn-rialto-gstreamer = "${MIDDLEWARE_ARCH}"
 
