@@ -66,14 +66,6 @@ PV:pn-tr69hostif-headers = "1.0.4"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-wifi-hal-generic = "1.0.3"
-PR:pn-wifi-hal-generic = "r2"
-PACKAGE_ARCH:pn-wifi-hal-generic = "${MIDDLEWARE_ARCH}"
-
-PV:pn-wifi-hal-headers = "1.0.3"
-PR:pn-wifi-hal-headers = "r2"
-PACKAGE_ARCH:pn-wifi-hal-headers = "${MIDDLEWARE_ARCH}"
-
 PV:pn-dobby = "3.12.0"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
