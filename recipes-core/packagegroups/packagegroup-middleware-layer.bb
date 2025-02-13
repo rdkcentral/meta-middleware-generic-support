@@ -50,9 +50,6 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     remotedebugger \
     rmfosal \
-    nlmonitor \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_NETWORKMANAGER', '', 'netsrvmgr', d)} \
-    network-hotplug \
     networkmanager-plugin \
     packagemanager \
     parodus \
@@ -72,6 +69,7 @@ RDEPENDS:${PN} = " \
     entservices-runtime \
     entservices-softwareupdate \
     entservices-mediaanddrm-screencapture \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
     rdm \

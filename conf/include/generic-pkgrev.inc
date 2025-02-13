@@ -2,7 +2,7 @@ PV:pn-apparmor-generic="1.0.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.0"
+PV:pn-devicesettings = "1.0.2"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -10,15 +10,15 @@ PV:pn-cpeabs = "2.0.0"
 PR:pn-cpeabs = "r0"
 PACKAGE_ARCH:pn-cpeabs = "${MIDDLEWARE_ARCH}"
 
-PV:pn-hdmicec = "1.0.0"
+PV:pn-hdmicec = "1.0.1"
 PR:pn-hdmicec = "r0"
 PACKAGE_ARCH:pn-hdmicec = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmbus = "1.0.0"
+PV:pn-iarmbus = "1.0.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.0.4"
+PV:pn-iarmmgrs = "1.0.7"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -235,10 +235,6 @@ PV_pn-rdk-logger = "1.0.0"
 PR_pn-rdk-logger = "r0"
 PACKAGE_ARCH_pn-rdk-logger = "${MIDDLEWARE_ARCH}"
 
-PV:pn-nlmonitor = "1.4.0"
-PR:pn-nlmonitor = "r0"
-PACKAGE_ARCH:pn-nlmonitor = "${MIDDLEWARE_ARCH}"
-
 PV:pn-remotedebugger = "1.2.1"
 PR:pn-remotedebugger = "r0"
 PACKAGE_ARCH:pn-remotedebugger = "${MIDDLEWARE_ARCH}"
@@ -270,6 +266,10 @@ PV:pn-rdkservices-apis = "1.0.0"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
 
+PV:pn-entservices-lisa = "1.0.0"
+PR:pn-entservices-lisa = "r0"
+PACKAGE_ARCH:pn-entservices-lisa = "${MIDDLEWARE_ARCH}"
+
 PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
 PV:pn-libunpriv="1.0.1"
@@ -290,8 +290,6 @@ PACKAGE_ARCH:pn-rdksysctl = "${MIDDLEWARE_ARCH}"
 PV:pn-xdial = "2.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
-
-PR:pn-network-hotplug = "r3"
 
 PV:pn-sysint = "1.1.1"
 PR:pn-sysint = "r0"
