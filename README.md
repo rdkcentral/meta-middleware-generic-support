@@ -1,6 +1,6 @@
 # Vendor Layer Release Notes
 
-XiOne Foxtel REALTEK STB RDKE Vendor Layer Release Notes
+XiOne UK REALTEK STB RDKE Vendor Layer Release Notes
 
 ---
 
@@ -15,7 +15,7 @@ XiOne Foxtel REALTEK STB RDKE Vendor Layer Release Notes
 |Summary|Content|
 |---|----|
 |Classification|Confidential|
-|Date|14 Feb 2025|
+|Date|18 Feb 2025|
 |Author|pothiraj.paulraj@sky.uk|
 
 ---
@@ -44,7 +44,7 @@ XiOne Foxtel REALTEK STB RDKE Vendor Layer Release Notes
 
 ## Release Description
 
-The aim of this release is to include R35 sync code for trail candidate at vendor layer, latest oss 4.4.0. This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
+The aim of this release is to include R35 sync code for the trail candidate from vendor layer. This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
 
 The scope of this release includes:
 
@@ -54,11 +54,11 @@ The scope of this release includes:
 
 ### Vendor Release Components
 
-| Vendor Release Components | New Version | Version in Previous Release (5.0.2) |
-|------------|---------|------------------------------------|
+| Vendor Release Components | New Version (5.1.0) | Version in Previous Release (5.0.2) | ChangeList |
+|------------|---------|------------------------------------|--------------|
 | Kernel & DTB | | 4.9.119.01-r6  | |
-| packagegroup-vendor-layer | 5.1.0-r0 | 5.0.2-r0 | https://github.com/rdk-e/meta-oem-realtek-stream/compare/5.0.2...5.1.0 |
-| packagegroup-common-vendor-layer | 1.0.2-r0 | 1.0.0-r0 | https://github.com/rdk-e/meta-rdk-vendor-realtek-common/compare/1.0.0...1.0.2 |
+| packagegroup-vendor-layer | 5.1.0-r0 | 5.0.2-r0 | [5.0.2...5.1.0](https://github.com/rdk-e/meta-oem-realtek-stream/compare/5.0.2...5.1.0) |
+| packagegroup-common-vendor-layer | 1.0.2-r0 | 1.0.0-r0 | [1.0.0...1.0.2](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/compare/1.0.0...1.0.2) |
 
 ### Stack layer
 
@@ -74,14 +74,10 @@ The scope of this release includes:
 
 ### Meta Repos
 
-#### Meta repos maintained by layers layer
+#### Meta repos maintained by vendor layer
 
 | Meta Repo | New Version (5.1.0) | Version in Previous Release (5.0.2) | ChangeList |
 |------------|---------|------------------------------------|--------------|
-| meta-rdk-auxiliary |  | 4.1.5 | |
-| meta-oss-reference-release |  | 4.4.0 | |
-| meta-rdk-oss-reference |  | 4.4.0 | |
-| meta-rdk-tools |  | 2.2.0 | |
 | meta-vts |  | 1.2.0 | |
 | meta-rdk-soc-realtek |  **4.0.2** | 4.0.1 | [4.0.1...4.0.2](https://github.com/rdk-e/meta-rdk-soc-realtek/compare/4.0.1...4.0.2) |
 | meta-oem-stream |  **4.0.2** | 4.0.1 | [4.0.1...4.0.2](https://github.com/rdk-e/meta-oem-stream/compare/4.0.1...4.0.2) |
@@ -92,7 +88,7 @@ The scope of this release includes:
 
 #### Meta repos common for RDK-E
 
-| Meta Repo | New Version | Version in Previous Release (5.0.2) | ChangeList |
+| Meta Repo | New Version (5.1.0) | Version in Previous Release (5.0.2) | ChangeList |
 |------------|---------|------------------------------------|--------------|
 | **buildscripts** ||||
 | build-scripts |  | 4.1.0 | |
@@ -105,6 +101,12 @@ The scope of this release includes:
 | meta-openembedded |  | v4.1.0 | |
 | poky |  | v4.1.2 | |
 | meta-python2 |  | v4.0.0 | |
+| | | | |
+| **oss & tools** ||||
+| meta-rdk-auxiliary |  | 4.1.5 | |
+| meta-oss-reference-release |  | 4.4.0 | |
+| meta-rdk-oss-reference |  | 4.4.0 | |
+| meta-rdk-tools |  | 2.2.0 | |
 | | | | |
 | **configs** ||||
 | rdke-region-uk-config |  | 2.1.5 | |
@@ -121,7 +123,7 @@ The scope of this release includes:
 
 ### Interface versions
 
-| # | HAL Interface Header (rdkcentral github) | New Version | Version from Previous Release (5.0.2)|
+| # | HAL Interface Header (rdkcentral github) | New Version (5.1.0) | Version from Previous Release (5.0.2)|
 |---|------------------------------------------|-------------|----------------------|
 | 1 | media-utils-headers | **1.0.5** | 1.0.4 |
 | 2 | hdmicecheader | **1.3.10** | 1.3.7 |
@@ -142,13 +144,31 @@ The scope of this release includes:
 It should be noted that some services may not run as they have dependencies with other layers. Additionally, the exclusion of inter-layer bbappends/patches might result in the failure to start some services. These limitations should be taken into consideration during the verification process. These Limitations will be addressed in Future Releases.
 
 
-### Middleware and Production image Integration
+### Middleware image Integration
 
 ##### XiOne-UK
-- Created the  middleware image `"SKXI11ADSSOFT_MIDDLEWARE_DEV_feature_RDKEVD-185-ReleaseAct-5.0.2-Foxtel_20250127151030.bin"` from the `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Middleware-Build/10532/"`
+- Created the  middleware image `"SKXI11ADS_MIDDLEWARE_DEV_feature_RDKEVD-257-8.0_p1v-sync-tag_20250217145842.bin"` from the `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Middleware-Build/11869/"`
 
-- Testing done by using feature branch`"feature_RDKEVD-185-ReleaseAct-5.0.2-Foxtel for XiOne-Foxtel"` included of latest vendor ipk feed info https://github.com/rdk-e/meta-vendor-xione-realtek-release/blob/release/5.0.2/conf/machine/include/vendor.inc and the middleware manifest branched from develop branch on 27Jan24.
-- Feature branch details here `"XiOne-Foxtel(https://github.com/rdk-e/rdke-middleware-manifest/blob/feature/RDKEVD-185-ReleaseAct-5.0.2-Foxtel/realtek-xione.xml)"`
+- Testing done by using feature branch`"feature/RDKEVD-257-8.0_p1v-sync-tag for XiOne-uk"` included of latest vendor ipk feed info https://github.com/rdk-e/meta-vendor-xione-realtek-release/blob/release/5.1.0/conf/machine/include/vendor.inc and the middleware manifest branched from 2.4.0 tag.
+
+- Feature branch details here `"XiOne-UK(feature/RDKEVD-257-8.0_p1v-sync-tag)"`
+
+### Note
+
+- Please ensure below changes are present in the middleware and image assembler side before integrate this vendor release into MW/Img assembler. Because we have included the latest HALIF header, OSS 4.4.0 and have dependencies with these changes.
+
+#### Image assembler side
+
+- https://github.com/rdk-e/meta-cspc-image-assembler/commit/e25319c0e5aa80dde6cef8609febce6c0a1f82a6 (oss 4.4.0 related develop merged)
+
+#### Middleware side
+
+- https://github.com/rdk-e/rdke-middleware-manifest/commit/24fac8879d8c3350c3c2a3b4387565fcdca10fa5 (oss 4.4.0 related pr develop merged)
+- https://github.com/rdk-e/meta-middleware-cspc-support/commit/e55d3aa23d94e39fca7eeda3feaefb702ac84088 ---> first one to cherry pick (oss 4.4.0 related pr open)- https://github.com/rdk-e/meta-middleware-cspc-support/commit/bd2163de65e902902a70c3fff1aaa0d37bc48e33 ---> Second one to cherry pick (oss 4.4.0 related pr open)
+- https://github.com/rdk-e/meta-middleware-cspc-support/commit/21bbb002e8b7e4d6686c3a78a009b22d96bb16af ---> (oss 4.4.0 related pr open)
+- https://github.com/rdk-e/meta-rdk-comcast-video/commit/f1b3c568456fc77609962380ab1130482727e604 (oss 4.4.0 related develop merged)
+- https://github.com/rdk-e/meta-rdk-halif-headers/compare/3.2.2...4.0.0 (Halif headers for new vendor support)
+
 
 ## Build instructions
 
@@ -160,7 +180,7 @@ It should be noted that some services may not run as they have dependencies with
 #### Copy image to device /mnt/usb or /opt partitions or connect and mount USB having the image binn- Execute FlashApp command
 - Move to directory containing the image
 - FlashApp \<dirname\> \<imagename\>
-- eg. FlashApp /mnt/usb/SKXI11ADSSOFT_VENDOR_DEV_refs_tags_5.0.2_20250124172925.bin
+- eg. FlashApp /mnt/usb/SKXI11ADS_VENDOR_DEV_refs_tags_5.1.0_20250213181547.bin
 
 #### USB Flash Method using xboot prompt
 - Copy the image to the usb and connect to the STB
@@ -175,10 +195,13 @@ It should be noted that some services may not run as they have dependencies with
 
 ### Network connectivity
 
+- Ethernet Connectivity is supported now
+
+- If IP is not acquired automatically please run udhcpc after connecting Ethernet
 
 ## Testing
 
-- Created the `"vendor test image"` `"SKXI11ADSSOFT_VENDOR_DEV_refs_tags_5.0.2_20250124172925.bin for XiOne-Foxtel"` using the vendor layer jenkins job `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Vendor-Release-Build/50/"`
+- Created the `"vendor test image"` `"SKXI11ADS_VENDOR_DEV_refs_tags_5.1.0_20250213181547.bin for XiOne-UK"` using the vendor layer jenkins job `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Vendor-Release-Build/56/"`
   - Successfully booted the `"vendor test image"` and obtained the shell prompt.
   - Verified vendor layer services up and running
   - Verified IP acquisition via Ethernet
@@ -203,6 +226,7 @@ Testing details in [RDKEVD-257](https://ccp.sys.comcast.net/browse/RDKEVD-257)
 
 | ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
 | --- | --- | --- | --- | --- | --- | --- |
+| Feb 14 2025 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.1.0_20250213181547 | 1547368 | 454816 | 28838 | 483654 | 2163026 |
 | Jan 07 2025 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.0.1_20250106184824 | 1547368 | 447174 | 29121 | 476295 | 2170385 |
 | Dec 30 2024 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.0.0_20241224172552 | 1547368 | 445508 | 29135 | 474643 | 2172037 |
 | Dec 03 2024 |  SKXI11ADS_VENDOR_DEV_refs_tags_4.0.1_20241203115633 | 1547368 | 447008 | 26733 | 473741 | 2172939 |
@@ -210,12 +234,12 @@ Testing details in [RDKEVD-257](https://ccp.sys.comcast.net/browse/RDKEVD-257)
 ### Fullstack image testing
 
 ##### XiOne-UK
-- Created Image Assembler build `"SKXI11ADS_DEV_feature_RDKEVD-65-ReleaseAct-5.0.1_20250106220555.bin from the jenkins job https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1055/"` based on Middleware version 2.1.4 and the latest develop MW manifest branched to `"feature/RDKEVD-65-ReleaseAct-5.0.1"`.
+- Created Image Assembler build `" SKXI11ADS_DEV_feature_RDKEVD-257-8.0_p1v-sync-tag_20250215193611.bin from the jenkins job https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1304/"` based on Middleware version 2.4.0 and the 2.4.0 tag based manifest branched to `"feature/RDKEVD-257-8.0_p1v-sync-tag"`.
 
-- Included the application release 4.12.0 using [rdke-assembler-manifest](https://github.com/rdk-e/rdke-assembler-manifest) feature branch `"feature/RDKEVD-65-ReleaseAct-5.0.1"` 
+- Included the application release 4.16.0 using [rdke-assembler-manifest](https://github.com/rdk-e/rdke-assembler-manifest) feature branch `"feature/RDKEVD-257-8.0_p1v-sync-tag"`.
 - Tested the below scenarios as part of [RDKEVD-257](https://ccp.sys.comcast.net/browse/RDKEVD-257)
 
-  - Successfully booted \"SKXI11ADS_DEV_feature_RDKEVD-65-ReleaseAct-5.0.1_20250106220555.bin\" and obtained the shell prompt and UI.
+  - Successfully booted \"\" and obtained the shell prompt and UI.
   - Verified UI navigation
   - Verified AV with Disney+ App
   - Verified AV with Xumo Play
@@ -239,34 +263,30 @@ Testing details in [RDKEVD-257](https://ccp.sys.comcast.net/browse/RDKEVD-257)
 | 8 | xsign | **4.0.1-r2** | 4.0.1-r1 |  | NA | |
 | 9 | mfrlib-hal-xione | **8.1.0-r0** | 7.0.4-r0 |  | NA | |
 | 10 | wipe-disk-partitions | | 1.0.0-r0 |  | NA | |
-| 11 | secauthn | | 1.0.0-r0 |  | NA | |
-| 12 | testagent-loader | **2.3.0-r1** | 2.3.0-r0 |  | NA | |
-| 13 | qca6390-mod-wifi | | 1.0.0-r0 |  | NA | |
-| 14 | qca-hciattach | | 1.0.0-r1 |  | NA | |
-| 15 | emmc-fw-update | | 1.0.0-r0 |  | NA | |
-| 16 | mount-disk-partition | | 1.0.0-r0 |  | NA | |
-| 17 | image-verifier-lib | **6.2.0-r1** | 6.2.0-r0 |  | NA | |
-| 18 | fmtsasidlibs | | 2.4-r1 |  | NA | |
-| 19 | led-boot-pattern | **1.0.0-r1** | 1.0.0-r0 |  | NA | |
-| 20 | rtkmali | | 2.8.0-r0 |  | NA | |
-| 21 | blewakeupenabler | | 1.3.0-r0 |  | 7c0eb9c | |
-| 22 | rtk-platform-conf | **2.6.0-r1** | 2.6.0-r0 |  | NA | |
-| 23 | emmc-read-util | | 4.0.0-r0 |  | 6281804 | |
-| 24 | sky-dropbear | | 1.0.0-r1 |  | NA | |
-| 25 | sysint-oem | | 3.0.0-r0 |  | 50d274a | |
-| 26 | sysint-soc | | 3.0.0-r0 |  | f8dded4 | |
-| 27 | sky-led-app | | 1.0.0-r0 |  | NA | |
-| 28 | audiocapturemgr-vendor | | 1.0.0-r0 |  | a063707 | |
-| 29 | displayinfo-soc | **1.0.0-r0** | NA | **e7b2c24** | NA |  [](https://github.com/rdk-e/meta-rdk-halif-headers) |
-| 30 | ffmpeg | | ERROR-r1 |  | NA | |
+| 11 | qca-hciattach | | 1.0.0-r1 |  | NA | |
+| 12 | emmc-fw-update | | 1.0.0-r0 |  | NA | |
+| 13 | mount-disk-partition | | 1.0.0-r0 |  | NA | |
+| 14 | image-verifier-lib | **6.2.0-r1** | 6.2.0-r0 |  | NA | |
+| 15 | fmtsasidlibs | | 2.4-r1 |  | NA | |
+| 16 | rtkmali | | 2.8.0-r0 |  | NA | |
+| 17 | blewakeupenabler | | 1.3.0-r0 |  | 7c0eb9c | |
+| 18 | rtk-platform-conf | **2.6.0-r1** | 2.6.0-r0 |  | NA | |
+| 19 | emmc-read-util | | 4.0.0-r0 |  | 6281804 | |
+| 20 | sky-dropbear | | 1.0.0-r1 |  | NA | |
+| 21 | sysint-oem | | 3.0.0-r0 |  | 50d274a | |
+| 22 | sysint-soc | | 3.0.0-r0 |  | f8dded4 | |
+| 23 | sky-led-app | | 1.0.0-r0 |  | NA | |
+| 24 | audiocapturemgr-vendor | | 1.0.0-r0 |  | a063707 | |
+| 25 | displayinfo-soc | **1.0.0-r0** | NA | **e7b2c24** | NA | |
+| 26 | ffmpeg | | 4.2.2-r1 |  | NA | |
 
 
 ## Components Removed
 
 | # |  Component Name | Reason |
 |----|--------------|------|
-| 1 |  - testagentlib_testagentlib |  |
-| 2 |  - testagentlib_xione_factory |  |
+| 1 |  testagentlib | Depency with product specific recipe |
+| 2 |  testagentloader | Depency with product specific recipe |
 
 
 ## Components details in 'packagegroup-vendor-layer'
@@ -279,7 +299,7 @@ Testing details in [RDKEVD-257](https://ccp.sys.comcast.net/browse/RDKEVD-257)
 | 4 | iarmmgrs-hal-realtek | | 2.1.5-2.0.0-r1 |  | a15d303 | |
 | 5 | rdk-gstreamer-utils-platform | | 1.3.0-1.0.0-r0 |  | 739cdb7 | |
 | 6 | devicesettings-hal-realtek | **4.1.2-4.0.1-r0** | 2.0.0-3.0.0-r1 |  |  | |
-| - |  - devicesettings-hal-realtek_devicesettingssocrealtek | |  | **85c82ea** | 5fff287 |  [](https://github.com/rdk-e/meta-rdk-halif-headers) |
+| - |  - devicesettings-hal-realtek_devicesettingssocrealtek | |  | **85c82ea** | 5fff287 |  |
 | - |  - devicesettings-hal-realtek_devicesettingsskyxione | |  |  | 6929995 | |
 | 7 | deepsleepmgr-hal-realtek | **1.0.4-1.0.0-r0** | 1.0.3-1.0.0-r0 |  | cbe53a0 | |
 | 8 | pwrmgr-hal-realtek | **1.0.3-1.0.0-r0** | 1.0.2-1.0.0-r0 |  | c91e047 | |
@@ -328,52 +348,47 @@ Testing details in [RDKEVD-257](https://ccp.sys.comcast.net/browse/RDKEVD-257)
 | - |  - westeros-sink_realtek | |  |  | 80d02bd | |
 | 50 | westeros | | 1.01.57-r0 |  | 3cd00f7 | |
 | 51 | essos | | 1.01.57-r0 |  | 3cd00f7 | |
-| 52 | python3-pygobject | | 3.34.0-r0 |  | NA | |
-| 53 | make-mod-scripts | | 1.0-r0 |  | NA | |
-| 54 | python3-pycairo | | 1.19.0-r0 |  | NA | |
-| 55 | sky-fpbutton-driver | | 3.0.0-r0 |  | acd582d | |
-| 56 | splashscreen-viewer | | 2.0.0-r0 |  | 41e70a2 | |
-| 57 | rtk-tee | | 1.0.0-r0 |  | NA | |
-| 58 | secauthn | | 1.0.0-r0 |  | NA | |
-| 59 | secapi-rtk | **2.1.0-r2** | 2.1.0-r1 |  | 95b6bd4 | |
-| 60 | secapi3-rtk | | 3.3.0-r0 |  | 570df40 | |
-| 61 | secapi2-adapter | | 1.0.0-r0 |  | NA | |
-| 62 | secapi-common-hw | | 2.3.0-r0 |  | 3a51b88 | |
-| 63 | secapi-netflix | | 1.0.0-r0 |  |  | |
+| 52 | make-mod-scripts | | 1.0-r0 |  | NA | |
+| 53 | sky-fpbutton-driver | | 3.0.0-r0 |  | acd582d | |
+| 54 | splashscreen-viewer | | 2.0.0-r0 |  | 41e70a2 | |
+| 55 | rtk-tee | | 1.0.0-r0 |  | NA | |
+| 56 | secauthn | | 1.0.0-r0 |  | NA | |
+| 57 | secapi-rtk | **2.1.0-r2** | 2.1.0-r1 |  | 95b6bd4 | |
+| 58 | secapi3-rtk | | 3.3.0-r0 |  | 570df40 | |
+| 59 | secapi2-adapter | | 1.0.0-r0 |  | NA | |
+| 60 | secapi-common-hw | | 2.3.0-r0 |  | 3a51b88 | |
+| 61 | secapi-netflix | | 1.0.0-r0 |  |  | |
 | - |  - secapi-netflix_com_inc_rtk | |  |  | 0fa3af3 | |
 | - |  - secapi-netflix_socrealtek | |  |  | d3c7c87 | |
-| 64 | gst-svp-ext | | 1.1.0-r0 |  | NA | |
-| 65 | systemaudioplatform | | 1.0.0-r0 |  | 776348d | |
-| 66 | miracast-soc | | 1.0.0-r0 |  | 30cb689 | |
-| 67 | secapi-crypto-rtk | | 2.3.1-r0 |  | 5241d45 | |
-| 68 | secapi-common-crypto | | 2.3.0-r0 |  | 3a51b88 | |
-| 69 | qca6390-mod-wifi | | 1.0.0-r1 |  | NA | |
-| 70 | flashapp | | 7.1-r0 |  | NA | |
-| 71 | sky-led-driver | | 2.0.0-r0 |  | f97a795 | |
-| 72 | [hank-mod-mali](#hank-mod-mali) | **3.0.0-r0** | 1.0.0-r1 | **a574cc2** | 3ad45d0 |  [3ad45d0...a574cc2](https://github.com/rdk-e/kernel-modules-mali-soc-realtek/compare/3ad45d0cca66d4bdc06d5fb637784f19435bb223...a574cc2187891f2028b2c4ae9aa7483897f13e6d) |
-| 73 | rtkv1sink | | 2.0.0-r1 |  | 67bdf5b | |
-| 74 | led-boot-pattern | | 1.0.0-r0 |  | NA | |
-| 75 | rtkmali | | 2.8.0-r0 |  | NA | |
-| 76 | platform-lib | **2.6.0-r3** | 2.6.0-r2 |  | NA | |
-| 77 | [rtk-audio-service](#rtk-audio-service) | **3.0.1-r0** | 3.0.0-r0 | **d444891** | 8a4a7f3 |  [8a4a7f3...d444891](https://github.com/rdk-e/RtkAudioService-soc-realtek/compare/8a4a7f3a36c00fe491ed61bcf37c4721350f2abb...d4448911c52b758d524f88b6e4ad88e69107a5f2) |
-| 78 | hdmiservice | **4.0.0-r1** | 4.0.0-r0 |  | 9fad0da | |
-| 79 | rtkpcrclksink | | 2.0.0-r0 |  | c8272d9 | |
-| 80 | linux-libc-headers | | 4.9-r6 |  | NA | |
-| 81 | packagegroup-kernel-modules | | 4.9.119.01-r6 |  | NA | |
-| 82 | linux-hank | | 4.9.119.01-r6 |  | e608d5f | |
-| 83 | mediarite-vendor | | 10.0.34.0a2-r0 |  | NA | |
-| 84 | gst-plugins-mediarite | | 1.0-r0 |  | NA | |
-| 85 | [rtkaudiosink](#rtkaudiosink) | **3.0.2-r0** | 3.0.1-r0 | **eaee836** | 423d02f |  [423d02f...eaee836](https://github.com/rdk-e/rtkaudiosink-soc-realtek/compare/423d02f49610151760fa1b4cdcf033f9424db8cb...eaee83681d35c7dc0cf4331450a4f7c317451459) |
-| 86 | [mfi-ree](#mfi-ree) | | 2.0.0-r0 | **4941717** | 1f5a100 |  [1f5a100...4941717](https://github.com/rdk-e/mfi-ree-cpc/compare/1f5a100a7c4f26489b54b0fdebc197ba3db047f9...4941717612087ba6f64121bbb3072675867456ad) |
-| 87 | sysint-oem | | 3.0.0-r0 |  | 50d274a | |
-| 88 | [sysint-soc](#sysint-soc) | **3.0.1-r0** | 3.0.0-r0 | **7d06f20** | f8dded4 |  [f8dded4...7d06f20](https://github.com/rdk-e/sysint-soc-rtk/compare/f8dded4af097061aade727bd591a273af8b1a58a...7d06f20db4a70f8d2a24f095541495157ee45842) |
-| 89 | apparmor-vendor | | 1.0.0-r0 |  | 41e3674 | |
-| 90 | directfb | | 1.7.7-r0 |  | NA | |
-| 91 | product-firmware-pb | | 1.0.2-r0 |  | 3079cbe | |
-| 92 | testagentlib | **3.0.2-r0** | NA |  |  | |
-| - |  - testagentlib_testagentlib | |  | **b8eb1f8** | NA |  [](https://github.com/rdk-e/sysint-soc-rtk) |
-| - |  - testagentlib_xione_factory | |  | **6281804** | NA |  [](https://github.com/rdk-e/sysint-soc-rtk) |
-| 93 | testagent-loader | | 2.3.0-r0 |  | NA | |
+| 62 | gst-svp-ext | | 1.1.0-r0 |  | NA | |
+| 63 | systemaudioplatform | | 1.0.0-r0 |  | 776348d | |
+| 64 | miracast-soc | | 1.0.0-r0 |  | 30cb689 | |
+| 65 | secapi-crypto-rtk | | 2.3.1-r0 |  | 5241d45 | |
+| 66 | secapi-common-crypto | | 2.3.0-r0 |  | 3a51b88 | |
+| 67 | qca6390-mod-wifi | | 1.0.0-r1 |  | NA | |
+| 68 | flashapp | | 7.1-r0 |  | NA | |
+| 69 | sky-led-driver | | 2.0.0-r0 |  | f97a795 | |
+| 70 | hank-mod-mali | **3.0.0-r0** | 1.0.0-r1 | **a574cc2** | 3ad45d0 |  [3ad45d0...a574cc2](https://github.com/rdk-e/kernel-modules-mali-soc-realtek/compare/3ad45d0cca66d4bdc06d5fb637784f19435bb223...a574cc2187891f2028b2c4ae9aa7483897f13e6d) |
+| 71 | rtkv1sink | | 2.0.0-r1 |  | 67bdf5b | |
+| 72 | led-boot-pattern | | 1.0.0-r0 |  | NA | |
+| 73 | platform-lib | **2.6.0-r3** | 2.6.0-r2 |  | NA | |
+| 74 | rtk-audio-service | **3.0.1-r0** | 3.0.0-r0 | **d444891** | 8a4a7f3 |  [8a4a7f3...d444891](https://github.com/rdk-e/RtkAudioService-soc-realtek/compare/8a4a7f3a36c00fe491ed61bcf37c4721350f2abb...d4448911c52b758d524f88b6e4ad88e69107a5f2) |
+| 75 | hdmiservice | **4.0.0-r1** | 4.0.0-r0 |  | 9fad0da | |
+| 76 | rtkpcrclksink | | 2.0.0-r0 |  | c8272d9 | |
+| 77 | linux-libc-headers | | 4.9-r6 |  | NA | |
+| 78 | packagegroup-kernel-modules | | 4.9.119.01-r6 |  | NA | |
+| 79 | linux-hank | | 4.9.119.01-r6 |  | e608d5f | |
+| 80 | mediarite-vendor | | 10.0.34.0a2-r0 |  | NA | |
+| 81 | gst-plugins-mediarite | | 1.0-r0 |  | NA | |
+| 82 | rtkaudiosink | **3.0.2-r0** | 3.0.1-r0 | **eaee836** | 423d02f |  [423d02f...eaee836](https://github.com/rdk-e/rtkaudiosink-soc-realtek/compare/423d02f49610151760fa1b4cdcf033f9424db8cb...eaee83681d35c7dc0cf4331450a4f7c317451459) |
+| 83 | mfi-ree | | 2.0.0-r0 | **4941717** | 1f5a100 |  [1f5a100...4941717](https://github.com/rdk-e/mfi-ree-cpc/compare/1f5a100a7c4f26489b54b0fdebc197ba3db047f9...4941717612087ba6f64121bbb3072675867456ad) |
+| 84 | apparmor-vendor | | 1.0.0-r0 |  | 41e3674 | |
+| 85 | directfb | | 1.7.7-r0 |  | NA | |
+| 86 | product-firmware-pb | | 1.0.2-r0 |  | 3079cbe | |
+| 87 | testagentlib | **3.0.2-r0** | NA |  |  | |
+| -  |  - testagentlib_testagentlib | |  | **b8eb1f8** | NA | |
+| -  |  - testagentlib_xione_factory | |  | **6281804** | NA | |
+| 88 | testagent-loader | | 2.3.0-r0 |  | NA | |
 
 
 ## Consolidated change list from vendor layer repositories
