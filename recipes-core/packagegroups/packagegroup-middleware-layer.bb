@@ -49,7 +49,6 @@ RDEPENDS:${PN} = " \
     logrotate \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     remotedebugger \
-    rmfosal \
     networkmanager-plugin \
     packagemanager \
     parodus \
