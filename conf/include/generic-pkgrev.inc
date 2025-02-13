@@ -306,7 +306,7 @@ PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 PR:pn-network-hotplug = "r3"
 
 PV:pn-sysint = "1.1.1"
-PR:pn-sysint = "r0"
+PR:pn-sysint = "r1"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
 PV:pn-key-simulator = "1.0.1"
