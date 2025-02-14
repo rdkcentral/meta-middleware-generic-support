@@ -129,10 +129,6 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-netsrvmgr = "1.0.6"
-PR:pn-netsrvmgr = "r2"
-PACKAGE_ARCH:pn-netsrvmgr = "${MIDDLEWARE_ARCH}"
-
 PV:pn-entservices-casting = "1.0.0"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
