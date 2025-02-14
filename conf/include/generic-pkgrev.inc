@@ -271,8 +271,8 @@ PV:pn-xdial = "2.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "1.1.1"
-PR:pn-sysint = "r1"
+PV:pn-sysint = "1.1.2"
+PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
 PV:pn-key-simulator = "1.0.1"
