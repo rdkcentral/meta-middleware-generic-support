@@ -66,14 +66,6 @@ PV:pn-tr69hostif-headers = "1.0.4"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-wifi-hal-generic = "1.0.3"
-PR:pn-wifi-hal-generic = "r2"
-PACKAGE_ARCH:pn-wifi-hal-generic = "${MIDDLEWARE_ARCH}"
-
-PV:pn-wifi-hal-headers = "1.0.3"
-PR:pn-wifi-hal-headers = "r2"
-PACKAGE_ARCH:pn-wifi-hal-headers = "${MIDDLEWARE_ARCH}"
-
 PV:pn-dobby = "3.12.0"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
@@ -195,29 +187,13 @@ PV:pn-systimemgrinetrface = "1.0.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tvsettings = "3.1.0"
-PR:pn-tvsettings = "r0"
-PACKAGE_ARCH:pn-tvsettings = "${MIDDLEWARE_ARCH}"
-
-PV:pn-tvsettings-plugins = "${PV:pn-tvsettings}"
-PR:pn-tvsettings-plugins = "${PR:pn-tvsettings}"
-PACKAGE_ARCH:pn-tvsettings-plugins = "${MIDDLEWARE_ARCH}"
-
-PV:pn-tvsettings-hal-noop = "1.0.0"
-PR:pn-tvsettings-hal-noop = "r1"
-PACKAGE_ARCH:pn-tvsettings-hal-noop = "${MIDDLEWARE_ARCH}"
-
-PV:pn-ctrlm-main = "1.0.2"
+PV:pn-ctrlm-main = "1.0.3"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"
 
-PV:pn-xr-voice-sdk = "1.0.2"
+PV:pn-xr-voice-sdk = "1.0.3"
 PR:pn-xr-voice-sdk = "r0"
 PACKAGE_ARCH:pn-xr-voice-sdk = "${MIDDLEWARE_ARCH}"
-
-PV:pn-ctrlm-factory = "1.0.1"
-PR:pn-ctrlm-factory = "r0"
-PACKAGE_ARCH:pn-ctrlm-factory = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdm = "1.3.3"
 PR:pn-rdm = "r0"
@@ -270,7 +246,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices-apis = "1.0.0"
+PV:pn-rdkservices-apis = "1.0.1"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -300,7 +276,7 @@ PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
 PV:pn-sysint = "1.1.1"
-PR:pn-sysint = "r0"
+PR:pn-sysint = "r1"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
 PV:pn-key-simulator = "1.0.1"
@@ -352,7 +328,7 @@ PACKAGE_ARCH:pn-alsa-plugins =  "${MIDDLEWARE_ARCH}"
 PR:pn-pulseaudio = "r0"
 PACKAGE_ARCH:pn-pulseaudio =  "${MIDDLEWARE_ARCH}"
 
-PV:pn-tts = "1.0.2"
+PV:pn-tts = "1.0.3"
 PR:pn-tts = "r0"
 PACKAGE_ARCH:pn-tts = "${MIDDLEWARE_ARCH}"
 
