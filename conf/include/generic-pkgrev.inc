@@ -187,18 +187,6 @@ PV:pn-systimemgrinetrface = "1.0.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tvsettings = "3.1.0"
-PR:pn-tvsettings = "r0"
-PACKAGE_ARCH:pn-tvsettings = "${MIDDLEWARE_ARCH}"
-
-PV:pn-tvsettings-plugins = "${PV:pn-tvsettings}"
-PR:pn-tvsettings-plugins = "${PR:pn-tvsettings}"
-PACKAGE_ARCH:pn-tvsettings-plugins = "${MIDDLEWARE_ARCH}"
-
-PV:pn-tvsettings-hal-noop = "1.0.0"
-PR:pn-tvsettings-hal-noop = "r1"
-PACKAGE_ARCH:pn-tvsettings-hal-noop = "${MIDDLEWARE_ARCH}"
-
 PV:pn-ctrlm-main = "1.0.3"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"

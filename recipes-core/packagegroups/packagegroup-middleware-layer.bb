@@ -159,8 +159,6 @@ RDEPENDS:${PN} = " \
     jquery \
     ndisc6-rdnssd \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_heaptrack', " heaptrack ", "", d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_TV', "tvsettings ", "", d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_TV', "tvsettings-plugins ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_NETWORKMANAGER', 'networkmanager', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'leak_sanitizer', "leakcheck-msgq ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', "apparmor ", "", d)} \
