@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.3.1"
+PV = "2.4.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -23,11 +23,11 @@ RDEPENDS:${PN} = " \
     cjwt \
     commonutilities \
     crashupload \
-    ctrlm-factory \
     ctrlm-headers \
     ctrlm-main \
     dcmd \
     devicesettings \
+    dibbler-client \
     dobby \
     dobby-thunderplugin \
     ermgr \
@@ -48,10 +48,6 @@ RDEPENDS:${PN} = " \
     logrotate \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     remotedebugger \
-    rmfosal \
-    nlmonitor \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_NETWORKMANAGER', '', 'netsrvmgr', d)} \
-    network-hotplug \
     networkmanager-plugin \
     packagemanager \
     parodus \
@@ -61,8 +57,17 @@ RDEPENDS:${PN} = " \
     rdkfwupgrader \
     rdknativescript \
     rdkperf \
-    rdkservices \
-    rdkservices-screencapture \
+    entservices-casting \
+    entservices-connectivity \
+    entservices-deviceanddisplay \
+    entservices-infra \
+    entservices-inputoutput \
+    entservices-mediaanddrm \
+    entservices-peripherals \
+    entservices-runtime \
+    entservices-softwareupdate \
+    entservices-mediaanddrm-screencapture \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
     rdm \
@@ -72,7 +77,6 @@ RDEPENDS:${PN} = " \
     rtremote \
     safec-common-wrapper \
     sysint \
-    syslog-helper \
     systimemgr \
     telemetry \
     thunderjs \
@@ -83,7 +87,6 @@ RDEPENDS:${PN} = " \
     ucresolv \
     webconfig-framework\
     wdmp-c \
-    wifi-hal-generic \
     wpe-backend-rdk \
     wpeframework \
     wpeframework-clientlibraries \
@@ -156,13 +159,12 @@ RDEPENDS:${PN} = " \
     jquery \
     ndisc6-rdnssd \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_heaptrack', " heaptrack ", "", d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_TV', "tvsettings ", "", d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_TV', "tvsettings-plugins ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_NETWORKMANAGER', 'networkmanager', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'leak_sanitizer', "leakcheck-msgq ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', "apparmor ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', "apparmor-generic ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rialto','rialto-client rialto-server rialto-servermanager rialto-gstreamer rialto-ocdm', '', d) } \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_cobalt_plugin', 'cobalt-plugin', '', d) } \
     rdkwpasupplicantconfig \
     cpeabs \
     virtual/ca-certificates-trust-store \
