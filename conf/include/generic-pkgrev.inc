@@ -66,11 +66,11 @@ PV:pn-tr69hostif-headers = "1.0.4"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby = "3.12.0"
+PV:pn-dobby = "3.12.1"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby-thunderplugin = "3.12.0"
+PV:pn-dobby-thunderplugin = "3.12.1"
 PR:pn-dobby-thunderplugin = "r0"
 PACKAGE_ARCH:pn-dobby-thunderplugin = "${MIDDLEWARE_ARCH}"
 
@@ -82,7 +82,7 @@ PV:pn-qtvirtualkeyboard = "5.15.7"
 PR:pn-qtvirtualkeyboard = "r0"
 PACKAGE_ARCH:pn-qtvirtualkeyboard = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.0.0"
+PV:pn-aamp = "2.1.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -128,10 +128,6 @@ PACKAGE_ARCH:pn-jquery = "${MIDDLEWARE_ARCH}"
 PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
-
-PV:pn-netsrvmgr = "1.0.6"
-PR:pn-netsrvmgr = "r2"
-PACKAGE_ARCH:pn-netsrvmgr = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-casting = "1.0.0"
 PR:pn-entservices-casting = "r0"
@@ -275,8 +271,8 @@ PV:pn-xdial = "2.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "1.1.1"
-PR:pn-sysint = "r1"
+PV:pn-sysint = "1.1.2"
+PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
 PV:pn-key-simulator = "1.0.1"
@@ -340,7 +336,7 @@ PV:pn-rialto = "0.9.3"
 PR:pn-rialto = "r0"
 PACKAGE_ARCH:pn-rialto = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-gstreamer = "0.9.3"
+PV:pn-rialto-gstreamer = "0.9.4"
 PR:pn-rialto-gstreamer = "r0"
 PACKAGE_ARCH:pn-rialto-gstreamer = "${MIDDLEWARE_ARCH}"
 
