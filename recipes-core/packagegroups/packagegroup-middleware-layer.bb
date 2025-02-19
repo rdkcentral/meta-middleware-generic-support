@@ -1,5 +1,5 @@
 SUMMARY = "Packagegroup for middleware layer"
-OAPACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
+PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
 LICENSE = "MIT"
 
