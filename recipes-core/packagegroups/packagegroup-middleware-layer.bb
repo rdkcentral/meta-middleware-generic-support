@@ -1,12 +1,12 @@
 SUMMARY = "Packagegroup for middleware layer"
-PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
+OAPACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
 LICENSE = "MIT"
 
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.4.0"
+PV = "2.4.1"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
