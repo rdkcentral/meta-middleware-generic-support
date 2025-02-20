@@ -137,7 +137,7 @@ PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "1.0.1"
+PV:pn-entservices-deviceanddisplay = "1.0.2"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
@@ -359,6 +359,10 @@ PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 PV:pn-os-release = "1.0.0"
 PR:pn-os-release = "r0"
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
+
+PV:pn-wlan-p2p = "1.0.1"
+PR:pn-wlan-p2p = "r0"
+PACKAGE_ARCH:pn-wlan-p2p = "${MIDDLEWARE_ARCH}"
 
 # Workaround to build allarch packags as mw arch
 MULTILIB_VARIANTS:pn-os-release = " multilib "
