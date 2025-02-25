@@ -51,7 +51,7 @@ PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
 PV:pn-telemetry = "1.2.0"
-PR:pn-telemetry = "r0"
+PR:pn-telemetry = "r1"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
 PV:pn-webcfg = "1.1.0"
@@ -204,7 +204,7 @@ PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
 PV:pn-crashupload = "1.0.3"
-PR:pn-crashupload = "r0"
+PR:pn-crashupload = "r1"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
 PV:pn-libsyswrapper = "1.3.3"
