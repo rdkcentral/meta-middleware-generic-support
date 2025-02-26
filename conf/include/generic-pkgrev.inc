@@ -161,7 +161,7 @@ PV:pn-entservices-runtime = "1.0.0"
 PR:pn-entservices-runtime = "r0"
 PACKAGE_ARCH:pn-entservices-runtime = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-softwareupdate = "1.0.0"
+PV:pn-entservices-softwareupdate = "1.0.2"
 PR:pn-entservices-softwareupdate = "r0"
 PACKAGE_ARCH:pn-entservices-softwareupdate = "${MIDDLEWARE_ARCH}"
 
