@@ -18,7 +18,7 @@ PV:pn-iarmbus = "1.0.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.0.7"
+PV:pn-iarmmgrs = "1.0.8"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -51,7 +51,7 @@ PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
 PV:pn-telemetry = "1.2.0"
-PR:pn-telemetry = "r0"
+PR:pn-telemetry = "r1"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
 PV:pn-webcfg = "1.1.0"
@@ -204,7 +204,7 @@ PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
 PV:pn-crashupload = "1.0.3"
-PR:pn-crashupload = "r0"
+PR:pn-crashupload = "r1"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
 PV:pn-libsyswrapper = "1.3.3"
@@ -271,7 +271,7 @@ PV:pn-xdial = "2.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "1.1.3"
+PV:pn-sysint = "1.1.5"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
