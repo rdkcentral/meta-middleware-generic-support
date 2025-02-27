@@ -146,6 +146,10 @@
 #endif
 #define SUBTITLE_CLOCK_ASSUMED_PLAYSTATE_TIME_MS (20000) /**< period after channel change/seek where we try to sync the subtitle clock quickly, before giving up and falling to slower rate */
 
+#define DEFAULT_THUMBNAIL_TILE_ROWS 1		/**< default number of rows for thumbnail if not present in manifest*/
+#define DEFAULT_THUMBNAIL_TILE_COLUMNS 1	/**< default number of columns for thumbnail if not present in manifest*/
+#define DEFAULT_THUMBNAIL_TILE_DURATION 10.0f	/**< default tile duration of thumbnail if not present in manifest in seconds*/
+
 
 #define AAMP_NORMAL_PLAY_RATE		1
 #define AAMP_SLOWMOTION_RATE        0.5

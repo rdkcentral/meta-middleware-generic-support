@@ -5266,12 +5266,16 @@ std::vector<StreamInfo*> StreamAbstractionAAMP_HLS::GetAvailableThumbnailTracks(
 * @param *ptr pointer to thumbnail manifest
 * @return Updated vector of available thumbnail tracks.
 ***************************************************************************/
-/*static*/std::vector<TileInfo> IndexThumbnails( lstring iter )
+std::vector<TileInfo> IndexThumbnails( lstring iter , double stTime=0 )
 {
 	std::vector<TileInfo> rc;
-	AampTime startTime{};
+	AampTime startTime = stTime;
 	TileLayout layout;
 	memset( &layout, 0, sizeof(layout) );
+
+	layout.numRows = DEFAULT_THUMBNAIL_TILE_ROWS;
+	layout.numCols = DEFAULT_THUMBNAIL_TILE_COLUMNS;
+
 	while(!iter.empty())
 	{
 		lstring ptr = iter.mystrpbrk();
@@ -5291,6 +5295,17 @@ std::vector<StreamInfo*> StreamAbstractionAAMP_HLS::GetAvailableThumbnailTracks(
 			else if( !ptr.startswith('#') )
 			{
 				TileInfo tileInfo;
+				if( 0.0f == layout.posterDuration )
+				{
+					if( layout.tileSetDuration )
+					{
+						layout.posterDuration = layout.tileSetDuration;
+					}
+					else
+					{
+						layout.posterDuration = DEFAULT_THUMBNAIL_TILE_DURATION;
+					}
+				}
 				tileInfo.layout = layout;
 				tileInfo.url = ptr.tostring();
 				tileInfo.startTime = startTime.inSeconds();
@@ -5298,6 +5313,10 @@ std::vector<StreamInfo*> StreamAbstractionAAMP_HLS::GetAvailableThumbnailTracks(
 				rc.push_back( tileInfo );
 			}
 		}
+	}
+	if(rc.empty() )
+	{
+		AAMPLOG_WARN("IndexThumbnails failed");
 	}
 	return rc;
 }
@@ -5336,10 +5355,26 @@ bool StreamAbstractionAAMP_HLS::SetThumbnailTrack( int thumbIndex )
 					downloadTime = tempDownloadTime;
 					AAMPLOG_WARN("In StreamAbstractionAAMP_HLS: Configured Thumbnail");
 					thumbnailManifest.AppendNulTerminator();
+					ContentType type = aamp->GetContentType();
+					if( ContentType_LINEAR == type  || ContentType_SLE == type )
+					{
+						if( aamp->getAampCacheHandler()->IsPlaylistUrlCached(streamInfo.uri) )
+						{
+							aamp->getAampCacheHandler()->RemoveFromPlaylistCache(streamInfo.uri);
+						}
+						rc=true;
+					}
 					aamp->getAampCacheHandler()->InsertToPlaylistCache(streamInfo.uri, &thumbnailManifest, tempEffectiveUrl,false,eMEDIATYPE_PLAYLIST_IFRAME);
-					lstring iter = lstring(thumbnailManifest.GetPtr(), thumbnailManifest.GetLen());
-					indexedTileInfo = IndexThumbnails( iter );
-					rc = true;
+					if( ContentType_SLE != type && ContentType_LINEAR != type )
+					{
+						lstring iter = lstring(thumbnailManifest.GetPtr(), thumbnailManifest.GetLen());
+						indexedTileInfo = IndexThumbnails( iter );
+						rc = !indexedTileInfo.empty();
+					}
+					if( !rc )
+					{
+						AAMPLOG_WARN("Thumbnail index failed");
+					}
 				}
 				else
 				{
@@ -5361,13 +5396,15 @@ std::vector<ThumbnailData> StreamAbstractionAAMP_HLS::GetThumbnailRangeData(doub
 {
 	std::vector<ThumbnailData> data{};
 	HlsStreamInfo &streamInfo = streamInfoStore[aamp->mthumbIndexValue];
-	if(!thumbnailManifest.GetPtr())
+	ContentType type = aamp->GetContentType();
+	if(!thumbnailManifest.GetPtr() || ( type == ContentType_SLE || type == ContentType_LINEAR ) )
 	{
+		thumbnailManifest.Free();
 		std::string tmpurl;
-		if(aamp->getAampCacheHandler()->RetrieveFromPlaylistCache(streamInfo.uri, &thumbnailManifest, tmpurl, eMEDIATYPE_PLAYLIST_IFRAME))
+		if(aamp->getAampCacheHandler()->RetrieveFromPlaylistCache(streamInfo.uri, &thumbnailManifest, tmpurl,eMEDIATYPE_PLAYLIST_IFRAME))
 		{
 			lstring iter = lstring(thumbnailManifest.GetPtr(),thumbnailManifest.GetLen());
-			indexedTileInfo = IndexThumbnails( iter );
+			indexedTileInfo = IndexThumbnails( iter, tStart );
 		}
 		else
 		{
@@ -5420,6 +5457,10 @@ std::vector<ThumbnailData> StreamAbstractionAAMP_HLS::GetThumbnailRangeData(doub
 		*baseurl = url.substr(0,url.find_last_of("/\\")+1);
 		*width = streamInfo.resolution.width;
 		*height = streamInfo.resolution.height;
+	}
+	if( data.empty() )
+	{
+		AAMPLOG_WARN("thumbnail Data is empty");
 	}
 	return data;
 }
