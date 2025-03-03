@@ -9,8 +9,8 @@ on:
 
 jobs:
   Merge_prs:
-    uses: rdk-e/build_tools_workflows/.github/workflows/bhc_issue_merge_all_prs.yml@issue_merge_prs
+    uses: rdkcentral/build_tools_workflows/.github/workflows/bhc_issue_merge_all_prs.yml@develop
     with:
       issueNumber: ${{ github.event.inputs.issueNumber }}
     secrets:
-      RDKE_GITHUB_TOKEN: ${{ secrets.RDKE_GITHUB_TOKEN }}
+      RDKE_GITHUB_TOKEN: ${{ secrets.RDKCM_RDKE }}
