@@ -50,7 +50,7 @@ PV:pn-rtremote = "2.0.0"
 PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.2.0"
+PV:pn-telemetry = "1.3.0"
 PR:pn-telemetry = "r1"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -141,7 +141,7 @@ PV:pn-entservices-deviceanddisplay = "1.0.2"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.1.2"
+PV:pn-entservices-infra = "1.1.4"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
@@ -212,7 +212,7 @@ PR:pn-libsyswrapper = "r0"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
 
 PV_pn-rdk-logger = "1.0.0"
-PR_pn-rdk-logger = "r0"
+PR_pn-rdk-logger = "r1"
 PACKAGE_ARCH_pn-rdk-logger = "${MIDDLEWARE_ARCH}"
 
 PV:pn-remotedebugger = "1.2.1"
@@ -242,7 +242,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices-apis = "1.1.2"
+PV:pn-rdkservices-apis = "1.1.4"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -252,7 +252,7 @@ PACKAGE_ARCH:pn-entservices-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
-PV:pn-libunpriv="1.0.1"
+PV:pn-libunpriv="1.0.0"
 PR:pn-libunpriv= "r0"
 PACKAGE_ARCH:pn-libunpriv = "${MIDDLEWARE_ARCH}"
 
