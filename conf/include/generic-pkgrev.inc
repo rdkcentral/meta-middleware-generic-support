@@ -252,7 +252,7 @@ PACKAGE_ARCH:pn-entservices-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
-PV:pn-libunpriv="1.0.1"
+PV:pn-libunpriv="1.0.0"
 PR:pn-libunpriv= "r0"
 PACKAGE_ARCH:pn-libunpriv = "${MIDDLEWARE_ARCH}"
 
