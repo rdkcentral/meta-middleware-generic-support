@@ -2463,7 +2463,7 @@ bool StreamAbstractionAAMP::RampDownProfile(int http_error)
 				aamp->ResetCurrentlyAvailableBandwidth(newBW,false,profileIdxForBandwidthNotification);
 				mBitrateReason = eAAMP_BITRATE_CHANGE_BY_RAMPDOWN;
 
-				// Send abr notification to XRE
+				// Send abr notification
 				video->ABRProfileChanged();
 				mABRLowBufferCounter = 0 ;
 				mABRHighBufferCounter = 0;

@@ -732,7 +732,7 @@ void MyAAMPEventListener::Event(const AAMPEventPtr& e)
 								{
 									// set default url
 									advertInfo ad;
-									ad.url = "https://ads-gb-s8-prd-ak.cdn01.skycdp.com/v1/frag/bmff/t/ipvodad17/dc004d50-30ea-4f46-add8-9a007fe7c8ec/1628085330949/AD/HD/manifest.mpd";
+									ad.url = "https://example.com/AD/HD/manifest.mpd";
 									ad.duration = 0;
 									adList.push_back(ad);
 

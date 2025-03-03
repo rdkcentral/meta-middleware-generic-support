@@ -2489,7 +2489,7 @@ void PlayerInstanceAAMP::SetMatchingBaseUrlConfig(bool bValue)
 void PlayerInstanceAAMP::SetNewABRConfig(bool bValue)
 {
 	SETCONFIGVALUE(AAMP_APPLICATION_SETTING,eAAMPConfig_ABRBufferCheckEnabled,bValue);
-	// Piggybacked following setting along with NewABR for Peacock
+	// Piggybacked following setting along with NewABR
 	SETCONFIGVALUE(AAMP_APPLICATION_SETTING,eAAMPConfig_NewDiscontinuity,bValue);
 	SETCONFIGVALUE(AAMP_APPLICATION_SETTING,eAAMPConfig_HLSAVTrackSyncUsingStartTime,bValue);
 }

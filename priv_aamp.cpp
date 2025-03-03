@@ -5913,7 +5913,7 @@ void PrivateInstanceAAMP::Tune(const char *mainManifestUrl,
 		}
 
 	}
-	//temporary hack for peacock
+	//temporary hack 
 	if (strcasestr(mAppName.c_str(), "peacock"))
 	{
 		// Enable PTS Restamping only for specific apps/platforms
