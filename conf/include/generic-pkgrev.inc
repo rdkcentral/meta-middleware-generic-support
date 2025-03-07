@@ -432,3 +432,7 @@ PV:pn-texttrack = "1.0.2"
 PR:pn-texttrack = "r0"
 PACKAGE_ARCH:pn-texttrack = "${MIDDLEWARE_ARCH}"
 
+PV:pn-lsof = "4.94.0"
+PR:pn-lsof = "r0"
+PACKAGE_ARCH:pn-lsof = "${MIDDLEWARE_ARCH}"
+
