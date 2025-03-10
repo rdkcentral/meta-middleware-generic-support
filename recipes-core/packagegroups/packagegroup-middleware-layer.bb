@@ -46,7 +46,6 @@ RDEPENDS:${PN} = " \
     libsyswrapper \
     libunpriv \
     logrotate \
-    lsof \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     remotedebugger \
     networkmanager-plugin \
