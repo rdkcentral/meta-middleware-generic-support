@@ -2,7 +2,7 @@
  * If not stated otherwise in this file or this component's license file the
  * following copyright and licenses apply:
  *
- * Copyright 2025 RDK Management
+ * Copyright 2020 RDK Management
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,13 @@
 */
 
 /**
- * @file PlayerRfc.h
+ * @file AampRfc.h
  * @brief Aamp RFC header files
  */
-#ifndef _PLAYER_RFC_H
-#define _PLAYER_RFC_H
+#ifndef _AAMP_RFC_H
+#define _AAMP_RFC_H
 
+#ifdef AAMP_RFC_ENABLED
 namespace RFCSettings{ 
     /**
      * @fn getRFCValue
@@ -31,6 +32,7 @@ namespace RFCSettings{
      * @param   Parameter to be fetched
      * @retval  std::string host value
      */
-    std::string readRFCValue(const std::string& parameter,const char* playerName);
+    std::string getRFCValue(const std::string& parameter);
 }
+#endif
 #endif
