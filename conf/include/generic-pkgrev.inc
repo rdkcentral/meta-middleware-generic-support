@@ -18,7 +18,7 @@ PV:pn-iarmbus = "1.0.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.0.7"
+PV:pn-iarmmgrs = "1.0.8"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -42,7 +42,7 @@ PV:pn-rfc = "1.0.4"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.0.6"
+PV:pn-tr69hostif = "1.0.11"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -50,8 +50,8 @@ PV:pn-rtremote = "2.0.0"
 PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.2.0"
-PR:pn-telemetry = "r0"
+PV:pn-telemetry = "1.3.0"
+PR:pn-telemetry = "r1"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
 PV:pn-webcfg = "1.1.0"
@@ -62,15 +62,15 @@ PV:pn-dcmd = "1.1.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.0.4"
+PV:pn-tr69hostif-headers = "1.0.9"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby = "3.12.1"
+PV:pn-dobby = "3.13.0"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby-thunderplugin = "3.12.1"
+PV:pn-dobby-thunderplugin = "3.13.0"
 PR:pn-dobby-thunderplugin = "r0"
 PACKAGE_ARCH:pn-dobby-thunderplugin = "${MIDDLEWARE_ARCH}"
 
@@ -109,15 +109,15 @@ PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
 
-PV:pn-iarm-event-sender = "1.0.1"
+PV:pn-iarm-event-sender = "1.0.2"
 PR:pn-iarm-event-sender = "r0"
 PACKAGE_ARCH:pn-iarm-event-sender = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-query-powerstate = "1.0.1"
+PV:pn-iarm-query-powerstate = "1.0.2"
 PR:pn-iarm-query-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-query-powerstate = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-set-powerstate = "1.0.1"
+PV:pn-iarm-set-powerstate = "1.0.2"
 PR:pn-iarm-set-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-set-powerstate = "${MIDDLEWARE_ARCH}"
 
@@ -129,7 +129,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.0.0"
+PV:pn-entservices-casting = "1.0.3"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
@@ -137,15 +137,15 @@ PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "1.0.2"
+PV:pn-entservices-deviceanddisplay = "1.0.4"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.0.1"
+PV:pn-entservices-infra = "1.1.6"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.0.1"
+PV:pn-entservices-inputoutput = "1.0.3"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -153,15 +153,15 @@ PV:pn-entservices-mediaanddrm = "1.0.2"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-peripherals = "1.0.0"
+PV:pn-entservices-peripherals = "1.0.1"
 PR:pn-entservices-peripherals = "r0"
 PACKAGE_ARCH:pn-entservices-peripherals = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-runtime = "1.0.0"
+PV:pn-entservices-runtime = "1.0.1"
 PR:pn-entservices-runtime = "r0"
 PACKAGE_ARCH:pn-entservices-runtime = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-softwareupdate = "1.0.0"
+PV:pn-entservices-softwareupdate = "1.0.3"
 PR:pn-entservices-softwareupdate = "r0"
 PACKAGE_ARCH:pn-entservices-softwareupdate = "${MIDDLEWARE_ARCH}"
 
@@ -183,7 +183,7 @@ PV:pn-systimemgrinetrface = "1.0.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ctrlm-main = "1.0.4"
+PV:pn-ctrlm-main = "1.0.5"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"
 
@@ -204,7 +204,7 @@ PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
 PV:pn-crashupload = "1.0.3"
-PR:pn-crashupload = "r0"
+PR:pn-crashupload = "r1"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
 PV:pn-libsyswrapper = "1.3.3"
@@ -212,7 +212,7 @@ PR:pn-libsyswrapper = "r0"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
 
 PV_pn-rdk-logger = "1.0.0"
-PR_pn-rdk-logger = "r0"
+PR_pn-rdk-logger = "r1"
 PACKAGE_ARCH_pn-rdk-logger = "${MIDDLEWARE_ARCH}"
 
 PV:pn-remotedebugger = "1.2.1"
@@ -242,7 +242,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices-apis = "1.0.1"
+PV:pn-rdkservices-apis = "1.2.2"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -252,7 +252,7 @@ PACKAGE_ARCH:pn-entservices-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
-PV:pn-libunpriv="1.0.1"
+PV:pn-libunpriv="1.0.0"
 PR:pn-libunpriv= "r0"
 PACKAGE_ARCH:pn-libunpriv = "${MIDDLEWARE_ARCH}"
 
@@ -271,11 +271,11 @@ PV:pn-xdial = "2.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "1.1.3"
+PV:pn-sysint = "1.1.8"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
-PV:pn-key-simulator = "1.0.1"
+PV:pn-key-simulator = "1.0.2"
 PR:pn-key-simulator = "r0"
 PACKAGE_ARCH:pn-key-simulator = "${MIDDLEWARE_ARCH}"
 
@@ -293,7 +293,7 @@ PV:pn-memcr = "1.0.2"
 PR:pn-memcr = "r0"
 PACKAGE_ARCH:pn-memcr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-networkmanager-plugin = "0.8.0"
+PV:pn-networkmanager-plugin = "0.11.0"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
 
@@ -301,7 +301,7 @@ PV:pn-wpeframework-ui = "1.0.0"
 PR:pn-wpeframework-ui = "r0"
 PACKAGE_ARCH:pn-wpeframework-ui = "${MIDDLEWARE_ARCH}"
 
-PV:pn-mfr-utils = "1.0.1"
+PV:pn-mfr-utils = "1.0.2"
 PR:pn-mfr-utils = "r0"
 PACKAGE_ARCH:pn-mfr-utils = "${MIDDLEWARE_ARCH}"
 
@@ -309,7 +309,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.6"
+PV:pn-thunderstartupservices = "1.0.7"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -431,4 +431,8 @@ PACKAGE_ARCH:pn-ttxdecoder = "${MIDDLEWARE_ARCH}"
 PV:pn-texttrack = "1.0.2"
 PR:pn-texttrack = "r0"
 PACKAGE_ARCH:pn-texttrack = "${MIDDLEWARE_ARCH}"
+
+PV:pn-lsof = "4.94.0"
+PR:pn-lsof = "r0"
+PACKAGE_ARCH:pn-lsof = "${MIDDLEWARE_ARCH}"
 

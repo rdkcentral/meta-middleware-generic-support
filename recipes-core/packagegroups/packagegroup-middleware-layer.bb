@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.5.1"
+PV = "2.7.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -55,7 +55,6 @@ RDEPENDS:${PN} = " \
     rdk-logger \
     rdkat \
     rdkfwupgrader \
-    rdknativescript \
     rdkperf \
     entservices-casting \
     entservices-connectivity \
