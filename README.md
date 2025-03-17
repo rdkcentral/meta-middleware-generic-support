@@ -48,7 +48,7 @@ The aim of this release to include channel change hotfix for the trail candidate
 
 The scope of this release includes:
 
-- Black screen & crash while UHD changing channel  [RDKEVD-644](https://ccp.sys.comcast.net/browse/RDKEVD-644)
+- Black screen & crash while UHD channel change  [RDKEVD-644](https://ccp.sys.comcast.net/browse/RDKEVD-644)
 
 ## Release layer and components
 
@@ -79,9 +79,9 @@ The scope of this release includes:
 | Meta Repo | New Version (5.1.1) | Version in Previous Release (5.1.0) | ChangeList |
 |------------|---------|------------------------------------|--------------|
 | meta-vts |  | 1.2.0 | |
-| meta-rdk-soc-realtek |  **4.0.4** | 4.0.1 | [4.0.1...4.0.4](https://github.com/rdk-e/meta-rdk-soc-realtek/compare/4.0.1...4.0.4) |
+| meta-rdk-soc-realtek |  **4.0.4** | 4.0.2 | [4.0.2...4.0.4](https://github.com/rdk-e/meta-rdk-soc-realtek/compare/4.0.2...4.0.4) |
 | meta-oem-stream |   | 4.0.2  |  |
-| meta-oem-realtek-stream |  **5.1.1** | 5.1.0 | [5.1.0...5.1.1](https://github.com/rdk-e/meta-oem-realtek-stream/compare/5.0.2...5.1.0) |
+| meta-oem-realtek-stream |  **5.1.1** | 5.1.0 | [5.1.0...5.1.1](https://github.com/rdk-e/meta-oem-realtek-stream/compare/5.1.0...5.1.1) |
 | meta-rdk-vendor-realtek-common |  | 1.0.2 |  |
 | meta-oss-vendor-realtek |  | 4.0.4 |  |
 | meta-mediarite-vendor |  | 10.0.34.0a2-r2 | |
@@ -179,7 +179,7 @@ It should be noted that some services may not run as they have dependencies with
 - eg. FlashApp /mnt/usb/SKXI11ADS_VENDOR_DEV_refs_tags_5.1.1_20250316220627.bin
 
 #### USB Flash Method using xboot prompt
-- Copy the image to the usb and connect to the STB
+- Copy the image `"SKXI11ADS_VENDOR_DEV_refs_tags_5.1.1_20250316220627.bin"` to the usb and connect to the STB
 - Switch on the STB
 - Press z button multiple time to get the bootloader prompt.
 - From bootloader prompt, need to do below method
@@ -231,7 +231,7 @@ Testing details in [RDKEVD-712](https://ccp.sys.comcast.net/browse/RDKEVD-712)
 ### Fullstack image testing
 
 ##### XiOne-UK
-- Created Image Assembler build `" SKXI11ADS_DEV_feature_RDKEVD-712-CHGCrash_20250317141849.bin from the jenkins job https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1476/"` based on Middleware version 2.4.0 and the 2.4.0 tag based manifest branched to `"feature/RDKEVD-712-CHGCrash"`.
+- Created Image Assembler build `" SKXI11ADS_DEV_feature_RDKEVD-712-CHGCrash_20250317141849.bin from the jenkins job https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1476/"` based on Middleware version 2.4.3 and the 2.4.3 tag based manifest branched to `"feature/RDKEVD-712-CHGCrash"`.
 
 - Included the application release 4.26.0 using [rdke-assembler-manifest](https://github.com/rdk-e/rdke-assembler-manifest) feature branch `"feature/RDKEVD-712-CHGCrash"`.
 - Tested the below scenarios as part of [RDKEVD-712](https://ccp.sys.comcast.net/browse/RDKEVD-712)
