@@ -44,11 +44,7 @@ XiOne UK REALTEK STB RDKE Vendor Layer Release Notes
 
 ## Release Description
 
-The aim of this release to include channel change hotfix for the trail candidate from vendor layer. This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
-
-The scope of this release includes:
-
-- Black screen & crash while UHD channel change  [RDKEVD-644](https://ccp.sys.comcast.net/browse/RDKEVD-644)
+The aim of this release to provide the hotfix for [RDKEVD-644](https://ccp.sys.comcast.net/browse/RDKEVD-644) on top of vendor release 5.1.0. This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
 
 ## Release layer and components
 
@@ -163,7 +159,7 @@ It should be noted that some services may not run as they have dependencies with
 
 #### Middleware side
 
-- Please mkae sure to include apparmor related mw layer changes.
+- Please make sure to include apparmor related mw layer changes.
 
 
 ## Build instructions
@@ -236,7 +232,7 @@ Testing details in [RDKEVD-712](https://ccp.sys.comcast.net/browse/RDKEVD-712)
 - Included the application release 4.26.0 using [rdke-assembler-manifest](https://github.com/rdk-e/rdke-assembler-manifest) feature branch `"feature/RDKEVD-712-CHGCrash"`.
 - Tested the below scenarios as part of [RDKEVD-712](https://ccp.sys.comcast.net/browse/RDKEVD-712)
 
-  - Successfully booted \"\" and obtained the shell prompt and UI.
+  - Successfully booted \"SKXI11ADS_DEV_feature_RDKEVD-712-CHGCrash_20250317141849\" and obtained the shell prompt and UI.
   - Verified UI navigation
   - Verified AV with Disney+ App
   - Verified AV with Xumo Play
@@ -245,6 +241,12 @@ Testing details in [RDKEVD-712](https://ccp.sys.comcast.net/browse/RDKEVD-712)
   - Verified AV with YouTube
   - Verified remote control pairing
   - Verified Log files are present in /opt/logs
+
+- Note
+
+  - Validated the middleware build with the test build from MW develop manifest(https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Middleware-Build/13975/s3/) due to MW manifest is not ready with the apparmor changes.
+  - Attached the test report here(https://ccp.sys.comcast.net/browse/RDKEVD-712?focusedId=21660609&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-21660609)
+  - The testing will continue until we receive the r35 product build, once we receive the product build we will continue the testing on that build.
 
 ## Components details in 'packagegroup-common-vendor-layer'
 
