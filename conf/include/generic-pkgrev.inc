@@ -51,7 +51,7 @@ PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
 PV:pn-telemetry = "1.3.0"
-PR:pn-telemetry = "r2"
+PR:pn-telemetry = "r3"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
 PV:pn-webcfg = "1.1.0"
