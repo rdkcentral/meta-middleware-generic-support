@@ -17,9 +17,11 @@ ROOTFS_POSTPROCESS_COMMAND += "create_init_link; "
 ROOTFS_POSTPROCESS_COMMAND += "modify_NM; "
 
 modify_NM() {
+    if [ -f "${IMAGE_ROOTFS}/etc/NetworkManager/dispatcher.d/nlmon-script.sh ]; then
         rm ${IMAGE_ROOTFS}/etc/NetworkManager/dispatcher.d/nlmon-script.sh
         sed -i "s/dns=dnsmasq//g" ${IMAGE_ROOTFS}/etc/NetworkManager/NetworkManager.conf
         sed -i '16i ExecStartPost=/bin/sh /lib/rdk/NM_restartConn.sh' ${IMAGE_ROOTFS}/lib/systemd/system/NetworkManager.service
+    fi
 }
 
 create_init_link() {
