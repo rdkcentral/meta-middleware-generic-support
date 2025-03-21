@@ -14,13 +14,6 @@ IMAGE_ROOTFS_SIZE ?= "8192"
 IMAGE_ROOTFS_EXTRA_SPACE:append = "${@bb.utils.contains("DISTRO_FEATURES", "systemd", " + 4096", "" ,d)}"
 
 ROOTFS_POSTPROCESS_COMMAND += "create_init_link; "
-ROOTFS_POSTPROCESS_COMMAND += "modify_NM; "
-
-modify_NM() {
-        rm ${IMAGE_ROOTFS}/etc/NetworkManager/dispatcher.d/nlmon-script.sh
-        sed -i "s/dns=dnsmasq//g" ${IMAGE_ROOTFS}/etc/NetworkManager/NetworkManager.conf
-        sed -i '16i ExecStartPost=/bin/sh /lib/rdk/NM_restartConn.sh' ${IMAGE_ROOTFS}/lib/systemd/system/NetworkManager.service
-}
 
 create_init_link() {
         ln -sf /sbin/init ${IMAGE_ROOTFS}/init
