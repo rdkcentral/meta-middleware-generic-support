@@ -1,0 +1,40 @@
+Index: git/Source/WPEFramework/PluginServer.cpp
+===================================================================
+--- git.orig/Source/WPEFramework/PluginServer.cpp
++++ git/Source/WPEFramework/PluginServer.cpp
+@@ -282,21 +282,26 @@ namespace PluginHost
+     {
+         void* result = nullptr;
+         if (id == Core::IUnknown::ID) {
++		TRACE_L1("id is Unknown");
+             AddRef();
+             result = static_cast<IUnknown*>(this);
+         } 
+         else if (id == PluginHost::IShell::ID) {
++		TRACE_L1("id is from IShell");
+             AddRef();
+             result = static_cast<PluginHost::IShell*>(this);
+         }
+         else {
++		TRACE_L1("id is neither unknown nor from IShell");
+ 
+             _pluginHandling.Lock();
+ 
+             if (_handler != nullptr) {
+ 
+                 result = _handler->QueryInterface(id);
+-            }
++            } else {
++		    TRACE_L1("_handler is NULL");
++	    }
+ 
+             _pluginHandling.Unlock();
+         }
+@@ -306,6 +311,7 @@ namespace PluginHost
+ 
+     /* virtual */ void* Server::Service::QueryInterfaceByCallsign(const uint32_t id, const string& name)
+     {
++	    TRACE_L1("id : %d, name : %s", id, name);
+         return (_administrator.QueryInterfaceByCallsign(id, name));
+     }
+ 

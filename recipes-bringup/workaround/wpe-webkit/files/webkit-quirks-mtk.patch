@@ -1,0 +1,127 @@
+diff --git a/Source/WebCore/platform/GStreamer.cmake b/Source/WebCore/platform/GStreamer.cmake
+index 293596f42536..9937a8c24cf0 100644
+--- a/Source/WebCore/platform/GStreamer.cmake
++++ b/Source/WebCore/platform/GStreamer.cmake
+@@ -72,6 +72,7 @@ if (ENABLE_VIDEO OR ENABLE_WEB_AUDIO)
+         platform/gstreamer/GStreamerHolePunchQuirkRialto.cpp
+         platform/gstreamer/GStreamerHolePunchQuirkWesteros.cpp
+         platform/gstreamer/GStreamerQuirkAmLogic.cpp
++	platform/gstreamer/GStreamerQuirkMediatek.cpp
+         platform/gstreamer/GStreamerQuirkBcmNexus.cpp
+         platform/gstreamer/GStreamerQuirkBroadcom.cpp
+         platform/gstreamer/GStreamerQuirkRealtek.cpp
+diff --git a/Source/WebCore/platform/gstreamer/GStreamerQuirkMediatek.cpp b/Source/WebCore/platform/gstreamer/GStreamerQuirkMediatek.cpp
+new file mode 100644
+index 000000000000..7b302924621b
+--- /dev/null
++++ b/Source/WebCore/platform/gstreamer/GStreamerQuirkMediatek.cpp
+@@ -0,0 +1,42 @@
++
++#include "config.h"
++#include "GStreamerQuirkMediatek.h"
++
++#if USE(GSTREAMER)
++
++#include "GStreamerCommon.h"
++#include <wtf/OptionSet.h>
++
++namespace WebCore {
++
++GST_DEBUG_CATEGORY_STATIC(webkit_mediatek_quirks_debug);
++#define GST_CAT_DEFAULT webkit_mediatek_quirks_debug
++
++GStreamerQuirkMediatek::GStreamerQuirkMediatek()
++{
++    GST_DEBUG_CATEGORY_INIT(webkit_mediatek_quirks_debug, "webkitquirksmediatek", 0, "WebKit Mediatek Quirks");
++}
++
++GstElement* GStreamerQuirkMediatek::createWebAudioSink()
++{
++    // autoaudiosink changes child element state to READY internally in auto detection phase
++    // that causes resource acquisition in some cases interrupting any playback already running.
++    auto sink = makeGStreamerElement("mtkaudiosink", nullptr);
++    RELEASE_ASSERT_WITH_MESSAGE(sink, "mtkaudiosink should be available in the system but it is not");
++    g_object_set(sink, "direct-mode", FALSE, nullptr);
++    return sink;
++}
++
++void GStreamerQuirkMediatek::configureElement(GstElement* element, const OptionSet<ElementRuntimeCharacteristics>& characteristics)
++{
++    if (characteristics.contains(ElementRuntimeCharacteristics::HasVideo) && gstObjectHasProperty(element, "wait-video")) {
++        GST_INFO("Set property wait-video to TRUE");
++        g_object_set(element, "wait-video", TRUE, nullptr);
++    }
++}
++
++#undef GST_CAT_DEFAULT
++
++} // namespace WebCore
++
++#endif // USE(GSTREAMER)
+diff --git a/Source/WebCore/platform/gstreamer/GStreamerQuirkMediatek.h b/Source/WebCore/platform/gstreamer/GStreamerQuirkMediatek.h
+new file mode 100644
+index 000000000000..564cd4812767
+--- /dev/null
++++ b/Source/WebCore/platform/gstreamer/GStreamerQuirkMediatek.h
+@@ -0,0 +1,21 @@
++
++#pragma once
++
++#if USE(GSTREAMER)
++
++#include "GStreamerQuirks.h"
++
++namespace WebCore {
++
++class GStreamerQuirkMediatek final : public GStreamerQuirk {
++public:
++    GStreamerQuirkMediatek();
++    const char* identifier() final { return "Mediatek"; }
++
++    GstElement* createWebAudioSink() final;
++    void configureElement(GstElement*, const OptionSet<ElementRuntimeCharacteristics>&) final;
++};
++
++} // namespace WebCore
++
++#endif // USE(GSTREAMER)
+diff --git a/Source/WebCore/platform/gstreamer/GStreamerQuirks.cpp b/Source/WebCore/platform/gstreamer/GStreamerQuirks.cpp
+index cb9cf15193af..d75e4f017925 100644
+--- a/Source/WebCore/platform/gstreamer/GStreamerQuirks.cpp
++++ b/Source/WebCore/platform/gstreamer/GStreamerQuirks.cpp
+@@ -29,6 +29,7 @@
+ #include "GStreamerHolePunchQuirkRialto.h"
+ #include "GStreamerHolePunchQuirkWesteros.h"
+ #include "GStreamerQuirkAmLogic.h"
++#include "GStreamerQuirkMediatek.h"
+ #include "GStreamerQuirkBcmNexus.h"
+ #include "GStreamerQuirkBroadcom.h"
+ #include "GStreamerQuirkRealtek.h"
+@@ -75,6 +76,9 @@ GStreamerQuirksManager::GStreamerQuirksManager(bool isForTesting, bool loadQuirk
+ #if PLATFORM(AMLOGIC)
+         quirksListBuilder.append("amlogic,");
+ #endif
++#if PLATFORM(MEDIATEK)
++        quirksListBuilder.append("mediatek,");
++#endif
+ #if PLATFORM(BROADCOM)
+         quirksListBuilder.append("broadcom,");
+ #endif
+@@ -92,7 +96,7 @@ GStreamerQuirksManager::GStreamerQuirksManager(bool isForTesting, bool loadQuirk
+     GST_DEBUG("Attempting to parse requested quirks: %s", quirks.ascii().data());
+     if (!quirks.isEmpty()) {
+         if (WTF::equalLettersIgnoringASCIICase(quirks, "help"_s)) {
+-            WTFLogAlways("Supported quirks for WEBKIT_GST_QUIRKS are: amlogic, broadcom, bcmnexus, realtek, westeros");
++            WTFLogAlways("Supported quirks for WEBKIT_GST_QUIRKS are: amlogic, broadcom, bcmnexus, realtek, westeros, mediatek");
+             return;
+         }
+ 
+@@ -100,6 +104,8 @@ GStreamerQuirksManager::GStreamerQuirksManager(bool isForTesting, bool loadQuirk
+             std::unique_ptr<GStreamerQuirk> quirk;
+             if (WTF::equalLettersIgnoringASCIICase(identifier, "amlogic"_s))
+                 quirk = WTF::makeUnique<GStreamerQuirkAmLogic>();
++            else if (WTF::equalLettersIgnoringASCIICase(identifier, "mediatek"_s))
++                quirk = WTF::makeUnique<GStreamerQuirkMediatek>();
+             else if (WTF::equalLettersIgnoringASCIICase(identifier, "broadcom"_s))
+                 quirk = WTF::makeUnique<GStreamerQuirkBroadcom>();
+             else if (WTF::equalLettersIgnoringASCIICase(identifier, "bcmnexus"_s))

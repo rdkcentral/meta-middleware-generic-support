@@ -1,0 +1,14 @@
+diff --git a/AVOutput/CMakeLists.txt b/AVOutput/CMakeLists.txt
+index 9b04850a..2ad01acb 100644
+--- a/AVOutput/CMakeLists.txt
++++ b/AVOutput/CMakeLists.txt
+@@ -83,6 +83,9 @@ find_package(DS)
+ 
+ target_include_directories(${MODULE_NAME} PRIVATE ${DS_INCLUDE_DIRS})
+ target_include_directories(${MODULE_NAME} PRIVATE ../helpers)
++find_package(Boost COMPONENTS system filesystem REQUIRED)
++target_link_libraries(${MODULE_NAME} PRIVATE ${Boost_SYSTEM_LIBRARY})
++target_link_libraries(${MODULE_NAME} PRIVATE ${Boost_FILESYSTEM_LIBRARY})
+ 
+ target_link_libraries(${MODULE_NAME} 
+     PRIVATE

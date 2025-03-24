@@ -1,0 +1,20 @@
+Index: git/RDKShell/RDKShell.cpp
+===================================================================
+--- git.orig/RDKShell/RDKShell.cpp
++++ git/RDKShell/RDKShell.cpp
+@@ -5589,7 +5589,14 @@ namespace WPEFramework {
+                 JsonObject launchRequest, configuration;
+                 launchRequest["callsign"] = "factoryapp";
+                 launchRequest["type"] = "ResidentApp";
+-                launchRequest["uri"] = std::string(factoryAppUrl);
++		if (NULL != factoryAppUrl)
++                {
++                    launchRequest["uri"] = std::string(factoryAppUrl);
++                }
++                else
++                {
++                    launchRequest["uri"] = std::string("http://localhost:50050/factoryui/index.html?cfg=Hisense");
++                }
+                 configuration["uri"] = launchRequest["uri"];
+                 launchRequest["focused"] = true;
+                 launchRequest["configuration"] = configuration;
