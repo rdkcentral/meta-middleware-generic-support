@@ -71,4 +71,6 @@ SRCREV:pn-subttxrend-webvtt = "${SRCREV:pn-subttxrend-app}"
 SRCREV:pn-dvbsubdecoder= "${SRCREV:pn-subttxrend-app}"
 SRCREV:pn-ttxdecoder = "${SRCREV:pn-subttxrend-app}"
 SRCREV:pn-texttrack = "01cb3d2c77cef91fb132176dc611071628349af5"
+SRCREV:pn-rdkcertconfig = "ba38a4c8a352a6dfe48ccc305834a4dabc3526ea"
+
 
