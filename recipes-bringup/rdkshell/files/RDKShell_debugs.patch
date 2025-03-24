@@ -1,0 +1,56 @@
+Index: git/RDKShell/RDKShell.cpp
+===================================================================
+--- git.orig/RDKShell/RDKShell.cpp
++++ git/RDKShell/RDKShell.cpp
+@@ -483,6 +483,7 @@ namespace WPEFramework {
+             uint32_t getConfig(PluginHost::IShell* shell, const string& callsign, string& config)
+             {
+                 uint32_t result;
++		std::cout << "Checking for QueryInterfaceByCallsign for callsign " << callsign << "in getConfig" << std::endl;
+                 auto interface = shell->QueryInterfaceByCallsign<PluginHost::IShell>(callsign);
+                 if (interface == nullptr) {
+                     result = Core::ERROR_UNAVAILABLE;
+@@ -498,6 +499,7 @@ namespace WPEFramework {
+             uint32_t setConfig(PluginHost::IShell* shell, const string& callsign, const string& config)
+             {
+                 uint32_t result;
++		std::cout << "Checking for QueryInterfaceByCallsign for callsign " << callsign << "in setConfig" << std::endl;
+                 auto interface = shell->QueryInterfaceByCallsign<PluginHost::IShell>(callsign);
+                 if (interface == nullptr) {
+                     result = Core::ERROR_UNAVAILABLE;
+@@ -512,6 +514,7 @@ namespace WPEFramework {
+             uint32_t getServiceState(PluginHost::IShell* shell, const string& callsign, PluginHost::IShell::state& state)
+             {
+                 uint32_t result;
++		std::cout << "Checking for QueryInterfaceByCallsign for callsign " << callsign << "in getServiceState" << std::endl;
+                 auto interface = shell->QueryInterfaceByCallsign<PluginHost::IShell>(callsign);
+                 if (interface == nullptr) {
+                     result = Core::ERROR_UNAVAILABLE;
+@@ -533,6 +536,7 @@ namespace WPEFramework {
+ #else
+                 Core::IWorkerPool::Instance().Submit(Core::ProxyType<Core::IDispatch>(Core::ProxyType<Job>::Create([&]() {
+ #endif /* USE_THUNDER_R4 */
++		std::cout << "Checking for QueryInterfaceByCallsign for callsign " << callsign << "in activate" << std::endl;
+                     auto interface = shell->QueryInterfaceByCallsign<PluginHost::IShell>(callsign);
+                     if (interface == nullptr) {
+                         result = Core::ERROR_UNAVAILABLE;
+@@ -556,6 +560,7 @@ namespace WPEFramework {
+ #else
+                 Core::IWorkerPool::Instance().Submit(Core::ProxyType<Core::IDispatch>(Core::ProxyType<Job>::Create([&]() {
+ #endif /* USE_THUNDER_R4 */
++		std::cout << "Checking for QueryInterfaceByCallsign for callsign " << callsign << "in deactivate" << std::endl;
+                     auto interface = shell->QueryInterfaceByCallsign<PluginHost::IShell>(callsign);
+                     if (interface == nullptr) {
+                         result = Core::ERROR_UNAVAILABLE;
+Index: git/RDKShell/CMakeLists.txt
+===================================================================
+--- git.orig/RDKShell/CMakeLists.txt
++++ git/RDKShell/CMakeLists.txt
+@@ -45,6 +45,7 @@ set_target_properties(${MODULE_NAME} PRO
+         CXX_STANDARD 11
+         CXX_STANDARD_REQUIRED YES)
+ 
++include_directories(${STAGING_INCDIR}/rdk/halif/factory-hal/)
+ if (PLUGIN_RDKSHELL_READ_MAC_ON_STARTUP)
+   add_definitions("-DRDKSHELL_READ_MAC_ON_STARTUP")
+   set(PLUGIN_RDKSHELL_EXTRA_LIBRARIES "-ldeviceModeSelector")

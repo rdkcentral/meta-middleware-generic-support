@@ -1,0 +1,12 @@
+SRCREV:pn-commonutilities = "5687b0851cf0c7e93ddd708c068ee812dd0daff4"
+SRCREV:pn-rdk-logger = "3accfb141546bc35f25e64d9156c8cbfbf53ba39"
+SRCREV:systemtimemgrifc = "f632673f122f84b74abfca32b67c503ab4037c5f"
+SRCREV:systemtimemgrfactory="f632673f122f84b74abfca32b67c503ab4037c5f"
+SRCREV:systemtimemgr = "f632673f122f84b74abfca32b67c503ab4037c5f"
+
+SRCREV_systemtimemgrifc = "f632673f122f84b74abfca32b67c503ab4037c5f"
+SRCREV_systemtimemgrfactory="f632673f122f84b74abfca32b67c503ab4037c5f"
+SRCREV_systemtimemgr = "f632673f122f84b74abfca32b67c503ab4037c5f"
+
+SRCREV_devicesettings = "2a32343a876ee2a1c09a6f7334492ef22031243a"
+SRCREV:pn-tvsettings = "8196da319700168772362750527a7d16e088cd03"
