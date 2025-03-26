@@ -30,7 +30,7 @@
 #define AAMP_CFG_PATH "/opt/aamp.cfg"
 #define AAMP_JSON_PATH "/opt/aampcfg.json"
 
-#define AAMP_VERSION "7.02"
+#define AAMP_VERSION "7.03"
 #define AAMP_TUNETIME_VERSION 5
 
 //Stringification of Macro : use two levels of macros
@@ -166,9 +166,6 @@
 #define MAX_GST_VIDEO_BUFFER_BYTES			(GST_VIDEOBUFFER_SIZE_BYTES)
 #define MAX_GST_AUDIO_BUFFER_BYTES			(GST_AUDIOBUFFER_SIZE_BYTES)
 
-#define MAX_GST_VIDEO_BUFFER_BYTES_FOG_LIVE 		(2097152) /* GST Buffer for FOG Linear Video*/
-#define MAX_GST_AUDIO_BUFFER_BYTES_FOG_LIVE		(256000)  /* GST Buffer for FOG Linear Audio*/
-
 #define DEFAULT_LATENCY_MONITOR_DELAY			9					/**< Latency Monitor Delay */
 #define DEFAULT_LATENCY_MONITOR_INTERVAL		6					/**< Latency monitor Interval */
 #define DEFAULT_MIN_LOW_LATENCY			3					/**< min Default Latency */
@@ -187,8 +184,6 @@
 #define AAMP_BUFFER_MONITOR_GREEN_THRESHOLD 4               /**< 2 fragments for MSO specific linear streams. */
 #define AAMP_BUFFER_MONITOR_GREEN_THRESHOLD_LLD 1           /**< LLD 1 sec minimum buffer to alert */
 
-#define AAMP_LOW_LATENCY_URL_KEYWORD "/low/" /**< AAMP expect this keyword in low latency URL to enable local TSB*/
-#define AAMP_LOW_LATENCY_URL_KEYWORD_ENCODED "%2Flow%2F" /**< AAMP expect this keyword in low latency URL to defog*/
 #define AAMP_FOG_TSB_URL_KEYWORD "tsb?" /**< AAMP expect this keyword in URL to identify it is FOG url */
 
 #define DEFAULT_INITIAL_RATE_CORRECTION_SPEED 1.000001f	/**< Initial rate correction speed to avoid audio drop */
@@ -245,6 +240,7 @@
 #define FIRST_PLAYER_INSTANCE_ID (0) /** Indicate fist player Id */
 
 #define MAX_SESSION_ID_LENGTH 128                                /**<session id string length */
+
 
 /**
  * @brief Enumeration for TUNED Event Configuration

@@ -461,8 +461,8 @@ void InterfacePlayerRDK::ConfigurePipeline(int format, int audioFormat, int auxF
 		if( !gstPrivateContext->subtitle_sink ) MW_LOG_WARN( "subtitle_sink==NULL" );
 		gst_structure_set(
 						  contextStructure,
-						  "video-streams", G_TYPE_UINT, 0x1u,
-						  "audio-streams", G_TYPE_UINT, 0x1u,
+						  "video-streams", G_TYPE_UINT, (gstPrivateContext->video_sink)?0x1u:0x0u,
+						  "audio-streams", G_TYPE_UINT, (gstPrivateContext->audio_sink)?0x1u:0x0u,
 						  "text-streams", G_TYPE_UINT, (gstPrivateContext->subtitle_sink)?0x1u:0x0u,
 						  nullptr );
 		gst_element_set_context(GST_ELEMENT(gstPrivateContext->pipeline), context);
@@ -948,13 +948,24 @@ void InterfacePlayerRDK::RemoveProbes()
 {
 	for (int i = 0; i < GST_TRACK_COUNT; i++)
 	{
-		gst_media_stream *stream = &gstPrivateContext->stream[(GstMediaType)i];
-		if (stream->demuxProbeId && stream->demuxPad)
-		{
-			gst_pad_remove_probe(stream->demuxPad, stream->demuxProbeId);
-			stream->demuxProbeId = 0;
-			stream->demuxPad = NULL;
-		}
+		RemoveProbe((GstMediaType)i);
+	}
+}
+
+/**
+ * @fn RemoveProbe
+ * @brief Remove probe for a particular media type
+ * @param[in] mediaType The media type for which the probe should be removed
+ */
+void InterfacePlayerRDK::RemoveProbe(GstMediaType mediaType)
+{
+	gst_media_stream *stream = &gstPrivateContext->stream[mediaType];
+	if (stream->demuxProbeId && stream->demuxPad)
+	{
+		MW_LOG_WARN("InterfacePlayerRDK: Removing probe for media type %d, probe id %lu", mediaType, stream->demuxProbeId);
+		gst_pad_remove_probe(stream->demuxPad, stream->demuxProbeId);
+		stream->demuxProbeId = 0;
+		stream->demuxPad = NULL;
 	}
 }
 
@@ -1221,6 +1232,7 @@ static GstStateChangeReturn SetStateWithWarnings(GstElement *element, GstState t
 void InterfacePlayerRDK::TearDownStream(GstMediaType mediaType)
 {
 	tearDownCb(true, mediaType);
+	RemoveProbe(mediaType);
 	gst_media_stream* stream = &gstPrivateContext->stream[mediaType];
 	stream->bufferUnderrun = false;
 	stream->eosReached = false;
@@ -1690,7 +1702,7 @@ static void gst_enough_data(GstElement *source, void *_this)
 		MW_LOG_ERR( "Null check failed." );
 	}
 }
-void InterfacePlayerRDK::InitializeSourceForPlayer(void *PlayerInstance, void * source, GstMediaType mediaType, bool isFogEnabled)
+void InterfacePlayerRDK::InitializeSourceForPlayer(void *PlayerInstance, void * source, GstMediaType mediaType)
 {
 	InterfacePlayerRDK* _this = (InterfacePlayerRDK*)PlayerInstance;
 	GstCaps * caps = NULL;
@@ -1701,15 +1713,15 @@ void InterfacePlayerRDK::InitializeSourceForPlayer(void *PlayerInstance, void * 
 	gst_app_src_set_stream_type(GST_APP_SRC(source), GST_APP_STREAM_TYPE_SEEKABLE);
 	if (eGST_MEDIATYPE_VIDEO == mediaType )
 	{
-		int MaxGstVideoBufBytes = isFogEnabled ? m_gstConfigParam->videoBufBytesForFog : m_gstConfigParam->videoBufBytes;
-		MW_LOG_INFO("Setting gst Video buffer max bytes to %d FogLive :%d ", MaxGstVideoBufBytes,isFogEnabled);
+		int MaxGstVideoBufBytes = m_gstConfigParam->videoBufBytes;
+		MW_LOG_INFO("Setting gst Video buffer max bytes to %d", MaxGstVideoBufBytes);
 		g_object_set(source, "max-bytes", (guint64)MaxGstVideoBufBytes, NULL);			/* Sets the maximum video buffer bytes as per configuration*/
 	}
 	else if (eGST_MEDIATYPE_AUDIO == mediaType || eGST_MEDIATYPE_AUX_AUDIO == mediaType)
 	{
 		
-		int MaxGstAudioBufBytes = isFogEnabled ? m_gstConfigParam->audioBufBytesForFog : m_gstConfigParam->audioBufBytes;
-		MW_LOG_INFO("Setting gst Audio buffer max bytes to %d FogLive :%d ", MaxGstAudioBufBytes,isFogEnabled);
+		int MaxGstAudioBufBytes = m_gstConfigParam->audioBufBytes;
+		MW_LOG_INFO("Setting gst Audio buffer max bytes to %d", MaxGstAudioBufBytes);
 		g_object_set(source, "max-bytes", (guint64)MaxGstAudioBufBytes, NULL);			/* Sets the maximum audio buffer bytes as per configuration*/
 	}
 	g_object_set(source, "min-percent", 50, NULL);								/* Trigger the need data event when the queued bytes fall below 50% */
@@ -1891,10 +1903,9 @@ static void gstInitializeSource(void *_this, GObject *source, int iMediaType = e
 	InterfacePlayerRDK* pInterfacePlayerRDK = (InterfacePlayerRDK*)_this;
 	GstMediaType mediaType = (GstMediaType)iMediaType;
 	
-	bool isFogEnabled = pInterfacePlayerRDK->m_gstConfigParam->tsbEnabled;
 	gst_media_stream *stream = &pInterfacePlayerRDK->gstPrivateContext->stream[mediaType];
 	
-	pInterfacePlayerRDK->InitializeSourceForPlayer(pInterfacePlayerRDK,source, mediaType, isFogEnabled);
+	pInterfacePlayerRDK->InitializeSourceForPlayer(pInterfacePlayerRDK,source, mediaType);
 	stream->sourceConfigured = true;
 }
 /**
@@ -2087,6 +2098,7 @@ int InterfacePlayerRDK::SetupStream(int streamId,  void *playerInstance, std::st
 				pInterfacePlayerRDK->gstPrivateContext->subtitle_sink = textsink;
 				MW_LOG_MIL("using rialtomsesubtitlesink muted=%d sink=%p", pInterfacePlayerRDK->gstPrivateContext->subtitleMuted, pInterfacePlayerRDK->gstPrivateContext->subtitle_sink);
 				g_object_set(textsink, "mute", pInterfacePlayerRDK->gstPrivateContext->subtitleMuted ? TRUE : FALSE, NULL);
+				g_object_set(textsink, "pts-offset", static_cast<std::uint64_t>(0), NULL);
 			}
 			else
 			{
@@ -2114,7 +2126,7 @@ int InterfacePlayerRDK::SetupStream(int streamId,  void *playerInstance, std::st
 				gst_element_sync_state_with_parent(stream->sinkbin);
 				pInterfacePlayerRDK->gstPrivateContext->subtitle_sink = GST_ELEMENT(gst_object_ref(stream->sinkbin));
 				g_object_set(stream->sinkbin, "mute", pInterfacePlayerRDK->gstPrivateContext->subtitleMuted ? TRUE : FALSE, NULL);
-				
+				g_object_set(pInterfacePlayerRDK->gstPrivateContext->subtitle_sink, "pts-offset", static_cast<std::uint64_t>(0), NULL);
 				return 0;
 #else
 				MW_LOG_INFO("subs using playbin");
@@ -2159,6 +2171,7 @@ int InterfacePlayerRDK::SetupStream(int streamId,  void *playerInstance, std::st
 			GstElement* vidsink = gst_element_factory_make("rialtomsevideosink", NULL);
 			if (vidsink)
 			{
+				MW_LOG_INFO("Created rialtomsevideosink: %s", GST_ELEMENT_NAME(vidsink));
 				g_object_set(stream->sinkbin, "video-sink", vidsink, NULL);				/* In the stream->sinkbin, set the video-sink property to vidsink */
 				GstMediaFormat mediaFormat = (GstMediaFormat)m_gstConfigParam->media;
 				if(eGST_MEDIAFORMAT_HLS == mediaFormat)
@@ -2166,10 +2179,26 @@ int InterfacePlayerRDK::SetupStream(int streamId,  void *playerInstance, std::st
 					MW_LOG_INFO("setting has-drm=false for clear HLS/TS playback");
 					g_object_set(vidsink, "has-drm", FALSE, NULL);
 				}
+				pInterfacePlayerRDK->gstPrivateContext->video_sink = vidsink;
 			}
 			else
 			{
 				MW_LOG_WARN("Failed to create rialtomsevideosink");
+			}
+		}
+		else if (pInterfacePlayerRDK->gstPrivateContext->usingRialtoSink && eGST_MEDIATYPE_AUDIO == streamId)
+		{
+			MW_LOG_INFO("using rialtomseaudiosink");
+			GstElement* audSink = gst_element_factory_make("rialtomseaudiosink",NULL);
+			if(audSink)
+			{
+				MW_LOG_INFO("Created rialtomseaudiosink : %s",GST_ELEMENT_NAME(audSink));
+				g_object_set(stream->sinkbin, "audio-sink", audSink, NULL);
+				pInterfacePlayerRDK->gstPrivateContext->audio_sink = audSink;
+			}
+			else
+			{
+				AAMPLOG_WARN("Failed to create rialtomseaudiosink");
 			}
 		}
 		else if (pInterfacePlayerRDK->gstPrivateContext->using_westerossink && eGST_MEDIATYPE_VIDEO == streamId)
@@ -2285,9 +2314,8 @@ int InterfacePlayerRDK::SetupStream(int streamId,  void *playerInstance, std::st
 	{
 		if (eGST_MEDIATYPE_VIDEO == streamId && (mediaFormat==eGST_MEDIAFORMAT_DASH || mediaFormat==eGST_MEDIAFORMAT_HLS_MP4) )
 		{ // enable multiqueue
-			bool isFogEnabled = m_gstConfigParam->tsbEnabled;
-			int MaxGstVideoBufBytes = isFogEnabled ? m_gstConfigParam->videoBufBytesForFog : m_gstConfigParam->videoBufBytes;
-			MW_LOG_INFO("Setting gst Video buffer size bytes to %d FogLive : %d", MaxGstVideoBufBytes,isFogEnabled);
+			int MaxGstVideoBufBytes = m_gstConfigParam->videoBufBytes;
+			MW_LOG_INFO("Setting gst Video buffer size bytes to %d", MaxGstVideoBufBytes);
 			g_object_set(stream->sinkbin, "buffer-size", (guint64)MaxGstVideoBufBytes, NULL);
 			g_object_set(stream->sinkbin, "buffer-duration", 3000000000, NULL); //3000000000(ns), 3s
 		}
@@ -3655,7 +3683,7 @@ bool GstPlayer_isVideoOrAudioDecoder(const char* name, InterfacePlayerRDK * pInt
 {
 	// The idea is to identify video or audio decoder plugin created at runtime by playbin and register to its first-frame/pts-error callbacks
 	// This support is available in specific platform plugins in RDK builds and hence checking only for such plugin instances here
-	// For platforms that doesnt support callback, we use GST_STATE_PLAYING state change of playbin to notify first frame to app
+	// For platforms that don't support callback, we use GST_STATE_PLAYING state change of playbin to notify first frame to app
 	bool isAudioOrVideoDecoder = false;
 	const auto platformType = pInterfacePlayerRDK->m_gstConfigParam->platformType;
 	if (!pInterfacePlayerRDK->gstPrivateContext->using_westerossink && gst_StartsWith(name, "brcmvideodecoder"))

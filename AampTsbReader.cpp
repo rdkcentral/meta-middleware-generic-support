@@ -36,7 +36,7 @@ AampTsbReader::AampTsbReader(PrivateInstanceAAMP *aamp, std::shared_ptr<AampTsbD
 	: mAamp(aamp), mDataMgr(dataMgr), mMediaType(mediaType), mInitialized_(false), mStartPosition(0.0),
 	  mUpcomingFragmentPosition(0.0), mCurrentRate(AAMP_NORMAL_PLAY_RATE), mTsbSessionId(sessionId), mEosReached(false), mTrackEnabled(false),
 	  mFirstPTS(0.0), mCurrentBandwidth(0.0), mNewInitWaiting(false), mActiveTuneType(eTUNETYPE_NEW_NORMAL),
-	  mEosCVWait(), mEosMutex(), mIsEndFragmentInjected(false)
+	  mEosCVWait(), mEosMutex(), mIsEndFragmentInjected(false), mLastInitFragmentData(nullptr)
 {
 }
 
@@ -81,11 +81,11 @@ AAMPStatusType AampTsbReader::Init(double &startPosSec, float rate, TuneType tun
 				}
 				else
 				{
-					if (lastFragment->GetPosition() < startPosSec)
+					if (lastFragment->GetAbsPosition() < startPosSec)
 					{
 						// Handle seek out of range
-						AAMPLOG_WARN("[%s] Seeking to the TSB End: %lfs (Requested:%lfs), Range:(%lfs-%lfs) tunetype:%d", GetMediaTypeName(mMediaType), lastFragment->GetPosition(), startPosSec, firstFragment->GetPosition(), lastFragment->GetPosition(), mActiveTuneType);
-						requestedPosition = lastFragment->GetPosition();
+						AAMPLOG_WARN("[%s] Seeking to the TSB End: %lfs (Requested:%lfs), Range:(%lfs-%lfs) tunetype:%d", GetMediaTypeName(mMediaType), lastFragment->GetAbsPosition(), startPosSec, firstFragment->GetAbsPosition(), lastFragment->GetAbsPosition(), mActiveTuneType);
+						requestedPosition = lastFragment->GetAbsPosition();
 					}
 					else
 					{
@@ -115,7 +115,7 @@ AAMPStatusType AampTsbReader::Init(double &startPosSec, float rate, TuneType tun
 					}
 					if (nullptr != firstFragmentToFetch)
 					{
-						mStartPosition = firstFragmentToFetch->GetPosition();
+						mStartPosition = firstFragmentToFetch->GetAbsPosition();
 						// Assign upcoming position as start position
 						mUpcomingFragmentPosition = mStartPosition;
 						mCurrentRate = rate;
@@ -130,9 +130,9 @@ AAMPStatusType AampTsbReader::Init(double &startPosSec, float rate, TuneType tun
 						}
 						// Save First PTS
 						mFirstPTS = firstFragmentToFetch->GetPTS();
-						AAMPLOG_INFO("[%s] startPosition:%lfs rate:%f pts:%lfs Range:(%lfs-%lfs)", GetMediaTypeName(mMediaType), mStartPosition, mCurrentRate, mFirstPTS, firstFragment->GetPosition(), lastFragment->GetPosition());
+						AAMPLOG_INFO("[%s] startPosition:%lfs rate:%f pts:%lfs Range:(%lfs-%lfs)", GetMediaTypeName(mMediaType), mStartPosition, mCurrentRate, mFirstPTS, firstFragment->GetAbsPosition(), lastFragment->GetAbsPosition());
 						mInitialized_ = true;
-						startPosSec = firstFragmentToFetch->GetPosition();
+						startPosSec = firstFragmentToFetch->GetAbsPosition();
 					}
 					else
 					{
@@ -187,7 +187,7 @@ std::shared_ptr<TsbFragmentData> AampTsbReader::ReadNext()
 		}
 		// Error Handling
 		// We are skipping one fragment if not found based on the rate
-		if (mCurrentRate > 0 && (ret->GetPosition() + FLOATING_POINT_EPSILON) < mUpcomingFragmentPosition)
+		if (mCurrentRate > 0 && (ret->GetAbsPosition() + FLOATING_POINT_EPSILON) < mUpcomingFragmentPosition)
 		{
 			// Forward rate
 			// Nearest fragment behind mUpcomingFragmentPosition calculated based of last fragment info
@@ -195,7 +195,7 @@ std::shared_ptr<TsbFragmentData> AampTsbReader::ReadNext()
 			// Therefore, retrieve the next fragment from the linked list if it exists, otherwise, return nullptr.
 			ret = ret->next;
 		}
-		else if (mCurrentRate < 0 && (ret->GetPosition() - FLOATING_POINT_EPSILON) > mUpcomingFragmentPosition)
+		else if (mCurrentRate < 0 && (ret->GetAbsPosition() - FLOATING_POINT_EPSILON) > mUpcomingFragmentPosition)
 		{
 			// Rewinding
 			// Nearest fragment ahead of mUpcomingFragmentPosition calculated based of last fragment info
@@ -232,15 +232,15 @@ std::shared_ptr<TsbFragmentData> AampTsbReader::ReadNext()
 		CheckPeriodBoundary(ret);
 	}
 	mUpcomingFragmentPosition += (mCurrentRate >= 0) ? ret->GetDuration() : -ret->GetDuration();
-	AAMPLOG_INFO("[%s] Returning fragment: pos %lfs pts %lfs relativePos %lfs next %lfs eos %d initWaiting %d discontinuity %d mIsPeriodBoundary %d period %s timeScale %u ptsOffset %fs url %s",
-		GetMediaTypeName(mMediaType), ret->GetPosition(), ret->GetPTS(), ret->GetRelativePosition(), mUpcomingFragmentPosition, mEosReached, mNewInitWaiting, mIsNextFragmentDisc, mIsPeriodBoundary, ret->GetPeriodId().c_str(), ret->GetTimeScale(), ret->GetPTSOffsetSec(), ret->GetUrl().c_str());
+	AAMPLOG_INFO("[%s] Returning fragment: absPos %lfs pts %lfs next %lfs eos %d initWaiting %d discontinuity %d mIsPeriodBoundary %d period %s timeScale %u ptsOffset %fs url %s",
+		GetMediaTypeName(mMediaType), ret->GetAbsPosition(), ret->GetPTS(), mUpcomingFragmentPosition, mEosReached, mNewInitWaiting, mIsNextFragmentDisc, mIsPeriodBoundary, ret->GetPeriodId().c_str(), ret->GetTimeScale(), ret->GetPTSOffsetSec(), ret->GetUrl().c_str());
 
 	return ret;
 }
 
 /**
  * @fn CheckPeriodBoundary
- * 
+ *
  * @param[in] currFragment - Current fragment
  */
 void AampTsbReader::CheckPeriodBoundary(TsbFragmentDataPtr currFragment)
@@ -265,27 +265,6 @@ void AampTsbReader::CheckPeriodBoundary(TsbFragmentDataPtr currFragment)
 }
 
 /**
- * @fn GetStartPosition
- *
- * @return startPosition
- */
-double AampTsbReader::GetStartPosition()
-{
-	double ret = 0.0;
-	if (mStartPosition >= 0)
-	{
-		// Take the relative start position based on data manager start
-		TsbFragmentDataPtr firstFragmentToFetch = mDataMgr->GetNearestFragment((mStartPosition - FLOATING_POINT_EPSILON));
-		if (firstFragmentToFetch)
-		{
-			ret = firstFragmentToFetch->GetRelativePosition();
-			AAMPLOG_INFO("[%s] Data manager current start : %lf, returing start position as %lf", GetMediaTypeName(mMediaType), mDataMgr->GetFirstFragmentPosition(), ret);
-		}
-	}
-	return ret;
-}
-
-/**
  * @fn Term  - function to clear TsbReader states
  */
 void AampTsbReader::Term()
@@ -301,6 +280,7 @@ void AampTsbReader::Term()
 	mActiveTuneType = eTUNETYPE_NEW_NORMAL;
 	mIsPeriodBoundary = false;
 	mIsEndFragmentInjected.store(false);
+	mLastInitFragmentData = nullptr;
 	AAMPLOG_INFO("mediaType : %s", GetMediaTypeName(mMediaType));
 }
 
@@ -331,3 +311,21 @@ void AampTsbReader::AbortCheckForWaitIfReaderDone()
 		mEosCVWait.notify_one();
 	}
 }
+
+	/**
+	 * @fn IsFirstDownload
+	 * @return True if first download
+	 */
+	bool AampTsbReader::IsFirstDownload()
+	{
+		return (mStartPosition == mUpcomingFragmentPosition);
+	}
+
+	/**
+	 * @fn GetPlaybackRate
+	 * @return Playback rate
+	 */
+	float AampTsbReader::GetPlaybackRate()
+	{
+		return mCurrentRate;
+	}

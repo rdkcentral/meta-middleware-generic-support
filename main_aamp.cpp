@@ -60,26 +60,30 @@ PlayerInstanceAAMP::PlayerInstanceAAMP(StreamSink* streamSink
 //Need to do iarm initialization process before reading the tr181 aamp parameters.
 //Using printf here since AAMP logs can only use after creating the global object
 #ifdef IARM_MGR
-	static bool iarmInitialized = false;
-	if(!iarmInitialized)
+	// IARM doesn't work in container environment hence dont init IARM in container
+	if(!IsContainerEnvironment() )
 	{
-	char processName[20] = {0};
-	IARM_Result_t result;
-	snprintf(processName, sizeof(processName), "AAMP-PLAYER-%u", getpid());
-	if (IARM_RESULT_SUCCESS == (result = IARM_Bus_Init((const char*) &processName))) {
-		printf("IARM Interface Inited in AAMP");
-	}
-	else {
-		printf("IARM Interface Inited Externally : %d", result);
-	}
+		static bool iarmInitialized = false;
+		if(!iarmInitialized)
+		{
+		char processName[20] = {0};
+		IARM_Result_t result;
+		snprintf(processName, sizeof(processName), "AAMP-PLAYER-%u", getpid());
+		if (IARM_RESULT_SUCCESS == (result = IARM_Bus_Init((const char*) &processName))) {
+			printf("IARM Interface Inited in AAMP");
+		}
+		else {
+			printf("IARM Interface Inited Externally : %d", result);
+		}
 
-	if (IARM_RESULT_SUCCESS == (result = IARM_Bus_Connect())) {
-		printf("IARM Interface Connected  in AAMP");
+		if (IARM_RESULT_SUCCESS == (result = IARM_Bus_Connect())) {
+			printf("IARM Interface Connected  in AAMP");
+		}
+		else {
+			printf("IARM Interface Connected Externally :%d", result);
+		}
+		iarmInitialized = true;
 	}
-	else {
-		printf("IARM Interface Connected Externally :%d", result);
-	}
-	iarmInitialized = true;
 }
 #endif // IARM_MGR
 	// Create very first instance of Aamp Config to read the cfg & Operator file .This is needed for very first
@@ -833,19 +837,36 @@ void PlayerInstanceAAMP::SetRateInternal(float rate,int overshootcorrection)
 			{ // no change in desired play rate
 				// no deferring for playback resume
 				if (aamp->pipeline_paused && rate != 0)
-				{ // but need to unpause pipeline
+				{ 
 					AAMPLOG_INFO("Resuming Playback at Position '%lld'.", aamp->GetPositionMilliseconds());
-					// check if unpausing in the middle of fragments caching
-					if(!aamp->SetStateBufferingIfRequired())
+					// Resuming payback from pause
+					// If have local TSB, but playing from Live then seek into the TSB
+					// Otherwise unpause the pipeline
+					if(aamp->IsLocalAAMPTsb() && !aamp->IsLocalAAMPTsbInjection())
 					{
-						aamp->mpStreamAbstractionAAMP->NotifyPlaybackPaused(false);
-						StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(aamp);
-						if (sink)
+						retValue = false;
+						aamp->SetState(eSTATE_SEEKING);
+						aamp->seek_pos_seconds = aamp->GetPositionSeconds();
+						aamp->rate = AAMP_NORMAL_PLAY_RATE;
+						aamp->pipeline_paused = false;
+						aamp->AcquireStreamLock();
+						aamp->TuneHelper(eTUNETYPE_SEEK, false);
+						aamp->ReleaseStreamLock();
+					}
+					else
+					{
+						// check if unpausing in the middle of fragments caching
+						if(!aamp->SetStateBufferingIfRequired())
 						{
-							retValue = sink->Pause(false, false);
+							aamp->mpStreamAbstractionAAMP->NotifyPlaybackPaused(false);
+							StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(aamp);
+							if (sink)
+							{
+								retValue = sink->Pause(false, false);
+							}
+							// required since buffers are already cached in paused state
+							aamp->NotifyFirstBufferProcessed(sink ? sink->GetVideoRectangle() : std::string());
 						}
-						// required since buffers are already cached in paused state
-						aamp->NotifyFirstBufferProcessed(sink ? sink->GetVideoRectangle() : std::string());
 					}
 					aamp->pipeline_paused = false;
 					aamp->ResumeDownloads();
@@ -856,27 +877,18 @@ void PlayerInstanceAAMP::SetRateInternal(float rate,int overshootcorrection)
 				if (!aamp->pipeline_paused)
 				{
 					aamp->mpStreamAbstractionAAMP->NotifyPlaybackPaused(true);
-					aamp->StopDownloads();
-					if(aamp->IsLocalAAMPTsb() && aamp->rate == AAMP_NORMAL_PLAY_RATE)	//avoid new pause logic for pause as part of lightning seek
+					if (!aamp->IsLocalAAMPTsb())
 					{
-						retValue = false;
-						aamp->SetState(eSTATE_SEEKING);
-						aamp->seek_pos_seconds = aamp->GetPositionSeconds();
-						aamp->rate = AAMP_NORMAL_PLAY_RATE;
-						aamp->AcquireStreamLock();
-						aamp->TuneHelper(eTUNETYPE_SEEK, true);
-						aamp->ReleaseStreamLock();
-						aamp->ResumeDownloads();
+						aamp->StopDownloads();
 					}
-					else
+
+					StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(aamp);
+					if (sink)
 					{
-						StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(aamp);
-						if (sink)
-						{
-							retValue = sink->Pause(true, false);
-						}
-						aamp->pipeline_paused = true;
+						retValue = sink->Pause(true, false);
 					}
+					aamp->pipeline_paused = true;
+
 					if(aamp->GetLLDashServiceData()->lowLatencyMode)
 					{
 						// PAUSED to PLAY without tune, LLD rate correction is disabled to keep position
@@ -2489,7 +2501,6 @@ void PlayerInstanceAAMP::SetMatchingBaseUrlConfig(bool bValue)
 void PlayerInstanceAAMP::SetNewABRConfig(bool bValue)
 {
 	SETCONFIGVALUE(AAMP_APPLICATION_SETTING,eAAMPConfig_ABRBufferCheckEnabled,bValue);
-	// Piggybacked following setting along with NewABR
 	SETCONFIGVALUE(AAMP_APPLICATION_SETTING,eAAMPConfig_NewDiscontinuity,bValue);
 	SETCONFIGVALUE(AAMP_APPLICATION_SETTING,eAAMPConfig_HLSAVTrackSyncUsingStartTime,bValue);
 }
@@ -3099,7 +3110,7 @@ void PlayerInstanceAAMP::SetAsyncTuneConfig(bool bValue)
 {
 	SETCONFIGVALUE(AAMP_APPLICATION_SETTING,eAAMPConfig_AsyncTune,bValue);
 	// Start it for the playerinstance if default not started and App wants
-	// Stop Async operation for the playerinstance if default started and App doesnt want
+	// Stop Async operation for the playerinstance if default started and App doesn't want
 	AsyncStartStop();
 }
 

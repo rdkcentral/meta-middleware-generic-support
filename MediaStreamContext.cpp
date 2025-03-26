@@ -83,17 +83,18 @@ bool MediaStreamContext::CacheFragment(std::string fragmentUrl, unsigned int cur
 	{
 		// apply pts offset to position which ends up getting put into gst_buffer in sendHelper
 		position += GetContext()->mPTSOffset.inSeconds();
+		AAMPLOG_INFO("Type[%d] position after restamp = %fs", type, position);
 	}
 	AampTSBSessionManager *tsbSessionManager = aamp->GetTSBSessionManager();
 
 	auto CheckEos = [this, &tsbSessionManager, &actualType]() {
-		return tsbSessionManager &&
-		aamp->IsLocalAAMPTsbInjection() &&
-		IsLocalTSBInjection() &&
-		AAMP_NORMAL_PLAY_RATE == aamp->rate &&
-		eTUNETYPE_SEEKTOLIVE == context->mTuneType &&
-		tsbSessionManager->GetTsbReader((AampMediaType)type) &&
-		tsbSessionManager->GetTsbReader((AampMediaType)type)->IsEos();
+		return IsLocalTSBInjection() &&
+			AAMP_NORMAL_PLAY_RATE == aamp->rate &&
+			!aamp->pipeline_paused &&
+			eTUNETYPE_SEEKTOLIVE == context->mTuneType &&
+			tsbSessionManager &&
+			tsbSessionManager->GetTsbReader((AampMediaType)type) &&
+			tsbSessionManager->GetTsbReader((AampMediaType)type)->IsEos();
 	};
 
 	if(initSegment && discontinuity )
@@ -380,14 +381,12 @@ bool MediaStreamContext::CacheFragment(std::string fragmentUrl, unsigned int cur
 					CacheTsbFragment(fragmentToTsbSessionMgr);
 					SetLocalTSBInjection(false);
 				}
-				else if(fragmentToTsbSessionMgr->initFragment && !IsLocalTSBInjection())
+				else if(fragmentToTsbSessionMgr->initFragment && !IsLocalTSBInjection() && !aamp->pipeline_paused)
 				{
 					// Insert init fragment through chunk injector
 					CacheTsbFragment(fragmentToTsbSessionMgr);
 				}
 			}
-			fragmentToTsbSessionMgr->position = posInAbsTimeline; // Need to store the fragment with absolute position
-
 			tsbSessionManager->EnqueueWrite(fragmentUrl, fragmentToTsbSessionMgr, context->GetPeriod()->GetId());
 		}
 		// Added the duplicate conditional statements, to log only for localAAMPTSB cases.
@@ -407,14 +406,26 @@ bool MediaStreamContext::CacheFragment(std::string fragmentUrl, unsigned int cur
 			fragmentToTsbSessionMgr->cacheFragStreamInfo.bandwidthBitsPerSecond = fragmentDescriptor.Bandwidth;
 			CacheTsbFragment(fragmentToTsbSessionMgr);
 		}
-		UpdateTSAfterFetch(initSegment);
 
-		// When injection is from the CachedFragmentChunks buffer, need to update cachedFragments here to remove
-		// the fragment from the buffer.
-		if(IsInjectionFromCachedFragmentChunks())
+		// If playing back from local TSB, or pending playing back from local TSB as paused
+		if (tsbSessionManager && (IsLocalTSBInjection() || aamp->pipeline_paused))
 		{
-			UpdateTSAfterInject();
+			AAMPLOG_TRACE("Skip notifying fragment fetch");
+			// Free the memory
+			cachedFragment->fragment.Free();
 		}
+		else 
+		{
+			// Update buffer index after fetch for injection
+			UpdateTSAfterFetch(initSegment);
+
+			// If injection is from chunk buffer, remove the fragment for injection
+			if(IsInjectionFromCachedFragmentChunks())
+			{
+				UpdateTSAfterInject();
+			}
+		}
+
 		ret = true;
 	}
 	return ret;

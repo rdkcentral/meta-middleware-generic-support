@@ -142,7 +142,7 @@ public :
 			{
 				matchingBaseURL = aamp_getHostFromURL(matchingBaseURL);
 				matchingBaseURL += url;
-				AAMPLOG_WARN( "baseURL with leading /" );                     
+				AAMPLOG_WARN( "baseURL with leading /" );
 			}
 			else
 			{
@@ -176,22 +176,28 @@ public:
 	 */
 	~StreamAbstractionAAMP_MPD();
 	/**
-         * @fn StreamAbstractionAAMP_MPD Copy constructor disabled
-         *
-         */
-  	StreamAbstractionAAMP_MPD(const StreamAbstractionAAMP_MPD&) = delete;
+	 * @fn StreamAbstractionAAMP_MPD Copy constructor disabled
+	 *
+	 */
+	StreamAbstractionAAMP_MPD(const StreamAbstractionAAMP_MPD&) = delete;
 	/**
-         * @fn StreamAbstractionAAMP_MPD assignment operator disabled
-         *
-         */
+	 * @fn StreamAbstractionAAMP_MPD assignment operator disabled
+	 *
+	 */
 	StreamAbstractionAAMP_MPD& operator=(const StreamAbstractionAAMP_MPD&) = delete;
 
+	/**
+	 * @fn Start
+	 * @brief Start streaming
+	 */
 	void Start() override;
+
 	/**
 	 * @fn Stop
 	 * @param  clearChannelData - ignored.
 	 */
 	void Stop(bool clearChannelData) override;
+
 	/**
 	 * @fn Init
 	 * @param  tuneType to set type of object.
@@ -546,6 +552,20 @@ public:
 	bool UseIframeTrack(void) override;
 
 protected:
+	/**
+	 * @fn StartFromAampLocalTsb
+	 *
+	 * @brief Start streaming from AAMP Local TSB
+	 */
+	void StartFromAampLocalTsb();
+
+	/**
+	 * @fn StartFromOtherThanAampLocalTsb
+	 *
+	 * @brief Start streaming content from a source other than AAMP Local TSB (live, CloudTSB, FOG...)
+	 */
+	void StartFromOtherThanAampLocalTsb();
+
 	/**
 	 * @fn GetStartAndDurationForPtsRestamping
 	 *
@@ -1007,9 +1027,13 @@ protected:
 	 */
 	void ProcessAllContentProtectionForMediaType(AampMediaType type, uint32_t priorityAdaptationIdx, std::set<uint32_t> &chosenAdaptationIdxs);
 
-	bool PlacenextAdBrkifAvail(dash::mpd::IMPD *mpd);
-
-	int getValidperiodIdx(int periodIdx);
+	/**
+	 * @brief Retrieves the index of a valid period based on the given period index.
+	 *
+	 * @param periodIdx The index of the period to check.
+	 * @return The index of a valid period.
+	 */
+	int GetValidPeriodIdx(int periodIdx);
 
 	void UpdateMPDPeriodDetails(std::vector<PeriodInfo>& currMPDPeriodDetails,uint64_t &durMs);
 
@@ -1130,12 +1154,6 @@ protected:
 	 * @param[in] trackIndex - index of current audio track
 	 */
 
-	/**
-	 * @fn checkSrcAdisGreaterThanAdbreak
-	 * @param
-	 * @param 
-	 */
-	void checkSrcAdisGreaterThanAdbreak();
 	void SetAudioTrackInfo(const std::vector<AudioTrackInfo> &tracks, const std::string &trackIndex);
 	void SetTextTrackInfo(const std::vector<TextTrackInfo> &tracks, const std::string &trackIndex);
 	/**

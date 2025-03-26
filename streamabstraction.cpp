@@ -939,7 +939,7 @@ bool MediaTrack::ProcessFragmentChunk()
 		{
 			AAMPLOG_INFO("Injecting init chunk for %s",name);
 			InjectFragmentChunkInternal((AampMediaType)type, &cachedFragment->fragment, cachedFragment->position, cachedFragment->position, cachedFragment->duration, cachedFragment->initFragment, cachedFragment->discontinuity);
-			if (eTRACK_VIDEO == type && aamp->IsLocalAAMPTsb() && pContext && pContext->GetProfileCount())
+			if (eTRACK_VIDEO == type && pContext && pContext->GetProfileCount())
 			{
 				pContext->NotifyBitRateUpdate(cachedFragment->profileIndex, cachedFragment->cacheFragStreamInfo, cachedFragment->position);
 			}
@@ -1089,6 +1089,24 @@ bool MediaTrack::ProcessFragmentChunk()
 	return true;
 }
 
+void StreamAbstractionAAMP::ResetTrickModePtsRestamping(void)
+{
+	for (int i = 0; i < AAMP_TRACK_COUNT; i++)
+	{
+		auto track = GetMediaTrack(static_cast<TrackType>(i));
+		if(nullptr != track)
+		{
+			track->ResetTrickModePtsRestamping();
+		}
+	}
+}
+
+void MediaTrack::ResetTrickModePtsRestamping(void)
+{
+	mTrickmodeState = TrickmodeState::UNDEF;
+	mRestampedPts = 0.0;
+}
+
 void MediaTrack::TrickModePtsRestamp(AampGrowableBuffer &fragment, double &position, double &duration,
 									 bool initFragment, bool  discontinuity)
 {
@@ -1122,9 +1140,10 @@ void MediaTrack::TrickModePtsRestamp(AampGrowableBuffer &fragment, double &posit
 		}
 		else
 		{
-			// Initialize the restamped pts timeline when handling the first media fragment
-			mTrickmodeState = TrickmodeState::FIRST_FRAGMENT;
-			mRestampedPts = 0.0;
+			if (TrickmodeState::UNDEF == mTrickmodeState)
+			{
+				mTrickmodeState = TrickmodeState::FIRST_FRAGMENT;
+			}
 		}
 	}
 	else // Media segment
@@ -1173,9 +1192,10 @@ void MediaTrack::TrickModePtsRestamp(AampGrowableBuffer &fragment, double &posit
 	// Update cached values for GStreamer
 	position = mRestampedPts.inSeconds();
 
-	AAMPLOG_INFO("rate %f, initFragment %d, discontinuity %d, "
-				 "position %lfs, duration %lfs, restamped position %lfs, duration %lfs",
-				 aamp->rate, initFragment, discontinuity,
+	AAMPLOG_INFO("state %d rate %f trickPlayFPS %d initFragment %d discontinuity %d "
+				 "position %lfs duration %lfs restamped position %lfs duration %lfs",
+				 static_cast<int>(mTrickmodeState),
+				 aamp->rate, trickPlayFPS, initFragment, discontinuity,
 				 inFragmentPosition.inSeconds(), inFragmentDuration.inSeconds(),
 				 position, duration);
 }
@@ -1245,7 +1265,7 @@ void MediaTrack::ProcessAndInjectFragment(CachedFragment *cachedFragment, bool f
 			}
 		}
 		class StreamAbstractionAAMP* pContext = GetContext();
-		if (eTRACK_VIDEO == type && !aamp->IsLocalAAMPTsb() && pContext && pContext->GetProfileCount())
+		if (eTRACK_VIDEO == type && pContext && pContext->GetProfileCount())
 		{
 			pContext->NotifyBitRateUpdate(cachedFragment->profileIndex, cachedFragment->cacheFragStreamInfo, cachedFragment->position);
 		}
@@ -1537,7 +1557,7 @@ void MediaTrack::RunInjectLoop()
 			}
 		}
 		// Disable audio video balancing for CDVR content ..
-		// CDVR Content includes eac3 audio, the duration of audio doesnt match with video
+		// CDVR Content includes eac3 audio, the duration of audio doesn't match with video
 		// and hence balancing fetch/inject not needed for CDVR //TBD Not needed for LLD
 		if(!ISCONFIGSET(eAAMPConfig_AudioOnlyPlayback) && !aamp->IsCDVRContent() && (!aamp->mAudioOnlyPb && !aamp->mVideoOnlyPb) && !lowLatency)
 		{
@@ -1674,6 +1694,29 @@ int MediaTrack::GetProfileIndexForBW( BitsPerSecond mTsbBandwidth)
 int MediaTrack::GetCurrentBandWidth()
 {
 	return this->bandwidthBitsPerSecond;
+}
+
+/**
+ * @brief Flushes all fetched cached fragments
+ * Flushes all fetched media fragments
+ */
+void MediaTrack::FlushFetchedFragments()
+{
+	std::lock_guard<std::mutex> guard(mutex);
+	while(numberOfFragmentsCached)
+	{
+		AAMPLOG_DEBUG("[%s] Free cachedFragment[%d] numberOfFragmentsCached %d", name, fragmentIdxToInject, numberOfFragmentsCached);
+		mCachedFragment[fragmentIdxToInject].fragment.Free();
+		memset(&mCachedFragment[fragmentIdxToInject], 0, sizeof(CachedFragment));
+		
+		fragmentIdxToInject++;
+		if (fragmentIdxToInject == maxCachedFragmentsPerTrack)
+		{
+  			fragmentIdxToInject = 0;
+		}
+		numberOfFragmentsCached--;
+	}
+	fragmentInjected.notify_one();
 }
 
 /**
@@ -1900,7 +1943,7 @@ StreamAbstractionAAMP::StreamAbstractionAAMP(PrivateInstanceAAMP* aamp, id3_call
 		mNetworkDownDetected(false), mTotalPausedDurationMS(0), mIsPaused(false), mProgramStartTime(-1),
 		mStartTimeStamp(-1),mLastPausedTimeStamp(-1), aamp(aamp),
 		mIsPlaybackStalled(false), mTuneType(), mLock(),
-		mCond(), mLastVideoFragCheckedforABR(0), mLastVideoFragParsedTimeMS(0),
+		mCond(), mLastVideoFragCheckedForABR(0), mLastVideoFragParsedTimeMS(0),
 		mSubCond(), mAudioTracks(), mTextTracks(),mABRHighBufferCounter(0),mABRLowBufferCounter(0),mMaxBufferCountCheck(0),
 		mStateLock(), mStateCond(), mTrackState(eDISCONTINUITY_FREE),
 		mRampDownLimit(-1), mRampDownCount(0),mABRMaxBuffer(0), mABRCacheLength(0), mABRMinBuffer(0), mABRNwConsistency(0),
@@ -1998,7 +2041,7 @@ int StreamAbstractionAAMP::GetDesiredProfile(bool getMidProfile)
 int StreamAbstractionAAMP::GetMaxBWProfile()
 {
 	int ret = 0;
-	if(aamp->IsTSBSupported() && mTsbMaxBitrateProfileIndex >= 0)
+	if(aamp->IsFogTSBSupported() && mTsbMaxBitrateProfileIndex >= 0)
 	{
 		ret = mTsbMaxBitrateProfileIndex;
 	}
@@ -2110,7 +2153,7 @@ void StreamAbstractionAAMP::UpdateProfileBasedOnFragmentDownloaded(void)
 void StreamAbstractionAAMP::UpdateRampUpOrDownProfileReason(void)
 {
 	mBitrateReason = eAAMP_BITRATE_CHANGE_BY_RAMPDOWN;
-	if(mUpdateReason && aamp->IsTSBSupported())
+	if(mUpdateReason && aamp->IsFogTSBSupported())
 	{
 		mBitrateReason = eAAMP_BITRATE_CHANGE_BY_FOG_ABR;
 		mUpdateReason = false;
@@ -4173,7 +4216,7 @@ double MediaTrack::GetTotalInjectedDuration()
 {
 	std::lock_guard<std::mutex> lock(mTrackParamsMutex);
 	double ret = totalInjectedDuration;
-	if(aamp->GetLLDashServiceData()->lowLatencyMode)
+	if (IsInjectionFromCachedFragmentChunks())
 	{
 		ret = totalInjectedChunksDuration;
 	}

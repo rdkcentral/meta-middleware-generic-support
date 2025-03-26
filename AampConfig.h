@@ -293,8 +293,6 @@ typedef enum
 	eAAMPConfig_MinBitrate,                         			/**< minimum bitrate filter for playback profiles */
 	eAAMPConfig_MaxBitrate,                         			/**< maximum bitrate filter for playback profiles*/
 	eAAMPConfig_TLSVersion,							/**< TLS Version value*/
-	eAAMPConfig_GstVideoBufBytesForFogLive,                                 /**< Gstreamer Max Video buffering bytes for fog linear*/
-	eAAMPConfig_GstAudioBufBytesForFogLive,                                 /**< Gstreamer Max Audio buffering bytes for fog linear*/
 	eAAMPConfig_DrmNetworkTimeout,                                          /**< DRM license request timeout in sec*/
 	eAAMPConfig_DrmStallTimeout,                                            /**< Stall Timeout for DRM license request*/
 	eAAMPConfig_DrmStartTimeout,						/**< Start Timeout for DRM license request*/
@@ -375,7 +373,6 @@ typedef enum
 	eAAMPConfig_GstDebugLevel,							/**< gstreamer debug level as you'd define in GST_DEBUG */
 	eAAMPConfig_TsbType,
 	eAAMPConfig_TsbLocation,                                                        /**< tsbType location for local TSB storage*/
-	eAAMPConfig_LLDUrlKeyword,								/** Keyword to identify the lld stream */
 	eAAMPConfig_StringMaxValue						/**< Max value for string config always last element */
 } AAMPConfigSettingString;
 #define AAMPCONFIG_STRING_COUNT (eAAMPConfig_StringMaxValue)
