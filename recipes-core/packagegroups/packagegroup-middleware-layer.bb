@@ -70,7 +70,6 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
-    rdm \
     rdmagent \
     rfc \
     rtcore \
