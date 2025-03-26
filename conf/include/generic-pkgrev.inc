@@ -286,6 +286,8 @@ PACKAGE_ARCH:pn-dropbear = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-mpg123 = "${MIDDLEWARE_ARCH}"
 
+PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
+
 PR:pn-libwpe = "r0"
 PACKAGE_ARCH:pn-libwpe = "${MIDDLEWARE_ARCH}"
 
