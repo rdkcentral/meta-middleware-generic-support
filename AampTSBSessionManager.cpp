@@ -154,7 +154,7 @@ std::shared_ptr<CachedFragment> AampTSBSessionManager::Read(TsbInitDataPtr initf
 	CachedFragmentPtr cachedFragment = std::make_shared<CachedFragment>();
 	std::string url = initfragdata->GetUrl();
 	std::string effectiveUrl;
-	bool readFromAampCache = mAamp->getAampCacheHandler()->RetrieveFromInitFragCache(url, &cachedFragment->fragment, effectiveUrl);
+	bool readFromAampCache = mAamp->getAampCacheHandler()->RetrieveFromInitFragmentCache(url, &cachedFragment->fragment, effectiveUrl);
 	cachedFragment->type = initfragdata->GetMediaType();
 	cachedFragment->cacheFragStreamInfo = initfragdata->GetCacheFragStreamInfo();
 	cachedFragment->profileIndex = initfragdata->GetProfileIndex();
@@ -204,8 +204,11 @@ std::shared_ptr<CachedFragment> AampTSBSessionManager::Read(TsbFragmentDataPtr f
 	std::size_t len = mTSBStore->GetSize(url);
 	if (len > 0)
 	{
-		cachedFragment->position = fragment->GetPosition();
-		cachedFragment->absPosition = fragment->GetPosition(); // AbsPosition is same as position for content from TSB
+		// PTS restamping must be enabled to use AAMP Local TSB.
+		// 'position' has the restamped PTS value, however, the PTS value in the ISO BMFF boxes
+		// (baseMediaDecodeTime) will be restamped later, in the injector thread.
+		cachedFragment->position = fragment->GetPTS() + fragment->GetPTSOffsetSec();
+		cachedFragment->absPosition = fragment->GetAbsPosition();
 		cachedFragment->duration = fragment->GetDuration();
 		cachedFragment->discontinuity = fragment->IsDiscontinuous();
 		cachedFragment->type = fragment->GetInitFragData()->GetMediaType();
@@ -213,7 +216,7 @@ std::shared_ptr<CachedFragment> AampTSBSessionManager::Read(TsbFragmentDataPtr f
 		cachedFragment->timeScale = fragment->GetTimeScale();
 		cachedFragment->uri = url;
 		pts = fragment->GetPTS();
-		AAMPLOG_INFO("[%s] Read fragment from AAMP TSB: position %fs absPosition %fs pts %fs duration %fs discontinuity %d ptsOffset %fs timeScale %u url %s",
+		AAMPLOG_INFO("[%s] Read fragment from AAMP TSB: position (restamped PTS) %fs absPosition %fs pts %fs duration %fs discontinuity %d ptsOffset %fs timeScale %u url %s",
 			GetMediaTypeName(cachedFragment->type), cachedFragment->position, cachedFragment->absPosition, pts, cachedFragment->duration,
 			cachedFragment->discontinuity, cachedFragment->PTSOffsetSec, cachedFragment->timeScale, url.c_str());
 
@@ -265,6 +268,10 @@ void AampTSBSessionManager::EnqueueWrite(std::string url, std::shared_ptr<Cached
 		std::lock_guard<std::mutex> guard(mWriteQueueMutex);
 
 		AampMediaType mediaType = ConvertMediaType(cachedFragment->type);
+		// Read the PTS from the ISOBMFF boxes (baseMediaDecodeTime / timescale) before applying the PTS offset.
+		// The PTS value will be restamped by the injector thread.
+		// This function is called in the context of the fetcher thread before the fragment is added to the list to be injected, to avoid
+		// any race conditions; so it cannot be moved to ProcessWriteQueue() or any other functions called from a different context.
 		double pts = RecalculatePTS(static_cast<AampMediaType>(cachedFragment->type), cachedFragment->fragment.GetPtr(), cachedFragment->fragment.GetLen(), mAamp);
 		// Get or create the datamanager for the mediatype
 		std::shared_ptr<AampTsbDataManager> dataManager = GetTsbDataManager(mediaType);
@@ -283,6 +290,17 @@ void AampTSBSessionManager::EnqueueWrite(std::string url, std::shared_ptr<Cached
 	}
 
 	mWriteThreadCV.notify_one(); // Notify the monitoring thread that there is data in the queue
+}
+
+TsbFragmentDataPtr AampTSBSessionManager::RemoveFragmentDeleteInit(AampMediaType mediatype)
+{
+	bool deleteInit = false;
+	TsbFragmentDataPtr removedFragment = GetTsbDataManager(mediatype)->RemoveFragment(deleteInit);
+	if (removedFragment && deleteInit)
+	{
+		mTSBStore->Delete(removedFragment->GetInitFragData()->GetUrl());
+	}
+	return removedFragment;
 }
 
 /**
@@ -396,13 +414,13 @@ void AampTSBSessionManager::ProcessWriteQueue()
 					}
 					else
 					{
-						TsbFragmentDataPtr removedFragment = GetTsbDataManager(mediatype)->RemoveFragment();
+						TsbFragmentDataPtr removedFragment = RemoveFragmentDeleteInit(mediatype);
 						if (removedFragment)
 						{
 							UpdateTotalStoreDuration(mediatype, -removedFragment->GetDuration());
 							std::string removedFragmentUrl = removedFragment->GetUrl();
 							mTSBStore->Delete(removedFragmentUrl);
-							AAMPLOG_INFO("[%s] Removed  %.02lf sec, Position: %.02lf ,pts %.02lf, Url : %s", GetMediaTypeName(mediatype), removedFragment->GetDuration(), removedFragment->GetPosition(), removedFragment->GetPTS(), removedFragmentUrl.c_str());
+							AAMPLOG_INFO("[%s] Removed  %.02lf sec, AbsPosition: %.02lfs ,pts %.02lf, Url : %s", GetMediaTypeName(mediatype), removedFragment->GetDuration(), removedFragment->GetAbsPosition(), removedFragment->GetPTS(), removedFragmentUrl.c_str());
 						}
 					}
 					UnlockReadMutex();
@@ -511,7 +529,7 @@ double AampTSBSessionManager::CullSegments()
 		if (!skip)
 		{
 			// Remove the oldest segment
-			TsbFragmentDataPtr removedFragment = GetTsbDataManager(mediaTypeToRemove)->RemoveFragment();
+			TsbFragmentDataPtr removedFragment = RemoveFragmentDeleteInit(mediaTypeToRemove);
 			if (removedFragment)
 			{
 				double durationInSeconds = removedFragment->GetDuration();
@@ -521,7 +539,7 @@ double AampTSBSessionManager::CullSegments()
 				UnlockReadMutex();
 				mTSBStore->Delete(removedFragmentUrl);
 				LockReadMutex();
-				AAMPLOG_INFO("[%s] Removed %lf fragment duration seconds, Url: %s, Position: %lf, pts %lf", GetMediaTypeName(mediaTypeToRemove), durationInSeconds, removedFragmentUrl.c_str(), removedFragment->GetPosition(), removedFragment->GetPTS());
+				AAMPLOG_INFO("[%s] Removed %lf fragment duration seconds, Url: %s, AbsPosition: %lf, pts %lf", GetMediaTypeName(mediaTypeToRemove), durationInSeconds, removedFragmentUrl.c_str(), removedFragment->GetAbsPosition(), removedFragment->GetPTS());
 
 				// Update total stored duration
 				UpdateTotalStoreDuration(mediaTypeToRemove, -durationInSeconds);
@@ -659,30 +677,24 @@ std::shared_ptr<AampTsbReader> AampTSBSessionManager::GetTsbReader(AampMediaType
 
 /**
  * @brief Invoke TSB Readers
- * @param[out] offsetFromStart
+ * @param[in,out] startPosSec - Start absolute position, seconds since 1970; in: requested, out: selected
  * @param[in] rate
  * @param[in] tuneType
  *
  * @return AAMPSTatusType - OK if success
  */
-AAMPStatusType AampTSBSessionManager::InvokeTsbReaders(double &position, float rate, TuneType tuneType)
+AAMPStatusType AampTSBSessionManager::InvokeTsbReaders(double &startPosSec, float rate, TuneType tuneType)
 {
 	INIT_CHECK_RETURN_VAL(eAAMPSTATUS_GENERIC_ERROR);
 
 	LockReadMutex();
 	AAMPStatusType ret = eAAMPSTATUS_OK;
-	double relativePos = position;
-	if (relativePos < 0)
-	{
-		AAMPLOG_INFO("relativePos reset to 0!!");
-		relativePos = 0;
-	}
 	if (!mTsbReaders.empty())
 	{
 		// Re-Invoke TSB readers to new position
 		mActiveTuneType = tuneType;
 		GetTsbReader(eMEDIATYPE_VIDEO)->Term();
-		ret = GetTsbReader(eMEDIATYPE_VIDEO)->Init(relativePos, rate, tuneType);
+		ret = GetTsbReader(eMEDIATYPE_VIDEO)->Init(startPosSec, rate, tuneType);
 		if (eAAMPSTATUS_OK != ret)
 		{
 			UnlockReadMutex();
@@ -693,15 +705,14 @@ AAMPStatusType AampTSBSessionManager::InvokeTsbReaders(double &position, float r
 		for (int i = (AAMP_TRACK_COUNT - 1); i > eMEDIATYPE_VIDEO; i--)
 		{
 			// Re-initialize reader with synchronized values
-			double startPos = relativePos;
+			double startPosOtherTracks = startPosSec;
 			GetTsbReader((AampMediaType)i)->Term();
 			if(AAMP_NORMAL_PLAY_RATE == rate)
 			{
-				ret = GetTsbReader((AampMediaType)i)->Init(startPos, rate, tuneType, GetTsbReader(eMEDIATYPE_VIDEO));
+				ret = GetTsbReader((AampMediaType)i)->Init(startPosOtherTracks, rate, tuneType, GetTsbReader(eMEDIATYPE_VIDEO));
 			}
 		}
 	}
-	position = relativePos;
 	UnlockReadMutex();
 	return ret;
 }
@@ -716,7 +727,7 @@ void AampTSBSessionManager::SkipFragment(std::shared_ptr<AampTsbReader>& reader,
 		double skippedDuration = 0.0;
 		if(eMEDIATYPE_VIDEO == reader->GetMediaType())
 		{
-			double startPos = nextFragmentData->GetPosition();
+			double startPos = nextFragmentData->GetAbsPosition();
 			int vodTrickplayFPS = mAamp->mConfig->GetConfigValue(eAAMPConfig_VODTrickPlayFPS);
 			float rate = reader->GetPlaybackRate();
 			double delta = 0.0;
@@ -743,7 +754,7 @@ void AampTSBSessionManager::SkipFragment(std::shared_ptr<AampTsbReader>& reader,
 			if (nextFragmentData)
 			{
 				AAMPLOG_INFO("Skipped frames [rate=%.02f] from %.02lf to %.02lf total duration = %.02lf",
-					rate, startPos, nextFragmentData->GetPosition(), skippedDuration);
+					rate, startPos, nextFragmentData->GetAbsPosition(), skippedDuration);
 			}
 			else
 			{
@@ -758,7 +769,7 @@ void AampTSBSessionManager::SkipFragment(std::shared_ptr<AampTsbReader>& reader,
  *
  * @param[in] MediaStreamContext of appropriate track
  * @return bool - true if success
- * @brief Fetches and caches audio fragment parallelly for video fragment.
+ * @brief Fetches and caches audio fragment in parallel with video fragment.
  */
 bool AampTSBSessionManager::PushNextTsbFragment(MediaStreamContext *pMediaStreamContext)
 {
@@ -784,9 +795,14 @@ bool AampTSBSessionManager::PushNextTsbFragment(MediaStreamContext *pMediaStream
 			ret = true;
 			TsbInitDataPtr initFragmentData = nextFragmentData->GetInitFragData();
 			double bandwidth = initFragmentData->GetBandWidth();
-			AAMPLOG_INFO("Profile Changed : %d : CurrentBandwidth: %.02lf Previous Bandwidth: %.02lf",(bandwidth != reader->mCurrentBandwidth),bandwidth,reader->mCurrentBandwidth);
-			if((reader->IsDiscontinuous()) || isFirstDownload || bandwidth != reader->mCurrentBandwidth)
+			AAMPLOG_INFO("[%s] Inject init fragment: %d CurrentBandwidth: %.02lf Previous Bandwidth: %.02lf IsDiscontinuous: %d IsPeriodBoundary: %d IsFirstDownload: %d",
+				GetMediaTypeName(mediaType), (reader->mLastInitFragmentData.get() != initFragmentData.get()),
+				bandwidth, reader->mCurrentBandwidth, reader->IsDiscontinuous(), reader->IsPeriodBoundary(), isFirstDownload);
+			if (reader->mLastInitFragmentData != initFragmentData)
 			{
+				AAMPLOG_TRACE("[%s] Previous init fragment data is different from current init fragment data, injecting", GetMediaTypeName(mediaType));
+				reader->mLastInitFragmentData = initFragmentData;
+
 				CachedFragmentPtr initFragment = Read(initFragmentData);
 				if (initFragment)
 				{
@@ -806,6 +822,10 @@ bool AampTSBSessionManager::PushNextTsbFragment(MediaStreamContext *pMediaStream
 				reader->mCurrentBandwidth = bandwidth; // Update bandwidth
 			}
 		}
+		else
+		{
+			AAMPLOG_WARN("[%s] Failed to read next fragment", GetMediaTypeName(mediaType));
+		}
 
 		if (ret && nextFragmentData)
 		{
@@ -813,24 +833,22 @@ bool AampTSBSessionManager::PushNextTsbFragment(MediaStreamContext *pMediaStream
 			CachedFragmentPtr nextFragment = Read(nextFragmentData, pts);
 			if (nextFragment)
 			{
-				pMediaStreamContext->downloadedDuration = mAamp->culledSeconds + ((nextFragmentData->GetPosition() - GetTsbDataManager(mediaType)->GetFirstFragmentPosition()) + nextFragmentData->GetDuration());
+				pMediaStreamContext->downloadedDuration = mAamp->culledSeconds + ((nextFragmentData->GetAbsPosition() - GetTsbDataManager(mediaType)->GetFirstFragmentPosition()) + nextFragmentData->GetDuration());
 				// Slow motion is like a normal playback with audio (volume set to 0) and handled in GST layer with SetPlaybackRate
 				if(mAamp->IsIframeExtractionEnabled() && AAMP_NORMAL_PLAY_RATE !=  rate && AAMP_RATE_PAUSE != rate && eMEDIATYPE_VIDEO == mediaType && AAMP_SLOWMOTION_RATE != rate )
 				{
 					if(!mIsoBmffHelper->ConvertToKeyFrame(nextFragment->fragment))
 					{
-						AAMPLOG_ERR("Failed to generate iFrame track from video track at %lf", nextFragmentData->GetPosition());
+						AAMPLOG_ERR("Failed to generate iFrame track from video track at %lf", nextFragmentData->GetAbsPosition());
 					}
 				}
 				UnlockReadMutex();
-				nextFragment->position = pts;/*Update the fragment absolute position as PTS for injection,as the PTS value is required for overriding events in qtdemux.*/
-
 				ret = pMediaStreamContext->CacheTsbFragment(nextFragment);
 				LockReadMutex();
 			}
 			else
 			{
-				AAMPLOG_ERR("[%s] Failed to fetch fragment at %lf", GetMediaTypeName(mediaType), nextFragmentData->GetPosition());
+				AAMPLOG_ERR("[%s] Failed to fetch fragment at %lf", GetMediaTypeName(mediaType), nextFragmentData->GetAbsPosition());
 				ret = false;
 			}
 		}

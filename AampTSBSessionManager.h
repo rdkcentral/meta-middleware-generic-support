@@ -147,13 +147,13 @@ public:
 	std::shared_ptr<AampTsbReader> GetTsbReader(AampMediaType);
 	/**
 	 * @brief Invoke TSB Readers
-	 * @param[out] offsetFromStart
+	 * @param[in,out] startPosSec - Start absolute position, seconds since 1970; in: requested, out: selected
 	 * @param[in] rate
 	 * @param[in] tuneType
 	 *
 	 * @return AAMPSTatusType - OK if success
 	 */
-	AAMPStatusType InvokeTsbReaders(double &position, float rate, TuneType tuneType);
+	AAMPStatusType InvokeTsbReaders(double &startPosSec, float rate, TuneType tuneType);
 	/**
 	 * @brief InitializeDataManagers
 	 *
@@ -253,6 +253,13 @@ private:
 	{
 		mDataManagers[mediaType].second += durationInSeconds;
 	}
+
+	/**
+	 * @brief Remove fragment from list and delete init fragment from TSB store if nolonger referenced
+	 * @param[in] mediaType - track type
+	 * @return shared ptr to fragment removed is any
+	 */
+	TsbFragmentDataPtr RemoveFragmentDeleteInit(AampMediaType mediatype);
 
 	bool mInitialized_;
 	std::atomic_bool mStopThread_;			// This variable is atomic because it can be accessed from multiple threads

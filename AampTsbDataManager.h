@@ -94,12 +94,12 @@ private:
 public:
 	/**
 	 *   @fn incrementUser
-	 *   @return Increment count of fragments used
+	 *   @brief Increment count of fragments used
 	 */
 	void incrementUser() { users++; };
 	/**
 	 *   @fn decrementUser
-	 *   @return decrement count of fragments used
+	 *   @brief Decrement count of fragments used
 	 */
 	void decrementUser() { users--; };
 	/**
@@ -124,19 +124,22 @@ public:
 
 	/**
 	 * @fn GetBandWidth
-	 * @return double bandwidth information
+	 * @brief Get the bandwidth information
+	 * @return Bandwidth information in bits per second
 	 */
 	BitsPerSecond GetBandWidth() { return fragStreamInfo.bandwidthBitsPerSecond; }
 
 	/**
 	 * @fn GetCacheFragStreamInfo
-	 * @return StreamInfo Fragment stream info
+	 * @brief Get the cached fragment stream info
+	 * @return Fragment stream info
 	 */
 	const StreamInfo& GetCacheFragStreamInfo() { return fragStreamInfo; }
 
 	/**
 	 * @fn GetProfileIndex
-	 * @return int ABR profile index
+	 * @brief Get ABR profile index
+	 * @return ABR profile index
 	 */
 	int GetProfileIndex() { return profileIndex; }
 
@@ -155,11 +158,10 @@ public:
 class TsbFragmentData : public TsbSegment
 {
 private:
-	double position; /**< position of the current fragment*/
+	double absolutePositionS; /**< absolute position of the current fragment, in seconds since 1970 */
 	double duration; /**< duration of the current fragment*/
-	double mPTS; /**< PTS of the current fragment*/
+	double mPTS; /**< PTS of the current fragment in seconds before applying PTS offset, i.e. ISO BMFF baseMediaDecodeTime / timescale */
 	bool isDiscontinuous;  /**< the current fragment is discontinuous*/
-	double relativePosition; /**< Relative position from start*/
 	std::shared_ptr<TsbInitData> initFragData; /**< init Fragment of the current fragment*/
 	uint32_t timeScale; /**< timescale of the current fragment */
 	double PTSOffsetSec; /**< PTS offset of the current fragment */
@@ -172,20 +174,19 @@ public:
 	 *   @fn constructor
 	 *   @param[in] url - Segment URL as string
 	 *   @param[in] media - Segment type as AampMediaType
-	 *   @param[in] position - position of the current fragment
+	 *   @param[in] absolutePositionS - absolute position of the current fragment, in seconds since 1970
 	 *   @param[in] duration - duration of the current fragment
-	 *   @param[in] pts - PTS of the current fragment
+	 *   @param[in] pts - PTS of the current fragment in seconds before applying PTS offset, i.e. ISO BMFF baseMediaDecodeTime / timescale
 	 *   @param[in] disc - discontinuity flag
-	 *   @param[in] relativePos - Relative position
 	 *   @param[in] prId - Period Id of the fragment
 	 *   @param[in] initData - Pointer to initData
 	 *   @param[in] timeScale - timescale of the current fragment
 	 *   @param[in] PTSOffsetSec - PTS offset of the current fragment
 	 */
-	TsbFragmentData(std::string url, AampMediaType media, double position, double duration, double pts, bool disc, double relativePos,
+	TsbFragmentData(std::string url, AampMediaType media, double absolutePositionS, double duration, double pts, bool disc,
 		std::string prId, std::shared_ptr<TsbInitData> initData, uint32_t timeScale, double PTSOffsetSec)
-		: TsbSegment(url, media, prId), position(position), duration(duration), mPTS(pts), isDiscontinuous(disc), initFragData(initData),
-		relativePosition(relativePos), timeScale(timeScale), PTSOffsetSec(PTSOffsetSec)
+		: TsbSegment(url, media, prId), absolutePositionS(absolutePositionS), duration(duration), mPTS(pts), isDiscontinuous(disc), initFragData(initData),
+		timeScale(timeScale), PTSOffsetSec(PTSOffsetSec)
 	{
 	}
 
@@ -203,11 +204,11 @@ public:
 	std::shared_ptr<TsbInitData> GetInitFragData() const { return initFragData; }
 
 	/**
-	 * @fn GetPosition
+	 * @fn GetAbsPosition
 	 *
-	 * @return position of the fragment as double
+	 * @return absolute position of the current fragment, in seconds since 1970
 	 */
-	double GetPosition() const { return position; }
+	double GetAbsPosition() const { return absolutePositionS; }
 
 	/**
 	 * @fn GetPTS
@@ -215,13 +216,6 @@ public:
 	 * @return Query the PST of fragment
 	 */
 	double GetPTS() const { return mPTS; }
-
-	/**
-	 * @fn GetRelativePosition
-	 *
-	 * @return Query the relative position of fragment
-	 */
-	double GetRelativePosition() const { return relativePosition; }
 
 	/**
 	 * @fn GetDuration
@@ -295,27 +289,30 @@ public:
 
 	/**
 	 *   @fn GetNearestFragment
-	 *   @param[in] position - Nearest position as double
-	 *   @return pointer to Fragment data and TsbFragmentData
+	 *   @brief Get the nearest fragment for the position
+	 *   @param[in] position - Absolute position of the fragment, in seconds since 1970
+	 *   @return pointer to the nearest fragment data
 	 */
 	std::shared_ptr<TsbFragmentData> GetNearestFragment(double position);
+
 	/**
 	 *   @fn GetFragment
-	 *   @param[in] position - Exact position as double
+	 *   @brief Get fragment for the position
+	 *   @param[in] position - Exact absolute position of the fragment, in seconds since 1970
 	 *   @param[out] eos - Flag to identify the End of stream
 	 *   @return pointer to Fragment data and TsbFragmentData
 	 */
 	std::shared_ptr<TsbFragmentData> GetFragment(double position, bool &eos);
 
 	/**
-	 *   @fn GetFirstFragment
-	 *   @return pointer to first Fragment data
+	 *   @fn GetFirstFragmentPosition
+	 *   @return Absolute position of the first fragment, in seconds since 1970
 	 */
 	double GetFirstFragmentPosition();
 
 	/**
-	 *   @fn GetFirstFragment
-	 *   @return pointer to first Fragment data
+	 *   @fn GetLastFragmentPosition
+	 *   @return Absolute position of the last fragment, in seconds since 1970
 	 */
 	double GetLastFragmentPosition();
 
@@ -333,13 +330,15 @@ public:
 
 	/**
 	 *   @fn RemoveFragment
+	 *   @param[in,out] deleteInit - True if init segment was removed as well
 	 *   @return Shared pointer to removed fragment
 	 */
-	std::shared_ptr<TsbFragmentData> RemoveFragment();
+	std::shared_ptr<TsbFragmentData> RemoveFragment(bool &deleteInit);
 
 	/**
 	 *   @fn RemoveFragments
-	 *   @param[in] position - position to  remove segment until
+	 *   @brief Remove all fragments until the given position
+	 *   @param[in] position - Absolute position, in seconds since 1970, to remove segment until
 	 *   @return shared pointer List of TSB fragments removed
 	 */
 	std::list<std::shared_ptr<TsbFragmentData>> RemoveFragments(double position);
@@ -367,7 +366,8 @@ public:
 
 	/**
 	 *   @fn IsFragmentPresent
-	 *   @param[in] position - position as double
+	 *   @brief Check for any fragment availability at the given position
+	 *   @param[in] position - Absolute position of the fragment, in seconds since 1970
 	 *   @return true if present
 	 */
 	bool IsFragmentPresent(double position);
@@ -379,8 +379,9 @@ public:
 	void Flush();
 
 	/**
-	 *   @fn constructor
-	 *   @param[in] position - Position for querying the discontinuous fragment
+	 *   @fn GetNextDiscFragment
+	 *   @brief API to get next discontinuous fragment in the list. If not found, will return nullptr.
+	 *   @param[in] position - Absolute position, in seconds since 1970, for querying the discontinuous fragment
 	 *   @param[in] backwordSerach - Search direction from the position to discontinuous fragment, default forward
 	 *   @return TsbFragmentData shared object to fragment data
 	 */

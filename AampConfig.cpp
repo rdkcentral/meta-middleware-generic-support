@@ -30,7 +30,6 @@
 #include "AampRfc.h"
 #include <time.h>
 #include <map>
-
 //////////////// CAUTION !!!! STOP !!! Read this before you proceed !!!!!!! /////////////
 /// 1. This Class handles Configuration Parameters of AAMP Player , only Config related functionality to be added
 /// 2. Simple Steps to add a new configuration
@@ -197,12 +196,6 @@ struct ConfigLookupEntryString
 #define DEFAULT_VALUE_USE_SINGLE_PIPELINE false
 #endif
 
-#ifdef DISABLE_MEDIA_PROCESSOR
-#define DEFAULT_VALUE_ENABLE_MEDIA_PROCESSOR false
-#else
-#define DEFAULT_VALUE_ENABLE_MEDIA_PROCESSOR true
-#endif
-
 /**
  * @brief AAMPConfigSettingString metadata
  * note that order must match the actual order of the enum; this is enforced with asserts to catch any wrong/missing declarations
@@ -240,7 +233,6 @@ static const ConfigLookupEntryString mConfigLookupTableString[AAMPCONFIG_STRING_
 	{"","gstlevel", eAAMPConfig_GstDebugLevel,false},
 	{"","tsbType", eAAMPConfig_TsbType, false},
 	{DEFAULT_TSB_LOCATION,"tsbLocation",eAAMPConfig_TsbLocation, true},
-	{AAMP_LOW_LATENCY_URL_KEYWORD,"lldUrlKeyword", eAAMPConfig_LLDUrlKeyword, true},
 };
 
 /**
@@ -361,7 +353,7 @@ static const ConfigLookupEntryBool mConfigLookupTableBool[AAMPCONFIG_BOOL_COUNT]
 	{false,"sendLicenseResponseHeaders", eAAMPConfig_SendLicenseResponseHeaders, false},
 	{false,"suppressDecode", eAAMPConfig_SuppressDecode, false},
 	{false,"reconfigPipelineOnDiscontinuity", eAAMPConfig_ReconfigPipelineOnDiscontinuity, false},
-	{DEFAULT_VALUE_ENABLE_MEDIA_PROCESSOR,"enableMediaProcessor", eAAMPConfig_EnableMediaProcessor, true},
+	{true,"enableMediaProcessor", eAAMPConfig_EnableMediaProcessor, true},
 	{true,"mpdStichingSupport", eAAMPConfig_MPDStitchingSupport, true}, // FIXME - spelling
 	{false,"sendUserAgentInLicense", eAAMPConfig_SendUserAgent, false},
 	{false,"enablePTSReStamp", eAAMPConfig_EnablePTSReStamp, true},
@@ -453,8 +445,6 @@ static const ConfigLookupEntryInt mConfigLookupTableInt[AAMPCONFIG_INT_COUNT+CON
 	{0,"minBitrate",eAAMPConfig_MinBitrate,true},
 	{INT_MAX,"maxBitrate",eAAMPConfig_MaxBitrate,true},
 	{CURL_SSLVERSION_TLSv1_2,"supportTLS",eAAMPConfig_TLSVersion,true,eCONFIG_RANGE_CURL_SSL_VERSION},
-	{MAX_GST_VIDEO_BUFFER_BYTES_FOG_LIVE,"gstVideoBufBytesForFogLive", eAAMPConfig_GstVideoBufBytesForFogLive,false},
-	{MAX_GST_AUDIO_BUFFER_BYTES_FOG_LIVE,"gstAudioBufBytesForFogLive", eAAMPConfig_GstAudioBufBytesForFogLive,false},
 	{DEFAULT_DRM_NETWORK_TIMEOUT,"drmNetworkTimeout",eAAMPConfig_DrmNetworkTimeout,true,eCONFIG_RANGE_TIMEOUT},
 	{0,"drmStallTimeout",eAAMPConfig_DrmStallTimeout,true,eCONFIG_RANGE_TIMEOUT},
 	{0,"drmStartTimeout",eAAMPConfig_DrmStartTimeout,true,eCONFIG_RANGE_TIMEOUT},
@@ -914,7 +904,7 @@ PlatformType AampConfig::InferPlatformFromDeviceProperties( void )
 
 PlatformType AampConfig::InferPlatformFromPluginScan()
 {
-	return AAMPGstPlayer::InferPlatformFromPluginScan();
+	return (PlatformType)AAMPGstPlayer::InferPlatformFromPluginScan();
 }
 
 void AampConfig::ApplyDeviceCapabilities( PlatformType platform )
@@ -925,12 +915,13 @@ void AampConfig::ApplyDeviceCapabilities( PlatformType platform )
 		case ePLATFORM_AMLOGIC:
 			SetConfigValue(AAMP_DEFAULT_SETTING, eAAMPConfig_NoNativeAV, true);
 			break;
-			
+
 		case ePLATFORM_REALTEK:
 			SetConfigValue(AAMP_DEFAULT_SETTING, eAAMPConfig_SyncAudioFragments, true);		// Handled in HLS::Init to avoid audio loss while seeking HLS/TS AV of different duration w/o affecting VOD Discontinuities
 			SetConfigValue(AAMP_DEFAULT_SETTING, eAAMPConfig_RequiredQueuedFrames, 3 + 1);
+			SetConfigValue(AAMP_DEFAULT_SETTING, eAAMPConfig_MaxFragmentCached, 3);
 			break;
-			
+
 		case ePLATFORM_BROADCOM:
 			SetConfigValue(AAMP_DEFAULT_SETTING, eAAMPConfig_DisableAC4, true);
 			if (!AAMPGstPlayer::IsMS2V12Supported())
@@ -939,7 +930,7 @@ void AampConfig::ApplyDeviceCapabilities( PlatformType platform )
 				SetConfigValue(AAMP_TUNE_SETTING, eAAMPConfig_EnableLiveLatencyCorrection, false);
 			}
 			break;
-			
+
 		case ePLATFORM_DEFAULT:
 			SetConfigValue(AAMP_DEFAULT_SETTING, eAAMPConfig_EnableLowLatencyCorrection, false);
 			SetConfigValue(AAMP_DEFAULT_SETTING, eAAMPConfig_UseWesterosSink, false );
@@ -1260,11 +1251,6 @@ bool AampConfig::ProcessConfigJson(const cJSON *cfgdata, ConfigPriority owner )
 					SetConfigValue(owner,eAAMPConfig_CKLicenseServerUrl,conv);
 					drmType = eDRM_ClearKey;
 				}
-				if(strcasecmp("preferredKeysystem",subitem->string)==0)
-				{
-					AAMPLOG_MIL("Preferred key system received - %s", conv.c_str());
-					SetConfigValue(owner,eAAMPConfig_PreferredDRM,(int)drmType);
-				}
 				if(strcasecmp("customData",subitem->string)==0)
 				{
 					AAMPLOG_MIL("customData received - %s", conv.c_str());
@@ -1272,6 +1258,27 @@ bool AampConfig::ProcessConfigJson(const cJSON *cfgdata, ConfigPriority owner )
 				}
 				subitem = subitem->next;
 			}
+
+			// preferredKeysystem used to disambiguate DRM type to use when manifest advertises multiple supported systems.
+			cJSON *preferredKeySystemItem = cJSON_GetObjectItem(drmConfig, "preferredKeysystem");
+			if (preferredKeySystemItem && cJSON_IsString(preferredKeySystemItem))
+			{
+				const char * preferredKeySystem = preferredKeySystemItem->valuestring;
+				AAMPLOG_MIL("preferredKeySystem received - %s", preferredKeySystem );
+				if( strcmp(preferredKeySystem,"com.widevine.alpha")==0 )
+				{
+					drmType = eDRM_WideVine;
+				}
+				else if ( strcmp(preferredKeySystem,"com.microsoft.playready")==0 )
+				{
+					drmType = eDRM_PlayReady;
+				}
+				else if ( strcmp(preferredKeySystem,"org.w3.clearkey")==0 )
+				{
+					drmType = eDRM_ClearKey;
+				}
+			}
+			SetConfigValue(owner, eAAMPConfig_PreferredDRM, (int)drmType);
 		}
 		retval = true;
 	}
@@ -1635,7 +1642,7 @@ bool AampConfig::ProcessBase64AampCfg(const char * base64Config, size_t configLe
 				{
 					if (line.length() > 0)
 					{
-						AAMPLOG_INFO("aamp-cmd:[%s]\n", line.c_str());
+						AAMPLOG_INFO("aamp-cmd:[%s]", line.c_str());
 						ProcessConfigText(line,cfgPriority);
 					}
 				}
@@ -1691,21 +1698,19 @@ void AampConfig::ReadAampCfgFromEnv()
 			}
 		}
 	}
-	else
+
+	// Now check for base64 based env, this is back up in case above string becomes big and becomes error prone, also  base64 covers json format as well.
+	envConf = getenv("AAMP_CFG_BASE64");
+	if (NULL != envConf)
 	{
-		// Now check for base64 based env, this is back up in case above string becomes big and becomes error prone, also  base64 covers json format as well.
-		envConf = getenv("AAMP_CFG_BASE64");
-		if(NULL != envConf)
+		std::string strEnvConfig = envConf; // make sure we copy this as recommended by getEnv doc
+		size_t iConfigLen = strEnvConfig.length();
+		AAMPLOG_MIL("ReadAampCfgFromEnv:BASE64 ENV:%s len:%zu ", strEnvConfig.c_str(), iConfigLen);
+		char *strConfig = (char *)base64_Decode(strEnvConfig.c_str(), &iConfigLen);
+		if (NULL != strConfig)
 		{
-			std::string strEnvConfig = envConf; // make sure we copy this as recommended by getEnv doc
-			size_t iConfigLen = strEnvConfig.length();
-			AAMPLOG_MIL("ReadAampCfgFromEnv:BASE64 ENV:%s len:%zu ",strEnvConfig.c_str(),iConfigLen);
-			char * strConfig = (char * ) base64_Decode(strEnvConfig.c_str(),&iConfigLen);
-			if( NULL != strConfig )
-			{
-				ProcessBase64AampCfg(strConfig, iConfigLen,AAMP_DEV_CFG_SETTING);
-				free(strConfig); // free mem allocated by base64_Decode
-			}
+			ProcessBase64AampCfg(strConfig, iConfigLen, AAMP_DEV_CFG_SETTING);
+			free(strConfig); // free mem allocated by base64_Decode
 		}
 	}
 }
@@ -1769,7 +1774,6 @@ void AampConfig::ReadAllTR181Params()
 			}
 		}
 	}
-	ConfigureLogSettings();
 
 	for( int i =0; i < AAMPCONFIG_STRING_COUNT; i++ )
 	{
@@ -1793,13 +1797,20 @@ void AampConfig::ReadAllTR181Params()
  */
 void AampConfig::ReadOperatorConfiguration()
 {
-	// Not all parameters are supported as  individual  tr181 parameter hence keeping base64 version.
-	ReadBase64TR181Param();
+	// Tr181 doesn't work in container environment hence ignore it if it is container
+	// this will improve load time of aamp in container environment
+	if(!IsContainerEnvironment() )
+	{
+		// Not all parameters are supported as  individual  tr181 parameter hence keeping base64 version.
+		ReadBase64TR181Param();
 
-	// new way of reading RFC for each separate parameter it will override any parameter set before ReadBase64TR181Param
-	// read all individual  config parameters,
-	ReadAllTR181Params();
+		// new way of reading RFC for each separate parameter it will override any parameter set before ReadBase64TR181Param
+		// read all individual  config parameters,
+		ReadAllTR181Params();
+	}
 
+	// this required to set log settings based on configs either default or read from Tr181
+	ConfigureLogSettings();   
 	///////////// Read environment variables set specific to Operator ///////////////////
 	const char *env_aamp_force_aac = getenv("AAMP_FORCE_AAC");
 	if(env_aamp_force_aac)
@@ -1981,7 +1992,7 @@ void AampConfig::DoCustomSetting(ConfigPriority owner)
 	}
 	if(GetConfigValue(eAAMPConfig_InitialBuffer) > 0)
 	{
-		//Enabling initialBuffer and gstBufferAndPlay together cause first frame freeze in amlogic.
+		//Enabling initialBuffer and gstBufferAndPlay together cause first frame freeze in specific platform.
 		SetConfigValue(owner, eAAMPConfig_GStreamerBufferingBeforePlay, false);
 	}
 	ConfigureLogSettings();

@@ -202,10 +202,6 @@ TSProcessor::TSProcessor(class PrivateInstanceAAMP *aamp,StreamOperation streamO
 
 	memset(m_SPS, 0, 32 * sizeof(H264SPS));
 	memset(m_PPS, 0, 256 * sizeof(H264PPS));
-
-	pthread_cond_init(&m_throttleCond, NULL);
-	pthread_cond_init(&m_basePTSCond, NULL);
-	pthread_mutex_init(&m_mutex, NULL);
 	m_versionPMT = 0;
 
 	if ((m_streamOperation == eStreamOp_DEMUX_ALL) || (m_streamOperation == eStreamOp_DEMUX_VIDEO) || (m_streamOperation == eStreamOp_DEMUX_VIDEO_AND_AUX))
@@ -297,10 +293,6 @@ TSProcessor::~TSProcessor()
 		free(m_queuedSegment);
 		m_queuedSegment = NULL;
 	}
-
-	pthread_mutex_destroy(&m_mutex);
-	pthread_cond_destroy(&m_throttleCond);
-	pthread_cond_destroy(&m_basePTSCond);
 }
 
 
@@ -394,6 +386,7 @@ void TSProcessor::processPMTSection(unsigned char* section, int sectionLength)
 	char work[32];
 	StreamOutputFormat videoFormat = FORMAT_INVALID;
 	StreamOutputFormat audioFormat = FORMAT_INVALID;
+	bool cueiDescriptorFound = false;
 
 	int version = ((section[2] >> 1) & 0x1F);
 	int pcrPid = (((section[5] & 0x1F) << 8) + section[6]);
@@ -417,10 +410,30 @@ void TSProcessor::processPMTSection(unsigned char* section, int sectionLength)
 	videoComponentCount = audioComponentCount = 0;
 	m_dsmccComponentFound = false;
 
+	//program info descriptors
+	unsigned char *esInfo = section + 9;
+	unsigned char *esInfoEnd = esInfo + infoLength;
+	while (esInfo < esInfoEnd)
+	{
+        /*If the PMT program_info loop carries a registration descriptor (tag = 0x05)
+         and the registration descriptor carries a format_identifier attribute with value of "0x43554549" (as per ANSI/SCTE 35 2019a), then the corresponding ES with stream_type as "0x86" is an ES carrying SCTE-35 payload */
+		int descriptorTag = esInfo[0];
+		int descriptorLength = esInfo[1];
+		AAMPLOG_INFO("program info descriptors : descriptorTag 0x%x  descriptorLength %d", descriptorTag ,descriptorLength);
+		if (descriptorTag == 0x05 && descriptorLength >= 4 &&
+			esInfo[2] == 'C' && esInfo[3] == 'U' && esInfo[4] == 'E' && esInfo[5] == 'I')
+		{
+			AAMPLOG_INFO("Found SCTE-35 descriptor (CUEI)");
+			cueiDescriptorFound = true;
+		}
+		// move to the next descriptor
+		esInfo += 2 + descriptorLength; // 2 - descriptor tag and descriptor length bytes
+	}
 	// Program loop starts after program info descriptor and continues
 	// to the CRC at the end of the section
 	programInfo = &section[9 + infoLength];
 	programInfoEnd = section + sectionLength - 4;
+
 	while (programInfo < programInfoEnd)
 	{
 		streamType = programInfo[0];
@@ -506,6 +519,12 @@ void TSProcessor::processPMTSection(unsigned char* section, int sectionLength)
 		case eSTREAM_TYPE_LPCM_AUDIO:
 		case eSTREAM_TYPE_ATSC_AC3PLUS:
 		case eSTREAM_TYPE_DTSHD_AUDIO:
+		if (cueiDescriptorFound && streamType == eSTREAM_TYPE_DTSHD_AUDIO)
+		{
+			// Skip processing for DTSHD_AUDIO(0x86) if cueiDescriptorFound is true , since it is SCTE-35 data
+			AAMPLOG_INFO(" Stream Type : SCTE-35");
+			break;
+		}
 		case eSTREAM_TYPE_ATSC_EAC3:
 		case eSTREAM_TYPE_DTS_AUDIO:
 		case eSTREAM_TYPE_AC3_AUDIO:
@@ -829,35 +848,16 @@ long long TSProcessor::getCurrentTime()
  */
 bool TSProcessor::msleep(long long throttleDiff)
 {
-	// refactoring to optimize and avoid CID:100201 -Resolve Overflow Before Widen
-	#define MICROSECONDS_PER_SECOND 1000000L
-	struct timespec ts;
-	struct timeval tv;
 	bool aborted = false;
-	gettimeofday(&tv, NULL);
-	long long utc_usec = tv.tv_sec*MICROSECONDS_PER_SECOND + (tv.tv_usec) + throttleDiff*1000;
-	ts.tv_sec = (time_t)(utc_usec/MICROSECONDS_PER_SECOND);
-	ts.tv_nsec = (long)(1000L*(utc_usec%MICROSECONDS_PER_SECOND));
-	pthread_mutex_lock(&m_mutex);
-
+	std::unique_lock<std::mutex> lock(m_mutex);
 	if( m_enabled)
 	{
-		int ret =  pthread_cond_timedwait(&m_throttleCond, &m_mutex, &ts);
-		if(0 == ret)
-		{
-			/*sleep interrupted!*/  //CID:88893 - checked return
-		}
-		else if (ETIMEDOUT != ret)
-		{
-			AAMPLOG_ERR("sleep - condition wait failed %s", strerror(ret));
-		}
+		(void)m_throttleCond.wait_for(lock, std::chrono::milliseconds(throttleDiff));
 	}
 	else
 	{
 		aborted = true;
 	}
-
-	pthread_mutex_unlock(&m_mutex);
 	return aborted;
 }
 
@@ -1017,15 +1017,13 @@ bool TSProcessor::processBuffer(unsigned char *buffer, int size, bool &insPatPmt
 		assert(false);
 	}
 
-
 	if (discontinuity_pending)
 	{
 		AAMPLOG_INFO(" Discontinuity pending, resetting m_havePAT & m_havePMT");
 
-		pthread_mutex_lock(&m_mutex);
+		std::lock_guard<std::mutex> guard(m_mutex);
 		m_havePAT = false;
 		m_havePMT = false;
-		pthread_mutex_unlock(&m_mutex);
 	}
 
 	bufferEnd = packet + size - m_ttsSize;
@@ -1093,11 +1091,11 @@ bool TSProcessor::processBuffer(unsigned char *buffer, int size, bool &insPatPmt
 								}
 								else
 								{
-									pthread_mutex_lock(&m_mutex);
-									m_havePAT = true;
-									m_versionPAT = version;
-									pthread_mutex_unlock(&m_mutex);
-									
+									{
+										std::lock_guard<std::mutex> guard(m_mutex);
+										m_havePAT = true;
+										m_versionPAT = version;
+									}
 									do {
 										m_program = ((packet[patTableIndex + 0] << 8) + packet[patTableIndex + 1]);
 										m_pmtPid = (((packet[patTableIndex + 2] & 0x1F) << 8) + packet[patTableIndex + 3]);
@@ -1662,7 +1660,7 @@ bool TSProcessor::demuxAndSend(const void *ptr, size_t len, double position, dou
 void TSProcessor::reset()
 {
 	AAMPLOG_INFO("PC reset");
-	pthread_mutex_lock(&m_mutex);
+	std::lock_guard<std::mutex> guard(m_mutex);
 	if (m_vidDemuxer)
 	{
 		AAMPLOG_WARN("TSProcessor[%p] - reset video demux %p", this, m_vidDemuxer);
@@ -1680,7 +1678,6 @@ void TSProcessor::reset()
 	m_havePAT = false;
 	m_havePMT = false;
 	m_AudioTrackIndexToPlay = 0;
-	pthread_mutex_unlock(&m_mutex);
 }
 
 /**
@@ -1690,7 +1687,7 @@ void TSProcessor::reset()
 void TSProcessor::flush()
 {
 	AAMPLOG_INFO("PC flush");
-	pthread_mutex_lock(&m_mutex);
+	std::lock_guard<std::mutex> guard(m_mutex);
 	if (m_vidDemuxer)
 	{
 		AAMPLOG_WARN("TSProcessor[%p] flush video demux %p", this, m_vidDemuxer);
@@ -1708,7 +1705,6 @@ void TSProcessor::flush()
 		AAMPLOG_WARN("TSProcessor[%p] flush dsmcc demux %p", this, m_dsmccDemuxer);
 		m_dsmccDemuxer->flush();
 	}
-	pthread_mutex_unlock(&m_mutex);
 }
 
 /**
@@ -1717,7 +1713,7 @@ void TSProcessor::flush()
 void TSProcessor::sendQueuedSegment(long long basepts, double updatedStartPosition)
 {
 	AAMPLOG_WARN("PC %p basepts %lld", this, basepts);
-	pthread_mutex_lock(&m_mutex);
+	std::lock_guard<std::mutex> guard(m_mutex);
 	if (m_queuedSegment)
 	{
 		if (-1 != updatedStartPosition)
@@ -1753,7 +1749,6 @@ void TSProcessor::sendQueuedSegment(long long basepts, double updatedStartPositi
 	{
 		AAMPLOG_WARN("No pending buffer");
 	}
-	pthread_mutex_unlock(&m_mutex);
 }
 
 /**
@@ -1761,7 +1756,8 @@ void TSProcessor::sendQueuedSegment(long long basepts, double updatedStartPositi
  */
 void TSProcessor::setBasePTS(double position, long long pts)
 {
-	pthread_mutex_lock(&m_mutex);
+	//std::lock_guard<std::mutex> lock(m_mutex);
+	std::unique_lock<std::mutex> lock(m_mutex);
 	m_basePTSFromPeer = pts;
 	m_startPosition = position;
 	AAMPLOG_INFO("pts = %lld", pts);
@@ -1772,8 +1768,7 @@ void TSProcessor::setBasePTS(double position, long long pts)
 		m_audDemuxer->setBasePTS(pts, true);
 		m_demuxInitialized = true;
 	}
-	pthread_cond_signal(&m_basePTSCond);
-	pthread_mutex_unlock(&m_mutex);
+	m_basePTSCond.notify_one();
 }
 
 /**
@@ -1789,28 +1784,28 @@ bool TSProcessor::sendSegment(AampGrowableBuffer* pBuffer, double position, doub
 	int len = (int)(pBuffer->GetLen());
 	bool ret = false;
 	ptsError = false;
-	pthread_mutex_lock(&m_mutex);
-	if (!m_enabled)
 	{
-		AAMPLOG_INFO("Not Enabled, Returning");
-		pthread_mutex_unlock(&m_mutex);
-		return false;
+		std::lock_guard<std::mutex> guard(m_mutex);
+		if (!m_enabled)
+		{
+			AAMPLOG_INFO("Not Enabled, Returning");
+			return false;
+		}
+		m_processing = true;
+		if ((m_playModeNext != m_playMode) || (m_playRateNext != m_playRate))
+		{
+			AAMPLOG_TRACE("change play mode");
+			m_playMode = m_playModeNext;
+			
+			m_playRate = m_playRateNext;
+			m_absPlayRate = fabs(m_playRate);
+			AAMPLOG_INFO("playback changed to rate %f mode %d", m_playRate, m_playMode);
+			m_haveEmittedIFrame = false;
+			m_currFrameOffset = -1LL;
+			m_nullPFrameNextCount = 0;
+			m_needDiscontinuity = true;
+		}
 	}
-	m_processing = true;
-	if ((m_playModeNext != m_playMode) || (m_playRateNext != m_playRate))
-	{
-		AAMPLOG_TRACE("change play mode");
-		m_playMode = m_playModeNext;
-
-		m_playRate = m_playRateNext;
-		m_absPlayRate = fabs(m_playRate);
-		AAMPLOG_INFO("playback changed to rate %f mode %d", m_playRate, m_playMode);
-		m_haveEmittedIFrame = false;
-		m_currFrameOffset = -1LL;
-		m_nullPFrameNextCount = 0;
-		m_needDiscontinuity = true;
-	}
-	pthread_mutex_unlock(&m_mutex);
 	m_framesProcessedInSegment = 0;
 	m_lastPTSOfSegment = -1;
 	packetStart = (unsigned char *)segment;
@@ -1833,10 +1828,9 @@ bool TSProcessor::sendSegment(AampGrowableBuffer* pBuffer, double position, doub
 	if ((packetStart[0] != 0x47) || ((packetStart[1] & 0x80) != 0x00) || ((packetStart[3] & 0xC0) != 0x00))
 	{
 		AAMPLOG_ERR("Segment doesn't starts with valid TS packet, discarding.");
-		pthread_mutex_lock(&m_mutex);
+		std::lock_guard<std::mutex> guard(m_mutex);
 		m_processing = false;
-		pthread_cond_signal(&m_throttleCond);
-		pthread_mutex_unlock(&m_mutex);
+		m_throttleCond.notify_one();
 		return false;
 	}
 	if (len % m_packetSize)
@@ -1879,26 +1873,24 @@ bool TSProcessor::sendSegment(AampGrowableBuffer* pBuffer, double position, doub
 			{
 				if(!ISCONFIGSET(eAAMPConfig_AudioOnlyPlayback))
 				{
-					pthread_mutex_lock(&m_mutex);
+					std::unique_lock<std::mutex> lock(m_mutex);
 					if (-1 == m_basePTSFromPeer)
 					{
 						if (m_enabled)
 						{
 							AAMPLOG_WARN("TSProcessor[%p] wait for base PTS. m_audDemuxer %p", this, m_audDemuxer);
-							pthread_cond_wait(&m_basePTSCond, &m_mutex);
+							m_basePTSCond.wait(lock);
 						}
 
 						if (!m_enabled)
 						{
 							AAMPLOG_INFO("Not Enabled, Returning");
 							m_processing = false;
-							pthread_cond_signal(&m_throttleCond);
-							pthread_mutex_unlock(&m_mutex);
+							m_throttleCond.notify_one();
 							return false;
 						}
 						AAMPLOG_WARN("TSProcessor[%p] got base PTS. m_audDemuxer %p", this, m_audDemuxer);
 					}
-					pthread_mutex_unlock(&m_mutex);
 				}
 				ret = demuxAndSend(packetStart, len, m_startPosition, duration, discontinuous, std::move(processor));
 			}
@@ -1924,10 +1916,11 @@ bool TSProcessor::sendSegment(AampGrowableBuffer* pBuffer, double position, doub
 		int durationMs = (int)(duration * 1000);
 		setupThrottle(durationMs);
 	}
-	pthread_mutex_lock(&m_mutex);
-	m_processing = false;
-	pthread_cond_signal(&m_throttleCond);
-	pthread_mutex_unlock(&m_mutex);
+	{
+		std::lock_guard<std::mutex> guard(m_mutex);
+		m_processing = false;
+		m_throttleCond.notify_one();
+	}
 	return ret;
 }
 
@@ -2718,15 +2711,15 @@ void TSProcessor::setPlayMode(PlayMode mode)
  * @brief Abort TSProcessor operations and return blocking calls immediately
  * @note Make sure that caller holds m_mutex before invoking this function
  */
-void TSProcessor::abortUnlocked()
+void TSProcessor::abortUnlocked(std::unique_lock<std::mutex>& lock)
 {
 	m_enabled = false;
-	pthread_cond_signal(&m_basePTSCond);
+	m_basePTSCond.notify_one();
 	while (m_processing)
 	{
-		pthread_cond_signal(&m_throttleCond);
+		m_throttleCond.notify_one();
 		AAMPLOG_INFO("Waiting for processing to end");
-		pthread_cond_wait(&m_throttleCond, &m_mutex);
+		m_throttleCond.wait(lock);
 	}
 }
 
@@ -2735,9 +2728,8 @@ void TSProcessor::abortUnlocked()
  */
 void TSProcessor::abort()
 {
-	pthread_mutex_lock(&m_mutex);
-	abortUnlocked();
-	pthread_mutex_unlock(&m_mutex);
+	std::unique_lock<std::mutex> lock(m_mutex);
+	abortUnlocked(lock);
 }
 
 /**
@@ -2747,17 +2739,16 @@ void TSProcessor::abort()
  */
 void TSProcessor::setRate(double rate, PlayMode mode)
 {
-	pthread_mutex_lock(&m_mutex);
+	std::unique_lock<std::mutex> lock(m_mutex);
 	m_havePAT = false;
 	m_havePMT = false;
-	abortUnlocked();
+	abortUnlocked(lock);
 	m_playRateNext = rate;
 	AAMPLOG_INFO("set playback rate to %f", m_playRateNext);
 	setPlayMode(mode);
 	m_enabled = true;
 	m_startPosition = -1.0;
 	m_last_frame_time = 0;
-	pthread_mutex_unlock(&m_mutex);
 }
 
 /**
@@ -3186,19 +3177,9 @@ void TSProcessor::putPmtByte(unsigned char* &pmt, int& index, unsigned char byte
 	}
 }
 
-// PTS/DTS format:
-// YYYY vvvM vvvv vvvv vvvv vvvM vvvv vvvv vvvv vvvM
-//
-// value formed by concatenating all 'v''s.
-// M bits are 1, YYYY are 0010 for PTS only
-// and for PTS+DTS 0011 and 0001 respectively
-//
-// From ISO 13818-1
-
-
 /**
- * @brief Read time-stamp at the point
- * @retval true if time-stamp is present.
+ * @brief Read timestamp; refer ISO 13818-1
+ * @retval true if timestamp present.
  */
 bool TSProcessor::readTimeStamp(unsigned char *p, long long& TS)
 {
@@ -3396,7 +3377,7 @@ unsigned char* TSProcessor::createNullPFrame(int width, int height, int *nullPFr
 	skipCodeNumBits = macroblockAddressIncrementCodes[skipWidth - 1].numBits;
 	skipCode = macroblockAddressIncrementCodes[skipWidth - 1].code;
 
-	sliceBitLen = 32;  // slice start (0000 0000 0000 0000 0000 0001 NNNN NNNN)
+	sliceBitLen = 32;  // slice start
 	sliceBitLen += 5; // quantiser_scale_code (00001)
 	sliceBitLen += 1; // extra_slice_bit (0)
 	sliceBitLen += 1; // macroblock_address_inc (1)
@@ -3882,10 +3863,9 @@ void TSProcessor::getAudioComponents(const RecordingComponent** audioComponentsP
  */
 void TSProcessor::ChangeMuxedAudioTrack(unsigned char index)
 {
-	pthread_mutex_lock(&m_mutex);
+	std::lock_guard<std::mutex> guard(m_mutex);
 	AAMPLOG_WARN("Track changed from %d to %d", m_AudioTrackIndexToPlay, index);
 	m_AudioTrackIndexToPlay = index;
-	pthread_mutex_unlock(&m_mutex);
 }
 
 /**

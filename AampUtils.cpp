@@ -1314,17 +1314,22 @@ double RecalculatePTS(AampMediaType mediaType, const void *ptr, size_t len, Priv
 {
 	double ret = 0;
 	uint32_t timeScale = 0;
-
-	if(mediaType == eMEDIATYPE_VIDEO)
+	switch( mediaType )
 	{
+	case eMEDIATYPE_VIDEO:
 		timeScale = aamp->GetVidTimeScale();
-	}
-	else if(mediaType == eMEDIATYPE_AUDIO || mediaType == eMEDIATYPE_AUX_AUDIO)
-	{
+		break;
+	case eMEDIATYPE_AUDIO:
+	case eMEDIATYPE_AUX_AUDIO:
 		timeScale = aamp->GetAudTimeScale();
+		break;
+	case eMEDIATYPE_SUBTITLE:
+		timeScale = aamp->GetSubTimeScale();
+		break;
+	default:
+		AAMPLOG_WARN("Invalid media type %d", mediaType);
+		break;
 	}
-
-
 	IsoBmffBuffer isobuf;
 	isobuf.setBuffer((uint8_t *)ptr, len);
 	bool bParse = false;
@@ -1351,7 +1356,6 @@ double RecalculatePTS(AampMediaType mediaType, const void *ptr, size_t len, Priv
 		if (bParse)
 		{
 			ret = fPts/(timeScale*1.0);
-			AAMPLOG_TRACE("restamped PTS : %lf", ret);
 		}
 	}
 	return ret;
@@ -1477,7 +1481,9 @@ bool parseAndValidateSCTE35(const std::string &scte35Data)
 			(int)splice.type, splice.time, splice.duration, splice.event_id);
 
 		if ((splice.type == SCTE35SpliceInfo::SEGMENTATION_TYPE::PROVIDER_ADVERTISEMENT_START) ||
-			(splice.type == SCTE35SpliceInfo::SEGMENTATION_TYPE::PROVIDER_PLACEMENT_OPPORTUNITY_START))
+			(splice.type == SCTE35SpliceInfo::SEGMENTATION_TYPE::PROVIDER_PLACEMENT_OPPORTUNITY_START) ||
+			(splice.type == SCTE35SpliceInfo::SEGMENTATION_TYPE::DISTRIBUTOR_PLACEMENT_OPPORTUNITY_START) ||
+			(splice.type == SCTE35SpliceInfo::SEGMENTATION_TYPE::PROVIDER_AD_BLOCK_START))
 		{
 			isValidDAIEvent = true;
 			break;
@@ -1485,6 +1491,33 @@ bool parseAndValidateSCTE35(const std::string &scte35Data)
 	}
 	return isValidDAIEvent;
 }
+
+/**
+ * Hack to check if code is running in container environment.
+ * @return True if running in container environment, false otherwise.
+ */
+bool IsContainerEnvironment(void)
+{
+	static bool isContainer;
+	static bool isValid;
+	if( !isValid )
+	{
+		struct stat buffer;
+		if (stat("/etc/device.properties", &buffer) == 0)
+		{ // if we can access file, infer that are are NOT running in container
+			AAMPLOG_MIL("not running in container environment");
+			isContainer = false;
+		}
+		else
+		{ // if we cannot access file, infer that we ARE running in container
+			AAMPLOG_WARN("detected container environment");
+			isContainer = true;
+		}
+		isValid = true;
+	}
+	return isContainer;
+}
+
 /**
  * EOF
  */
