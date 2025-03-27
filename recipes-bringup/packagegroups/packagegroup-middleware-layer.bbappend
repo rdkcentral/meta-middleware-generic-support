@@ -7,12 +7,8 @@ RDEPENDS:${PN}:remove += " \
     airplay-daemon \
     netflix \
     \
-    libloader-app \
-    cobaltwidget \
-    starboard-nplb-widget \
-    \
     ctrlm-irdb-uei \
     "
 
-DEPENDS:remove += " sky-nrdplugin airplay-application airplay-daemon cobaltwidget"
+DEPENDS:remove += " sky-nrdplugin airplay-application airplay-daemon "
 
