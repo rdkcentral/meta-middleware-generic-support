@@ -10,7 +10,7 @@ PV:pn-cpeabs = "2.0.0"
 PR:pn-cpeabs = "r0"
 PACKAGE_ARCH:pn-cpeabs = "${MIDDLEWARE_ARCH}"
 
-PV:pn-hdmicec = "1.0.1"
+PV:pn-hdmicec = "1.0.2"
 PR:pn-hdmicec = "r0"
 PACKAGE_ARCH:pn-hdmicec = "${MIDDLEWARE_ARCH}"
 
@@ -18,7 +18,7 @@ PV:pn-iarmbus = "1.0.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.0.8"
+PV:pn-iarmmgrs = "1.0.9"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -42,7 +42,7 @@ PV:pn-rfc = "1.0.5"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.0.14"
+PV:pn-tr69hostif = "1.1.1"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -62,7 +62,7 @@ PV:pn-dcmd = "1.1.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.0.14"
+PV:pn-tr69hostif-headers = "1.1.1"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
@@ -109,15 +109,15 @@ PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
 
-PV:pn-iarm-event-sender = "1.0.3"
+PV:pn-iarm-event-sender = "1.0.4"
 PR:pn-iarm-event-sender = "r0"
 PACKAGE_ARCH:pn-iarm-event-sender = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-query-powerstate = "1.0.3"
+PV:pn-iarm-query-powerstate = "1.0.4"
 PR:pn-iarm-query-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-query-powerstate = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-set-powerstate = "1.0.3"
+PV:pn-iarm-set-powerstate = "1.0.4"
 PR:pn-iarm-set-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-set-powerstate = "${MIDDLEWARE_ARCH}"
 
@@ -129,7 +129,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.0.4"
+PV:pn-entservices-casting = "1.0.5"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
@@ -137,15 +137,15 @@ PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "1.0.4"
+PV:pn-entservices-deviceanddisplay = "1.0.8"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.1.8"
+PV:pn-entservices-infra = "1.1.9"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.0.3"
+PV:pn-entservices-inputoutput = "1.0.6"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -153,7 +153,7 @@ PV:pn-entservices-mediaanddrm = "1.0.2"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-peripherals = "1.0.1"
+PV:pn-entservices-peripherals = "1.0.2"
 PR:pn-entservices-peripherals = "r0"
 PACKAGE_ARCH:pn-entservices-peripherals = "${MIDDLEWARE_ARCH}"
 
@@ -215,7 +215,7 @@ PV_pn-rdk-logger = "1.0.0"
 PR_pn-rdk-logger = "r1"
 PACKAGE_ARCH_pn-rdk-logger = "${MIDDLEWARE_ARCH}"
 
-PV:pn-remotedebugger = "1.2.1"
+PV:pn-remotedebugger = "1.2.5"
 PR:pn-remotedebugger = "r0"
 PACKAGE_ARCH:pn-remotedebugger = "${MIDDLEWARE_ARCH}"
 
@@ -242,7 +242,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkservices-apis = "1.2.6"
+PV:pn-rdkservices-apis = "1.2.8"
 PR:pn-rdkservices-apis = "r0"
 PACKAGE_ARCH:pn-rdkservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -275,7 +275,7 @@ PV:pn-sysint = "1.1.12"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
-PV:pn-key-simulator = "1.0.3"
+PV:pn-key-simulator = "1.0.4"
 PR:pn-key-simulator = "r0"
 PACKAGE_ARCH:pn-key-simulator = "${MIDDLEWARE_ARCH}"
 
@@ -301,7 +301,7 @@ PV:pn-wpeframework-ui = "1.0.0"
 PR:pn-wpeframework-ui = "r0"
 PACKAGE_ARCH:pn-wpeframework-ui = "${MIDDLEWARE_ARCH}"
 
-PV:pn-mfr-utils = "1.0.3"
+PV:pn-mfr-utils = "1.0.4"
 PR:pn-mfr-utils = "r0"
 PACKAGE_ARCH:pn-mfr-utils = "${MIDDLEWARE_ARCH}"
 
