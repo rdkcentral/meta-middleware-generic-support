@@ -100,11 +100,11 @@ PV:pn-bluetooth-mgr = "1.0.0"
 PR:pn-bluetooth-mgr = "r1"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-commonutilities = "1.1.1"
+PV:pn-commonutilities = "1.2.0"
 PR:pn-commonutilities = "r0"
 PACKAGE_ARCH:pn-commonutilities = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkfwupgrader = "1.0.6"
+PV:pn-rdkfwupgrader = "1.1.0"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
@@ -271,7 +271,7 @@ PV:pn-xdial = "3.0.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "1.1.13"
+PV:pn-sysint = "1.2.0"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
