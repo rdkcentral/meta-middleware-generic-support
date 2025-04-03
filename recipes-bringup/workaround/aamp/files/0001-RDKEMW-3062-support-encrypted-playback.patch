@@ -1,0 +1,182 @@
+From 602d4bb0086dad1b1b6bad909ba56e1ae6deee33 Mon Sep 17 00:00:00 2001
+From: Callum Wilson <callum_wilson@comcast.com>
+Date: Tue, 1 Apr 2025 10:35:30 +0000
+Subject: [PATCH] RDKEMW-3062: support encrypted playback
+
+---
+ .../drm/gst/gstaampcdmidecryptor.cpp          | 15 ++++----
+ .../drm/gst/gstaampplayreadydecryptor.cpp     | 36 ++++++++++++++++---
+ .../drm/gst/gstaampwidevinedecryptor.cpp      | 36 ++++++++++++++++---
+ 3 files changed, 71 insertions(+), 16 deletions(-)
+
+diff --git a/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampcdmidecryptor.cpp b/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampcdmidecryptor.cpp
+index e65250a..64dfba4 100755
+--- a/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampcdmidecryptor.cpp
++++ b/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampcdmidecryptor.cpp
+@@ -127,10 +127,10 @@ static void gst_aampcdmidecryptor_class_init(
+ 	base_transform_class->transform_ip = GST_DEBUG_FUNCPTR(
+ 			gst_aampcdmidecryptor_transform_ip);
+ 
+-#if !defined(AMLOGIC)
+-	base_transform_class->accept_caps = GST_DEBUG_FUNCPTR(
+-			gst_aampcdmidecryptor_accept_caps);
+-#endif
++// #if !defined(AMLOGIC)
++// 	base_transform_class->accept_caps = GST_DEBUG_FUNCPTR(
++// 			gst_aampcdmidecryptor_accept_caps);
++// #endif
+ 	base_transform_class->transform_ip_on_passthrough = FALSE;
+ 
+ 	gst_element_class_set_static_metadata(GST_ELEMENT_CLASS(klass),
+@@ -370,10 +370,9 @@ gst_aampcdmidecryptor_transform_caps(GstBaseTransform * trans,
+ 
+ 		gst_aampcdmicapsappendifnotduplicate(transformedCaps, out);
+ 
+-#if defined(AMLOGIC)
+ 	if (direction == GST_PAD_SINK && !gst_caps_is_empty(transformedCaps) && OCDMGstTransformCaps)
+ 		OCDMGstTransformCaps(&transformedCaps);
+-#endif
++
+ 	}
+ 
+ 	if (filter)
+@@ -446,7 +445,7 @@ static GstFlowReturn gst_aampcdmidecryptor_transform_ip(
+ 	{
+ 		GST_DEBUG_OBJECT(aampcdmidecryptor,
+ 				"Failed to get GstProtection metadata from buffer %p, could be clear buffer",buffer);
+-#if defined(AMLOGIC)
++
+ 		// call decrypt even for clear samples in order to copy it to a secure buffer. If secure buffers are not supported
+ 		// decrypt() call will return without doing anything
+ 		if (aampcdmidecryptor->drmSession != NULL)
+@@ -456,7 +455,7 @@ static GstFlowReturn gst_aampcdmidecryptor_transform_ip(
+ 			result = GST_FLOW_NOT_SUPPORTED;
+ 			GST_ERROR_OBJECT(aampcdmidecryptor, "drmSession is **** NULL ****, returning GST_FLOW_NOT_SUPPORTED");
+ 		}
+-#endif
++
+ 		goto free_resources;
+ 	}
+ 
+diff --git a/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampplayreadydecryptor.cpp b/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampplayreadydecryptor.cpp
+index fcb9101..195206a 100644
+--- a/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampplayreadydecryptor.cpp
++++ b/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampplayreadydecryptor.cpp
+@@ -30,6 +30,8 @@
+ #include <gst/base/gstbasetransform.h>
+ #include <gst/base/gstbytereader.h>
+ #include "gstaampplayreadydecryptor.h"
++#include <open_cdm.h>
++#include <dlfcn.h>
+ //#define FUNCTION_DEBUG 1
+ #ifdef FUNCTION_DEBUG
+ #define DEBUG_FUNC()    g_warning("####### %s : %d ####\n", __FUNCTION__, __LINE__);
+@@ -52,7 +54,7 @@ GST_DEBUG_CATEGORY(gst_aampplayreadydecryptor_debug_category);
+ 
+ static GstStaticPadTemplate gst_aampplayreadydecryptor_src_template =
+         GST_STATIC_PAD_TEMPLATE("src", GST_PAD_SRC, GST_PAD_ALWAYS,
+-        GST_STATIC_CAPS("video/x-h264;video/x-h264(memory:SecMem);audio/mpeg;video/x-h265;video/x-h265(memory:SecMem);audio/x-eac3;audio/x-gst-fourcc-ec_3;audio/x-ac3"));
++        GST_STATIC_CAPS("video/x-h264;audio/mpeg;video/x-h265;audio/x-eac3;audio/x-gst-fourcc-ec_3;audio/x-ac3"));
+  
+ static GstStaticPadTemplate gst_aampplayreadydecryptor_sink_template =
+         GST_STATIC_PAD_TEMPLATE("sink", GST_PAD_SINK, GST_PAD_ALWAYS,
+@@ -82,9 +84,35 @@ static void gst_aampplayreadydecryptor_class_init(
+ 
+ 	gobject_class->finalize = gst_aampplayreadydecryptor_finalize;
+ 
+-	/* Setting up pads and setting metadata should be moved to
+-	 base_class_init if you intend to subclass this class. */
+-	gst_element_class_add_static_pad_template(elementClass, &gst_aampplayreadydecryptor_src_template);
++    auto OCDMGstTransformCaps = (OpenCDMError(*)(GstCaps**))dlsym(RTLD_DEFAULT, "opencdm_gstreamer_transform_caps");
++    if (OCDMGstTransformCaps)
++    {
++        GstCaps* baseStaticCaps = gst_static_pad_template_get_caps(&gst_aampplayreadydecryptor_src_template);
++        GstCaps* platformSrcCaps = gst_caps_copy(baseStaticCaps);
++
++        GST_INFO("Has opencdm_gstreamer_transform_caps support \n");
++        if (!OCDMGstTransformCaps(&platformSrcCaps))
++        {
++            GST_ERROR("Failed to transform caps");
++        }
++
++        GstCaps* writableCaps = gst_caps_make_writable(baseStaticCaps);
++
++        gst_caps_append(writableCaps, platformSrcCaps);
++        platformSrcCaps = nullptr;      // ownership transferred in above call
++
++        GstPadTemplate* srcPadTemplate = gst_pad_template_new("src", GST_PAD_SRC, GST_PAD_ALWAYS, writableCaps);
++
++        /* Setting up pads and setting metadata should be moved to
++        base_class_init if you intend to subclass this class. */
++        gst_element_class_add_pad_template(elementClass, srcPadTemplate);
++    }
++    else
++    {
++            GST_ERROR("No opencdm_gstreamer_transform_caps support \n");
++            gst_element_class_add_static_pad_template(elementClass, &gst_aampplayreadydecryptor_src_template);
++    }
++
+ 	gst_element_class_add_static_pad_template(elementClass, &gst_aampplayreadydecryptor_sink_template);
+ 
+ 	gst_element_class_set_static_metadata(elementClass,
+diff --git a/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampwidevinedecryptor.cpp b/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampwidevinedecryptor.cpp
+index e6300f3..2f0ea64 100644
+--- a/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampwidevinedecryptor.cpp
++++ b/plugins/gst-plugins-rdk-aamp/drm/gst/gstaampwidevinedecryptor.cpp
+@@ -25,6 +25,8 @@
+ #include <gst/base/gstbasetransform.h>
+ #include <gst/base/gstbytereader.h>
+ #include "gstaampwidevinedecryptor.h"
++#include <open_cdm.h>
++#include <dlfcn.h>
+ 
+ #define FUNCTION_DEBUG 1
+ #ifdef FUNCTION_DEBUG
+@@ -48,7 +50,7 @@ GST_DEBUG_CATEGORY(gst_aampwidevinedecryptor_debug_category);
+ 
+ static GstStaticPadTemplate gst_aampwidevinedecryptor_src_template =
+         GST_STATIC_PAD_TEMPLATE("src", GST_PAD_SRC, GST_PAD_ALWAYS,
+-        GST_STATIC_CAPS("video/x-h264;video/x-h264(memory:SecMem);audio/mpeg;video/x-h265;video/x-h265(memory:SecMem);audio/x-eac3;audio/x-gst-fourcc-ec_3;audio/x-ac3;audio/x-opus"));
++        GST_STATIC_CAPS("video/x-h264;audio/mpeg;video/x-h265;audio/x-eac3;audio/x-gst-fourcc-ec_3;audio/x-ac3;audio/x-opus"));
+  
+ static GstStaticPadTemplate gst_aampwidevinedecryptor_sink_template =
+         GST_STATIC_PAD_TEMPLATE("sink", GST_PAD_SINK, GST_PAD_ALWAYS,
+@@ -75,9 +77,35 @@ static void gst_aampwidevinedecryptor_class_init(GstAampwidevinedecryptorClass *
+ 
+ 	gobject_class->finalize = gst_aampwidevinedecryptor_finalize;
+ 
+-	/* Setting up pads and setting metadata should be moved to
+-	 base_class_init if you intend to subclass this class. */
+-	gst_element_class_add_static_pad_template(elementClass, &gst_aampwidevinedecryptor_src_template);
++    auto OCDMGstTransformCaps = (OpenCDMError(*)(GstCaps**))dlsym(RTLD_DEFAULT, "opencdm_gstreamer_transform_caps");
++    if (OCDMGstTransformCaps)
++    {
++        GstCaps* baseStaticCaps = gst_static_pad_template_get_caps(&gst_aampwidevinedecryptor_src_template);
++        GstCaps* platformSrcCaps = gst_caps_copy(baseStaticCaps);
++
++        GST_INFO("Has opencdm_gstreamer_transform_caps support \n");
++        if (!OCDMGstTransformCaps(&platformSrcCaps))
++        {
++            GST_ERROR("Failed to transform caps");
++        }
++
++        GstCaps* writableCaps = gst_caps_make_writable(baseStaticCaps);
++
++        gst_caps_append(writableCaps, platformSrcCaps);
++        platformSrcCaps = nullptr;      // ownership transferred in above call
++
++        GstPadTemplate* srcPadTemplate = gst_pad_template_new("src", GST_PAD_SRC, GST_PAD_ALWAYS, writableCaps);
++
++        /* Setting up pads and setting metadata should be moved to
++        base_class_init if you intend to subclass this class. */
++        gst_element_class_add_pad_template(elementClass, srcPadTemplate);
++    }
++    else
++    {
++            GST_ERROR("No opencdm_gstreamer_transform_caps support \n");
++            gst_element_class_add_static_pad_template(elementClass, &gst_aampwidevinedecryptor_src_template);
++    }
++
+ 	gst_element_class_add_static_pad_template(elementClass, &gst_aampwidevinedecryptor_sink_template);
+ 
+ 	gst_element_class_set_static_metadata(elementClass,
