@@ -89,7 +89,7 @@ RDEPENDS:${PN} = " \
     wpe-backend-rdk \
     wpeframework \
     wpeframework-clientlibraries \
-    rdkservices-apis \
+    entservices-apis \
     wpeframework-ui \
     wpe-webkit \
     wpe-webkit-web-inspector-plugin \
