@@ -1,6 +1,6 @@
 # Vendor Layer Release Notes
 
-XiOne UK REALTEK STB RDKE Vendor Layer Release Notes
+XiOne REALTEK STB RDKE Vendor Layer Release Notes
 
 ---
 
@@ -75,7 +75,7 @@ The aim of this release to provide the hotfix for [XIONE-16876](https://ccp.sys.
 | Meta Repo | New Version (5.1.2) | Version in Previous Release (5.1.1) | ChangeList |
 |------------|---------|------------------------------------|--------------|
 | meta-vts |  | 1.2.0 | |
-| meta-rdk-soc-realtek |   | 4.0.4 | |
+| meta-rdk-soc-realtek |  | 4.0.4 |  |
 | meta-oem-stream |   | 4.0.2  |  |
 | meta-oem-realtek-stream |  **5.1.2** | 5.1.1 | [5.1.1...5.1.2](https://github.com/rdk-e/meta-oem-realtek-stream/compare/5.1.1...5.1.2) |
 | meta-rdk-vendor-realtek-common |  | 1.0.2 |  |
@@ -140,7 +140,7 @@ The aim of this release to provide the hotfix for [XIONE-16876](https://ccp.sys.
 It should be noted that some services may not run as they have dependencies with other layers. Additionally, the exclusion of inter-layer bbappends/patches might result in the failure to start some services. These limitations should be taken into consideration during the verification process. These Limitations will be addressed in Future Releases.
 
 
-### Middleware image Integration
+### Middleware and Production image Integration
 
 ##### XiOne-UK
 - Created the  middleware image `"SKXI11ADS_MIDDLEWARE_DEV_refs_tags_2.4.5_20250408170027.bin"` from the `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Middleware-Build/15418/"`
@@ -149,20 +149,22 @@ It should be noted that some services may not run as they have dependencies with
 
 - Tag details here `"XiOne-UK(refs/tags/2.4.5)"`
 
-
 ## Build instructions
 
 - Steps to check out and build the vendor layer project [https://etwiki.sys.comcast.net/display/RDKAR/Vendor+Layer+Project](https://etwiki.sys.comcast.net/display/RDKAR/Vendor+Layer+Project)
 - Steps to check out and build the image assembler project [https://etwiki.sys.comcast.net/display/RDKAR/Image+Assembler](https://etwiki.sys.comcast.net/display/RDKAR/Image+Assembler)
 
+
 ### Boot Command
 
 #### Copy image to device /mnt/usb or /opt partitions or connect and mount USB having the image binn- Execute FlashApp command
+
 - Move to directory containing the image
 - FlashApp \<dirname\> \<imagename\>
 - eg. FlashApp /mnt/usb/SKXI11ADS_VENDOR_DEV_refs_tags_5.1.2_20250408160721.bin
 
 #### USB Flash Method using xboot prompt
+
 - Copy the image `"SKXI11ADS_VENDOR_DEV_refs_tags_5.1.2_20250408160721.bin"` to the usb and connect to the STB
 - Switch on the STB
 - Press z button multiple time to get the bootloader prompt.
@@ -176,17 +178,16 @@ It should be noted that some services may not run as they have dependencies with
 ### Network connectivity
 
 - Ethernet Connectivity is supported now
-
 - If IP is not acquired automatically please run udhcpc after connecting Ethernet
 
 ## Testing
 
 - Created the `"vendor test image"` `"SKXI11ADS_VENDOR_DEV_refs_tags_5.1.2_20250408160721.bin for XiOne-UK"` using the vendor layer jenkins job `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Vendor-Release-Build/73/"`
-  - Successfully booted the `"vendor test image"` and obtained the shell prompt.
-  - Verified vendor layer services up and running
-  - Verified IP acquisition via Ethernet
-  - Played clear AV with gst-play-1.0.
-  - Verified image flashing using FlashApp
+- Successfully booted the `"vendor test image"` and obtained the shell prompt.
+- Verified vendor layer services up and running
+- Verified IP acquisition via Ethernet
+- Played clear AV with gst-play-1.0.
+- Verified image flashing using FlashApp
 
 Testing details in [RDKEVD-983](https://ccp.sys.comcast.net/browse/RDKEVD-983)
 
@@ -207,6 +208,7 @@ Testing details in [RDKEVD-983](https://ccp.sys.comcast.net/browse/RDKEVD-983)
 | ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
 | --- | --- | --- | --- | --- | --- | --- |
 | Apr 09 2025 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.1.2_20250408160721 | 1547368 | 441296 | 29433 | 470729 | 2175951 |
+| Mar 26 2025 |  SKXI11ADS_VENDOR_DEV_refs_tags_6.0.2_20250324171809 | 1547376 | 444252 | 29245 | 473497 | 2173175 |
 | Mar 17 2025 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.1.1_20250316220627 | 1547368 | 450302 | 30231 | 480533 | 2166147 |
 | Feb 14 2025 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.1.0_20250213181547 | 1547368 | 454816 | 28838 | 483654 | 2163026 |
 | Jan 07 2025 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.0.1_20250106184824 | 1547368 | 447174 | 29121 | 476295 | 2170385 |
@@ -216,12 +218,14 @@ Testing details in [RDKEVD-983](https://ccp.sys.comcast.net/browse/RDKEVD-983)
 ### Fullstack image testing
 
 ##### XiOne-UK
+
 - Created Image Assembler build `"SKXI11ADS_DEV_support_E036_8.0p19s1_20250408170609.bin from the jenkins job https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1614/"` based on Middleware version 2.4.5 and the Image assembler based manifest branched to `"support/E036_8.0p19s1"`.
 
 - Included the application release 4.21.1 using [rdke-assembler-manifest](https://github.com/rdk-e/rdke-assembler-manifest) feature branch `"support/E036_8.0p19s1"`.
 - Tested the below scenarios as part of [RDKEVD-983](https://ccp.sys.comcast.net/browse/RDKEVD-983)
 
   - Successfully booted \"SKXI11ADS_DEV_support_E036_8.0p19s1_20250408170609.bin\" and obtained the shell prompt and UI.
+
   - Verified UI navigation
   - Verified AV with Disney+ App
   - Verified AV with Xumo Play
@@ -230,7 +234,6 @@ Testing details in [RDKEVD-983](https://ccp.sys.comcast.net/browse/RDKEVD-983)
   - Verified AV with YouTube
   - Verified remote control pairing
   - Verified Log files are present in /opt/logs
-
 
 ## Components details in 'packagegroup-common-vendor-layer'
 
@@ -266,7 +269,7 @@ Testing details in [RDKEVD-983](https://ccp.sys.comcast.net/browse/RDKEVD-983)
 
 ## Components details in 'packagegroup-vendor-layer'
 
-| # | Vendor layer Component | New PV-PR (5.1.2) | PV-PR in Previous Release (5.1.1)| New SRCREV (5.1.2)| SRCREV in Previous Release (5.1.1)| Diff |
+| # | Vendor layer Component | New PV-PR (5.1.2) | PV-PR in Previous Release (5.1.1)| New SRCREV | SRCREV in Previous Release (5.1.1)| Diff |
 |---|------------------------------------------|-------------|----------------------|-----------|------------|-----|
 | 1 | media-utils-soc-realtek | | 1.0.5-1.0.0-r1 |  | | |
 | 2 | closedcaption-hal-realtek | | 1.0.0-3.0.0-r0 |  | | |
@@ -275,8 +278,8 @@ Testing details in [RDKEVD-983](https://ccp.sys.comcast.net/browse/RDKEVD-983)
 | 5 | rdk-gstreamer-utils-platform | | 1.3.0-1.0.0-r0 |  | | |
 | 6 | devicesettings-hal-realtek | | 4.1.2-4.0.1-r0 |  |  | |
 | - |  - devicesettings-hal-realtek_devicesettingssocrealtek | |  | | |  |
-| - |  - devicesettings-hal-realtek_devicesettingsskyxione | |  |  | | |
-| 7 | deepsleepmgr-hal-realtek | | 1.0.4-1.0.1-r0 |  | | |
+| - |  - devicesettings-hal-realtek_devicesettingsskyxione | |  | | | |
+| 7 | deepsleepmgr-hal-realtek | 1.0.4-1.0.1-r0 | 1.0.4-1.0.0-r0 | | | |
 | 8 | pwrmgr-hal-realtek | | 1.0.3-1.0.0-r0 |  |  | |
 | 9 | otp-program | | 2.2-r1 |  | NA | |
 | 10 | gstreamer1.0 | | 1.18.5-r4 |  | NA | |

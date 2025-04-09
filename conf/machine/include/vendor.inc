@@ -9,6 +9,7 @@ VENDOR_LAYER_EXTENSION = "${MACHINE}-vendor"
 #common ipk repo path
 VENDOR_COMMON_IPK_DEV ="rtk-xione-common-dev"
 VENDOR_COMMON_IPK_RELEASE ="rtk-xione-common-release"
+
 VENDOR_COMMON_IPK_REL_VERSION = "1.0.2"
 VENDOR_PRODUCT_IPK_REL_VERSION = "5.1.2"
 
