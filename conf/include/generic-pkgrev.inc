@@ -271,7 +271,7 @@ PV:pn-xdial = "3.0.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "1.2.1"
+PV:pn-sysint = "1.3.0"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -310,7 +310,7 @@ PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
 PV:pn-thunderstartupservices = "1.0.8"
-PR:pn-thunderstartupservices = "r0"
+PR:pn-thunderstartupservices = "r1"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-uwebsockets = "${MIDDLEWARE_ARCH}"
