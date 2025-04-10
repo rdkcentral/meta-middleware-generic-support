@@ -169,7 +169,7 @@ PV:pn-rdkshell = "1.0.0"
 PR:pn-rdkshell = "r0"
 PACKAGE_ARCH:pn-rdkshell = "${MIDDLEWARE_ARCH}"
 
-PACKAGE_ARCH:pn-stunnel = "${MIDDLEWARE_ARCH}" 
+PACKAGE_ARCH:pn-stunnel = "${MIDDLEWARE_ARCH}"
 
 PV:pn-systimemgrfactory = "1.0.0"
 PR:pn-systimemgrfactory = "r1"
@@ -235,7 +235,7 @@ PV:pn-gst-plugins-rdk = "1.0.0"
 PR:pn-gst-plugins-rdk = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdk-gstreamer-utils = "1.3.1"
+PV:pn-rdk-gstreamer-utils = "2.0.0"
 PACKAGE_ARCH:pn-rdk-gstreamer-utils = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
