@@ -436,3 +436,4 @@ PV:pn-lsof = "4.94.0"
 PR:pn-lsof = "r0"
 PACKAGE_ARCH:pn-lsof = "${MIDDLEWARE_ARCH}"
 
+PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
