@@ -50,7 +50,7 @@ PV:pn-rtremote = "2.0.0"
 PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.4.0"
+PV:pn-telemetry = "1.4.1"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -309,8 +309,8 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.8"
-PR:pn-thunderstartupservices = "r1"
+PV:pn-thunderstartupservices = "1.0.11"
+PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-uwebsockets = "${MIDDLEWARE_ARCH}"
