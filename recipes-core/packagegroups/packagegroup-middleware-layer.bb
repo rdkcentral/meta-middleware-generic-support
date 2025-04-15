@@ -173,9 +173,7 @@ RDEPENDS:${PN} = " \
     os-release \
     ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_MIRACAST', ' wlan-p2p', '', d)} \
     "
-VOLATILE_BINDS ?= "\
-    /var/volatile/lib /var/lib\n\
-"
+
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
              jpeg linenoise nanomsg ne10 nopoll libopus libpam  \
              libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
