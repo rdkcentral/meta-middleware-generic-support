@@ -154,7 +154,8 @@ RDEPENDS:${PN} = " \
     tzdata \
     util-linux \
     volatile-binds \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_gdb_support', "gdb ", "", d)} \
+    gdb \
+    strace \
     jquery \
     ndisc6-rdnssd \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_heaptrack', " heaptrack ", "", d)} \
