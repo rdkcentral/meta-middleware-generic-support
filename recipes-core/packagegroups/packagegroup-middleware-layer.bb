@@ -3,7 +3,7 @@ PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
 LICENSE = "MIT"
 
-inherit packagegroup
+inherit packagegroup bind-config
 
 # For interim development and package depolyment to test should be using pre release tags
 PV = "1.2.0"
@@ -153,7 +153,6 @@ RDEPENDS:${PN} = " \
     taglib \
     tzdata \
     util-linux \
-    volatile-binds \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_gdb_support', "gdb ", "", d)} \
     jquery \
     ndisc6-rdnssd \
@@ -174,7 +173,9 @@ RDEPENDS:${PN} = " \
     os-release \
     ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_MIRACAST', ' wlan-p2p', '', d)} \
     "
-
+VOLATILE_BINDS ?= "\
+    /var/volatile/lib /var/lib\n\
+"
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
              jpeg linenoise nanomsg ne10 nopoll libopus libpam  \
              libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
