@@ -1,1 +1,1 @@
-DEPENDS:remove = " virtual/vendor-displayinfo-soc "
+PACKAGECONFIG:remove = " displayinfo "
