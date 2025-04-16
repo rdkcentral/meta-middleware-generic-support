@@ -136,7 +136,6 @@ RDEPENDS:${PN} = " \
     wireless-tools \
     libcroco \
     libevdev \
-    rdkcertconfig \
     libflac \
     libgudev \
     libinput \
