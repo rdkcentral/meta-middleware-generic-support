@@ -9338,6 +9338,11 @@ bool StreamAbstractionAAMP_MPD::SelectSourceOrAdPeriod(bool &periodChanged, bool
 				}
 				// Check if the new period is having ads
 				adStateChanged = onAdEvent(AdEvent::DEFAULT);
+				if(adStateChanged && AdState::OUTSIDE_ADBREAK_WAIT4ADS == mCdaiObject->mAdState)
+				{
+					// Adbreak was available, but ads were not available and waited for fulfillment. Now, check if ads are available.
+					adStateChanged = onAdEvent(AdEvent::DEFAULT);
+				}
 			}
 
 			if (AdState::IN_ADBREAK_AD_PLAYING != mCdaiObject->mAdState)
@@ -9393,7 +9398,7 @@ bool StreamAbstractionAAMP_MPD::SelectSourceOrAdPeriod(bool &periodChanged, bool
 					// If DAI ad is available for the period and we are still not in AD playing state, log a warning
 					if ((mCdaiObject->HasDaiAd(mBasePeriodId)) && (AdState::IN_ADBREAK_AD_PLAYING != mCdaiObject->mAdState) && (mBasePeriodOffset == 0))
 					{
-						AAMPLOG_WARN("Ad available for periodID:%s, but skipped!!", mBasePeriodId.c_str());
+						AAMPLOG_WARN("Ad available but skipped!! periodID %s mAdState %s", mBasePeriodId.c_str(), ADSTATE_STR[static_cast<int>(mCdaiObject->mAdState)]);
 					}
 				}
 				else
@@ -11797,6 +11802,11 @@ bool StreamAbstractionAAMP_MPD::onAdEvent(AdEvent evt, double &adOffset)
 				else
 				{
 					AAMPLOG_INFO("[CDAI] No AdBreak found for period[%s] at offset:%lf", mBasePeriodId.c_str(), mBasePeriodOffset);
+					if (AdState::OUTSIDE_ADBREAK_WAIT4ADS == mCdaiObject->mAdState)
+					{
+						stateChanged = true;
+						mCdaiObject->mAdState = AdState::OUTSIDE_ADBREAK;
+					}
 				}
 			}
 			break;
