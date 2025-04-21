@@ -3,7 +3,7 @@ PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
 LICENSE = "MIT"
 
-inherit packagegroup bind-config
+inherit packagegroup volatile-bind-service-gen
 
 # For interim development and package depolyment to test should be using pre release tags
 PV = "1.2.0"
