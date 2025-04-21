@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "1.1.0"
+PV = "1.2.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -137,6 +137,7 @@ RDEPENDS:${PN} = " \
     wireless-tools \
     libcroco \
     libevdev \
+    rdkcertconfig \
     libflac \
     libgudev \
     libinput \
