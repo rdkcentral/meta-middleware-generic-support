@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.7.0"
+PV = "1.1.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -27,7 +27,6 @@ RDEPENDS:${PN} = " \
     ctrlm-main \
     dcmd \
     devicesettings \
-    dibbler-client \
     dobby \
     dobby-thunderplugin \
     ermgr \
@@ -46,6 +45,7 @@ RDEPENDS:${PN} = " \
     libsyswrapper \
     libunpriv \
     logrotate \
+    lsof \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     remotedebugger \
     networkmanager-plugin \
@@ -70,7 +70,6 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
-    rdm \
     rdmagent \
     rfc \
     rtcore \
