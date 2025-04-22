@@ -58,16 +58,6 @@ RDEPENDS:${PN} = " \
     rdknativescript \
     valgrind \
     rdkperf \
-    entservices-casting \
-    entservices-connectivity \
-    entservices-deviceanddisplay \
-    entservices-infra \
-    entservices-inputoutput \
-    entservices-mediaanddrm \
-    entservices-peripherals \
-    entservices-runtime \
-    entservices-softwareupdate \
-    entservices-mediaanddrm-screencapture \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
