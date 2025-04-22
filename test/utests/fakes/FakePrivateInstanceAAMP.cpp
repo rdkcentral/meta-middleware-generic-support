@@ -1627,3 +1627,11 @@ void PrivateInstanceAAMP::SendVTTCueDataAsEvent(VTTCue* cue)
 void PrivateInstanceAAMP::UpdateCCTrackInfo(const std::vector<TextTrackInfo>& textTracksCopy, std::vector<CCTrackInfo>& updatedTextTracks)
 {
 }
+
+void PrivateInstanceAAMP::CalculateTrickModePositionEOS(void)
+{
+	if (g_mockPrivateInstanceAAMP)
+	{
+		g_mockPrivateInstanceAAMP->CalculateTrickModePositionEOS();
+	}
+}

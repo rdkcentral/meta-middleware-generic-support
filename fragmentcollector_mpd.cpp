@@ -3677,6 +3677,12 @@ AAMPStatusType StreamAbstractionAAMP_MPD::Init(TuneType tuneType)
 				}
 			}
 		}
+		if (eTUNETYPE_NEW_NORMAL == tuneType)
+		{
+			double currentTime = NOW_STEADY_TS_SECS_FP;
+			aamp->mLiveEdgeDeltaFromCurrentTime = currentTime - aamp->mAbsoluteEndPosition;
+			AAMPLOG_INFO("currentTime %lfs mAbsoluteEndPosition %lfs mLiveEdgeDeltaFromCurrentTime %lfs", currentTime, aamp->mAbsoluteEndPosition, aamp->mLiveEdgeDeltaFromCurrentTime );
+		}
 		for (unsigned iPeriod = 0; iPeriod < numPeriods; iPeriod++)
 		{//TODO -  test with streams having multiple periods.
 			IPeriod *period = mpd->GetPeriods().at(iPeriod);
