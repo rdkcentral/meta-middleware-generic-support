@@ -221,7 +221,8 @@ TsbFragmentDataPtr AampTsbReader::FindNext(AampTime offset)
 		if (!ret)
 		{
 			AAMPLOG_INFO("[%s] Retry is also failing mCurrentRate %f, returning nullptr ", GetMediaTypeName(mMediaType), mCurrentRate);
-			if (AAMP_NORMAL_PLAY_RATE != mCurrentRate)
+			// The EOS in Forward Trick Play is set in AampTsbReader::ReadNext based on calculated mAamp->mTrickModePositionEOS
+			if (mCurrentRate < AAMP_NORMAL_PLAY_RATE )
 			{
 				// Culling segment, but EOS never marked
 				mEosReached = true;
@@ -244,8 +245,19 @@ void AampTsbReader::ReadNext(TsbFragmentDataPtr nextFragmentData)
 {
 	if (nextFragmentData != nullptr)
 	{
-		// Mark EOS, for forward iteration check next fragment, for reverse check prev
-		mEosReached = (mCurrentRate >= 0) ? (nextFragmentData->next == nullptr) : (nextFragmentData->prev == nullptr);
+		if (mCurrentRate > AAMP_NORMAL_PLAY_RATE)
+		{
+			mEosReached = nextFragmentData->GetAbsolutePosition().inSeconds() >= mAamp->mTrickModePositionEOS;
+		}
+		else if (mCurrentRate < 0)
+		{
+			mEosReached = (nextFragmentData->prev == nullptr);
+		}
+		else
+		{
+			mEosReached = (nextFragmentData->next == nullptr);
+		}
+
 		// Compliment this state with last init header push status
 		if (mActiveTuneType == eTUNETYPE_SEEKTOLIVE)
 		{
@@ -269,8 +281,9 @@ void AampTsbReader::ReadNext(TsbFragmentDataPtr nextFragmentData)
 			CheckPeriodBoundary(nextFragmentData);
 		}
 		mUpcomingFragmentPosition += (mCurrentRate >= 0) ? nextFragmentData->GetDuration() : -nextFragmentData->GetDuration();
-		AAMPLOG_INFO("[%s] Fragment: absPos %lfs next %lfs eos %d initWaiting %d mIsNextFragmentDisc %d mIsPeriodBoundary %d",
-			GetMediaTypeName(mMediaType), nextFragmentData->GetAbsolutePosition().inSeconds(), mUpcomingFragmentPosition, mEosReached, mNewInitWaiting, mIsNextFragmentDisc, mIsPeriodBoundary);
+		AAMPLOG_INFO("[%s] Fragment: absPos %lfs next %lfs eos %d initWaiting %d mIsNextFragmentDisc %d mIsPeriodBoundary %d mTrickModePositionEOS %lfs rate %f",
+			GetMediaTypeName(mMediaType), nextFragmentData->GetAbsolutePosition().inSeconds(), mUpcomingFragmentPosition, mEosReached, mNewInitWaiting, mIsNextFragmentDisc,
+			mIsPeriodBoundary, mAamp->mTrickModePositionEOS, mCurrentRate);
 	}
 }
 

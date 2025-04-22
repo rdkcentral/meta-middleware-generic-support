@@ -1226,6 +1226,8 @@ PrivateInstanceAAMP::PrivateInstanceAAMP(AampConfig *config) : mReportProgressPo
 	, mIsPeriodChangeMarked(false)
 	, m_lastSubClockSyncTime()
 	, mIsLoggingNeeded(false)
+	, mLiveEdgeDeltaFromCurrentTime(0.0)
+	, mTrickModePositionEOS(0.0)
 	, mTSBSessionManager(NULL)
 	, mLocalAAMPTsb(false), mLocalAAMPInjectionEnabled(false)
 	, mbPauseOnStartPlayback(false)
@@ -3291,8 +3293,9 @@ void PrivateInstanceAAMP::NotifyEOSReached()
 			AcquireStreamLock();
 			if (IsLocalAAMPTsb() && !GetLLDashChunkMode())
 			{
-				seek_pos_seconds = (aamp_GetCurrentTimeMS()/1000) - mLiveOffset;
-				AAMPLOG_INFO("Reached EOS during FF (aamp_GetCurrentTimeMS: %lld), so seeking to %fs",aamp_GetCurrentTimeMS(), seek_pos_seconds );
+				double timeNow = NOW_STEADY_TS_SECS_FP;
+				seek_pos_seconds = timeNow - mLiveEdgeDeltaFromCurrentTime - mLiveOffset;
+				AAMPLOG_INFO("Reached EOS during FF so seeking to live play position: %lfs timeNow %lfs mLiveEdgeDeltaFromCurrentTime %lfs mLiveOffset %lfs", seek_pos_seconds, timeNow, mLiveEdgeDeltaFromCurrentTime, mLiveOffset );
 				TuneHelper(eTUNETYPE_SEEK);
 			}
 			else
@@ -13733,5 +13736,21 @@ const char* PrivateInstanceAAMP::getStringForPlaybackError(PlaybackErrorType err
 			return "GstPipeline Internal Error";
 		default:
 			return "STARTTIME RESET";
+	}
+}
+
+/**
+ *	@brief Calculates the trick mode EOS position
+ *	This function only works for (rate > 1)
+ */
+void PrivateInstanceAAMP::CalculateTrickModePositionEOS(void)
+{
+	if (rate > AAMP_NORMAL_PLAY_RATE)
+	{
+		double timeNow = NOW_STEADY_TS_SECS_FP;
+		double positionNow = GetPositionSeconds();
+		double livePlayPositionNow = timeNow - mLiveEdgeDeltaFromCurrentTime - mLiveOffset;
+		mTrickModePositionEOS = livePlayPositionNow + (livePlayPositionNow - positionNow)/(rate - 1);
+		AAMPLOG_INFO("timeNow %lfs positionNow %lfs livePlayPositionNow %lfs rate %fs mTrickModePositionEOS %lfs",timeNow, positionNow, livePlayPositionNow, rate, mTrickModePositionEOS);
 	}
 }

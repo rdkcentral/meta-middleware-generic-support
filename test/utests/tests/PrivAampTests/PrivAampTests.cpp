@@ -4244,3 +4244,49 @@ TEST_F(PrivAampTests, TuneHelperWithAampTsb)
 	p_aamp->SetLLDashChunkMode(true);
 	p_aamp->TuneHelper(eTUNETYPE_SEEK);
 }
+/*
+	Verifies that the seek position is calculated correctly when EOS is reached while performing FF.
+*/
+TEST_F(PrivAampTests, NotifyEOSReachedFFSeekPositionCalculation)
+{
+	p_aamp->mpStreamAbstractionAAMP = g_mockStreamAbstractionAAMP;
+	p_aamp->SetIsLive(true);
+	p_aamp->SetLLDashChunkMode(false);
+	p_aamp->SetLocalAAMPTsb(true);
+	constexpr double kLiveEdgeDeltaFromCurrentTime = 10.0;
+	constexpr double kLiveOffset = 15.0;
+	p_aamp->mLiveEdgeDeltaFromCurrentTime = kLiveEdgeDeltaFromCurrentTime;
+	p_aamp->mLiveOffset= kLiveOffset;
+
+	EXPECT_CALL(*g_mockStreamAbstractionAAMP, IsEOSReached()).WillOnce(Return(true));
+	p_aamp->NotifyEOSReached();
+	/*The calculation involves NOW_STEADY_TS_MS in calculation of seek_pos_seconds, so the value from NotifyEOSReached and
+	calculated value will differ slightly hence using EXPECT_NEAR */
+	EXPECT_NEAR(p_aamp->seek_pos_seconds, NOW_STEADY_TS_SECS_FP - kLiveEdgeDeltaFromCurrentTime - kLiveOffset, 1);
+}
+
+TEST_F(PrivAampTests, VerifyTrickModePositionEOS)
+{
+	constexpr double kPositionNow = 100.00;
+	constexpr double kLiveEdgeDeltaFromCurrentTime = 10.0;
+	constexpr double kLiveOffset = 15.0;
+	constexpr double kRate = 6.0;
+	p_aamp->rate = kRate;
+	p_aamp->mLiveEdgeDeltaFromCurrentTime = kLiveEdgeDeltaFromCurrentTime;
+	p_aamp->mLiveOffset= kLiveOffset;
+	p_aamp->mAudioOnlyPb = false;
+	p_aamp->trickStartUTCMS = 1;
+
+	// Setup mock objects and expectations
+	EXPECT_CALL(*g_mockAampConfig, IsConfigSet(eAAMPConfig_EnableGstPositionQuery)).WillRepeatedly(Return(true));
+	EXPECT_CALL(*g_mockAampConfig, IsConfigSet(eAAMPConfig_AudioOnlyPlayback)).WillRepeatedly(Return(false));
+	EXPECT_CALL(*g_mockAampStreamSinkManager, GetStreamSink(_)).WillRepeatedly(Return(g_mockAampGstPlayer));
+	EXPECT_CALL(*g_mockAampGstPlayer, GetPositionMilliseconds()).WillRepeatedly(Return(kPositionNow*1000.00));
+
+	p_aamp->CalculateTrickModePositionEOS();
+
+	double livePlayPosition =  NOW_STEADY_TS_SECS_FP - kLiveEdgeDeltaFromCurrentTime - kLiveOffset;
+	double calculatedTrickModeEosPos = livePlayPosition + (livePlayPosition - kPositionNow)/(kRate-1);
+	/*The calculation involves NOW_STEADY_TS_SECS_FP, in SetRate and calculatedTrickModeEosPos, which will differ a bit, hence using EXPECT_NEAR */
+	EXPECT_NEAR(p_aamp->mTrickModePositionEOS, calculatedTrickModeEosPos, 1);
+}

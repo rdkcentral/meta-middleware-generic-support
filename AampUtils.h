@@ -41,6 +41,9 @@
 #define NOW_SYSTEM_TS_MS std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count()     /**< Getting current system clock in milliseconds */
 #define NOW_STEADY_TS_MS std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count()     /**< Getting current steady clock in milliseconds */
 
+#define NOW_SYSTEM_TS_SECS_FP std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::system_clock::now().time_since_epoch()).count()     /**< Getting current system clock in floating point seconds */
+#define NOW_STEADY_TS_SECS_FP std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::steady_clock::now().time_since_epoch()).count()     /**< Getting current steady clock in floating point seconds */
+
 #define ARRAY_SIZE(A) (sizeof(A)/sizeof(A[0]))
 
 //Delete non-array object

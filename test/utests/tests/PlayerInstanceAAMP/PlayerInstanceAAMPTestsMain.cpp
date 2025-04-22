@@ -1155,6 +1155,7 @@ TEST_F(PlayerInstanceAAMPTests, GetPlaybackRateTest_2) {
     int retrievedPlaybackRate = mPlayerInstance->GetPlaybackRate();
     EXPECT_EQ(retrievedPlaybackRate,0);
 }
+
 TEST_F(PlayerInstanceAAMPTests, GetAudioTrackTest) {
 	mPlayerInstance->SetAudioTrack(1);
 	int audioTrack = mPlayerInstance->GetAudioTrack();
