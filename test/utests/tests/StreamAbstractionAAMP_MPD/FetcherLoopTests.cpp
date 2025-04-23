@@ -61,7 +61,7 @@ protected:
 			: StreamAbstractionAAMP_MPD(aamp, seekpos, rate)
 		{
 		}
-		
+
 		AAMPStatusType InvokeUpdateTrackInfo(bool modifyDefaultBW, bool resetTimeLineIndex)
 		{
 			return UpdateTrackInfo(modifyDefaultBW, resetTimeLineIndex);
@@ -762,7 +762,7 @@ TEST_F(FetcherLoopTests, BasicFetcherLoop)
 		.WillOnce(Return(true));
 	EXPECT_CALL(*g_mockMediaStreamContext, CacheFragment(_, _, _, _, _, false, _, _, _, _, _))
 		.WillRepeatedly(Return(true));
-
+	EXPECT_CALL(*g_mockPrivateInstanceAAMP, IsLocalAAMPTsbInjection()).WillRepeatedly(Return(false));
 	status = InitializeMPD(mVodManifest);
 	EXPECT_EQ(status, eAAMPSTATUS_OK);
 
@@ -801,6 +801,8 @@ TEST_F(FetcherLoopTests, BasicFetcherLoopLive)
 	EXPECT_CALL(*g_mockMediaStreamContext, CacheFragment(fragmentUrl, _, _, _, _, true, _, _, _, _, _))
 		.Times(1)
 		.WillOnce(Return(true));
+	EXPECT_CALL(*g_mockPrivateInstanceAAMP, IsLocalAAMPTsbInjection()).WillRepeatedly(Return(false));
+
 	status = InitializeMPD(mLiveManifest, eTUNETYPE_SEEK, 27.0);
 	EXPECT_EQ(status, eAAMPSTATUS_OK);
 
@@ -810,7 +812,7 @@ TEST_F(FetcherLoopTests, BasicFetcherLoopLive)
 	// Add the new EXPECT_CALL for DownloadsAreEnabled
 	EXPECT_CALL(*g_mockPrivateInstanceAAMP, DownloadsAreEnabled())
 		.Times(AnyNumber())
-		.WillRepeatedly([]() 
+		.WillRepeatedly([]()
 						{
 							static int counter = 0;
 							return (++counter < 20); });
@@ -1056,6 +1058,7 @@ TEST_F(FetcherLoopTests, BasicFetcherLoopLiveWithParallelDownload)
 	audioFragmentUrl = std::string(TEST_BASE_URL) + std::string("audio_p0_init.mp4");
 	EXPECT_CALL(*g_mockMediaStreamContext, CacheFragment(videoFragmentUrl, _, _, _, _, true, _, _, _, _, _)).Times(1).WillOnce(Return(true));
 	EXPECT_CALL(*g_mockMediaStreamContext, CacheFragment(audioFragmentUrl, _, _, _, _, true, _, _, _, _, _)).Times(1).WillOnce(Return(true));
+	EXPECT_CALL(*g_mockPrivateInstanceAAMP, IsLocalAAMPTsbInjection()).WillRepeatedly(Return(false));
 
 	status = InitializeMPD(multiTrackManifest, eTUNETYPE_SEEK, 24.0);
 
