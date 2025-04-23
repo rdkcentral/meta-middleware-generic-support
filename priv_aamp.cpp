@@ -2184,7 +2184,7 @@ void PrivateInstanceAAMP::ReportProgress(bool sync, bool beginningOfStream)
 		// This is a short-term solution. We are not acquiring StreamLock here, so we could still access mpStreamAbstractionAAMP
 		// as its getting deleted. StreamLock is acquired for a lot stuff, so getting it here would lead to unexpected delays
 		// Another approach would be to save the bitrate in a local variable as bitrateChangedEvents are fired
-		// Planning a tech-debt to stop deleting mpStreamAbstractionAAMP in-between seek/trickplays
+		// Planning a tech-debt to stop deleting mpStreamAbstractionAAMP in-between seek/trickplay
 		BitsPerSecond bps = 0;
 		if (mpStreamAbstractionAAMP)
 		{
