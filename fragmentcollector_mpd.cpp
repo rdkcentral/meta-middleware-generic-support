@@ -8967,8 +8967,15 @@ void StreamAbstractionAAMP_MPD::AdvanceTrack(int trackIdx, bool trickPlay, doubl
 	{
 		if (pMediaStreamContext->adaptationSet )
 		{
+			/*
+			* When injecting from TSBReader we do not want to stop the fetcher loop because of injector cache full. TSB injection
+			* uses numberOfFragmentChunksCached so assuming (pMediaStreamContext->numberOfFragmentsCached != maxCachedFragmentsPerTrack) == true
+			*
+			* Also aamp->IsLocalAAMPTsbInjection() || aamp->TrackDownloadsAreEnabled(static_cast<AampMediaType>(trackIdx) because a pause in playback
+			* should not stop the fetcher loop during TSB injection.
+			*/
 			if((pMediaStreamContext->numberOfFragmentsCached != maxCachedFragmentsPerTrack) && !(pMediaStreamContext->profileChanged) &&
-				(!lowLatency || aamp->TrackDownloadsAreEnabled(static_cast<AampMediaType>(trackIdx))))
+				(aamp->IsLocalAAMPTsbInjection() || !lowLatency || aamp->TrackDownloadsAreEnabled(static_cast<AampMediaType>(trackIdx))))
 			{
 				// profile not changed and Cache not full scenario
 				if (!pMediaStreamContext->eos)
@@ -9047,7 +9054,7 @@ void StreamAbstractionAAMP_MPD::AdvanceTrack(int trackIdx, bool trickPlay, doubl
 			}
 
 			if((pMediaStreamContext->numberOfFragmentsCached != maxCachedFragmentsPerTrack) && bCacheFullState &&
-				(!lowLatency || aamp->TrackDownloadsAreEnabled(static_cast<AampMediaType>(trackIdx))))
+				( !lowLatency || aamp->TrackDownloadsAreEnabled(static_cast<AampMediaType>(trackIdx))))
 			{
 				bCacheFullState = false;
 			}
@@ -9615,7 +9622,10 @@ void StreamAbstractionAAMP_MPD::FetcherLoop()
 
 	bool exitFetchLoop = false;
 	bool trickPlay = (AAMP_NORMAL_PLAY_RATE != aamp->rate);
-	bool waitForFreeFrag = true;
+
+	//If we are injecting from TSB then we are not injecting from the Fetcher hence
+	//the fetcher does not need to wait for a free slot in the fragment cache FIFO
+	bool waitForFreeFrag = !aamp->IsLocalAAMPTsbInjection();
 	double delta = 0;
 	bool adStateChanged = false;
 	bool resetIterator = true;
@@ -9803,7 +9813,8 @@ void StreamAbstractionAAMP_MPD::FetcherLoop()
 				}
 				for (int trackIdx = (mNumberOfTracks - 1); trackIdx >= 0; trackIdx--)
 				{
-					cacheFullStatus[trackIdx] = true;
+					// When injecting from TSB reader then fetcher should ignore the cache full status
+					cacheFullStatus[trackIdx] = !aamp->IsLocalAAMPTsbInjection();
 					if (!mMediaStreamContext[trackIdx]->eos)
 					{
 						if (parallelDnld && trackIdx < mTrackWorkers.size() && mTrackWorkers[trackIdx])
@@ -9935,7 +9946,8 @@ void StreamAbstractionAAMP_MPD::FetcherLoop()
 					// play cache is full , wait until cache is available to inject next, max wait of 1sec
 					int timeoutMs = MAX_WAIT_TIMEOUT_MS;
 					int trackIdx = (vEos && !aEos) ? eMEDIATYPE_AUDIO : eMEDIATYPE_VIDEO;
-					AAMPLOG_DEBUG("Cache full state track(%d), no download until(%d) Time(%lld)", trackIdx, timeoutMs, aamp_GetCurrentTimeMS());
+					AAMPLOG_DEBUG("Cache full state trackIdx %d vEos %d aEos %d timeoutMs %d Time %lld",
+						trackIdx, vEos, aEos, timeoutMs, aamp_GetCurrentTimeMS());
 					if(aamp->GetLLDashChunkMode() && !aamp->TrackDownloadsAreEnabled(static_cast<AampMediaType>(trackIdx)))
 					{
 						// Track is already at enough-data state, no need to wait for cache full
@@ -10004,7 +10016,7 @@ void StreamAbstractionAAMP_MPD::FetcherLoop()
  *
  * @return void
  */
-void StreamAbstractionAAMP_MPD::AdvanceTsbFetch(int trackIdx, bool trickPlay, double delta, bool *waitForFreeFrag, bool *bCacheFullState)
+void StreamAbstractionAAMP_MPD::AdvanceTsbFetch(int trackIdx, bool trickPlay, double delta, bool &waitForFreeFrag, bool &bCacheFullState)
 {
 	class MediaStreamContext *pMediaStreamContext = mMediaStreamContext[trackIdx];
 	AampMediaType mediaType = (AampMediaType) trackIdx;
@@ -10017,7 +10029,7 @@ void StreamAbstractionAAMP_MPD::AdvanceTsbFetch(int trackIdx, bool trickPlay, do
 	bool isAllowNextFrag = true;
 	int  maxCachedFragmentsPerTrack = (int)pMediaStreamContext->GetCachedFragmentChunksSize();
 
-	if (waitForFreeFrag && *waitForFreeFrag && !trickPlay)
+	if (waitForFreeFrag && !trickPlay)
 	{
 		AAMPPlayerState state = aamp->GetState();
 		if(ISCONFIGSET(eAAMPConfig_SuppressDecode))
@@ -10026,12 +10038,12 @@ void StreamAbstractionAAMP_MPD::AdvanceTsbFetch(int trackIdx, bool trickPlay, do
 		}
 		if(state == eSTATE_PLAYING)
 		{
-			*waitForFreeFrag = false;
+			waitForFreeFrag = false;
 		}
 		else
 		{
 			int timeoutMs = -1;
-			if(bCacheFullState && *bCacheFullState &&
+			if(bCacheFullState &&
 				(pMediaStreamContext->numberOfFragmentChunksCached == maxCachedFragmentsPerTrack))
 			{
 				timeoutMs = MAX_WAIT_TIMEOUT_MS;
@@ -10050,7 +10062,7 @@ void StreamAbstractionAAMP_MPD::AdvanceTsbFetch(int trackIdx, bool trickPlay, do
 			}
 			if(pMediaStreamContext->numberOfFragmentChunksCached != maxCachedFragmentsPerTrack && bCacheFullState)
 			{
-				*bCacheFullState = false;
+				bCacheFullState = false;
 			}
 	}
 }
@@ -10089,7 +10101,7 @@ void StreamAbstractionAAMP_MPD::TsbReader()
 					cacheFullStatus[trackIdx] = true;
 					if (!tsbSessionManager->GetTsbReader((AampMediaType) trackIdx)->IsEos())
 					{
-						AdvanceTsbFetch(trackIdx, trickPlay, delta, &waitForFreeFrag, &cacheFullStatus[trackIdx]);
+						AdvanceTsbFetch(trackIdx, trickPlay, delta, waitForFreeFrag, cacheFullStatus[trackIdx]);
 					}
 				}
 				if(abortTsbReader)

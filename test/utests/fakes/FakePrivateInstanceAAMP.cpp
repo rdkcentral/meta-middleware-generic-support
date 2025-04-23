@@ -937,6 +937,9 @@ AampCurlInstance PrivateInstanceAAMP::GetPlaylistCurlInstance(AampMediaType type
 
 void PrivateInstanceAAMP::BlockUntilGstreamerWantsData(void(*cb)(void), int periodMs, int track)
 {
+	if (g_mockPrivateInstanceAAMP != nullptr) {
+		return g_mockPrivateInstanceAAMP->BlockUntilGstreamerWantsData(cb, periodMs, track);
+	}
 }
 
 void PrivateInstanceAAMP::CheckForDiscontinuityStall(AampMediaType mediaType)
@@ -1604,7 +1607,7 @@ unsigned char* PrivateInstanceAAMP::ReplaceKeyIDPsshData(const unsigned char *In
 
 void PrivateInstanceAAMP::SendBlockedEvent(const std::string & reason, const std::string currentLocator)
 {
-	
+
 }
 void PrivateInstanceAAMP::GetPlayerVideoSize(int &width, int &height)
 {

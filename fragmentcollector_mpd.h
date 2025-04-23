@@ -622,7 +622,7 @@ protected:
 	 *
 	 * @return void
 	 */
-	void AdvanceTsbFetch(int trackIdx, bool trickPlay, double delta, bool *waitForFreeFrag, bool *bCacheFullState);
+	void AdvanceTsbFetch(int trackIdx, bool trickPlay, double delta, bool &waitForFreeFrag, bool &bCacheFullState);
 
 	/**
 	 * @fn FetcherLoop

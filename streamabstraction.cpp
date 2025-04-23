@@ -1414,12 +1414,12 @@ void MediaTrack::ProcessAndInjectFragment(CachedFragment *cachedFragment, bool f
 bool MediaTrack::InjectFragment()
 {
 	bool ret = true;
-	bool isChunkMode = aamp->GetLLDashChunkMode();
+	bool isChunkMode = aamp->GetLLDashChunkMode() && (aamp->IsLocalAAMPTsbInjection() == false);
 	bool isChunkBuffer = IsInjectionFromCachedFragmentChunks();
 	bool lowLatency = aamp->GetLLDashServiceData()->lowLatencyMode;
 	StreamAbstractionAAMP* pContext = GetContext();
 
-	if(!isChunkMode) //TBD
+	if(!isChunkMode)
 	{
 		aamp->BlockUntilGstreamerWantsData(NULL, 0, type);
 	}
