@@ -80,12 +80,7 @@ RDEPENDS:${PN} = " \
     wpe-backend-rdk \
     wpeframework \
     wpeframework-clientlibraries \
-    rdkservices-apis \
-    wpeframework-ui \
-    wpe-webkit \
-    wpe-webkit-web-inspector-plugin \
     wrp-c \
-    xdial \
     xr-voice-sdk \
     bluez5 \
     bind \
