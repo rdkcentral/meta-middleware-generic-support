@@ -332,15 +332,15 @@ PV:pn-rdkwpasupplicantconfig = "1.0.0"
 PR:pn-rdkwpasupplicantconfig = "r0"
 PACKAGE_ARCH:pn-rdkwpasupplicantconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto = "0.9.5"
+PV:pn-rialto = "0.9.6"
 PR:pn-rialto = "r0"
 PACKAGE_ARCH:pn-rialto = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-gstreamer = "0.9.5"
+PV:pn-rialto-gstreamer = "0.9.6"
 PR:pn-rialto-gstreamer = "r0"
 PACKAGE_ARCH:pn-rialto-gstreamer = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-ocdm = "0.8.0"
+PV:pn-rialto-ocdm = "0.8.1"
 PR:pn-rialto-ocdm = "r0"
 PACKAGE_ARCH:pn-rialto-ocdm = "${MIDDLEWARE_ARCH}"
 
@@ -353,7 +353,7 @@ PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdkwindowmanager = "1.0.0"
-PR:pn-rdkwindowmanager = "r0"
+PR:pn-rdkwindowmanager = "r1"
 PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 
 PV:pn-os-release = "1.0.0"
