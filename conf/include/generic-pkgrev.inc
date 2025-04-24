@@ -356,6 +356,10 @@ PV:pn-rdkwindowmanager = "1.0.0"
 PR:pn-rdkwindowmanager = "r0"
 PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 
+PV:pn-appinfratests = "1.0.0"
+PR:pn-appinfratests = "r0"
+PACKAGE_ARCH:pn-appinfratests = "${MIDDLEWARE_ARCH}"
+
 PV:pn-os-release = "1.0.0"
 PR:pn-os-release = "r0"
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
