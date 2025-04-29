@@ -1157,6 +1157,10 @@ bool PrivateInstanceAAMP::IsLiveStream(void)
 
 void PrivateInstanceAAMP::WaitForDiscontinuityProcessToComplete(void)
 {
+	if (g_mockPrivateInstanceAAMP != nullptr)
+	{
+		g_mockPrivateInstanceAAMP->WaitForDiscontinuityProcessToComplete();
+	}
 }
 
 void PrivateInstanceAAMP::SendSupportedSpeedsChangedEvent(bool isIframeTrackPresent)
