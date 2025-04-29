@@ -3123,6 +3123,7 @@ bool InterfacePlayerRDK::Pause(bool pause , bool forceStopGstreamerPreBuffering)
 	if (gstPrivateContext->pipeline != NULL)
 	{
 		GstState nextState = pause ? GST_STATE_PAUSED : GST_STATE_PLAYING;
+		gstPrivateContext->buffering_target_state = nextState;
 
 		if (GST_STATE_PAUSED == nextState && forceStopGstreamerPreBuffering)
 		{
@@ -3150,7 +3151,6 @@ bool InterfacePlayerRDK::Pause(bool pause , bool forceStopGstreamerPreBuffering)
 		{
 			MW_LOG_ERR("InterfacePlayerRDK_Pause - gst_element_set_state - FAILED rc %d", rc);
 		}
-		gstPrivateContext->buffering_target_state = nextState;
 		gstPrivateContext->paused = pause;
 		gstPrivateContext->pendingPlayState = false;
 	}
@@ -4754,6 +4754,7 @@ void InterfacePlayerRDK::NotifyFragmentCachingComplete()
 	if(gstPrivateContext->pendingPlayState)
 	{
 		MW_LOG_MIL("InterfacePlayer: Setting pipeline to PLAYING state ");
+		gstPrivateContext->buffering_target_state = GST_STATE_PLAYING;
 		if (SetStateWithWarnings(gstPrivateContext->pipeline, GST_STATE_PLAYING) == GST_STATE_CHANGE_FAILURE)
 		{
 			MW_LOG_ERR("InterfacePlayer_Configure GST_STATE_PLAYING failed");
