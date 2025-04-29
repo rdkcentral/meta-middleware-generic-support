@@ -862,7 +862,7 @@ private:
 	 * @param[in] cachedFragment - fragment to be restamped for trickmodes
 	 */
 	void TrickModePtsRestamp(CachedFragment* cachedFragment);
-	
+
 	std::string RestampSubtitle( const char* buffer, size_t bufferLen, double position, double duration, double pts_offset );
 
 	/**
@@ -952,6 +952,8 @@ private:
 	};
 	std::condition_variable fragmentFetched;     	/**< Signaled after a fragment is fetched*/
 	std::condition_variable fragmentInjected;    	/**< Signaled after a fragment is injected*/
+
+	std::mutex injectorStartMutex;  		/**< Mutex to protect injector start */
 	std::thread fragmentInjectorThreadID;  	/**< Fragment injector thread id*/
 	std::condition_variable fragmentChunkInjected;	/**< Signaled after a fragment is injected*/
 	std::thread bufferMonitorThreadID;    	/**< Buffer Monitor thread id */
