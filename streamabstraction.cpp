@@ -1538,16 +1538,25 @@ bool MediaTrack::SignalIfEOSReached()
  */
 void MediaTrack::StartInjectLoop()
 {
-	abort = false;
-	abortInject = false;
-	abortInjectChunk = false;
-	discontinuityProcessed = false;
-	assert(!fragmentInjectorThreadStarted);
+
 	try
 	{
-		fragmentInjectorThreadID = std::thread(&MediaTrack::RunInjectLoop, this);
-		fragmentInjectorThreadStarted = true;
-		AAMPLOG_INFO("Thread created for RunInjectLoop [%zx]", GetPrintableThreadID(fragmentInjectorThreadID));
+		std::lock_guard<std::mutex> guard(injectorStartMutex);
+		if (fragmentInjectorThreadStarted)
+		{
+			AAMPLOG_WARN("Fragment injector thread already started");
+		}
+		else
+		{
+			abort = false;
+			abortInject = false;
+			abortInjectChunk = false;
+			discontinuityProcessed = false;
+
+			fragmentInjectorThreadID = std::thread(&MediaTrack::RunInjectLoop, this);
+			fragmentInjectorThreadStarted = true;
+			AAMPLOG_INFO("Thread created for RunInjectLoop [%zx]", GetPrintableThreadID(fragmentInjectorThreadID));
+		}
 	}
 	catch(const std::exception& e)
 	{
@@ -1715,14 +1724,11 @@ void MediaTrack::StopInjectLoop()
 {
 	NotifyCachedAudioFragmentAvailable();
 	NotifyCachedSubtitleFragmentAvailable();
+	std::lock_guard<std::mutex> guard(injectorStartMutex);
 	if(fragmentInjectorThreadStarted && fragmentInjectorThreadID.joinable())
 	{
 		fragmentInjectorThreadID.join();
-#ifdef TRACE
-		{
-			AAMPLOG_WARN("joined fragmentInjectorThread");
-		}
-#endif
+		AAMPLOG_INFO("Fragment injector thread joined");
 	}
 	fragmentInjectorThreadStarted = false;
 }
@@ -1965,10 +1971,6 @@ MediaTrack::~MediaTrack()
 		{
 			AAMPLOG_ERR("Unable to join subtitleClockThreadID for UpdateSubtitleClockTask!");
 		}
-	}
-	if (fragmentInjectorThreadStarted)
-	{
-		AAMPLOG_WARN("In MediaTrack destructor - fragmentInjectorThreads are still running, signaling cond variable");
 	}
 
 	if(aamp->GetLLDashServiceData()->lowLatencyMode)
