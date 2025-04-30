@@ -15,6 +15,7 @@ XiOne REALTEK STB RDKE Vendor Layer Release Notes
 |Summary|Content|
 |---|----|
 |Classification|Confidential|
+
 |Date|29 Apr 2025|
 |Author|pothiraj.paulraj@sky.uk shahbas.alipakkada@sky.uk|
 
@@ -44,11 +45,13 @@ XiOne REALTEK STB RDKE Vendor Layer Release Notes
 
 ## Release Description
 
+
 The aim of this release to provide the hotfix for [XIONE-17009](https://ccp.sys.comcast.net/browse/XIONE-17009) on top of vendor release 5.1.2. This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
 
 ## Release layer and components
 
 ### Vendor Release Components
+
 
 | Vendor Release Components | New Version (5.1.3) | Version in Previous Release (5.1.2) | ChangeList |
 |------------|---------|------------------------------------|--------------|
@@ -68,6 +71,7 @@ The aim of this release to provide the hotfix for [XIONE-17009](https://ccp.sys.
 |------------|---------|
 | XiOne-UK | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-uk-release/5.1.3/xione-uk/ipks/debug |
 
+
 ### Meta Repos
 
 #### Meta repos maintained by vendor layer
@@ -83,6 +87,7 @@ The aim of this release to provide the hotfix for [XIONE-17009](https://ccp.sys.
 | meta-mediarite-vendor |  | 10.0.34.0a2-r2 | |
 
 #### Meta repos common for RDK-E
+
 
 | Meta Repo | New Version (5.1.3) | Version in Previous Release (5.1.2) | ChangeList |
 |------------|---------|------------------------------------|--------------|
@@ -219,7 +224,6 @@ Testing details in [RDKEVD-1194](https://ccp.sys.comcast.net/browse/RDKEVD-1194)
 ### Fullstack image testing
 
 ##### XiOne-UK
-
 - Created Image Assembler build `"SKXI11ADS_DEV_support_E036_8.0p19s1_20250429143641.bin from the jenkins job https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1783/"` based on Middleware version 2.4.5 and the Image assembler based manifest branched to `"support/E036_8.0p19s1"`.
 
 - Included the application release 4.21.1 using [rdke-assembler-manifest](https://github.com/rdk-e/rdke-assembler-manifest) feature branch `"support/E036_8.0p19s1"`.
@@ -235,7 +239,6 @@ Testing details in [RDKEVD-1194](https://ccp.sys.comcast.net/browse/RDKEVD-1194)
   - Verified Log files are present in /opt/logs
 
 ## Components details in 'packagegroup-common-vendor-layer'
-
 | # | Vendor layer Component | New PV-PR (5.1.3) | PV-PR in Previous Release (5.1.2)| New SRCREV (5.1.3) | SRCREV in Previous Release (5.1.2)| Diff |
 |---|------------------------------------------|-------------|----------------------|-----------|------------|-----|
 | 1 | libdrm | | 2.4.110-r0 |  | NA | |
@@ -267,6 +270,7 @@ Testing details in [RDKEVD-1194](https://ccp.sys.comcast.net/browse/RDKEVD-1194)
 
 
 ## Components details in 'packagegroup-vendor-layer'
+
 
 | # | Vendor layer Component | New PV-PR (5.1.3) | PV-PR in Previous Release (5.1.2)| New SRCREV | SRCREV in Previous Release (5.1.2)| Diff |
 |---|------------------------------------------|-------------|----------------------|-----------|------------|-----|
