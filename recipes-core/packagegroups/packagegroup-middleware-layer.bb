@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "1.2.0"
+PV = "2.11.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -89,7 +89,7 @@ RDEPENDS:${PN} = " \
     wpe-backend-rdk \
     wpeframework \
     wpeframework-clientlibraries \
-    rdkservices-apis \
+    entservices-apis \
     wpeframework-ui \
     wpe-webkit \
     wpe-webkit-web-inspector-plugin \
