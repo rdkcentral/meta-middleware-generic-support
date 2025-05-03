@@ -368,63 +368,63 @@ PACKAGE_ARCH:pn-wlan-p2p = "${MIDDLEWARE_ARCH}"
 MULTILIB_VARIANTS:pn-os-release = " multilib "
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-app = "1.2.3"
+PV:pn-subttxrend-app = "1.2.2"
 PR:pn-subttxrend-app = "r0"
 PACKAGE_ARCH:pn-subttxrend-app = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-dbus = "1.2.3"
+PV:pn-subttxrend-dbus = "1.2.2"
 PR:pn-subttxrend-dbus = "r0"
 PACKAGE_ARCH:pn-subttxrend-dbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-dvbsub = "1.2.3"
+PV:pn-subttxrend-dvbsub = "1.2.2"
 PR:pn-subttxrend-dvbsub = "r0"
 PACKAGE_ARCH:pn-subttxrend-dvbsub = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-cc = "1.2.3"
+PV:pn-subttxrend-cc = "1.2.2"
 PR:pn-subttxrend-cc = "r0"
 PACKAGE_ARCH:pn-subttxrend-cc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-ctrl = "1.2.3"
+PV:pn-subttxrend-ctrl = "1.2.2"
 PR:pn-subttxrend-ctrl = "r0"
 PACKAGE_ARCH:pn-subttxrend-ctrl = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-common = "1.2.3"
+PV:pn-subttxrend-common = "1.2.2"
 PR:pn-subttxrend-common = "r0"
 PACKAGE_ARCH:pn-subttxrend-common = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-gfx = "1.2.3"
+PV:pn-subttxrend-gfx = "1.2.2"
 PR:pn-subttxrend-gfx = "r0"
 PACKAGE_ARCH:pn-subttxrend-gfx = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-protocol = "1.2.3"
+PV:pn-subttxrend-protocol = "1.2.2"
 PR:pn-subttxrend-protocol = "r0"
 PACKAGE_ARCH:pn-subttxrend-protocol = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-socksrc = "1.2.3"
+PV:pn-subttxrend-socksrc = "1.2.2"
 PR:pn-subttxrend-socksrc = "r0"
 PACKAGE_ARCH:pn-subttxrend-socksrc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-ttml = "1.2.3"
+PV:pn-subttxrend-ttml = "1.2.2"
 PR:pn-subttxrend-ttml = "r0"
 PACKAGE_ARCH:pn-subttxrend-ttml = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-ttxt = "1.2.3"
+PV:pn-subttxrend-ttxt = "1.2.2"
 PR:pn-subttxrend-ttxt = "r0"
 PACKAGE_ARCH:pn-subttxrend-ttxt = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-scte = "1.2.3"
+PV:pn-subttxrend-scte = "1.2.2"
 PR:pn-subttxrend-scte = "r0"
 PACKAGE_ARCH:pn-subttxrend-scte = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-webvtt = "1.2.3"
+PV:pn-subttxrend-webvtt = "1.2.2"
 PR:pn-subttxrend-webvtt = "r0"
 PACKAGE_ARCH:pn-subttxrend-webvtt = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dvbsubdecoder = "1.2.3"
+PV:pn-dvbsubdecoder = "1.2.2"
 PR:pn-dvbsubdecoder = "r0"
 PACKAGE_ARCH:pn-dvbsubdecoder = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ttxdecoder = "1.2.3"
+PV:pn-ttxdecoder = "1.2.2"
 PR:pn-ttxdecoder = "r0"
 PACKAGE_ARCH:pn-ttxdecoder = "${MIDDLEWARE_ARCH}"
 
