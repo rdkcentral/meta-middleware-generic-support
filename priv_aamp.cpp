@@ -3234,17 +3234,22 @@ void PrivateInstanceAAMP::NotifyEOSReached()
 		// mpStreamAbstractionAAMP not null & IsEOSReached()
 		if( TryStreamLock() )
 		{
+			int ret = false;
 			if(!mpStreamAbstractionAAMP)
 			{
 				AAMPLOG_ERR("null Stream Abstraction AAMP");
-				return;
+				ret = true;
 			}
-			if (!mpStreamAbstractionAAMP->IsEOSReached())
+			else if (!mpStreamAbstractionAAMP->IsEOSReached())
 			{
 				AAMPLOG_ERR("Bogus EOS event received from GStreamer, discarding it!");
-				return;
+				ret = true;
 			}
 			ReleaseStreamLock();
+			if (ret)
+			{
+				return;
+			}
 		}
 		else
 		{
