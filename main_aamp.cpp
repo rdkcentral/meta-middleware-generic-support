@@ -147,7 +147,7 @@ PlayerInstanceAAMP::PlayerInstanceAAMP(StreamSink* streamSink
 		TSB::LogLevel level = ConvertTsbLogLevel(mConfig.GetConfigValue(eAAMPConfig_TsbLogLevel)) ;
 		try
 		{
-			std::shared_ptr<TSB::Store> tSBStore = std::make_shared<TSB::Store>(config, AampLogManager::aampLogger, level);
+			std::shared_ptr<TSB::Store> tSBStore = std::make_shared<TSB::Store>(config, AampLogManager::aampLogger, aamp->mPlayerId, level);
 			if(tSBStore)
 			{
 				/**< Creating new TSB store object will automatically flush the storage*/
