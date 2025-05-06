@@ -1382,7 +1382,7 @@ std::shared_ptr<TSB::Store> PrivateInstanceAAMP::GetTSBStore(const TSB::Store::C
 	{
 		try
 		{
-			mTSBStore = std::make_shared<TSB::Store>(config, logger, level);
+			mTSBStore = std::make_shared<TSB::Store>(config, logger, mPlayerId, level);
 		}
 		catch (std::exception &e)
 		{

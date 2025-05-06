@@ -29,6 +29,8 @@ MockPrivateInstanceAAMP *g_mockPrivateInstanceAAMP = nullptr;
 
 bool PrivateInstanceAAMP::mTrackGrowableBufMem;
 
+static int PLAYERID_CNTR = 0;
+
 PrivateInstanceAAMP::PrivateInstanceAAMP(AampConfig *config) :
 	profiler(),
 	licenceFromManifest(false),
@@ -93,6 +95,7 @@ PrivateInstanceAAMP::PrivateInstanceAAMP(AampConfig *config) :
 	mScheduler(NULL),
 	mConfig(config),
 	mSubLanguage(),
+	mPlayerId(PLAYERID_CNTR++),
 	mIsWVKIDWorkaround(false),
 	mAuxAudioLanguage(),
 	mAbsoluteEndPosition(0),
