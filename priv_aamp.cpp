@@ -5238,7 +5238,7 @@ void PrivateInstanceAAMP::TuneHelper(TuneType tuneType, bool seekWhilePaused)
 		/* This relies on the fact that when tuning to a new channel, the flag mLocalAAMPTsb is set after this point,
 		so the StreamAbstraction object is created even if Local AAMP TSB is used. When TuneHelper is called for
 		another reason, like changing the rate, the flag is already set and the object is not re-created. */
-		if(!IsLocalAAMPTsb())
+		if(!mpStreamAbstractionAAMP)
 		{
 			mpStreamAbstractionAAMP = new StreamAbstractionAAMP_MPD(this, playlistSeekPos, rate,
 					std::bind(&PrivateInstanceAAMP::ID3MetadataHandler, this,
