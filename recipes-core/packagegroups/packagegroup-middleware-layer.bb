@@ -3,7 +3,7 @@ PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
 LICENSE = "MIT"
 
-inherit packagegroup
+inherit packagegroup volatile-bind-gen
 
 # For interim development and package depolyment to test should be using pre release tags
 PV = "2.11.0"
@@ -154,7 +154,6 @@ RDEPENDS:${PN} = " \
     taglib \
     tzdata \
     util-linux \
-    volatile-binds \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_gdb_support', "gdb ", "", d)} \
     jquery \
     ndisc6-rdnssd \
