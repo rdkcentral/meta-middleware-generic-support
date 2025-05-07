@@ -1,7 +1,7 @@
 
 # Do not reboot on dsmgr crash till bring up is complete
 
-LDFLAGS += "-lrdkHalLogging"
+EXTRA_OEMAKE += 'LDFLAGS="-L${STAGING_LIBDIR} -lrdkHalLogging"'
 
 do_install:append() {
     sed -i '/^OnFailure=reboot-notifier@%i.service/d' ${D}${systemd_unitdir}/system/dsmgr.service
