@@ -1,8 +1,8 @@
 diff --git a/AVOutput/AVOutputTV.cpp b/AVOutput/AVOutputTV.cpp
-index df3bd83..d4d2445 100644
+index df3bd83..27b0f11 100644
 --- a/AVOutput/AVOutputTV.cpp
 +++ b/AVOutput/AVOutputTV.cpp
-@@ -673,90 +673,90 @@ namespace Plugin {
+@@ -673,48 +673,48 @@ namespace Plugin {
  
      uint32_t AVOutputTV::getBacklightCapsV2(const JsonObject& parameters, JsonObject& response) {
          return getPQCapabilityWithContext([this]( tvContextCaps_t** context_caps, int* max_backlight) {
@@ -58,30 +58,7 @@ index df3bd83..d4d2445 100644
          },
          "PrecisionDetail", parameters, response);
      }
- 
-     uint32_t AVOutputTV::getLocalContrastEnhancementCaps(const JsonObject& parameters, JsonObject& response) {
-         return getPQCapabilityWithContext([this](tvContextCaps_t** context_caps, int* max_val) {
--            return this->GetLocalContrastEnhancementCaps(max_val, context_caps);
-+            return GetLocalContrastEnhancementCaps(max_val, context_caps);
-         },
-         "LocalContrastEnhancement", parameters, response);
-     }
- 
-     uint32_t AVOutputTV::getMPEGNoiseReductionCaps(const JsonObject& parameters, JsonObject& response) {
-         return getPQCapabilityWithContext([this](tvContextCaps_t** context_caps, int* max_val) {
--            return this->GetMPEGNoiseReductionCaps(max_val, context_caps);
-+            return GetMPEGNoiseReductionCaps(max_val, context_caps);
-         },
-         "MPEGNoiseReduction", parameters, response);
-     }
- 
-     uint32_t AVOutputTV::getDigitalNoiseReductionCaps(const JsonObject& parameters, JsonObject& response) {
-         return getPQCapabilityWithContext([this](tvContextCaps_t** context_caps, int* max_val) {
--            return this->GetDigitalNoiseReductionCaps(max_val, context_caps);
-+            return GetDigitalNoiseReductionCaps(max_val, context_caps);
-         },
-         "DigitalNoiseReduction", parameters, response);
-     }
+@@ -742,21 +742,21 @@ namespace Plugin {
  
      uint32_t AVOutputTV::getAISuperResolutionCaps(const JsonObject& parameters, JsonObject& response) {
          return getPQCapabilityWithContext([this](tvContextCaps_t** context_caps, int* max_val) {
@@ -107,7 +84,7 @@ index df3bd83..d4d2445 100644
          "LowLatencyState", parameters, response);
      }
 diff --git a/AVOutput/AVOutputTV.h b/AVOutput/AVOutputTV.h
-index 24e18d1..e8a5a75 100644
+index 24e18d1..eea8abb 100644
 --- a/AVOutput/AVOutputTV.h
 +++ b/AVOutput/AVOutputTV.h
 @@ -411,7 +411,7 @@ class AVOutputTV : public AVOutputBase {
@@ -119,17 +96,29 @@ index 24e18d1..e8a5a75 100644
  		tvError_t GetBrightnessCaps(int *max_brightness, tvContextCaps_t **context_caps);
  		tvError_t GetContrastCaps(int* max_contrast, tvContextCaps_t** context_caps);
  		tvError_t GetSharpnessCaps(int *max_sharpness, tvContextCaps_t **context_caps);
-@@ -431,7 +431,7 @@ class AVOutputTV : public AVOutputBase {
+@@ -422,16 +422,16 @@ class AVOutputTV : public AVOutputBase {
+ 		tvError_t GetColorTemperatureCaps(tvColorTemp_t** color_temp, size_t* num_color_temp, tvContextCaps_t** context_caps);
+ 		tvError_t GetSdrGammaCaps(tvSdrGamma_t** sdr_gamma, size_t* num_sdr_gamma, tvContextCaps_t** context_caps);
+ 		tvError_t GetTVDimmingModeCaps(tvDimmingMode_t** dimming_mode, size_t* num_dimming_mode, tvContextCaps_t** context_caps);
+-		tvError_t GetAspectRatioCaps(tvDisplayMode_t** aspect_ratio, size_t* num_aspect_ratio, tvContextCaps_t** context_caps);
++		tvError_t GetAspectRatioCaps(tvDisplayMode_t** aspect_ratio, size_t* num_aspect_ratio, tvContextCaps_t** context_caps);*/
+ 		tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t **min_values, tvDVCalibrationSettings_t **max_values, tvContextCaps_t **context_caps);
+-		tvError_t GetTVPictureModeCaps(tvPQModeIndex_t** mode, size_t* num_pic_modes, tvContextCaps_t** context_caps);
++		//tvError_t GetTVPictureModeCaps(tvPQModeIndex_t** mode, size_t* num_pic_modes, tvContextCaps_t** context_caps);
+ 		tvError_t GetBacklightModeCaps(tvBacklightMode_t** backlight_mode, size_t* num_backlight_mode, tvContextCaps_t** context_caps);
+ 
+ 		tvError_t GetLocalContrastEnhancementCaps(int* maxLocalContrastEnhancement, tvContextCaps_t** context_caps);
  		tvError_t GetMPEGNoiseReductionCaps(int* maxMPEGNoiseReduction, tvContextCaps_t** context_caps);
  		tvError_t GetDigitalNoiseReductionCaps(int* maxDigitalNoiseReduction, tvContextCaps_t** context_caps);
- 		tvError_t GetAISuperResolutionCaps(int* maxAISuperResolution, tvContextCaps_t** context_caps);
+-		tvError_t GetAISuperResolutionCaps(int* maxAISuperResolution, tvContextCaps_t** context_caps);
 -		tvError_t GetMEMCCaps(int* maxMEMC, tvContextCaps_t** context_caps);
++		/*tvError_t GetAISuperResolutionCaps(int* maxAISuperResolution, tvContextCaps_t** context_caps);
 +		tvError_t GetMEMCCaps(int* maxMEMC, tvContextCaps_t** context_caps);*/
  		uint32_t getPQCapabilityWithContext(
  			const std::function<tvError_t(tvContextCaps_t**, int*)>& getCapsFunc,
  			const char* key,
 diff --git a/AVOutput/AVOutputTVHelper.cpp b/AVOutput/AVOutputTVHelper.cpp
-index e7aefbc..6e4a234 100644
+index e7aefbc..b040dbe 100644
 --- a/AVOutput/AVOutputTVHelper.cpp
 +++ b/AVOutput/AVOutputTVHelper.cpp
 @@ -900,7 +900,7 @@ namespace Plugin {
@@ -150,12 +139,57 @@ index e7aefbc..6e4a234 100644
  
      tvError_t AVOutputTV::updateAVoutputTVParamToHALV2(std::string forParam, paramIndex_t indexInfo, int value, bool setNotDelete)
      {
-@@ -3107,7 +3107,7 @@ namespace Plugin {
+@@ -3107,8 +3107,8 @@ namespace Plugin {
          return ret;
      }
  
 -#define HAL_NOT_READY 1
+-#if HAL_NOT_READY
 +#define HAL_NOT_READY 0
- #if HAL_NOT_READY
++
  #define CAPABLITY_FILE_NAMEV2    "/opt/panel/pq_capabilities.json"
  
+ tvError_t AVOutputTV::ReadJsonFile(JsonObject& root) {
+@@ -3253,7 +3253,7 @@ tvError_t AVOutputTV::GetCaps(const std::string& key, int* max_value, tvContextC
+ 
+     return tvERROR_NONE;
+ }
+-
++#if HAL_NOT_READY
+ tvError_t AVOutputTV::GetBacklightCaps(int* max_backlight, tvContextCaps_t** context_caps) {
+     return GetCaps("Backlight", max_backlight, context_caps);
+ }
+@@ -3286,7 +3286,7 @@ tvError_t AVOutputTV::GetLowLatencyStateCaps(int* max_latency, tvContextCaps_t *
+ tvError_t AVOutputTV::GetPrecisionDetailCaps(int * maxPrecision, tvContextCaps_t ** context_caps) {
+     return GetCaps("PrecisionDetail", maxPrecision, context_caps);
+ }
+-
++#endif
+ // LocalContrastEnhancement
+ tvError_t AVOutputTV::GetLocalContrastEnhancementCaps(int * maxLocalContrastEnhancement, tvContextCaps_t ** context_caps) {
+     return GetCaps("LocalContrastEnhancement", maxLocalContrastEnhancement, context_caps);
+@@ -3301,7 +3301,7 @@ tvError_t AVOutputTV::GetMPEGNoiseReductionCaps(int * maxMPEGNoiseReduction, tvC
+ tvError_t AVOutputTV::GetDigitalNoiseReductionCaps(int * maxDigitalNoiseReduction, tvContextCaps_t ** context_caps) {
+     return GetCaps("DigitalNoiseReduction", maxDigitalNoiseReduction, context_caps);
+ }
+-
++#if HAL_NOT_READY
+ // AISuperResolution
+ tvError_t AVOutputTV::GetAISuperResolutionCaps(int * maxAISuperResolution, tvContextCaps_t ** context_caps) {
+     return GetCaps("AISuperResolution", maxAISuperResolution, context_caps);
+@@ -3553,6 +3553,7 @@ tvError_t AVOutputTV::GetTVPictureModeCaps(tvPQModeIndex_t** mode, size_t* num_p
+ 
+     return tvERROR_NONE;
+ }
++#endif
+ tvError_t AVOutputTV::GetBacklightModeCaps(tvBacklightMode_t** backlight_mode, size_t* num_backlight_mode, tvContextCaps_t** context_caps)
+ {
+     LOGINFO("Entry\n");
+@@ -3664,7 +3665,6 @@ tvError_t AVOutputTV::GetDVCalibrationCaps(tvDVCalibrationSettings_t **min_value
+     return tvERROR_NONE;
+ }
+ 
+-#endif
+ 
+ 	int AVOutputTV::ReadCapablitiesFromConf(std::string param, capDetails_t& info)
+     {
