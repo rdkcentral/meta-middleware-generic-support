@@ -77,7 +77,7 @@ void registerCallbackForHls(DrmInterface* _this, PlayerHlsDrmSessionInterface* i
 		      });
 }
 /* 
- * @brief DrmInterface consturctor 
+ * @brief DrmInterface constructor 
  * */
 DrmInterface::DrmInterface(PrivateInstanceAAMP* aamp):mAesKeyBuf("aesKeyBuf")
 {

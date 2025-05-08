@@ -46,7 +46,7 @@
 
 #define LICENCE_RESPONSE_JSON_LICENCE_KEY "license"
 /** 
- * registerCb - register callbacks between player and middleware DRM componennt 
+ * registerCb - register callbacks between player and middleware DRM component 
  */
 static void  registerCb(AampDRMLicenseManager* _this, DrmSessionManager* instance)
 {
