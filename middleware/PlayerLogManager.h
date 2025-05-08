@@ -24,6 +24,7 @@
  * @brief Log manager for Player Interface
  */
 
+#include <cstdint>
 #include <stdio.h>
 #include <iostream>
 #include <sys/time.h>
