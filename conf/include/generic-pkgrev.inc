@@ -442,3 +442,4 @@ PV:pn-packager-lisa = "0.1.0"
 PR:pn-packager-lisa = "r0"
 PACKAGE_ARCH:pn-packager-lisa = "${MIDDLEWARE_ARCH}"
 
+PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
