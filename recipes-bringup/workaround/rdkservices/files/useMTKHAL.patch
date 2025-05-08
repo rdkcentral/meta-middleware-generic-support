@@ -1,0 +1,31 @@
+diff --git a/AVOutput/AVOutputTVHelper.cpp b/AVOutput/AVOutputTVHelper.cpp
+index 238541a..505b227 100644
+--- a/AVOutput/AVOutputTVHelper.cpp
++++ b/AVOutput/AVOutputTVHelper.cpp
+@@ -900,7 +900,7 @@ namespace Plugin {
+         return ret;
+     }
+ 
+-    tvContentFormatType_t AVOutputTV::convertFormatStringToTVContentFormat(const char *format)
++    /*tvContentFormatType_t AVOutputTV::convertFormatStringToTVContentFormat(const char *format)
+     {
+         tvContentFormatType_t ret = tvContentFormatType_SDR;
+ 
+@@ -918,7 +918,7 @@ namespace Plugin {
+ 	}
+ 
+         return ret;
+-    }
++    }*/
+ 
+     tvError_t AVOutputTV::updateAVoutputTVParamToHALV2(std::string forParam, paramIndex_t indexInfo, int value, bool setNotDelete)
+     {
+@@ -3083,7 +3083,7 @@ namespace Plugin {
+         return ret;
+     }
+ 
+-#define HAL_NOT_READY 1
++#define HAL_NOT_READY 0
+ #if HAL_NOT_READY
+ #define CAPABLITY_FILE_NAMEV2    "/opt/panel/pq_capabilities.json"
+ 

@@ -1,8 +1,9 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI:append = " file://0001-boost-filesystem.patch"
+SRC_URI:append = " file://useMTKHAL.patch"
 
-SRCREV = "e5b2e38c2ebd0025f47a5676a519cb82013f3076"
+SRCREV = "4122ece652954c5928487df867bb39281f0e11a6"
 
 PACKAGECONFIG:remove = " hdmicecsource"
 INSANE_SKIP:${PN} += "dev-deps"
