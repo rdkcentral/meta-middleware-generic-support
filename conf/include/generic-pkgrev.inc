@@ -38,7 +38,7 @@ PV:pn-rbus = "2.1.0"
 PR:pn-rbus = "r0"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.0.5"
+PV:pn-rfc = "1.0.7"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
@@ -82,7 +82,7 @@ PV:pn-qtvirtualkeyboard = "5.15.7"
 PR:pn-qtvirtualkeyboard = "r0"
 PACKAGE_ARCH:pn-qtvirtualkeyboard = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.3.0"
+PV:pn-aamp = "2.3.2"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
