@@ -1,7 +1,7 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI:append = " file://0001-boost-filesystem.patch"
-SRCREV = "643a043e470d9898255e487af5818966aae51666"
+SRCREV = "b40882fd7fbe0dc01e430cf7013ed4e545a40739"
 
 PACKAGECONFIG:remove = " hdmicecsource"
 INSANE_SKIP:${PN} += "dev-deps"
