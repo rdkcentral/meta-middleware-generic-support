@@ -3237,7 +3237,7 @@ Sample code utilizing showDiagnosticsOverlay configuration to display additional
     window.onload = function() {
         overlayObject.appURL = window.location.href;
         var player = new AAMPMediaPlayer();
-        overlayConfig = JSON.parse(player.getConfiguration()).showDiagnoticsOverlay;
+        overlayConfig = JSON.parse(player.getConfiguration()).showDiagnosticsOverlay;
         player.addEventListener("anomalyReport", onAnomalyReport);
         player.addEventListener("mediaMetadata", onMediaMetadata);
         renderOverlay(overlayObject);
