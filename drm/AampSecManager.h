@@ -28,11 +28,8 @@
 #include <mutex>
 #include "priv_aamp.h"
 #include "ThunderAccess.h"
-#include "AampDRMutils.h"
+#include "DrmUtils.h"
 
-
-#define SECMANAGER_CALL_SIGN "org.rdk.SecManager.1"
-#define WATERMARK_PLUGIN_CALLSIGN "org.rdk.Watermark.1"
 //#define RDKSHELL_CALLSIGN "org.rdk.RDKShell.1"   //need to be used instead of WATERMARK_PLUGIN_CALLSIGN if RDK Shell is used for rendering watermark
 
 /**
