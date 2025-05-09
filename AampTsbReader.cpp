@@ -280,7 +280,21 @@ void AampTsbReader::ReadNext(TsbFragmentDataPtr nextFragmentData)
 		{
 			CheckPeriodBoundary(nextFragmentData);
 		}
-		mUpcomingFragmentPosition += (mCurrentRate >= 0) ? nextFragmentData->GetDuration() : -nextFragmentData->GetDuration();
+
+		if (mCurrentRate >= 0)
+		{ // read in forward direction
+			mUpcomingFragmentPosition = (nextFragmentData->next) ?
+				nextFragmentData->next->GetAbsolutePosition().inSeconds() :
+				(nextFragmentData->GetAbsolutePosition().inSeconds() + nextFragmentData->GetDuration().inSeconds());
+		}
+		else
+		{ // read in reverse direction
+			// When nextFragmentData->prev becomes nullptr, eos will be set, and no more reads will happen for this rate as we reached the very first fragment in tsb and segments never gets added to the beginning of tsb.
+			mUpcomingFragmentPosition = (nextFragmentData->prev) ?
+				nextFragmentData->prev->GetAbsolutePosition().inSeconds() :
+				nextFragmentData->GetAbsolutePosition().inSeconds();
+		}
+
 		AAMPLOG_INFO("[%s] Fragment: absPos %lfs next %lfs eos %d initWaiting %d mIsNextFragmentDisc %d mIsPeriodBoundary %d mTrickModePositionEOS %lfs rate %f",
 			GetMediaTypeName(mMediaType), nextFragmentData->GetAbsolutePosition().inSeconds(), mUpcomingFragmentPosition, mEosReached, mNewInitWaiting, mIsNextFragmentDisc,
 			mIsPeriodBoundary, mAamp->mTrickModePositionEOS, mCurrentRate);
