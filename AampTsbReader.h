@@ -25,7 +25,6 @@
 #ifndef AAMP_TSBREADER_H
 #define AAMP_TSBREADER_H
 
-#include "AampTSBSessionManager.h"
 #include "AampTsbDataManager.h"
 #include "priv_aamp.h"
 #include "AampMediaType.h"
@@ -65,11 +64,20 @@ public:
 	AAMPStatusType Init(double &startPosSec, float rate, TuneType tuneType, std::shared_ptr<AampTsbReader> other=nullptr);
 
 	/**
-	 * @fn ReadNext - function to read file from TSB
+	 * @fn FindNext - function to find the next fragment from TSB
 	 *
-	 * @return None
+	 * @param[in] offset - Offset from last read fragment
+	 *
+	 * @return Pointer to the next fragment data
 	 */
-	std::shared_ptr<TsbFragmentData> ReadNext();
+	TsbFragmentDataPtr FindNext(AampTime offset = 0.0);
+
+	/**
+	 * @fn ReadNext - function to update the last read file from TSB
+	 *
+	 * @param[in] nextFragmentData - Next fragment data obtained previously with FindNext
+	 */
+	void ReadNext(TsbFragmentDataPtr nextFragmentData);
 
 	/**
 	 * @fn GetStartPosition

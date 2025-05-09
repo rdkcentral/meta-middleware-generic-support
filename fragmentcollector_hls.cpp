@@ -18,7 +18,7 @@
 */
 
 /**
-* \file fragmentcollector_hls.cpp
+* @file fragmentcollector_hls.cpp
 *
 * Fragment Collect file includes class implementation for handling
 * HLS streaming of AAMP player.
@@ -52,7 +52,7 @@
 #include <string>
 #include "HlsDrmBase.h"
 #include "AampCacheHandler.h"
-#ifdef USE_OPENCDM
+#ifdef USE_OPENCDM_ADAPTER
 #include "AampHlsDrmSessionManager.h"
 #endif
 #ifdef AAMP_VANILLA_AES_SUPPORT
@@ -65,11 +65,9 @@
 #include "MetadataProcessor.hpp"
 #include "AampUtils.h"
 #include "AampStreamSinkManager.h"
-#ifdef AAMP_HLS_DRM
 #include "AampDRMSessionManager.h"
-#endif
-#include "AampVanillaDrmHelper.h"
-#include "AampCCManager.h"
+#include "PlayerCCManager.h"
+#include "VanillaDrmHelper.h"
 
 static const int DEFAULT_STREAM_WIDTH = 720;
 static const int DEFAULT_STREAM_HEIGHT = 576;
@@ -78,9 +76,7 @@ static const double  DEFAULT_STREAM_FRAMERATE = 25.0;
 // checks if current state is going to use IFRAME ( Fragment/Playlist )
 #define IS_FOR_IFRAME(rate, type) ((type == eTRACK_VIDEO) && (rate != AAMP_NORMAL_PLAY_RATE))
 
-#ifdef AAMP_HLS_DRM
-extern std::shared_ptr<AampDrmHelper> ProcessContentProtection(PrivateInstanceAAMP *aamp, std::string attrName);
-#endif
+extern DrmHelperPtr ProcessContentProtection(PrivateInstanceAAMP *aamp, std::string attrName);
 
 #define UseProgramDateTimeIfAvailable() (ISCONFIGSET(eAAMPConfig_HLSAVTrackSyncUsingStartTime) || aamp->mIsVSS)
 
@@ -140,9 +136,7 @@ static void ParseKeyAttributeCallback(lstring attrName, lstring valuePtr, void* 
 			ts->mDrmInfo.method = eMETHOD_AES_128;
 			ts->mDrmMethod = eDRM_KEY_METHOD_AES_128;
 			ts->mKeyTagChanged = true;
-#ifdef AAMP_HLS_DRM
 			ts->mDrmInfo.keyFormat = VERIMATRIX_KEY_SYSTEM_STRING;
-#endif
 		}
 		else if (valuePtr.SubStringMatch("SAMPLE-AES-CTR"))
 		{
@@ -455,18 +449,17 @@ void static setupStreamInfo(HlsStreamInfo & streamInfo)
  */
 void StreamAbstractionAAMP_HLS::InitiateDrmProcess()
 {
-#ifdef AAMP_HLS_DRM
 	/** If fragments are CDM encrypted KC **/
 	if (aamp->fragmentCdmEncrypted && ISCONFIGSET(eAAMPConfig_Fragmp4PrefetchLicense))
 	{
 		std::lock_guard<std::mutex> guard(aamp->drmParserMutex);
-		std::shared_ptr<AampDrmHelper> drmHelperToUse = nullptr;
+		DrmHelperPtr drmHelperToUse = nullptr;
 		for (int i = 0; i < aamp->aesCtrAttrDataList.size(); i++ )
 		{
 			if (!aamp->aesCtrAttrDataList.at(i).isProcessed)
 			{
 				aamp->aesCtrAttrDataList.at(i).isProcessed = true;
-				std::shared_ptr<AampDrmHelper> drmHelper = ProcessContentProtection(aamp, aamp->aesCtrAttrDataList.at(i).attrName);
+				DrmHelperPtr drmHelper = ProcessContentProtection(aamp, aamp->aesCtrAttrDataList.at(i).attrName);
 				if (nullptr != drmHelper)
 				{
 					/* This needs effort from MSO as to what they want to do viz-a-viz preferred DRM, */
@@ -483,7 +476,6 @@ void StreamAbstractionAAMP_HLS::InitiateDrmProcess()
 			sessionMgr->QueueContentProtection(drmHelperToUse, "1", 0, eMEDIATYPE_VIDEO);
 		}
 	}
-#endif
 }
 
 static void LogUnknownTag( lstring ptr, int count, const char *ignoreList[] )
@@ -638,7 +630,6 @@ AAMPStatusType StreamAbstractionAAMP_HLS::ParseMainManifest()
 					retval = eAAMPSTATUS_PLAYLIST_PLAYBACK;
 					break;
 				}
-#ifdef AAMP_HLS_DRM
 				else if (ptr.removePrefix("-X-SESSION-KEY:"))
 				{
 					if (ISCONFIGSET(eAAMPConfig_Fragmp4PrefetchLicense))
@@ -658,7 +649,6 @@ AAMPStatusType StreamAbstractionAAMP_HLS::ParseMainManifest()
 						InitiateDrmProcess();
 					}
 				}
-#endif
 				else
 				{
 					static const char *ignoreList[] = {
@@ -803,11 +793,11 @@ lstring TrackState::GetIframeFragmentUriFromIndex(bool &bSegmentRepeated)
 				fragmentInfo = iter.mystrpbrk(); // #EXTINF
 				fragmentInfo = iter.mystrpbrk(); // url
 			}
-			
+
 			{
 				mFragmentURIFromIndex = fragmentInfo;
 				uri = mFragmentURIFromIndex;
-				
+
 				//The EXT-X-TARGETDURATION tag specifies the maximum Media Segment   duration.
 				//The EXTINF duration of each Media Segment in the Playlist   file, when rounded to the nearest integer,
 				//MUST be less than or equal   to the target duration
@@ -816,7 +806,7 @@ lstring TrackState::GetIframeFragmentUriFromIndex(bool &bSegmentRepeated)
 					AAMPLOG_WARN("WARN - Fragment duration[%f] > TargetDuration[%f] for URI:%.*s",fragmentDurationSeconds, targetDurationSeconds.inSeconds(), uri.getLen(), uri.getPtr() );
 				}
 			}
-			
+
 			if (-1 == idxNode->drmMetadataIdx)
 			{
 				fragmentEncrypted = false;
@@ -859,14 +849,14 @@ lstring TrackState::GetIframeFragmentUriFromIndex(bool &bSegmentRepeated)
 lstring TrackState::GetNextFragmentUriFromPlaylist(bool& reloadUri, bool ignoreDiscontinuity)
 {
 	lstring rc;
-	
+
 	auto p = fragmentURI.getPtr();
 	auto l = playlist.GetLen();
 	size_t offs = p - playlist.GetPtr();
 	if( offs>=l ) return lstring();
 	lstring iter( p, l-offs );
 	lstring ptr = iter.mystrpbrk();
-	
+
 	size_t byteRangeLength = 0; // default, when optional byterange offset is left unspecified
 	size_t byteRangeOffset = 0;
 	bool discontinuity = false;
@@ -933,7 +923,7 @@ lstring TrackState::GetNextFragmentUriFromPlaylist(bool& reloadUri, bool ignoreD
 					size_t offsetDelim = ptr.find('@');
 					if( offsetDelim<ptr.length() )
 					{
-						ptr.removePrefix(offsetDelim);
+						ptr.removePrefix(offsetDelim+1); // skip past '@'
 						byteRangeOffset = ptr.atoll();
 					}
 
@@ -1002,7 +992,10 @@ lstring TrackState::GetNextFragmentUriFromPlaylist(bool& reloadUri, bool ignoreD
 				}
 				else if ( ptr.removePrefix("-X-DISCONTINUITY"))
 				{
-					discontinuity = true;
+					if( !ISCONFIGSET(eAAMPConfig_HlsTsEnablePTSReStamp) )
+					{ // ignore discontinuities when presenting muxed hls/ts
+						discontinuity = true;
+					}
 				}
 				else
 				{
@@ -1326,6 +1319,36 @@ bool TrackState::FetchFragmentHelper(int &http_error, bool &decryption_error, bo
 			std::string tempEffectiveUrl;
 			AAMPLOG_TRACE(" Calling Getfile . buffer %p avail %d", &cachedFragment->fragment, (int)cachedFragment->fragment.GetAvail());
 			double downloadTime = 0;
+			
+			cachedFragment->discontinuityIndex = 0;
+			if( ISCONFIGSET(eAAMPConfig_HlsTsEnablePTSReStamp) )
+			{ // TODO: optimize me
+				lstring iter = lstring( playlist.GetPtr(), playlist.GetLen() );
+				while( !iter.empty() )
+				{
+					lstring ptr = iter.mystrpbrk();
+					if( !ptr.empty() )
+					{
+						if( ptr.getPtr() >= fragmentURI.getPtr() )
+						{
+							break;
+						}
+						if(ptr.removePrefix("#EXT-X-DISCONTINUITY-SEQUENCE:"))
+						{ // expected to appear once
+							cachedFragment->discontinuityIndex = ptr.atoll();
+						}
+						else if( ptr.removePrefix("#EXT-X-DISCONTINUITY"))
+						{
+							cachedFragment->discontinuityIndex++;
+						}
+					}
+					else
+					{
+						break;
+					}
+				}
+			}
+			
 			bool fetched = aamp->GetFile(fragmentUrl, (AampMediaType)(type), &cachedFragment->fragment,
 			 tempEffectiveUrl, &http_error, &downloadTime, range, type, false, NULL, NULL, fragmentDurationSeconds);
 			//Workaround for 404 of subtitle fragments
@@ -1741,9 +1764,24 @@ void TrackState::InjectFragmentInternal(CachedFragment* cachedFragment, bool &fr
 				aamp->SendStreamCopy(type, buf.data(), buf.size(), info.pts_s, info.dts_s, info.duration);
 			}
 		};
+		
+		if( demuxOp == eStreamOp_DEMUX_ALL && ISCONFIGSET(eAAMPConfig_HlsTsEnablePTSReStamp) )
+		{
+			if( context->mPtsOffsetMap.count(cachedFragment->discontinuityIndex)==0 )
+			{ // compute muxed AV track pts offset and save for use by subtitle track
+				double firstPts = playContext->getFirstPts(&cachedFragment->fragment);
+				double ptsOffset = m_totalDurationForPtsRestamping - firstPts;
+				AAMPLOG_MIL( "video pts_offset[%lld]=%lldms", cachedFragment->discontinuityIndex, llround(ptsOffset*1000) );
+				playContext->setPtsOffset( ptsOffset );
+				context->mPtsOffsetMap[cachedFragment->discontinuityIndex] = ptsOffset;
+			}
+			m_totalDurationForPtsRestamping += cachedFragment->duration;
+		}
+		
 		fragmentDiscarded = !playContext->sendSegment( &cachedFragment->fragment,
 			position.inSeconds(),
 			cachedFragment->duration,
+			cachedFragment->PTSOffsetSec,
 			isDiscontinuity,
 			cachedFragment->initFragment,
 			processor,
@@ -1839,7 +1877,7 @@ void TrackState::SetDrmContext()
 
 	//CID:93939 - Removed the drmContextUpdated variable which is initialized but not used
 	mDrmInfo.bPropagateUriParams = ISCONFIGSET(eAAMPConfig_PropagateURIParam);
-#ifdef USE_OPENCDM
+#ifdef USE_OPENCDM_ADAPTER
 	if (AampHlsDrmSessionManager::getInstance().isDrmSupported(mDrmInfo))
 	{
 		// OCDM-based DRM decryption is available via the HLS OCDM bridge
@@ -1857,7 +1895,7 @@ void TrackState::SetDrmContext()
 #ifdef AAMP_VANILLA_AES_SUPPORT
 		AAMPLOG_INFO("StreamAbstractionAAMP_HLS::Get AesDec");
 		mDrm = AesDec::GetInstance();
-		aamp->setCurrentDrm(std::make_shared<AampVanillaDrmHelper>());
+		aamp->setCurrentDrm(std::make_shared<VanillaDrmHelper>());
 
 #else
 		AAMPLOG_WARN("StreamAbstractionAAMP_HLS: AAMP_VANILLA_AES_SUPPORT not defined");
@@ -1916,7 +1954,7 @@ void TrackState::IndexPlaylist(bool IsRefresh, AampTime &culledSec)
 		mDrmInfo.initData = aamp->GetDrmInitData();
 		mDrmInfo.bDecryptClearSamplesRequired = aamp->isDecryptClearSamplesRequired();
 		AampTime fragDuration{};
-		
+
 		while(!iter.empty())
 		{
 			ptr = iter.mystrpbrk();
@@ -1998,11 +2036,14 @@ void TrackState::IndexPlaylist(bool IsRefresh, AampTime &culledSec)
 				}
 				else if( ptr.removePrefix("-X-DISCONTINUITY"))
 				{
-					discontinuitySequenceIndex++;
-					discontinuity = true;
-					if(ISCONFIGSET(eAAMPConfig_StreamLogging))
-					{
-						AAMPLOG_MIL("%s [%zu] Discontinuity Posn : %f, discontinuitySequenceIndex=%" PRIu64, name, index.size(), totalDuration.inSeconds(), discontinuitySequenceIndex );
+					if( demuxOp != eStreamOp_DEMUX_ALL || !ISCONFIGSET(eAAMPConfig_HlsTsEnablePTSReStamp) )
+					{ // ignore discontinuities when presenting muxed hls/ts
+						discontinuitySequenceIndex++;
+						discontinuity = true;
+						if(ISCONFIGSET(eAAMPConfig_StreamLogging))
+						{
+							AAMPLOG_MIL("%s [%zu] Discontinuity Posn : %f, discontinuitySequenceIndex=%" PRIu64, name, index.size(), totalDuration.inSeconds(), discontinuitySequenceIndex );
+						}
 					}
 				}
 				else if (ptr.removePrefix("-X-PROGRAM-DATE-TIME:"))
@@ -2061,7 +2102,6 @@ void TrackState::IndexPlaylist(bool IsRefresh, AampTime &culledSec)
 					//Need keytag idx to pick the corresponding keytag and get drmInfo,so that second parsing can be removed
 					//drmMetadataIdx = mDrmMetaDataIndexPosition;
 					if(mDrmMethod == eDRM_KEY_METHOD_SAMPLE_AES_CTR){
-#ifdef AAMP_HLS_DRM
 						if (ISCONFIGSET(eAAMPConfig_Fragmp4PrefetchLicense)){
 							{
 								std::lock_guard<std::mutex> guard(aamp->drmParserMutex);
@@ -2078,7 +2118,6 @@ void TrackState::IndexPlaylist(bool IsRefresh, AampTime &culledSec)
 							aamp->fragmentCdmEncrypted = true;
 							context->InitiateDrmProcess();
 						}
-#endif
 					}
 
 					drmMetadataIdx = mDrmKeyTagCount;
@@ -2155,7 +2194,7 @@ void TrackState::IndexPlaylist(bool IsRefresh, AampTime &culledSec)
 		}
 
 		if(mediaSequence==false)
-		{ // for Sling content
+		{
 			AAMPLOG_INFO("warning: no EXT-X-MEDIA-SEQUENCE tag");
 			indexFirstMediaSequenceNumber = 0;
 		}
@@ -2177,7 +2216,7 @@ void TrackState::IndexPlaylist(bool IsRefresh, AampTime &culledSec)
 	// IF already stored , AveDrmManager will ignore it
 	// ProcessDrmMetadata -> to be called only from one place , after playlist indexing. Not to call from other places
 	if(mDrmMethod != eDRM_KEY_METHOD_SAMPLE_AES_CTR
-#ifdef USE_OPENCDM
+#ifdef USE_OPENCDM_ADAPTER
 		&& !AampHlsDrmSessionManager::getInstance().isDrmSupported(mDrmInfo)
 #endif
 	  )
@@ -2319,7 +2358,7 @@ void TrackState::ProcessPlaylist(AampGrowableBuffer& newPlaylist, int http_error
 			FindTimedMetadata();
 		}
 		if( mDuration > 0.0f )
-		{	
+		{
 			// If we are loading new audio playlist for seamless switching, we should not seek based on sequence number
 			if (IsLive() && !seamlessAudioSwitchInProgress)
 			{
@@ -2766,7 +2805,7 @@ AAMPStatusType StreamAbstractionAAMP_HLS::SyncTracksForDiscontinuity()
 			AampTime diff{roundedIndexPosition - roundedPlayTarget};
 
 			videoPeriodStartCurrentPeriod = videoDiscontinuity.position;
-			
+
 			DiscontinuityIndexNode &audioDiscontinuity = audio->mDiscontinuityIndex[i];
 			audioPeriodStartCurrentPeriod = audioDiscontinuity.position;
 
@@ -3329,14 +3368,12 @@ AAMPStatusType StreamAbstractionAAMP_HLS::Init(TuneType tuneType)
 			printf("***Main Manifest***:\n\n%s\n************\n", this->mainManifest.GetPtr());
 		}
 
-#ifdef AAMP_HLS_DRM
 		AampDRMSessionManager *sessionMgr = aamp->mDRMSessionManager;
 		bool forceClearSession = (!ISCONFIGSET(eAAMPConfig_SetLicenseCaching) && (tuneType == eTUNETYPE_NEW_NORMAL));
 		sessionMgr->clearDrmSession(forceClearSession);
 		sessionMgr->clearFailedKeyIds();
 		sessionMgr->setSessionMgrState(SessionMgrState::eSESSIONMGR_ACTIVE);
 		sessionMgr->setLicenseRequestAbort(false);
-#endif
 		// Parse the Main manifest ( As Parse function modifies the original data,InsertCache had to be called before it .
 		long long tStartTime = NOW_STEADY_TS_MS;
 		AAMPStatusType mainManifestResult = ParseMainManifest();
@@ -3619,7 +3656,6 @@ AAMPStatusType StreamAbstractionAAMP_HLS::Init(TuneType tuneType)
 		for (int iTrack = AAMP_TRACK_COUNT - 1; iTrack >= 0; iTrack--)
 		{
 			TrackState *ts = trackState[iTrack];
-
 			if(ts->enabled)
 			{
 				AampTime culled{};
@@ -3773,13 +3809,23 @@ AAMPStatusType StreamAbstractionAAMP_HLS::Init(TuneType tuneType)
 						if(!ISCONFIGSET(eAAMPConfig_GstSubtecEnabled))
 						{
 							AAMPLOG_WARN("Legacy subtec");
-							ts->mSubtitleParser = SubtecFactory::createSubtitleParser(aamp, type);
+							ts->mSubtitleParser = this->RegisterSubtitleParser_CB(type);
 						}
 						else
 						{
 							AAMPLOG_WARN("GST subtec");
 							if (aamp->WebVTTCueListenersRegistered())
-								ts->mSubtitleParser = subtec_make_unique<WebVTTParser>(aamp, type);
+							{
+								int width = 0, height = 0;
+								PlayerCallbacks playerCallBack = {};
+								this->InitializePlayerCallbacks(playerCallBack);
+								aamp->GetPlayerVideoSize(width, height);
+								ts->mSubtitleParser = subtec_make_unique<WebVTTParser>(type, width, height);
+								if(ts->mSubtitleParser)
+								{
+									ts->mSubtitleParser->RegisterCallback(playerCallBack);
+								}
+							}
 						}
 						if (!ts->mSubtitleParser)
 						{
@@ -3894,16 +3940,15 @@ AAMPStatusType StreamAbstractionAAMP_HLS::Init(TuneType tuneType)
 
 					if (FORMAT_INVALID != format)
 					{
-						StreamOperation demuxOp;
 						ts->streamOutputFormat = format;
 						// Check if auxiliary audio is muxed here, by confirming streamOutputFormat != FORMAT_INVALID
 						if (!aux->enabled && (aux->streamOutputFormat != FORMAT_INVALID) && (AAMP_NORMAL_PLAY_RATE == rate))
 						{
-							demuxOp = eStreamOp_DEMUX_VIDEO_AND_AUX;
+							ts->demuxOp = eStreamOp_DEMUX_VIDEO_AND_AUX;
 						}
 						else if ((trackState[eTRACK_AUDIO]->enabled) || (AAMP_NORMAL_PLAY_RATE != rate))
 						{
-							demuxOp = eStreamOp_DEMUX_VIDEO;
+							ts->demuxOp = eStreamOp_DEMUX_VIDEO;
 						}
 						else
 						{
@@ -3920,17 +3965,17 @@ AAMPStatusType StreamAbstractionAAMP_HLS::Init(TuneType tuneType)
 							if(!ISCONFIGSET(eAAMPConfig_AudioOnlyPlayback))
 							{
 								// For muxed tracks, demux audio and video
-								demuxOp = eStreamOp_DEMUX_ALL;
+								ts->demuxOp = eStreamOp_DEMUX_ALL;
 							}
 							else
 							{
 								// Audio only playback, disable video
-								demuxOp = eStreamOp_DEMUX_AUDIO;
+								ts->demuxOp = eStreamOp_DEMUX_AUDIO;
 								video->streamOutputFormat = FORMAT_INVALID;
 							}
 						}
-						AAMPLOG_WARN("StreamAbstractionAAMP_HLS::Init : Configure video TS track demuxing demuxOp %d", demuxOp);
-						ts->playContext = std::make_shared<TSProcessor>(aamp, demuxOp, mID3Handler, eMEDIATYPE_VIDEO,
+						AAMPLOG_WARN("StreamAbstractionAAMP_HLS::Init : Configure video TS track demuxing demuxOp %d", ts->demuxOp);
+						ts->playContext = std::make_shared<TSProcessor>(aamp, ts->demuxOp, mID3Handler, eMEDIATYPE_VIDEO,
 							std::static_pointer_cast<TSProcessor> (trackState[eMEDIATYPE_AUDIO]->playContext).get(),
 							std::static_pointer_cast<TSProcessor>(trackState[eMEDIATYPE_AUX_AUDIO]->playContext).get());
 						ts->SourceFormat(FORMAT_MPEGTS);
@@ -4064,7 +4109,7 @@ AAMPStatusType StreamAbstractionAAMP_HLS::Init(TuneType tuneType)
 			/** Set preferred live Offset for 4K or non 4K; Default value of mIsStream4K = false */
 			aamp->mIsStream4K = GetPreferredLiveOffsetFromConfig();
 
-			/* Check if we are seeking to live using aamp->seek_pos_seconds for Peacock */
+			/* Check if we are seeking to live using aamp->seek_pos_seconds */
 			if (tuneType == eTUNETYPE_SEEK && IsSeekedToLive(aamp->seek_pos_seconds))
 			{
 				tuneType = eTUNETYPE_SEEKTOLIVE;
@@ -4545,7 +4590,7 @@ void StreamAbstractionAAMP_HLS::InitTracks()
 void StreamAbstractionAAMP_HLS::CachePlaylistThreadFunction(void)
 {
 	// required to work around Adobe SSAI session lifecycle problem
-	// Temporary workaround code to address Peacock/Adobe Server issue
+	// Temporary workaround code 
 	aamp->PreCachePlaylistDownloadTask();
 	return;
 }
@@ -4881,13 +4926,11 @@ StreamAbstractionAAMP_HLS::StreamAbstractionAAMP_HLS(class PrivateInstanceAAMP *
 	mPtsOffsetUpdate{ptsUpdate},
 	mMetadataProcessor{nullptr}
 {
-#ifdef AAMP_HLS_DRM
 	if (aamp->mDRMSessionManager)
 	{
 		AampDRMSessionManager *sessionMgr = aamp->mDRMSessionManager;
 		sessionMgr->SetLicenseFetcher(this);
 	}
-#endif
 	trickplayMode = false;
 	enableThrottle = ISCONFIGSET(eAAMPConfig_Throttle);
 	AAMPLOG_WARN("hls fragment collector seekpos = %f", seekpos);
@@ -4941,6 +4984,7 @@ TrackState::TrackState(TrackType type, StreamAbstractionAAMP_HLS* parent, Privat
 		,mSkipSegmentOnError(true)
 		,playlistMediaType()
 		,fragmentEncChange(false)
+		,demuxOp(eStreamOp_NONE)
 {
 	playlist.Clear();
 	index.clear();
@@ -5072,9 +5116,7 @@ void TrackState::Start(void)
  */
 void StreamAbstractionAAMP_HLS::Start(void)
 {
-#ifdef AAMP_HLS_DRM
 	aamp->mDRMSessionManager->setSessionMgrState(SessionMgrState::eSESSIONMGR_ACTIVE);
-#endif
 	for (int iTrack = 0; iTrack < AAMP_TRACK_COUNT; iTrack++)
 	{
 		TrackState *track = trackState[iTrack];
@@ -5135,7 +5177,6 @@ void StreamAbstractionAAMP_HLS::Stop(bool clearChannelData)
 		{
 			aamp->GetCurrentDRM()->cancelDrmSession();
 		}
-#ifdef AAMP_HLS_DRM
 		if(aamp->fragmentCdmEncrypted)
 		{
 			// check for WV and PR , if anything to be flushed
@@ -5150,7 +5191,6 @@ void StreamAbstractionAAMP_HLS::Stop(bool clearChannelData)
 			aamp->mDRMSessionManager->notifyCleanup();
 		}
 		aamp->mDRMSessionManager->setSessionMgrState(SessionMgrState::eSESSIONMGR_INACTIVE);
-#endif
 	}
 	if(!clearChannelData)
 	{
@@ -5410,9 +5450,9 @@ void StreamAbstractionAAMP_HLS::StartSubtitleParser()
 	if (subtitle && subtitle->enabled && subtitle->mSubtitleParser)
 	{
 		AAMPLOG_INFO("sending init isLive : %d firstPTS : %.3f seek_pos :%f ",aamp->IsLive(), mFirstPTS.inSeconds() * 1000.0,aamp->seek_pos_seconds);
-		if(aamp->IsLive())
+		if( ISCONFIGSET(eAAMPConfig_HlsTsEnablePTSReStamp) || aamp->IsLive())
 		{
-			subtitle->mSubtitleParser->init(mFirstPTS.inSeconds(),0);
+			subtitle->mSubtitleParser->init( mFirstPTS.inSeconds(),0);
 		}
 		else
 		{
@@ -5495,7 +5535,7 @@ DrmReturn TrackState::DrmDecrypt( CachedFragment * cachedFragment, ProfilerBucke
 			{
 				drmReturn = mDrm->Decrypt(bucketTypeFragmentDecrypt, cachedFragment->fragment.GetPtr(),
 										  cachedFragment->fragment.GetLen(), MAX_LICENSE_ACQ_WAIT_TIME);
-				
+
 			}
 		}
 	}
@@ -7086,11 +7126,13 @@ void StreamAbstractionAAMP_HLS::PopulateAudioAndTextTracks()
 		}
 		std::vector<TextTrackInfo> textTracksCopy;
 		std::copy_if(begin(mTextTracks), end(mTextTracks), back_inserter(textTracksCopy), [](const TextTrackInfo& e){return e.isCC;});
-		AampCCManager::GetInstance()->updateLastTextTracks(textTracksCopy);
+		std::vector<CCTrackInfo> updatedTextTracks;
+		aamp->UpdateCCTrackInfo(textTracksCopy,updatedTextTracks);
+		PlayerCCManager::GetInstance()->updateLastTextTracks(updatedTextTracks);
 	}
 	else
 	{
-		AampCCManager::GetInstance()->updateLastTextTracks({});
+		PlayerCCManager::GetInstance()->updateLastTextTracks({});
 		AAMPLOG_ERR("StreamAbstractionAAMP_HLS:: Fail to get available audio/text tracks, mMediaCount=%d and profileCount=%d!", mMediaCount, mProfileCount);
 	}
 
@@ -7317,4 +7359,41 @@ void StreamAbstractionAAMP_HLS::SelectSubtitleTrack()
         }
     }
     AAMPLOG_INFO("using RialtoSink TextTrack Selected :%d", currentTextTrackProfileIndex);
+}
+
+bool StreamAbstractionAAMP_HLS::SelectPreferredTextTrack(TextTrackInfo& selectedTextTrack)
+{
+	bool bestTrackFound = false;
+	unsigned long long bestScore = 0;
+
+	std::vector<TextTrackInfo> availableTracks = GetAvailableTextTracks();
+
+	for (const auto& track : availableTracks)
+	{
+		unsigned long long score = 1; // Default score for each track
+
+		// Check for language match
+		if (!aamp->preferredTextLanguagesString.empty() && track.language == aamp->preferredTextLanguagesString)
+		{
+			score += AAMP_LANGUAGE_SCORE; // Add score for language match
+		}
+
+		if( !aamp->preferredTextRenditionString.empty() && aamp->preferredTextRenditionString.compare(track.rendition) == 0)
+		{
+			score += AAMP_ROLE_SCORE; // Add score for rendition match
+		}
+
+		// Check for name match
+		if( !aamp->preferredTextNameString.empty() && aamp->preferredTextNameString.compare(track.name) == 0)
+		{
+			score += AAMP_TYPE_SCORE; // Add score for name match
+		}
+		if(score > bestScore)
+		{
+			bestTrackFound = true;
+			bestScore = score;
+			selectedTextTrack = track;
+		}
+	}
+	return bestTrackFound;
 }

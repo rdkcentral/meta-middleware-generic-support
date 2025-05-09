@@ -1443,7 +1443,7 @@ std::string aamp_GetConfigPath( const std::string &filename )
 		cfgPath += filename;
 	}
 
-#elif defined(AAMP_CPC) // AAMP_ENABLE_OPT_OVERRIDE defined only in Comcast PROD builds
+#elif defined(AAMP_CPC)
 	char *env_aamp_enable_opt = getenv("AAMP_ENABLE_OPT_OVERRIDE");
 	/*
 	 * defined(AAMP_CPC) 
@@ -1492,32 +1492,73 @@ bool parseAndValidateSCTE35(const std::string &scte35Data)
 	return isValidDAIEvent;
 }
 
-/**
- * Hack to check if code is running in container environment.
- * @return True if running in container environment, false otherwise.
- */
-bool IsContainerEnvironment(void)
-{
-	static bool isContainer;
-	static bool isValid;
-	if( !isValid )
+
+
+long long convertHHMMSSToTime(const char * str)
+{ // parse HH:MM:SS.ms
+	long long timeValueMs = 0;
+	const int multiplier[4] = { 0,60,60,1000 };
+	for( int part=0; part<4; part++ )
 	{
-		struct stat buffer;
-		if (stat("/etc/device.properties", &buffer) == 0)
-		{ // if we can access file, infer that are are NOT running in container
-			AAMPLOG_MIL("not running in container environment");
-			isContainer = false;
+		int num = 0;
+		for(;;)
+		{
+			int c = *str++;
+			if( c>='0' && c<='9' )
+			{
+				num*=10;
+				num+=(c-'0');
+			}
+			else
+			{
+				timeValueMs *= multiplier[part];
+				timeValueMs += num;
+				break;
+			}
 		}
-		else
-		{ // if we cannot access file, infer that we ARE running in container
-			AAMPLOG_WARN("detected container environment");
-			isContainer = true;
-		}
-		isValid = true;
 	}
-	return isContainer;
+	return timeValueMs;
 }
 
-/**
+static std::string numberToString( long number, int minDigits=2 )
+{
+	std::string rc = std::to_string(number);
+	while( rc.length() < minDigits )
+	{
+		rc = '0' + rc;
+	}
+	return rc;
+}
+
+std::string convertTimeToHHMMSS( long long t )
+{ // pack HH:MM:SS.ms
+	std::string rc;
+	int ms = t%1000;
+	int sec = (int)(t/1000);
+	int minute = sec/60;
+	int hour = minute/60;
+	minute %= 60;
+	sec %= 60;
+	rc = numberToString(hour) + ":" + numberToString(minute) + ":" + numberToString(sec) + "." + numberToString(ms,3);
+	return rc;
+}
+
+const char *mystrstr(const char *haystack_ptr, const char *haystack_fin, const char *needle_ptr)
+{
+	size_t needle_len = strlen(needle_ptr);
+	haystack_fin -= needle_len;
+	while( haystack_ptr<=haystack_fin )
+	{
+		if( memcmp(needle_ptr,haystack_ptr,needle_len)==0 )
+		{
+			return haystack_ptr;
+		}
+		haystack_ptr++;
+	}
+	return NULL;
+}
+
+/*
  * EOF
  */
+
