@@ -43,7 +43,7 @@
 class DrmInterface 
 {
 public:
-	DrmInterface() = default;
+	DrmInterface() = delete;
 	/**
 	 * @fn GetInstance
 	 */
