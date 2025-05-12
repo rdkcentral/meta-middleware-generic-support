@@ -3291,17 +3291,7 @@ void PrivateInstanceAAMP::NotifyEOSReached()
 		{
 			rate = AAMP_NORMAL_PLAY_RATE;
 			AcquireStreamLock();
-			if (IsLocalAAMPTsb() && !GetLLDashChunkMode())
-			{
-				double timeNow = NOW_STEADY_TS_SECS_FP;
-				seek_pos_seconds = timeNow - mLiveEdgeDeltaFromCurrentTime - mLiveOffset;
-				AAMPLOG_INFO("Reached EOS during FF so seeking to live play position: %lfs timeNow %lfs mLiveEdgeDeltaFromCurrentTime %lfs mLiveOffset %lfs", seek_pos_seconds, timeNow, mLiveEdgeDeltaFromCurrentTime, mLiveOffset );
-				TuneHelper(eTUNETYPE_SEEK);
-			}
-			else
-			{
-				TuneHelper(eTUNETYPE_SEEKTOLIVE);
-			}
+			TuneHelper(eTUNETYPE_SEEKTOLIVE);
 			ReleaseStreamLock();
 		}
 
@@ -7569,8 +7559,6 @@ void PrivateInstanceAAMP::Stop( bool sendStateChangeEvent )
 		mTelemetryInterval = 0;
 	}
 
-	SetLocalAAMPTsb(false);
-	SetLocalAAMPTsbInjection(false);
 	// Stopping the playback, release all DRM context
 	if (mpStreamAbstractionAAMP)
 	{
@@ -7611,6 +7599,9 @@ void PrivateInstanceAAMP::Stop( bool sendStateChangeEvent )
 	}
 	TeardownStream(true);
 
+	// Clear the AAMP TSB flags after the stream abstraction is deleted
+	SetLocalAAMPTsb(false);
+	SetLocalAAMPTsbInjection(false);
 	if(mTSBSessionManager)
 	{
 		// Clear all the local TSB data
@@ -13741,10 +13732,22 @@ void PrivateInstanceAAMP::CalculateTrickModePositionEOS(void)
 {
 	if (rate > AAMP_NORMAL_PLAY_RATE)
 	{
-		double timeNow = NOW_STEADY_TS_SECS_FP;
 		double positionNow = GetPositionSeconds();
-		double livePlayPositionNow = timeNow - mLiveEdgeDeltaFromCurrentTime - mLiveOffset;
+		double livePlayPositionNow = GetLivePlayPosition();
 		mTrickModePositionEOS = livePlayPositionNow + (livePlayPositionNow - positionNow)/(rate - 1);
-		AAMPLOG_INFO("timeNow %lfs positionNow %lfs livePlayPositionNow %lfs rate %fs mTrickModePositionEOS %lfs",timeNow, positionNow, livePlayPositionNow, rate, mTrickModePositionEOS);
+		AAMPLOG_INFO("positionNow %lfs livePlayPositionNow %lfs rate %fs mTrickModePositionEOS %lfs", positionNow, livePlayPositionNow, rate, mTrickModePositionEOS);
 	}
+}
+
+/**
+ * @fn GetLivePlayPosition
+ *
+ * @brief Get current live play stream position.
+ * This is the live edge of the stream minus a configurable offset.
+ *
+ * @retval current live play position of the stream in seconds.
+ */
+double PrivateInstanceAAMP::GetLivePlayPosition(void)
+{
+	return (NOW_STEADY_TS_SECS_FP - mLiveEdgeDeltaFromCurrentTime - mLiveOffset);
 }

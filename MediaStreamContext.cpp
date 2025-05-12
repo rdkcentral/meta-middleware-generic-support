@@ -385,20 +385,25 @@ bool MediaStreamContext::CacheFragment(std::string fragmentUrl, unsigned int cur
 				GetContext()->UpdateStreamInfoBitrateData(fragmentToTsbSessionMgr->profileIndex, fragmentToTsbSessionMgr->cacheFragStreamInfo);
 			}
 			fragmentToTsbSessionMgr->cacheFragStreamInfo.bandwidthBitsPerSecond = fragmentDescriptor.Bandwidth;
-			if (aamp->GetLLDashServiceData()->lowLatencyMode)
+
+			if (CheckEos())
 			{
-				if(CheckEos())
+				// A reader EOS check is performed after downloading live edge segment
+				// If reader is at EOS, inject the missing live segment directly
+				AAMPLOG_INFO("Reader at EOS, Pushing last downloaded data");
+				tsbSessionManager->GetTsbReader((AampMediaType)type)->CheckForWaitIfReaderDone();
+				// If reader is at EOS, inject the last data in AAMP TSB
+				if (aamp->GetLLDashChunkMode())
 				{
-					// A reader EOS check is performed after downloading live edge segment
-					// If reader is at EOS, inject the missing live segment directly
-					AAMPLOG_INFO("Reader at EOS, Pushing last downloaded data");
-					tsbSessionManager->GetTsbReader((AampMediaType)type)->CheckForWaitIfReaderDone();
 					CacheTsbFragment(fragmentToTsbSessionMgr);
-					SetLocalTSBInjection(false);
 				}
-				else if(fragmentToTsbSessionMgr->initFragment && !IsLocalTSBInjection() && !aamp->pipeline_paused)
+				SetLocalTSBInjection(false);
+			}
+			else if (fragmentToTsbSessionMgr->initFragment && !IsLocalTSBInjection() && !aamp->pipeline_paused)
+			{
+				// In chunk mode, media segments are added to the chunk cache in the SSL callback, but init segments are added here
+				if (aamp->GetLLDashChunkMode())
 				{
-					// Insert init fragment through chunk injector
 					CacheTsbFragment(fragmentToTsbSessionMgr);
 				}
 			}
@@ -426,14 +431,23 @@ bool MediaStreamContext::CacheFragment(std::string fragmentUrl, unsigned int cur
 		if (tsbSessionManager &&
 			(IsLocalTSBInjection() || (aamp->pipeline_paused && !aamp->GetBufUnderFlowStatus())))
 		{
-			AAMPLOG_TRACE("[%s] cachedFragment %p ptr %p not injecting IsLocalTSBInjection %d, aamp->pipeline_paused %d, aamp->GetBufUnderFlowStatus() %d", name, cachedFragment, cachedFragment->fragment.GetPtr(), IsLocalTSBInjection(), aamp->pipeline_paused, aamp->GetBufUnderFlowStatus());
-			// Free the memory
+			AAMPLOG_TRACE("[%s] cachedFragment %p ptr %p not injecting IsLocalTSBInjection %d, aamp->pipeline_paused %d, aamp->GetBufUnderFlowStatus() %d",
+				name, cachedFragment, cachedFragment->fragment.GetPtr(), IsLocalTSBInjection(), aamp->pipeline_paused, aamp->GetBufUnderFlowStatus());
 			cachedFragment->fragment.Free();
 		}
 		else
 		{
 			// Update buffer index after fetch for injection
 			UpdateTSAfterFetch(initSegment);
+
+			// With AAMP TSB enabled, the chunk cache is used for any content type (SLD or LLD)
+			// When playing live SLD content, the fragment is written to the regular cache and to the chunk cache
+			if(tsbSessionManager && !IsLocalTSBInjection() && !aamp->GetLLDashChunkMode())
+			{
+				std::shared_ptr<CachedFragment> fragmentToCache = std::make_shared<CachedFragment>();
+				fragmentToCache->Copy(cachedFragment, cachedFragment->fragment.GetLen());
+				CacheTsbFragment(fragmentToCache);
+			}
 
 			// If injection is from chunk buffer, remove the fragment for injection
 			if(IsInjectionFromCachedFragmentChunks())
@@ -735,6 +749,7 @@ bool MediaStreamContext::CacheTsbFragment(std::shared_ptr<CachedFragment> fragme
 		}
 		else
 		{
+			AAMPLOG_TRACE("Empty fragment, not injecting");
 			cachedFragment->fragment.Free();
 		}
 	}
