@@ -352,7 +352,7 @@ public:
 	/**
 	 * @fn initializeDrmSession
 	 */
-	KeyState initializeDrmSession(DrmHelperPtr drmHelper, int sessionSlot,  int err );
+	KeyState initializeDrmSession(DrmHelperPtr drmHelper, int sessionSlot,  int& err);
 	/**
 	 * @fn notifyCleanup
 	 */
