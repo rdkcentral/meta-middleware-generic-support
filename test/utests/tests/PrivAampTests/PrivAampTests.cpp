@@ -64,12 +64,13 @@ const std::string session_id {"0259343c-cffc-4659-bcd8-97f9dd36f6b1"};
 
 class PrivAampTests : public ::testing::Test
 {
-	public:
+public:
+	static constexpr double kAbsErrorLivePlayPosition = 0.1;
 	PrivateInstanceAAMP *p_aamp{nullptr};
 	AampConfig *config{nullptr};
 	CURL *mCurlEasyHandle{nullptr};
 
-	protected:
+protected:
 	void SetUp() override
 	{
 		config=new AampConfig();
@@ -127,7 +128,6 @@ class PrivAampTests : public ::testing::Test
 
 		delete config;
 		config = nullptr;
-
 	}
 };
 
@@ -377,9 +377,9 @@ TEST_F(PrivAampPrivTests, NotifyEOSReachedFastForwardAampTsbTest)
 	// StreamAbstractionAAMP_MPD, so the method from base class StreamAbstractionAAMP is called.
 	// The fake implementation is called, which calls the method in StreamAbstractionAAMP mock class.
 	EXPECT_CALL(*g_mockStreamAbstractionAAMP, IsEOSReached()).WillOnce(Return(true));
-	// NotifyEOSReached() calls TuneHelper(), which calls StreamAbstractionAAMP_MPD::InitTsbReader().
+	// NotifyEOSReached() calls TuneHelper(), which calls StreamAbstractionAAMP_MPD::Init().
 	// The fake implementation is called, which calls the method in StreamAbstractionAAMP_MPD mock class.
-	EXPECT_CALL(*g_mockStreamAbstractionAAMP_MPD, InitTsbReader(_)).WillOnce(Return(eAAMPSTATUS_OK));
+	EXPECT_CALL(*g_mockStreamAbstractionAAMP_MPD, Init(eTUNETYPE_SEEKTOLIVE)).WillOnce(Return(eAAMPSTATUS_OK));
 	EXPECT_CALL(*g_mockAampEventManager, SendEvent(SpeedChanged(AAMP_NORMAL_PLAY_RATE), _)).Times(1);
 
 	testp_aamp->NotifyEOSReached();
@@ -4260,9 +4260,19 @@ TEST_F(PrivAampTests, NotifyEOSReachedFFSeekPositionCalculation)
 
 	EXPECT_CALL(*g_mockStreamAbstractionAAMP, IsEOSReached()).WillOnce(Return(true));
 	p_aamp->NotifyEOSReached();
-	/*The calculation involves NOW_STEADY_TS_MS in calculation of seek_pos_seconds, so the value from NotifyEOSReached and
+	EXPECT_EQ(p_aamp->GetTuneType(), eTUNETYPE_SEEKTOLIVE);
+}
+
+TEST_F(PrivAampTests, GetLivePlayPositionTest)
+{
+	constexpr double kLiveEdgeDeltaFromCurrentTime = 10.0;
+	constexpr double kLiveOffset = 15.0;
+	p_aamp->mLiveEdgeDeltaFromCurrentTime = kLiveEdgeDeltaFromCurrentTime;
+	p_aamp->mLiveOffset= kLiveOffset;
+
+	/* The calculation uses the current system time, not mocked, so the value from GetLivePlayPostion() and the
 	calculated value will differ slightly hence using EXPECT_NEAR */
-	EXPECT_NEAR(p_aamp->seek_pos_seconds, NOW_STEADY_TS_SECS_FP - kLiveEdgeDeltaFromCurrentTime - kLiveOffset, 1);
+	EXPECT_NEAR(p_aamp->GetLivePlayPosition(), NOW_STEADY_TS_SECS_FP - kLiveEdgeDeltaFromCurrentTime - kLiveOffset, kAbsErrorLivePlayPosition);
 }
 
 TEST_F(PrivAampTests, VerifyTrickModePositionEOS)
@@ -4288,5 +4298,5 @@ TEST_F(PrivAampTests, VerifyTrickModePositionEOS)
 	double livePlayPosition =  NOW_STEADY_TS_SECS_FP - kLiveEdgeDeltaFromCurrentTime - kLiveOffset;
 	double calculatedTrickModeEosPos = livePlayPosition + (livePlayPosition - kPositionNow)/(kRate-1);
 	/*The calculation involves NOW_STEADY_TS_SECS_FP, in SetRate and calculatedTrickModeEosPos, which will differ a bit, hence using EXPECT_NEAR */
-	EXPECT_NEAR(p_aamp->mTrickModePositionEOS, calculatedTrickModeEosPos, 1);
+	EXPECT_NEAR(p_aamp->mTrickModePositionEOS, calculatedTrickModeEosPos, kAbsErrorLivePlayPosition);
 }

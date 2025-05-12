@@ -1635,3 +1635,13 @@ void PrivateInstanceAAMP::CalculateTrickModePositionEOS(void)
 		g_mockPrivateInstanceAAMP->CalculateTrickModePositionEOS();
 	}
 }
+
+double PrivateInstanceAAMP::GetLivePlayPosition(void)
+{
+	double livePlayPosition = 0.0;
+	if (g_mockPrivateInstanceAAMP)
+	{
+		livePlayPosition = g_mockPrivateInstanceAAMP->GetLivePlayPosition();
+	}
+	return livePlayPosition;
+}

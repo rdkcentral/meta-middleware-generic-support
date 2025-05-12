@@ -215,7 +215,12 @@ dash::mpd::IMPD *StreamAbstractionAAMP_MPD::GetMPD( void )
 
 IPeriod *StreamAbstractionAAMP_MPD::GetPeriod( void )
 {
-	return NULL;
+	IPeriod *period = nullptr;
+	if (g_mockStreamAbstractionAAMP_MPD)
+	{
+		period = g_mockStreamAbstractionAAMP_MPD->GetPeriod();
+	}
+	return period;
 }
 
 ProfileInfo StreamAbstractionAAMP_MPD::GetAdaptationSetAndRepresentationIndicesForProfile(int profileIndex)

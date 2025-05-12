@@ -745,3 +745,33 @@ TEST_F(MediaTrackTests, FlushFetchedFragmentsTest)
 	EXPECT_EQ(bufferedFragment2->position, 0);
 	EXPECT_EQ(bufferedFragment3->position, (2 * FIRST_PTS.inSeconds()));
 }
+
+TEST_F(MediaTrackTests, MediaTrackConstructorTest)
+{
+	constexpr int kMaxFragmentCached{4};
+	constexpr int kMaxFragmentChunkCached{20};
+
+	mPrivateInstanceAAMP->SetLLDashChunkMode(false);
+	EXPECT_CALL(*g_mockAampConfig, GetConfigValue(eAAMPConfig_MaxFragmentCached))
+		.WillRepeatedly(Return(kMaxFragmentCached));
+	EXPECT_CALL(*g_mockAampConfig, GetConfigValue(eAAMPConfig_MaxFragmentChunkCached))
+		.WillRepeatedly(Return(kMaxFragmentChunkCached));
+
+	TestableMediaTrack videoTrack{eTRACK_VIDEO, mPrivateInstanceAAMP, "video", mStreamAbstractionAAMP_MPD};
+	EXPECT_EQ(videoTrack.GetCachedFragmentChunksSize(), kMaxFragmentCached);
+}
+
+TEST_F(MediaTrackTests, MediaTrackConstructorChunkModeTest)
+{
+	constexpr int kMaxFragmentCached{4};
+	constexpr int kMaxFragmentChunkCached{20};
+
+	mPrivateInstanceAAMP->SetLLDashChunkMode(true);
+	EXPECT_CALL(*g_mockAampConfig, GetConfigValue(eAAMPConfig_MaxFragmentCached))
+		.WillRepeatedly(Return(kMaxFragmentCached));
+	EXPECT_CALL(*g_mockAampConfig, GetConfigValue(eAAMPConfig_MaxFragmentChunkCached))
+		.WillRepeatedly(Return(kMaxFragmentChunkCached));
+
+	TestableMediaTrack videoTrack{eTRACK_VIDEO, mPrivateInstanceAAMP, "video", mStreamAbstractionAAMP_MPD};
+	EXPECT_EQ(videoTrack.GetCachedFragmentChunksSize(), kMaxFragmentChunkCached);
+}

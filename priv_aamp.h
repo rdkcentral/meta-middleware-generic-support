@@ -4229,7 +4229,17 @@ public:
 	 */
 	void CalculateTrickModePositionEOS(void);
 
-	protected:
+	/**
+	 * @fn GetLivePlayPosition
+	 *
+	 * @brief Get current live play stream position.
+	 * This is the live edge of the stream minus a configurable offset.
+	 *
+	 * @retval current live play position of the stream in seconds.
+	 */
+	 double GetLivePlayPosition(void);
+
+protected:
 
 	/**
 	 *   @fn IsWideVineKIDWorkaround

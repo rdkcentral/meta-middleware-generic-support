@@ -1933,7 +1933,14 @@ MediaTrack::MediaTrack(TrackType type, PrivateInstanceAAMP* aamp, const char* na
 	}
 
 	maxCachedFragmentChunksPerTrack = GETCONFIGVALUE(eAAMPConfig_MaxFragmentChunkCached);
-	mCachedFragmentChunksSize = maxCachedFragmentChunksPerTrack;
+	if (aamp->GetLLDashChunkMode())
+	{
+		SetCachedFragmentChunksSize(maxCachedFragmentChunksPerTrack);
+	}
+	else
+	{
+		SetCachedFragmentChunksSize(maxCachedFragmentsPerTrack);
+	}
 	for (int X = 0; X < maxCachedFragmentChunksPerTrack; ++X)
 	{
 		mCachedFragmentChunks[X].fragment.Clear();
@@ -4496,11 +4503,12 @@ void MediaTrack::HandleFragmentPositionJump(CachedFragment* cachedFragment)
 
 bool MediaTrack::IsInjectionFromCachedFragmentChunks()
 {
+	// CachedFragmentChunks is used for LL-DASH and for any content if AAMP TSB is enabled
 	bool isLLDashChunkMode = aamp->GetLLDashChunkMode();
-	bool isLocalTSBInjection = IsLocalTSBInjection();
-	bool isInjectionFromCachedFragmentChunks = isLLDashChunkMode || isLocalTSBInjection;
+	bool aampTsbEnabled = aamp->IsLocalAAMPTsb();
+	bool isInjectionFromCachedFragmentChunks = isLLDashChunkMode || aampTsbEnabled;
 
-	AAMPLOG_TRACE("[%s] isLLDashChunkMode %d isLocalTSBInjection %d ret %d",
-				  name, isLLDashChunkMode, isLocalTSBInjection, isInjectionFromCachedFragmentChunks);
+	AAMPLOG_TRACE("[%s] isLLDashChunkMode %d aampTsbEnabled %d ret %d",
+				  name, isLLDashChunkMode, aampTsbEnabled, isInjectionFromCachedFragmentChunks);
 	return isInjectionFromCachedFragmentChunks;
 }

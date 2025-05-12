@@ -922,7 +922,7 @@ bool StreamAbstractionAAMP_MPD::FetchFragment(MediaStreamContext *pMediaStreamCo
 			{
 				// Insert a dummy fragment with discontinuity, since we didn't get an init fragments so it wouldn't get flagged
 				CachedFragment* cachedFragment = nullptr;
-				if(aamp->GetLLDashChunkMode())
+				if(pMediaStreamContext->IsInjectionFromCachedFragmentChunks())
 				{
 					if(pMediaStreamContext->WaitForCachedFragmentChunkInjected())
 					{
@@ -947,7 +947,7 @@ bool StreamAbstractionAAMP_MPD::FetchFragment(MediaStreamContext *pMediaStreamCo
 					cachedFragment->profileIndex=0;
 					cachedFragment->isDummy=true;
 					cachedFragment->type=pMediaStreamContext->mediaType;
-					if(aamp->GetLLDashChunkMode())
+					if(pMediaStreamContext->IsInjectionFromCachedFragmentChunks())
 					{
 						pMediaStreamContext->UpdateTSAfterChunkFetch();
 					}
@@ -3459,15 +3459,16 @@ AAMPStatusType StreamAbstractionAAMP_MPD::InitTsbReader(TuneType tuneType)
 {
 	AAMPStatusType retVal = eAAMPSTATUS_OK;
 	mTuneType = tuneType;
-	AAMPLOG_INFO("TuneType:%d seek position: %lfs, culledSeconds from actual manifest: %lf", tuneType, seekPosition, mCulledSeconds);
+	double livePlayPosition = aamp->GetLivePlayPosition();
+	AAMPLOG_INFO("TuneType:%d seek position: %lfs, livePlayPos: %lfs, Offset: %lfs, culledSeconds from actual manifest: %lf", tuneType, seekPosition, livePlayPosition, aamp->mLiveOffset, mCulledSeconds);
 	AampTSBSessionManager* tsbSessionManager = aamp->GetTSBSessionManager();
 	if(NULL != tsbSessionManager)
 	{
 		double position = seekPosition;
-		if((eTUNETYPE_SEEKTOLIVE == tuneType) || (seekPosition > mLiveEndPosition))
+		if((eTUNETYPE_SEEKTOLIVE == tuneType) || (seekPosition >= livePlayPosition))
 		{
-			position = mLiveEndPosition;
-			AAMPLOG_INFO("Adjusting position to live edge with position: %lfs, totalDuration: %lfs liveEdge: %lfs, Offset:%lfs", position, aamp->durationSeconds, mLiveEndPosition, aamp->mLiveOffset);
+			position = livePlayPosition;
+			AAMPLOG_INFO("Adjusting to live play position: %lfs, totalDuration: %lfs", position, aamp->durationSeconds);
 			if(AAMP_NORMAL_PLAY_RATE == aamp->rate && !aamp->GetPauseOnFirstVideoFrameDisp())
 			{
 				if (aamp->GetLLDashChunkMode())
@@ -10121,6 +10122,7 @@ void StreamAbstractionAAMP_MPD::TsbReader()
 				}
 				if(abortTsbReader)
 				{
+					AAMPLOG_INFO("Exit TsbReader due to abort");
 					exitLoop = true;
 					break;
 				}
@@ -10627,10 +10629,12 @@ void StreamAbstractionAAMP_MPD::Stop(bool clearChannelData)
 
 	if(tsbReaderThreadStarted)
 	{
+		AAMPLOG_INFO("Abort TsbReader");
 		abortTsbReader = true;
 		if(tsbReaderThreadID.joinable())
 		{
 			tsbReaderThreadID.join();
+			AAMPLOG_INFO("Joined tsbReaderThreadID");
 		}
 		tsbReaderThreadStarted = false;
 	}
