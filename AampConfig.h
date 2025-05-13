@@ -303,7 +303,8 @@ typedef enum
 	eAAMPConfig_AdFulfillmentTimeout,					/**< Ad fulfillment timeout in milliseconds */
 	eAAMPConfig_AdFulfillmentTimeoutMax,					/**< Ad fulfillment maximum timeout in milliseconds */
 	eAAMPConfig_ShowDiagnosticsOverlay,		       /** configures the diagnostics overlay,accessed by UVE API getConfiguration()*/
-	eAAMPConfig_MonitorAVSyncThreshold,				/**< configures threshold for pair of mismatched audio,video positions to be reported as avsync in milliseconds*/
+	eAAMPConfig_MonitorAVSyncThresholdPositive,				/**< (positive) milliseconds threshold for video ahead of audio to be considered as unacceptable avsync*/
+	eAAMPConfig_MonitorAVSyncThresholdNegative,				/**< (negative) milliseconds threshold for video behind audio to be considered as unacceptable avsync*/
 	eAAMPConfig_MonitorAVJumpThreshold,				/**< configures threshold aligned audio,video positions advancing together by unexpectedly large delta to be reported as jump in milliseconds*/
 	eAAMPConfig_ProgressLoggingDivisor,				/**<  Divisor to avoid printing the progress report too frequently in the log */
 	eAAMPConfig_IntMaxValue							/**< Max value of int config always last element*/
