@@ -565,8 +565,9 @@ gboolean InterfacePlayerRDK::IdleCallbackOnEOS(gpointer user_data)
 
 void MonitorAV( InterfacePlayerRDK *pInterfacePlayerRDK )
 {
-	const int AVSYNC_THRESHOLD_MS = pInterfacePlayerRDK->m_gstConfigParam->monitorAvsyncThresholdMs;
-	const int JUMP_THRESHOLD_MS = pInterfacePlayerRDK->m_gstConfigParam->monitorJumpThresholdMs;
+	const int AVSYNC_POSITIVE_THRESHOLD_MS = pInterfacePlayerRDK->m_gstConfigParam->monitorAvsyncThresholdPositiveMs;
+	const int AVSYNC_NEGATIVE_THRESHOLD_MS = pInterfacePlayerRDK->m_gstConfigParam->monitorAvsyncThresholdNegativeMs;
+	const int JUMP_THRESHOLD_MS = pInterfacePlayerRDK->m_gstConfigParam->monitorAvJumpThresholdMs;
 
 
 	GstState state = GST_STATE_VOID_PENDING;
@@ -633,7 +634,9 @@ void MonitorAV( InterfacePlayerRDK *pInterfacePlayerRDK )
 					description = "trickplay";
 					break;
 				case 2:
-					if( abs(av_position[0] - av_position[1]) > AVSYNC_THRESHOLD_MS )
+				{
+					int delta = av_position[eGST_MEDIATYPE_VIDEO] - av_position[eGST_MEDIATYPE_AUDIO];
+					if( delta > AVSYNC_POSITIVE_THRESHOLD_MS  || delta < AVSYNC_NEGATIVE_THRESHOLD_MS )
 					{
 						if( !description )
 						{ // both moving, but diverged
@@ -644,6 +647,7 @@ void MonitorAV( InterfacePlayerRDK *pInterfacePlayerRDK )
 					{ // workaround to detect decoders that jump over AV gaps without delay
 						description = "jump";
 					}
+				}
 					break;
 				default:
 					break;

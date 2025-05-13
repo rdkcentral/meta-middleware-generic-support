@@ -117,8 +117,9 @@ struct Configs
 	bool progressLogging;
 	bool monitorAV;
 	bool disableUnderflow;
-	int monitorAvsyncThresholdMs;
-	int monitorJumpThresholdMs;
+	int monitorAvsyncThresholdPositiveMs;
+	int monitorAvsyncThresholdNegativeMs;
+	int monitorAvJumpThresholdMs;
 };
 
 typedef enum
