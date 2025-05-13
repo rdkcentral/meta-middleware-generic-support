@@ -16,7 +16,7 @@ XiOne REALTEK STB RDKE Vendor Layer Release Notes
 |---|----|
 |Classification|Confidential|
 
-|Date|30 Apr 2025|
+|Date|13 May 2025|
 |---|----|
 |Author|pothiraj.paulraj@sky.uk shahbas.alipakkada@sky.uk|
 
@@ -47,50 +47,50 @@ XiOne REALTEK STB RDKE Vendor Layer Release Notes
 ## Release Description
 
 
-The aim of this release to provide the hotfix for [RDKEVD-1033](https://ccp.sys.comcast.net/browse/RDKEVD-1033) [XIONE-17009](https://ccp.sys.comcast.net/browse/XIONE-17009) on top of vendor release 5.1.2. This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
+The aim of this release to provide the hotfix for [RDKEVD-1087](https://ccp.sys.comcast.net/browse/RDKEVD-1087) [XIONE-17009](https://ccp.sys.comcast.net/browse/XIONE-17009) on top of vendor release 5.1.5. This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
 
 ## Release layer and components
 
 ### Vendor Release Components
 
 
-| Vendor Release Components | New Version (5.1.5) | Version in Previous Release (5.1.2) | ChangeList |
+| Vendor Release Components | New Version (5.1.6) | Version in Previous Release (5.1.5) | ChangeList |
 |------------|---------|------------------------------------|--------------|
 | Kernel & DTB | | 4.9.119.01-r6  | |
-| packagegroup-vendor-layer | 5.1.5-r0 | 5.1.2-r0 | [5.1.2...5.1.5](https://github.com/rdk-e/meta-oem-realtek-stream/compare/5.1.2...5.1.5) |
+| packagegroup-vendor-layer | 5.1.6-r0 | 5.1.5-r0 | [5.1.5...5.1.6](https://github.com/rdk-e/meta-oem-realtek-stream/compare/5.1.5...5.1.6) |
 | packagegroup-common-vendor-layer | | 1.0.2-r0 |  |
 
 ### Stack layer
 
 | Layer | Tag |
 |------|------|
-| [meta-vendor-release](https://github.com/rdk-e/meta-vendor-xione-realtek-release) | [5.1.5](https://github.com/rdk-e/meta-vendor-xione-realtek-release/tree/5.1.5) |
+| [meta-vendor-release](https://github.com/rdk-e/meta-vendor-xione-realtek-release) | [5.1.6](https://github.com/rdk-e/meta-vendor-xione-realtek-release/tree/5.1.6) |
 
 #### Artifactory Location for IPKs
 
 | Product | Location |
 |------------|---------|
-| XiOne-UK | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-uk-release/5.1.5/xione-uk/ipks/debug |
+| XiOne-UK | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-uk-release/5.1.6/xione-uk/ipks/debug |
 
 
 ### Meta Repos
 
 #### Meta repos maintained by vendor layer
 
-| Meta Repo | New Version (5.1.5) | Version in Previous Release (5.1.2) | ChangeList |
+| Meta Repo | New Version (5.1.6) | Version in Previous Release (5.1.5) | ChangeList |
 |------------|---------|------------------------------------|--------------|
 | meta-vts |  | 1.2.0 | |
-| meta-rdk-soc-realtek |  | 4.0.4 |  |
+| meta-rdk-soc-realtek | **4.0.4-r35-2** | 4.0.4 | [4.0.4 ...4.0.4-r35-2](https://github.com/rdk-e/meta-rdk-soc-realtek/compare/4.0.4...4.0.4-r35-2)  |
 | meta-oem-stream |   | 4.0.2  |  |
-| meta-oem-realtek-stream |  **5.1.5** | 5.1.2 | [5.1.2...5.1.5](https://github.com/rdk-e/meta-oem-realtek-stream/compare/5.1.2...5.1.5) |
+| meta-oem-realtek-stream |  **5.1.6** | 5.1.5 | [5.1.5...5.1.6](https://github.com/rdk-e/meta-oem-realtek-stream/compare/5.1.5...5.1.6) |
 | meta-rdk-vendor-realtek-common |  | 1.0.2 |  |
-| meta-oss-vendor-realtek |  | 4.0.4 |  |
+| meta-oss-vendor-realtek | **4.0.4-r35-2** | 4.0.4 | [4.0.4 ...4.0.4-r35-2](https://github.com/rdk-e/meta-oss-vendor-realtek/compare/4.0.4...4.0.4-r35-2)  |
 | meta-mediarite-vendor |  | 10.0.34.0a2-r2 | |
 
 #### Meta repos common for RDK-E
 
 
-| Meta Repo | New Version (5.1.5) | Version in Previous Release (5.1.2) | ChangeList |
+| Meta Repo | New Version (5.1.6) | Version in Previous Release (5.1.5) | ChangeList |
 |------------|---------|------------------------------------|--------------|
 | **buildscripts** ||||
 | build-scripts |  | 4.1.0 | |
@@ -125,7 +125,7 @@ The aim of this release to provide the hotfix for [RDKEVD-1033](https://ccp.sys.
 
 ### Interface versions
 
-| # | HAL Interface Header (rdkcentral github) | New Version (5.1.5) | Version from Previous Release (5.1.2)|
+| # | HAL Interface Header (rdkcentral github) | New Version (5.1.6) | Version from Previous Release (5.1.5)|
 |---|------------------------------------------|-------------|----------------------|
 | 1 | media-utils-headers |  | 1.0.5 |
 | 2 | hdmicecheader |  | 1.3.10 |
@@ -149,11 +149,11 @@ It should be noted that some services may not run as they have dependencies with
 ### Middleware and Production image Integration
 
 ##### XiOne-UK
-- Created the  middleware image `"SKXI11ADS_MIDDLEWARE_DEV_refs_tags_2.4.6_20250430120449.bin"` from the `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Middleware-Build/16952"`
+- Created the Image assembler full stack image instead middleware `"SKXI11ADS_DEV_support_E036_8.0p19s1_20250512184352.bin"` from the `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1885/"`
 
-- Testing done by using tag `"refs/tags/2.4.6 for XiOne-uk"` included of latest vendor ipk feed info https://github.com/rdk-e/meta-vendor-xione-realtek-release/blob/release/5.1.5/conf/machine/include/vendor.inc and the middleware manifest from 2.4.6 tag.
+- Testing done by using tag `"support/E036_8.0p19s1 for XiOne-uk"` included of latest vendor ipk feed info https://github.com/rdk-e/meta-vendor-xione-realtek-release/blob/release/5.1.6/conf/machine/include/vendor.inc.
 
-- Tag details here `"XiOne-UK(refs/tags/2.4.6)"`
+- Tag/Support branch details are here `"XiOne-UK(support/E036_8.0p19s1)"`
 
 ## Build instructions
 
@@ -167,11 +167,11 @@ It should be noted that some services may not run as they have dependencies with
 
 - Move to directory containing the image
 - FlashApp \<dirname\> \<imagename\>
-- eg. FlashApp /mnt/usb/SKXI11ADS_VENDOR_DEV_refs_tags_5.1.5_20250430103616.bin
+- eg. FlashApp /mnt/usb/SKXI11ADS_5.1.6_VENDOR_DEV.bin
 
 #### USB Flash Method using xboot prompt
 
-- Copy the image `"SKXI11ADS_VENDOR_DEV_refs_tags_5.1.5_20250430103616.bin"` to the usb and connect to the STB
+- Copy the image `"SKXI11ADS_5.1.6_VENDOR_DEV.bin"` to the usb and connect to the STB
 - Switch on the STB
 - Press z button multiple time to get the bootloader prompt.
 - From bootloader prompt, need to do below method
@@ -188,14 +188,14 @@ It should be noted that some services may not run as they have dependencies with
 
 ## Testing
 
-- Created the `"vendor test image"` `"SKXI11ADS_VENDOR_DEV_refs_tags_5.1.5_20250430103616.bin for XiOne-UK"` using the vendor layer jenkins job `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Vendor-Release-Build/75/"`
+- Created the `"vendor test image"` `"SKXI11ADS_5.1.6_VENDOR_DEV.bin for XiOne-UK"` using the vendor layer jenkins job `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Vendor-Release-Build/85/"`
 - Successfully booted the `"vendor test image"` and obtained the shell prompt.
 - Verified vendor layer services up and running
 - Verified IP acquisition via Ethernet
 - Played clear AV with gst-play-1.0.
 - Verified image flashing using FlashApp
 
-Testing details in [RDKEVD-1196](https://ccp.sys.comcast.net/browse/RDKEVD-1196)
+Testing details in [RDKEVD-1331](https://ccp.sys.comcast.net/browse/RDKEVD-1331)
 
 #### High Level Vendor Memory usage data
 
@@ -213,6 +213,7 @@ Testing details in [RDKEVD-1196](https://ccp.sys.comcast.net/browse/RDKEVD-1196)
 
 | ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
 | --- | --- | --- | --- | --- | --- | --- |
+| May 13 2025 |  SKXI11ADS_5.1.6_VENDOR_DEV			     | 1547368 | 454511 | 30454 | 484965 | 2161715 |
 | Apr 30 2025 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.1.5_20250430103616 | 1547368 | 454265 | 29428 | 483693 | 2162987 |
 | Apr 09 2025 |  SKXI11ADS_VENDOR_DEV_refs_tags_5.1.2_20250408160721 | 1547368 | 441296 | 29433 | 470729 | 2175951 |
 | Mar 26 2025 |  SKXI11ADS_VENDOR_DEV_refs_tags_6.0.2_20250324171809 | 1547376 | 444252 | 29245 | 473497 | 2173175 |
@@ -225,10 +226,10 @@ Testing details in [RDKEVD-1196](https://ccp.sys.comcast.net/browse/RDKEVD-1196)
 ### Fullstack image testing
 
 ##### XiOne-UK
-- Created Image Assembler build `"SKXI11ADS_DEV_support_E036_8.0p19s1_20250430120513.bin from the jenkins job https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1795/"` based on Middleware version 2.4.5 and the Image assembler based manifest branched to `"support/E036_8.0p19s1"`.
+- Created Image Assembler build `" SKXI11ADS_DEV_support_E036_8.0p19s1_20250512184352.binfrom the jenkins job https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/1885/"` based on Middleware version 2.4.5 and the Image assembler based manifest branched to `"support/E036_8.0p19s1"`.
 
 - Included the application release 4.21.1 using [rdke-assembler-manifest](https://github.com/rdk-e/rdke-assembler-manifest) feature branch `"support/E036_8.0p19s1"`.
-- Tested the below scenarios as part of [RDKEVD-1196](https://ccp.sys.comcast.net/browse/RDKEVD-1196)
+- Tested the below scenarios as part of [RDKEVD-1331](https://ccp.sys.comcast.net/browse/RDKEVD-1331)
 
   - Successfully booted \"SKXI11ADS_DEV_support_E036_8.0p19s1_20250430120513.bin\" and obtained the shell prompt and UI.
   - Verified UI navigation
@@ -241,7 +242,7 @@ Testing details in [RDKEVD-1196](https://ccp.sys.comcast.net/browse/RDKEVD-1196)
   - Verified Log files are present in /opt/logs
 
 ## Components details in 'packagegroup-common-vendor-layer'
-| # | Vendor layer Component | New PV-PR (5.1.5) | PV-PR in Previous Release (5.1.2)| New SRCREV (5.1.5) | SRCREV in Previous Release (5.1.2)| Diff |
+| # | Vendor layer Component | New PV-PR (5.1.6) | PV-PR in Previous Release (5.1.5)| New SRCREV (5.1.6) | SRCREV in Previous Release (5.1.5)| Diff |
 |---|------------------------------------------|-------------|----------------------|-----------|------------|-----|
 | 1 | libdrm | | 2.4.110-r0 |  | NA | |
 | 2 | cairo | | 1.16.0-r1 |  | NA | |
@@ -274,7 +275,7 @@ Testing details in [RDKEVD-1196](https://ccp.sys.comcast.net/browse/RDKEVD-1196)
 ## Components details in 'packagegroup-vendor-layer'
 
 
-| # | Vendor layer Component | New PV-PR (5.1.5) | PV-PR in Previous Release (5.1.2)| New SRCREV | SRCREV in Previous Release (5.1.2)| Diff |
+| # | Vendor layer Component | New PV-PR (5.1.6) | PV-PR in Previous Release (5.1.5)| New SRCREV | SRCREV in Previous Release (5.1.5)| Diff |
 |---|------------------------------------------|-------------|----------------------|-----------|------------|-----|
 | 1 | media-utils-soc-realtek | | 1.0.5-1.0.0-r1 |  | | |
 | 2 | closedcaption-hal-realtek | | 1.0.0-3.0.0-r0 |  | | |
@@ -367,7 +368,7 @@ Testing details in [RDKEVD-1196](https://ccp.sys.comcast.net/browse/RDKEVD-1196)
 | 83 | mfi-ree | | 2.0.0-r0 | | | |
 | 84 | apparmor-vendor | | 2.3.2-r0 |  | 41e3674 | |
 | 85 | directfb | | 1.7.7-r0 |  | NA | |
-| 86 | product-firmware-pb | **1.0.4-r0** | 1.0.2-r0 | **89bee1c** | | |
+| 86 | product-firmware-pb |  | 1.0.4-r0 | **89bee1c** | | |
 | 87 | testagentlib |  | 3.0.2-r0 |  |  | |
 | -  |  - testagentlib_testagentlib | |  | **b8eb1f8** | NA | |
 | -  |  - testagentlib_xione_factory | |  | **6281804** | NA | |
@@ -380,12 +381,12 @@ Testing details in [RDKEVD-1196](https://ccp.sys.comcast.net/browse/RDKEVD-1196)
 
 ## [meta-oem-realtek-stream](https://github.com/rdk-e/meta-oem-realtek-stream/blob/support/R35-5.1.0/CHANGELOG.md)
 
-- RDKEVD-1196 : provide the 5.1.5 hotfix release. ( [a5f5ff7](https://github.com/rdk-e/meta-oem-realtek-stream/commit/a5f5ff705f6d958145d9f35bffa2e5767b56b126))
-- RDKEVD-1033 : GPU usage for apps is being reported as zero. ( [d8bc0dd](https://github.com/rdk-e/meta-oem-realtek-stream/commit/d8bc0dd3b3e6521973682aa526bace99af04f233)) 
-- XIONE-17009 : OTTPENDING increased with RDKE E036.001.00.8.0p21s1 compared to E036.000.00.8.0p20s1 and observed GST_DECODE time increase is one of the major contributor. ( [614ee7](https://github.com/rdk-e/meta-oem-realtek-stream/commit/614ee7462733df20f7326ce1e38d779c1a036a08))
+- RDKEVD-1087,XIONE-17009 : Add rtk_decoder_preinit(). ( [29b35ec](https://github.com/rdk-e/meta-oem-realtek-stream/commit/29b35eca4b5b67eef5aad8a85ac22c45a1c659f3))
 
-## Changes in component repositories
+## [meta-rdk-soc-realtek](https://github.com/rdk-e/meta-rdk-soc-realtek/blob/support/R35-5.1.0-baseline/CHANGELOG.md)
 
-## [firmware-prebuilt-xione-soc-realtek](https://github.com/rdk-e/firmware-prebuilt-xione-soc-realtek/blob/support/R35-1-0-3/CHANGELOG.md)
+- RDKEVD-1087,XIONE-17009 : Add rtk_decoder_preinit(). ( [0677705](https://github.com/rdk-e/meta-rdk-soc-realtek/commit/06777058ae6d47759ded96c6db718c58758ab2cd))
 
-- RDKEVD-1186 : First tune after maintenance reboot takes longer than 5 seconds most of the time. ( [a3c58f2](https://github.com/rdk-e/firmware-prebuilt-xione-soc-realtek/commit/a3c58f291b44dac2bd9a2cec8861136bac728d40))
+## [meta-oss-vendor-realtek](https://github.com/rdk-e/meta-oss-vendor-realtek/blob/support/R35-5.1.0-baseline/CHANGELOG.md)
+
+- RDKEVD-1087,XIONE-17009 : Add rtk_decoder_preinit(). ( [e9109bd](https://github.com/rdk-e/meta-oss-vendor-realtek/commit/e9109bd957829f6f89eb3cce544d24818989611a))
