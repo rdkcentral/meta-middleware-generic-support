@@ -457,7 +457,7 @@ DrmSession* DrmSessionManager::createDrmSession(int &err, std::shared_ptr<DrmHel
 	}
 	std::vector<uint8_t> keyId;
 	drmHelper->getKey(keyId);
-	/* callback to initiatecontentProtection DataUpdate */
+	/* callback to initiate content protection data update */
 	mCustomData = ContentUpdateCb(drmHelper, streamType , keyId, isContentProcess);
 	if (code == KEY_READY)
 	{
