@@ -5030,7 +5030,6 @@ static int aampApplyThreadPrioFromEnv(const char *env, int defaultPolicy, int de
 	int ret = -1;
 	int priority = defaultPriority;
 	int policy = defaultPolicy;
-	struct sched_param param = {0};
 	/* get env settings from file for envName */
 	const char *envVal = getenv(env);
 	if (envVal)
@@ -5061,16 +5060,14 @@ static int aampApplyThreadPrioFromEnv(const char *env, int defaultPolicy, int de
 	}
 	if((policy >= 0) && (policy <= 6))
 	{
-		param.sched_priority = priority;
-		ret = pthread_setschedparam(pthread_self(), policy, &param);
+		ret = aamp_SetThreadSchedulingParameters(policy, priority);
 	}
 	else
 	{
 		/* fallback thread priority setting in case of corruption */
 		priority = defaultPriority;
 		policy = defaultPolicy;
-		param.sched_priority = priority;
-		ret = pthread_setschedparam(pthread_self(), policy, &param);
+		ret = aamp_SetThreadSchedulingParameters(policy, priority);
 	}
 	return ret;
 }

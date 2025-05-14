@@ -70,13 +70,6 @@ typedef struct _manifestDownloadConfig ManifestDownloadConfig;
 
 class AampTSBSessionManager;
 #include "ID3Metadata.hpp"
-
-#ifdef __APPLE__
-#define aamp_pthread_setname(tid,name) pthread_setname_np(name)
-#else
-#define aamp_pthread_setname(tid,name) pthread_setname_np(tid,name)
-#endif
-
 #define AAMP_SEEK_TO_LIVE_POSITION (-1)
 
 #define MANIFEST_TEMP_DATA_LENGTH 100			/**< Manifest temp data length */
