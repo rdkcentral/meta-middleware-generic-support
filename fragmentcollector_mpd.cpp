@@ -11691,7 +11691,8 @@ bool StreamAbstractionAAMP_MPD::onAdEvent(AdEvent evt, double &adOffset)
 	bool stateChanged = false;
 	AdState oldState = mCdaiObject->mAdState;
 	AAMPEventType reservationEvt2Send = AAMP_MAX_NUM_EVENTS; //None
-	std::string adbreakId2Send("");
+	/* Caching the currently playing breakId */
+	std::string adbreakId2Send = mCdaiObject->mCurPlayingBreakId;
 	AAMPEventType placementEvt2Send = AAMP_MAX_NUM_EVENTS; //None
 	std::string adId2Send("");
 	uint32_t adPos2Send = 0;
@@ -12004,7 +12005,6 @@ bool StreamAbstractionAAMP_MPD::onAdEvent(AdEvent evt, double &adOffset)
 					AAMPLOG_WARN("[CDAI]: All Ads in the ADBREAK[%s] FINISHED. Playing the basePeriod[%s] at Offset[%lf].", mCdaiObject->mCurPlayingBreakId.c_str(), mBasePeriodId.c_str(), mCdaiObject->mContentSeekOffset);
 					mCdaiObject->mAdBreaks[mCdaiObject->mCurPlayingBreakId].mAdFailed = false;
 					reservationEvt2Send = AAMP_EVENT_AD_RESERVATION_END;
-					adbreakId2Send = mCdaiObject->mCurPlayingBreakId;
 					sendImmediate = curAdFailed;	//Current Ad failed. Hence may not get discontinuity from gstreamer.
 					mCdaiObject->mCurPlayingBreakId = "";
 					mCdaiObject->mCurAds = nullptr;
@@ -12075,9 +12075,23 @@ bool StreamAbstractionAAMP_MPD::onAdEvent(AdEvent evt, double &adOffset)
 		if(AAMP_NORMAL_PLAY_RATE == rate)
 		{
 			//Sending Ad events
-			uint64_t resPosMS = 0;
+			uint64_t resPosMS = 0,absReservationEventPositionMs = 0,absPlacementEventPositionMs = 0;
 			int basePeriodIdx = mMPDParseHelper->getPeriodIdx(mBasePeriodId);
-			uint64_t absReservationEventPositionMs = static_cast<uint64_t>(mMPDParseHelper->GetPeriodStartTime(mCurrentPeriodIdx, mLastPlaylistDownloadTimeMs) * 1000);
+			// Check if the adbreakId is valid
+			if (!adbreakId2Send.empty() && mCdaiObject->isAdBreakObjectExist(adbreakId2Send))
+			{
+				AdBreakObject *abObj = &mCdaiObject->mAdBreaks[adbreakId2Send];
+				// Updating the adbreak start time for the first time when the adbreak starts in the current period
+				if (abObj)
+				{
+					if (abObj->mAbsoluteAdBreakStartTime == 0)
+					{
+						abObj->mAbsoluteAdBreakStartTime = static_cast<uint64_t>(mMPDParseHelper->GetPeriodStartTime(mCurrentPeriodIdx, mLastPlaylistDownloadTimeMs) * 1000);
+					}
+					absReservationEventPositionMs = abObj->mAbsoluteAdBreakStartTime;
+					absPlacementEventPositionMs = abObj->mAbsoluteAdBreakStartTime;
+			    }
+			}
 			if(AAMP_EVENT_AD_RESERVATION_START == reservationEvt2Send || AAMP_EVENT_AD_RESERVATION_END == reservationEvt2Send)
 			{
 				const std::string &startStr = mpd->GetPeriods().at(mCurrentPeriodIdx)->GetStart();
@@ -12105,9 +12119,7 @@ bool StreamAbstractionAAMP_MPD::onAdEvent(AdEvent evt, double &adOffset)
 					aamp->SendAnomalyEvent(ANOMALY_TRACE, "[CDAI] AdId=%s starts. Duration=%u sec URL=%s",
 						adId2Send.c_str(),(adDuration/1000), mCdaiObject->mCurAds->at(mCdaiObject->mCurAdIdx).url.c_str());
 				}
-
-				uint64_t absPlacementEventPositionMs = static_cast<uint64_t>(mMPDParseHelper->GetPeriodStartTime(basePeriodIdx, mLastPlaylistDownloadTimeMs) * 1000) + adPos2Send;
-
+				absPlacementEventPositionMs += adPos2Send;
 				SendAdPlacementEvent(placementEvt2Send, adId2Send, adPos2Send, absPlacementEventPositionMs, adOffset, adDuration, sendImmediate);
 
 				if(fogManifestFailed)
