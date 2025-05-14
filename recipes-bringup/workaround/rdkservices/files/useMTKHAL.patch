@@ -1,5 +1,5 @@
 diff --git a/AVOutput/AVOutputTV.cpp b/AVOutput/AVOutputTV.cpp
-index 918b830..606b78a 100644
+index 918b830..381ed78 100644
 --- a/AVOutput/AVOutputTV.cpp
 +++ b/AVOutput/AVOutputTV.cpp
 @@ -780,48 +780,48 @@ namespace Plugin {
@@ -84,6 +84,99 @@ index 918b830..606b78a 100644
          },
          "LowLatencyState", parameters, response);
      }
+@@ -1467,10 +1467,10 @@ namespace Plugin {
+     #if HAL_NOT_READY
+         bool success = false;
+     #else
+-        bool success = resetPQParamToDefault(parameters, "LocalContrastEnhancement",
+-                                            PQ_PARAM_LOCAL_CONTRAST_ENHANCEMENT, SetLocalContrastEnhancement);
++        /*bool success = resetPQParamToDefault(parameters, "LocalContrastEnhancement",
++                                            PQ_PARAM_LOCAL_CONTRAST_ENHANCEMENT, SetLocalContrastEnhancement);*/
+     #endif
+-        returnResponse(success);
++        returnResponse(true);
+     }
+ 
+     uint32_t AVOutputTV::resetMPEGNoiseReduction(const JsonObject& parameters, JsonObject& response)
+@@ -1478,10 +1478,10 @@ namespace Plugin {
+     #if HAL_NOT_READY
+         bool success = false;
+     #else
+-        bool success = resetPQParamToDefault(parameters, "MPEGNoiseReduction",
+-                                            PQ_PARAM_MPEG_NOISE_REDUCTION, SetMPEGNoiseReduction);
++        /*bool success = resetPQParamToDefault(parameters, "MPEGNoiseReduction",
++                                            PQ_PARAM_MPEG_NOISE_REDUCTION, SetMPEGNoiseReduction);*/
+     #endif
+-        returnResponse(success);
++        returnResponse(true);
+     }
+ 
+     uint32_t AVOutputTV::resetDigitalNoiseReduction(const JsonObject& parameters, JsonObject& response)
+@@ -1489,10 +1489,10 @@ namespace Plugin {
+     #if HAL_NOT_READY
+         bool success = false;
+     #else
+-        bool success = resetPQParamToDefault(parameters, "DigitalNoiseReduction",
+-                                            PQ_PARAM_DIGITAL_NOISE_REDUCTION, SetDigitalNoiseReduction);
++       /* bool success = resetPQParamToDefault(parameters, "DigitalNoiseReduction",
++                                            PQ_PARAM_DIGITAL_NOISE_REDUCTION, SetDigitalNoiseReduction);*/
+     #endif
+-        returnResponse(success);
++        returnResponse(true);
+     }
+ 
+     uint32_t AVOutputTV::resetMEMC(const JsonObject& parameters, JsonObject& response)
+@@ -1706,7 +1706,7 @@ namespace Plugin {
+ 
+     uint32_t AVOutputTV::setLocalContrastEnhancement(const JsonObject& parameters, JsonObject& response)
+     {
+-        return setContextPQParam(
++       /*return setContextPQParam(
+             parameters, response,
+             "localContrastEnhancement", "LocalContrastEnhancement",
+             m_maxLocalContrastEnhancement,
+@@ -1714,12 +1714,13 @@ namespace Plugin {
+             [](tvVideoSrcType_t src, tvPQModeIndex_t mode, tvVideoFormatType_t fmt, int val) {
+                 return SetLocalContrastEnhancement(src, mode, fmt, val);
+             }
+-        );
++        );*/
++        returnResponse(true);
+     }
+ 
+     uint32_t AVOutputTV::setMPEGNoiseReduction(const JsonObject& parameters, JsonObject& response)
+     {
+-        return setContextPQParam(
++        /*return setContextPQParam(
+             parameters, response,
+             "mpegNoiseReduction", "MPEGNoiseReduction",
+             m_maxMPEGNoiseReduction,
+@@ -1727,12 +1728,13 @@ namespace Plugin {
+             [](tvVideoSrcType_t src, tvPQModeIndex_t mode, tvVideoFormatType_t fmt, int val) {
+                 return SetMPEGNoiseReduction(src, mode, fmt, val);
+             }
+-        );
++        );*/
++        returnResponse(true);
+     }
+ 
+     uint32_t AVOutputTV::setDigitalNoiseReduction(const JsonObject& parameters, JsonObject& response)
+     {
+-        return setContextPQParam(
++        /*return setContextPQParam(
+             parameters, response,
+             "digitalNoiseReduction", "DigitalNoiseReduction",
+             m_maxDigitalNoiseReduction,
+@@ -1740,7 +1742,8 @@ namespace Plugin {
+             [](tvVideoSrcType_t src, tvPQModeIndex_t mode, tvVideoFormatType_t fmt, int val) {
+                 return SetDigitalNoiseReduction(src, mode, fmt, val);
+             }
+-        );
++        );*/
++        returnResponse(true);
+     }
+ 
+     uint32_t AVOutputTV::getBacklight(const JsonObject& parameters, JsonObject& response)
 diff --git a/AVOutput/AVOutputTV.h b/AVOutput/AVOutputTV.h
 index 1b66dbe..2bf2663 100644
 --- a/AVOutput/AVOutputTV.h
@@ -150,7 +243,7 @@ index 1b66dbe..2bf2663 100644
  			const std::function<tvError_t(tvContextCaps_t**, int*)>& getCapsFunc,
  			const char* key,
 diff --git a/AVOutput/AVOutputTVHelper.cpp b/AVOutput/AVOutputTVHelper.cpp
-index 70d4b26..8a6cdc6 100644
+index 70d4b26..17623f8 100644
 --- a/AVOutput/AVOutputTVHelper.cpp
 +++ b/AVOutput/AVOutputTVHelper.cpp
 @@ -900,7 +900,7 @@ namespace Plugin {
@@ -171,6 +264,43 @@ index 70d4b26..8a6cdc6 100644
  
      tvError_t AVOutputTV::updateAVoutputTVParamToHALV2(std::string forParam, paramIndex_t indexInfo, int value, bool setNotDelete)
      {
+@@ -3108,30 +3108,30 @@ namespace Plugin {
+                 case PQ_PARAM_LOCAL_CONTRAST_ENHANCEMENT:
+             #if HAL_NOT_READY
+             #else
+-                    ret |= SetLocalContrastEnhancement((tvVideoSrcType_t)paramIndex.sourceIndex,
++                    /*ret |= SetLocalContrastEnhancement((tvVideoSrcType_t)paramIndex.sourceIndex,
+                                                     (tvPQModeIndex_t)paramIndex.pqmodeIndex,
+                                                     (tvVideoFormatType_t)paramIndex.formatIndex,
+-                                                    level);
++                                                    level);*/
+             #endif
+                     break;
+ 
+                 case PQ_PARAM_MPEG_NOISE_REDUCTION:
+             #if HAL_NOT_READY
+             #else
+-                    ret |= SetMPEGNoiseReduction((tvVideoSrcType_t)paramIndex.sourceIndex,
++                    /*ret |= SetMPEGNoiseReduction((tvVideoSrcType_t)paramIndex.sourceIndex,
+                                                 (tvPQModeIndex_t)paramIndex.pqmodeIndex,
+                                                 (tvVideoFormatType_t)paramIndex.formatIndex,
+-                                                level);
++                                                level);*/
+             #endif
+                     break;
+ 
+                 case PQ_PARAM_DIGITAL_NOISE_REDUCTION:
+             #if HAL_NOT_READY
+             #else
+-                    ret |= SetDigitalNoiseReduction((tvVideoSrcType_t)paramIndex.sourceIndex,
++                   /*ret |= SetDigitalNoiseReduction((tvVideoSrcType_t)paramIndex.sourceIndex,
+                                                     (tvPQModeIndex_t)paramIndex.pqmodeIndex,
+                                                     (tvVideoFormatType_t)paramIndex.formatIndex,
+-                                                    level);
++                                                    level);*/
+             #endif
+                     break;
+ 
 @@ -3199,8 +3199,8 @@ namespace Plugin {
          return ret;
      }
