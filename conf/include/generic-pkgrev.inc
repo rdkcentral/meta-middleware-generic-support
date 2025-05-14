@@ -18,7 +18,7 @@ PV:pn-iarmbus = "1.0.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.0.11"
+PV:pn-iarmmgrs = "1.0.12"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -66,11 +66,11 @@ PV:pn-tr69hostif-headers = "1.1.6"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby = "3.13.0"
+PV:pn-dobby = "3.14.0"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby-thunderplugin = "3.13.0"
+PV:pn-dobby-thunderplugin = "3.14.0"
 PR:pn-dobby-thunderplugin = "r0"
 PACKAGE_ARCH:pn-dobby-thunderplugin = "${MIDDLEWARE_ARCH}"
 
@@ -96,8 +96,8 @@ PV:pn-bluetooth-core = "1.0.1"
 PR:pn-bluetooth-core = "r1"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-mgr = "1.0.1"
-PR:pn-bluetooth-mgr = "r2"
+PV:pn-bluetooth-mgr = "1.0.2"
+PR:pn-bluetooth-mgr = "r1"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
 PV:pn-commonutilities = "1.2.0"
@@ -129,7 +129,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.0.7"
+PV:pn-entservices-casting = "1.0.8"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
@@ -137,7 +137,7 @@ PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "1.1.7"
+PV:pn-entservices-deviceanddisplay = "1.1.9"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
@@ -309,7 +309,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.11"
+PV:pn-thunderstartupservices = "1.0.13"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -353,7 +353,7 @@ PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdkwindowmanager = "1.0.0"
-PR:pn-rdkwindowmanager = "r1"
+PR:pn-rdkwindowmanager = "r2"
 PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 
 PV:pn-os-release = "1.0.0"
