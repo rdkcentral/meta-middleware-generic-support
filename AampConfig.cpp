@@ -862,12 +862,6 @@ void AampConfig::ApplyDeviceCapabilities()
 	configValueBool[eAAMPConfig_UseWesterosSink].value = SocUtils::UseWesterosSink();
 	configValueBool[eAAMPConfig_SyncAudioFragments].value = SocUtils::IsAudioFragmentSyncSupported();
 	SetConfigValue(AAMP_DEFAULT_SETTING, eAAMPConfig_WifiCurlHeader, IsWifiCurlHeader);
-	//To override App Setting, Tune Setting is given priority	
-	if(!pInstance->IsLiveLatencyCorrectionSupported())
-	{
-		configValueBool[eAAMPConfig_EnableLowLatencyCorrection].value = false;
-		SetConfigValue(AAMP_TUNE_SETTING, eAAMPConfig_EnableLiveLatencyCorrection, false);
-	}
 }
 
 std::string AampConfig::GetUserAgentString()
