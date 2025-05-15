@@ -1,5 +1,5 @@
 diff --git a/AVOutput/AVOutputTV.cpp b/AVOutput/AVOutputTV.cpp
-index 918b830..381ed78 100644
+index e635498..bcbf72d 100644
 --- a/AVOutput/AVOutputTV.cpp
 +++ b/AVOutput/AVOutputTV.cpp
 @@ -780,48 +780,48 @@ namespace Plugin {
@@ -84,7 +84,7 @@ index 918b830..381ed78 100644
          },
          "LowLatencyState", parameters, response);
      }
-@@ -1467,10 +1467,10 @@ namespace Plugin {
+@@ -1474,10 +1474,10 @@ namespace Plugin {
      #if HAL_NOT_READY
          bool success = false;
      #else
@@ -98,7 +98,7 @@ index 918b830..381ed78 100644
      }
  
      uint32_t AVOutputTV::resetMPEGNoiseReduction(const JsonObject& parameters, JsonObject& response)
-@@ -1478,10 +1478,10 @@ namespace Plugin {
+@@ -1485,10 +1485,10 @@ namespace Plugin {
      #if HAL_NOT_READY
          bool success = false;
      #else
@@ -112,7 +112,7 @@ index 918b830..381ed78 100644
      }
  
      uint32_t AVOutputTV::resetDigitalNoiseReduction(const JsonObject& parameters, JsonObject& response)
-@@ -1489,10 +1489,10 @@ namespace Plugin {
+@@ -1496,10 +1496,10 @@ namespace Plugin {
      #if HAL_NOT_READY
          bool success = false;
      #else
@@ -126,7 +126,7 @@ index 918b830..381ed78 100644
      }
  
      uint32_t AVOutputTV::resetMEMC(const JsonObject& parameters, JsonObject& response)
-@@ -1706,7 +1706,7 @@ namespace Plugin {
+@@ -1713,7 +1713,7 @@ namespace Plugin {
  
      uint32_t AVOutputTV::setLocalContrastEnhancement(const JsonObject& parameters, JsonObject& response)
      {
@@ -135,7 +135,7 @@ index 918b830..381ed78 100644
              parameters, response,
              "localContrastEnhancement", "LocalContrastEnhancement",
              m_maxLocalContrastEnhancement,
-@@ -1714,12 +1714,13 @@ namespace Plugin {
+@@ -1721,12 +1721,13 @@ namespace Plugin {
              [](tvVideoSrcType_t src, tvPQModeIndex_t mode, tvVideoFormatType_t fmt, int val) {
                  return SetLocalContrastEnhancement(src, mode, fmt, val);
              }
@@ -151,7 +151,7 @@ index 918b830..381ed78 100644
              parameters, response,
              "mpegNoiseReduction", "MPEGNoiseReduction",
              m_maxMPEGNoiseReduction,
-@@ -1727,12 +1728,13 @@ namespace Plugin {
+@@ -1734,12 +1735,13 @@ namespace Plugin {
              [](tvVideoSrcType_t src, tvPQModeIndex_t mode, tvVideoFormatType_t fmt, int val) {
                  return SetMPEGNoiseReduction(src, mode, fmt, val);
              }
@@ -167,7 +167,7 @@ index 918b830..381ed78 100644
              parameters, response,
              "digitalNoiseReduction", "DigitalNoiseReduction",
              m_maxDigitalNoiseReduction,
-@@ -1740,7 +1742,8 @@ namespace Plugin {
+@@ -1747,7 +1749,8 @@ namespace Plugin {
              [](tvVideoSrcType_t src, tvPQModeIndex_t mode, tvVideoFormatType_t fmt, int val) {
                  return SetDigitalNoiseReduction(src, mode, fmt, val);
              }
@@ -178,7 +178,7 @@ index 918b830..381ed78 100644
  
      uint32_t AVOutputTV::getBacklight(const JsonObject& parameters, JsonObject& response)
 diff --git a/AVOutput/AVOutputTV.h b/AVOutput/AVOutputTV.h
-index 1b66dbe..2bf2663 100644
+index e6edf6d..37e1c82 100644
 --- a/AVOutput/AVOutputTV.h
 +++ b/AVOutput/AVOutputTV.h
 @@ -425,34 +425,34 @@ class AVOutputTV : public AVOutputBase {
@@ -243,7 +243,7 @@ index 1b66dbe..2bf2663 100644
  			const std::function<tvError_t(tvContextCaps_t**, int*)>& getCapsFunc,
  			const char* key,
 diff --git a/AVOutput/AVOutputTVHelper.cpp b/AVOutput/AVOutputTVHelper.cpp
-index 70d4b26..17623f8 100644
+index 3bac56e..79d871a 100644
 --- a/AVOutput/AVOutputTVHelper.cpp
 +++ b/AVOutput/AVOutputTVHelper.cpp
 @@ -900,7 +900,7 @@ namespace Plugin {
@@ -264,7 +264,15 @@ index 70d4b26..17623f8 100644
  
      tvError_t AVOutputTV::updateAVoutputTVParamToHALV2(std::string forParam, paramIndex_t indexInfo, int value, bool setNotDelete)
      {
-@@ -3108,30 +3108,30 @@ namespace Plugin {
+@@ -2563,6 +2563,7 @@ namespace Plugin {
+         {VIDEO_SOURCE_HDMI1, "HDMI1"},
+         {VIDEO_SOURCE_HDMI2, "HDMI2"},
+         {VIDEO_SOURCE_HDMI3, "HDMI3"},
++        {VIDEO_SOURCE_HDMI4, "HDMI4"},
+         {VIDEO_SOURCE_IP, "IP"},
+         {VIDEO_SOURCE_TUNER, "Tuner"}
+     };
+@@ -3114,30 +3115,30 @@ namespace Plugin {
                  case PQ_PARAM_LOCAL_CONTRAST_ENHANCEMENT:
              #if HAL_NOT_READY
              #else
@@ -301,7 +309,7 @@ index 70d4b26..17623f8 100644
              #endif
                      break;
  
-@@ -3199,8 +3199,8 @@ namespace Plugin {
+@@ -3205,8 +3206,8 @@ namespace Plugin {
          return ret;
      }
  
@@ -312,7 +320,7 @@ index 70d4b26..17623f8 100644
  
  tvError_t AVOutputTV::ReadJsonFile(JsonObject& root) {
      std::ifstream file(CAPABLITY_FILE_NAMEV2);
-@@ -3370,7 +3370,7 @@ tvError_t AVOutputTV::GetCaps(const std::string& key, int* max_value, tvContextC
+@@ -3376,7 +3377,7 @@ tvError_t AVOutputTV::GetCaps(const std::string& key, int* max_value, tvContextC
  
      return tvERROR_NONE;
  }
@@ -321,7 +329,7 @@ index 70d4b26..17623f8 100644
  tvError_t AVOutputTV::GetBacklightCaps(int* max_backlight, tvContextCaps_t** context_caps) {
      return GetCaps("Backlight", max_backlight, context_caps);
  }
-@@ -3403,7 +3403,7 @@ tvError_t AVOutputTV::GetLowLatencyStateCaps(int* max_latency, tvContextCaps_t *
+@@ -3409,7 +3410,7 @@ tvError_t AVOutputTV::GetLowLatencyStateCaps(int* max_latency, tvContextCaps_t *
  tvError_t AVOutputTV::GetPrecisionDetailCaps(int * maxPrecision, tvContextCaps_t ** context_caps) {
      return GetCaps("PrecisionDetail", maxPrecision, context_caps);
  }
@@ -330,7 +338,7 @@ index 70d4b26..17623f8 100644
  // LocalContrastEnhancement
  tvError_t AVOutputTV::GetLocalContrastEnhancementCaps(int * maxLocalContrastEnhancement, tvContextCaps_t ** context_caps) {
      return GetCaps("LocalContrastEnhancement", maxLocalContrastEnhancement, context_caps);
-@@ -3418,7 +3418,7 @@ tvError_t AVOutputTV::GetMPEGNoiseReductionCaps(int * maxMPEGNoiseReduction, tvC
+@@ -3424,7 +3425,7 @@ tvError_t AVOutputTV::GetMPEGNoiseReductionCaps(int * maxMPEGNoiseReduction, tvC
  tvError_t AVOutputTV::GetDigitalNoiseReductionCaps(int * maxDigitalNoiseReduction, tvContextCaps_t ** context_caps) {
      return GetCaps("DigitalNoiseReduction", maxDigitalNoiseReduction, context_caps);
  }
@@ -339,7 +347,7 @@ index 70d4b26..17623f8 100644
  // AISuperResolution
  tvError_t AVOutputTV::GetAISuperResolutionCaps(int * maxAISuperResolution, tvContextCaps_t ** context_caps) {
      return GetCaps("AISuperResolution", maxAISuperResolution, context_caps);
-@@ -3428,7 +3428,7 @@ tvError_t AVOutputTV::GetAISuperResolutionCaps(int * maxAISuperResolution, tvCon
+@@ -3434,7 +3435,7 @@ tvError_t AVOutputTV::GetAISuperResolutionCaps(int * maxAISuperResolution, tvCon
  tvError_t AVOutputTV::GetMEMCCaps(int * maxMEMC, tvContextCaps_t ** context_caps) {
      return GetCaps("MEMC", maxMEMC, context_caps);
  }
@@ -348,7 +356,7 @@ index 70d4b26..17623f8 100644
  tvError_t AVOutputTV::GetMultiPointWBCaps(int* num_hal_matrix_points,
      int* rgb_min,
      int* rgb_max,
-@@ -3484,7 +3484,7 @@ tvError_t AVOutputTV::GetMultiPointWBCaps(int* num_hal_matrix_points,
+@@ -3490,7 +3491,7 @@ tvError_t AVOutputTV::GetMultiPointWBCaps(int* num_hal_matrix_points,
      return tvERROR_NONE;
  }
  
@@ -357,7 +365,7 @@ index 70d4b26..17623f8 100644
  tvError_t AVOutputTV::GetColorTemperatureCaps(tvColorTemp_t** color_temp, size_t* num_color_temp, tvContextCaps_t** context_caps) {
      LOGINFO("Entry\n");
      JsonObject root;
-@@ -3726,6 +3726,7 @@ tvError_t AVOutputTV::GetTVPictureModeCaps(tvPQModeIndex_t** mode, size_t* num_p
+@@ -3732,6 +3733,7 @@ tvError_t AVOutputTV::GetTVPictureModeCaps(tvPQModeIndex_t** mode, size_t* num_p
  
      return tvERROR_NONE;
  }
@@ -365,7 +373,7 @@ index 70d4b26..17623f8 100644
  tvError_t AVOutputTV::GetBacklightModeCaps(tvBacklightMode_t** backlight_mode, size_t* num_backlight_mode, tvContextCaps_t** context_caps)
  {
      LOGINFO("Entry\n");
-@@ -3991,7 +3992,7 @@ tvError_t AVOutputTV::GetCustom2PointWhiteBalanceCaps(int* min_gain, int* min_of
+@@ -3997,7 +3999,7 @@ tvError_t AVOutputTV::GetCustom2PointWhiteBalanceCaps(int* min_gain, int* min_of
      return tvERROR_NONE;
  }
  
