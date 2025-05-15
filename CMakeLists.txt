@@ -493,6 +493,7 @@ set(AAMP_CLI_HEADERS test/aampcli/Aampcli.h
 			test/aampcli/AampcliShader.h
 			test/aampcli/AampcliSubtecSimulator.h
 			${AAMP_OS_SOURCES})
+
 set(AAMP_CLI_SOURCES test/aampcli/Aampcli.cpp
 			test/aampcli/AampcliPlaybackCommand.cpp
 			test/aampcli/AampcliCommandHandler.cpp
@@ -687,6 +688,27 @@ add_executable(aamp-cli ${AAMP_CLI_HEADERS} ${AAMP_CLI_SOURCES})
 target_link_libraries(aamp-cli "-lreadline")
 # XCode schema target
 xcode_define_schema(aamp-cli)
+
+set(AAMP_LIB_SRC
+${AAMP_CLI_HEADERS}
+test/aampcli/aampcli_kmp.h
+
+${AAMP_CLI_SOURCES}
+test/aampcli/aampcli_kmp.cpp
+)
+
+add_library(aampkotlin SHARED ${AAMP_LIB_SRC})
+install (TARGETS aampkotlin
+		DESTINATION lib
+		PUBLIC_HEADER DESTINATION include
+)
+
+target_link_libraries(aampkotlin aamp subtec tsb )
+target_link_libraries(aampkotlin aamp ${AAMP_CLI_LD_FLAGS})
+target_link_libraries(aampkotlin "-lreadline")
+
+set_target_properties(aampkotlin PROPERTIES COMPILE_FLAGS "${LIBAAMP_DEFINES} ${AAMP_CLI_EXTRA_DEFINES} ${OS_CXX_FLAGS}")
+xcode_define_schema(aampkotlin)
 
 if(CMAKE_SYSTEMD_JOURNAL)
     message("CMAKE_SYSTEMD_JOURNAL set")
