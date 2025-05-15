@@ -422,10 +422,11 @@ bool MediaStreamContext::CacheFragment(std::string fragmentUrl, unsigned int cur
 			CacheTsbFragment(fragmentToTsbSessionMgr);
 		}
 
-		// If playing back from local TSB, or pending playing back from local TSB as paused
-		if (tsbSessionManager && (IsLocalTSBInjection() || aamp->pipeline_paused))
+		// If playing back from local TSB, or pending playing back from local TSB as paused, but not paused due to underflow
+		if (tsbSessionManager &&
+			(IsLocalTSBInjection() || (aamp->pipeline_paused && !aamp->GetBufUnderFlowStatus())))
 		{
-			AAMPLOG_TRACE("[%s] cachedFragment %p ptr %p not injecting", name, cachedFragment, cachedFragment->fragment.GetPtr());
+			AAMPLOG_TRACE("[%s] cachedFragment %p ptr %p not injecting IsLocalTSBInjection %d, aamp->pipeline_paused %d, aamp->GetBufUnderFlowStatus() %d", name, cachedFragment, cachedFragment->fragment.GetPtr(), IsLocalTSBInjection(), aamp->pipeline_paused, aamp->GetBufUnderFlowStatus());
 			// Free the memory
 			cachedFragment->fragment.Free();
 		}
