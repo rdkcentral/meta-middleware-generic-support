@@ -2788,14 +2788,6 @@ void InterfacePlayerRDK::SetPlayerName(std::string name)
 	mPlayerName = name;
 }
 
-void InterfacePlayerRDK::SetLoggerInfo(bool logRedirectStatus, bool ethanLogStatus, int level, bool lock)
-{
-	PlayerLogManager::disableLogRedirection = logRedirectStatus;
-	PlayerLogManager::enableEthanLogRedirection = ethanLogStatus;
-	PlayerLogManager::setLogLevel(MW_LogLevel(level));
-	PlayerLogManager::lockLogLevel(lock);
-}
-
 /**
  *  @brief Inject stream buffer to gstreamer pipeline
  */
