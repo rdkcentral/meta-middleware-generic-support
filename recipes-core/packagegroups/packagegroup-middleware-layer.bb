@@ -3,10 +3,10 @@ PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
 LICENSE = "MIT"
 
-inherit packagegroup
+inherit packagegroup volatile-bind-gen
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.11.0"
+PV = "2.12.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -154,7 +154,6 @@ RDEPENDS:${PN} = " \
     taglib \
     tzdata \
     util-linux \
-    volatile-binds \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_gdb_support', "gdb ", "", d)} \
     jquery \
     ndisc6-rdnssd \
@@ -173,7 +172,7 @@ RDEPENDS:${PN} = " \
     virtual/default-font \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     os-release \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_MIRACAST', ' wlan-p2p', '', d)} \
+    wlan-p2p \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
