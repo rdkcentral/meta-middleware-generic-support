@@ -243,7 +243,7 @@ index e6edf6d..37e1c82 100644
  			const std::function<tvError_t(tvContextCaps_t**, int*)>& getCapsFunc,
  			const char* key,
 diff --git a/AVOutput/AVOutputTVHelper.cpp b/AVOutput/AVOutputTVHelper.cpp
-index 3bac56e..79d871a 100644
+index 3bac56e..efe2e43 100644
 --- a/AVOutput/AVOutputTVHelper.cpp
 +++ b/AVOutput/AVOutputTVHelper.cpp
 @@ -900,7 +900,7 @@ namespace Plugin {
@@ -316,7 +316,7 @@ index 3bac56e..79d871a 100644
 -#if HAL_NOT_READY
 -#define CAPABLITY_FILE_NAMEV2    "/opt/panel/pq_capabilities.json"
 +//#if HAL_NOT_READY
-+#define CAPABLITY_FILE_NAMEV2    "/opt/pq_capabilities.json"
++#define CAPABLITY_FILE_NAMEV2    "/etc/pq_capabilities.json"
  
  tvError_t AVOutputTV::ReadJsonFile(JsonObject& root) {
      std::ifstream file(CAPABLITY_FILE_NAMEV2);
