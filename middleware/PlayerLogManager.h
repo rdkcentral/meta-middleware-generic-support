@@ -59,6 +59,22 @@ public :
 	static bool enableEthanLogRedirection;  /**<  Enables Ethan log redirection which uses Ethan lib for logging */
 
 	/**
+	 * @brief Sets the externals logger information.
+	 *
+	 * @param[in] logRedirectStatus Status of log redirection.
+	 * @param[in] ethanLogStatus Status of Ethan logging.
+	 * @param[in] level Log level.
+	 * @param[in] lock Lock status.
+	 */
+	static void SetLoggerInfo(bool logRedirectStatus, bool ethanLogStatus, int level, bool lock)
+	{
+		PlayerLogManager::disableLogRedirection = logRedirectStatus;
+		PlayerLogManager::enableEthanLogRedirection = ethanLogStatus;
+		PlayerLogManager::setLogLevel(MW_LogLevel(level));
+		PlayerLogManager::lockLogLevel(lock);
+	}
+
+	/**
 	 * @fn isLogLevelAllowed
 	 *
 	 * @param[in] chkLevel - log level
