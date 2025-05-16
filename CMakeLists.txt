@@ -155,7 +155,6 @@ if(CMAKE_SYSTEM_NAME STREQUAL Darwin)
     string(STRIP ${OS_LD_FLAGS} OS_LD_FLAGS)
     set(AAMP_CLI_LD_FLAGS "${AAMP_CLI_LD_FLAGS} ${GSTREAMERVIDEO_LINK_LIBRARIES}")
     string(STRIP "${AAMP_CLI_LD_FLAGS}" AAMP_CLI_LD_FLAGS)
-    set(AAMP_OS_SOURCES cocoa_window.mm)
     link_directories(${OPENSSL_LIBRARY_DIRS})
     set(CMAKE_THREAD_LIBS_INIT "-lpthread")
     set(CMAKE_HAVE_THREADS_LIBRARY 1)
@@ -237,7 +236,6 @@ set(LIBAAMP_HEADERS middleware/drm/DrmSystems.h
 					AampBufferControl.h
 					admanager_mpd.h
 					base16.h
-					cocoa_window.h
 					compositein_shim.h
 					fragmentcollector_hls.h
 					fragmentcollector_mpd.h
