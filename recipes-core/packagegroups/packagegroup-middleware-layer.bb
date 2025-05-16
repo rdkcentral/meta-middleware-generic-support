@@ -17,6 +17,7 @@ PR = "r0"
 RDEPENDS:${PN} = " \
     aamp \
     audiocapturemgr \
+    strace \
     bluetooth-core \
     bluetooth-mgr \
     cimplog \
