@@ -65,11 +65,11 @@ The aim of this release to provide the R37 sync vendor layer. This release will 
 
 ### Vendor Release Components
 
-| Vendor Release Components | New Version (7.0.0) | Version in Previous Release (6.0.2) |
-|------------|---------|------------------------------------|
+| Vendor Release Components | New Version (7.0.0) | Version in Previous Release (6.0.2) | Changelist |
+|------------|---------|------------------------------------|------------|
 | Kernel & DTB | | 4.9.119.01-r6  | |
 | packagegroup-vendor-layer | 7.0.0-r0 | 6.0.2-r0 | [6.0.2...7.0.0](https://github.com/rdk-e/meta-oem-realtek-stream/compare/6.0.2...7.0.0) |
-| packagegroup-common-vendor-layer | 1.0.5-r0 | 1.0.2-r0 |  |
+| packagegroup-common-vendor-layer | 1.0.5-r0 | 1.0.3-r0 | [1.0.3...1.0.5](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/compare/1.0.3...1.0.5)  |
 
 ### Stack layer
 
@@ -176,6 +176,12 @@ It should be noted that some services may not run as they have dependencies with
 - Testing done by using the feature branch `"feature/RDKEVD-936-VL-7.0.0"` based on the tag `"refs/tags/2.11.0"` included of latest vendor ipk feed info https://github.com/rdk-e/meta-vendor-xione-realtek-release/blob/release/7.0.0/conf/machine/include/vendor.inc and the middleware manifest from 2.11.0 tag.
 
 - Tag details here `"XiOne-UK(refs/tags/2.11.0)"`. We created the feature branch from this tag (https://github.com/rdk-e/rdke-middleware-manifest/tree/feature/RDKEVD-936-VL-7.0.0)
+
+#### Major Known issues
+
+- XIONE-17162:[RDKE][UK][7.0.0] UHD & HDR assets are not available
+- XIONE-17161:[RDKE][UK][FOXTEL][7.0.0] Dolby Vision contents are not available
+- XIONE-17133:[RDKE][UK][FOXTEL][7.0.0] HDMI Connection error in Amazon Prime
 
 #### Image assembler side
 
