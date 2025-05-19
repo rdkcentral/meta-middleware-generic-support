@@ -1,1 +1,1 @@
-
+PACKAGECONFIG:remove = " miracast"
