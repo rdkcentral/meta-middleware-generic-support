@@ -125,7 +125,7 @@ function aampcli_install_build_darwin_fn()
 
     if [ ${OPTION_AAMPCLIKOTLIN_SKIP}=false ]; then
         echo "Making aamp-cli on kotlin..."
-        xcodebuild -scheme aampKotlin  build
+        xcodebuild -scheme aampkotlin  build
     fi
 
     if [  -f "./Debug/aamp-cli" ]; then
@@ -158,7 +158,7 @@ function aampcli_install_build_linux_fn
 
     if [ ${OPTION_AAMPCLIKOTLIN_SKIP}=false ]; then
         echo "Making aamp-cli on kotlin..."
-        make aampKotlin
+        make aampkotlin
     fi
    make install
 

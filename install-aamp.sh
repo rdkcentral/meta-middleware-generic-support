@@ -191,7 +191,7 @@ INSTALL_STATUS_ARR+=("aampcli_install_build check passed.")
 if [ ${OPTION_AAMPCLIKOTLIN_SKIP} = false ] ; then
     cd ${AAMP_DIR}
     build_kotlin_libraries_fn
-    build_aampcli_kotlin_bindings_fn
+    build_aamcli_kotlin_bindings_fn
     create_aampcli_kotlin_executable_fn
 
     INSTALL_STATUS_ARR+=("aampcli_install_build_kotlin check passed.")

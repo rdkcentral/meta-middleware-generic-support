@@ -50,7 +50,7 @@ function build_kotlin_libraries_fn()
     fi
 }
 
-function build_aampcli_kotlin_bindings_fn()
+function build_aamcli_kotlin_bindings_fn()
 {
     KONAN_DIR=".libs/kotlin-native"
     CINTEROP="$KONAN_DIR/bin/cinterop"
@@ -88,7 +88,7 @@ function build_aampcli_kotlin_bindings_fn()
         $KONANC kotlin/aampcli/main.kt \
         -o "$sharedLibPath"/aampcli.kexe \
         -library build/aampcli_kmp.klib \
-        -linker-options "-L$sharedLibPath -laampKotlin"
+        -linker-options "-L$sharedLibPath -laampkotlin"
     else
         echo "Kotlin executable present"
     fi
