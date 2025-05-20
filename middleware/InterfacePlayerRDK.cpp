@@ -66,7 +66,6 @@ static const char* GstPluginNameVMX = "aampverimatrixdecryptor";
 #define GST_MIN_PTS_UPDATE_INTERVAL 4000                        /**< Time duration in milliseconds if exceeded and pts has not changed; it is concluded pts is not changing */
 
 #include <assert.h>
-#define NO_PLAYBIN 1
 #define GST_NORMAL_PLAY_RATE		1
 
 /*InterfacePlayerRDK constructor*/
@@ -2058,7 +2057,6 @@ int InterfacePlayerRDK::SetupStream(int streamId,  void *playerInstance, std::st
 			}
 			else
 			{
-#ifdef NO_PLAYBIN
 				MW_LOG_INFO("subs using subtecbin");
 				stream->sinkbin = gst_element_factory_make("subtecbin", NULL);			/* Creates a new element of "subtecbin" type and returns a new GstElement */
 				if (!stream->sinkbin)													/* When a new element can not be created a NULL is returned */
@@ -2083,18 +2081,6 @@ int InterfacePlayerRDK::SetupStream(int streamId,  void *playerInstance, std::st
 				pInterfacePlayerRDK->gstPrivateContext->subtitle_sink = GST_ELEMENT(gst_object_ref(stream->sinkbin));
 				g_object_set(stream->sinkbin, "mute", pInterfacePlayerRDK->gstPrivateContext->subtitleMuted ? TRUE : FALSE, NULL);
 				return 0;
-#else
-				MW_LOG_INFO("subs using playbin");
-				stream->sinkbin = GST_ELEMENT(gst_object_ref_sink(gst_element_factory_make("playbin", NULL)));
-				auto vipertransform = gst_element_factory_make("vipertransform", NULL);
-				auto textsink = gst_element_factory_make("subtecsink", NULL);
-				auto subtitlebin = gst_bin_new("subtitlebin");
-				gst_bin_add_many(GST_BIN(subtitlebin), vipertransform, textsink, NULL);
-				gst_element_link(vipertransform, textsink);
-				gst_element_add_pad(subtitlebin, gst_ghost_pad_new("sink", gst_element_get_static_pad(vipertransform, "sink")));
-
-				g_object_set(stream->sinkbin, "text-sink", subtitlebin, NULL);
-#endif
 			}
 		}
 	}
@@ -4825,7 +4811,6 @@ void InterfacePlayerRDK::EndOfStreamReached(int mediaType, bool &shouldHaltBuffe
 	}
 }
 
-#define NO_PLAYBIN 1
 /**
  * @brief Setup pipeline for a particular stream type
  * @param[in] pInterfacePlayerRDK pointer to InterfacePlayerRDK instance
