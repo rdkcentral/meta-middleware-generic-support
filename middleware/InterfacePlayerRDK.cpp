@@ -4845,13 +4845,26 @@ int InterfacePlayerRDK::InterfacePlayer_SetupStream(GstMediaType streamId, std::
 
 	return retvalue;
 }
+
+/**
+ * @name gstMapDecoderLookUptable
+ *
+ * @brief Decoder map list lookup table
+ * convert from codec to string map list of gstreamer
+ * component.
+ */
+static std::map<std::string, std::vector<std::string>> gstMapDecoderLookUptable =
+{
+	{"ac-3", {"omxac3dec", "avdec_ac3", "avdec_ac3_fixed"}},
+	{"ac-4", {"omxac4dec"} }
+};
+
 /*
  * @brief Check whether Gstreamer platform has support of the given codec or not.
  *        codec to component mapping done in gstreamer side.
  * @param codecName - Name of codec to be checked
  * @return True if platform has the support else false
  */
-
 bool InterfacePlayerRDK::IsCodecSupported(const std::string &codecName)
 {
 	bool retValue = false;
