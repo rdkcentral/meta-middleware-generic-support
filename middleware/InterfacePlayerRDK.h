@@ -202,18 +202,6 @@ enum class InterfaceCB
 	startNewSubtitleStream // Add more events here if needed
 };
 
-/**
- * @name gstMapDecoderLookUptable
- *
- * @brief Decoder map list lookup table
- * convert from codec to string map list of gstreamer
- * component.
- */
-static std::map<std::string, std::vector<std::string>> gstMapDecoderLookUptable =
-	{
-		{"ac-3", {"omxac3dec", "avdec_ac3", "avdec_ac3_fixed"}},
-		{"ac-4", {"omxac4dec"}}};
-
 struct gst_media_stream
 {
 	GstElement *sinkbin;		  /**< Sink element to consume data */
