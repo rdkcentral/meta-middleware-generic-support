@@ -668,7 +668,7 @@ const char * AampDRMLicenseManager::getAccessToken(int &tokenLen, int &error_cod
  *  @param[in] url URL of license server
  *  @return		formatted url for secclient license acquisition.
  */
-static std::string getFormattedLicenseServerURL( const std::string &url)
+/*static*/ std::string getFormattedLicenseServerURL( const std::string &url)
 {
 	size_t startpos = 0;
 	size_t len = url.length();
