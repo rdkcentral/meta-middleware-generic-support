@@ -1092,11 +1092,6 @@ public:
 	static void InitializePlayerGstreamerPlugins();
 
 	/**
-	 * @brief Dumps diagnostic information.
-	 */
-	void DumpDiagnostics();
-
-	/**
 	 * @brief Enables GStreamer debug logging.
 	 * @param[in] debugLevel The level of debug logging to enable.
 	 */

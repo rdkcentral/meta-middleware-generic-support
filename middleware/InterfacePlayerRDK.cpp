@@ -4304,7 +4304,7 @@ void InterfacePlayerRDK::SetVolumeOrMuteUnMute(void)
 
 	else
 	{
-		socInterface->SetAudioProperty(&volumePropertyName, &mutePropertyName, isSinkBinVolume);
+		socInterface->SetAudioProperty(volumePropertyName, mutePropertyName, isSinkBinVolume);
 		if(isSinkBinVolume)
 		{
 			//some platforms sets volume/mute property on sinkbin rather then audio sink
@@ -4384,7 +4384,6 @@ static gboolean buffering_timeout (gpointer data)
 				MW_LOG_WARN("numberOfVideoBuffersSent %d frames %i", pInterfacePlayerRDK->gstPrivateContext->numberOfVideoBuffersSent, frames);
 				isBufferingTimeoutConditionMet = true;
 				pInterfacePlayerRDK->gstPrivateContext->buffering_in_progress = false;
-				pInterfacePlayerRDK->DumpDiagnostics();
 				// application can schedule a retune based on isBufferingTimeoutConditionMet
 			}
 			else if (frames == -1 || frames >= pInterfacePlayerRDK->m_gstConfigParam->framesToQueue || pInterfacePlayerRDK->gstPrivateContext->buffering_timeout_cnt-- == 0)
@@ -5098,16 +5097,4 @@ double InterfacePlayerRDK::FlushTrack(int mediaType, double pos, double audioDel
 	MW_LOG_MIL("Exiting InterfacePlayerRDK::FlushTrack() type[%d] pipeline state: %s startPosition: %lf Delta %lf",(int)type, gst_element_state_get_name(GST_STATE(gstPrivateContext->pipeline)), startPosition, (int)type==eGST_MEDIATYPE_AUDIO?audioDelta:subDelta);
 
 	return rate;
-}
-
-/**
- *  @brief Dump diagnostic information
- *
- */
-void InterfacePlayerRDK::DumpDiagnostics()
-{
-	MW_LOG_MIL("video_dec %p audio_dec %p video_sink %p audio_sink %p numberOfVideoBuffersSent %d",
-			   gstPrivateContext->video_dec, gstPrivateContext->audio_dec, gstPrivateContext->video_sink,
-			   gstPrivateContext->audio_sink, gstPrivateContext->numberOfVideoBuffersSent);
-	socInterface->DumpDiagnosis();
 }
