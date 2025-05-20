@@ -39,7 +39,7 @@ OPTION_GOOGLETEST_REFERENCE="tags/release-1.11.0"
 function install_options_fn()
 {
   # Parse optional command line parameters
-  while getopts ":d:b:cf:np:r:g:qs" OPT; do
+  while getopts ":d:b:cf:np:r:g:qsk" OPT; do
     case ${OPT} in
       d ) # process option d install base directory name
         OPTION_BUILD_DIR=${OPTARG}
@@ -80,7 +80,7 @@ function install_options_fn()
         ;;
       k ) 
         OPTION_AAMPCLIKOTLIN_SKIP=true
-        echo "Skip aamp-cli on Kotlin: ${OPTION_SKIP_SUBTEC}"
+        echo "Skip aamp-cli on Kotlin: ${OPTION_AAMPCLIKOTLIN_SKIP}"
         ;;
       p )     
         OPTION_PROTOBUF_REFERENCE=${OPTARG}
