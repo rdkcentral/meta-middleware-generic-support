@@ -1,2 +1,2 @@
 
-SRCREV_devicesettings = "2a32343a876ee2a1c09a6f7334492ef22031243a"
+SRCREV_devicesettings = "11465b5f3933dec585359415b096047fafbad997"
