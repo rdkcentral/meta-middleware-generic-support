@@ -9635,7 +9635,8 @@ void StreamAbstractionAAMP_MPD::DetectDiscontinuityAndFetchInit(bool periodChang
  */
 void StreamAbstractionAAMP_MPD::FetcherLoop()
 {
-	aamp_setThreadName("aampFragmentDownloader");
+	aamp_pthread_setname(pthread_self(), "aampFragmentDownloader");
+
 	bool exitFetchLoop = false;
 	bool trickPlay = (AAMP_NORMAL_PLAY_RATE != aamp->rate);
 
@@ -10088,7 +10089,8 @@ void StreamAbstractionAAMP_MPD::AdvanceTsbFetch(int trackIdx, bool trickPlay, do
  */
 void StreamAbstractionAAMP_MPD::TsbReader()
 {
-	aamp_setThreadName("aampTsbReader");
+	aamp_pthread_setname(pthread_self(), "aampTsbReader");
+
 	bool exitLoop = false;
 	bool trickPlay = (AAMP_NORMAL_PLAY_RATE != aamp->rate);
 	bool waitForFreeFrag = true;
