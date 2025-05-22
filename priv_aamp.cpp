@@ -3269,10 +3269,6 @@ void PrivateInstanceAAMP::NotifyEOSReached()
 			return;
 		}
 
-		/* This fixes a race condition with rate change request when the tsb buffer had more than 25mins of content
-		   and user was seeking back to the start - causing play head to wrongly jump to live edge.
-		   Now if seeking to the BOS or EOS, do as before; however, if rate has changed to 0 or 1 then drop through and
-		   let AAMP handle it elsewhere. */
 		if (rate < 0)
 		{
 			seek_pos_seconds = culledSeconds;
@@ -3290,9 +3286,8 @@ void PrivateInstanceAAMP::NotifyEOSReached()
 			AcquireStreamLock();
 			TuneHelper(eTUNETYPE_SEEK);
 			ReleaseStreamLock();
-			NotifySpeedChanged(rate);
 		}
-		else if (rate > 1)
+		else
 		{
 			rate = AAMP_NORMAL_PLAY_RATE;
 			AcquireStreamLock();
@@ -3308,8 +3303,9 @@ void PrivateInstanceAAMP::NotifyEOSReached()
 				TuneHelper(eTUNETYPE_SEEKTOLIVE);
 			}
 			ReleaseStreamLock();
-			NotifySpeedChanged(rate);
 		}
+
+		NotifySpeedChanged(rate);
 	}
 	else
 	{
