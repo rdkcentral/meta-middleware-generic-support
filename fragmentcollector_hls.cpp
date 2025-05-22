@@ -4889,7 +4889,10 @@ void TrackState::RunFetchLoop()
 ***************************************************************************/
 void TrackState::FragmentCollector(void)
 {
-	aamp_setThreadName("aampHLSFetcher");
+	if(aamp_pthread_setname(pthread_self(), "aampHLSFetcher"))
+	{
+		AAMPLOG_WARN("aamp_pthread_setname failed");
+	}
 	UsingPlayerId player(aamp->mPlayerId);
 	RunFetchLoop();
 	return;
