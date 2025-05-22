@@ -1776,8 +1776,8 @@ TEST_F(PrivAampTests,GetFileTest_RetryInitWhilstBufferDepthBeforeSuccessTest)
 		.WillOnce(Return(CURLE_OPERATION_TIMEDOUT))
 		.WillOnce(Return(CURLE_OPERATION_TIMEDOUT))
 		.WillOnce(Return(CURLE_OPERATION_TIMEDOUT))
-		.WillOnce(Return(CURLE_OPERATION_TIMEDOUT));
-//		.WillOnce(Return(CURLE_OK)); hack done to pass test
+		.WillOnce(Return(CURLE_OPERATION_TIMEDOUT))
+		.WillOnce(Return(CURLE_OK));
 	EXPECT_CALL(*g_mockStreamAbstractionAAMP, GetBufferedDuration())
 		.WillOnce(Return(10.0))
 		.WillOnce(Return(8.0));
