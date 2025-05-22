@@ -915,6 +915,14 @@ bool PlaybackCommand::execute( const char *cmd, PlayerInstanceAAMP *playerInstan
 	{
 		HandleCommandBatch();
 	}
+	else if (isCommandMatch(cmd, "set"))
+	{
+		mAampcli.doHandleAampCliCommands( cmd );
+	}
+	else if (isCommandMatch(cmd, "get"))
+	{
+		mAampcli.doHandleAampCliCommands( cmd );
+	}
 	else
 	{
 		printf( "[AAMP-CLI] unmatched command: %s\n", cmd );
