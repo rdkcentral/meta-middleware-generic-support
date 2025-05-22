@@ -229,10 +229,7 @@ bool AampLicensePreFetcher::Term()
  */
 void AampLicensePreFetcher::PreFetchThread()
 {
-	if(aamp_pthread_setname(pthread_self(), "aampfMP4DRM"))
-	{
-		AAMPLOG_ERR("aamp_pthread_setname failed");
-	}
+	aamp_setThreadName("aampfMP4DRM");
 	std::unique_lock<std::mutex>queueLock(mQMutex);
 	while (!mExitLoop)
 	{
@@ -301,10 +298,7 @@ void AampLicensePreFetcher::PreFetchThread()
  */
 void AampLicensePreFetcher::VssPreFetchThread()
 {
-	if(aamp_pthread_setname(pthread_self(), "aampfMP4DRM"))
-	{
-		AAMPLOG_ERR("aamp_pthread_setname failed");
-	}
+	aamp_setThreadName("aampfMP4VSSDRM");
 	std::unique_lock<std::mutex>queueLock(mQVssMutex);
 	while (!mExitLoop)
 	{
