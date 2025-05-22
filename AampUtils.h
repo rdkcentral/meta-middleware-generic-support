@@ -403,4 +403,20 @@ std::string convertTimeToHHMMSS( long long t );
  */
 const char *mystrstr(const char *haystack_ptr, const char *haystack_fin, const char *needle_ptr);
 
+/**
+ * @brief wrapper for pthread_setname_np (pthreads used under the hood for std::thread)
+ * @param[in] name human readable thread name
+ */
+void aamp_setThreadName(const char *name);
+
+/**
+ * @brief wrapper for pthread_setschedparam (pthreads used under the hood for std::thread)
+ * @param[in] policy scheduling policy
+ * @param[in] priority scheduling priority
+ * @retval 0 on success
+ * @retval -1 on failure
+ */
+int aamp_SetThreadSchedulingParameters(int policy, int priority);
+
+
 #endif  /* __AAMP_UTILS_H__ */

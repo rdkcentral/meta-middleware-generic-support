@@ -1558,6 +1558,57 @@ const char *mystrstr(const char *haystack_ptr, const char *haystack_fin, const c
 	return NULL;
 }
 
+/**
+ * @brief To set the thread name
+ * @param[in] name thread name
+ */
+void aamp_setThreadName(const char *name)
+{
+	if (name == NULL)
+	{
+		AAMPLOG_ERR("Invalid name");
+	}
+	else
+	{
+#ifdef __APPLE__
+		// Set the thread name
+		int ret = pthread_setname_np(name);
+#else
+		// Set the thread name
+		int ret = pthread_setname_np(pthread_self(), name);
+#endif
+		if (ret != 0)
+		{
+			AAMPLOG_ERR("Error: pthread_setname_np failed with error code[%d]", ret);
+		}
+	}
+}
+
+/**
+ * @brief Set the thread scheduling parameters
+ * @param[in] policy scheduling policy
+ * @param[in] priority scheduling priority
+ * @retval 0 on success
+ * @retval -1 on failure
+ */
+int aamp_SetThreadSchedulingParameters(int policy, int priority)
+{
+	// Set up the scheduling parameters
+	struct sched_param param;
+	param.sched_priority = priority;
+
+	// Set the scheduling policy and parameters for the current thread
+	int result = pthread_setschedparam(pthread_self(), policy, &param);
+
+	// Handle errors
+	if (result != 0)
+	{
+		AAMPLOG_ERR ("Error: pthread_setschedparam failed with error code[%d] ", result);
+		return result;
+	}
+	AAMPLOG_INFO("Thread scheduling parameters set successfully.");
+	return result; // Success
+}
 /*
  * EOF
  */
