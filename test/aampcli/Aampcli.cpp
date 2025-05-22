@@ -348,6 +348,15 @@ std::string Aampcli::GetSessionId(size_t index) const
 	return {};
 }
 
+void Aampcli::doHandleAampCliCommands(std::string args)
+{
+	CommandHandler lCommandHandler;
+	if( !args.empty() )
+	{
+		lCommandHandler.dispatchAampcliCommands( args.c_str(), mAampcli.mSingleton);
+	}
+}
+
 /**
  * @brief
  * @param argc
