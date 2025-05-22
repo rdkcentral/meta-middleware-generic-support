@@ -11823,18 +11823,8 @@ void PrivateInstanceAAMP::SetPreferredLanguages(const char *languageList, const 
 							{
 								AAMPLOG_INFO("Recreate the TSB Session Manager");
 								CreateTsbSessionManager();
-								/* Check if we are on the live edge or in the TSB */
-								if(IsLocalAAMPTsbInjection())
-								{
-									AAMPLOG_INFO("Playing from TSB Buffer!");
-									SetLocalAAMPTsbInjection(false);
-									TuneHelper(eTUNETYPE_NEW_END);
-								}
-								else
-								{
-									AAMPLOG_INFO("Playing from the live edge!");
-									TuneHelper(eTUNETYPE_SEEKTOLIVE);
-								}
+								SetLocalAAMPTsbInjection(false);
+								TuneHelper(eTUNETYPE_SEEKTOLIVE);
 							}
 							else
 							{
@@ -13483,6 +13473,32 @@ void PrivateInstanceAAMP::SetLocalAAMPTsbInjection(bool value)
 bool PrivateInstanceAAMP::IsLocalAAMPTsbInjection()
 {
 	return mLocalAAMPInjectionEnabled;
+}
+
+void PrivateInstanceAAMP::UpdateLocalAAMPTsbInjection()
+{
+	bool TSBInjectionActive = false;
+
+	if (mpStreamAbstractionAAMP)
+	{
+		for (int i = 0; i < AAMP_TRACK_COUNT; i++)
+		{
+			auto track = mpStreamAbstractionAAMP->GetMediaTrack(static_cast<TrackType>(i));
+			if ((nullptr != track) && (track->Enabled()))
+			{
+				if (track->IsLocalTSBInjection())
+				{
+					TSBInjectionActive = true;
+					break;
+				}
+			}
+		}
+
+		if (!TSBInjectionActive)
+		{
+			SetLocalAAMPTsbInjection(false);
+		}
+	}
 }
 
 void PrivateInstanceAAMP::IncreaseGSTBufferSize()

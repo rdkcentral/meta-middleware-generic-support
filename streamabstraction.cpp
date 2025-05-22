@@ -3174,6 +3174,16 @@ void MediaTrack::SetLocalTSBInjection(bool value)
 }
 
 /**
+ * @brief Is injection from local AAMP TSB
+ *
+ * @return true if injection is from local AAMP TSB, false otherwise
+ */
+bool MediaTrack::IsLocalTSBInjection()
+{
+	return mIsLocalTSBInjection.load();
+}
+
+/**
  * @brief Function to Resume track downloader
  */
 void StreamAbstractionAAMP::ResumeTrackDownloadsHandler( )
