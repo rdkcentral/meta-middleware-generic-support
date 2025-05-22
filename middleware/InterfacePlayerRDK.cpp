@@ -2197,14 +2197,6 @@ int InterfacePlayerRDK::SetupStream(int streamId,  void *playerInstance, std::st
 	}
 	gst_bin_add(GST_BIN(pInterfacePlayerRDK->gstPrivateContext->pipeline), stream->sinkbin);					/* Add the stream sink to the pipeline */
 
-#if 0
-		// this works! why?
-		g_object_set( stream->sinkbin, "uri", "appsrc://", NULL);
-		g_signal_connect( stream->sinkbin, "deep-notify::source", G_CALLBACK(gst_found_source), this );
-		return 0;
-#endif
-
-
 	gint flags;
 	g_object_get(stream->sinkbin, "flags", &flags, NULL);									/* Read the state of the current flags */
 	MW_LOG_MIL("playbin flags1: 0x%x", flags);
