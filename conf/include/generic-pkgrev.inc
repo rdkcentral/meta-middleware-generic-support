@@ -129,7 +129,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.0.8"
+PV:pn-entservices-casting = "1.0.9"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
@@ -293,9 +293,13 @@ PV:pn-memcr = "1.0.2"
 PR:pn-memcr = "r0"
 PACKAGE_ARCH:pn-memcr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-networkmanager-plugin = "0.11.0"
+PV:pn-networkmanager-plugin = "0.18.0"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
+
+PV:pn-thunderhangrecovery = "1.0.0"
+PR:pn-thunderhangrecovery = "r0"
+PACKAGE_ARCH:pn-thunderhangrecovery = "${MIDDLEWARE_ARCH}"
 
 PV:pn-wpeframework-ui = "1.0.0"
 PR:pn-wpeframework-ui = "r0"
@@ -309,7 +313,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.13"
+PV:pn-thunderstartupservices = "1.0.14"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
