@@ -1358,12 +1358,6 @@ PrivateInstanceAAMP::~PrivateInstanceAAMP()
 		}
 	}
 
-	if(pPlayerIarmRfcInterface)
-	{
-		pPlayerIarmRfcInterface.reset();
-	}
-
-
 	SAFE_DELETE(mEventManager);
 	SAFE_DELETE(mCMCDCollector);
 
@@ -9802,7 +9796,7 @@ void PrivateInstanceAAMP::FlushStreamSink(double position, double rate)
 		{
 			//Adding midSeekPtsOffset to position value.
 			//Enables us to seek to the desired position in the mp4 fragment.
-			sink->SeekStreamSink(GetFirstPTS(), rate);
+			sink->SeekStreamSink(position + GetMidSeekPosOffset(), rate);
 		}
 		else
 		{
