@@ -297,6 +297,10 @@ PV:pn-networkmanager-plugin = "0.18.0"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
 
+PV:pn-thunderhangrecovery = "1.0.0"
+PR:pn-thunderhangrecovery = "r0"
+PACKAGE_ARCH:pn-thunderhangrecovery = "${MIDDLEWARE_ARCH}"
+
 PV:pn-wpeframework-ui = "1.0.0"
 PR:pn-wpeframework-ui = "r0"
 PACKAGE_ARCH:pn-wpeframework-ui = "${MIDDLEWARE_ARCH}"
