@@ -1,0 +1,14 @@
+diff --git a/ds/hdmiIn.cpp b/ds/hdmiIn.cpp
+index 394e8f4..1d69a8c 100755
+--- a/ds/hdmiIn.cpp
++++ b/ds/hdmiIn.cpp
+@@ -606,7 +606,8 @@ void HdmiInput::setEdid2AllmSupport(int iHdmiPort,bool allmSupport)
+ 
+ void HdmiInput::getEdid2AllmSupport (int iHdmiPort, bool *allmSupport) {
+     printf ("HdmiInput::getEdid2AllmSupport \r\n");
+-    dsError_t ret = dsGetEdid2AllmSupport (static_cast<dsHdmiInPort_t>(iHdmiPort), allmSupport);
++    //dsError_t ret = dsGetEdid2AllmSupport (static_cast<dsHdmiInPort_t>(iHdmiPort), allmSupport);
++    dsError_t ret = dsERR_NONE;
+     if (ret != dsERR_NONE)
+     {
+         throw Exception(ret);
