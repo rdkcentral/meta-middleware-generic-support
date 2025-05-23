@@ -39,4 +39,3 @@ dobby_generic_config_patch(){
 
 ROOTFS_POSTPROCESS_COMMAND += "wpeframework_binding_patch; "
 ROOTFS_POSTPROCESS_COMMAND += "dobby_generic_config_patch; "
-ROOTFS_POSTPROCESS_COMMAND:remove += "remove_unwanted_widgets_softcat;"
