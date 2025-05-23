@@ -235,7 +235,7 @@ PV:pn-gst-plugins-rdk = "1.0.0"
 PR:pn-gst-plugins-rdk = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk = "${MIDDLEWARE_ARCH}"
 
-#PV:pn-rdk-gstreamer-utils = "2.0.0"
+PV:pn-rdk-gstreamer-utils = "2.0.0"
 PACKAGE_ARCH:pn-rdk-gstreamer-utils = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
@@ -402,7 +402,7 @@ PACKAGE_ARCH:pn-subttxrend-protocol = "${MIDDLEWARE_ARCH}"
 
 PV:pn-subttxrend-socksrc = "1.2.3"
 PR:pn-subttxrend-socksrc = "r0"
-PACKAGE_ARCH:pn-subttxrend-socksrc = "${MIDDLEWARE_ARCH}"
+PACKAGE_ARCH:pn-subttxrend-socksrc ="${MIDDLEWARE_ARCH}"
 
 PV:pn-subttxrend-ttml = "1.2.3"
 PR:pn-subttxrend-ttml = "r0"
