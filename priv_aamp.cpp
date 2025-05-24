@@ -6898,49 +6898,46 @@ std::string PrivateInstanceAAMP::GetThumbnails(double tStart, double tEnd)
 		std::string baseurl;
 		int raw_w = 0, raw_h = 0, width = 0, height = 0;
 		std::vector<ThumbnailData> datavec = mpStreamAbstractionAAMP->GetThumbnailRangeData(tStart, tEnd, &baseurl, &raw_w, &raw_h, &width, &height);
-		if( !datavec.empty() )
+		cJSON *root = cJSON_CreateObject();
+		if(!baseurl.empty())
 		{
-			cJSON *root = cJSON_CreateObject();
-			if(!baseurl.empty())
-			{
-				cJSON_AddStringToObject(root,"baseUrl",baseurl.c_str());
-			}
-			if(raw_w > 0)
-			{
-				cJSON_AddNumberToObject(root,"raw_w",raw_w);
-			}
-			if(raw_h > 0)
-			{
-				cJSON_AddNumberToObject(root,"raw_h",raw_h);
-			}
-			cJSON_AddNumberToObject(root,"width",width);
-			cJSON_AddNumberToObject(root,"height",height);
-
-			cJSON *tile = cJSON_AddArrayToObject(root,"tile");
-			for( const ThumbnailData &iter : datavec )
-			{
-				cJSON *item;
-				cJSON_AddItemToArray(tile, item = cJSON_CreateObject() );
-				if(!iter.url.empty())
-				{
-					cJSON_AddStringToObject(item,"url",iter.url.c_str());
-				}
-				cJSON_AddNumberToObject(item,"t",iter.t);
-				cJSON_AddNumberToObject(item,"d",iter.d);
-				cJSON_AddNumberToObject(item,"x",iter.x);
-				cJSON_AddNumberToObject(item,"y",iter.y);
-			}
-			char *jsonStr = cJSON_Print(root);
-			if( jsonStr )
-			{
-				rc.assign( jsonStr );
-			}
-			cJSON_Delete(root);
+			cJSON_AddStringToObject(root,"baseUrl",baseurl.c_str());
 		}
+		if(raw_w > 0)
+		{
+			cJSON_AddNumberToObject(root,"raw_w",raw_w);
+		}
+		if(raw_h > 0)
+		{
+			cJSON_AddNumberToObject(root,"raw_h",raw_h);
+		}
+		cJSON_AddNumberToObject(root,"width",width);
+		cJSON_AddNumberToObject(root,"height",height);
+		
+		cJSON *tile = cJSON_AddArrayToObject(root,"tile");
+		for( const ThumbnailData &iter : datavec )
+		{
+			cJSON *item;
+			cJSON_AddItemToArray(tile, item = cJSON_CreateObject() );
+			if(!iter.url.empty())
+			{
+				cJSON_AddStringToObject(item,"url",iter.url.c_str());
+			}
+			cJSON_AddNumberToObject(item,"t",iter.t);
+			cJSON_AddNumberToObject(item,"d",iter.d);
+			cJSON_AddNumberToObject(item,"x",iter.x);
+			cJSON_AddNumberToObject(item,"y",iter.y);
+		}
+		char *jsonStr = cJSON_Print(root);
+		if( jsonStr )
+		{
+			rc.assign( jsonStr );
+		}
+		cJSON_Delete(root);
 	}
 	else if (mthumbIndexValue == -1)
 	{
-		AAMPLOG_WARN(" No thumbnail track is currently selected: no information is available.");
+		AAMPLOG_WARN("No thumbnail track is currently selected: no information is available.");
 	}
 
 	ReleaseStreamLock();
