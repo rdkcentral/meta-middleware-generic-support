@@ -5442,13 +5442,9 @@ std::vector<ThumbnailData> StreamAbstractionAAMP_HLS::GetThumbnailRangeData(doub
 		std::string url;
 		aamp_ResolveURL(url, aamp->GetManifestUrl(), streamInfo.uri.c_str(), ISCONFIGSET(eAAMPConfig_PropagateURIParam));
 		*baseurl = url.substr(0,url.find_last_of("/\\")+1);
-		*width = streamInfo.resolution.width;
-		*height = streamInfo.resolution.height;
 	}
-	if( data.empty() )
-	{
-		AAMPLOG_WARN("thumbnail Data is empty");
-	}
+	*width = streamInfo.resolution.width;
+	*height = streamInfo.resolution.height;
 	return data;
 }
 
