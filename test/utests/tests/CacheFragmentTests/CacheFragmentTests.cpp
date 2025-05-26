@@ -44,12 +44,13 @@ using ::testing::AtLeast;
 AampConfig *gpGlobalConfig{nullptr};
 struct TestParams
 {
-	bool lowlatencyMode;               // true for low-latency mode, false for standard mode
-	bool chunkMode;                    // true for chunk mode, false for standard mode
-	bool aampTsb;                      // true if AAMP TSB is enabled, false otherwise
-	bool eos;                          // true if simulating EOS, false otherwise
-	bool pipelinePaused;               // true if pipeline is paused, false otherwise
-	bool initFragment;                 // true if init fragment, false if media fragment
+	bool lowlatency;                   // true for low-latency mode, false for standard mode
+	bool chunk;                        // true for chunk mode, false for standard mode
+	bool tsb;                          // true if AAMP TSB is enabled, false otherwise
+	bool eos;                          // true if simulating EOS, false otherwise; EOS tests inject from the TSB, the rest from live
+	bool paused;                       // true if pipeline is paused, false otherwise
+	bool underflow;                    // true if underflow occurred, false otherwise
+	bool init;                         // true if init fragment, false if media fragment
 	int expectedFragmentChunksCached;  // expected number of fragments added to chunk cache
 	int expectedFragmentCached;        // expected number of fragments added to regular cache
 };
@@ -57,44 +58,48 @@ struct TestParams
 // Test cases
 TestParams testCases[] =
 {
-	{true, true, false, false, false, false, 0, 0},    // Low-latency, chunk mode, AAMP TSB disabled, non-EOS, pipeline playing, media fragment
-	{true, true, false, false, false, true, 1, 0},     // Low-latency, chunk mode, AAMP TSB disabled, non-EOS, pipeline playing, init fragment
-	{true, false, false, false, false, true, 0, 1},    // Low-latency, standard mode, AAMP TSB disabled, non-EOS, pipeline playing, init fragment
-	{true, false, false, false, false, false, 0, 1},   // Low-latency, standard mode, AAMP TSB disabled, non-EOS, pipeline playing, media fragment
-	{false, false, false, false, false, true, 0, 1},   // Standard-latency, standard mode, AAMP TSB disabled, non-EOS, pipeline playing, init fragment
-	{false, false, false, false, false, false, 0, 1},  // Standard-latency, standard mode, AAMP TSB disabled, non-EOS, pipeline playing, media fragment
+	{.lowlatency = true, .chunk = true, .tsb = false, .eos = false, .paused = false, .underflow = false, .init = false, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = true, .tsb = false, .eos = false, .paused = false, .underflow = false, .init = true, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = false, .tsb = false, .eos = false, .paused = false, .underflow = false, .init = true, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 1},
+	{.lowlatency = true, .chunk = false, .tsb = false, .eos = false, .paused = false, .underflow = false, .init = false, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 1},
+	{.lowlatency = false, .chunk = false, .tsb = false, .eos = false, .paused = false, .underflow = false, .init = true, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 1},
+	{.lowlatency = false, .chunk = false, .tsb = false, .eos = false, .paused = false, .underflow = false, .init = false, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 1},
 
 	// Test with AAMP TSB enabled, chunk cache is used for non-chunked fragments
-	{true, true, true, false, false, false, 0, 0},     // Low-latency, chunk mode, AAMP TSB, non-EOS, pipeline playing, media fragment
-	{true, true, true, false, false, true, 1, 0},      // Low-latency, chunk mode, AAMP TSB, non-EOS, pipeline playing, init fragment
-	{true, false, true, false, false, true, 1, 0},     // Low-latency, standard mode, AAMP TSB, non-EOS, pipeline playing, init fragment
-	{true, false, true, false, false, false, 1, 0},    // Low-latency, standard mode, AAMP TSB, non-EOS, pipeline playing, media fragment
-	{false, false, true, false, false, true, 1, 0},    // Standard-latency, standard mode, AAMP TSB, non-EOS, pipeline playing, init fragment
-	{false, false, true, false, false, false, 1, 0},   // Standard-latency, standard mode, AAMP TSB, non-EOS, pipeline playing, media fragment
+	{.lowlatency = true, .chunk = true, .tsb = true, .eos = false, .paused = false, .underflow = false, .init = false, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = true, .tsb = true, .eos = false, .paused = false, .underflow = false, .init = true, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = false, .tsb = true, .eos = false, .paused = false, .underflow = false, .init = true, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = false, .tsb = true, .eos = false, .paused = false, .underflow = false, .init = false, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = false, .chunk = false, .tsb = true, .eos = false, .paused = false, .underflow = false, .init = true, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = false, .chunk = false, .tsb = true, .eos = false, .paused = false, .underflow = false, .init = false, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
 
 	// Test EOS with AAMP TSB enabled
-	{true, true, true, true, false, false, 1, 0},      // Low-latency, chunk mode, AAMP TSB, EOS, pipeline playing, media fragment
-	{true, true, true, true, false, true, 1, 0},       // Low-latency, chunk mode, AAMP TSB, EOS, pipeline playing, init fragment
-	{true, false, true, true, false, true, 1, 0},      // Low-latency, standard mode, AAMP TSB, EOS, pipeline playing, init fragment
-	{true, false, true, true, false, false, 1, 0},     // Low-latency, standard mode, AAMP TSB, EOS, pipeline playing, media fragment
-	{false, false, true, true, false, true, 1, 0},     // Standard-latency, standard mode, AAMP TSB, EOS, pipeline playing, init fragment
-	{false, false, true, true, false, false, 1, 0},    // Standard-latency, standard mode, AAMP TSB, EOS, pipeline playing, media fragment
+	{.lowlatency = true, .chunk = true, .tsb = true, .eos = true, .paused = false, .underflow = false, .init = false, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = true, .tsb = true, .eos = true, .paused = false, .underflow = false, .init = true, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = false, .tsb = true, .eos = true, .paused = false, .underflow = false, .init = true, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = false, .tsb = true, .eos = true, .paused = false, .underflow = false, .init = false, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = false, .chunk = false, .tsb = true, .eos = true, .paused = false, .underflow = false, .init = true, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = false, .chunk = false, .tsb = true, .eos = true, .paused = false, .underflow = false, .init = false, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
 
 	// Test with pipeline paused
-	{true, true, false, false, true, false, 0, 0},    // Low-latency, chunk mode, AAMP TSB disabled, non-EOS, pipeline paused, media fragment
-	{true, true, false, false, true, true, 1, 0},     // Low-latency, chunk mode, AAMP TSB disabled, non-EOS, pipeline paused, init fragment
-	{true, false, false, false, true, true, 0, 1},    // Low-latency, standard mode, AAMP TSB disabled, non-EOS, pipeline paused, init fragment
-	{true, false, false, false, true, false, 0, 1},   // Low-latency, standard mode, AAMP TSB disabled, non-EOS, pipeline paused, media fragment
-	{false, false, false, false, true, true, 0, 1},   // Standard-latency, standard mode, AAMP TSB disabled, non-EOS, pipeline paused, init fragment
-	{false, false, false, false, true, false, 0, 1},  // Standard-latency, standard mode, AAMP TSB disabled, non-EOS, pipeline paused, media fragment
+	{.lowlatency = true, .chunk = true, .tsb = false, .eos = false, .paused = true, .underflow = false, .init = false, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = true, .tsb = false, .eos = false, .paused = true, .underflow = false, .init = true, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = false, .tsb = false, .eos = false, .paused = true, .underflow = false, .init = true, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 1},
+	{.lowlatency = true, .chunk = false, .tsb = false, .eos = false, .paused = true, .underflow = false, .init = false, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 1},
+	{.lowlatency = false, .chunk = false, .tsb = false, .eos = false, .paused = true, .underflow = false, .init = true, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 1},
+	{.lowlatency = false, .chunk = false, .tsb = false, .eos = false, .paused = true, .underflow = false, .init = false, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 1},
 
 	// Test with AAMP TSB enabled and pipeline paused
-	{true, true, true, false, true, false, 0, 0},     // Low-latency, chunk mode, AAMP TSB, non-EOS, pipeline paused, media fragment
-	{true, true, true, false, true, true, 0, 0},      // Low-latency, chunk mode, AAMP TSB, non-EOS, pipeline paused, init fragment
-	{true, false, true, false, true, true, 0, 0},     // Low-latency, standard mode, AAMP TSB, non-EOS, pipeline paused, init fragment
-	{true, false, true, false, true, false, 0, 0},    // Low-latency, standard mode, AAMP TSB, non-EOS, pipeline paused, media fragment
-	{false, false, true, false, true, true, 0, 0},    // Standard-latency, standard mode, AAMP TSB, non-EOS, pipeline paused, init fragment
-	{false, false, true, false, true, false, 0, 0},   // Standard-latency, standard mode, AAMP TSB, non-EOS, pipeline paused, media fragment
+	{.lowlatency = true, .chunk = true, .tsb = true, .eos = false, .paused = true, .underflow = false, .init = false, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = true, .tsb = true, .eos = false, .paused = true, .underflow = false, .init = true, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = false, .tsb = true, .eos = false, .paused = true, .underflow = false, .init = true, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 0},
+	{.lowlatency = true, .chunk = false, .tsb = true, .eos = false, .paused = true, .underflow = false, .init = false, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 0},
+	{.lowlatency = false, .chunk = false, .tsb = true, .eos = false, .paused = true, .underflow = false, .init = true, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 0},
+	{.lowlatency = false, .chunk = false, .tsb = true, .eos = false, .paused = true, .underflow = false, .init = false, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 0},
+
+	// Test with pipeline paused and underflow
+	{.lowlatency = false, .chunk = false, .tsb = true, .eos = false, .paused = true, .underflow = true, .init = false, .expectedFragmentChunksCached = 1, .expectedFragmentCached = 0},
+	{.lowlatency = false, .chunk = false, .tsb = true, .eos = true, .paused = true, .underflow = true, .init = false, .expectedFragmentChunksCached = 0, .expectedFragmentCached = 0}
 };
 
 
@@ -265,23 +270,24 @@ class MediaStreamContextTest : public ::testing::TestWithParam<TestParams>
 			mPeriod = new DummyPeriod();
 		}
 
-		void Initialize(bool lowlatencyMode, bool chunkMode, bool aampTsb, bool eos, bool pipelinePaused)
+		void Initialize(bool lowlatency, bool chunk, bool tsb, bool eos, bool paused, bool underflow)
 		{
 			unsigned char data[] = {0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA};
 			AampLLDashServiceData llDashData;
 			llDashData.availabilityTimeOffset = 1.2;
-			llDashData.lowLatencyMode = lowlatencyMode;
+			llDashData.lowLatencyMode = lowlatency;
 			mPrivateInstanceAAMP->rate = AAMP_NORMAL_PLAY_RATE;
 			mPrivateInstanceAAMP->SetLLDashServiceData(llDashData);
-			mPrivateInstanceAAMP->SetLocalAAMPTsb(aampTsb);
-			mPrivateInstanceAAMP->pipeline_paused = pipelinePaused;
+			mPrivateInstanceAAMP->SetLocalAAMPTsb(tsb);
+			mPrivateInstanceAAMP->pipeline_paused = paused;
+			mPrivateInstanceAAMP->SetBufUnderFlowStatus(underflow);
 			mMediaStreamContext = new MediaStreamContext(eTRACK_VIDEO, mStreamAbstractionAAMP_MPD, mPrivateInstanceAAMP, "SAMPLETEXT");
 			mMediaStreamContext->mTempFragment->AppendBytes(data, 12);
 			// The tests simulating EOS inject from the TSB, the rest of the tests inject from live
 			mMediaStreamContext->SetLocalTSBInjection(eos);
-			mPrivateInstanceAAMP->SetLLDashChunkMode(chunkMode);
+			mPrivateInstanceAAMP->SetLLDashChunkMode(chunk);
 			AampTSBSessionManager *tsbSessionManager = nullptr;
-			if (aampTsb)
+			if (tsb)
 			{
 				tsbSessionManager = mTsbSessionManager;
 				CreateAndSetDummyPeriod();
@@ -306,24 +312,31 @@ class MediaStreamContextTest : public ::testing::TestWithParam<TestParams>
 TEST_P(MediaStreamContextTest, CacheFragment)
 {
 	TestParams testParam = GetParam();
-	AAMPLOG_INFO("Test with lowlatencyMode: %d, chunkMode: %d, AAMP TSB: %d, eos: %d, pipelinePaused: %d, initFragment: %d, expectedFragmentChunksCached: %d, expectedFragmentCached: %d",
-		testParam.lowlatencyMode,
-		testParam.chunkMode,
-		testParam.aampTsb,
+	AAMPLOG_INFO("Test with lowlatency: %d, chunk: %d, AAMP TSB: %d, eos: %d, paused: %d, underflow: %d, init: %d, expectedFragmentChunksCached: %d, expectedFragmentCached: %d",
+		testParam.lowlatency,
+		testParam.chunk,
+		testParam.tsb,
 		testParam.eos,
-		testParam.pipelinePaused,
-		testParam.initFragment,
+		testParam.paused,
+		testParam.underflow,
+		testParam.init,
 		testParam.expectedFragmentChunksCached,
 		testParam.expectedFragmentCached);
-	Initialize(testParam.lowlatencyMode, testParam.chunkMode, testParam.aampTsb, testParam.eos, testParam.pipelinePaused);
+	Initialize(testParam.lowlatency, testParam.chunk, testParam.tsb, testParam.eos, testParam.paused, testParam.underflow);
 
-	bool retResult = mMediaStreamContext->CacheFragment("remoteUrl", 0, 10, 0, NULL, testParam.initFragment, false, false, 0, 0, false);
+	bool retResult = mMediaStreamContext->CacheFragment("remoteUrl", 0, 10, 0, NULL, testParam.init, false, false, 0, 0, false);
 
-	if (testParam.eos)
+	if (testParam.eos && !testParam.paused)
 	{
-		// Check that  TSB injection flag is cleared after EoS
+		// Check that  TSB injection flag is cleared after TSB Reader EoS if the pipeline is not paused
 		EXPECT_EQ(mMediaStreamContext->IsLocalTSBInjection(), false);
 	}
+	else
+	{
+		// Check that TSB injection flag is not modified in any other case (initially set to eos)
+		EXPECT_EQ(mMediaStreamContext->IsLocalTSBInjection(), testParam.eos);
+	}
+
 	// Check expected results for fragment chunks cached and fragments cached
 	EXPECT_EQ(mMediaStreamContext->numberOfFragmentChunksCached, testParam.expectedFragmentChunksCached);
 	EXPECT_EQ(mMediaStreamContext->numberOfFragmentsCached, testParam.expectedFragmentCached);
