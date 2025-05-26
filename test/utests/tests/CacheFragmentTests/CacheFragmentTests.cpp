@@ -161,6 +161,7 @@ class MediaStreamContextTest : public ::testing::TestWithParam<TestParams>
 		IntConfigSettings mIntConfigSettings;
 		void SetUp() override
 		{
+			mPeriod = nullptr;
 			if (gpGlobalConfig == nullptr)
 			{
 				gpGlobalConfig = new AampConfig();
