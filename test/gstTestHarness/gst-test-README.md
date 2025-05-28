@@ -16,7 +16,7 @@
 
 ### help
 > show available commands
-
+test
 ### inventory <vodurl>
 > load specified (DASH) manifest and generate inventory.sh with sequence of calls to generate-video-segment.sh and genenerate-audio-segment.sh
 
@@ -98,7 +98,7 @@ dai1 dai2 and dai3 play back the following sequence, defined in mPeriodInfo[]
 > Examples:
 ```
 path ../../test/VideoTestStream
-path https://cpetestutility.stb.r53.xcal.tv/VideoTestStream
+path https://example.com/VideoTestStream
 path http://localhost:8080
 path file:///home/user/aamp/test/VideoTestStream
 ```
