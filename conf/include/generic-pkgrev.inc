@@ -82,7 +82,7 @@ PV:pn-qtvirtualkeyboard = "5.15.7"
 PR:pn-qtvirtualkeyboard = "r0"
 PACKAGE_ARCH:pn-qtvirtualkeyboard = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.4.0"
+PV:pn-aamp = "2.4.1"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -131,7 +131,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.0.8"
+PV:pn-entservices-casting = "1.0.9"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
@@ -139,15 +139,15 @@ PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "1.1.9"
+PV:pn-entservices-deviceanddisplay = "1.1.11"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.1.19"
+PV:pn-entservices-infra = "1.2.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.0.12"
+PV:pn-entservices-inputoutput = "1.1.0"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -217,7 +217,7 @@ PV_pn-rdk-logger = "1.0.0"
 PR_pn-rdk-logger = "r1"
 PACKAGE_ARCH_pn-rdk-logger = "${MIDDLEWARE_ARCH}"
 
-PV:pn-remotedebugger = "1.2.6"
+PV:pn-remotedebugger = "1.2.7"
 PR:pn-remotedebugger = "r0"
 PACKAGE_ARCH:pn-remotedebugger = "${MIDDLEWARE_ARCH}"
 
@@ -237,14 +237,14 @@ PV:pn-gst-plugins-rdk = "1.0.0"
 PR:pn-gst-plugins-rdk = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk = "${MIDDLEWARE_ARCH}"
 
-#PV:pn-rdk-gstreamer-utils = "2.0.0"
+PV:pn-rdk-gstreamer-utils = "2.0.0"
 PACKAGE_ARCH:pn-rdk-gstreamer-utils = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.3.9"
+PV:pn-entservices-apis = "1.3.12"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -273,7 +273,7 @@ PV:pn-xdial = "3.0.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "2.0.0"
+PV:pn-sysint = "2.0.1"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -295,9 +295,13 @@ PV:pn-memcr = "1.0.2"
 PR:pn-memcr = "r0"
 PACKAGE_ARCH:pn-memcr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-networkmanager-plugin = "0.11.0"
+PV:pn-networkmanager-plugin = "0.18.0"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
+
+PV:pn-thunderhangrecovery = "1.0.0"
+PR:pn-thunderhangrecovery = "r0"
+PACKAGE_ARCH:pn-thunderhangrecovery = "${MIDDLEWARE_ARCH}"
 
 PV:pn-wpeframework-ui = "1.0.0"
 PR:pn-wpeframework-ui = "r0"
@@ -311,7 +315,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.13"
+PV:pn-thunderstartupservices = "1.0.14"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -350,7 +354,7 @@ PV:pn-xmidt-agent = "1.0.0"
 PR:pn-xmidt-agent = "r0"
 PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdmagent = "1.3.0"
+PV:pn-rdmagent = "2.0.0"
 PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
@@ -370,69 +374,65 @@ PACKAGE_ARCH:pn-wlan-p2p = "${MIDDLEWARE_ARCH}"
 MULTILIB_VARIANTS:pn-os-release = " multilib "
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-app = "1.2.3"
+PV:pn-subttxrend-app = "1.3.0"
 PR:pn-subttxrend-app = "r0"
 PACKAGE_ARCH:pn-subttxrend-app = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-dbus = "1.2.3"
+PV:pn-subttxrend-dbus = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-dbus = "r0"
 PACKAGE_ARCH:pn-subttxrend-dbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-dvbsub = "1.2.3"
+PV:pn-subttxrend-dvbsub = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-dvbsub = "r0"
 PACKAGE_ARCH:pn-subttxrend-dvbsub = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-cc = "1.2.3"
+PV:pn-subttxrend-cc = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-cc = "r0"
 PACKAGE_ARCH:pn-subttxrend-cc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-ctrl = "1.2.3"
+PV:pn-subttxrend-ctrl = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-ctrl = "r0"
 PACKAGE_ARCH:pn-subttxrend-ctrl = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-common = "1.2.3"
+PV:pn-subttxrend-common = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-common = "r0"
 PACKAGE_ARCH:pn-subttxrend-common = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-gfx = "1.2.3"
+PV:pn-subttxrend-gfx = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-gfx = "r0"
 PACKAGE_ARCH:pn-subttxrend-gfx = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-protocol = "1.2.3"
+PV:pn-subttxrend-protocol = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-protocol = "r0"
 PACKAGE_ARCH:pn-subttxrend-protocol = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-socksrc = "1.2.3"
+PV:pn-subttxrend-socksrc = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-socksrc = "r0"
 PACKAGE_ARCH:pn-subttxrend-socksrc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-ttml = "1.2.3"
+PV:pn-subttxrend-ttml = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-ttml = "r0"
 PACKAGE_ARCH:pn-subttxrend-ttml = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-ttxt = "1.2.3"
+PV:pn-subttxrend-ttxt = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-ttxt = "r0"
 PACKAGE_ARCH:pn-subttxrend-ttxt = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-scte = "1.2.3"
+PV:pn-subttxrend-scte = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-scte = "r0"
 PACKAGE_ARCH:pn-subttxrend-scte = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-webvtt = "1.2.3"
+PV:pn-subttxrend-webvtt = "${PV:pn-subttxrend-app}"
 PR:pn-subttxrend-webvtt = "r0"
 PACKAGE_ARCH:pn-subttxrend-webvtt = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dvbsubdecoder = "1.2.3"
+PV:pn-dvbsubdecoder = "${PV:pn-subttxrend-app}"
 PR:pn-dvbsubdecoder = "r0"
 PACKAGE_ARCH:pn-dvbsubdecoder = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ttxdecoder = "1.2.3"
+PV:pn-ttxdecoder = "${PV:pn-subttxrend-app}"
 PR:pn-ttxdecoder = "r0"
 PACKAGE_ARCH:pn-ttxdecoder = "${MIDDLEWARE_ARCH}"
-
-PV:pn-texttrack = "1.0.2"
-PR:pn-texttrack = "r0"
-PACKAGE_ARCH:pn-texttrack = "${MIDDLEWARE_ARCH}"
 
 PV:pn-lsof = "4.94.0"
 PR:pn-lsof = "r0"
