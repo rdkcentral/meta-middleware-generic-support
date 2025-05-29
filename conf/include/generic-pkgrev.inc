@@ -38,11 +38,11 @@ PV:pn-rbus = "2.1.0"
 PR:pn-rbus = "r0"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.0.5"
+PV:pn-rfc = "1.0.7"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.1.2"
+PV:pn-tr69hostif = "1.1.5_a"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -62,7 +62,7 @@ PV:pn-dcmd = "1.1.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.1.1"
+PV:pn-tr69hostif-headers = "1.1.5"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
@@ -82,7 +82,7 @@ PV:pn-qtvirtualkeyboard = "5.15.7"
 PR:pn-qtvirtualkeyboard = "r0"
 PACKAGE_ARCH:pn-qtvirtualkeyboard = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.3.0"
+PV:pn-aamp = "2.3.2"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -271,7 +271,7 @@ PV:pn-xdial = "3.0.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "1.2.0"
+PV:pn-sysint = "1.2.0-delta"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -324,7 +324,7 @@ PACKAGE_ARCH:pn-alsa-plugins =  "${MIDDLEWARE_ARCH}"
 PR:pn-pulseaudio = "r0"
 PACKAGE_ARCH:pn-pulseaudio =  "${MIDDLEWARE_ARCH}"
 
-PV:pn-tts = "1.0.3"
+PV:pn-tts = "1.0.4"
 PR:pn-tts = "r0"
 PACKAGE_ARCH:pn-tts = "${MIDDLEWARE_ARCH}"
 
