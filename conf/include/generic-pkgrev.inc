@@ -293,7 +293,7 @@ PV:pn-memcr = "1.0.2"
 PR:pn-memcr = "r0"
 PACKAGE_ARCH:pn-memcr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-networkmanager-plugin = "0.12.2"
+PV:pn-networkmanager-plugin = "0.12.1"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
 
