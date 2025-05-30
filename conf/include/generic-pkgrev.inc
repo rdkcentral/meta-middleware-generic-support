@@ -83,7 +83,7 @@ PR:pn-qtvirtualkeyboard = "r0"
 PACKAGE_ARCH:pn-qtvirtualkeyboard = "${MIDDLEWARE_ARCH}"
 
 PV:pn-aamp = "2.4.1"
-PR:pn-aamp = "r0"
+PR:pn-aamp = "r1"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
 
