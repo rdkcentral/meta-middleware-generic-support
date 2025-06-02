@@ -4119,41 +4119,6 @@ bool PrivateInstanceAAMP::GetFile( std::string remoteUrl, AampMediaType mediaTyp
 							mFogTSBEnabled = false;
 						}
 						effectiveUrlPtr = aamp_CurlEasyGetinfoString(curl, CURLINFO_EFFECTIVE_URL);
-						if((mediaType == eMEDIATYPE_INIT_VIDEO || mediaType ==  eMEDIATYPE_INIT_AUDIO))
-						{
-							IsoBmffBuffer isobuf;
-							isobuf.setBuffer(
-											 reinterpret_cast<uint8_t *>(context.buffer->GetPtr() ),
-											 context.buffer->GetLen() );
-
-							bool bParse = false;
-							try
-							{
-								bParse = isobuf.parseBuffer();
-							}
-							catch( std::bad_alloc& ba)
-							{
-								AAMPLOG_ERR("Bad allocation: %s", ba.what() );
-							}
-							catch( std::exception &e)
-							{
-								AAMPLOG_ERR("Unhandled exception: %s", e.what() );
-							}
-							catch( ... )
-							{
-								AAMPLOG_ERR("Unknown exception");
-							}
-
-							if(!bParse)
-							{
-								AAMPLOG_ERR("[%d] Cant Find TimeScale. No Box available in Init File !!!", mediaType);
-							}
-							else
-							{
-								AAMPLOG_INFO("[%d] Buffer Length: %zu", mediaType, context.buffer->GetLen() );
-
-							}
-						}
 					}
 
 					if(effectiveUrlPtr)
@@ -13723,4 +13688,31 @@ void PrivateInstanceAAMP::CalculateTrickModePositionEOS(void)
 double PrivateInstanceAAMP::GetLivePlayPosition(void)
 {
 	return (NOW_STEADY_TS_SECS_FP - mLiveEdgeDeltaFromCurrentTime - mLiveOffset);
+}
+
+/**
+ *    @brief To increment gaps between periods for dash
+ *    return none
+ */
+void PrivateInstanceAAMP::IncrementGaps()
+{
+	if(mVideoEnd)
+	{
+		mVideoEnd->IncrementGaps();
+	}
+}
+
+/**
+ * @fn GetStreamPositionMs
+ *
+ * @return double, current position in the stream
+ */
+double PrivateInstanceAAMP::GetStreamPositionMs()
+{
+	double pos = (double)GetPositionMilliseconds();
+	if (mProgressReportOffset >= 0)
+	{
+		pos -= (mProgressReportOffset * 1000);
+	}
+	return pos;
 }
