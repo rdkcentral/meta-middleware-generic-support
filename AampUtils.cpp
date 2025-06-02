@@ -46,10 +46,6 @@
 
 #define DEFER_DRM_LIC_OFFSET_FROM_START 5
 #define DEFER_DRM_LIC_OFFSET_TO_UPPER_BOUND 5
-#define MAC_STRING_LEN 12
-#define URAND_STRING_LEN 16
-#define RAND_STRING_LEN (MAC_STRING_LEN + 2*URAND_STRING_LEN)
-#define MAX_BUFF_LENGTH 4096 
 
 /*
  * Variable initialization for various audio formats
