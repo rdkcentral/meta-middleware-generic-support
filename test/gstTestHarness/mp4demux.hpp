@@ -347,9 +347,9 @@ private:
 		info.stream_format = type;
 		switch( info.stream_format )
 		{
-			case 'hev1':
-			case 'avc1':
-			case 'hvc1':
+			case 0x68657631: // 'hev1'
+			case 0x61766331: // 'avc1'
+			case 0x68766331: // 'hvc1'
 				SkipBytes(4); // always zero?
 				info.data_reference_index = ReadU32();
 				SkipBytes(16); // always zero?
@@ -365,8 +365,8 @@ private:
 				assert( pad == 0xffff );
 				break;
 				
-			case 'mp4a':
-			case 'ec-3':
+			case 0x6D703461: // 'mp4a'
+			case 0x65632D33: // 'ec-3'
 				SkipBytes(4); // zero
 				info.data_reference_index = ReadU32();
 				SkipBytes(8); // zero
@@ -485,22 +485,22 @@ private:
 				   (type>>24)&0xff, (type>>16)&0xff, (type>>8)&0xff, type&0xff );
 			switch( type )
 			{
-				case 'hev1':
-				case 'hvc1':
-				case 'avc1':
-				case 'mp4a':
-				case 'ec-3':
+				case 0x68657631: // 'hev1'
+				case 0x68766331: // 'hvc1'
+				case 0x61766331: // 'avc1'
+				case 0x6D703461: // 'mp4a'
+				case 0x65632D33: // 'ec-3'
 					parseStreamFormat( type, next, indent );
 					break;
 					
-				case 'hvcC':
-				case 'dec3':
-				case 'avcC':
-				case 'esds': // Elementary Stream Descriptot Box
+				case 0x68766343: // 'hvcC'
+				case 0x64656333: // 'dec3'
+				case 0x61766343: // 'avcC'
+				case 0x65736473: // 'esds' Elementary Stream Descriptot Box
 					parseCodecConfiguration( type, next );
 					break;
 					
-				case 'ftyp': // FileType Box
+				case 0x66747970: // 'ftyp' FileType Box
 					/*
 					 major_brand // 4 chars
 					 minor_version // 4 bytes
@@ -508,97 +508,97 @@ private:
 					 */
 					break;
 					
-				case 'mfhd':
+				case 0x6D666864: // 'mfhd':
 					parseMovieFragmentHeaderBox();
 					break;
 					
-				case 'tfhd':
+				case 0x74666864: // 'tfhd'
 					parseTrackFragmentHeaderBox();
 					break;
 					
-				case 'trun':
+				case 0x7472756E: // 'trun'
 					parseTrackFragmentRunBox();
 					break;
 					
-				case 'tfdt':
+				case 0x74666474: // 'tfdt'
 					parseTrackFragmentBaseMediaDecodeTimeBox();
 					break;
 					
-				case 'mvhd':
+				case 0x6D766864: // 'mvhd'
 					parseMovieHeaderBox();
 					break;
 					
-				case 'mehd':
+				case 0x6D656864: // 'mehd'
 					parseMovieExtendsHeader();
 					break;
 					
-				case 'trex':
+				case 0x74726578: // 'trex'
 					parseTrackExtendsBox();
 					break;
 					
-				case 'tkhd':
+				case 0x746B6864: // 'tkhd'
 					parseTrackHeader();
 					break;
 					
-				case 'mdhd':
+				case 0x6D646864: // 'mdhd'
 					parseMediaHeaderBox();
 					break;
 					
-				case 'hdlr': // Handler Reference Box
+				case 0x68646C72: // 'hdlr' Handler Reference Box
 					/*
 					 handler	vide
 					 name	Bento4 Video Handler
 					 */
 					break;
 					
-				case 'vmhd': // Video Media Header
+				case 0x766D6864: // 'vmhd' Video Media Header
 					/*
 					 graphicsmode	0
 					 opcolor	0,0,0
 					 */
 					break;
 					
-				case 'smhd': // Sound Media Header
+				case 0x736D6864: // 'smhd' Sound Media Header
 					/*
 					 balance	0
 					 */
 					break;
 					
-				case 'dref': // Data Reference Box
+				case 0x64726566: // 'dref' Data Reference Box
 					/*
 					 url
 					 */
 					break;
 					
-				case 'stsd': // Sample Description Box
+				case 0x73747364: // 'stsd' Sample Description Box
 					parseSampleDescriptionBox(next,indent);
 					break;
 					
-				case 'stts': // DecodingTimeToSample
+				case 0x73747473: // 'stts' DecodingTimeToSample
 					break;
-				case 'stsc': // SampleToChunkBox
+				case 0x73747363: // 'stsc' SampleToChunkBox
 					break;
-				case 'stsz': // SampleSizeBoxes
+				case 0x7374737A: // 'stsz' SampleSizeBoxes
 					break;
-				case 'stco': // ChunkOffsets
+				case 0x7374636F: // 'stco' ChunkOffsets
 					break;
-				case 'stss': // Sync Sample
+				case 0x73747373: // 'stss' Sync Sample
 					break;
-				case 'prft': // ProducerReferenceTime
+				case 0x70726674: // 'prft' ProducerReferenceTime
 					break;
-				case 'edts': // Edit Box
+				case 0x65647473: // 'edts' Edit Box
 					break;
-				case 'fiel':
+				case 0x6669656C: // 'fiel'
 					break;
-				case 'colr': // Color Pattern Atom
+				case 0x636F6C72: // 'colr' Color Pattern Atom
 					break;
-				case 'pasp': // Pixel Aspect Ratio
+				case 0x70617370: // 'pasp': // Pixel Aspect Ratio
 					/*
 					00 00 04 f0 // hSpacing
 					00 00 04 ef // vSpacing
 					*/
 					break;
-				case 'btrt': // Buffer Time to Render Time
+				case 0x62747274: // 'btrt' Buffer Time to Render Time
 					/*
 					00 02 49 f0 // bufferSizeDB
 					00 16 db 90 // maxBitrate
@@ -606,25 +606,25 @@ private:
 					*/
 					break;
 					
-				case 'styp': // Segment Type Box
-				case 'sidx': // Segment Index Box
-				case 'udta': // User Data Box
-				case 'mdat': // Movie Data Box
+				case 0x73747970: // 'styp' Segment Type Box
+				case 0x73696478: // 'sidx' Segment Index Box
+				case 0x75647461: // 'udta': // User Data Box
+				case 0x6D646174: // 'mdat': // Movie Data Box
 					break;
 
-				case 'moof': // Movie Fragment Box
+				case 0x6D6F6F66: // 'moof': // Movie Fragment Box
 					moof_ptr = ptr-8;
 					DemuxHelper(next, indent+1 ); // walk children
 					break;
 					
-				case 'traf': // Track Fragment Boxes
-				case 'moov': // Movie Boxes
-				case 'trak': // Track Box
-				case 'minf': // Media Information Container
-				case 'dinf': // Data Information Box
-				case 'mvex': // Movie Extends Box
-				case 'mdia': // Media Box
-				case 'stbl': // Sample Table Box
+				case 0x74726166: // 'traf' Track Fragment Boxes
+				case 0x6D6F6F76: // 'moov' Movie Boxes
+				case 0x7472616B: // 'trak' Track Box
+				case 0x6D696E66: // 'minf' Media Information Container
+				case 0x64696E66: // 'dinf' Data Information Box
+				case 0x6D766578: // 'mvex' Movie Extends Box
+				case 0x6D646961: // 'mdia' Media Box
+				case 0x7374626C: // 'stbl' Sample Table Box
 					DemuxHelper(next, indent+1 ); // walk children
 					break;
 										
@@ -696,7 +696,7 @@ public:
 		gst_buffer_fill(buf, 0, info.codec_data, info.codec_data_len);
 		switch( info.codec_type )
 		{
-			case 'hvcC':
+			case 0x68766343: // 'hvcC'
 				caps = gst_caps_new_simple(
 										   "video/x-h265",
 										   "stream-format", G_TYPE_STRING, "hvc1",
@@ -708,7 +708,7 @@ public:
 										   NULL );
 				break;
 				
-			case 'avcC':
+			case 0x61766343: // 'avcC'
 				caps = gst_caps_new_simple(
 										   "video/x-h264",
 										   "stream-format", G_TYPE_STRING, "avc",
@@ -720,7 +720,7 @@ public:
 										   NULL );
 				break;
 				
-			case 'esds':
+			case 0x65736473: // 'esds'
 				caps = gst_caps_new_simple(
 										   "audio/mpeg",
 										   "mpegversion",G_TYPE_INT,4,
@@ -730,7 +730,7 @@ public:
 										   NULL );
 				break;
 				
-			case 'dec3':
+			case 0x64656333: // 'dec3'
 				caps = gst_caps_new_simple(
 										   "audio/x-eac3",
 										   "framed", G_TYPE_BOOLEAN, TRUE,
@@ -738,6 +738,7 @@ public:
 										   "channels", G_TYPE_INT, info.channel_count,
 										   NULL );
 				break;
+				
 			default:
 				g_print( "unk codec_type: %" PRIu32 "\n", info.codec_type );
 				return;
