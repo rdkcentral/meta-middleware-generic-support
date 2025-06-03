@@ -7513,6 +7513,13 @@ void PrivateInstanceAAMP::Stop( bool sendStateChangeEvent )
 		mTelemetryInterval = 0;
 	}
 
+	// AAMP TSB flags have to be cleared before the stream abstraction object is deleted
+	// so downloads are disabled among other things
+	SetLocalAAMPTsb(false);
+	SetLocalAAMPTsbInjection(false);
+	// Using StreamLock to make sure this is not interfering with GetFile() from PreCachePlaylistDownloadTask
+	// and protect against the StreamAbstraction object being accessed by a different thread
+	AcquireStreamLock();
 	// Stopping the playback, release all DRM context
 	if (mpStreamAbstractionAAMP)
 	{
@@ -7526,8 +7533,6 @@ void PrivateInstanceAAMP::Stop( bool sendStateChangeEvent )
 		{ // has sidecar data
 			mpStreamAbstractionAAMP->ResetSubtitle();
 		}
-		// Using StreamLock to make sure this is not interfering with GetFile() from PreCachePlaylistDownloadTask
-		AcquireStreamLock();
 		//Deleting mpStreamAbstractionAAMP here will prevent the extra stop call in TeardownStream()
 		//and will avoid enableDownload() call being made unnecessarily
 		if(mContentType == ContentType_HDMIIN)
@@ -7544,8 +7549,8 @@ void PrivateInstanceAAMP::Stop( bool sendStateChangeEvent )
 		{
 			SAFE_DELETE(mpStreamAbstractionAAMP);
 		}
-		ReleaseStreamLock();
 	}
+	ReleaseStreamLock();
 	// stop the mpd update immediately after Stream abstraction delete
 	if(mMPDDownloaderInstance != nullptr)
 	{
@@ -7553,9 +7558,6 @@ void PrivateInstanceAAMP::Stop( bool sendStateChangeEvent )
 	}
 	TeardownStream(true);
 
-	// Clear the AAMP TSB flags after the stream abstraction is deleted
-	SetLocalAAMPTsb(false);
-	SetLocalAAMPTsbInjection(false);
 	if(mTSBSessionManager)
 	{
 		// Clear all the local TSB data
