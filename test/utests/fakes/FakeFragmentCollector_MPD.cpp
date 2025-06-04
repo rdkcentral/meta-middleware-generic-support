@@ -270,7 +270,3 @@ bool StreamAbstractionAAMP_MPD::DoEarlyStreamSinkFlush(bool newTune, float rate)
 {
     return false;
 }
-uint32_t StreamAbstractionAAMP_MPD::GetVideoTimeScale(void)
-{
-    return 1;
-}

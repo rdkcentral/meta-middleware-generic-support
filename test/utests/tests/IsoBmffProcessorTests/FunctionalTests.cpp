@@ -69,9 +69,9 @@ class IsoBmffProcessorTests : public ::testing::Test
 
 			id3_callback_t id3Handler = nullptr;
 
-			mAudIsoBmffProcessor = new IsoBmffProcessor(mPrivateInstanceAAMP, id3Handler, eBMFFPROCESSOR_TYPE_AUDIO);
-			mSubIsoBmffProcessor = new IsoBmffProcessor(mPrivateInstanceAAMP, id3Handler, eBMFFPROCESSOR_TYPE_SUBTITLE);
-			mIsoBmffProcessor = new IsoBmffProcessor(mPrivateInstanceAAMP, id3Handler, eBMFFPROCESSOR_TYPE_VIDEO, mAudIsoBmffProcessor, mSubIsoBmffProcessor);
+			mAudIsoBmffProcessor = new IsoBmffProcessor(mPrivateInstanceAAMP, id3Handler, eBMFFPROCESSOR_TYPE_AUDIO, false, nullptr, nullptr);
+			mSubIsoBmffProcessor = new IsoBmffProcessor(mPrivateInstanceAAMP, id3Handler, eBMFFPROCESSOR_TYPE_SUBTITLE, false, nullptr, nullptr);
+			mIsoBmffProcessor = new IsoBmffProcessor(mPrivateInstanceAAMP, id3Handler, eBMFFPROCESSOR_TYPE_VIDEO, false, mAudIsoBmffProcessor, mSubIsoBmffProcessor);
 		}
 
 		void TearDown() override

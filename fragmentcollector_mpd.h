@@ -274,12 +274,6 @@ public:
 	 */
 	void SeekPosUpdate(double secondsRelativeToTuneTime) override;
 	virtual void SetCDAIObject(CDAIObject *cdaiObj) override;
-	/**
-	 * @fn GetVideoTimeScale
-	 * @brief returns the time scale of the video stream
-	 * @return time scale of the video stream
-	 */
-	uint32_t GetVideoTimeScale(void) override;
 
 	/**
 	 * @fn GetAvailableAudioTracks
