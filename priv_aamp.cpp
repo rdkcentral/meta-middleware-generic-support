@@ -5641,7 +5641,7 @@ void PrivateInstanceAAMP::TuneHelper(TuneType tuneType, bool seekWhilePaused)
 	{
 		// Update culled seconds and duration based on TSB when watching live with AAMP Local TSB enabled
 		culledSeconds = seek_pos_seconds;
-		durationSeconds -= culledSeconds;
+		durationSeconds = mAbsoluteEndPosition - culledSeconds;
 	}
 
 	if (tuneType == eTUNETYPE_SEEK || tuneType == eTUNETYPE_SEEKTOLIVE || tuneType == eTUNETYPE_SEEKTOEND)
