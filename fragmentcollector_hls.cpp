@@ -7431,6 +7431,8 @@ bool StreamAbstractionAAMP_HLS::SelectPreferredTextTrack(TextTrackInfo& selected
  */
 bool StreamAbstractionAAMP_HLS::DoEarlyStreamSinkFlush(bool newTune, float rate)
 {
+	bool doFlush = !newTune;
+	AAMPLOG_INFO("doFlush=%d, newTune=%d, rate=%f", doFlush, newTune, rate);
 	// Live adjust or syncTrack occurred, send an updated flush event
-	return (!newTune);
+	return doFlush;
 }
