@@ -7259,9 +7259,9 @@ void StreamAbstractionAAMP_MPD::StreamSelection( bool newTune, bool forceSpeedsC
 				mMediaStreamContext[eMEDIATYPE_AUX_AUDIO]->enabled = false;
 			}
 
-			if(ISCONFIGSET(eAAMPConfig_LocalTSBEnabled) && aamp->IsIframeExtractionEnabled())
+			if( aamp->IsLocalAAMPTsbFromConfig() && aamp->IsIframeExtractionEnabled())
 			{
-				/** Fake the iframe track if local TSB enabled and stream is LLD */
+				/** Fake the iframe track if AAMP TSB and i-frame extraction are enabled */
 				isIframeAdaptationAvailable = true;
 			}
 
