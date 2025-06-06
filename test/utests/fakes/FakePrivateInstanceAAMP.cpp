@@ -1491,6 +1491,14 @@ bool PrivateInstanceAAMP::IsLocalAAMPTsbInjection()
 	return false;
 }
 
+void PrivateInstanceAAMP::UpdateLocalAAMPTsbInjection()
+{
+	if (g_mockPrivateInstanceAAMP)
+	{
+		g_mockPrivateInstanceAAMP->UpdateLocalAAMPTsbInjection();
+	}
+}
+
 bool PrivateInstanceAAMP::GetLLDashAdjustSpeed(void)
 {
 	if (g_mockPrivateInstanceAAMP)
@@ -1644,4 +1652,13 @@ double PrivateInstanceAAMP::GetLivePlayPosition(void)
 		livePlayPosition = g_mockPrivateInstanceAAMP->GetLivePlayPosition();
 	}
 	return livePlayPosition;
+}
+
+void PrivateInstanceAAMP::IncrementGaps()
+{
+}
+
+double PrivateInstanceAAMP::GetStreamPositionMs()
+{
+	return 0.0;
 }

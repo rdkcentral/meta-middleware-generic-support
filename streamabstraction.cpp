@@ -1441,10 +1441,10 @@ bool MediaTrack::InjectFragment()
 			cachedFragment = &this->mCachedFragment[fragmentIdxToInject];
 			AAMPLOG_TRACE("[%s] fragmentIdxToInject : %d Discontinuity %d ", name, fragmentIdxToInject, cachedFragment->discontinuity);
 		}
-#ifdef TRACE
-		AAMPLOG_WARN("[%s] - fragmentIdxToInject %d cachedFragment %p ptr %p",
-					 name, fragmentIdxToInject, cachedFragment, cachedFragment->fragment.ptr);
-#endif
+
+		AAMPLOG_TRACE("[%s] - fragmentIdxToInject %d cachedFragment %p ptr %p",
+					 name, fragmentIdxToInject, cachedFragment, cachedFragment->fragment.GetPtr());
+
 		if (cachedFragment->fragment.GetPtr())
 		{
 			// This is currently supported for non-LL DASH streams only at normal play rate
@@ -1956,23 +1956,17 @@ MediaTrack::~MediaTrack()
 	if (bufferMonitorThreadStarted)
 	{
 		bufferMonitorThreadID.join();
-#ifdef TRACE
 		{
-			AAMPLOG_WARN("joined bufferMonitorThreadID");
+			AAMPLOG_TRACE("joined bufferMonitorThreadID");
 		}
-#endif
 	}
 	if ((UpdateSubtitleClockTaskStarted) && (type == eTRACK_SUBTITLE))
 	{
-#ifdef TRACE
-		AAMPLOG_WARN("joining subtitleClockThreadID for UpdateSubtitleClockTask");
-#endif
+		AAMPLOG_TRACE("joining subtitleClockThreadID for UpdateSubtitleClockTask");
 		if (subtitleClockThreadID.joinable())
 		{
 			subtitleClockThreadID.join();
-#ifdef TRACE
-			AAMPLOG_WARN("joined subtitleClockThreadID for UpdateSubtitleClockTask");
-#endif
+			AAMPLOG_TRACE("joined subtitleClockThreadID for UpdateSubtitleClockTask");
 		}
 		else
 		{
@@ -3180,6 +3174,16 @@ void MediaTrack::SetLocalTSBInjection(bool value)
 }
 
 /**
+ * @brief Is injection from local AAMP TSB
+ *
+ * @return true if injection is from local AAMP TSB, false otherwise
+ */
+bool MediaTrack::IsLocalTSBInjection()
+{
+	return mIsLocalTSBInjection.load();
+}
+
+/**
  * @brief Function to Resume track downloader
  */
 void StreamAbstractionAAMP::ResumeTrackDownloadsHandler( )
@@ -3923,9 +3927,9 @@ void StreamAbstractionAAMP::SetVideoPlaybackRate(float rate)
 /**
  * @brief Initialize ISOBMFF Media Processor
  *
- * @return void
+ * @param[in] passThroughMode - true if processor should skip parsing PTS and flush
  */
-void StreamAbstractionAAMP::InitializeMediaProcessor()
+void StreamAbstractionAAMP::InitializeMediaProcessor(bool passThroughMode)
 {
 	std::shared_ptr<IsoBmffProcessor> peerAudioProcessor = nullptr;
 	std::shared_ptr<IsoBmffProcessor> peerSubtitleProcessor = nullptr;
@@ -3943,7 +3947,7 @@ void StreamAbstractionAAMP::InitializeMediaProcessor()
 			if(eMEDIATYPE_SUBTITLE != i)
 			{
 				std::shared_ptr<IsoBmffProcessor> processor = std::make_shared<IsoBmffProcessor>(aamp, mID3Handler, (IsoBmffProcessorType) i,
-																peerAudioProcessor.get(), peerSubtitleProcessor.get());
+																passThroughMode, peerAudioProcessor.get(), peerSubtitleProcessor.get());
 				track->SourceFormat(FORMAT_ISO_BMFF);
 				track->playContext = std::static_pointer_cast<MediaProcessor>(processor);
 				track->playContext->setRate(aamp->rate, PlayMode_normal);
@@ -3960,7 +3964,7 @@ void StreamAbstractionAAMP::InitializeMediaProcessor()
 			{
 				if(FORMAT_SUBTITLE_MP4 == subtitleFormat)
 				{
-					peerSubtitleProcessor = std::make_shared<IsoBmffProcessor>(aamp, nullptr, (IsoBmffProcessorType) i);
+					peerSubtitleProcessor = std::make_shared<IsoBmffProcessor>(aamp, nullptr, (IsoBmffProcessorType) i, passThroughMode, nullptr, nullptr);
 					track->playContext = std::static_pointer_cast<MediaProcessor>(peerSubtitleProcessor);
 					track->playContext->setRate(aamp->rate, PlayMode_normal);
 				}

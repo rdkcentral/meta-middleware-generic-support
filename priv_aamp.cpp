@@ -3093,7 +3093,7 @@ bool PrivateInstanceAAMP::ProcessPendingDiscontinuity()
 			// mStreamLock is not exactly required here, this will be called from Scheduler/GMainLoop based on AAMP config
 			// The same thread will be executing operations involving TeardownStream.
 			mpStreamAbstractionAAMP->StopInjection();
-#ifndef AAMP_STOP_SINK_ON_SEEK
+
 			// TODO: There is a possible issue hiding in the bushes. The audio codec switching use-case, Flush is done first and the Configure()
 			// So the new audio playbin will miss the Flush() and might not sync with video (which received the Flush) properly
 			if (((mMediaFormat != eMEDIAFORMAT_HLS_MP4) && (!ISCONFIGSET_PRIV(eAAMPConfig_EnablePTSReStamp))) ||  mVideoFormat != FORMAT_ISO_BMFF )
@@ -3115,13 +3115,7 @@ bool PrivateInstanceAAMP::ProcessPendingDiscontinuity()
 					}
  				}
 			}
-#else
-			StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(this);
-			if (sink)
-			{
-				sink->Stop(true);
-			}
-#endif
+
 			mpStreamAbstractionAAMP->GetStreamFormat(mVideoFormat, mAudioFormat, mAuxFormat, mSubtitleFormat);
 			StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(this);
 			if (sink)
@@ -4125,41 +4119,6 @@ bool PrivateInstanceAAMP::GetFile( std::string remoteUrl, AampMediaType mediaTyp
 							mFogTSBEnabled = false;
 						}
 						effectiveUrlPtr = aamp_CurlEasyGetinfoString(curl, CURLINFO_EFFECTIVE_URL);
-						if((mediaType == eMEDIATYPE_INIT_VIDEO || mediaType ==  eMEDIATYPE_INIT_AUDIO))
-						{
-							IsoBmffBuffer isobuf;
-							isobuf.setBuffer(
-											 reinterpret_cast<uint8_t *>(context.buffer->GetPtr() ),
-											 context.buffer->GetLen() );
-
-							bool bParse = false;
-							try
-							{
-								bParse = isobuf.parseBuffer();
-							}
-							catch( std::bad_alloc& ba)
-							{
-								AAMPLOG_ERR("Bad allocation: %s", ba.what() );
-							}
-							catch( std::exception &e)
-							{
-								AAMPLOG_ERR("Unhandled exception: %s", e.what() );
-							}
-							catch( ... )
-							{
-								AAMPLOG_ERR("Unknown exception");
-							}
-
-							if(!bParse)
-							{
-								AAMPLOG_ERR("[%d] Cant Find TimeScale. No Box available in Init File !!!", mediaType);
-							}
-							else
-							{
-								AAMPLOG_INFO("[%d] Buffer Length: %zu", mediaType, context.buffer->GetLen() );
-
-							}
-						}
 					}
 
 					if(effectiveUrlPtr)
@@ -4805,12 +4764,8 @@ void PrivateInstanceAAMP::TeardownStream(bool newTune)
 	lock.unlock();
 	if (streamerIsActive)
 	{
-#ifdef AAMP_STOP_SINK_ON_SEEK
-		const bool forceStop = true;
-#else
 		const bool forceStop = false;
-#endif
-		if (!forceStop && ((!newTune) || ISCONFIGSET_PRIV(eAAMPConfig_PreservePipeline)))
+		if (!forceStop && !newTune)
 		{
 			if ((eMEDIAFORMAT_PROGRESSIVE == mMediaFormat) && (true == mSeekOperationInProgress))
 			{
@@ -5446,7 +5401,7 @@ void PrivateInstanceAAMP::TuneHelper(TuneType tuneType, bool seekWhilePaused)
 		}
 		culledOffset = culledSeconds;
 		UpdateProfileCappedStatus();
-#ifndef AAMP_STOP_SINK_ON_SEEK
+
 		/*
 		Do not modify below log line since it is used in checking L2 test case results.
 		If need to be modified then make sure below test cases are modified to
@@ -5455,7 +5410,7 @@ void PrivateInstanceAAMP::TuneHelper(TuneType tuneType, bool seekWhilePaused)
 		AAMP-CONFIG-2029_seekMidFragment
 		*/
 		AAMPLOG_MIL("Updated seek_pos_seconds %f culledSeconds/start %f culledOffset %f", seek_pos_seconds, culledSeconds, culledOffset);
-#endif
+
 		mpStreamAbstractionAAMP->GetStreamFormat(mVideoFormat, mAudioFormat, mAuxFormat, mSubtitleFormat);
 		AAMPLOG_INFO("TuneHelper : mVideoFormat %d, mAudioFormat %d mAuxFormat %d", mVideoFormat, mAudioFormat, mAuxFormat);
 
@@ -5503,76 +5458,27 @@ void PrivateInstanceAAMP::TuneHelper(TuneType tuneType, bool seekWhilePaused)
 			mFirstVideoFrameDisplayedEnabled = true;
 			mPauseOnFirstVideoFrameDisp = true;
 		}
-
-#ifndef AAMP_STOP_SINK_ON_SEEK
-		if (mMediaFormat == eMEDIAFORMAT_HLS)
-		{
-			//Live adjust or syncTrack occurred, sent an updated flush event
-			if ((!newTune) || ISCONFIGSET_PRIV(eAAMPConfig_PreservePipeline))
-			{
-				StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(this);
-				if (sink)
-				{
-					sink->Flush(mpStreamAbstractionAAMP->GetFirstPTS(), rate);
-				}
-			}
-		}
-		else if (mMediaFormat == eMEDIAFORMAT_DASH)
-		{
-			/*
-			   commenting the Flush call with updatedSeekPosition as a work around for
-			   Trick play freeze issues observed for partner cDVR content
-			   @TODO Need to investigate and identify proper way to send Flush and segment
-			   events to avoid the freeze
-			if (!(newTune || (eTUNETYPE_RETUNE == tuneType)) && !IsFogTSBSupported())
-			{
-				StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(this);
-				if (sink)
-				{
-					sink->Flush(updatedSeekPosition, rate);
-				}
-			}
-			else
-			{
-				StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(this);
-				if (sink)
-				{
-					sink->Flush(0, rate);
-				}
-			}
-				*/
-			StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(this);
-			if (sink && (mAampLLDashServiceData.lowLatencyMode || !ISCONFIGSET_PRIV(eAAMPConfig_EnableMediaProcessor)))
-			{
-				/* Do flush to PTS position when:
-				*	Not PTS restamp
-				*	OR normal play
-				* This means we skip this flush when
-				*	trickplay and PTS restamp
-				*	and we are using the flush(0) that occurs else where
-				*/
-				if (!ISCONFIGSET_PRIV(eAAMPConfig_EnablePTSReStamp) || rate == AAMP_NORMAL_PLAY_RATE )
-				{
-					sink->Flush(mpStreamAbstractionAAMP->GetFirstPTS(), rate);
-				}
-			}
-		}
-		else if (mMediaFormat == eMEDIAFORMAT_PROGRESSIVE)
+		/* executing the flush earlier in order to avoid the tune delay while waiting for the first video and audio fragment to download
+		 * and retrieving the pts value, as in the segmenttimeline streams we get the pts value from manifest itself
+		 */
+		if (mpStreamAbstractionAAMP->DoEarlyStreamSinkFlush(newTune, rate))
 		{
 			StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(this);
 			if (sink)
 			{
-				sink->Flush(updatedSeekPosition, rate);
+				double flushPosition = (mMediaFormat == eMEDIAFORMAT_PROGRESSIVE) ? updatedSeekPosition : mpStreamAbstractionAAMP->GetFirstPTS();
+				sink->Flush(flushPosition, rate);
 			}
-			// ff trick mode, mp4 content is single file and muted audio to avoid glitch
+		}
+		// Additional logic for progressive content
+		if (mMediaFormat == eMEDIAFORMAT_PROGRESSIVE)
+		{
 			if (rate > AAMP_NORMAL_PLAY_RATE)
 			{
-				volume = 0;
+				volume = 0; // Mute audio to avoid glitches
 			}
-			// reset seek_pos after updating playback start, since mp4 content provide absolute position value
-			seek_pos_seconds = 0;
+			seek_pos_seconds = 0; // Reset seek position
 		}
-#endif
 
 		// Increase Buffer value dynamically according to Max Profile Bandwidth to accommodate HiFi Content Buffers
 		if (newTune && GETCONFIGOWNER_PRIV(eAAMPConfig_GstVideoBufBytes) == AAMP_DEFAULT_SETTING && mpStreamAbstractionAAMP && mpStreamAbstractionAAMP->GetProfileCount())
@@ -5641,7 +5547,7 @@ void PrivateInstanceAAMP::TuneHelper(TuneType tuneType, bool seekWhilePaused)
 	{
 		// Update culled seconds and duration based on TSB when watching live with AAMP Local TSB enabled
 		culledSeconds = seek_pos_seconds;
-		durationSeconds -= culledSeconds;
+		durationSeconds = mAbsoluteEndPosition - culledSeconds;
 	}
 
 	if (tuneType == eTUNETYPE_SEEK || tuneType == eTUNETYPE_SEEKTOLIVE || tuneType == eTUNETYPE_SEEKTOEND)
@@ -7964,29 +7870,16 @@ void PrivateInstanceAAMP::ReportContentGap(long long timeMilliseconds, std::stri
  */
 void PrivateInstanceAAMP::InitializeCC(unsigned long decoderHandle)
 {
-#ifdef AAMP_STOP_SINK_ON_SEEK
-	/*Do not send event on trickplay as CC is not enabled*/
-	if (AAMP_NORMAL_PLAY_RATE != rate)
-	{
-		AAMPLOG_WARN("PrivateInstanceAAMP: not sending cc handle as rate = %f", rate);
-		return;
-	}
-#endif
-
-		PlayerCCManager::GetInstance()->Init((void *)decoderHandle);
-
+	PlayerCCManager::GetInstance()->Init((void *)decoderHandle);
 	if (ISCONFIGSET_PRIV(eAAMPConfig_NativeCCRendering))
 	{
-
 		int overrideCfg = GETCONFIGVALUE_PRIV(eAAMPConfig_CEAPreferred);
 		if (overrideCfg == 0)
 		{
 			AAMPLOG_WARN("PrivateInstanceAAMP: CC format override to 608 present, selecting 608CC");
 			PlayerCCManager::GetInstance()->SetTrack("CC1");
 		}
-
 	}
-
 }
 
 /**
@@ -9781,7 +9674,6 @@ void  PrivateInstanceAAMP::FlushTrack(AampMediaType type,double pos)
  */
 void PrivateInstanceAAMP::FlushStreamSink(double position, double rate)
 {
-#ifndef AAMP_STOP_SINK_ON_SEEK
 	StreamSink *sink = AampStreamSinkManager::GetInstance().GetStreamSink(this);
 	if (sink)
 	{
@@ -9796,7 +9688,6 @@ void PrivateInstanceAAMP::FlushStreamSink(double position, double rate)
 			sink->SeekStreamSink(position, rate);
 		}
 	}
-#endif
 }
 
 /**
@@ -11885,18 +11776,8 @@ void PrivateInstanceAAMP::SetPreferredLanguages(const char *languageList, const 
 							{
 								AAMPLOG_INFO("Recreate the TSB Session Manager");
 								CreateTsbSessionManager();
-								/* Check if we are on the live edge or in the TSB */
-								if(IsLocalAAMPTsbInjection())
-								{
-									AAMPLOG_INFO("Playing from TSB Buffer!");
-									SetLocalAAMPTsbInjection(false);
-									TuneHelper(eTUNETYPE_NEW_END);
-								}
-								else
-								{
-									AAMPLOG_INFO("Playing from the live edge!");
-									TuneHelper(eTUNETYPE_SEEKTOLIVE);
-								}
+								SetLocalAAMPTsbInjection(false);
+								TuneHelper(eTUNETYPE_SEEKTOLIVE);
 							}
 							else
 							{
@@ -12278,6 +12159,12 @@ void PrivateInstanceAAMP::SetPreferredTextLanguages(const char *param )
 						}
 					}
 					seek_pos_seconds = GetPositionSeconds();
+
+					if (IsLocalAAMPTsb())
+					{
+						mAampTsbLanguageChangeInProgress = true;
+					}
+
 					TeardownStream(false);
 					if(IsFogTSBSupported() &&
 				 	((languagePresent && !languageAvailabilityInManifest) ||
@@ -12289,7 +12176,28 @@ void PrivateInstanceAAMP::SetPreferredTextLanguages(const char *param )
 						ReloadTSB();
 					}
 
-					TuneHelper(eTUNETYPE_SEEK);
+					if(IsLocalAAMPTsb())
+					{
+						AAMPLOG_WARN("Flush the TSB before seeking to live");
+
+						/* If AAMP TSB is enabled, flush the TSB before seeking to live */
+						if(mTSBSessionManager)
+						{
+							AAMPLOG_INFO("Recreate the TSB Session Manager and Tune to Live");
+							CreateTsbSessionManager();
+							SetLocalAAMPTsbInjection(false);
+							TuneHelper(eTUNETYPE_SEEKTOLIVE);
+						}
+						else
+						{
+							AAMPLOG_ERR("TSB Session Manager is NULL");
+						}
+					}
+					else
+					{
+						TuneHelper(eTUNETYPE_SEEK);
+					}
+
 					discardEnteringLiveEvt = false;
 				}
 				ReleaseStreamLock();
@@ -13146,7 +13054,6 @@ long PrivateInstanceAAMP::LoadFogConfig()
 		}
 	}
 
-
 	jsonStr = jsondata.print_UnFormatted();
 	AAMPLOG_TRACE("%s", jsonStr.c_str());
 	std::string remoteUrl = "127.0.0.1:9080/playerconfig";
@@ -13548,6 +13455,32 @@ bool PrivateInstanceAAMP::IsLocalAAMPTsbInjection()
 	return mLocalAAMPInjectionEnabled;
 }
 
+void PrivateInstanceAAMP::UpdateLocalAAMPTsbInjection()
+{
+	bool TSBInjectionActive = false;
+
+	if (mpStreamAbstractionAAMP)
+	{
+		for (int i = 0; i < AAMP_TRACK_COUNT; i++)
+		{
+			auto track = mpStreamAbstractionAAMP->GetMediaTrack(static_cast<TrackType>(i));
+			if ((nullptr != track) && (track->Enabled()))
+			{
+				if (track->IsLocalTSBInjection())
+				{
+					TSBInjectionActive = true;
+					break;
+				}
+			}
+		}
+
+		if (!TSBInjectionActive)
+		{
+			SetLocalAAMPTsbInjection(false);
+		}
+	}
+}
+
 void PrivateInstanceAAMP::IncreaseGSTBufferSize()
 {
 	int minVideoBufValue = GST_VIDEOBUFFER_SIZE_BYTES; // 3-4Mb for Non-4K, 12-15 Mb for 4K
@@ -13751,4 +13684,31 @@ void PrivateInstanceAAMP::CalculateTrickModePositionEOS(void)
 double PrivateInstanceAAMP::GetLivePlayPosition(void)
 {
 	return (NOW_STEADY_TS_SECS_FP - mLiveEdgeDeltaFromCurrentTime - mLiveOffset);
+}
+
+/**
+ *    @brief To increment gaps between periods for dash
+ *    return none
+ */
+void PrivateInstanceAAMP::IncrementGaps()
+{
+	if(mVideoEnd)
+	{
+		mVideoEnd->IncrementGaps();
+	}
+}
+
+/**
+ * @fn GetStreamPositionMs
+ *
+ * @return double, current position in the stream
+ */
+double PrivateInstanceAAMP::GetStreamPositionMs()
+{
+	double pos = (double)GetPositionMilliseconds();
+	if (mProgressReportOffset >= 0)
+	{
+		pos -= (mProgressReportOffset * 1000);
+	}
+	return pos;
 }
