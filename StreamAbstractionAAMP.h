@@ -648,7 +648,7 @@ public:
 	 *
 	 * @return true if injection is from local AAMP TSB, false otherwise
 	 */
-	bool IsLocalTSBInjection() {return mIsLocalTSBInjection.load();}
+	bool IsLocalTSBInjection();
 
 	/**
 	 * @brief Returns if the end of track reached.
