@@ -2,7 +2,7 @@ PV:pn-apparmor-generic="1.0.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.10"
+PV:pn-devicesettings = "1.0.11"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -351,7 +351,7 @@ PV:pn-xmidt-agent = "1.0.0"
 PR:pn-xmidt-agent = "r0"
 PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdmagent = "2.0.0"
+PV:pn-rdmagent = "2.0.1"
 PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
