@@ -63,8 +63,6 @@ void StreamAbstractionAAMP_MPD::Stop(bool clearChannelData) {  }
 
 void StreamAbstractionAAMP_MPD::GetStreamFormat(StreamOutputFormat &primaryOutputFormat, StreamOutputFormat &audioOutputFormat, StreamOutputFormat &auxAudioOutputFormat, StreamOutputFormat &subtitleOutputFormat) {  }
 
-double StreamAbstractionAAMP_MPD::GetStreamPosition() { return 0; }
-
 double StreamAbstractionAAMP_MPD::GetFirstPTS() { return 0; }
 
 double StreamAbstractionAAMP_MPD::GetMidSeekPosOffset() { 
@@ -234,6 +232,16 @@ void StreamAbstractionAAMP_MPD::SeekPosUpdate(double secondsRelativeToTuneTime)
     {
         g_mockStreamAbstractionAAMP_MPD->SeekPosUpdate(secondsRelativeToTuneTime);
     }
+}
+
+double StreamAbstractionAAMP_MPD::GetStreamPosition()
+{
+    if (g_mockStreamAbstractionAAMP_MPD)
+    {
+        g_mockStreamAbstractionAAMP_MPD->GetStreamPosition();
+    }
+
+    return 0;
 }
 
 void StreamAbstractionAAMP_MPD::NotifyFirstVideoPTS(unsigned long long, unsigned long)
