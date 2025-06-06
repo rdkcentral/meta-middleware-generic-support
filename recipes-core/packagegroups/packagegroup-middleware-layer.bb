@@ -174,6 +174,7 @@ RDEPENDS:${PN} = " \
     os-release \
     wlan-p2p \
     thunderhangrecovery \
+    gdb \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
