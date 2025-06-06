@@ -296,11 +296,10 @@ public:
 	void initProcessorForRestamp();
 
 	/**
-	 * @brief Function to set pass through mode
-	 * This will be used to send the segments as it is without any processing
-	 * @param[in] mode - true for pass through mode, false otherwise
+	 * @brief getPassThroughMode
+	 * @return true if pass through mode, false otherwise
 	 */
-	void setPassThroughMode(bool mode);
+	bool getPassThroughMode() { return passThroughMode; }
 
 private:
 
