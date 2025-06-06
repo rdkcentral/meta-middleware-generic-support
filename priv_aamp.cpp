@@ -12206,6 +12206,12 @@ void PrivateInstanceAAMP::SetPreferredTextLanguages(const char *param )
 						}
 					}
 					seek_pos_seconds = GetPositionSeconds();
+
+					if (IsLocalAAMPTsb())
+					{
+						mAampTsbLanguageChangeInProgress = true;
+					}
+
 					TeardownStream(false);
 					if(IsFogTSBSupported() &&
 				 	((languagePresent && !languageAvailabilityInManifest) ||
@@ -12217,7 +12223,28 @@ void PrivateInstanceAAMP::SetPreferredTextLanguages(const char *param )
 						ReloadTSB();
 					}
 
-					TuneHelper(eTUNETYPE_SEEK);
+					if(IsLocalAAMPTsb())
+					{
+						AAMPLOG_WARN("Flush the TSB before seeking to live");
+
+						/* If AAMP TSB is enabled, flush the TSB before seeking to live */
+						if(mTSBSessionManager)
+						{
+							AAMPLOG_INFO("Recreate the TSB Session Manager and Tune to Live");
+							CreateTsbSessionManager();
+							SetLocalAAMPTsbInjection(false);
+							TuneHelper(eTUNETYPE_SEEKTOLIVE);
+						}
+						else
+						{
+							AAMPLOG_ERR("TSB Session Manager is NULL");
+						}
+					}
+					else
+					{
+						TuneHelper(eTUNETYPE_SEEK);
+					}
+
 					discardEnteringLiveEvt = false;
 				}
 				ReleaseStreamLock();
