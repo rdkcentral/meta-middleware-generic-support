@@ -236,12 +236,13 @@ void StreamAbstractionAAMP_MPD::SeekPosUpdate(double secondsRelativeToTuneTime)
 
 double StreamAbstractionAAMP_MPD::GetStreamPosition()
 {
+	double position = 0;
     if (g_mockStreamAbstractionAAMP_MPD)
     {
-        g_mockStreamAbstractionAAMP_MPD->GetStreamPosition();
+        position = g_mockStreamAbstractionAAMP_MPD->GetStreamPosition();
     }
 
-    return 0;
+    return position;
 }
 
 void StreamAbstractionAAMP_MPD::NotifyFirstVideoPTS(unsigned long long, unsigned long)
