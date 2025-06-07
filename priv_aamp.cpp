@@ -1230,6 +1230,7 @@ PrivateInstanceAAMP::PrivateInstanceAAMP(AampConfig *config) : mReportProgressPo
 	, mTrickModePositionEOS(0.0)
 	, mTSBSessionManager(NULL)
 	, mLocalAAMPTsb(false), mLocalAAMPInjectionEnabled(false)
+	, mLocalAAMPTsbFromConfig(false)
 	, mbPauseOnStartPlayback(false)
 	, mTSBStore(nullptr)
 	, mIsFlushFdsInCurlStore(false)
@@ -5711,7 +5712,7 @@ void PrivateInstanceAAMP::Tune(const char *mainManifestUrl,
 	tmpVar = GETCONFIGVALUE_PRIV(eAAMPConfig_PlaylistTimeout);
 	mPlaylistTimeoutMs = CONVERT_SEC_TO_MS(tmpVar);
 	mTsbType = GETCONFIGVALUE_PRIV(eAAMPConfig_TsbType);
-
+	mLocalAAMPTsbFromConfig = ISCONFIGSET_PRIV(eAAMPConfig_LocalTSBEnabled) || mTsbType == "local";
 	if(mPlaylistTimeoutMs <= 0) mPlaylistTimeoutMs = mManifestTimeoutMs;
 	if(AAMP_DEFAULT_SETTING == GETCONFIGOWNER_PRIV(eAAMPConfig_PlaylistTimeout))
 	{
@@ -6810,7 +6811,7 @@ std::string PrivateInstanceAAMP::GetThumbnails(double tStart, double tEnd)
 		}
 		cJSON_AddNumberToObject(root,"width",width);
 		cJSON_AddNumberToObject(root,"height",height);
-		
+
 		cJSON *tile = cJSON_AddArrayToObject(root,"tile");
 		for( const ThumbnailData &iter : datavec )
 		{
@@ -13132,7 +13133,7 @@ void PrivateInstanceAAMP::CreateTsbSessionManager()
 			AAMPLOG_INFO("Destroying TSB Session Manager %p", mTSBSessionManager);
 			SAFE_DELETE(mTSBSessionManager);
 		}
-		if(ISCONFIGSET_PRIV(eAAMPConfig_LocalTSBEnabled))
+		if(IsLocalAAMPTsbFromConfig())
 		{
 			if (ISCONFIGSET_PRIV(eAAMPConfig_EnablePTSReStamp))
 			{
