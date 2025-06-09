@@ -106,7 +106,6 @@ RDEPENDS:${PN} = " \
     lighttpd \
     openssl \
     wpa-supplicant \
-    dnsmasq \
     dropbear \
     libopus \
     libwpe \
