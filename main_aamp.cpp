@@ -2413,22 +2413,6 @@ void PlayerInstanceAAMP::SetPreferredSubtitleLanguage(const char* language)
 }
 
 /**
- *  @brief Set parallel playlist download config value.
- */
-void PlayerInstanceAAMP::SetParallelPlaylistDL(bool bValue)
-{
-	SETCONFIGVALUE(AAMP_APPLICATION_SETTING,eAAMPConfig_PlaylistParallelFetch,bValue);
-}
-
-/**
- *  @brief Set parallel playlist download config value for linear
- */
-void PlayerInstanceAAMP::SetParallelPlaylistRefresh(bool bValue)
-{
-	SETCONFIGVALUE(AAMP_APPLICATION_SETTING,eAAMPConfig_PlaylistParallelRefresh,bValue);
-}
-
-/**
  *  @brief Set Westeros sink configuration
  */
 void PlayerInstanceAAMP::SetWesterosSinkConfig(bool bValue)
@@ -2672,7 +2656,15 @@ std::string PlayerInstanceAAMP::GetAvailableAudioTracks(bool allTrack)
 	std::string ret;
 	if( aamp )
 	{
-		ret = aamp->GetAvailableAudioTracks(allTrack);
+		AAMPPlayerState state = aamp->GetState();
+		if (state != eSTATE_IDLE && state != eSTATE_ERROR)
+		{
+			ret = aamp->GetAvailableAudioTracks(allTrack);
+		}
+		else
+		{
+			AAMPLOG_WARN("operation is not allowed when player in %d state !", state);
+		}
 	}
 	return ret;
 }
