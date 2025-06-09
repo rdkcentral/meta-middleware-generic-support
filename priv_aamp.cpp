@@ -148,6 +148,7 @@ std::shared_ptr<PlayerIarmRfcInterface> pPlayerIarmRfcInterface = NULL;
 static unsigned int ui32CurlTrace = 0;
 
 bool PrivateInstanceAAMP::mTrackGrowableBufMem;
+
 /**
  * @struct CurlCbContextSyncTime
  * @brief context during curl callbacks
@@ -6102,7 +6103,6 @@ void PrivateInstanceAAMP::Tune(const char *mainManifestUrl,
 	// do not change location of this set, it should be done after sending previous VideoEnd data which
 	// is done in TuneHelper->SendVideoEndEvent function.
 	this->mTraceUUID = sTraceId;
-
 }
 
 /**
@@ -11852,13 +11852,6 @@ void PrivateInstanceAAMP::SetPreferredTextLanguages(const char *param )
 	bool accessibilityPresent = false;
 	std::vector<std::string> inputTextLanguagesList;
 
-	// IsLocalAAMPTsb will be set once the playback of HiFi LLD stream starts and local TSB config is enabled
-	if (IsLocalAAMPTsb())
-	{
-		AAMPLOG_WARN("Local TSB playback is in progress!!. SetPreferredTextLanguages() will be ignored!!");
-		return;
-	}
-
 	try
 	{
 		jsObject = new AampJsonObject(param);
@@ -13714,4 +13707,23 @@ double PrivateInstanceAAMP::GetStreamPositionMs()
 		pos -= (mProgressReportOffset * 1000);
 	}
 	return pos;
+}
+
+/**
+ * @brief Send MonitorAVEvent
+ * @param[in] status - Current MonitorAV status
+ * @param[in] videoPositionMS - video position in milliseconds
+ * @param[in] audioPositionMS - audio position in milliseconds
+ * @param[in] timeInStateMS - time in state in milliseconds
+ * @details This function sends a MonitorAVStatusEvent to the event manager.
+ * It is used to monitor the audio and video status during playback.
+ * It is called when the playback is enabled (mbPlayEnabled is true).
+ */
+void PrivateInstanceAAMP::SendMonitorAVEvent(const std::string &status, int64_t videoPositionMS, int64_t audioPositionMS, uint64_t timeInStateMS)
+{
+	if(mbPlayEnabled)
+	{
+		MonitorAVStatusEventPtr evt = std::make_shared<MonitorAVStatusEvent>(status, videoPositionMS, audioPositionMS, timeInStateMS, GetSessionId());
+		mEventManager->SendEvent(evt, AAMP_EVENT_SYNC_MODE);
+	}
 }
