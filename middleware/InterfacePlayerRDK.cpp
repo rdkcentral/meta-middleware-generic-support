@@ -2922,7 +2922,6 @@ bool InterfacePlayerRDK::SendHelper(int type, const void *ptr, size_t len, doubl
 			{
 				ForwardBuffersToAuxPipeline(buffer);
 			}
-			assert( !m_gstConfigParam->useMp4Demux );
 			if( m_gstConfigParam->useMp4Demux )
 			{
 				static uint32_t timescale[2]; // FIXME!
