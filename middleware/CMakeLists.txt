@@ -109,11 +109,8 @@ set(LIBPLAYERGSTINTERFACE_HEADERS
 	vendor/brcm/BrcmSocInterface.h
 	vendor/default/DefaultSocInterface.h
     subtitle/vttCue.h
-<<<<<<< HEAD
-	ProcessHander.h
-=======
->>>>>>> 2e4c982d605dc16f8162ed7bdace5e90cb33d1d9
-	)
+    ProcessHander.h
+)
 
 install(FILES closedcaptions/CCTrackInfo.h
 	PlayerScheduler.h
@@ -125,7 +122,7 @@ install(FILES closedcaptions/CCTrackInfo.h
 	closedcaptions/PlayerCCManager.h
 	PlayerUtils.h
 	drm/ocdm/opencdmsessionadapter.h
-	drm/aes/Aes.h
+	drm/aes/Aes.
 	drm/DrmMemorySystem.h drm/DrmSessionManager.h drm/DrmSystems.h
 	drm/DrmData.h drm/DrmInfo.h drm/DrmMediaFormat.h drm/DrmCallbacks.h
 	drm/DrmSession.h drm/ClearKeyDrmSession.h drm/DrmSessionFactory.h drm/ocdm/opencdmsessionadapter.h
