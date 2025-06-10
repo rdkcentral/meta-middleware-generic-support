@@ -28,8 +28,8 @@
 #include <cstring> // for memcpy
 #include <gst/app/gstappsrc.h>
 
-//#define PRINTF(...)
-#define PRINTF printf
+#define PRINTF(...)
+//#define PRINTF printf
 
 struct Mp4Sample
 {
