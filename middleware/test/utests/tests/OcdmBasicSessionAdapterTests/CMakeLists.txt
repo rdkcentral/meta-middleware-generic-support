@@ -40,6 +40,7 @@ include_directories(${PLAYER_ROOT}/drm/ocdm)
 include_directories(${PLAYER_ROOT}/externals/playersecmanager)
 include_directories(${PLAYER_ROOT}/drm/helper)
 include_directories(${PLAYER_ROOT}/playerLogManager)
+include_directories(${PLAYER_ROOT}/baseConversion)
 
 set(TEST_SOURCES FunctionalTests.cpp
 		 OcdmBasicSessionAdapterTests.cpp)
@@ -47,7 +48,10 @@ set(TEST_SOURCES FunctionalTests.cpp
 set(PLAYER_SOURCES ${PLAYER_ROOT}/drm/ocdm/OcdmBasicSessionAdapter.cpp
                  ${PLAYER_ROOT}/drm/helper/DrmHelper.cpp
                  ${PLAYER_ROOT}/drm/DrmSession.cpp
-		 ${PLAYER_ROOT}/playerLogManager/PlayerLogManager.cpp)
+		 ${PLAYER_ROOT}/playerLogManager/PlayerLogManager.cpp
+     ${PLAYER_ROOT}/ProcessHandler.cpp
+     ${PLAYER_ROOT}/PlayerUtils.cpp
+     ${PLAYER_ROOT}/baseConversion/_base64.cpp)
 
 
 #[[class OCDMBasicSessionAdapter inherits from class OCDMSessionAdapter,

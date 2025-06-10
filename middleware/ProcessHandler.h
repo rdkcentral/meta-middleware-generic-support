@@ -27,7 +27,6 @@
 #define __PROCESS_HANDLER_H__
 
 #include <string>
-#include "AampConfig.h"
 
 /**
  * @class ProcessHandler
