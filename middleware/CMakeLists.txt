@@ -109,7 +109,7 @@ set(LIBPLAYERGSTINTERFACE_HEADERS
 	vendor/brcm/BrcmSocInterface.h
 	vendor/default/DefaultSocInterface.h
     subtitle/vttCue.h
-    ProcessHander.h
+    ProcessHandler.h
 )
 
 install(FILES closedcaptions/CCTrackInfo.h
