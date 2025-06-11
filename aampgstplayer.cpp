@@ -260,6 +260,7 @@ void AAMPGstPlayer::RegisterFirstFrameCallbacks()
 {
 	playerInstance->callbackMap[InterfaceCB::firstVideoFrameDisplayed] = [this]()
 	{
+		UsingPlayerId playerId(aamp->mPlayerId);
 		aamp->NotifyFirstVideoFrameDisplayed();
 	};
 	playerInstance->callbackMap[InterfaceCB::idleCb] = [this]()
@@ -279,13 +280,16 @@ void AAMPGstPlayer::RegisterFirstFrameCallbacks()
 	};
 	playerInstance->callbackMap[InterfaceCB::firstVideoFrameReceived] = [this]()
 	{
+		UsingPlayerId playerId(aamp->mPlayerId);
 		aamp->NotifyFirstFrameReceived(this->playerInstance->GetCCDecoderHandle());
 	};
 	playerInstance->callbackMap[InterfaceCB::notifyEOS] = [this]()
 	{
+		UsingPlayerId playerId(aamp->mPlayerId);
 		aamp->NotifyEOSReached();
 	};
 	playerInstance->FirstFrameCallback([this](int mediatype, bool notifyFirstBuffer, bool initCC, bool& requireFirstVideoFrameDisplay, bool &audioOnly) {
+		UsingPlayerId playerId(aamp->mPlayerId);
 		this->NotifyFirstFrame((AampMediaType)mediatype, notifyFirstBuffer, initCC, requireFirstVideoFrameDisplay, audioOnly);
 	});
 	playerInstance->setupStreamCallbackMap[InterfaceCB::startNewSubtitleStream] = [this](int streamId)
@@ -306,6 +310,7 @@ void AAMPGstPlayer::RegisterFirstFrameCallbacks()
 	});
 	playerInstance->TearDownCallback([this](bool status, int mediaType)
 									 {
+		UsingPlayerId playerId(aamp->mPlayerId);
 		if(status)
 		{
 			privateContext->mBufferControl[(AampMediaType)mediaType].teardownStart();
@@ -536,6 +541,7 @@ static void HandleRedButtonCallback(const char *data, AAMPGstPlayer * _this)
  */
 static void HandleBusMessage(const BusEventData busEvent, AAMPGstPlayer * _this)
 {
+	UsingPlayerId playerId( _this->aamp->mPlayerId );
 	switch(busEvent.msgType)
 	{
 		case MESSAGE_ERROR:
