@@ -33,12 +33,8 @@
 #include <gst/gst.h>
 
 #ifdef USE_EXTERNAL_STATS
-// narrowly define MediaType for backwards compatibility
-#define MediaType GstMediaType
 #define eMEDIATYPE_VIDEO 0
-#include "aamp-xternal-stats.h"
-#undef eMEDIATYPE_VIDEO
-#undef MediaType
+#include "player-xternal-stats.h"
 #endif
 #include "PlayerUtils.h"
 
