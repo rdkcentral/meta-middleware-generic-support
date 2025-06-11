@@ -2,7 +2,7 @@ PV:pn-apparmor-generic="1.0.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.9"
+PV:pn-devicesettings = "1.0.11"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -50,7 +50,7 @@ PV:pn-rtremote = "2.0.0"
 PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.4.2"
+PV:pn-telemetry = "1.4.3"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -82,10 +82,9 @@ PV:pn-qtvirtualkeyboard = "5.15.7"
 PR:pn-qtvirtualkeyboard = "r0"
 PACKAGE_ARCH:pn-qtvirtualkeyboard = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.4.0"
+PV:pn-aamp = "2.4.1"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
-
 
 
 PV:pn-audiocapturemgr = "1.0.0"
@@ -129,7 +128,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.0.9"
+PV:pn-entservices-casting = "1.0.11"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
@@ -137,11 +136,11 @@ PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "1.1.11"
+PV:pn-entservices-deviceanddisplay = "1.1.12"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.2.0"
+PV:pn-entservices-infra = "1.2.1"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
@@ -153,7 +152,7 @@ PV:pn-entservices-mediaanddrm = "1.1.0"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-peripherals = "1.0.4"
+PV:pn-entservices-peripherals = "1.0.5"
 PR:pn-entservices-peripherals = "r0"
 PACKAGE_ARCH:pn-entservices-peripherals = "${MIDDLEWARE_ARCH}"
 
@@ -171,23 +170,23 @@ PACKAGE_ARCH:pn-rdkshell = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-stunnel = "${MIDDLEWARE_ARCH}" 
 
-PV:pn-systimemgrfactory = "1.0.0"
+PV:pn-systimemgrfactory = "1.1.0"
 PR:pn-systimemgrfactory = "r1"
 PACKAGE_ARCH:pn-systimemgrfactory = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgr = "1.0.0"
+PV:pn-systimemgr = "1.1.0"
 PR:pn-systimemgr = "r0"
 PACKAGE_ARCH:pn-systimemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgrinetrface = "1.0.0"
+PV:pn-systimemgrinetrface = "1.1.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ctrlm-main = "1.0.9"
+PV:pn-ctrlm-main = "1.0.10"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"
 
-PV:pn-xr-voice-sdk = "1.0.4"
+PV:pn-xr-voice-sdk = "1.0.5"
 PR:pn-xr-voice-sdk = "r0"
 PACKAGE_ARCH:pn-xr-voice-sdk = "${MIDDLEWARE_ARCH}"
 
@@ -242,7 +241,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.3.12"
+PV:pn-entservices-apis = "1.4.2"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -271,7 +270,7 @@ PV:pn-xdial = "3.0.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "2.0.1"
+PV:pn-sysint = "2.2.0"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -293,7 +292,7 @@ PV:pn-memcr = "1.0.2"
 PR:pn-memcr = "r0"
 PACKAGE_ARCH:pn-memcr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-networkmanager-plugin = "0.18.0"
+PV:pn-networkmanager-plugin = "0.19.0"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
 
@@ -313,7 +312,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.14"
+PV:pn-thunderstartupservices = "1.0.15"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -352,7 +351,7 @@ PV:pn-xmidt-agent = "1.0.0"
 PR:pn-xmidt-agent = "r0"
 PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdmagent = "2.0.0"
+PV:pn-rdmagent = "2.0.1"
 PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
