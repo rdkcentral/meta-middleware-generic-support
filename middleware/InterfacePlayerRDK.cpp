@@ -33,7 +33,6 @@
 #include <gst/gst.h>
 
 #ifdef USE_EXTERNAL_STATS
-#define eMEDIATYPE_VIDEO 0
 #include "player-xternal-stats.h"
 #endif
 #include "PlayerUtils.h"
