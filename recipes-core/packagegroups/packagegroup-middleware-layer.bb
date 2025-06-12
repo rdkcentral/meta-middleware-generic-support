@@ -115,7 +115,7 @@ RDEPENDS:${PN} = " \
     nopoll \
     trower-base64 \
     webkitbrowser-plugin \
-    mfr-utils \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'debug-variant', 'mfr-utils', '', d)} \
     webcfg \
     systimemgrfactory \
     systimemgrinetrface \
