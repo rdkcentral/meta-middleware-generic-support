@@ -42,7 +42,8 @@ XiOne REALTEK STB RDKE Vendor Layer Release Notes
     - [Changes in component repositories](#changes-in-component-repositories)
 
 ## Release Description
-The aim of this release to provide the following fix:
+The aim of this release to provide the following fix on top of vendor release 7.0.1. this release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
+
   - [RDKEVD-815](https://ccp.sys.comcast.net/browse/RDKEVD-815) Perform wifi Driver initializing before the Network Service
   - [RDK-57996](https://ccp.sys.comcast.net/browse/RDK-57996) Provide the OSS delivery with "cgexec" package
   - [RDKEVD-1480](https://ccp.sys.comcast.net/browse/RDKEVD-1480) - Vendor Layer Mediarite Release 21.1
@@ -52,8 +53,7 @@ The aim of this release to provide the following fix:
   - [RDKEVD-1107](https://ccp.sys.comcast.net/browse/RDKEVD-1107) UNII3 - Removal of the RFC changes for enabling UNII3 for puck
   - [RDKEVD-799](https://ccp.sys.comcast.net/browse/RDKEVD-799) [DS-HAL] : dsDisplay - Set/Get AVI Info frame APIs
   - [RDKEVD-1317]( https://ccp.sys.comcast.net/browse/RDKEVD-1317) [XIONE-UK][VTS][L1] fix dsERR_NOT_INITIALIZED assertion errors
-  - [RDKEVD-863](https://ccp.sys.comcast.net/browse/RDKEVD-863) [RDKE][Xione-UK]- dsmgr service takes more time to start/initialize for     RDKE than RDKV
-on top of vendor release 7.0.1. this release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
+  - [RDKEVD-863](https://ccp.sys.comcast.net/browse/RDKEVD-863) [RDKE][Xione-UK]- dsmgr service takes more time to start/initialize for RDKE than RDKV.
 
 ## Release layer and components
 
