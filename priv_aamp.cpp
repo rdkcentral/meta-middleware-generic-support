@@ -13581,7 +13581,7 @@ void PrivateInstanceAAMP::SetLLDashChunkMode(bool enable)
 
 		if(stLLServiceData != NULL)
 		{
-			int timeout = ceil(stLLServiceData->fragmentDuration);
+			int timeout = ceil(stLLServiceData->fragmentDuration); // workaround: round up 1.92s(float) to 2(int)
 			SETCONFIGVALUE_PRIV(AAMP_TUNE_SETTING,eAAMPConfig_CurlDownloadStartTimeout,timeout);
 			SETCONFIGVALUE_PRIV(AAMP_TUNE_SETTING,eAAMPConfig_CurlStallTimeout,timeout);
 			SETCONFIGVALUE_PRIV(AAMP_TUNE_SETTING,eAAMPConfig_CurlDownloadLowBWTimeout,timeout);
