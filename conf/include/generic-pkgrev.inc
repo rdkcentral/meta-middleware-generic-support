@@ -2,7 +2,7 @@ PV:pn-apparmor-generic="1.0.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.11"
+PV:pn-devicesettings = "1.0.12"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -66,11 +66,11 @@ PV:pn-tr69hostif-headers = "1.1.6"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby = "3.14.0"
+PV:pn-dobby = "3.14.1"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby-thunderplugin = "3.14.0"
+PV:pn-dobby-thunderplugin = "3.14.1"
 PR:pn-dobby-thunderplugin = "r0"
 PACKAGE_ARCH:pn-dobby-thunderplugin = "${MIDDLEWARE_ARCH}"
 
@@ -147,7 +147,7 @@ PV:pn-entservices-infra = "1.4.3"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.1.0"
+PV:pn-entservices-inputoutput = "1.1.1"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
