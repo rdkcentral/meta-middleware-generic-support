@@ -26,7 +26,7 @@
 
 
 #ifndef MODULE_NAME
-#define MODULE_NAME EntosPlayerFireboltInterface
+#define MODULE_NAME playerfbinterface
 #endif
 
 
