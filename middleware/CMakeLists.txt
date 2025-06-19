@@ -336,6 +336,6 @@ install(TARGETS playergstinterface
 target_link_libraries(subtec PlayerLogManager)
 target_link_libraries(playergstinterface ${GSTVIDEO_LIBRARIES} ${LIBPLAYERGSTINTERFACE_DEPENDS})
 target_link_libraries(playergstinterface subtec)
-target_link_libraries(playergstinterface BaseConversion)
+target_link_libraries(playergstinterface baseconversion)
 target_link_libraries(playergstinterface playerfbinterface)
 set(LIBPLAYERGSTINTERFACE_SOURCES ${LIBPLAYERGSTINTERFACE_SOURCES} {LIBPLAYERGSTINTERFACE_MOCK_SOURCES})
