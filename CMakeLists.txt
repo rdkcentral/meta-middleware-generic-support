@@ -582,8 +582,8 @@ target_link_libraries(aamp tsb)
 if (CMAKE_INBUILT_AAMP_DEPENDENCIES)
 	target_link_libraries(aamp abr metrics)
 endif()
-target_link_libraries(aamp playergstinterface EntosPlayerFireboltInterface)
-target_link_libraries(aamp-cli playergstinterface EntosPlayerFireboltInterface)
+target_link_libraries(aamp playergstinterface playerfbinterface)
+target_link_libraries(aamp-cli playergstinterface playerfbinterface)
 
 install(TARGETS aamp-cli DESTINATION bin)
 
