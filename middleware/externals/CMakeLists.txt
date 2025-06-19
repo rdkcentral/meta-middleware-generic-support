@@ -99,7 +99,7 @@ string(STRIP "${LIB_EXT_DEPENDS}" LIB_EXT_DEPENDS)
 
 target_link_libraries(playerfbinterface ${LIB_EXT_DEPENDS})
 
-target_link_libraries(playerfbinterface PlayerLogManager)
+target_link_libraries(playerfbinterface playerlogmanager)
 target_link_libraries(playerfbinterface baseconversion)
 
 # Install the library and its headers
