@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(PlayerLogManager)
+project(playerlogmanager)
 
 include_directories(..)
 
@@ -20,19 +20,19 @@ if(CMAKE_USE_ETHAN_LOG)
      set(LIBPLAYERLOGMANAGER_DEFINES "${LIBPLAYERLOGMANAGER_DEFINES} -DUSE_ETHAN_LOG=1")
 endif()
 
-set(PlayerLogManager_SRC PlayerLogManager.cpp)
+set(playerlogmanager_SRC PlayerLogManager.cpp)
 
-add_library(PlayerLogManager SHARED ${PlayerLogManager_SRC})
+add_library(playerlogmanager SHARED ${playerlogmanager_SRC})
 
-set_target_properties(PlayerLogManager PROPERTIES PUBLIC_HEADER "PlayerLogManager.h")
+set_target_properties(playerlogmanager PROPERTIES PUBLIC_HEADER "PlayerLogManager.h")
 
-set_target_properties(PlayerLogManager PROPERTIES COMPILE_FLAGS "${LIBPLAYERLOGMANAGER_DEFINES}")
+set_target_properties(playerlogmanager PROPERTIES COMPILE_FLAGS "${LIBPLAYERLOGMANAGER_DEFINES}")
 
 string(STRIP "${LIBPLAYERLOGMANAGER_DEPENDS}" LIBPLAYERLOGMANAGER_DEPENDS)
 
-target_link_libraries(PlayerLogManager ${LIBPLAYERLOGMANAGER_DEPENDS})
+target_link_libraries(playerlogmanager ${LIBPLAYERLOGMANAGER_DEPENDS})
 
 # Install the library and its headers
-install(TARGETS PlayerLogManager
+install(TARGETS playerlogmanager
     DESTINATION lib
     PUBLIC_HEADER DESTINATION include)
