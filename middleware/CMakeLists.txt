@@ -296,7 +296,7 @@ if (CMAKE_SUBTITLE_SUPPORT)
 
 	add_library(subtec_connector SHARED ${LIBSUBTECCONNECTOR_SOURCES})
 	target_link_libraries(subtec_connector ${LIBSUBTECCONNECTOR_DEPENDS})
-	target_link_libraries(subtec_connector PlayerLogManager)
+	target_link_libraries(subtec_connector playerlogmanager)
 	install(TARGETS subtec_connector DESTINATION lib)
 
 	set(LIBPLAYERGSTINTERFACE_SOURCES ${LIBPLAYERGSTINTERFACE_SOURCES} closedcaptions/subtec/PlayerSubtecCCManager.cpp)
@@ -333,7 +333,7 @@ install(TARGETS playergstinterface
     LIBRARY DESTINATION lib
     PUBLIC_HEADER DESTINATION lib/include
 )
-target_link_libraries(subtec PlayerLogManager)
+target_link_libraries(subtec playerlogmanager)
 target_link_libraries(playergstinterface ${GSTVIDEO_LIBRARIES} ${LIBPLAYERGSTINTERFACE_DEPENDS})
 target_link_libraries(playergstinterface subtec)
 target_link_libraries(playergstinterface baseconversion)
