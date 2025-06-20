@@ -36,6 +36,7 @@
 #include "SocUtils.h"
 
 class InterfacePlayerPriv;
+struct MonitorAVState;
 
 /**
  * @brief Function pointer for the idle task
@@ -110,6 +111,7 @@ struct Configs
 	int monitorAvsyncThresholdPositiveMs;
 	int monitorAvsyncThresholdNegativeMs;
 	int monitorAvJumpThresholdMs;
+	bool useMp4Demux;
 };
 
 typedef struct GstPlaybackQualityData
@@ -568,7 +570,7 @@ class InterfacePlayerRDK
 		 * @param[in] callback The callback function to be called when tearing down.
 		 */
 		void TearDownCallback(std::function<void(bool, int)> callback);
-
+ 
 		/**
 		 * @brief Notifies the first frame.
 		 * @param[in] mediaType The type of media.
@@ -834,6 +836,12 @@ class InterfacePlayerRDK
 		 * @param[in] debugLevel The level of debug logging to enable.
 		 */
 		void EnableGstDebugLogging(std::string debugLevel);
+
+		/**Add commentMore actions
+		 * @brief Gets the monitor AV state.
+		 * @return A pointer to the MonitorAVState structure containing the AV status or nullptr.
+		 */
+		const MonitorAVState& GetMonitorAVState();
 
 	private:
 		InterfacePlayerPriv *interfacePlayerPriv;
