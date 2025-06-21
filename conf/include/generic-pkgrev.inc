@@ -148,7 +148,7 @@ PV:pn-entservices-inputoutput = "1.1.1"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-mediaanddrm = "1.1.0"
+PV:pn-entservices-mediaanddrm = "1.1.3"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
@@ -241,7 +241,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.7.3"
+PV:pn-entservices-apis = "1.7.4"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
