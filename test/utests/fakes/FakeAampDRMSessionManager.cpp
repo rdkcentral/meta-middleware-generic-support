@@ -111,6 +111,11 @@ bool DrmSessionManager::IsKeyIdProcessed(std::vector<uint8_t> keyIdArray, bool &
 	return false;
 }
 
+void DrmSessionManager::UpdateDRMConfig(
+                       bool useSecManager, int licenseRetryWaitTime, int drmNetworkTimeout, int curlConnectTimeout, bool curlLicenseLogging, bool runtimeDRMConfig,
+                       int contentProtectionDataUpdateTimeout, bool enablePROutputProtection, bool propagateURIParam, bool isFakeTune)
+{
+}
 #if 0
 void DrmSessionManager::SetLicenseFetcher(AampLicenseFetcher *fetcherInstance)
 {
