@@ -98,8 +98,6 @@ RDEPENDS:${PN} = " \
     xr-voice-sdk \
     bluez5 \
     bind \
-    bind-dl \
-    bind-named \
     lcms \
     libunwind \
     wayland \
