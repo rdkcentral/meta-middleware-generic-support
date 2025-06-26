@@ -29,15 +29,9 @@ SRCREV:pn-rdkperf = "d802d561c4a2a4456403d572da75e73032d48d91"
 SRCREV:pn-iarm-query-powerstate = "2738c2b1f8978301f3dc49ea2758918c394af9e9"
 SRCREV:pn-iarm-set-powerstate = "${SRCREV:pn-iarm-query-powerstate}"
 SRCREV:pn-iarmmgrs-hal-headers = "${SRCREV:pn-iarmmgrs}"
-<<<<<<< topic/RDK-57157
-SRCREV:pn-rfc = "c0d0c58203e797fc3cae8b7d2c4d724a3cf1781b"
-SRCREV:pn-sysint = "dba16dad603cdef344113d87a5295d20bf94a27b"
-SRCREV_tr69hostif = "650e9fd84d0b461f2c1cc814db2b78d998472edb"
-=======
 SRCREV:pn-rfc = "2ac23283c6d0effe422e55c6b81ccbe763c9a82b"
-SRCREV:pn-sysint = "0bee550311766b61085f702c144818c2f4d2f8f8"
+SRCREV:pn-sysint = "dba16dad603cdef344113d87a5295d20bf94a27b"
 SRCREV_tr69hostif = "2a813f0c64f33cd1ce8b43474a9301d7c9c02387"
->>>>>>> develop
 SRCREV:pn-hdmicecheader = "5201b2f759b4ca8fd2a6f5db838d528f6477db0c"
 SRCREV:pn-tr69hostif-headers = "2a813f0c64f33cd1ce8b43474a9301d7c9c02387"
 SRCREV:pn-dobby = "b9668168a2875b94ac487a869362176d59350dc9"
