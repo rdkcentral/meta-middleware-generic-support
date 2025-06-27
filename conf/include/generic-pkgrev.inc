@@ -136,11 +136,11 @@ PV:pn-entservices-deviceanddisplay = "3.0.4"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.4.7"
+PV:pn-entservices-infra = "1.4.8"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.1.1"
+PV:pn-entservices-inputoutput = "1.3.1"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -170,7 +170,7 @@ PV:pn-systimemgrfactory = "1.1.0"
 PR:pn-systimemgrfactory = "r1"
 PACKAGE_ARCH:pn-systimemgrfactory = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgr = "1.1.0"
+PV:pn-systimemgr = "1.2.0"
 PR:pn-systimemgr = "r0"
 PACKAGE_ARCH:pn-systimemgr = "${MIDDLEWARE_ARCH}"
 
@@ -178,17 +178,13 @@ PV:pn-systimemgrinetrface = "1.1.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ctrlm-main = "1.1.0"
+PV:pn-ctrlm-main = "1.1.1"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"
 
 PV:pn-xr-voice-sdk = "1.0.5"
 PR:pn-xr-voice-sdk = "r0"
 PACKAGE_ARCH:pn-xr-voice-sdk = "${MIDDLEWARE_ARCH}"
-
-PV:pn-rdm = "1.3.3"
-PR:pn-rdm = "r0"
-PACKAGE_ARCH:pn-rdm = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdkat = "1.0.0"
 PR:pn-rdkat = "r0"
@@ -266,7 +262,7 @@ PV:pn-xdial = "3.0.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "2.2.0"
+PV:pn-sysint = "2.3.0"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -308,7 +304,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.16"
+PV:pn-thunderstartupservices = "1.0.17"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -348,7 +344,7 @@ PR:pn-xmidt-agent = "r0"
 PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdmagent = "2.0.1"
-PR:pn-rdmagent = "r0"
+PR:pn-rdmagent = "r1"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdkwindowmanager = "1.1.0"
@@ -433,7 +429,7 @@ PACKAGE_ARCH:pn-lsof = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:rdkcertconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-packager-lisa = "0.1.0"
+PV:pn-packager-lisa = "0.2.0"
 PR:pn-packager-lisa = "r0"
 PACKAGE_ARCH:pn-packager-lisa = "${MIDDLEWARE_ARCH}"
 
