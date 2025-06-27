@@ -2,7 +2,7 @@ PV:pn-apparmor-generic="1.0.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.15"
+PV:pn-devicesettings = "1.0.16"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -136,7 +136,7 @@ PV:pn-entservices-deviceanddisplay = "3.0.4"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.4.6"
+PV:pn-entservices-infra = "1.4.7"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
@@ -237,7 +237,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.8.0"
+PV:pn-entservices-apis = "1.9.1"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -433,7 +433,7 @@ PACKAGE_ARCH:pn-lsof = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:rdkcertconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-packager-lisa = "0.1.0"
+PV:pn-packager-lisa = "0.2.0"
 PR:pn-packager-lisa = "r0"
 PACKAGE_ARCH:pn-packager-lisa = "${MIDDLEWARE_ARCH}"
 
