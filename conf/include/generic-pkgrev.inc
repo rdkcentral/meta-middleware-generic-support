@@ -2,7 +2,7 @@ PV:pn-apparmor-generic="1.0.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.11"
+PV:pn-devicesettings = "1.0.12"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -38,11 +38,11 @@ PV:pn-rbus = "2.1.0"
 PR:pn-rbus = "r0"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.0.9"
+PV:pn-rfc = "1.1.0"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.1.7"
+PV:pn-tr69hostif = "1.1.9"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -62,15 +62,15 @@ PV:pn-dcmd = "1.1.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.1.6"
+PV:pn-tr69hostif-headers = "1.1.9"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby = "3.14.0"
+PV:pn-dobby = "3.14.1"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby-thunderplugin = "3.14.0"
+PV:pn-dobby-thunderplugin = "3.14.1"
 PR:pn-dobby-thunderplugin = "r0"
 PACKAGE_ARCH:pn-dobby-thunderplugin = "${MIDDLEWARE_ARCH}"
 
@@ -82,7 +82,7 @@ PV:pn-qtvirtualkeyboard = "5.15.7"
 PR:pn-qtvirtualkeyboard = "r0"
 PACKAGE_ARCH:pn-qtvirtualkeyboard = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.4.1"
+PV:pn-aamp = "2.4.4"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -136,15 +136,15 @@ PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "1.1.12"
+PV:pn-entservices-deviceanddisplay = "3.0.4"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.2.1"
+PV:pn-entservices-infra = "1.4.5"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.1.0"
+PV:pn-entservices-inputoutput = "1.1.1"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -160,7 +160,7 @@ PV:pn-entservices-runtime = "1.0.1"
 PR:pn-entservices-runtime = "r0"
 PACKAGE_ARCH:pn-entservices-runtime = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-softwareupdate = "1.0.3"
+PV:pn-entservices-softwareupdate = "1.3.2"
 PR:pn-entservices-softwareupdate = "r0"
 PACKAGE_ARCH:pn-entservices-softwareupdate = "${MIDDLEWARE_ARCH}"
 
@@ -182,7 +182,7 @@ PV:pn-systimemgrinetrface = "1.1.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ctrlm-main = "1.0.10"
+PV:pn-ctrlm-main = "1.1.0"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"
 
@@ -241,7 +241,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.4.2"
+PV:pn-entservices-apis = "1.7.3"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -292,7 +292,7 @@ PV:pn-memcr = "1.0.2"
 PR:pn-memcr = "r0"
 PACKAGE_ARCH:pn-memcr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-networkmanager-plugin = "0.19.0"
+PV:pn-networkmanager-plugin = "0.20.0"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
 
@@ -355,8 +355,8 @@ PV:pn-rdmagent = "2.0.1"
 PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkwindowmanager = "1.0.0"
-PR:pn-rdkwindowmanager = "r2"
+PV:pn-rdkwindowmanager = "1.1.0"
+PR:pn-rdkwindowmanager = "r0"
 PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 
 PV:pn-os-release = "1.0.0"
@@ -435,6 +435,8 @@ PV:pn-lsof = "4.94.0"
 PR:pn-lsof = "r0"
 PACKAGE_ARCH:pn-lsof = "${MIDDLEWARE_ARCH}"
 
+PV:pn-rdkcertconfig = "1.0.0"
+PR:pn-rdkcertconfig = "r0"
 PACKAGE_ARCH:rdkcertconfig = "${MIDDLEWARE_ARCH}"
 
 PV:pn-packager-lisa = "0.1.0"
