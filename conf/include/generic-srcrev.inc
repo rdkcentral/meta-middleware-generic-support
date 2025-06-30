@@ -69,6 +69,6 @@ SRCREV:pn-subttxrend-scte = "${SRCREV:pn-subttxrend-app}"
 SRCREV:pn-subttxrend-webvtt = "${SRCREV:pn-subttxrend-app}"
 SRCREV:pn-dvbsubdecoder= "${SRCREV:pn-subttxrend-app}"
 SRCREV:pn-ttxdecoder = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-rdkcertconfig = "d55af61ef0373af5f41427047eb6bbff1481e27e"
+SRCREV:pn-rdkcertconfig = "f401e22df5198822ad9ef69d1781685b6589e749"
 SRCREV:pn-packager-lisa = "e66f2e72d871c0ceb8e037e4b8986d0a06437243"
 
