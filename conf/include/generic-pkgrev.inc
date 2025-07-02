@@ -166,15 +166,15 @@ PACKAGE_ARCH:pn-rdkshell = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-stunnel = "${MIDDLEWARE_ARCH}" 
 
-PV:pn-systimemgrfactory = "1.1.0"
-PR:pn-systimemgrfactory = "r1"
+PV:pn-systimemgrfactory = "1.2.1"
+PR:pn-systimemgrfactory = "r0"
 PACKAGE_ARCH:pn-systimemgrfactory = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgr = "1.2.0"
+PV:pn-systimemgr = "1.2.1"
 PR:pn-systimemgr = "r0"
 PACKAGE_ARCH:pn-systimemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgrinetrface = "1.1.0"
+PV:pn-systimemgrinetrface = "1.2.1"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
@@ -210,7 +210,7 @@ PV:pn-remotedebugger = "1.2.8"
 PR:pn-remotedebugger = "r0"
 PACKAGE_ARCH:pn-remotedebugger = "${MIDDLEWARE_ARCH}"
 
-PV:pn-webkitbrowser-plugin = "1.1.27"
+PV:pn-webkitbrowser-plugin = "1.1.30"
 PR:pn-webkitbrowser-plugin = "r0"
 PACKAGE_ARCH:pn-webkitbrowser-plugin = "${MIDDLEWARE_ARCH}"
 
