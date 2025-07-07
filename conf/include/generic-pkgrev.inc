@@ -124,8 +124,8 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.0.12"
-PR:pn-entservices-casting = "r1"
+PV:pn-entservices-casting = "1.1.0"
+PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-connectivity = "1.0.1"
