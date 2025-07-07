@@ -133,7 +133,7 @@ public:
 	 * @return double - First PTS
 	 */
   
-	double GetFirstPTS() { return mFirstPTS.inSeconds(); }
+	double GetFirstPTS();
 
 	/**
 	 * @fn GetFirstPTSOffset

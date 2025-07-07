@@ -141,7 +141,7 @@ AAMPStatusType AampTsbReader::Init(double &startPosSec, float rate, TuneType tun
 						mFirstPTS = firstFragmentToFetch->GetPTS();
 						mFirstPTSOffset = firstFragmentToFetch->GetPTSOffset();
 						AAMPLOG_INFO("[%s] startPosition:%lfs rate:%f pts:%lfs ptsOffset:%lfs firstFragmentRange:(%lfs-%lfs)", 
-							GetMediaTypeName(mMediaType), mStartPosition, mCurrentRate, mFirstPTS, mFirstPTSOffset.inSeconds(),
+							GetMediaTypeName(mMediaType), mStartPosition.inSeconds(), mCurrentRate, mFirstPTS.inSeconds(), mFirstPTSOffset.inSeconds(),
 							firstFragment->GetAbsolutePosition().inSeconds(), lastFragment->GetAbsolutePosition().inSeconds());
 
 						mInitialized_ = true;
@@ -334,7 +334,7 @@ void AampTsbReader::CheckPeriodBoundary(TsbFragmentDataPtr currFragment)
 		{
 			mFirstPTS = currFragment->GetPTS();
 			mFirstPTSOffset = currFragment->GetPTSOffset();
-			AAMPLOG_INFO("Discontinuity detected at PTS position %lf pts offset %lf", mFirstPTS, mFirstPTSOffset.inSeconds());
+			AAMPLOG_INFO("Discontinuity detected at PTS position %lf pts offset %lf", mFirstPTS.inSeconds(), mFirstPTSOffset.inSeconds());
 		}
 	}
 }
@@ -413,7 +413,7 @@ float AampTsbReader::GetPlaybackRate()
  */
 double AampTsbReader::GetFirstPTS()
 {
-	return mFirstPTS;
+	return mFirstPTS.inSeconds();
 }
 
 /**
