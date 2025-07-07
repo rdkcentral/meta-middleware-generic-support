@@ -117,7 +117,7 @@ AAMPStatusType AampTsbReader::Init(double &startPosSec, float rate, TuneType tun
 					}
 					if (nullptr != firstFragmentToFetch)
 					{
-						mStartPosition = firstFragmentToFetch->GetAbsolutePosition().inSeconds();
+						mStartPosition = firstFragmentToFetch->GetAbsolutePosition();
 						// Assign upcoming position as start position
 						mUpcomingFragmentPosition = mStartPosition;
 						mCurrentRate = rate;
@@ -131,8 +131,8 @@ AAMPStatusType AampTsbReader::Init(double &startPosSec, float rate, TuneType tun
 							mTrackEnabled = true;
 						}
 						// Save First PTS
-						mFirstPTS = firstFragmentToFetch->GetPTS().inSeconds();
-						AAMPLOG_INFO("[%s] startPosition:%lfs rate:%f pts:%lfs Range:(%lfs-%lfs)", GetMediaTypeName(mMediaType), mStartPosition, mCurrentRate, mFirstPTS, firstFragment->GetAbsolutePosition().inSeconds(), lastFragment->GetAbsolutePosition().inSeconds());
+						mFirstPTS = firstFragmentToFetch->GetPTS();
+						AAMPLOG_INFO("[%s] startPosition:%lfs rate:%f pts:%lfs Range:(%lfs-%lfs)", GetMediaTypeName(mMediaType), mStartPosition.inSeconds(), mCurrentRate, mFirstPTS.inSeconds(), firstFragment->GetAbsolutePosition().inSeconds(), lastFragment->GetAbsolutePosition().inSeconds());
 						mInitialized_ = true;
 						startPosSec = firstFragmentToFetch->GetAbsolutePosition().inSeconds();
 					}
@@ -177,23 +177,23 @@ TsbFragmentDataPtr AampTsbReader::FindNext(AampTime offset)
 		return nullptr;
 	}
 
-	double position = mUpcomingFragmentPosition;
+	AampTime position = mUpcomingFragmentPosition;
 	if (mCurrentRate >= 0)
 	{
-		position += offset.inSeconds();
+		position += offset;
 	}
 	else
 	{
-		position -= offset.inSeconds();
+		position -= offset;
 	}
 
 	bool eos;
-	TsbFragmentDataPtr ret = mDataMgr->GetFragment(position, eos);
+	TsbFragmentDataPtr ret = mDataMgr->GetFragment(position.inSeconds(), eos);
 	if (!ret)
 	{
-		AAMPLOG_TRACE("[%s]Retrying fragment to fetch at position: %lf", GetMediaTypeName(mMediaType), position);
-		double correctedPosition = position - FLOATING_POINT_EPSILON;
-		ret = mDataMgr->GetNearestFragment(correctedPosition);
+		AAMPLOG_TRACE("[%s]Retrying fragment to fetch at position: %lf", GetMediaTypeName(mMediaType), position.inSeconds());
+		AampTime correctedPosition = position - FLOATING_POINT_EPSILON;
+		ret = mDataMgr->GetNearestFragment(correctedPosition.inSeconds());
 		if (!ret)
 		{
 			// Return a nullptr if fragment not found
@@ -284,19 +284,19 @@ void AampTsbReader::ReadNext(TsbFragmentDataPtr nextFragmentData)
 		if (mCurrentRate >= 0)
 		{ // read in forward direction
 			mUpcomingFragmentPosition = (nextFragmentData->next) ?
-				nextFragmentData->next->GetAbsolutePosition().inSeconds() :
-				(nextFragmentData->GetAbsolutePosition().inSeconds() + nextFragmentData->GetDuration().inSeconds());
+				nextFragmentData->next->GetAbsolutePosition() :
+				(nextFragmentData->GetAbsolutePosition() + nextFragmentData->GetDuration());
 		}
 		else
 		{ // read in reverse direction
 			// When nextFragmentData->prev becomes nullptr, eos will be set, and no more reads will happen for this rate as we reached the very first fragment in tsb and segments never gets added to the beginning of tsb.
 			mUpcomingFragmentPosition = (nextFragmentData->prev) ?
-				nextFragmentData->prev->GetAbsolutePosition().inSeconds() :
-				nextFragmentData->GetAbsolutePosition().inSeconds();
+				nextFragmentData->prev->GetAbsolutePosition() :
+				nextFragmentData->GetAbsolutePosition();
 		}
 
 		AAMPLOG_INFO("[%s] Fragment: absPos %lfs next %lfs eos %d initWaiting %d mIsNextFragmentDisc %d mIsPeriodBoundary %d mTrickModePositionEOS %lfs rate %f",
-			GetMediaTypeName(mMediaType), nextFragmentData->GetAbsolutePosition().inSeconds(), mUpcomingFragmentPosition, mEosReached, mNewInitWaiting, mIsNextFragmentDisc,
+			GetMediaTypeName(mMediaType), nextFragmentData->GetAbsolutePosition().inSeconds(), mUpcomingFragmentPosition.inSeconds(), mEosReached, mNewInitWaiting, mIsNextFragmentDisc,
 			mIsPeriodBoundary, mAamp->mTrickModePositionEOS, mCurrentRate);
 	}
 }
@@ -321,8 +321,8 @@ void AampTsbReader::CheckPeriodBoundary(TsbFragmentDataPtr currFragment)
 		AampTime nextPTSCal = (adjFragment->GetPTS()) + ((mCurrentRate >= 0) ? adjFragment->GetDuration() : -adjFragment->GetDuration());
 		if (nextPTSCal != currFragment->GetPTS())
 		{
-			mFirstPTS = currFragment->GetPTS().inSeconds();
-			AAMPLOG_INFO("Discontinuity detected at PTS position %lf", mFirstPTS);
+			mFirstPTS = currFragment->GetPTS();
+			AAMPLOG_INFO("Discontinuity detected at PTS position %lf", mFirstPTS.inSeconds());
 		}
 	}
 }
@@ -374,6 +374,15 @@ void AampTsbReader::AbortCheckForWaitIfReaderDone()
 		mEosCVWait.notify_one();
 	}
 }
+
+	/**
+	 * @fn GetStartPosition
+	 * @return Start position
+	 */
+	AampTime AampTsbReader::GetStartPosition()
+	{
+		return mStartPosition;
+	}
 
 	/**
 	 * @fn IsFirstDownload
