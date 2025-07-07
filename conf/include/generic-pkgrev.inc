@@ -78,7 +78,7 @@ PV:pn-qtwayland = "5.15.7"
 PR:pn-qtwayland = "r1"
 PACKAGE_ARCH:pn-qtwayland = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.4.4"
+PV:pn-aamp = "2.6.1"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -226,7 +226,7 @@ PV:pn-gst-plugins-rdk = "1.0.0"
 PR:pn-gst-plugins-rdk = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdk-gstreamer-utils = "2.0.0"
+PV:pn-rdk-gstreamer-utils = "2.0.1"
 PACKAGE_ARCH:pn-rdk-gstreamer-utils = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
