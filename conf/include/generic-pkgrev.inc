@@ -50,7 +50,7 @@ PV:pn-rtremote = "2.0.0"
 PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.5.0"
+PV:pn-telemetry = "1.5.1"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -124,7 +124,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.0.11"
+PV:pn-entservices-casting = "1.1.0"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
