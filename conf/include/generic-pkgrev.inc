@@ -150,6 +150,9 @@ PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-peripherals = "1.0.5"
 PR:pn-entservices-peripherals = "r0"
+
+SRCREV:pn-entservices-peripherals = "97144894aad90cc6b77b9709cf020e1b035e129a"
+
 PACKAGE_ARCH:pn-entservices-peripherals = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-runtime = "1.0.1"
