@@ -399,5 +399,6 @@ void AampTsbReader::AbortCheckForWaitIfReaderDone()
 	 */
 	float AampTsbReader::GetPlaybackRate()
 	{
+		AAMPLOG_INFO("[%s] GetPlaybackRate returning: %f (mInitialized_: %d)", GetMediaTypeName(mMediaType), mCurrentRate, mInitialized_);
 		return mCurrentRate;
 	}
