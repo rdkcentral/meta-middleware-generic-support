@@ -35,7 +35,7 @@
 AampTsbReader::AampTsbReader(PrivateInstanceAAMP *aamp, std::shared_ptr<AampTsbDataManager> dataMgr, AampMediaType mediaType, std::string sessionId)
 	: mAamp(aamp), mDataMgr(std::move(dataMgr)), mMediaType(mediaType), mInitialized_(false), mStartPosition(0.0),
 	  mUpcomingFragmentPosition(0.0), mCurrentRate(AAMP_NORMAL_PLAY_RATE), mTsbSessionId(std::move(sessionId)), mEosReached(false), mTrackEnabled(false),
-	  mFirstPTS(0.0), mCurrentBandwidth(0.0), mNewInitWaiting(false), mActiveTuneType(eTUNETYPE_NEW_NORMAL),
+	  mFirstPTS(0.0), mFirstPTSOffset(0), mCurrentBandwidth(0.0), mNewInitWaiting(false), mActiveTuneType(eTUNETYPE_NEW_NORMAL),
 	  mEosCVWait(), mEosMutex(), mIsEndFragmentInjected(false), mLastInitFragmentData(nullptr), mIsNextFragmentDisc(false), mIsPeriodBoundary(false)
 {
 	AAMPLOG_INFO("[%s] Constructor - mCurrentRate initialized to: %f", GetMediaTypeName(mMediaType), mCurrentRate);
@@ -137,8 +137,13 @@ AAMPStatusType AampTsbReader::Init(double &startPosSec, float rate, TuneType tun
 							mTrackEnabled = true;
 						}
 						// Save First PTS
+
 						mFirstPTS = firstFragmentToFetch->GetPTS();
-						AAMPLOG_INFO("[%s] startPosition:%lfs rate:%f pts:%lfs Range:(%lfs-%lfs)", GetMediaTypeName(mMediaType), mStartPosition.inSeconds(), mCurrentRate, mFirstPTS.inSeconds(), firstFragment->GetAbsolutePosition().inSeconds(), lastFragment->GetAbsolutePosition().inSeconds());
+						mFirstPTSOffset = firstFragmentToFetch->GetPTSOffset();
+						AAMPLOG_INFO("[%s] startPosition:%lfs rate:%f pts:%lfs ptsOffset:%lfs firstFragmentRange:(%lfs-%lfs)", 
+							GetMediaTypeName(mMediaType), mStartPosition, mCurrentRate, mFirstPTS, mFirstPTSOffset.inSeconds(),
+							firstFragment->GetAbsolutePosition().inSeconds(), lastFragment->GetAbsolutePosition().inSeconds());
+
 						mInitialized_ = true;
 						startPosSec = firstFragmentToFetch->GetAbsolutePosition().inSeconds();
 					}
@@ -237,7 +242,7 @@ TsbFragmentDataPtr AampTsbReader::FindNext(AampTime offset)
 		}
 	}
 	AAMPLOG_INFO("[%s] Returning fragment: absPos %lfs pts %lfs period %s timeScale %u ptsOffset %fs url %s",
-		GetMediaTypeName(mMediaType), ret->GetAbsolutePosition().inSeconds(), ret->GetPTS().inSeconds(), ret->GetPeriodId().c_str(), ret->GetTimeScale(), ret->GetPTSOffsetSec().inSeconds(), ret->GetUrl().c_str());
+		GetMediaTypeName(mMediaType), ret->GetAbsolutePosition().inSeconds(), ret->GetPTS().inSeconds(), ret->GetPeriodId().c_str(), ret->GetTimeScale(), ret->GetPTSOffset().inSeconds(), ret->GetUrl().c_str());
 
 	return ret;
 }
@@ -328,7 +333,8 @@ void AampTsbReader::CheckPeriodBoundary(TsbFragmentDataPtr currFragment)
 		if (nextPTSCal != currFragment->GetPTS())
 		{
 			mFirstPTS = currFragment->GetPTS();
-			AAMPLOG_INFO("Discontinuity detected at PTS position %lf", mFirstPTS.inSeconds());
+			mFirstPTSOffset = currFragment->GetPTSOffset();
+			AAMPLOG_INFO("Discontinuity detected at PTS position %lf pts offset %lf", mFirstPTS, mFirstPTSOffset.inSeconds());
 		}
 	}
 }
@@ -345,6 +351,7 @@ void AampTsbReader::Term()
 	mEosReached = false;
 	mTrackEnabled = false;
 	mFirstPTS = 0.0;
+	mFirstPTSOffset = 0;
 	mCurrentBandwidth = 0.0;
 	mActiveTuneType = eTUNETYPE_NEW_NORMAL;
 	mIsPeriodBoundary = false;
@@ -381,30 +388,40 @@ void AampTsbReader::AbortCheckForWaitIfReaderDone()
 	}
 }
 
-	/**
-	 * @fn GetStartPosition
-	 * @return Start position
-	 */
-	AampTime AampTsbReader::GetStartPosition()
-	{
-		return mStartPosition;
-	}
+/**
+ * @fn IsFirstDownload
+ * @return True if first download
+ */
+bool AampTsbReader::IsFirstDownload()
+{
+	return (mStartPosition == mUpcomingFragmentPosition);
+}
 
-	/**
-	 * @fn IsFirstDownload
-	 * @return True if first download
-	 */
-	bool AampTsbReader::IsFirstDownload()
-	{
-		return (mStartPosition == mUpcomingFragmentPosition);
-	}
+/**
+ * @fn GetPlaybackRate
+ * @return Playback rate
+ */
+float AampTsbReader::GetPlaybackRate()
+{
+	return mCurrentRate;
+}
 
-	/**
-	 * @fn GetPlaybackRate
-	 * @return Playback rate
-	 */
-	float AampTsbReader::GetPlaybackRate()
-	{
-		AAMPLOG_INFO("[%s] GetPlaybackRate returning: %f (mInitialized_: %d)", GetMediaTypeName(mMediaType), mCurrentRate, mInitialized_);
-		return mCurrentRate;
-	}
+/**
+ * @fn GetFirstPTS
+ *
+ * @return double - First PTS
+ */
+double AampTsbReader::GetFirstPTS()
+{
+	return mFirstPTS;
+}
+
+/**
+ * @fn GetFirstPTSOffset
+ *
+ * @return AampTime - First PTS Offset
+ */
+AampTime AampTsbReader::GetFirstPTSOffset()
+{
+	return mFirstPTSOffset;
+}
