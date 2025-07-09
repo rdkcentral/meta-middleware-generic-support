@@ -38,7 +38,7 @@ AampTsbReader::AampTsbReader(PrivateInstanceAAMP *aamp, std::shared_ptr<AampTsbD
 	  mFirstPTS(0.0), mCurrentBandwidth(0.0), mNewInitWaiting(false), mActiveTuneType(eTUNETYPE_NEW_NORMAL),
 	  mEosCVWait(), mEosMutex(), mIsEndFragmentInjected(false), mLastInitFragmentData(nullptr), mIsNextFragmentDisc(false), mIsPeriodBoundary(false)
 {
-	AAMPLOG_INFO("[%s] Constructor", GetMediaTypeName(mMediaType));
+	AAMPLOG_INFO("[%s] Constructor - mCurrentRate initialized to: %f", GetMediaTypeName(mMediaType), mCurrentRate);
 }
 
 /**
@@ -64,9 +64,14 @@ AampTsbReader::~AampTsbReader()
  */
 AAMPStatusType AampTsbReader::Init(double &startPosSec, float rate, TuneType tuneType, std::shared_ptr<AampTsbReader> other)
 {
+	AAMPLOG_INFO("[%s] Init called with rate: %f, startPosSec: %f", GetMediaTypeName(mMediaType), rate, startPosSec);
 	AAMPStatusType ret = eAAMPSTATUS_OK;
 	if (!mInitialized_)
 	{
+		// Always set the rate first, regardless of success/failure paths
+		mCurrentRate = rate;
+		AAMPLOG_INFO("[%s] Setting mCurrentRate to: %f at start of Init", GetMediaTypeName(mMediaType), mCurrentRate);
+		
 		if (startPosSec >= 0)
 		{
 			if (mDataMgr)
@@ -78,7 +83,7 @@ AAMPStatusType AampTsbReader::Init(double &startPosSec, float rate, TuneType tun
 				if (!(firstFragment && lastFragment))
 				{
 					// No fragments available
-					AAMPLOG_WARN("[%s] TSB is empty", GetMediaTypeName(mMediaType));
+					AAMPLOG_WARN("[%s] TSB is empty - mCurrentRate already set to: %f", GetMediaTypeName(mMediaType), mCurrentRate);
 					mTrackEnabled = false;
 				}
 				else
@@ -120,7 +125,8 @@ AAMPStatusType AampTsbReader::Init(double &startPosSec, float rate, TuneType tun
 						mStartPosition = firstFragmentToFetch->GetAbsolutePosition();
 						// Assign upcoming position as start position
 						mUpcomingFragmentPosition = mStartPosition;
-						mCurrentRate = rate;
+						// mCurrentRate already set at beginning of Init
+						AAMPLOG_INFO("[%s] mCurrentRate confirmed as: %f in successful Init", GetMediaTypeName(mMediaType), mCurrentRate);
 						if (rate != AAMP_NORMAL_PLAY_RATE && eMEDIATYPE_VIDEO != mMediaType)
 						{
 							// Disable all other tracks except video for trickplay
