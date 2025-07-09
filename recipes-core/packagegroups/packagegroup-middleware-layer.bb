@@ -55,7 +55,6 @@ RDEPENDS:${PN} = " \
     rdk-logger \
     rdkat \
     rdkfwupgrader \
-	rdknativescript \
     rdkperf \
     entservices-casting \
     entservices-connectivity \
