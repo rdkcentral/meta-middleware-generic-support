@@ -199,7 +199,7 @@ PR:pn-crashupload = "r1"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
 PV:pn-libsyswrapper = "1.3.3"
-PR:pn-libsyswrapper = "r0"
+PR:pn-libsyswrapper = "r1"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
 
 PV_pn-rdk-logger = "1.0.0"
