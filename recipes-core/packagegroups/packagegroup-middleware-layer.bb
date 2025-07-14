@@ -48,6 +48,7 @@ RDEPENDS:${PN} = " \
     lsof \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     remotedebugger \
+    barton-matter \
     networkmanager-plugin \
     packagemanager \
     parodus \
