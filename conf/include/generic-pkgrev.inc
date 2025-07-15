@@ -1,4 +1,4 @@
-PV:pn-apparmor-generic="1.0.0"
+PV:pn-apparmor-generic = "1.0.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
@@ -233,7 +233,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.10.0"
+PV:pn-entservices-apis = "None"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -243,7 +243,7 @@ PACKAGE_ARCH:pn-entservices-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
-PV:pn-libunpriv="1.0.0"
+PV:pn-libunpriv = "1.0.0"
 PR:pn-libunpriv= "r0"
 PACKAGE_ARCH:pn-libunpriv = "${MIDDLEWARE_ARCH}"
 
