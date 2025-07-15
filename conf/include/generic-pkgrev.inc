@@ -82,6 +82,10 @@ PV:pn-aamp = "2.7.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
+PV:pn-barton-matter = "1.4.0"
+PR:pn-barton-matter = "r0"
+PACKAGE_ARCH:pn-barton-matter = "${MIDDLEWARE_ARCH}"
+
 
 PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
