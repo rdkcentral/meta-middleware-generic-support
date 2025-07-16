@@ -128,7 +128,7 @@ PV:pn-entservices-casting = "1.1.0"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-connectivity = "1.0.1"
+PV:pn-entservices-connectivity = "None"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
