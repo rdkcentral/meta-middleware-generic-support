@@ -152,7 +152,7 @@ PV:pn-entservices-peripherals = "1.0.5"
 PR:pn-entservices-peripherals = "r0"
 PACKAGE_ARCH:pn-entservices-peripherals = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-runtime = "1.0.1"
+PV:pn-entservices-runtime = "None"
 PR:pn-entservices-runtime = "r0"
 PACKAGE_ARCH:pn-entservices-runtime = "${MIDDLEWARE_ARCH}"
 
