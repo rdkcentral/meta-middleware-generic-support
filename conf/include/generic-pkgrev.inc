@@ -124,7 +124,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.1.0"
+PV:pn-entservices-casting = "1.2.0"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
@@ -194,8 +194,8 @@ PV:pn-rdkversion = "1.0.0"
 PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
-PV:pn-crashupload = "1.0.3"
-PR:pn-crashupload = "r1"
+PV:pn-crashupload = "1.0.5"
+PR:pn-crashupload = "r0"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
 PV:pn-libsyswrapper = "1.3.3"
@@ -233,7 +233,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.10.1"
+PV:pn-entservices-apis = "1.11.0"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -284,7 +284,7 @@ PV:pn-memcr = "1.0.2"
 PR:pn-memcr = "r0"
 PACKAGE_ARCH:pn-memcr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-networkmanager-plugin = "0.21.0"
+PV:pn-networkmanager-plugin = "0.22.0"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
 
