@@ -38,8 +38,8 @@ PV:pn-rbus = "2.1.0"
 PR:pn-rbus = "r0"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.1.1"
-PR:pn-rfc = "r1"
+PV:pn-rfc = "1.1.2"
+PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
 PV:pn-tr69hostif = "1.2.0"
@@ -99,7 +99,7 @@ PV:pn-commonutilities = "1.2.0"
 PR:pn-commonutilities = "r0"
 PACKAGE_ARCH:pn-commonutilities = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkfwupgrader = "1.2.0"
+PV:pn-rdkfwupgrader = "1.2.1"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
@@ -262,7 +262,7 @@ PV:pn-xdial = "3.0.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "2.3.0"
+PV:pn-sysint = "2.3.1"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
