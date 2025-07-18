@@ -25,7 +25,7 @@ VENDOR_OSS = "${@get_oss_arch(d)}${VENDOR_EXTENSION}"
 PACKAGE_EXTRA_ARCHS:append = " ${VENDOR_OSS}"
 OPKG_ARCH_PRIORITY:${VENDOR_OSS} = "310"
 OSS_MACHINE = "${@get_oss_machine(d)}"
-VENDOR_OSS_IPK_SERVER_PATH = "${RDK_ARTIFACTS_BASE_URL}/${MACHINE}-dev/RDKEVD-1750-20250718/xione-uk/rdk-arm7ve-oss-vendor/ipks/debug/"
+VENDOR_OSS_IPK_SERVER_PATH = "${RDK_ARTIFACTS_BASE_URL}/xione-uk-dev/RDKEVD-1750-20250718/xione-uk/rdk-arm7ve-oss-vendor/ipks/debug/"
 IPK_FEED_URIS += " ${VENDOR_OSS}##${VENDOR_OSS_IPK_SERVER_PATH} "
 
 # This will be included only in vendor dev projects
