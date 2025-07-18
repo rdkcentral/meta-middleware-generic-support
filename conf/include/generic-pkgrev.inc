@@ -42,8 +42,8 @@ PV:pn-rfc = "1.1.2"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.2.0"
-PR:pn-tr69hostif = "r1"
+PV:pn-tr69hostif = "1.2.1"
+PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rtremote = "2.0.0"
