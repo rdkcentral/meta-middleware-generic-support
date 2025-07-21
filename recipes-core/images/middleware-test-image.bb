@@ -40,5 +40,5 @@ dobby_generic_config_patch(){
 ROOTFS_POSTPROCESS_COMMAND += "wpeframework_binding_patch; "
 ROOTFS_POSTPROCESS_COMMAND += "dobby_generic_config_patch; "
 
-IMAGE_INSTALL_append = " strace"
+IMAGE_INSTALL:append = " strace"
 
