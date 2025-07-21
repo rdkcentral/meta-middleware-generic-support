@@ -2,9 +2,13 @@ PV:pn-apparmor-generic="1.1.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.16"
+PV:pn-devicesettings = "1.0.17"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
+
+PV:pn-motiondetector-hal = "1.0.0"
+PR:pn-motiondetector-hal = "r0"
+PACKAGE_ARCH:pn-motiondetector-hal = "${MIDDLEWARE_ARCH}"
 
 PV:pn-cpeabs = "2.0.0"
 PR:pn-cpeabs = "r0"
