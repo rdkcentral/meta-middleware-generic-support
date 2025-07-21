@@ -16,7 +16,7 @@ PR = "r0"
 #Generic components
 RDEPENDS:${PN} = " \
     aamp \
-    barton-matter \
+    barton \
     audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
