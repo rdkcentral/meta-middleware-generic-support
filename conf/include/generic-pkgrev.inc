@@ -1,4 +1,4 @@
-PV:pn-apparmor-generic="1.0.0"
+PV:pn-apparmor-generic="1.1.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
@@ -42,7 +42,7 @@ PV:pn-rfc = "1.1.2"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.2.0"
+PV:pn-tr69hostif = "1.2.1"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -148,7 +148,7 @@ PV:pn-entservices-mediaanddrm = "1.2.0"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-peripherals = "1.0.5"
+PV:pn-entservices-peripherals = "1.0.6"
 PR:pn-entservices-peripherals = "r0"
 PACKAGE_ARCH:pn-entservices-peripherals = "${MIDDLEWARE_ARCH}"
 
@@ -166,15 +166,15 @@ PACKAGE_ARCH:pn-rdkshell = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-stunnel = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgrfactory = "1.2.1"
+PV:pn-systimemgrfactory = "1.3.0"
 PR:pn-systimemgrfactory = "r0"
 PACKAGE_ARCH:pn-systimemgrfactory = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgr = "1.2.1"
+PV:pn-systimemgr = "1.3.0"
 PR:pn-systimemgr = "r0"
 PACKAGE_ARCH:pn-systimemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgrinetrface = "1.2.1"
+PV:pn-systimemgrinetrface = "1.3.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
