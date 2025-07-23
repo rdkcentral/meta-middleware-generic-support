@@ -427,6 +427,8 @@ PV:pn-lsof = "4.94.0"
 PR:pn-lsof = "r0"
 PACKAGE_ARCH:pn-lsof = "${MIDDLEWARE_ARCH}"
 
+PV:pn-rdkcertconfig = "1.0.0"
+PR:pn-rdkcertconfig = "r0"
 PACKAGE_ARCH:rdkcertconfig = "${MIDDLEWARE_ARCH}"
 
 PV:pn-packager-lisa = "0.2.0"
