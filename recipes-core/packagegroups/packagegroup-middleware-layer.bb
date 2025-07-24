@@ -97,9 +97,6 @@ RDEPENDS:${PN} = " \
     xdial \
     xr-voice-sdk \
     bluez5 \
-    bind \
-    bind-dl \
-    bind-named \
     lcms \
     libunwind \
     wayland \
@@ -122,8 +119,6 @@ RDEPENDS:${PN} = " \
     thunderstartupservices \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wpe_r4_4', 'packagemanager', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_STB', "tenablehdcp ", "", d)} \
-    bind-dl \
-    bind-named \
     breakpad-wrapper \
     ctemplate \
     ebtables \
@@ -173,6 +168,7 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     os-release \
     wlan-p2p \
+    thunderhangrecovery \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
