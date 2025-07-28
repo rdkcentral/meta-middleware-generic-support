@@ -132,8 +132,8 @@ PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.1.2"
-PR:pn-entservices-deviceanddisplay = "r0"
+PV:pn-entservices-deviceanddisplay = "3.1.3"
+PR:pn-entservices-deviceanddisplay = "r1"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-infra = "1.5.7"
