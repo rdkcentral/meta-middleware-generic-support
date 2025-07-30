@@ -34,8 +34,8 @@ PV:pn-rmfosal = "1.0.0"
 PR:pn-rmfosal = "r3"
 PACKAGE_ARCH:pn-rmfosal = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rbus = "2.1.0"
-PR:pn-rbus = "r0"
+PV:pn-rbus = "2.6.0"
+PR:pn-rbus = "r7"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rfc = "1.1.2"
@@ -233,7 +233,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.13.0"
+PV:pn-entservices-apis = "1.14.1"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
