@@ -34,15 +34,15 @@ PV:pn-rmfosal = "1.0.0"
 PR:pn-rmfosal = "r3"
 PACKAGE_ARCH:pn-rmfosal = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rbus = "2.1.0"
-PR:pn-rbus = "r0"
+PV:pn-rbus = "2.6.0"
+PR:pn-rbus = "r7"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rfc = "1.1.2"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.2.1"
+PV:pn-tr69hostif = "1.2.2"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -58,7 +58,7 @@ PV:pn-webcfg = "1.1.0"
 PR:pn-webcfg = "r0"
 PACKAGE_ARCH:pn-webcfg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dcmd = "1.1.0"
+PV:pn-dcmd = "1.2.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
@@ -132,7 +132,7 @@ PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.0.4"
+PV:pn-entservices-deviceanddisplay = "3.1.2"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
@@ -140,7 +140,7 @@ PV:pn-entservices-infra = "1.5.7"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.3.5"
+PV:pn-entservices-inputoutput = "1.4.0"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -199,7 +199,7 @@ PR:pn-crashupload = "r0"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
 PV:pn-libsyswrapper = "1.3.3"
-PR:pn-libsyswrapper = "r0"
+PR:pn-libsyswrapper = "r1"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
 
 PV_pn-rdk-logger = "1.0.0"
@@ -233,7 +233,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.11.0"
+PV:pn-entservices-apis = "1.14.1"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -284,7 +284,7 @@ PV:pn-memcr = "1.0.2"
 PR:pn-memcr = "r0"
 PACKAGE_ARCH:pn-memcr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-networkmanager-plugin = "0.22.0"
+PV:pn-networkmanager-plugin = "0.23.0"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
 
@@ -304,7 +304,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.18"
+PV:pn-thunderstartupservices = "1.0.20"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -347,7 +347,7 @@ PV:pn-rdmagent = "2.0.1"
 PR:pn-rdmagent = "r1"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkwindowmanager = "1.1.0"
+PV:pn-rdkwindowmanager = "1.5.0"
 PR:pn-rdkwindowmanager = "r0"
 PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 
