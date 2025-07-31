@@ -42,7 +42,7 @@ PV:pn-rfc = "1.1.2"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.2.1"
+PV:pn-tr69hostif = "1.2.2"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -284,7 +284,7 @@ PV:pn-memcr = "1.0.2"
 PR:pn-memcr = "r0"
 PACKAGE_ARCH:pn-memcr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-networkmanager-plugin = "0.22.0"
+PV:pn-networkmanager-plugin = "0.23.0"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
 
