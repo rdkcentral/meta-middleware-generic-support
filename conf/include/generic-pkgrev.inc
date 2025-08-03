@@ -2,8 +2,8 @@ PV:pn-apparmor-generic="1.1.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.16"
-PR:pn-devicesettings = "r0"
+PV:pn-devicesettings = "1.0.17"
+PR:pn-devicesettings = "r1"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
 PV:pn-cpeabs = "2.0.0"
@@ -132,8 +132,8 @@ PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.1.2"
-PR:pn-entservices-deviceanddisplay = "r0"
+PV:pn-entservices-deviceanddisplay = "3.1.3"
+PR:pn-entservices-deviceanddisplay = "r1"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-infra = "1.7.0"
