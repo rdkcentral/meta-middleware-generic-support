@@ -280,7 +280,7 @@ PACKAGE_ARCH:pn-mpg123 = "${MIDDLEWARE_ARCH}"
 PR:pn-libwpe = "r0"
 PACKAGE_ARCH:pn-libwpe = "${MIDDLEWARE_ARCH}"
 
-PV:pn-memcr = "1.0.2"
+PV:pn-memcr = "1.0.3"
 PR:pn-memcr = "r0"
 PACKAGE_ARCH:pn-memcr = "${MIDDLEWARE_ARCH}"
 
