@@ -158,7 +158,7 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', "apparmor ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', "apparmor-generic ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rialto','rialto-client rialto-server rialto-servermanager rialto-gstreamer rialto-ocdm', '', d) } \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_cobalt_plugin', 'cobalt-plugin', '', d) } \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_cobalt_plugin', 'cobalt-plugin nplb', '', d) } \
     rdkwpasupplicantconfig \
     cpeabs \
     virtual/ca-certificates-trust-store \
