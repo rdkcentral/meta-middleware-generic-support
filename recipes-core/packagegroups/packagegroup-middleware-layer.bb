@@ -75,6 +75,7 @@ RDEPENDS:${PN} = " \
     rtcore \
     rtremote \
     safec-common-wrapper \
+    strace \
     sysint \
     systimemgr \
     telemetry \
