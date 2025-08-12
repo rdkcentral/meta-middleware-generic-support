@@ -11,7 +11,7 @@ SRCREV:pn-audiocapturemgr = "29f81aa9d1c749221a606002a31d669b030028ad"
 SRCREV_aamp = "2d04ebd6517e14286c42df3d82db0a232a1b4b15"
 
 SRCREV_iarmbus = "6ed35ebb886a8ac01812d8bfe5b4c3a89f9ace38"
-SRCREV:pn-iarmmgrs = "f03e69447a6a68905700af07b03ee1f5c0bbd3f2"
+SRCREV:pn-iarmmgrs = "84a09a6e7db07c6c7d3fdc47038402af1e2851a4"
 SRCREV:pn-rdk-gstreamer-utils = "ac84c17ca8a441b9fd699eb66d4187d551cac76a"
 SRCREV_devicesettings = "77b632f71e7c2e0d447158353d002e740bcef9a2"
 SRCREV:pn-bluetooth-mgr = "de5512919f7e531f71680f3ee53317b68cc86367"
