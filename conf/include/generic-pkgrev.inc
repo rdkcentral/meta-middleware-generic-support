@@ -262,7 +262,7 @@ PV:pn-xdial = "3.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "2.3.2"
+PV:pn-sysint = "3.4.0"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -280,7 +280,7 @@ PACKAGE_ARCH:pn-mpg123 = "${MIDDLEWARE_ARCH}"
 PR:pn-libwpe = "r0"
 PACKAGE_ARCH:pn-libwpe = "${MIDDLEWARE_ARCH}"
 
-PV:pn-memcr = "1.0.3"
+PV:pn-memcr = "1.0.2"
 PR:pn-memcr = "r0"
 PACKAGE_ARCH:pn-memcr = "${MIDDLEWARE_ARCH}"
 
