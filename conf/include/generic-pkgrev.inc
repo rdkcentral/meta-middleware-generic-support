@@ -436,3 +436,7 @@ PR:pn-packager-lisa = "r0"
 PACKAGE_ARCH:pn-packager-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
+
+PV:appc-ui = "1.0.0"
+PR:appc-ui = "r0"
+PACKAGE_ARCH:pn-appc-ui = "${MIDDLEWARE_ARCH}"
