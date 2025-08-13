@@ -169,7 +169,7 @@ RDEPENDS:${PN} = " \
     os-release \
     wlan-p2p \
     thunderhangrecovery \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_appc', "appc-ui", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_appc', 'appc-ui', '', d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
