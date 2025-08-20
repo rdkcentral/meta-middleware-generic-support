@@ -2,7 +2,7 @@ PV:pn-apparmor-generic="1.0.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.12"
+PV:pn-devicesettings = "1.0.12-hotfix.1"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -18,7 +18,7 @@ PV:pn-iarmbus = "1.0.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.0.13"
+PV:pn-iarmmgrs = "1.0.13-hotfix.2"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -58,7 +58,7 @@ PV:pn-webcfg = "1.1.0"
 PR:pn-webcfg = "r0"
 PACKAGE_ARCH:pn-webcfg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dcmd = "1.1.0"
+PV:pn-dcmd = "1.2.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
