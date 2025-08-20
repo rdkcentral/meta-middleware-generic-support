@@ -4,7 +4,7 @@ RDK_ARTIFACTS_URL = "partners.artifactory.comcast.com/artifactory"
 
 VENDOR_EXTENSION = "-vendor"
 
-VENDOR_IPK_REL_VERSION = "9.0.0"
+VENDOR_IPK_REL_VERSION = "9.0.1"
 MACHINE_COMMON_IPK = "xione-rtk-common"
 VENDOR_COMMON_IPK_RELEASE ="rtk-xione-common-release"
 VENDOR_COMMON_LAYER_EXTENSION = "${MACHINE_COMMON_IPK}-vendor"
