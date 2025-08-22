@@ -345,7 +345,7 @@ PR:pn-xmidt-agent = "r0"
 PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdmagent = "2.1.1"
-PR:pn-rdmagent = "r1"
+PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdkwindowmanager = "1.5.0"
