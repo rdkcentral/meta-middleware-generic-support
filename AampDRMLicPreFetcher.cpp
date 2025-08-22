@@ -254,7 +254,7 @@ void AampLicensePreFetcher::PreFetchThread()
 				if (!keyIdArray.empty() && mPrivAAMP->mDRMLicenseManager->mDrmSessionManager->IsKeyIdProcessed(keyIdArray, keyStatus))
 				{
 					AAMPLOG_WARN("Key already processed [status:%s] for type:%d adaptationSetIdx:%u !", keyStatus ? "SUCCESS" : "FAIL", obj->mType, obj->mAdaptationIdx);
-					mPrivAAMP->_setCurrentDrm(obj->mHelper);
+					mPrivAAMP->setCurrentDrm(obj->mHelper);
 					skip = true;
 				}
 				if (!skip)
@@ -332,7 +332,7 @@ void AampLicensePreFetcher::VssPreFetchThread()
                                         {
                                                 int deferTime = aamp_GetDeferTimeMs(static_cast<long>(mCommonKeyDuration));
                                                 // Going to sleep for deferred key process
-                                                mPrivAAMP->_interruptibleMsSleep(deferTime);
+                                                mPrivAAMP->interruptibleMsSleep(deferTime);
                                                 AAMPLOG_TRACE("Sleep over for deferred time:%d", deferTime);
                                         }
 					if(!mExitLoop)
@@ -441,9 +441,9 @@ void AampLicensePreFetcher::NotifyDrmFailure(LicensePreFetchObjectPtr fetchObj, 
 				      && (failure != AAMP_TUNE_DEVICE_NOT_PROVISIONED)
 				      && (failure != AAMP_TUNE_HDCP_COMPLIANCE_ERROR));
 			AAMPLOG_WARN("Drm failure:%d response: %d isRetryEnabled:%d ",(int)failure,event->getResponseCode(),isRetryEnabled);
-			mPrivAAMP->_SendDRMMetaData(event);	//Send Header response first for failure case.
+			mPrivAAMP->SendDRMMetaData(event);	//Send Header response first for failure case.
 			AAMPLOG_ERR("Failed DRM Session sending error event");
-			mPrivAAMP->_SendDrmErrorEvent(event, isRetryEnabled);
+			mPrivAAMP->SendDrmErrorEvent(event, isRetryEnabled);
 			mPrivAAMP->profiler.SetDrmErrorCode((int)failure);
 			mPrivAAMP->profiler.ProfileError(PROFILE_BUCKET_LA_TOTAL, (int)failure);
 		}
@@ -461,7 +461,7 @@ bool AampLicensePreFetcher::CreateDRMSession(LicensePreFetchObjectPtr fetchObj)
 {
 	bool ret = false;
 
-	DrmMetaDataEventPtr e = std::make_shared<DrmMetaDataEvent>(AAMP_TUNE_FAILURE_UNKNOWN, "", 0, 0, mIsSecClientError, mPrivAAMP->_GetSessionId());
+	DrmMetaDataEventPtr e = std::make_shared<DrmMetaDataEvent>(AAMP_TUNE_FAILURE_UNKNOWN, "", 0, 0, mIsSecClientError, mPrivAAMP->GetSessionId());
 
 	if (mPrivAAMP == nullptr)
 	{
@@ -481,7 +481,7 @@ bool AampLicensePreFetcher::CreateDRMSession(LicensePreFetchObjectPtr fetchObj)
 		AAMPLOG_ERR("no mPrivAAMP->mDrmSessionManager available");
 		return ret;
 	}
-	mPrivAAMP->_setCurrentDrm(fetchObj->mHelper);
+	mPrivAAMP->setCurrentDrm(fetchObj->mHelper);
 
 	mPrivAAMP->profiler.ProfileBegin(PROFILE_BUCKET_LA_TOTAL);
 	DrmSession *drmSession = licenseManger->createDrmSession( fetchObj->mHelper, mPrivAAMP, e, (int)fetchObj->mType);
@@ -499,14 +499,14 @@ bool AampLicensePreFetcher::CreateDRMSession(LicensePreFetchObjectPtr fetchObj)
 		if(e->getAccessStatusValue() != 3)
 		{
 			AAMPLOG_INFO("Sending DRMMetaData");
-			mPrivAAMP->_SendDRMMetaData(e);
+			mPrivAAMP->SendDRMMetaData(e);
 		}
 	}
 	mPrivAAMP->profiler.ProfileEnd(PROFILE_BUCKET_LA_TOTAL);
 	if(mPrivAAMP->mIsFakeTune)
 	{
-		mPrivAAMP->_SetState(eSTATE_COMPLETE);
-		mPrivAAMP->_SendEvent(std::make_shared<AAMPEventObject>(AAMP_EVENT_EOS, mPrivAAMP->_GetSessionId()));
+		mPrivAAMP->SetState(eSTATE_COMPLETE);
+		mPrivAAMP->SendEvent(std::make_shared<AAMPEventObject>(AAMP_EVENT_EOS, mPrivAAMP->GetSessionId()));
 	}
 	return ret;
 }
