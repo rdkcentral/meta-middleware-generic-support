@@ -437,3 +437,11 @@ PR:pn-packager-lisa = "r0"
 PACKAGE_ARCH:pn-packager-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
+
+PV:pn-barton-matter = "1.4.0"
+PR:pn-barton-matter = "r0"
+PACKAGE_ARCH:pn-barton-matter = "${MIDDLEWARE_ARCH}"
+
+PV:pn-barton = "1.1.0"
+PR:pn-barton = "r0"
+PACKAGE_ARCH:pn-barton = "${MIDDLEWARE_ARCH}"

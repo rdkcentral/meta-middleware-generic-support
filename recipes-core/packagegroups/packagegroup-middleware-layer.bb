@@ -169,6 +169,7 @@ RDEPENDS:${PN} = " \
     os-release \
     wlan-p2p \
     thunderhangrecovery \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_MATTER_BARTON', ' barton', '', d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
