@@ -170,6 +170,7 @@ RDEPENDS:${PN} = " \
     wlan-p2p \
     thunder-hang-recovery \
     thunder-plugin-activator \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_MATTER_BARTON', ' barton', '', d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
