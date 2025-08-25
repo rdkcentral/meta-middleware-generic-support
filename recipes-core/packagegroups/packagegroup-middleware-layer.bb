@@ -169,7 +169,7 @@ RDEPENDS:${PN} = " \
     os-release \
     wlan-p2p \
     thunderhangrecovery \
-    thunderpluginactivator \
+    thunder-plugin-activator \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
