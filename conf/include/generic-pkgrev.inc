@@ -82,7 +82,7 @@ PV:pn-qtvirtualkeyboard = "5.15.7"
 PR:pn-qtvirtualkeyboard = "r0"
 PACKAGE_ARCH:pn-qtvirtualkeyboard = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.6.1.4"
+PV:pn-aamp = "2.7.1.1"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -335,15 +335,15 @@ PV:pn-rdkwpasupplicantconfig = "1.0.0"
 PR:pn-rdkwpasupplicantconfig = "r0"
 PACKAGE_ARCH:pn-rdkwpasupplicantconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto = "0.10.0"
+PV:pn-rialto = "0.13.0"
 PR:pn-rialto = "r0"
 PACKAGE_ARCH:pn-rialto = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-gstreamer = "0.9.6"
+PV:pn-rialto-gstreamer = "0.12.0"
 PR:pn-rialto-gstreamer = "r0"
 PACKAGE_ARCH:pn-rialto-gstreamer = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-ocdm = "0.9.0"
+PV:pn-rialto-ocdm = "0.9.1"
 PR:pn-rialto-ocdm = "r0"
 PACKAGE_ARCH:pn-rialto-ocdm = "${MIDDLEWARE_ARCH}"
 
