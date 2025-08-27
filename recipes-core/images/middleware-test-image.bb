@@ -5,6 +5,7 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 inherit core-image custom-rootfs-creation
 inherit apparmor_binprofiles
+inherit apparmor_earlypolicy
 
 IMAGE_INSTALL = " \
                  packagegroup-vendor-layer \
