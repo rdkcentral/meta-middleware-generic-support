@@ -238,10 +238,6 @@ PV:pn-entservices-apis = "1.15.1"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-lisa = "1.0.0"
-PR:pn-entservices-lisa = "r0"
-PACKAGE_ARCH:pn-entservices-lisa = "${MIDDLEWARE_ARCH}"
-
 PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
 PV:pn-libunpriv="1.0.0"
@@ -431,9 +427,5 @@ PACKAGE_ARCH:pn-lsof = "${MIDDLEWARE_ARCH}"
 PV:pn-rdkcertconfig = "1.0.0"
 PR:pn-rdkcertconfig = "r0"
 PACKAGE_ARCH:rdkcertconfig = "${MIDDLEWARE_ARCH}"
-
-PV:pn-packager-lisa = "0.2.0"
-PR:pn-packager-lisa = "r0"
-PACKAGE_ARCH:pn-packager-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
