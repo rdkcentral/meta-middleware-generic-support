@@ -4,7 +4,6 @@ LICENSE = "MIT"
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 inherit core-image custom-rootfs-creation
-inherit apparmor_binprofiles
 
 IMAGE_INSTALL = " \
                  packagegroup-vendor-layer \
