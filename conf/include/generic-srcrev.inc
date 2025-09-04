@@ -1,5 +1,5 @@
 SRCREV_rdk-apparmor-profiles = "c34ff0e396e84f581f4b9945fc0350b31ce4d0a0"
-SRCREV_rdk-libunpriv = "2ab2a9e1f15e132e96fbb33d3fb45061b512aa8c"
+SRCREV_rdk-libunpriv = "547d202d421ed83bd60b677b5d057cad3b7ae8ad"
 SRCREV:pn-rdkat = "e52ebe05b6703dff7ca700fd286d84c0c72c41ea"
 SRCREV:pn-ctrlm-main = "b9f03f129f041cdcf0be54ed81d40e61f459b54d"
 SRCREV:pn-ctrlm-headers = "${SRCREV:pn-ctrlm-main}"
