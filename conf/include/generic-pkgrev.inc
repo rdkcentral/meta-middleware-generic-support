@@ -348,7 +348,7 @@ PV:pn-rdmagent = "2.1.1"
 PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkwindowmanager = "1.5.0"
+PV:pn-rdkwindowmanager = "1.7.0"
 PR:pn-rdkwindowmanager = "r0"
 PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 
@@ -428,7 +428,7 @@ PV:pn-lsof = "4.94.0"
 PR:pn-lsof = "r0"
 PACKAGE_ARCH:pn-lsof = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkcertconfig = "1.0.0"
+PV:pn-rdkcertconfig = "1.0.1"
 PR:pn-rdkcertconfig = "r0"
 PACKAGE_ARCH:rdkcertconfig = "${MIDDLEWARE_ARCH}"
 
