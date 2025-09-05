@@ -9,7 +9,6 @@ SRCREV_hdmicec = "5b86137db794ae939eab1ef37497dd6695911bf4"
 SRCREV:pn-rmfosal = "ea4f0df1edd73cc2d45d453ad445cb2536799684"
 SRCREV:pn-audiocapturemgr = "29f81aa9d1c749221a606002a31d669b030028ad"
 SRCREV_aamp = "2d04ebd6517e14286c42df3d82db0a232a1b4b15"
-
 SRCREV_iarmbus = "6ed35ebb886a8ac01812d8bfe5b4c3a89f9ace38"
 SRCREV:pn-iarmmgrs = "e7c386e3e9027c39fdc071c4bf07dbb32026237c"
 SRCREV:pn-rdk-gstreamer-utils = "ac84c17ca8a441b9fd699eb66d4187d551cac76a"
