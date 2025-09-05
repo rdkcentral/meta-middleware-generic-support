@@ -38,7 +38,7 @@ PV:pn-rbus = "2.6.0"
 PR:pn-rbus = "r7"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.1.2"
+PV:pn-rfc = "1.1.4"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
@@ -244,7 +244,7 @@ PACKAGE_ARCH:pn-entservices-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework-clientlibraries = "${MIDDLEWARE_ARCH}"
 
-PV:pn-libunpriv="1.0.0"
+PV:pn-libunpriv="1.0.2"
 PR:pn-libunpriv= "r0"
 PACKAGE_ARCH:pn-libunpriv = "${MIDDLEWARE_ARCH}"
 
