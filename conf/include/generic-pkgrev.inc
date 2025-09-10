@@ -38,11 +38,11 @@ PV:pn-rbus = "2.1.0"
 PR:pn-rbus = "r0"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.1.0"
+PV:pn-rfc = "1.1.0v2"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.1.9v3"
+PV:pn-tr69hostif = "1.1.9v4"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -241,7 +241,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.7.3.2"
+PV:pn-entservices-apis = "1.7.3.3"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -371,7 +371,7 @@ PACKAGE_ARCH:pn-wlan-p2p = "${MIDDLEWARE_ARCH}"
 MULTILIB_VARIANTS:pn-os-release = " multilib "
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-app = "1.3.0"
+PV:pn-subttxrend-app = "1.3.1"
 PR:pn-subttxrend-app = "r0"
 PACKAGE_ARCH:pn-subttxrend-app = "${MIDDLEWARE_ARCH}"
 
