@@ -78,8 +78,7 @@ PV:pn-qtwayland = "5.15.7"
 PR:pn-qtwayland = "r1"
 PACKAGE_ARCH:pn-qtwayland = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.7.1"
-
+PV:pn-aamp = "2.8.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -263,7 +262,7 @@ PV:pn-xdial = "3.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "3.0.1"
+PV:pn-sysint = "3.0.3"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -289,9 +288,9 @@ PV:pn-networkmanager-plugin = "1.0.0"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderhangrecovery = "1.0.0"
-PR:pn-thunderhangrecovery = "r0"
-PACKAGE_ARCH:pn-thunderhangrecovery = "${MIDDLEWARE_ARCH}"
+PV:pn-thunder-hang-recovery = "1.0.0"
+PR:pn-thunder-hang-recovery = "r0"
+PACKAGE_ARCH:pn-thunder-hang-recovery = "${MIDDLEWARE_ARCH}"
 
 PV:pn-wpeframework-ui = "1.0.0"
 PR:pn-wpeframework-ui = "r0"
