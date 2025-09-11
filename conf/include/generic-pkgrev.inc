@@ -431,7 +431,7 @@ PV:pn-rdkcertconfig = "1.0.1"
 PR:pn-rdkcertconfig = "r0"
 PACKAGE_ARCH:rdkcertconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-packager-lisa = "0.2.0"
+PV:pn-packager-lisa = "0.3.0"
 PR:pn-packager-lisa = "r0"
 PACKAGE_ARCH:pn-packager-lisa = "${MIDDLEWARE_ARCH}"
 
