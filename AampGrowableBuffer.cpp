@@ -54,8 +54,11 @@ void AampGrowableBuffer::Free( void )
         {
             printf("AampGrowableBuffer::%s(%s:%d)\n", "Free",name,gNetMemoryCount);
         }
-		g_free( ptr );
-		ptr = NULL;
+		{
+			std::lock_guard<std::mutex> lock(mutex);
+			g_free(ptr);
+			ptr = NULL;
+		}
 	}
 	len = 0;
 	avail = 0;
