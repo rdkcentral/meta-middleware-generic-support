@@ -26,7 +26,7 @@ PV:pn-rtcore = "1.0.1"
 PR:pn-rtcore = "r2"
 PACKAGE_ARCH:pn-rtcore = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdknativescript = "1.0.3"
+PV:pn-rdknativescript = "1.0.4"
 PR:pn-rdknativescript = "r0"
 PACKAGE_ARCH:pn-rdknativescript = "${MIDDLEWARE_ARCH}"
 
@@ -50,7 +50,7 @@ PV:pn-rtremote = "2.0.0"
 PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.6.1"
+PV:pn-telemetry = "1.6.3"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -226,7 +226,7 @@ PV:pn-gst-plugins-rdk = "1.0.0"
 PR:pn-gst-plugins-rdk = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdk-gstreamer-utils = "2.0.1"
+PV:pn-rdk-gstreamer-utils = "2.0.2"
 PACKAGE_ARCH:pn-rdk-gstreamer-utils = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
@@ -262,7 +262,7 @@ PV:pn-xdial = "3.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "3.0.2"
+PV:pn-sysint = "3.0.3"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -288,9 +288,9 @@ PV:pn-networkmanager-plugin = "1.0.0"
 PR:pn-networkmanager-plugin = "r0"
 PACKAGE_ARCH:pn-networkmanager-plugin = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderhangrecovery = "1.0.0"
-PR:pn-thunderhangrecovery = "r0"
-PACKAGE_ARCH:pn-thunderhangrecovery = "${MIDDLEWARE_ARCH}"
+PV:pn-thunder-hang-recovery = "1.0.0"
+PR:pn-thunder-hang-recovery = "r0"
+PACKAGE_ARCH:pn-thunder-hang-recovery = "${MIDDLEWARE_ARCH}"
 
 PV:pn-wpeframework-ui = "1.0.0"
 PR:pn-wpeframework-ui = "r0"
@@ -431,7 +431,7 @@ PV:pn-rdkcertconfig = "1.0.1"
 PR:pn-rdkcertconfig = "r0"
 PACKAGE_ARCH:rdkcertconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-packager-lisa = "0.2.0"
+PV:pn-packager-lisa = "0.3.0"
 PR:pn-packager-lisa = "r0"
 PACKAGE_ARCH:pn-packager-lisa = "${MIDDLEWARE_ARCH}"
 
