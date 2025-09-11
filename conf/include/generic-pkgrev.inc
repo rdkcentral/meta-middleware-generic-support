@@ -26,7 +26,7 @@ PV:pn-rtcore = "1.0.1"
 PR:pn-rtcore = "r2"
 PACKAGE_ARCH:pn-rtcore = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdknativescript = "1.0.3"
+PV:pn-rdknativescript = "1.0.4"
 PR:pn-rdknativescript = "r0"
 PACKAGE_ARCH:pn-rdknativescript = "${MIDDLEWARE_ARCH}"
 
@@ -78,8 +78,7 @@ PV:pn-qtwayland = "5.15.7"
 PR:pn-qtwayland = "r1"
 PACKAGE_ARCH:pn-qtwayland = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.7.1"
-
+PV:pn-aamp = "2.8.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -263,7 +262,7 @@ PV:pn-xdial = "3.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "3.0.2"
+PV:pn-sysint = "3.0.3"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
