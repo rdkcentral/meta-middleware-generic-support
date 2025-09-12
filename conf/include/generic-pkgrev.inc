@@ -226,7 +226,7 @@ PV:pn-gst-plugins-rdk = "1.0.0"
 PR:pn-gst-plugins-rdk = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdk-gstreamer-utils = "2.0.1"
+PV:pn-rdk-gstreamer-utils = "2.0.2"
 PACKAGE_ARCH:pn-rdk-gstreamer-utils = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
