@@ -50,7 +50,7 @@ PV:pn-rtremote = "2.0.0"
 PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.6.1"
+PV:pn-telemetry = "1.6.3"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -132,7 +132,7 @@ PV:pn-entservices-connectivity = "1.1.0"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.1.9"
+PV:pn-entservices-deviceanddisplay = "3.1.14"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
@@ -140,7 +140,7 @@ PV:pn-entservices-infra = "1.7.9"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.4.2"
+PV:pn-entservices-inputoutput = "1.4.7"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -226,7 +226,7 @@ PV:pn-gst-plugins-rdk = "1.0.0"
 PR:pn-gst-plugins-rdk = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdk-gstreamer-utils = "2.0.1"
+PV:pn-rdk-gstreamer-utils = "2.0.2"
 PACKAGE_ARCH:pn-rdk-gstreamer-utils = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
@@ -431,7 +431,7 @@ PV:pn-rdkcertconfig = "1.0.1"
 PR:pn-rdkcertconfig = "r0"
 PACKAGE_ARCH:rdkcertconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-packager-lisa = "0.2.0"
+PV:pn-packager-lisa = "0.3.0"
 PR:pn-packager-lisa = "r0"
 PACKAGE_ARCH:pn-packager-lisa = "${MIDDLEWARE_ARCH}"
 
