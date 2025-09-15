@@ -233,11 +233,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-<<<<<<< HEAD
-PV:pn-entservices-apis = "1.15.8"
-=======
 PV:pn-entservices-apis = "1.15.10"
->>>>>>> e4dbb3d0926202954f1196f02b64fb5162f78cb9
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
