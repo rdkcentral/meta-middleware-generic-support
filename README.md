@@ -7,7 +7,7 @@ XiOne UK Stream Puck RDKE Vendor Layer Release Notes
 |Summary|Content|
 |---|----|
 |Classification|Confidential|
-|Date|01 Sep 2025|
+|Date|15 Sep 2025|
 |Author| rosmi.sebastian@sky.uk |
 
 ---
@@ -16,7 +16,7 @@ XiOne UK Stream Puck RDKE Vendor Layer Release Notes
 |  |  |
 |---------------|---------------|
 | Manifest location | <https://github.com/rdk-e/vendor-manifest-xione-stream> |
-| Manifest Tag | 9.1.0 |
+| Manifest Tag | 9.2.0 |
 | Manifest Name | [xione-realtek-streambox.xml](https://github.com/rdk-e/vendor-manifest-xione-stream/blob/main/xione-realtek-streambox.xml) |
 | Machine Name | xione-uk |
 | Platforms supported | Realtek 1319 |
@@ -48,63 +48,66 @@ XiOne UK Stream Puck RDKE Vendor Layer Release Notes
 
 ## Release Description
 
-This is a scheduled bi-weekly release from the vendor  [RDKEVD-2987](https://ccp.sys.comcast.net/browse/RDKEVD-2987). This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
+This is a scheduled bi-weekly release from the vendor  [RDKEVD-3177](https://ccp.sys.comcast.net/browse/RDKEVD-3177). This release will provide a versioned "meta-vendor-xione-realtek-release" that will be used by the middleware as well as image assembler.
 ### The scope of this release includes:
 
-- RDKE Vendor Release -9.1.0 [RDKEVD-2987](https://ccp.sys.comcast.net/browse/RDKEVD-2987)
-- Observing Kernel Panic(WiFi driver crash) on tuning to UHD linear channels [XIONE-17204 ](https://ccp.sys.comcast.net/browse/XIONE-17204)
-- ROM code behaviour override after DeepSleep resume [XIONE-17654](https://ccp.sys.comcast.net/browse/XIONE-17654)
-- [GStreamer clock time (actual) is greater than the wallclock time (expected) during playback [RDKEVD-1779](https://ccp.sys.comcast.net/browse/RDKEVD-1779 )
-- Add RF4CE HAL to the vendor layer - US Xione RealteK [RDKEVD-1990](https://ccp.sys.comcast.net/browse/RDKEVD-1990)
-- Log upload utility is not present [XIONE-17140 ](https://ccp.sys.comcast.net/browse/XIONE-17140)
-- Move the patches properly from RDK-V to RDK-E [RDKEVD-2734](https://ccp.sys.comcast.net/browse/RDKEVD-2734)
-## Release layer and components
+- VL release 9.2.0 [RDKEVD-3177](https://ccp.sys.comcast.net/browse/RDKEVD-3177)
+- ctrlm_irdb to RTK vendor layer [RDKEVD-2351](https://ccp.sys.comcast.net/browse/RDKEVD-2351)
+- To fix Issue with dsSetFPBlink() & dsSetFPColor() [RDKEVD-2417](https://ccp.sys.comcast.net/browse/RDKEVD-2417)
+- Pinkish screen observed when playing Dolby Vision stream on Philips TV [RDKEVD-3013](https://ccp.sys.comcast.net/browse/RDKEVD-3013)
+- Add driver interfaces to capture GPU and FPS metrics [RDKEVD-1198](https://ccp.sys.comcast.net/browse/RDKEVD-1198)
+- Post game pad connection trying to connect Bt audio device, game pad got disconnected able to see the loop of connect/disconnect events for audio device [RDKEVD-2750](https://ccp.sys.comcast.net/browse/RDKEVD-2750)
+- RTK rf4ce support [RDKEVD-2519](https://ccp.sys.comcast.net/browse/RDKEVD-2519)
+- BL31 update [RDKEVD-3115](https://ccp.sys.comcast.net/browse/RDKEVD-3115)
+- dsDISPLAY_HDCPPROTOCOL_CHANGE not triggered [RDKEVD-2389](https://ccp.sys.comcast.net/browse/RDKEVD-2389)
+- OSS Consumption integration to stack layers. [RDKEVD-2794](https://ccp.sys.comcast.net/browse/RDKEVD-2794)
+- Remove Default partner ID for WAI supported devices [RDKEMW-7077](https://ccp.sys.comcast.net/browse/RDKEMW-7077)
+- Added image name suffix XOE [RDKEMW-7042](https://ccp.sys.comcast.net/browse/RDKEMW-7077)
 
 ### Vendor Release Components
 
-| Vendor Release Components | New Version (9.1.0) | Version in Previous Release (9.0.1) | Changelist |
+| Vendor Release Components | New Version (9.2.0) | Version in Previous Release (9.1.0) | Changelist |
 |------------|---------|------------------------------------|------------|
 | Kernel & DTB | | 4.9.119.01-r9  | |
-| packagegroup-vendor-layer | 9.1.0-r0 | 9.0.1-r0 | [9.0.1....9.1.0](https://github.com/rdk-e/meta-oem-realtek-stream/compare/9.0.1...9.1.0) |
-| packagegroup-common-vendor-layer | 9.1.0-r0 | 9.0.1-r0 |[9.0.1....9.1.0](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/compare/9.0.1...9.1.1)  |
+| packagegroup-vendor-layer | 9.2.0-r0 | 9.1.0-r0 | [9.1.0....9.2.0](https://github.com/rdk-e/meta-oem-realtek-stream/compare/9.1.0...9.2.0) |
+| packagegroup-common-vendor-layer | 9.2.0-r0 | 9.1.0-r0 |[9.1.0....9.2.0](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/compare/9.1.0...9.2.0)  |
 ### Stack layer
 
 | Release meta Layer | Tag |
 |------|------|
-| [meta-vendor-xione-realtek-release](https://github.com/rdk-e/meta-vendor-xione-realtek-release) | [9.1.0](https://github.com/rdk-e/meta-vendor-xione-realtek-release/tree/9.1.0) |
+| [meta-vendor-xione-realtek-release](https://github.com/rdk-e/meta-vendor-xione-realtek-release) | [9.2.0](https://github.com/rdk-e/meta-vendor-xione-realtek-release/tree/9.2.0) |
 
 #### Artifactory Location for IPKs
 
 | Product | Location |
 |------------|---------|
-| XiOne-UK | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-uk-rel/9.1.0/xione-uk/ipks/debug |
-| XiOne-Foxtel | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-foxtel-rel/9.1.0/xione-foxtel/ipks/debug |
-| XiOne-DE | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-de-rel/9.1.0/xione-de/ipks/debug |
-| XiOne-Alpaca-De | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-alpaca-de-rel/9.1.0/xione-alpaca-de/ipks/debug |
-| XOE | https://partners.artifactory.comcast.com/ui/repos/tree/General/xfinity-stream-box-rel/9.1.0/xfinity-stream-box/ipks/debug |
-| WNC Xfinity | https://partners.artifactory.comcast.com/ui/repos/tree/General/wnc-xfinity-stream-box-rel/9.1.0/wnc-xfinity-stream-box/ipks/debug |
-| RTK-Flex2 | https://partners.artifactory.comcast.com/ui/repos/tree/General/xumo-stream-box-rel/9.1.0/xumo-stream-box/ipks/debug |
-
+| XiOne-UK | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-uk-rel/9.2.0/xione-uk/ipks/debug |
+| XiOne-Foxtel | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-foxtel-rel/9.2.0/xione-foxtel/ipks/debug |
+| XiOne-DE | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-de-rel/9.2.0/xione-de/ipks/debug |
+| XiOne-Alpaca-De | https://partners.artifactory.comcast.com/ui/repos/tree/General/xione-alpaca-de-rel/9.2.0/xione-alpaca-de/ipks/debug |
+| XOE | https://partners.artifactory.comcast.com/ui/repos/tree/General/xfinity-stream-box-rel/9.2.0/xfinity-stream-box/ipks/debug |
+| WNC Xfinity | https://partners.artifactory.comcast.com/ui/repos/tree/General/wnc-xfinity-stream-box-rel/9.2.0/wnc-xfinity-stream-box/ipks/debug |
+| RTK-Flex2 | https://partners.artifactory.comcast.com/ui/repos/tree/General/xumo-stream-box-rel/9.2.0/xumo-stream-box/ipks/debug |
 ### Meta Repos
 
 #### Meta repos maintained by layers layer
 
-| Meta Repo | New Version (9.1.0) | Version in Previous Release (9.0.1) | ChangeList |
+| Meta Repo | New Version(9.2.0) | Version in Previous Release (9.1.0) | ChangeList |
 |------------|---------|------------------------------------|--------------|
 | meta-rdk-auxiliary |  | 1.3.0 | |
 | meta-rdk-oss-reference |  | 4.7.1 | |
 | meta-rdk-tools |  | 2.3.1 | |
 | meta-vts |  | 1.2.0 | |
-| [meta-rdk-soc-realtek](#meta-rdk-soc-realtek) |  **4.1.2** | 4.1.1 | [4.1.1...4.1.2](https://github.com/rdk-e/meta-rdk-soc-realtek/compare/4.1.1...4.1.2) |
-| meta-oem-stream |  | 4.1.0 | |
-| [meta-oem-realtek-stream](#meta-oem-realtek-stream) |  **9.1.0** | 9.0.1 | [9.0.1...9.1.0](https://github.com/rdk-e/meta-oem-realtek-stream/compare/9.0.1...9.1.0) |
-| [meta-rdk-vendor-realtek-common](#meta-rdk-vendor-realtek-common) |  **9.1.0** | 9.0.1 | [9.0.1...9.1.0](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/compare/9.0.1...9.1.0) |
+| meta-rdk-soc-realtek |  | 4.1.2 | |
+| [meta-oem-stream](#meta-oem-stream) |  **4.1.1** | 4.1.0 | [4.1.0...4.1.1](https://github.com/rdk-e/meta-oem-stream/compare/4.1.0...4.1.1) |
+| [meta-oem-realtek-stream](#meta-oem-realtek-stream) |  **9.2.0** | 9.1.0 | [9.1.0...9.2.0](https://github.com/rdk-e/meta-oem-realtek-stream/compare/9.1.0...9.2.0) |
+| [meta-rdk-vendor-realtek-common](#meta-rdk-vendor-realtek-common) |  **9.2.0** | 9.1.0 | [9.1.0...9.2.0](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/compare/9.1.0...9.2.0) |
 | meta-oss-vendor-realtek |  | 4.1.2 | |
 | meta-mediarite-vendor |  | 21.4 | |
 
 #### Meta repos common for RDK-E
 
-| Meta Repo | New Version (9.1.0) | Version in Previous Release (9.0.1) | ChangeList |
+| Meta Repo | New Version | Version in Previous Release (9.1.0) | ChangeList |
 |------------|---------|------------------------------------|--------------|
 | **buildscripts** ||||
 | build-scripts |  | 1.0.1 | |
@@ -130,23 +133,23 @@ This is a scheduled bi-weekly release from the vendor  [RDKEVD-2987](https://ccp
 | rdke-stb-config |  | 1.0.3 | |
 | | | | |
 | **rdk** ||||
-| meta-rdk-halif-headers |  | 3.0.0 | |
+| meta-rdk-halif-headers |  **3.0.2** | 3.0.0 | [3.0.0...3.0.2](https://github.com/rdkcentral/meta-rdk-halif-headers/compare/3.0.0...3.0.2) |
 | meta-rdk-cpc-halif-headers |  | 1.0.0 | |
 | meta-rdk-vendor-cpc-common |  | 1.4.0 | |
 | | | | |
 | **products** ||||
-| meta-product-xione |  | 3.3.5 | |
+| meta-product-xione |  **3.3.8** | 3.3.5 | [3.3.5...3.3.8](https://github.com/rdk-e/meta-product-xione/compare/3.3.5...3.3.8) |
 | | | | |
 | **binder** ||||
 | meta-binder |  | 1.0.0 | |
 | | | | |
 | **release** ||||
-| meta-vendor-xione-realtek-release |  **9.0.1** | bfdb405 | [bfdb405...9.0.1](https://github.com/rdk-e/meta-vendor-xione-realtek-release/compare/bfdb405f531834d0001e0993049a7e746cf22f5f...9.0.1) |
+| meta-vendor-xione-realtek-release |  **9.1.0** | 9.0.1 | [9.0.1...9.1.0](https://github.com/rdk-e/meta-vendor-xione-realtek-release/compare/9.0.1...9.1.0) |
 | | | | |
 
 ### Interface versions
 
-| # | HAL Interface Header (rdkcentral github) | New Version (9.1.0) | Version from Previous Release (9.0.1)|
+| # | HAL Interface Header (rdkcentral github) | New Version | Version from Previous Release (9.1.0)|
 |---|------------------------------------------|-------------|----------------------|
 | 1 | media-utils-headers | | 1.0.5 |
 | 2 | hdmicecheader | | 1.3.10 |
@@ -160,11 +163,10 @@ This is a scheduled bi-weekly release from the vendor  [RDKEVD-2987](https://ccp
 | 7 | iarmmgrs-hal-headers | | 1.0.12 |
 | 8 | closedcaption-hal-headers | | 1.0.0 |
 | 9 | iarmbus-headers | | 1.0.1 |
-| 10 | rdk-gstreamer-utils-headers | | 2.0.0 |
+| 10 | rdk-gstreamer-utils-headers | **2.0.2** | 2.0.0 |
 
 ### Limitations
 It should be noted that some services may not run as they have dependencies with other layers. Additionally, the exclusion of inter-layer bbappends/patches might result in the failure to start some services. These limitations should be taken into consideration during the verification process. These Limitations will be addressed in Future Releases.
-
 
 ## Build instructions
 
@@ -177,9 +179,9 @@ It should be noted that some services may not run as they have dependencies with
 #### Copy image to device /mnt/usb or /opt partitions or connect and mount USB having the image binn- Execute FlashApp command
 - Move to directory containing the image
 - FlashApp \<dirname\> \<imagename\>
-- eg. FlashApp /mnt/usb/SKXI11ADS_9.1.0_VENDOR_DEV.bin
+- eg. FlashApp /mnt/usb/SKXI11ADS_9.2.0_VENDOR_DEV.bin
 #### USB Flash Method using xboot prompt
-- Copy the image `"SKXI11ADS_9.1.0_VENDOR_DEV.bin "` to the usb and connect to the STB
+- Copy the image `"SKXI11ADS_9.2.0_VENDOR_DEV.bin"` to the usb and connect to the STB
 - Switch on the STB
 - Press z button multiple time to get the bootloader prompt.
 - From bootloader prompt, need to do below method
@@ -196,14 +198,14 @@ It should be noted that some services may not run as they have dependencies with
 
 ## Testing
 
-- Created the `"vendor test image"` `" SKXI11ADS_9.1.0_VENDOR_DEV.bin "` for XiOne-UK and for all other variants as well using the vendor layer jenkins job `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Vendor-Release-Build/"`
+- Created the `"vendor test image"` `" SKXI11ADS_9.2.0_VENDOR_DEV.bin"` for XiOne-UK and for all other variants as well using the vendor layer jenkins job `"https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Vendor-Release-Build/200/"`
 - Successfully booted the `"vendor test image"` and obtained the shell prompt.
 - Verified vendor layer services up and running
 - Verified IP acquisition via Ethernet
 - Played clear AV with gst-play-1.0.
 - Verified image flashing using FlashApp
 
-Testing details in [RDKEVD-2987](https://ccp.sys.comcast.net/browse/RDKEVD-2987)
+Testing details in [RDKEVD-3177](https://ccp.sys.comcast.net/browse/RDKEVD-3177)
 #### High Level Vendor Memory usage data
 - Test results for use case of UHD60FPS playback on Xione Uk puck  with 4GB DDR Size . The device has a dual decode capability with UHD+FHD support. Very minimal services are running in the vendor test image while  running the test.
 
@@ -218,6 +220,7 @@ Testing details in [RDKEVD-2987](https://ccp.sys.comcast.net/browse/RDKEVD-2987)
 ##### XiOne-UK
 | ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
 | --- | --- | --- | --- | --- | --- | --- |
+| Sep 15 2025 |	 SKXI11ADS_VENDOR_DEV_release_9.2.0_20250910112421   | 1547372 | 457697	| 22878	| 480575 | 2166101 |
 | Sep 01 2025 |	 SKXI11ADS_VENDOR_DEV_release_9.1.0_20250827165528   | 1547372 | 456049	| 22406	| 478455 | 2168221 |
 | Aug 13 2025 |  SKXI11ADS_VENDOR_DEV_release_9.0.0_20250813055248   | 1547372 | 447036	| 22322	| 469358 | 2177318 |
 | Jul 17 2025 |  SKXI11ADS_8.1.2_VENDOR_DEV                          | 1547372 | 445825 | 22668 | 4684932| 2178183 |
@@ -237,6 +240,7 @@ Testing details in [RDKEVD-2987](https://ccp.sys.comcast.net/browse/RDKEVD-2987)
 ##### XiOne-Foxtel
 | ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
 | --- | --- | --- | --- | --- | --- | --- |
+| Sep 15 2025 |  SKXI11ADSSOFT_VENDOR_DEV_release_9.2.0_20250910112513   | 1547372 | 443328 | 22512 | 465840 | 2180836 |
 | Sep 01 2025 |	 SKXI11ADSSOFT_VENDOR_DEV_release_9.1.0_20250827165544	 | 1547372 | 446854 | 22747 | 469601 | 2177075 |
 | Aug 13 2025 |  SKXI11ADSSOFT_VENDOR_DEV_release_9.0.0_20250813055442   |1547372  | 446902 | 22639 | 469541 | 2177135 |
 |Jul 17 2025  |  SKXI11ADSSOFT_8.1.2_VENDOR_DEV                          | 1547372 | 445523 | 22278 | 467801 |2178875  |
@@ -249,6 +253,7 @@ Testing details in [RDKEVD-2987](https://ccp.sys.comcast.net/browse/RDKEVD-2987)
 ##### XiOne-DE
 | ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
 | --- | --- | --- | --- | --- | --- | --- |
+| Sep 15 2025 |  SKXI11AIS_VENDOR_DEV_release_9.2.0_20250910112626   | 1547344 | 463145	| 21946	| 485091 | 2161613 |
 | Sep 01 2025 |	 SKXI11AIS_VENDOR_DEV_release_9.1.0_20250827170034   | 1547344 | 463315	| 22605	| 485920 | 2160784 |
 | Aug 13 2025 |  SKXI11AIS_VENDOR_DEV_release_9.0.0_20250813055550   | 1547344 | 471490	| 22621	| 494111 | 2152593 |
 | Jul 17 2025 |  SKXI11AIS_8.1.2_VENDOR_DEV                          | 1547344 | 463329 | 22820 | 486149 | 2160555 |
@@ -259,6 +264,7 @@ Testing details in [RDKEVD-2987](https://ccp.sys.comcast.net/browse/RDKEVD-2987)
 ##### XiOne-Alpaca-DE
 | ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
 | --- | --- | --- | --- | --- | --- | --- |
+| Sep 15 2025 | SKXI11AEISODE_VENDOR_DEV_release_9.2.0_20250910112547	 | 1547372 | 454200 | 22419 | 476619 | 2170057 |
 | Sep 01 2025 |	SKXI11AEISODE_VENDOR_DEV_release_9.1.0_20250827165625	 |1547372  | 446170 | 22520 | 468690 | 2177986 |
 | Aug 13 2025 | SKXI11AEISODE_VENDOR_DEV_release_9.0.0_20250813055454 	 | 1547372 | 446892 | 22480 | 469372 | 2177304 |
 | Jul 17 2025 |   SKXI11AEISODE_8.1.2_VENDOR_DEV                         | 1547372 | 447820 | 22314 | 470134 | 2176542 |
@@ -269,6 +275,7 @@ Testing details in [RDKEVD-2987](https://ccp.sys.comcast.net/browse/RDKEVD-2987)
 ##### Xfinity-stream-box
 | ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
 | --- | --- | --- | --- | --- | --- | --- |
+| Sep 15 2025 | SCXI11AIC_VENDOR_DEV_release_9.2.0_20250910151453_XOE| 1547348 | 473640	| 22317	| 495957 | 2150743 |
 | Sep 01 2025 |	SCXI11AIC_VENDOR_DEV_release_9.1.0_20250827170034    | 1547348 | 463488	| 22487	| 485975 | 2160725 |
 | Aug 13 2025 | SCXI11AIC_VENDOR_DEV_release_9.0.0_20250813055548    | 1547348 | 471324 | 22355 | 493679 | 2153021 |
 | Jul 17 2025 | SCXI11AIC_8.1.2_VENDOR_DEV                           | 1436756 | 464011 | 22287 | 486298 | 2270994 |
@@ -286,29 +293,29 @@ Testing details in [RDKEVD-2987](https://ccp.sys.comcast.net/browse/RDKEVD-2987)
 ##### WNC Xfinity
 | ReleaseDate | Build | Static reserved |  Vendor Baseline Memory |  Vendor Dynamic usage on uhd_play | Vendor Dynamic Total |  Avaialable Memory |
 | --- | --- | --- | --- | --- | --- | --- |
-| Sep 01 2025 |	WNXI11AEI_VENDOR_DEV_release_9.1.0_20250827170034   | 1547348 |	462996 | 22050	| 485046 | 2161654 |
-| Aug 13 2025 | WNXI11AEI_VENDOR_DEV_release_9.0.0_20250814165809   | 1547348 | 474320 | 22482	| 496802 | 2149898 |                                 | 
-| Jul 14 2025 |  WNXI11AEI_8.1.2_VENDOR_DEV                          | 1547348 | 463448 | 22637 |  486085 | 2160615 |
-| Jul 07 2025 |  WNXI11AEI_VENDOR_DEV_refs_tags_8.0.3_20250703153256| 1547348 | 473436 | 23006 | 496442 | 2150258 |
-| May 23 2025 |  WNXI11AEI_VENDOR_DEV_refs_tags_7.0.1_20250521171806 | 1547356 | 473728 | 29253 | 502981 | 2143711 |
-| May 16 2025 |  WNXI11AEI_VENDOR_DEV_refs_tags_7.0.0_20250512160923 | 1547356 | 472994 | 22047 | 495041 | 2151651 |
+| Sep 15 2025 | WNXI11AEI_VENDOR_DEV_release_9.2.0_20250910153239_XOE |	1547348	| 473383 | 22273 | 495656 | 2151044 |
+| Sep 01 2025 |	WNXI11AEI_VENDOR_DEV_release_9.1.0_20250827170034     | 1547348 | 462996 | 22050 | 485046 | 2161654 |
+| Aug 13 2025 | WNXI11AEI_VENDOR_DEV_release_9.0.0_20250814165809     | 1547348 | 474320 | 22482 | 496802 | 2149898 |                                 | 
+| Jul 14 2025 |  WNXI11AEI_8.1.2_VENDOR_DEV                           | 1547348 | 463448 | 22637 | 486085 | 2160615 |
+| Jul 07 2025 |  WNXI11AEI_VENDOR_DEV_refs_tags_8.0.3_20250703153256  | 1547348 | 473436 | 23006 | 496442 | 2150258 |
+| May 23 2025 |  WNXI11AEI_VENDOR_DEV_refs_tags_7.0.1_20250521171806  | 1547356 | 473728 | 29253 | 502981 | 2143711 |
+| May 16 2025 |  WNXI11AEI_VENDOR_DEV_refs_tags_7.0.0_20250512160923  | 1547356 | 472994 | 22047 | 495041 | 2151651 |
 ### Fullstack image testing
 ##### XiOne-UK
-Created Image Assembler build "SKXI11ADS_DEV_9.1.0_20250828101502.bin" from "https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/2925/s3/"
+Created Image Assembler build "SKXI11ADS_DEV_9.2.0_20250910155701.bin" from "https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-Image-Assembler-Build/3085/s3/"
 ##### XiOne-Foxtel
-Created Image Assembler build "SKXI11ADSSOFT_DEV_9.1.0_20250828101417.bin" from " https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/view/4-Assembler-Jobs/job/RTK-XIONE-Foxtel-Image-Assembler-Build/382/s3/"
+Created Image Assembler build "SKXI11ADSSOFT_DEV_9.2.0_20250911063116.bin" from " https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/view/4-Assembler-Jobs/job/RTK-XIONE-Foxtel-Image-Assembler-Build/433/s3/"
 ##### XiOne-Alpaca-DE
-Created Image Assembler build "SKXI11AEISODE_DEV_9.1.0_20250828101702.bin" from "https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/view/4-Assembler-Jobs/job/RTK-XIONE-ALPACA-DE-Image-Assembler-Build/105/s3/"
+Created Image Assembler build "SKXI11AEISODE_DEV_9.2.0_20250910155851.bin" from "https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/view/4-Assembler-Jobs/job/RTK-XIONE-ALPACA-DE-Image-Assembler-Build/123/s3/"
 ##### XiOne-DE
-Created Image Assembler build "SKXI11AIS_DEV_9.1.0_20250828101719.bin" from "https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/view/4-Assembler-Jobs/job/RTK-XIONE-DE-Image-Assembler-Build/359/s3/"
+Created Image Assembler build "SKXI11AIS_DEV_9.2.0_20250910160013.bin" from "https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/view/4-Assembler-Jobs/job/RTK-XIONE-DE-Image-Assembler-Build/412/s3/"
 ##### XiOne-XOE
-Created Image Assembler build "SCXI11AIC_DEV_9.1.0_20250828101738.bin" from "https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-XFINITY-STREAM-BOX-Image-Assembler-Build/313/s3/"
+Created Image Assembler build "SCXI11AIC_DEV_9.2.0_20250910160117.bin" from "https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-XFINITY-STREAM-BOX-Image-Assembler-Build/360/s3/"
 ##### XiOne-WNC-Xfinity
-Created Image Assembler build "WNXI11AEI_DEV_9.1.0_20250828101753.bin" from "https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-WNC-XFINITY-Image-Assembler-Build/81/s3/"
+Created Image Assembler build "WNXI11AEI_DEV_9.2.0_20250910160123.bin" from "https://rdkjenkins-e.stb.r53.xcal.tv/jenkins/job/RTK-XIONE-WNC-XFINITY-Image-Assembler-Build/99/s3/"
 
-- Testing is done by using the middleware ipk created with branch support/2.16.0 and  with the image assembler manifest branch `"9.1.0`" - referenced from 8.3s10 tag and including latest vendor ipk feed info https://github.com/rdk-e/meta-vendor-xione-realtek-release/blob/release/9.1.0/conf/machine/include/vendor.inc
-   Middleware IPKs are generated with `"support/2.16.0`" by consuming the latest common IPK containing the updated mfrlib version, ensuring compatibility and preventing compilation errors caused by version mismatches between vendor and middleware.
-- Tested the below scenarios as part of [RDKEVD-2987](https://ccp.sys.comcast.net/browse/RDKEVD-2987)
+Testing is done by using the middleware test ipk (https://partners.artifactory.comcast.com/artifactory/middleware-dbg/RDKEMW-7823) build  with 9.1.0 VL integrated,   and with the image assembler manifest branch "9.2.0" - referenced from 8.3s10 tag and including latest vendor ipk feed info https://github.com/rdk-e/meta-vendor-xione-realtek-release/blob/release/9.2.0/conf/machine/include/vendor.inc"
+- Tested the below scenarios as part of [RDKEVD-3177](https://ccp.sys.comcast.net/browse/RDKEVD-3177)
   - Successfully booted \"\" and obtained the shell prompt and UI.
   - Verified UI navigation
   - Verified AV with Disney+ App
@@ -319,10 +326,11 @@ Created Image Assembler build "WNXI11AEI_DEV_9.1.0_20250828101753.bin" from "htt
   - Verified remote control pairing
   - Verified Log files are present in /opt/logs
 - Note
-  - Issues observed in  release 9.1.0 https://ccp.sys.comcast.net/browse/XIONE-17389?jql=labels%20%3D%20Vendor_9.1.0
-  - Attached the test report here https://ccp.sys.comcast.net/secure/attachment/12227613/RDKE_Release_9.1.0_Manualtest.pdf
+  - Issues observed in  release 9.2.0 https://ccp.sys.comcast.net/browse/XIONE-17389?jql=labels%20%3D%20Vendor_9.2.0
+  - Attached the test report here https://ccp.sys.comcast.net/secure/attachment/12416389/RE_%20%5BRelease%5D%20XiOne%20RTK%209.2.0%20%20vendor%20layer%20release.msg
 ## Components details in 'packagegroup-common-vendor-layer'
-| # | Vendor layer Component | New PV-PR | PV-PR in Previous Release (9.0.1)| New SRCREV | SRCREV in Previous Release (9.0.1)| Diff |
+
+| # | Vendor layer Component | New PV-PR | PV-PR in Previous Release (9.1.0)| New SRCREV | SRCREV in Previous Release (9.1.0)| Diff |
 |---|------------------------------------------|-------------|----------------------|-----------|------------|-----|
 | 1 | libdrm | | 2.4.110-r0 |  | NA |  |
 | 2 | cairo | | 1.16.0-r1 |  | NA |  |
@@ -335,7 +343,7 @@ Created Image Assembler build "WNXI11AEI_DEV_9.1.0_20250828101753.bin" from "htt
 | 9 | vulkan-loader | | ERROR-r0 |  | NA |  |
 | 10 | vulkan-headers | | ERROR-r0 |  | NA |  |
 | 11 | xsign | | 4.0.1-r2 |  | NA |  |
-| 12 | mfrlib-hal-xione | **8.1.2-r0** | 8.1.0-r0 |  | NA |  |
+| 12 | mfrlib-hal-xione | | 8.1.2-r0 |  | NA |  |
 | 13 | wipe-disk-partitions | | 1.0.0-r2 |  | NA |  |
 | 14 | secauthn | | 1.0.0-r0 |  | NA |  |
 | 15 | qca-hciattach | | 1.0.0-r1 |  | NA |  |
@@ -356,9 +364,9 @@ Created Image Assembler build "WNXI11AEI_DEV_9.1.0_20250828101753.bin" from "htt
 | 30 | media-utils-soc-realtek | | 1.0.5-2.1.1-r1 |  | 30f3fdd |  |
 | 31 | closedcaption-hal-realtek | | 1.0.0-3.1.0-r0 |  | ee52d85 |  |
 | 32 | hdmicec-hal-realtek | | 1.3.10-3.0.1-r0 |  | 950a89e |  |
-| 33 | rdk-gstreamer-utils-platform | | 2.0.0-2.0.0 |  | 6ba04b9 |  |
-| 34 | devicesettings-hal-realtek | | 6.0.0-4.1.4-r0 |  |  |  |
-| - |  - devicesettings-hal-realtek_devicesettingssocrealtek | |  |  | cf2f965 |  |
+| 33 | rdk-gstreamer-utils-platform | **2.0.2-2.0.0** | 2.0.0-2.0.0 |  | 6ba04b9 |  |
+| 34 | devicesettings-hal-realtek | **6.0.0-4.1.5-r0** | 6.0.0-4.1.4-r0 |  |  |  |
+| - |  - devicesettings-hal-realtek_devicesettingssocrealtek | |  | **091ee0c** | cf2f965 |  [](https://github.com/rdk-e/meta-vendor-xione-realtek-release) |
 | - |  - devicesettings-hal-realtek_devicesettingsskyxione | |  |  | c924a02 |  |
 | 35 | deepsleepmgr-hal-realtek | | 1.0.4-1.1.0-r0 |  | f700dfe |  |
 | 36 | pwrmgr-hal-realtek | | 1.0.3-1.0.0-r0 |  | c91e047 |  |
@@ -426,35 +434,38 @@ Created Image Assembler build "WNXI11AEI_DEV_9.1.0_20250828101753.bin" from "htt
 | 94 | qca6390-mod-wifi | | 1.0.3-r1 |  | NA |  |
 | 95 | flashapp | | 7.1-r0 |  | NA |  |
 | 96 | sky-led-driver | | 2.0.0-r0 |  | f97a795 |  |
-| 97 | hank-mod-mali | | 3.0.0-r0 |  | a574cc2 |  |
+| 97 | [hank-mod-mali](#hank-mod-mali) | **3.0.1-r0** | 3.0.0-r0 | **41c19be** | a574cc2 |  [a574cc2...41c19be](https://github.com/rdk-e/kernel-modules-mali-soc-realtek/compare/a574cc2187891f2028b2c4ae9aa7483897f13e6d...41c19be3b185f709a2ecb3c05367192f6a273f8f) |
 | 98 | rtkv1sink | | 2.0.0-r1 |  | 67bdf5b |  |
 | 99 | platform-lib | | 2.6.0-r4 |  | NA |  |
 | 100 | rtk-audio-service | | 3.2.0-r0 |  | e62564d |  |
-| 101 | hdmiservice | | 4.2.0-r0 |  | 1730920 |  |
+| 101 | [hdmiservice](#hdmiservice) | **4.2.1-r0** | 4.2.0-r0 | **bbb4186** | 1730920 |  [1730920...bbb4186](https://github.com/rdk-e/hdmiservice-realtek/compare/173092085b53740340f686aeb0d74ae71c560280...bbb418639129ab166b0ffe4c436642d8b32fc87a) |
 | 102 | rtkpcrclksink | | 2.0.0-r0 |  | c8272d9 |  |
 | 103 | blewakeupenabler | | 1.4.1-r0 |  | 6f8176d |  |
-| 104 | ctrlm-rf4ce-hal | **1.0.0-r0** | NA |  | NA |  |
-| 105 | ctrlm-hal-rf4ce-prebuilt | **1.0.0-r0** | NA |  | NA |  |
-| 106 | qorvo-mod-rf4ce | **2.11-r0** | NA |  | NA |  |
-| 107 | linux-libc-headers | | 4.9-r9 |  | NA |  |
-| 108 | packagegroup-kernel-modules | | 4.9.119.01-r9 |  | NA |  |
-| 109 | linux-hank | | 4.9.119.01-r9 |  | cec7eea |  |
-| 110 | rtkaudiosink | | 3.1.4-r0 |  | b5ddc36 |  |
-| 111 | mfi-ree | | 2.0.0-r0 |  | 4941717 |  |
-| 112 | sysint-oem | | 3.0.4-r1 |  | 000bd91 |  |
-| 113 | apparmor-vendor | | 2.4.0-r0 |  | d48c9d3 |  |
-| 114 | directfb | | 1.7.7-r0 |  | NA |  |
-| 115 | product-firmware-pb | | 1.0.8-r0 |  | 2a1369f |  |
-| 116 | testagentlib | | 3.0.2-r1 |  |  |  |
+| 104 | ctrlm-irdb-plugin | **1.1.1-r0** | NA | **1.1.1** | NA |  [](https://github.com/rdk-e/hdmiservice-realtek) |
+| 105 | ctrlm-irdb-uei | **2.2.0-r1** | NA |  | NA |  |
+| 106 | ctrlm-irdb-ruwido | **2.3.0-r1** | NA |  | NA |  |
+| 107 | ctrlm-rf4ce-hal | | 1.0.0-r0 |  | NA |  |
+| 108 | ctrlm-hal-rf4ce-prebuilt | | 1.0.0-r0 |  | NA |  |
+| 109 | qorvo-mod-rf4ce | | 2.11-r0 |  | NA |  |
+| 110 | linux-libc-headers | | 4.9-r9 |  | NA |  |
+| 111 | packagegroup-kernel-modules | | 4.9.119.01-r9 |  | NA |  |
+| 112 | [linux-hank](#linux-hank) | | 4.9.119.01-r9 | **3500cd1** | cec7eea |  [cec7eea...3500cd1](https://github.com/rdk-e/linux_kernel-soc-realtek/compare/cec7eeaa0b69c8dd8d5362b46b8ca17452186304...3500cd177ab64fe8d740db795fc6c93e9bb64663) |
+| 113 | rtkaudiosink | | 3.1.4-r0 |  | b5ddc36 |  |
+| 114 | mfi-ree | | 2.0.0-r0 |  | 4941717 |  |
+| 115 | sysint-oem | | 3.0.4-r1 |  | 000bd91 |  |
+| 116 | [apparmor-vendor](#apparmor-vendor) | **3.0.3-r0** | 2.4.0-r0 | **6e525d1** | d48c9d3 |  [d48c9d3...6e525d1](https://github.com/rdk-e/apparmor-profiles/compare/d48c9d3b5d71037df028bd0d2f14b32af18426e3...6e525d13e3882d28208a635a69c169c8c1f5d795) |
+| 117 | directfb | | 1.7.7-r0 |  | NA |  |
+| 118 | [product-firmware-pb](#product-firmware-pb) | **1.0.9-r0** | 1.0.8-r0 | **426b3ea** | 2a1369f |  [2a1369f...426b3ea](https://github.com:rdk-e/firmware-prebuilt-xione-soc-realtek.git/compare/2a1369fe65325839c2c03d56dc34d79b931a8434...426b3eaec4ecac9a6c6dedd5e3067189dd821f45) |
+| 119 | testagentlib | | 3.0.2-r1 |  |  |  |
 | - |  - testagentlib_testagentlib | |  |  | b8eb1f8 |  |
 | - |  - testagentlib_xione_factory | |  |  | 6281804 |  |
-| 117 | testagent-loader | | 2.3.0-r0 |  | NA |  |
-| 118 | libbinder | | 1.0.0-r1 |  | 0f7a23b |  |
-| 119 | aidl-generator-native | | 1.0.0-r1 |  | 0f7a23b |  |
-| 120 | flash-aidl | | 1-r0 |  | ddcceef |  |
-| 121 | image-hal-service | | 1.0.0-r0 |  | 7eb82c9 |  |
-| 122 | platform-imagehal-lib | | 1.0.0-r0 |  | NA |  |
-| 123 | asappsserviced-vendor-conf | | 1.1.0-r0 |  | 1.1.0 |  |
+| 120 | testagent-loader | | 2.3.0-r0 |  | NA |  |
+| 121 | libbinder | | 1.0.0-r1 |  | 0f7a23b |  |
+| 122 | aidl-generator-native | | 1.0.0-r1 |  | 0f7a23b |  |
+| 123 | flash-aidl | | 1-r0 |  | ddcceef |  |
+| 124 | image-hal-service | | 1.0.0-r0 |  | 7eb82c9 |  |
+| 125 | platform-imagehal-lib | | 1.0.0-r0 |  | NA |  |
+| 126 | asappsserviced-vendor-conf | | 1.1.0-r0 |  | 1.1.0 |  |
 
 
 
@@ -462,36 +473,73 @@ Created Image Assembler build "WNXI11AEI_DEV_9.1.0_20250828101753.bin" from "htt
 ## Vendor Layer Component Integration Details
 
 
-
-
 ## Consolidated change list from vendor layer repositories
 
 ## Changes in meta repositories
 
-## [meta-rdk-soc-realtek](https://github.com/rdk-e/meta-rdk-soc-realtek/blob/main/CHANGELOG.md)
+## [meta-oem-stream](https://github.com/rdk-e/meta-oem-stream/blob/main/CHANGELOG.md)
 
-- RDKEVD-2734:Update all patch file with latest changes. ( [#158](https://github.com/rdk-e/meta-rdk-soc-realtek/pull/158))
+- RDKEVD-2519 : Load rf4ce driver [d68d4a9](https://github.com/rdk-e/meta-oem-stream/commit/d68d4a9b3ef59c40b59cedc4f891cdcc6288daa5)
 
 ## [meta-oem-realtek-stream](https://github.com/rdk-e/meta-oem-realtek-stream/blob/main/CHANGELOG.md)
 
-- RDKEVD-2987 : Latest product tag 9.1.0 [b94b7f3](https://github.com/rdk-e/meta-oem-realtek-stream/commit/b94b7f3da287660bc317d5743a120294440b29e3)
-- RDKEVD-2872 - Update tag 9.0.1 [574edf3](https://github.com/rdk-e/meta-oem-realtek-stream/commit/574edf35ef48e224e279efb340e6369707728849)
-- RDKEVD-2519 : RTK rf4ce driver for US platforms [2991ba3](https://github.com/rdk-e/meta-oem-realtek-stream/commit/2991ba3f237c98dbfb38dd18eca6b251777db429)
-- RDKEVD-1779: Update rtkaudiosink to 3.1.4 [35c2f90](https://github.com/rdk-e/meta-oem-realtek-stream/commit/35c2f90938e4bb1eec1b20d4765a88a7b2c263d4)
-- updating artifactory revision [92a4c49](https://github.com/rdk-e/meta-oem-realtek-stream/commit/92a4c49d2f38d74a7b8b6f1a67a9ca8eca956ccc)
-- initial revision [abb35f2](https://github.com/rdk-e/meta-oem-realtek-stream/commit/abb35f2c8999bd2073219251933ad1d45314a9ca)
-- RDKEVD-2734:Update all patch file with latest changes. [ceb8d0d](https://github.com/rdk-e/meta-oem-realtek-stream/commit/ceb8d0d1a6ff2d00b1c2cf3e77d7d1840dfbf038)
-- XIONE-17140: Port log upload script Reason for change: port log upload script to RDK-E vendor layer. Test Prodcedure: Build and Verify. [d34e321](https://github.com/rdk-e/meta-oem-realtek-stream/commit/d34e32191f5256b2456f91c661ea624670f573b1)
+- RDKEVD-3177 : Update tag 9.2.0 [6cd4852](https://github.com/rdk-e/meta-oem-realtek-stream/commit/6cd4852d9daf4b1adae72a41520f3f9e32e9670d)
+- RDKEVD-3115 : BL31 update [9199aab](https://github.com/rdk-e/meta-oem-realtek-stream/commit/9199aabd73f84eadbed42f4e44d0af433aa4e191)
+- RDKEVD-2750: update apparmor-profiles to 3.0.3 [758bcd1](https://github.com/rdk-e/meta-oem-realtek-stream/commit/758bcd1feda88d2c5eddfac1c1305f40a804d400)
+- RDKEVD-1198: Add driver interfaces to capture GPU and FPS metrics [34644b2](https://github.com/rdk-e/meta-oem-realtek-stream/commit/34644b2996f0c23e4c3b708c0e610fdc5122195d)
+- RDKEVD-3013: Update hdmiservice to 4.2.1 [533a702](https://github.com/rdk-e/meta-oem-realtek-stream/commit/533a7020ecf22b8dd69e743ba1ce1d0a86f2f168)
+- remove debus [73a241e](https://github.com/rdk-e/meta-oem-realtek-stream/commit/73a241e38ef61b4c38a5e87ea9f6d6d7d19556da)
+- RDKEVD-2417,RDKEVD-2418: Updated dsFPD.c [017b4ba](https://github.com/rdk-e/meta-oem-realtek-stream/commit/017b4ba8a50ff6e849df9f578587d0a0b94eefee)
+- add CPC common path to bblayers [ef9d0ec](https://github.com/rdk-e/meta-oem-realtek-stream/commit/ef9d0ec748d0ccfa07fbdb56bc8e1b376abfe2cd)
+- RDKEVD-2351: ctrlm_irdb_to_RTK_vendor_layer [3e2b3eb](https://github.com/rdk-e/meta-oem-realtek-stream/commit/3e2b3eb7128ee509c5860100d6c466d57854c2aa)
 
 ## [meta-rdk-vendor-realtek-common](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/blob/main/CHANGELOG.md)
 
-- RDKEVD-2987 : Latest product tag 9.1.0 [7af7fd1](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/commit/7af7fd18afa46e5f6fa45538dea878d4cacd1634)
-- XIONE-17654: MFR lib hal ipk issue [22651b2](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/commit/22651b2fb150ba1a59340be4e883dbd594ce784c)
-- XIONE-17654: ROM code behaviour override after DeepSleep resume [19f9856](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/commit/19f9856f234e2a31d14252196a3a321870639b1a)
-- XIONE-17654: ROM code behaviour override after DeepSleep resume [4a6384e](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/commit/4a6384ee766e11b322fd56909e4411dde2a61190)
+- RDKEVD-3177 : Update tag 9.2.0 [e90fa8a](https://github.com/rdk-e/meta-rdk-vendor-realtek-common/commit/e90fa8af8ee8b28ce4e9ac92b816347a276dc750)
 
 
 
 ## Changes in component repositories
 
+## ['hank-mod-mali'](https://github.com/rdk-e/kernel-modules-mali-soc-realtek/blob/main/CHANGELOG.md)
+
+- RDKEVD-1198: Fix gpu memory/load device node for kernel 4.9 [41b4395](https://github.com/rdk-e/kernel-modules-mali-soc-realtek/commit/41b4395a49734bafb2b50d390a06e0900049dc70)
+- Add CODEOWNERS file [1841377](https://github.com/rdk-e/kernel-modules-mali-soc-realtek/commit/18413778a4275e51f492eb32d3c73f826652e164)
+## ['hdmiservice'](https://github.com/rdk-e/hdmiservice-realtek/blob/main/CHANGELOG.md)
+
+- XIONE-17646: Disable Hdmi/Hdcp when RxSense off [258c957](https://github.com/rdk-e/hdmiservice-realtek/commit/258c957c82f41e5e3480953c8556198e424aa093)
+- RDKEVD-3013: If not support 10bits deepcolor, use HDR_MODE_DV_SDR_VS10 [deb706d](https://github.com/rdk-e/hdmiservice-realtek/commit/deb706d03232d9a8968d327d88f3e7295ad7e332)
+## ['linux-hank'](https://github.com/rdk-e/linux_kernel-soc-realtek/blob/main/CHANGELOG.md)
+
+- RDKEVD-1198: Implement fps query interface in drm driver [50d9894](https://github.com/rdk-e/linux_kernel-soc-realtek/commit/50d9894a13ccf3bf783cb716c9dbf29d200ac4b9)
+## ['apparmor-vendor'](https://github.com/rdk-e/apparmor-profiles/blob/main/CHANGELOG.md)
+
+- RDKEVD-2752 : Update apparmor permission [a4aaf5b](https://github.com/rdk-e/apparmor-profiles/commit/a4aaf5b3acb1ed734edce8413b8c0d7fc0d2ebda)
+- RDKEVD-2752 : Update dsMgrMain apparmor permission [03b57b9](https://github.com/rdk-e/apparmor-profiles/commit/03b57b9fbba3c20f8f7738c6c103ffb89c0e2a35)
+- RDKEVD-2752 : Update mfrMgrMain apparmor permission [650c10f](https://github.com/rdk-e/apparmor-profiles/commit/650c10f18aae5ac567c63e0177ad0098efbd2917)
+- RDKEMW-7285: Address Apparmor DENIED log [6efd3de](https://github.com/rdk-e/apparmor-profiles/commit/6efd3de7eee1971ee19f1c739646758e0618ce1c)
+- Update usr.bin.dnsmasq [637832e](https://github.com/rdk-e/apparmor-profiles/commit/637832ece7893321de608d47c6ad5c1070531e76)
+- Update usr.bin.dnsmasq [0344b09](https://github.com/rdk-e/apparmor-profiles/commit/0344b0970193da4d2d05e06fb9cc79e9d8a23731)
+- RDKEVD-2752 : Update sysMgrMain apparmor permission [00d2a74](https://github.com/rdk-e/apparmor-profiles/commit/00d2a74e0e41c26dbfdae33a510590754aa4f31f)
+- RDKEVD-2752 : Update sysMgrMain apparmor permission [25d9cdd](https://github.com/rdk-e/apparmor-profiles/commit/25d9cdd05888b253fdaa0432d78163141ff9f2f0)
+- RDK-58778: Code changes for dnsmasq by NetworkManager [e05c130](https://github.com/rdk-e/apparmor-profiles/commit/e05c130b8863dfd0c4d71b093763a03ef6583fcb)
+- RDKEVD-2750: Update apparmor permission [3564097](https://github.com/rdk-e/apparmor-profiles/commit/3564097c99d6ebf9aaea9da1d6a3376487164858)
+- RDKEMW-6314: Sync RDKE apparmor profiles from RDKV [387eeb8](https://github.com/rdk-e/apparmor-profiles/commit/387eeb81dca25a8c0383fc78186a5f83a701764c)
+- RDKEMW-6314: Sync RDKE apparmor profiles from RDKV [026dac8](https://github.com/rdk-e/apparmor-profiles/commit/026dac8985bce08d5fc815642f9de2fbeea01ca3)
+- RDKEVD-2584: Migrate SKXI11BED profile from RDK-V [f9569be](https://github.com/rdk-e/apparmor-profiles/commit/f9569be40c31adc7f9c6ce081ce0e410ba704eba)
+- RDKEMW-6314: Sync RDKE apparmor profiles from RDKV [5aee0ec](https://github.com/rdk-e/apparmor-profiles/commit/5aee0ec7f4d6c07a584a6e49a48fd81a07df01b2)
+- RDKEMW-6314: Sync RDKE apparmor profiles from RDKV [cdee81f](https://github.com/rdk-e/apparmor-profiles/commit/cdee81f2979252bbc116848d68223b135ae5861f)
+- RDKEMW-6314: Sync RDKE apparmor profiles from RDKV [8f4e618](https://github.com/rdk-e/apparmor-profiles/commit/8f4e6181e40f4e35efddad7166ac6ad827e9e89c)
+- Update usr.bin.dsMgrMain [73d4ef7](https://github.com/rdk-e/apparmor-profiles/commit/73d4ef77591778e24f4d5f364c1175e18adf705f)
+- RDK-56459 : Add apparmor nodes to tvservice [3b02cb7](https://github.com/rdk-e/apparmor-profiles/commit/3b02cb75e588b89ccdbbcb950c8662dd855fa8fb)
+- RDKEVD-731: dsVideoPort getVideoFormat [22e635a](https://github.com/rdk-e/apparmor-profiles/commit/22e635a7d4c6d38f1d849c8e8b4b4ebb935ee3d7)
+- RDKEMW-4207 : Cleanup and remove pwrmgr references from amlogic soc [2accc65](https://github.com/rdk-e/apparmor-profiles/commit/2accc655153ee2531a51c6b79c2981d9d0075fda)
+- RDKEMW-6020 Add AppArmor "mr" Permissions for newly added libs: FireboltAAMP, gstplugin, playerjsonobject [f0dcee7](https://github.com/rdk-e/apparmor-profiles/commit/f0dcee7b839df989ebf6a09eda7ea633ff0f5fdb)
+- RDKEMW-6020 Add AppArmor "mr" Permissions for newly added libs: FireboltAAMP, gstplugin, playerjsonobject [6fed169](https://github.com/rdk-e/apparmor-profiles/commit/6fed16925bb07eef26690c0bb9e6dc50da5edfe2)
+- RDK-56459 : Add apparmor nodes to tvservice [7bfda75](https://github.com/rdk-e/apparmor-profiles/commit/7bfda7590d81df8c03cddb698c3bbcc49ee602f6)
+- RDKEVD-731: dsVideoPort getVideoFormat [e1da5ec](https://github.com/rdk-e/apparmor-profiles/commit/e1da5eca9b66dc3f5cf0a5be70c492057b42fb35)
+- RDK-56740: Enable Apparmor in enforcement mode for GA'ed processes [c4304e9](https://github.com/rdk-e/apparmor-profiles/commit/c4304e9cedeaf2beeb5248c6d7897a0d99b28db0)
+- RDKEMW-4207 : Cleanup and remove pwrmgr references from amlogic soc [bbe0a84](https://github.com/rdk-e/apparmor-profiles/commit/bbe0a84d49415fa0abb83d83c247956f2dcff4e0)
+- RDKEMW-5278: add mr permissions for Player-Interface libraries [e773e6b](https://github.com/rdk-e/apparmor-profiles/commit/e773e6ba3e134d51dfc8eecb958a3924b9687e2e)
+## ['product-firmware-pb'](https://github.com:rdk-e/firmware-prebuilt-xione-soc-realtek.git/blob/main/CHANGELOG.md)
 
