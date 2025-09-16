@@ -3,20 +3,31 @@ PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
 LICENSE = "MIT"
 
-inherit packagegroup
+inherit packagegroup volatile-bind-gen
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.7.0"
+PV = "8.3.2.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
 PR = "r0"
+##Mahesh
+###    entservices-deviceanddisplay 
+###    entservices-mediaanddrm 
+####   rdk-gstreamer-utils 
+####    rdkfwupgrader 
+###    mfr-utils 
+#    systimemgrfactory 
+##    entservices-mediaanddrm-screencapture 
+####    entservices-infra 
+###    entservices-casting 
+###    audiocapturemgr 
+###    xdial 
 
 #Generic components
 RDEPENDS:${PN} = " \
     aamp \
-    audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
     cimplog \
@@ -27,14 +38,12 @@ RDEPENDS:${PN} = " \
     ctrlm-main \
     dcmd \
     devicesettings \
-    dibbler-client \
     dobby \
     dobby-thunderplugin \
     ermgr \
     evtest \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
-    rdk-gstreamer-utils \
     hdmicec \
     iarm-event-sender \
     iarm-set-powerstate \
@@ -46,6 +55,7 @@ RDEPENDS:${PN} = " \
     libsyswrapper \
     libunpriv \
     logrotate \
+    lsof \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     remotedebugger \
     networkmanager-plugin \
@@ -54,23 +64,16 @@ RDEPENDS:${PN} = " \
     rbus \
     rdk-logger \
     rdkat \
-    rdkfwupgrader \
 	rdknativescript \
     rdkperf \
-    entservices-casting \
     entservices-connectivity \
-    entservices-deviceanddisplay \
-    entservices-infra \
     entservices-inputoutput \
-    entservices-mediaanddrm \
     entservices-peripherals \
     entservices-runtime \
     entservices-softwareupdate \
-    entservices-mediaanddrm-screencapture \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
-    rdm \
     rdmagent \
     rfc \
     rtcore \
@@ -90,17 +93,13 @@ RDEPENDS:${PN} = " \
     wpe-backend-rdk \
     wpeframework \
     wpeframework-clientlibraries \
-    rdkservices-apis \
+    entservices-apis \
     wpeframework-ui \
     wpe-webkit \
     wpe-webkit-web-inspector-plugin \
     wrp-c \
-    xdial \
     xr-voice-sdk \
     bluez5 \
-    bind \
-    bind-dl \
-    bind-named \
     lcms \
     libunwind \
     wayland \
@@ -116,15 +115,11 @@ RDEPENDS:${PN} = " \
     nopoll \
     trower-base64 \
     webkitbrowser-plugin \
-    mfr-utils \
     webcfg \
-    systimemgrfactory \
     systimemgrinetrface \
     thunderstartupservices \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wpe_r4_4', 'packagemanager', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_STB', "tenablehdcp ", "", d)} \
-    bind-dl \
-    bind-named \
     breakpad-wrapper \
     ctemplate \
     ebtables \
@@ -137,6 +132,7 @@ RDEPENDS:${PN} = " \
     wireless-tools \
     libcroco \
     libevdev \
+    rdkcertconfig \
     libflac \
     libgudev \
     libinput \
@@ -154,7 +150,6 @@ RDEPENDS:${PN} = " \
     taglib \
     tzdata \
     util-linux \
-    volatile-binds \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_gdb_support', "gdb ", "", d)} \
     jquery \
     ndisc6-rdnssd \
@@ -173,7 +168,8 @@ RDEPENDS:${PN} = " \
     virtual/default-font \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     os-release \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_MIRACAST', ' wlan-p2p', '', d)} \
+    wlan-p2p \
+    thunderhangrecovery \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
