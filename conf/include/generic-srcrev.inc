@@ -1,3 +1,4 @@
+
 SRCREV_rdk-apparmor-profiles = "c34ff0e396e84f581f4b9945fc0350b31ce4d0a0"
 SRCREV_rdk-libunpriv = "547d202d421ed83bd60b677b5d057cad3b7ae8ad"
 SRCREV:pn-rdkat = "e52ebe05b6703dff7ca700fd286d84c0c72c41ea"
@@ -33,7 +34,7 @@ SRCREV:pn-sysint = "19e4dc06393be64666aa101cfce4c4cf242ca17a"
 SRCREV_tr69hostif = "17fbfa946f20adcd08bfb9d17668a16865eac659"
 SRCREV:pn-hdmicecheader = "5201b2f759b4ca8fd2a6f5db838d528f6477db0c"
 SRCREV:pn-tr69hostif-headers = "c8e31c2b5ca1412805dc90edbab392cdd9134cdd"
-SRCREV:pn-dobby = "b9668168a2875b94ac487a869362176d59350dc9"
+SRCREV:pn-dobby = "ba4ed7cce56aeea85517fe11357bcc5ec921e691"
 SRCREV_key-simulator = "${SRCREV:pn-iarm-query-powerstate}"
 SRCREV:pn-memcr = "f46af4008d19cb527d5cede22bf0a3d0c7a8ed02"
 SRCREV:pn-gst-plugins-rdk = "2a713a366153cf38dcf7bbced0b0c9de828c34c7"
