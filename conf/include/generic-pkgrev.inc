@@ -10,15 +10,15 @@ PV:pn-cpeabs = "2.0.0"
 PR:pn-cpeabs = "r0"
 PACKAGE_ARCH:pn-cpeabs = "${MIDDLEWARE_ARCH}"
 
-PV:pn-hdmicec = "1.0.5"
+PV:pn-hdmicec = "1.0.6"
 PR:pn-hdmicec = "r0"
 PACKAGE_ARCH:pn-hdmicec = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmbus = "1.0.1"
+PV:pn-iarmbus = "1.0.2"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.1.2"
+PV:pn-iarmmgrs = "1.1.3"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
