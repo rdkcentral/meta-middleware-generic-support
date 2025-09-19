@@ -78,10 +78,9 @@ PV:pn-qtwayland = "5.15.7"
 PR:pn-qtwayland = "r1"
 PACKAGE_ARCH:pn-qtwayland = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.8.0"
+PV:pn-aamp = "2.9.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
-
 
 PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
@@ -132,11 +131,11 @@ PV:pn-entservices-connectivity = "1.1.0"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.1.16"
+PV:pn-entservices-deviceanddisplay = "3.1.17"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.7.17"
+PV:pn-entservices-infra = "1.7.18"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
