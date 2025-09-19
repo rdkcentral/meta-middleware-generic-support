@@ -6,17 +6,28 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "8.3.3.0"
+PV = "8.3.2.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
 PR = "r0"
+##Mahesh
+###    entservices-deviceanddisplay 
+###    entservices-mediaanddrm 
+####   rdk-gstreamer-utils 
+####    rdkfwupgrader 
+###    mfr-utils 
+#    systimemgrfactory 
+##    entservices-mediaanddrm-screencapture 
+####    entservices-infra 
+###    entservices-casting 
+###    audiocapturemgr 
+###    xdial 
 
 #Generic components
 RDEPENDS:${PN} = " \
     aamp \
-    audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
     cimplog \
@@ -33,7 +44,6 @@ RDEPENDS:${PN} = " \
     evtest \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
-    rdk-gstreamer-utils \
     hdmicec \
     iarm-event-sender \
     iarm-set-powerstate \
@@ -54,19 +64,13 @@ RDEPENDS:${PN} = " \
     rbus \
     rdk-logger \
     rdkat \
-    rdkfwupgrader \
 	rdknativescript \
     rdkperf \
-    entservices-casting \
     entservices-connectivity \
-    entservices-deviceanddisplay \
-    entservices-infra \
     entservices-inputoutput \
-    entservices-mediaanddrm \
     entservices-peripherals \
     entservices-runtime \
     entservices-softwareupdate \
-    entservices-mediaanddrm-screencapture \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
@@ -94,7 +98,6 @@ RDEPENDS:${PN} = " \
     wpe-webkit \
     wpe-webkit-web-inspector-plugin \
     wrp-c \
-    xdial \
     xr-voice-sdk \
     bluez5 \
     lcms \
@@ -112,9 +115,7 @@ RDEPENDS:${PN} = " \
     nopoll \
     trower-base64 \
     webkitbrowser-plugin \
-    mfr-utils \
     webcfg \
-    systimemgrfactory \
     systimemgrinetrface \
     thunderstartupservices \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wpe_r4_4', 'packagemanager', '', d)} \
@@ -168,10 +169,8 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     os-release \
     wlan-p2p \
-    thunder-hang-recovery \
-    thunder-plugin-activator \
     "
-
+#Mahesh thunderhangrecovery 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
              jpeg linenoise nanomsg ne10 nopoll libopus libpam  \
              libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
