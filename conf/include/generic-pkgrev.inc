@@ -135,7 +135,7 @@ PV:pn-entservices-deviceanddisplay = "3.1.17"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.7.18"
+PV:pn-entservices-infra = "1.8.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
@@ -143,7 +143,7 @@ PV:pn-entservices-inputoutput = "1.4.7"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-mediaanddrm = "1.3.5"
+PV:pn-entservices-mediaanddrm = "1.3.6"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
@@ -155,7 +155,7 @@ PV:pn-entservices-runtime = "1.0.1"
 PR:pn-entservices-runtime = "r0"
 PACKAGE_ARCH:pn-entservices-runtime = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-softwareupdate = "1.4.4"
+PV:pn-entservices-softwareupdate = "1.4.5"
 PR:pn-entservices-softwareupdate = "r0"
 PACKAGE_ARCH:pn-entservices-softwareupdate = "${MIDDLEWARE_ARCH}"
 
@@ -232,7 +232,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.15.11"
+PV:pn-entservices-apis = "1.16.0"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -346,7 +346,7 @@ PV:pn-rdmagent = "2.1.1"
 PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkwindowmanager = "1.7.0"
+PV:pn-rdkwindowmanager = "1.8.0"
 PR:pn-rdkwindowmanager = "r0"
 PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 
