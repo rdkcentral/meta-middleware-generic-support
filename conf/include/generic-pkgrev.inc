@@ -102,18 +102,27 @@ PV:pn-rdkfwupgrader = "1.3.0"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
-
-PV:pn-iarm-event-sender = "1.0.4"
-PR:pn-iarm-event-sender = "r0"
-PACKAGE_ARCH:pn-iarm-event-sender = "${MIDDLEWARE_ARCH}"
-
-PV:pn-iarm-query-powerstate = "1.0.6"
+# All of these iarm-query-powerstate, iarm-set-powerstate, iarm-event-sender,
+# key-simulator and mfr-utils use sys_mon_tools repo.
+PV:pn-iarm-query-powerstate = "1.0.7"
 PR:pn-iarm-query-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-query-powerstate = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-set-powerstate = "1.0.4"
-PR:pn-iarm-set-powerstate = "r0"
+PV:pn-iarm-set-powerstate = "${PV:pn-iarm-query-powerstate}"
+PR:pn-iarm-set-powerstate = "${PR:pn-iarm-query-powerstate}"
 PACKAGE_ARCH:pn-iarm-set-powerstate = "${MIDDLEWARE_ARCH}"
+
+PV:pn-iarm-event-sender = "${PV:pn-iarm-query-powerstate}"
+PR:pn-iarm-event-sender = "${PR:pn-iarm-query-powerstate}"
+PACKAGE_ARCH:pn-iarm-event-sender = "${MIDDLEWARE_ARCH}"
+
+PV:pn-key-simulator = "${PV:pn-iarm-query-powerstate}"
+PR:pn-key-simulator = "${PR:pn-iarm-query-powerstate}"
+PACKAGE_ARCH:pn-key-simulator = "${MIDDLEWARE_ARCH}"
+
+PV:pn-mfr-utils = "${PV:pn-iarm-query-powerstate}"
+PR:pn-mfr-utils = "${PR:pn-iarm-query-powerstate}"
+PACKAGE_ARCH:pn-mfr-utils = "${MIDDLEWARE_ARCH}"
 
 PV:pn-jquery = "1.0.0"
 PR:pn-jquery = "r2"
@@ -265,10 +274,6 @@ PV:pn-sysint = "3.0.5"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
-PV:pn-key-simulator = "1.0.4"
-PR:pn-key-simulator = "r0"
-PACKAGE_ARCH:pn-key-simulator = "${MIDDLEWARE_ARCH}"
-
 PR:pn-bluez5 = "r5"
 PACKAGE_ARCH:pn-bluez5 = "${MIDDLEWARE_ARCH}"
 
@@ -294,10 +299,6 @@ PACKAGE_ARCH:pn-thunder-hang-recovery = "${MIDDLEWARE_ARCH}"
 PV:pn-wpeframework-ui = "1.0.0"
 PR:pn-wpeframework-ui = "r0"
 PACKAGE_ARCH:pn-wpeframework-ui = "${MIDDLEWARE_ARCH}"
-
-PV:pn-mfr-utils = "1.0.4"
-PR:pn-mfr-utils = "r0"
-PACKAGE_ARCH:pn-mfr-utils = "${MIDDLEWARE_ARCH}"
 
 PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
