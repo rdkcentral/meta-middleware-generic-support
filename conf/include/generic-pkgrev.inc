@@ -169,6 +169,10 @@ PV:pn-systimemgrfactory = "1.3.0"
 PR:pn-systimemgrfactory = "r0"
 PACKAGE_ARCH:pn-systimemgrfactory = "${MIDDLEWARE_ARCH}"
 
+PV:pn-meminsight = "1.0.0"
+PR:pn-meminsight = "r0"
+PACKAGE_ARCH:pn-meminsight = "${MIDDLEWARE_ARCH}"
+
 PV:pn-systimemgr = "1.3.0"
 PR:pn-systimemgr = "r0"
 PACKAGE_ARCH:pn-systimemgr = "${MIDDLEWARE_ARCH}"
