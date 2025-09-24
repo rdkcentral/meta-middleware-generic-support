@@ -3,7 +3,7 @@ PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
 PV:pn-devicesettings = "1.0.20"
-PR:pn-devicesettings = "r8"
+PR:pn-devicesettings = "r9"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
 PV:pn-cpeabs = "2.0.0"
@@ -132,7 +132,7 @@ PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-deviceanddisplay = "3.2.0"
-PR:pn-entservices-deviceanddisplay = "r8"
+PR:pn-entservices-deviceanddisplay = "r9"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-infra = "1.8.2"
@@ -233,7 +233,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-apis = "1.16.1"
-PR:pn-entservices-apis = "r8"
+PR:pn-entservices-apis = "r9"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-lisa = "1.0.0"
