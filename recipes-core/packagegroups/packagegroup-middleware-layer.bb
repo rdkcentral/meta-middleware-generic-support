@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "2.12.0"
+PV = "8.3.3.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -97,9 +97,6 @@ RDEPENDS:${PN} = " \
     xdial \
     xr-voice-sdk \
     bluez5 \
-    bind \
-    bind-dl \
-    bind-named \
     lcms \
     libunwind \
     wayland \
@@ -122,8 +119,6 @@ RDEPENDS:${PN} = " \
     thunderstartupservices \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wpe_r4_4', 'packagemanager', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_STB', "tenablehdcp ", "", d)} \
-    bind-dl \
-    bind-named \
     breakpad-wrapper \
     ctemplate \
     ebtables \
@@ -173,7 +168,8 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     os-release \
     wlan-p2p \
-    thunderhangrecovery \
+    thunder-hang-recovery \
+    thunder-plugin-activator \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
