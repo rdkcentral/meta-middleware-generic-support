@@ -38,8 +38,8 @@ PV:pn-rbus = "2.6.0"
 PR:pn-rbus = "r7"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.1.5"
-PR:pn-rfc = "r1"
+PV:pn-rfc = "1.1.6"
+PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
 PV:pn-tr69hostif = "1.2.4"
@@ -148,7 +148,7 @@ PV:pn-entservices-infra = "1.8.2"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.4.7"
+PV:pn-entservices-inputoutput = "1.4.9"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
