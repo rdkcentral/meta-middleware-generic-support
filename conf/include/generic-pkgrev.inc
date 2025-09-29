@@ -132,7 +132,7 @@ PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-deviceanddisplay = "3.2.0"
-PR:pn-entservices-deviceanddisplay = "r4"
+PR:pn-entservices-deviceanddisplay = "r5"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-infra = "1.8.2"
@@ -233,7 +233,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-apis = "1.16.1"
-PR:pn-entservices-apis = "r4"
+PR:pn-entservices-apis = "r5"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-lisa = "1.0.0"
