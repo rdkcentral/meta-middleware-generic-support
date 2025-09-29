@@ -10,15 +10,15 @@ PV:pn-cpeabs = "2.0.0"
 PR:pn-cpeabs = "r0"
 PACKAGE_ARCH:pn-cpeabs = "${MIDDLEWARE_ARCH}"
 
-PV:pn-hdmicec = "1.0.5"
+PV:pn-hdmicec = "1.0.7"
 PR:pn-hdmicec = "r0"
 PACKAGE_ARCH:pn-hdmicec = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmbus = "1.0.1"
+PV:pn-iarmbus = "1.0.2"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.1.2"
+PV:pn-iarmmgrs = "1.1.3"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -34,8 +34,8 @@ PV:pn-rmfosal = "1.0.0"
 PR:pn-rmfosal = "r3"
 PACKAGE_ARCH:pn-rmfosal = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rbus = "2.6.0"
-PR:pn-rbus = "r7"
+PV:pn-rbus = "2.9.0"
+PR:pn-rbus = "r0"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rfc = "1.1.6"
@@ -102,18 +102,27 @@ PV:pn-rdkfwupgrader = "1.3.0"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
-
-PV:pn-iarm-event-sender = "1.0.4"
-PR:pn-iarm-event-sender = "r0"
-PACKAGE_ARCH:pn-iarm-event-sender = "${MIDDLEWARE_ARCH}"
-
-PV:pn-iarm-query-powerstate = "1.0.6"
+# All of these iarm-query-powerstate, iarm-set-powerstate, iarm-event-sender,
+# key-simulator and mfr-utils use sys_mon_tools repo.
+PV:pn-iarm-query-powerstate = "1.0.7"
 PR:pn-iarm-query-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-query-powerstate = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-set-powerstate = "1.0.4"
-PR:pn-iarm-set-powerstate = "r0"
+PV:pn-iarm-set-powerstate = "${PV:pn-iarm-query-powerstate}"
+PR:pn-iarm-set-powerstate = "${PR:pn-iarm-query-powerstate}"
 PACKAGE_ARCH:pn-iarm-set-powerstate = "${MIDDLEWARE_ARCH}"
+
+PV:pn-iarm-event-sender = "${PV:pn-iarm-query-powerstate}"
+PR:pn-iarm-event-sender = "${PR:pn-iarm-query-powerstate}"
+PACKAGE_ARCH:pn-iarm-event-sender = "${MIDDLEWARE_ARCH}"
+
+PV:pn-key-simulator = "${PV:pn-iarm-query-powerstate}"
+PR:pn-key-simulator = "${PR:pn-iarm-query-powerstate}"
+PACKAGE_ARCH:pn-key-simulator = "${MIDDLEWARE_ARCH}"
+
+PV:pn-mfr-utils = "${PV:pn-iarm-query-powerstate}"
+PR:pn-mfr-utils = "${PR:pn-iarm-query-powerstate}"
+PACKAGE_ARCH:pn-mfr-utils = "${MIDDLEWARE_ARCH}"
 
 PV:pn-jquery = "1.0.0"
 PR:pn-jquery = "r2"
@@ -139,7 +148,7 @@ PV:pn-entservices-infra = "1.8.2"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.4.7"
+PV:pn-entservices-inputoutput = "1.4.9"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -257,17 +266,13 @@ PACKAGE_ARCH_pn-webconfig-framework = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-rdksysctl = "${MIDDLEWARE_ARCH}"
 
-PV:pn-xdial = "3.0.1"
+PV:pn-xdial = "1.0.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
 PV:pn-sysint = "3.0.5"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
-
-PV:pn-key-simulator = "1.0.4"
-PR:pn-key-simulator = "r0"
-PACKAGE_ARCH:pn-key-simulator = "${MIDDLEWARE_ARCH}"
 
 PR:pn-bluez5 = "r5"
 PACKAGE_ARCH:pn-bluez5 = "${MIDDLEWARE_ARCH}"
@@ -294,10 +299,6 @@ PACKAGE_ARCH:pn-thunder-hang-recovery = "${MIDDLEWARE_ARCH}"
 PV:pn-wpeframework-ui = "1.0.0"
 PR:pn-wpeframework-ui = "r0"
 PACKAGE_ARCH:pn-wpeframework-ui = "${MIDDLEWARE_ARCH}"
-
-PV:pn-mfr-utils = "1.0.4"
-PR:pn-mfr-utils = "r0"
-PACKAGE_ARCH:pn-mfr-utils = "${MIDDLEWARE_ARCH}"
 
 PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
