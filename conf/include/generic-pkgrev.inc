@@ -42,7 +42,7 @@ PV:pn-rfc = "1.1.6"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.2.4"
+PV:pn-tr69hostif = "1.2.5"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -62,7 +62,7 @@ PV:pn-dcmd = "1.2.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.2.0"
+PV:pn-tr69hostif-headers = "1.2.5"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
@@ -156,7 +156,7 @@ PV:pn-entservices-mediaanddrm = "1.3.6"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-peripherals = "1.0.12"
+PV:pn-entservices-peripherals = "1.0.16"
 PR:pn-entservices-peripherals = "r0"
 PACKAGE_ARCH:pn-entservices-peripherals = "${MIDDLEWARE_ARCH}"
 
