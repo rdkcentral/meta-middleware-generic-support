@@ -42,7 +42,7 @@ PV:pn-rfc = "1.1.6"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.2.5"
+PV:pn-tr69hostif = "1.2.6"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -62,7 +62,7 @@ PV:pn-dcmd = "1.2.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.2.5"
+PV:pn-tr69hostif-headers = "1.2.6"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
@@ -94,11 +94,11 @@ PV:pn-bluetooth-mgr = "1.0.3"
 PR:pn-bluetooth-mgr = "r2"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-commonutilities = "1.4.1"
+PV:pn-commonutilities = "1.4.3"
 PR:pn-commonutilities = "r0"
 PACKAGE_ARCH:pn-commonutilities = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkfwupgrader = "1.3.0"
+PV:pn-rdkfwupgrader = "1.3.1"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
