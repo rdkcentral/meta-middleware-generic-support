@@ -202,7 +202,7 @@ PV:pn-rdkversion = "1.0.0"
 PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
 
-PV:pn-crashupload = "1.0.5"
+PV:pn-crashupload = "1.0.7"
 PR:pn-crashupload = "r0"
 PACKAGE_ARCH:pn-crashupload = "${MIDDLEWARE_ARCH}"
 
