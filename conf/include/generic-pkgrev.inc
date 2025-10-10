@@ -42,7 +42,7 @@ PV:pn-rfc = "1.1.6"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.2.5"
+PV:pn-tr69hostif = "1.2.6"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -62,7 +62,7 @@ PV:pn-dcmd = "1.2.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.2.5"
+PV:pn-tr69hostif-headers = "1.2.6"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
@@ -94,11 +94,11 @@ PV:pn-bluetooth-mgr = "1.0.3"
 PR:pn-bluetooth-mgr = "r2"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-commonutilities = "1.4.1"
+PV:pn-commonutilities = "1.4.3"
 PR:pn-commonutilities = "r0"
 PACKAGE_ARCH:pn-commonutilities = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkfwupgrader = "1.3.0"
+PV:pn-rdkfwupgrader = "1.3.1"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
@@ -140,11 +140,11 @@ PV:pn-entservices-connectivity = "1.1.0"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.2.0"
+PV:pn-entservices-deviceanddisplay = "3.2.5"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.9.4"
+PV:pn-entservices-infra = "2.0.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
@@ -214,7 +214,7 @@ PV_pn-rdk-logger = "1.0.0"
 PR_pn-rdk-logger = "r1"
 PACKAGE_ARCH_pn-rdk-logger = "${MIDDLEWARE_ARCH}"
 
-PV:pn-remotedebugger = "1.2.8"
+PV:pn-remotedebugger = "1.2.9"
 PR:pn-remotedebugger = "r0"
 PACKAGE_ARCH:pn-remotedebugger = "${MIDDLEWARE_ARCH}"
 
@@ -241,7 +241,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.16.1"
+PV:pn-entservices-apis = "1.16.20"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
