@@ -144,7 +144,7 @@ PV:pn-entservices-deviceanddisplay = "3.2.5"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "2.0.0"
+PV:pn-entservices-infra = "2.1.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
@@ -210,7 +210,7 @@ PV:pn-libsyswrapper = "1.3.3"
 PR:pn-libsyswrapper = "r1"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
 
-PV_pn-rdk-logger = "1.0.0"
+PV_pn-rdk-logger = "2.3.0"
 PR_pn-rdk-logger = "r1"
 PACKAGE_ARCH_pn-rdk-logger = "${MIDDLEWARE_ARCH}"
 
