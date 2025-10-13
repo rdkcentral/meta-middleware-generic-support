@@ -43,7 +43,7 @@ PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
 PV:pn-tr69hostif = "1.2.6"
-PR:pn-tr69hostif = "r0"
+PR:pn-tr69hostif = "r1"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rtremote = "2.0.0"
@@ -99,7 +99,7 @@ PR:pn-commonutilities = "r0"
 PACKAGE_ARCH:pn-commonutilities = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdkfwupgrader = "1.3.1"
-PR:pn-rdkfwupgrader = "r0"
+PR:pn-rdkfwupgrader = "r1"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
 # All of these iarm-query-powerstate, iarm-set-powerstate, iarm-event-sender,
@@ -271,7 +271,7 @@ PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
 PV:pn-sysint = "3.0.6"
-PR:pn-sysint = "r0"
+PR:pn-sysint = "r1"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
 PR:pn-bluez5 = "r5"
