@@ -77,6 +77,7 @@ RDEPENDS:${PN} = " \
     safec-common-wrapper \
     sysint \
     systimemgr \
+    processmonitor \
     telemetry \
     thunderjs \
     tr69hostif \
