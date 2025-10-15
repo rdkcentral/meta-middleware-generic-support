@@ -178,6 +178,10 @@ PV:pn-processmonitor = "1.0.0"
 PR:pn-processmonitor = "r0"
 PACKAGE_ARCH:pn-processmonitor = "${MIDDLEWARE_ARCH}"
 
+PV:pn-meminsight = "1.0.0"
+PR:pn-meminsight = "r0"
+PACKAGE_ARCH:pn-meminsight = "${MIDDLEWARE_ARCH}"
+
 PV:pn-systimemgrfactory = "1.3.0"
 PR:pn-systimemgrfactory = "r0"
 PACKAGE_ARCH:pn-systimemgrfactory = "${MIDDLEWARE_ARCH}"
