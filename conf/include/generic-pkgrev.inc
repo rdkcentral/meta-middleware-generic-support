@@ -42,7 +42,7 @@ PV:pn-rfc = "1.1.6"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.2.6"
+PV:pn-tr69hostif = "1.2.7"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -140,7 +140,7 @@ PV:pn-entservices-connectivity = "1.1.0"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.2.5"
+PV:pn-entservices-deviceanddisplay = "3.2.9"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
@@ -440,5 +440,10 @@ PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
 PV:pn-sceneset = "1.0.0"
 PR:pn-sceneset = "r0"
 PACKAGE_ARCH:pn-sceneset = "${MIDDLEWARE_ARCH}"
+
+PV:pn-packager-headers = "1.0.0"
+PR:pn-packager-headers = "r0"
+PACKAGE_ARCH:pn-packager-headers = "${MIDDLEWARE_ARCH}"
+
 PACKAGE_ARCH:pn-packagegroup-youtube-widgets = "${MIDDLEWARE_ARCH}"
 
