@@ -186,11 +186,11 @@ PV:pn-systimemgrinetrface = "1.3.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ctrlm-main = "1.1.2"
+PV:pn-ctrlm-main = "1.1.4"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"
 
-PV:pn-xr-voice-sdk = "1.0.5"
+PV:pn-xr-voice-sdk = "1.0.6"
 PR:pn-xr-voice-sdk = "r0"
 PACKAGE_ARCH:pn-xr-voice-sdk = "${MIDDLEWARE_ARCH}"
 
