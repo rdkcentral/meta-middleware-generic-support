@@ -437,8 +437,13 @@ PACKAGE_ARCH:pn-packager-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
 
+PV:pn-sceneset = "1.0.0"
+PR:pn-sceneset = "r0"
+PACKAGE_ARCH:pn-sceneset = "${MIDDLEWARE_ARCH}"
+
 PV:pn-packager-headers = "1.0.0"
 PR:pn-packager-headers = "r0"
 PACKAGE_ARCH:pn-packager-headers = "${MIDDLEWARE_ARCH}"
+
 PACKAGE_ARCH:pn-packagegroup-youtube-widgets = "${MIDDLEWARE_ARCH}"
 
