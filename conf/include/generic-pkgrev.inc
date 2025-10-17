@@ -124,10 +124,6 @@ PV:pn-mfr-utils = "${PV:pn-iarm-query-powerstate}"
 PR:pn-mfr-utils = "${PR:pn-iarm-query-powerstate}"
 PACKAGE_ARCH:pn-mfr-utils = "${MIDDLEWARE_ARCH}"
 
-PV:pn-jquery = "1.0.0"
-PR:pn-jquery = "r2"
-PACKAGE_ARCH:pn-jquery = "${MIDDLEWARE_ARCH}"
-
 PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
@@ -171,8 +167,6 @@ PACKAGE_ARCH:pn-entservices-softwareupdate = "${MIDDLEWARE_ARCH}"
 PV:pn-rdkshell = "1.0.0"
 PR:pn-rdkshell = "r0"
 PACKAGE_ARCH:pn-rdkshell = "${MIDDLEWARE_ARCH}"
-
-PACKAGE_ARCH:pn-stunnel = "${MIDDLEWARE_ARCH}"
 
 PV:pn-systimemgrfactory = "1.3.0"
 PR:pn-systimemgrfactory = "r0"
@@ -422,10 +416,6 @@ PACKAGE_ARCH:pn-dvbsubdecoder = "${MIDDLEWARE_ARCH}"
 PV:pn-ttxdecoder = "${PV:pn-subttxrend-app}"
 PR:pn-ttxdecoder = "r0"
 PACKAGE_ARCH:pn-ttxdecoder = "${MIDDLEWARE_ARCH}"
-
-PV:pn-lsof = "4.94.0"
-PR:pn-lsof = "r0"
-PACKAGE_ARCH:pn-lsof = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rdkcertconfig = "1.0.1"
 PR:pn-rdkcertconfig = "r0"
