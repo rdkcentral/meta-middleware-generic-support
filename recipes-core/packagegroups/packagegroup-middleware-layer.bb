@@ -68,6 +68,7 @@ RDEPENDS:${PN} = " \
     entservices-softwareupdate \
     entservices-mediaanddrm-screencapture \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'AI2_Dev', 'flutter-app', '', d)} \
     rdksysctl \
     rdkversion \
     rdmagent \
