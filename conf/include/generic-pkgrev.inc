@@ -156,7 +156,7 @@ PV:pn-entservices-mediaanddrm = "1.3.6"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-peripherals = "1.0.16"
+PV:pn-entservices-peripherals = "1.0.17"
 PR:pn-entservices-peripherals = "r0"
 PACKAGE_ARCH:pn-entservices-peripherals = "${MIDDLEWARE_ARCH}"
 
@@ -270,7 +270,7 @@ PV:pn-xdial = "1.0.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "3.0.6"
+PV:pn-sysint = "3.0.7"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -437,8 +437,13 @@ PACKAGE_ARCH:pn-packager-lisa = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
 
+PV:pn-sceneset = "1.0.0"
+PR:pn-sceneset = "r0"
+PACKAGE_ARCH:pn-sceneset = "${MIDDLEWARE_ARCH}"
+
 PV:pn-packager-headers = "1.0.0"
 PR:pn-packager-headers = "r0"
 PACKAGE_ARCH:pn-packager-headers = "${MIDDLEWARE_ARCH}"
+
 PACKAGE_ARCH:pn-packagegroup-youtube-widgets = "${MIDDLEWARE_ARCH}"
 
