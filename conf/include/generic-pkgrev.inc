@@ -104,7 +104,7 @@ PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
 # All of these iarm-query-powerstate, iarm-set-powerstate, iarm-event-sender,
 # key-simulator and mfr-utils use sys_mon_tools repo.
-PV:pn-iarm-query-powerstate = "1.0.7"
+PV:pn-iarm-query-powerstate = "1.0.8"
 PR:pn-iarm-query-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-query-powerstate = "${MIDDLEWARE_ARCH}"
 
@@ -132,7 +132,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.2.7"
+PV:pn-entservices-casting = "1.2.8"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
@@ -148,11 +148,11 @@ PV:pn-entservices-infra = "3.0.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.4.9"
+PV:pn-entservices-inputoutput = "1.4.11"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-mediaanddrm = "1.3.6"
+PV:pn-entservices-mediaanddrm = "1.3.7"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
