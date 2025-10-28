@@ -171,6 +171,7 @@ RDEPENDS:${PN} = " \
     thunder-hang-recovery \
     thunder-plugin-activator \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'RDKAppmanagers_testsupport', " appclifecyclemanager ", "", d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
