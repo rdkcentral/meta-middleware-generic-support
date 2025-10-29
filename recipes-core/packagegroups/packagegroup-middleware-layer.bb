@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "8.3.3.0"
+PV = "8.4.1.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -170,6 +170,7 @@ RDEPENDS:${PN} = " \
     wlan-p2p \
     thunder-hang-recovery \
     thunder-plugin-activator \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
