@@ -78,7 +78,7 @@ PV:pn-qtwayland = "5.15.7"
 PR:pn-qtwayland = "r1"
 PACKAGE_ARCH:pn-qtwayland = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.9.2"
+PV:pn-aamp = "2.10.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -128,7 +128,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.2.8"
+PV:pn-entservices-casting = "1.2.12"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
@@ -136,15 +136,15 @@ PV:pn-entservices-connectivity = "1.1.0"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.2.9"
+PV:pn-entservices-deviceanddisplay = "3.3.2"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "3.0.0"
+PV:pn-entservices-infra = "3.1.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.4.11"
+PV:pn-entservices-inputoutput = "1.5.1"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -357,7 +357,7 @@ PACKAGE_ARCH:pn-wlan-p2p = "${MIDDLEWARE_ARCH}"
 MULTILIB_VARIANTS:pn-os-release = " multilib "
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-app = "1.4.0"
+PV:pn-subttxrend-app = "1.5.0"
 PR:pn-subttxrend-app = "r0"
 PACKAGE_ARCH:pn-subttxrend-app = "${MIDDLEWARE_ARCH}"
 
