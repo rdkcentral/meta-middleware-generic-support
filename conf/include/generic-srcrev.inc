@@ -71,11 +71,7 @@ SRCREV:pn-dvbsubdecoder= "${SRCREV:pn-subttxrend-app}"
 SRCREV:pn-ttxdecoder = "${SRCREV:pn-subttxrend-app}"
 SRCREV:pn-rdkcertconfig = "e0e35743f7e96ad0595ac25b11d829b766f7062b"
 SRCREV:pn-packager-lisa = "53fea63b4fb6e5491364781dcdfd91bcc47397f8"
-<<<<<<< HEAD
-SRCREV:pn-entservices-infra = "23ba6981059cdbd22498f55677150284fd427d8f"
-=======
-SRCREV:pn-entservices-infra = "3fdf684a6bc189addcb186cdd23c98f3632e46b4"
->>>>>>> 1e460b29074fdae25dc93f4fe715496dba3e6aae
+SRCREV:pn-entservices-infra = "d97d272341af02dc20746020ca165ccbf4855418"
 SRCREV:pn-xdial = "206d13783924f8ea90d48dbbcc9c199e45ffa783"
 SRCREV:pn-sceneset = "b9fc1bca0c1b42c72825ae1adecc07a7b6170c75"
 SRCREV:pn-packager-headers = "c18a6cdf4c87fc43bf920167781a537efa225eba"
