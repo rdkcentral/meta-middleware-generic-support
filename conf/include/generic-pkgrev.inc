@@ -303,7 +303,7 @@ PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
 PV:pn-thunderstartupservices = "1.2.1"
-PR:pn-thunderstartupservices = "r0"
+PR:pn-thunderstartupservices = "r1"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-uwebsockets = "${MIDDLEWARE_ARCH}"

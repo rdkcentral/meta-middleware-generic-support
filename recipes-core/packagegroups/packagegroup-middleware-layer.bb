@@ -79,6 +79,7 @@ RDEPENDS:${PN} = " \
     sysint \
     systimemgr \
     telemetry \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'texttrack', 'texttrack', '', d)} \
     thunderjs \
     tr69hostif \
     tr69hostif-conf \
