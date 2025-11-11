@@ -265,7 +265,7 @@ PACKAGE_ARCH_pn-webconfig-framework = "${MIDDLEWARE_ARCH}"
 PACKAGE_ARCH:pn-rdksysctl = "${MIDDLEWARE_ARCH}"
 
 PV:pn-xdial = "1.0.1"
-PR:pn-xdial = "r0"
+PR:pn-xdial = "r1"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
 PV:pn-sysint = "4.0.0"
