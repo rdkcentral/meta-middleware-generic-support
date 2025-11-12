@@ -11,6 +11,7 @@ IMAGE_INSTALL = " \
                  "
 
 IMAGE_ROOTFS_SIZE ?= "8192"
+IMAGE_INSTALL:append = " python3 python3-core python3-modules python3-pip"
 IMAGE_ROOTFS_EXTRA_SPACE:append = "${@bb.utils.contains("DISTRO_FEATURES", "systemd", " + 4096", "" ,d)}"
 
 ROOTFS_POSTPROCESS_COMMAND += "create_init_link; "
