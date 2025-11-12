@@ -11,7 +11,7 @@ PR:pn-cpeabs = "r0"
 PACKAGE_ARCH:pn-cpeabs = "${MIDDLEWARE_ARCH}"
 
 PV:pn-hdmicec = "1.0.7"
-PR:pn-hdmicec = "r1"
+PR:pn-hdmicec = "r0"
 PACKAGE_ARCH:pn-hdmicec = "${MIDDLEWARE_ARCH}"
 
 PV:pn-iarmbus = "1.0.2"
