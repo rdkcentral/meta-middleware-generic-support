@@ -18,7 +18,7 @@ PV:pn-iarmbus = "1.0.2"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.1.3"
+PV:pn-iarmmgrs = "1.1.4"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -26,7 +26,7 @@ PV:pn-rtcore = "1.0.1"
 PR:pn-rtcore = "r2"
 PACKAGE_ARCH:pn-rtcore = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdknativescript = "1.0.8"
+PV:pn-rdknativescript = "1.0.10"
 PR:pn-rdknativescript = "r0"
 PACKAGE_ARCH:pn-rdknativescript = "${MIDDLEWARE_ARCH}"
 
@@ -42,7 +42,7 @@ PV:pn-rfc = "1.1.7"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.2.6"
+PV:pn-tr69hostif = "1.2.8"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -62,7 +62,7 @@ PV:pn-dcmd = "1.2.0"
 PR:pn-dcmd = "r0"
 PACKAGE_ARCH:pn-dcmd = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif-headers = "1.2.6"
+PV:pn-tr69hostif-headers = "1.2.8"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
@@ -98,7 +98,7 @@ PV:pn-commonutilities = "1.4.3"
 PR:pn-commonutilities = "r0"
 PACKAGE_ARCH:pn-commonutilities = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkfwupgrader = "1.3.2"
+PV:pn-rdkfwupgrader = "1.3.3"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
@@ -136,15 +136,15 @@ PV:pn-entservices-connectivity = "1.1.0"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.2.9"
+PV:pn-entservices-deviceanddisplay = "3.3.6"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "3.1.0"
+PV:pn-entservices-infra = "3.5.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.4.11"
+PV:pn-entservices-inputoutput = "1.5.1"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -180,7 +180,7 @@ PV:pn-systimemgrinetrface = "1.3.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ctrlm-main = "1.1.4"
+PV:pn-ctrlm-main = "1.1.5"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"
 
@@ -204,13 +204,17 @@ PV:pn-libsyswrapper = "1.3.3"
 PR:pn-libsyswrapper = "r1"
 PACKAGE_ARCH:pn-libsyswrapper = "${MIDDLEWARE_ARCH}"
 
-PV_pn-rdk-logger = "2.3.0"
-PR_pn-rdk-logger = "r1"
+PV_pn-rdk-logger = "2.4.0"
+PR_pn-rdk-logger = "r0"
 PACKAGE_ARCH_pn-rdk-logger = "${MIDDLEWARE_ARCH}"
 
 PV:pn-remotedebugger = "1.2.9"
 PR:pn-remotedebugger = "r0"
 PACKAGE_ARCH:pn-remotedebugger = "${MIDDLEWARE_ARCH}"
+
+PV:pn-memcapture = "1.0.0"
+PR:pn-memcapture = "r0"
+PACKAGE_ARCH:pn-memcapture = "${MIDDLEWARE_ARCH}"
 
 PV:pn-webkitbrowser-plugin = "1.1.30"
 PR:pn-webkitbrowser-plugin = "r0"
@@ -235,7 +239,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "2.0.1"
+PV:pn-entservices-apis = "2.3.4"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -264,8 +268,8 @@ PV:pn-xdial = "1.0.0"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "3.0.8"
-PR:pn-sysint = "r0"
+PV:pn-sysint = "4.0.1"
+PR:pn-sysint = "r1"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
 PR:pn-bluez5 = "r5"
@@ -298,7 +302,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.23"
+PV:pn-thunderstartupservices = "1.2.0"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -321,15 +325,15 @@ PV:pn-rdkwpasupplicantconfig = "1.0.0"
 PR:pn-rdkwpasupplicantconfig = "r0"
 PACKAGE_ARCH:pn-rdkwpasupplicantconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto = "0.14.0"
+PV:pn-rialto = "0.14.2"
 PR:pn-rialto = "r0"
 PACKAGE_ARCH:pn-rialto = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-gstreamer = "0.13.0"
+PV:pn-rialto-gstreamer = "0.13.1"
 PR:pn-rialto-gstreamer = "r0"
 PACKAGE_ARCH:pn-rialto-gstreamer = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-ocdm = "0.9.1"
+PV:pn-rialto-ocdm = "0.9.3"
 PR:pn-rialto-ocdm = "r0"
 PACKAGE_ARCH:pn-rialto-ocdm = "${MIDDLEWARE_ARCH}"
 
@@ -337,7 +341,7 @@ PV:pn-xmidt-agent = "1.0.0"
 PR:pn-xmidt-agent = "r0"
 PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdmagent = "2.1.1"
+PV:pn-rdmagent = "2.1.2"
 PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
