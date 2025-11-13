@@ -7,7 +7,7 @@ PR:pn-devicesettings = "r1"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
 PV:pn-cpeabs = "2.0.0"
-PR:pn-cpeabs = "r0"
+PR:pn-cpeabs = "r1"
 PACKAGE_ARCH:pn-cpeabs = "${MIDDLEWARE_ARCH}"
 
 PV:pn-hdmicec = "1.0.7"
