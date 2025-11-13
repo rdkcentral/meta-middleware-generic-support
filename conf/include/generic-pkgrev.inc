@@ -128,7 +128,7 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.2.12"
+PV:pn-entservices-casting = "1.2.13"
 PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
@@ -264,7 +264,7 @@ PACKAGE_ARCH_pn-webconfig-framework = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-rdksysctl = "${MIDDLEWARE_ARCH}"
 
-PV:pn-xdial = "1.0.0"
+PV:pn-xdial = "1.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
