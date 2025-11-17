@@ -228,6 +228,10 @@ PV:pn-ripple = "${RIPPLE_VERSION}"
 PR:pn-ripple = "r0"
 PACKAGE_ARCH:pn-ripple = "${MIDDLEWARE_ARCH}"
 
+PV:pn-gssdp = "1.6.3"
+PR:pn-gssdp = "r0"
+PACKAGE_ARCH:pn-gssdp = "${MIDDLEWARE_ARCH}"
+
 PV:pn-gst-plugins-rdk = "1.0.0"
 PR:pn-gst-plugins-rdk = "r0"
 PACKAGE_ARCH:pn-gst-plugins-rdk = "${MIDDLEWARE_ARCH}"
