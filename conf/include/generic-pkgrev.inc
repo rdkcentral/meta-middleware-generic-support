@@ -261,7 +261,7 @@ PV:pn-xdial = "3.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "3.0.5v2"
+PV:pn-sysint = "3.0.5v6"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -303,7 +303,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.21"
+PV:pn-thunderstartupservices = "1.0.21.1"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -326,15 +326,15 @@ PV:pn-rdkwpasupplicantconfig = "1.0.0"
 PR:pn-rdkwpasupplicantconfig = "r0"
 PACKAGE_ARCH:pn-rdkwpasupplicantconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto = "0.14.0"
+PV:pn-rialto = "0.14.2"
 PR:pn-rialto = "r0"
 PACKAGE_ARCH:pn-rialto = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-gstreamer = "0.13.0"
+PV:pn-rialto-gstreamer = "0.13.1"
 PR:pn-rialto-gstreamer = "r0"
 PACKAGE_ARCH:pn-rialto-gstreamer = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-ocdm = "0.9.1"
+PV:pn-rialto-ocdm = "0.9.3"
 PR:pn-rialto-ocdm = "r0"
 PACKAGE_ARCH:pn-rialto-ocdm = "${MIDDLEWARE_ARCH}"
 
