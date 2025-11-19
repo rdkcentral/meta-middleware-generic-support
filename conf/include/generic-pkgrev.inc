@@ -38,8 +38,8 @@ PV:pn-rbus = "2.6.0"
 PR:pn-rbus = "r7"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.1.5"
-PR:pn-rfc = "r1"
+PV:pn-rfc = "1.1.5v1"
+PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
 PV:pn-tr69hostif = "1.2.4v1"
@@ -86,7 +86,7 @@ PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-core = "1.0.2"
+PV:pn-bluetooth-core = "1.0.5"
 PR:pn-bluetooth-core = "r2"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
@@ -98,7 +98,7 @@ PV:pn-commonutilities = "1.4.1"
 PR:pn-commonutilities = "r0"
 PACKAGE_ARCH:pn-commonutilities = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkfwupgrader = "1.3.0"
+PV:pn-rdkfwupgrader = "1.3.0v1"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
@@ -143,7 +143,7 @@ PV:pn-entservices-inputoutput = "1.4.7"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-mediaanddrm = "1.3.6"
+PV:pn-entservices-mediaanddrm = "1.3.6-hotfix.1"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
@@ -232,7 +232,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.15.11"
+PV:pn-entservices-apis = "1.15.11-hotfix.1"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -261,7 +261,7 @@ PV:pn-xdial = "3.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "3.0.5v2"
+PV:pn-sysint = "3.0.5v6"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -303,7 +303,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.21"
+PV:pn-thunderstartupservices = "1.0.21.1"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
