@@ -441,3 +441,4 @@ PACKAGE_ARCH:pn-packager-headers = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-packagegroup-youtube-widgets = "${MIDDLEWARE_ARCH}"
 
+PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
