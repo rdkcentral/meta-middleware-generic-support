@@ -143,6 +143,7 @@ RDEPENDS:${PN} = " \
     lzo \
     mtd-utils-ubifs \
     mpg123 \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', " pulseaudio ", "", d)} \
     mtdev \
     smcroute \
     speex \
