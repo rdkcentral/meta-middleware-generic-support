@@ -2,7 +2,7 @@ PV:pn-apparmor-generic="1.1.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.20-hotfix.1"
+PV:pn-devicesettings = "1.0.20-hotfix.2"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -38,11 +38,11 @@ PV:pn-rbus = "2.6.0"
 PR:pn-rbus = "r7"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.1.5"
-PR:pn-rfc = "r1"
+PV:pn-rfc = "1.1.5v1"
+PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.2.4"
+PV:pn-tr69hostif = "1.2.4v1"
 PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
@@ -86,7 +86,7 @@ PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-core = "1.0.2"
+PV:pn-bluetooth-core = "1.0.5"
 PR:pn-bluetooth-core = "r2"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
@@ -98,7 +98,7 @@ PV:pn-commonutilities = "1.4.1"
 PR:pn-commonutilities = "r0"
 PACKAGE_ARCH:pn-commonutilities = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkfwupgrader = "1.3.0"
+PV:pn-rdkfwupgrader = "1.3.0v1"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
@@ -143,7 +143,7 @@ PV:pn-entservices-inputoutput = "1.4.7"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-mediaanddrm = "1.3.6"
+PV:pn-entservices-mediaanddrm = "1.3.6-hotfix.1"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
@@ -232,7 +232,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "1.15.11"
+PV:pn-entservices-apis = "1.15.11-hotfix.1"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -261,7 +261,7 @@ PV:pn-xdial = "3.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "3.0.5v4"
+PV:pn-sysint = "3.0.5v6"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -303,7 +303,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.21"
+PV:pn-thunderstartupservices = "1.0.21.1"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -326,15 +326,15 @@ PV:pn-rdkwpasupplicantconfig = "1.0.0"
 PR:pn-rdkwpasupplicantconfig = "r0"
 PACKAGE_ARCH:pn-rdkwpasupplicantconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto = "0.14.0"
+PV:pn-rialto = "0.14.2"
 PR:pn-rialto = "r0"
 PACKAGE_ARCH:pn-rialto = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-gstreamer = "0.13.0"
+PV:pn-rialto-gstreamer = "0.13.1"
 PR:pn-rialto-gstreamer = "r0"
 PACKAGE_ARCH:pn-rialto-gstreamer = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-ocdm = "0.9.1"
+PV:pn-rialto-ocdm = "0.9.3"
 PR:pn-rialto-ocdm = "r0"
 PACKAGE_ARCH:pn-rialto-ocdm = "${MIDDLEWARE_ARCH}"
 
@@ -362,7 +362,7 @@ PACKAGE_ARCH:pn-wlan-p2p = "${MIDDLEWARE_ARCH}"
 MULTILIB_VARIANTS:pn-os-release = " multilib "
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
-PV:pn-subttxrend-app = "1.4.0"
+PV:pn-subttxrend-app = "1.4.1"
 PR:pn-subttxrend-app = "r0"
 PACKAGE_ARCH:pn-subttxrend-app = "${MIDDLEWARE_ARCH}"
 
