@@ -1,77 +1,38 @@
+# ==============================================================================
+# SRCREV Migration Notice
+# ==============================================================================
+# The following SRCREV values have been migrated to individual recipe files:
+#
+# Migrated to meta-rdk (17 components):
+#   - rdk-libunpriv, telemetry, dcmd, crashupload, remotedebugger
+#   - memcapture, libsyswrapper, rfc, rdkversion, bluetooth-mgr, bluetooth-core
+#   - dobby, xmidt-agent, rdmagent, rdkcertconfig
+#   - systemtimemgrifc, systemtimemgrfactory, systemtimemgr
+#
+# Migrated to meta-rdk-video (48 components):
+#   - rdkat, ctrlm-main, ctrlm-headers, xr-voice-sdk, xr-voice-sdk-headers
+#   - hdmicec, audiocapturemgr, aamp, iarmbus, iarmmgrs, iarmmgrs-hal-headers
+#   - rdk-gstreamer-utils, devicesettings, commonutilities
+#   - iarm-query-powerstate, iarm-set-powerstate, iarm-event-sender
+#   - key-simulator, mfr-utils, sysint, tr69hostif, tr69hostif-headers
+#   - gst-plugins-rdk, wpeframework-ui, tts, packagemanager
+#   - rdkshell, thunderstartupservices
+#   - rialto-gstreamer, rialto, rialto-ocdm
+#   - All 13 subttxrend components, dvbsubdecoder, ttxdecoder
+#   - packager-lisa, entservices-infra, xdial, sceneset, packager-headers
+#
+# Related PRs:
+#   - meta-rdk: https://github.com/rdkcentral/meta-rdk/pull/349
+#   - meta-rdk-video: https://github.com/rdkcentral/meta-rdk-video/pull/2097
+#   - Tracking issue: https://github.com/rdkcentral/meta-rdk/issues/350
+# ==============================================================================
+
+# Components not yet migrated (remain in this file)
 SRCREV_rdk-apparmor-profiles = "0e9b3f4d100c23a99427891f6dcb417e77fe7b00"
-SRCREV_rdk-libunpriv = "547d202d421ed83bd60b677b5d057cad3b7ae8ad"
-SRCREV:pn-rdkat = "e52ebe05b6703dff7ca700fd286d84c0c72c41ea"
-SRCREV:pn-ctrlm-main = "41af9e06bbe71b981eedbe5c1b991213f2d6b721"
-SRCREV:pn-ctrlm-headers = "${SRCREV:pn-ctrlm-main}"
-SRCREV:pn-xr-voice-sdk = "5eda37f9e95767fcbe2893a52e3b6b1fafd0135c"
-SRCREV:pn-xr-voice-sdk-headers = "${SRCREV:pn-xr-voice-sdk}"
-SRCREV_hdmicec = "b407684e91a936a07fadf4ef393505a5d06db890"
 SRCREV:pn-rmfosal = "ea4f0df1edd73cc2d45d453ad445cb2536799684"
-SRCREV:pn-audiocapturemgr = "29f81aa9d1c749221a606002a31d669b030028ad"
-SRCREV_aamp = "079a61bffe38f6ad9b8626bb592df171b5219361"
-SRCREV_iarmbus = "6dd8bd51b96cec8df3416fd162cee3dd2c089a26"
-SRCREV:pn-iarmmgrs = "b8208e7feb22da102adb4b5b91227b8c9d0f200d"
-SRCREV:pn-iarmmgrs-hal-headers = "${SRCREV:pn-iarmmgrs}"
-SRCREV:pn-rdk-gstreamer-utils = "ea9c7ec1a810053619596123f5bd6fd22b3215f4"
-SRCREV_devicesettings = "9d6edc7f0c2ef741309d84f0b6019a97b99f18bc"
-SRCREV:pn-bluetooth-mgr = "b284d24692988285e449252829eacc78214634b5"
-SRCREV:pn-bluetooth-core = "02e40603f48c748cc7a7cc776c4743534cab573e"
-SRCREV_rdkversion = "d461bbd2fc8299f6e5056f488ff944e90142e9b6"
-SRCREV:pn-telemetry = "0d73470cc038f1e47ffee483a7d05e51bf88751e"
-SRCREV:pn-dcmd = "03974134e21b316d4053de6574df14b3a423c8d6"
-SRCREV:pn-crashupload = "8e7e22d2cb988ea58b9ba9d85b8b0812c6dc77d2"
-SRCREV:pn-remotedebugger = "300d29e105f6a7244bff81fa0357dac914dd8913"
-SRCREV:pn-memcapture = "0cf90e07af97b70fb1f253ebd0f71edd5a9b8225"
-SRCREV:pn-libsyswrapper = "5143ba5b92f5dc77b436837d51f2f612d5846b7b"
-SRCREV:pn-commonutilities = "071361f284ba9049bf7d8cb9a75b583b9b1e353b"
 SRCREV_rdkfw = "709c65295687bb998d12c2303d879e4f3f6cfbff"
 SRCREV:pn-rdkperf = "d802d561c4a2a4456403d572da75e73032d48d91"
-SRCREV:pn-iarm-query-powerstate = "a309758f5721a10ff8cdfa3ef8b957f7614a2d29"
-SRCREV:pn-iarm-set-powerstate = "${SRCREV:pn-iarm-query-powerstate}"
-SRCREV:pn-iarm-event-sender = "${SRCREV:pn-iarm-query-powerstate}"
-SRCREV_key-simulator = "${SRCREV:pn-iarm-query-powerstate}"
-SRCREV_mfr-utils = "${SRCREV:pn-iarm-query-powerstate}"
-SRCREV:pn-rfc = "b6da366e704a006394b33759f144c0a4256fd335"
-SRCREV:pn-sysint = "ed3a2c982d09184c24daf76b973b3e46b1f48dd2"
-SRCREV:pn-tr69hostif = "d05547a1e693171e77b0532128f9322775c468a4"
 SRCREV:pn-hdmicecheader = "5201b2f759b4ca8fd2a6f5db838d528f6477db0c"
-SRCREV:pn-tr69hostif-headers = "d05547a1e693171e77b0532128f9322775c468a4"
-SRCREV:pn-dobby = "59381966b7251d46a28ef7897a290662ca6009cb"
 SRCREV:pn-memcr = "f46af4008d19cb527d5cede22bf0a3d0c7a8ed02"
-SRCREV:pn-gst-plugins-rdk = "2a713a366153cf38dcf7bbced0b0c9de828c34c7"
-SRCREV:pn-wpeframework-ui = "ae6d061a6a08d97ad3ad8821c422b4f45aeeced1"
-SRCREV:pn-tts = "53206b1d1ce346dc4c7bdbe1b9767bcfe866a478"
-SRCREV:pn-packagemanager = "38729b8edfc3ddaba0b3625c19bcd2dd1a05b027"
-SRCREV_systemtimemgrifc = "f327d55479d559bfb94803d2e6d60501ab32f9f2"
-SRCREV_systemtimemgrfactory="f327d55479d559bfb94803d2e6d60501ab32f9f2"
 SRCREV_starboard = "d23e2da63e840f04a1bfa5cf1f2a1e7b0c261102"
-SRCREV_systemtimemgr = "f327d55479d559bfb94803d2e6d60501ab32f9f2"
-SRCREV:pn-rdkshell = "a0a88b812d39ee57b15b48f00488c4d9ba737f14"
-SRCREV:pn-thunderstartupservices = "481bf0d7de702762925512bbf362a5a5463ee40b"
-SRCREV:pn-rialto-gstreamer = "4e6bcf2ada4a9aaf22f3adde3f532267cf934350"
-SRCREV:pn-rialto = "4a076e05ae0567253a12d7bb7cfb943ee4d0188c"
-SRCREV:pn-rialto-ocdm = "4f8e4556754cde3498d960d47fd0827f997ea43b"
-SRCREV:pn-xmidt-agent = "a42eef93f5f129da6a25f1ce5386b2ee"
-SRCREV:pn-rdmagent = "7e09a367a5b0547fcecb215b1a4b837de86a26cc"
 SRCREV:pn-rdkwindowmanager = "118bda43f9aff719f425b908bd52879b95df83de"
-SRCREV:pn-subttxrend-app = "72ecd131bbd1ff569a62cb6df3928290e5a570d2"
-SRCREV:pn-subttxrend-ctrl = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-subttxrend-dbus = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-subttxrend-dvbsub = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-subttxrend-cc = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-subttxrend-common = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-subttxrend-gfx = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-subttxrend-protocol = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-subttxrend-socksrc = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-subttxrend-ttml = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-subttxrend-ttxt = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-subttxrend-scte = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-subttxrend-webvtt = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-dvbsubdecoder= "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-ttxdecoder = "${SRCREV:pn-subttxrend-app}"
-SRCREV:pn-rdkcertconfig = "e0e35743f7e96ad0595ac25b11d829b766f7062b"
-SRCREV:pn-packager-lisa = "53fea63b4fb6e5491364781dcdfd91bcc47397f8"
-SRCREV:pn-entservices-infra = "c349dc2e327138f95f31daa859c835dc3ba45168"
-SRCREV:pn-xdial = "c48dff76657733cb73a81de73a2a886d86c1dde2"
-SRCREV:pn-sceneset = "b9fc1bca0c1b42c72825ae1adecc07a7b6170c75"
-SRCREV:pn-packager-headers = "c18a6cdf4c87fc43bf920167781a537efa225eba"
