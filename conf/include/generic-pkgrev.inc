@@ -354,7 +354,7 @@ PR:pn-os-release = "r0"
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
 PV:pn-wlan-p2p = "1.0.1"
-PR:pn-wlan-p2p = "r0"
+PR:pn-wlan-p2p = "r1"
 PACKAGE_ARCH:pn-wlan-p2p = "${MIDDLEWARE_ARCH}"
 
 # Workaround to build allarch packags as mw arch
