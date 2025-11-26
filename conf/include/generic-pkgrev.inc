@@ -20,7 +20,7 @@ PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
 PV:pn-iarmmgrs = "1.1.5"
 PR:pn-iarmmgrs = "r0"
-PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
+PACKAGE_ARCH:pn-iarmmgrs = "${4IDDLEWARE_ARCH}"
 
 PV:pn-rtcore = "1.0.1"
 PR:pn-rtcore = "r2"
@@ -152,7 +152,7 @@ PV:pn-entservices-mediaanddrm = "1.3.13"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-peripherals = "1.0.19"
+PV:pn-entservices-peripherals = "1.0.20"
 PR:pn-entservices-peripherals = "r0"
 PACKAGE_ARCH:pn-entservices-peripherals = "${MIDDLEWARE_ARCH}"
 
