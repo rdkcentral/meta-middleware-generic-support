@@ -18,9 +18,9 @@ PV:pn-iarmbus = "1.0.2"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.1.5"
+PV:pn-iarmmgrs = "1.1.4"
 PR:pn-iarmmgrs = "r0"
-PACKAGE_ARCH:pn-iarmmgrs = "${4IDDLEWARE_ARCH}"
+PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rtcore = "1.0.1"
 PR:pn-rtcore = "r2"
