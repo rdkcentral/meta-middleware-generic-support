@@ -52,7 +52,6 @@ RDEPENDS:${PN} = " \
     networkmanager-plugin \
     packagemanager \
     parodus \
-    player-interface \
     rbus \
     rdk-logger \
     rdkat \
