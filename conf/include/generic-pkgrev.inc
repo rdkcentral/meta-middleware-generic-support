@@ -140,7 +140,7 @@ PV:pn-entservices-deviceanddisplay = "3.4.4"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "3.7.0"
+PV:pn-entservices-infra = "3.10.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
@@ -268,7 +268,7 @@ PV:pn-xdial = "1.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "4.0.1"
+PV:pn-sysint = "4.1.0"
 PR:pn-sysint = "r2"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
