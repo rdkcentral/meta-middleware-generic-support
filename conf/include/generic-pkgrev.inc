@@ -441,10 +441,10 @@ PACKAGE_ARCH:pn-packager-headers = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-packagegroup-youtube-widgets = "${MIDDLEWARE_ARCH}"
 
-PV:pn-barton-matter = "1.4.0"
+PV:pn-barton-matter = "1.4.2"
 PR:pn-barton-matter = "r0"
 PACKAGE_ARCH:pn-barton-matter = "${MIDDLEWARE_ARCH}"
 
-PV:pn-barton = "1.1.0"
+PV:pn-barton = "2.2.0"
 PR:pn-barton = "r0"
 PACKAGE_ARCH:pn-barton = "${MIDDLEWARE_ARCH}"
