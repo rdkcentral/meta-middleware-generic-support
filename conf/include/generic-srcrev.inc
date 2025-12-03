@@ -1,7 +1,7 @@
 SRCREV_rdk-apparmor-profiles = "426805b852c28eb22c55fc778527c7843e9362ae"
 SRCREV_rdk-libunpriv = "547d202d421ed83bd60b677b5d057cad3b7ae8ad"
 SRCREV:pn-rdkat = "e52ebe05b6703dff7ca700fd286d84c0c72c41ea"
-SRCREV:pn-ctrlm-main = "a5109c82635bae5cf6a97f86bf1e43be051c5d5f"
+SRCREV:pn-ctrlm-main = "9a0eed49e20c3d48257eb707e18da5256c2cd389"
 SRCREV:pn-ctrlm-headers = "${SRCREV:pn-ctrlm-main}"
 SRCREV:pn-xr-voice-sdk = "b01e2cb1e8110da235b75df589c85031b01fa7fd"
 SRCREV:pn-xr-voice-sdk-headers = "${SRCREV:pn-xr-voice-sdk}"
