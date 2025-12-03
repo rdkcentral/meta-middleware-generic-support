@@ -1,3 +1,6 @@
+# To Test systemd package with Increased PE value from MW layer
+PE:pn-systemd = "5"
+
 PV:pn-apparmor-generic="1.1.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
