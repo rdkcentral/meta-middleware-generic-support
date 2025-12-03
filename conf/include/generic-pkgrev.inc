@@ -1,4 +1,4 @@
-PV:pn-apparmor-generic="1.1.0"
+PV:pn-apparmor-generic="1.3.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
