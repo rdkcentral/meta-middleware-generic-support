@@ -8,7 +8,7 @@ SRCREV:pn-xr-voice-sdk-headers = "${SRCREV:pn-xr-voice-sdk}"
 SRCREV_hdmicec = "5b86137db794ae939eab1ef37497dd6695911bf4"
 SRCREV:pn-rmfosal = "ea4f0df1edd73cc2d45d453ad445cb2536799684"
 SRCREV:pn-audiocapturemgr = "29f81aa9d1c749221a606002a31d669b030028ad"
-SRCREV_aamp = "2d04ebd6517e14286c42df3d82db0a232a1b4b15"
+SRCREV_aamp = "8a641e0c428e3918595842ca03ba393b51ecbf0e"
 
 SRCREV_iarmbus = "6ed35ebb886a8ac01812d8bfe5b4c3a89f9ace38"
 SRCREV:pn-iarmmgrs = "84a09a6e7db07c6c7d3fdc47038402af1e2851a4"
