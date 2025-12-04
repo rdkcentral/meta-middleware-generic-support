@@ -18,7 +18,7 @@ SRCREV:pn-bluetooth-mgr = "be44a6c91bdf9ed787f9951965dc98da38f93792"
 SRCREV:pn-bluetooth-core = "b3219f3a38978bb29527e9d8991a33c802aafdd1"
 SRCREV_rdkversion = "d461bbd2fc8299f6e5056f488ff944e90142e9b6"
 SRCREV:pn-telemetry = "3827f8819ea45d59a2750b3a80ad6e6c31c8f445"
-SRCREV:pn-dcmd = "2e224930015a758fc55e1c8470d76074e1e186c4"
+SRCREV:pn-dcmd = "0aa33e2d65d771d2d2fecaed10a1cfb98d6c334a"
 #with iarm
 #SRCREV:pn-dcmd = "985769e96fe210c10654b563624e88418ac182b6"
 SRCREV:pn-crashupload = "8e7e22d2cb988ea58b9ba9d85b8b0812c6dc77d2"
