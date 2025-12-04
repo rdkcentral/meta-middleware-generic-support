@@ -1,4 +1,4 @@
-PV:pn-apparmor-generic="1.1.0"
+PV:pn-apparmor-generic="1.3.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
@@ -144,7 +144,7 @@ PV:pn-entservices-infra = "3.10.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.5.1"
+PV:pn-entservices-inputoutput = "1.6.6"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -168,15 +168,15 @@ PV:pn-rdkshell = "1.0.0"
 PR:pn-rdkshell = "r0"
 PACKAGE_ARCH:pn-rdkshell = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgrfactory = "1.3.0"
+PV:pn-systimemgrfactory = "1.4.0"
 PR:pn-systimemgrfactory = "r0"
 PACKAGE_ARCH:pn-systimemgrfactory = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgr = "1.3.0"
+PV:pn-systimemgr = "1.4.0"
 PR:pn-systimemgr = "r0"
 PACKAGE_ARCH:pn-systimemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgrinetrface = "1.3.0"
+PV:pn-systimemgrinetrface = "1.4.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
@@ -268,7 +268,7 @@ PV:pn-xdial = "1.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "4.1.0"
+PV:pn-sysint = "4.2.0"
 PR:pn-sysint = "r2"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
