@@ -10,6 +10,7 @@ MACHINEOVERRIDES:append = ":client"
 OVERRIDES:append = ":entos"
 
 LAYER_NAME = "MIDDLEWARE"
+LAYER_EXTENSION = "-middleware"
 
 DISTRO_FEATURES:append = " enable_wpe-webdriver" 
 
