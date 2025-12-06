@@ -18,7 +18,7 @@ PV:pn-iarmbus = "1.0.2"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.1.5"
+PV:pn-iarmmgrs = "1.1.6"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -136,7 +136,7 @@ PV:pn-entservices-connectivity = "1.1.0"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.4.4"
+PV:pn-entservices-deviceanddisplay = "3.4.5"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
