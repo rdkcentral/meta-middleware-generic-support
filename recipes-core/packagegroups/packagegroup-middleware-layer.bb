@@ -1,3 +1,4 @@
+#test
 SUMMARY = "Packagegroup for middleware layer"
 PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
