@@ -20,7 +20,9 @@ SRCREV_rdkversion = "d461bbd2fc8299f6e5056f488ff944e90142e9b6"
 SRCREV:pn-telemetry = "3827f8819ea45d59a2750b3a80ad6e6c31c8f445"
 #SRCREV:pn-dcmd = "0aa33e2d65d771d2d2fecaed10a1cfb98d6c334a"
 #with iarm
-SRCREV:pn-dcmd = "de4fd57d64b5f6176976a672c6d12ba7476b946a"
+#SRCREV:pn-dcmd = "de4fd57d64b5f6176976a672c6d12ba7476b946a"
+#with copilot branch
+SRCREV:pn-dcmd = "0c8cfca9afaff7db3c4c65fdda3d9fd0e23f8067"
 SRCREV:pn-crashupload = "8e7e22d2cb988ea58b9ba9d85b8b0812c6dc77d2"
 SRCREV:pn-remotedebugger = "300d29e105f6a7244bff81fa0357dac914dd8913"
 SRCREV:pn-memcapture = "0cf90e07af97b70fb1f253ebd0f71edd5a9b8225"
