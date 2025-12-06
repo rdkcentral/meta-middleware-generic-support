@@ -8,6 +8,7 @@ inherit core-image custom-rootfs-creation
 IMAGE_INSTALL = " \
                  packagegroup-vendor-layer \
                  packagegroup-middleware-layer \
+                 meminsight \
                  "
 
 IMAGE_ROOTFS_SIZE ?= "8192"
