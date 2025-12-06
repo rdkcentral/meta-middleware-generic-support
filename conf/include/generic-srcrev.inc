@@ -22,7 +22,7 @@ SRCREV:pn-telemetry = "3827f8819ea45d59a2750b3a80ad6e6c31c8f445"
 #with iarm
 #SRCREV:pn-dcmd = "de4fd57d64b5f6176976a672c6d12ba7476b946a"
 #with copilot branch
-SRCREV:pn-dcmd = "60e5db3c8c77ff246d57bee3985c812fe2a116e9"
+SRCREV:pn-dcmd = "0106f2980e68f8d243be65a3f9ebf3fd21c6ccbc"
 SRCREV:pn-crashupload = "8e7e22d2cb988ea58b9ba9d85b8b0812c6dc77d2"
 SRCREV:pn-remotedebugger = "300d29e105f6a7244bff81fa0357dac914dd8913"
 SRCREV:pn-memcapture = "0cf90e07af97b70fb1f253ebd0f71edd5a9b8225"
