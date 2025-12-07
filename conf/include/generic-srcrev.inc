@@ -29,7 +29,7 @@ SRCREV:pn-memcapture = "0cf90e07af97b70fb1f253ebd0f71edd5a9b8225"
 SRCREV:pn-libsyswrapper = "5143ba5b92f5dc77b436837d51f2f612d5846b7b"
 #SRCREV:pn-commonutilities = "7b0afc44804bc1547f9a7029021e5e2d88d1b0fa"
 #updated util with two stage seperate
-SRCREV:pn-commonutilities = "97927a576800f8b4146ebb576439ba9f10cec66e" 
+SRCREV:pn-commonutilities = "97af4b7d563f8527ea31163e4fdb3cfbbd439bca" 
 SRCREV_rdkfw = "2166a5279fa59fae5a21ad0f4d9163bd96ba3b42"
 SRCREV:pn-rdkperf = "d802d561c4a2a4456403d572da75e73032d48d91"
 SRCREV:pn-iarm-query-powerstate = "a309758f5721a10ff8cdfa3ef8b957f7614a2d29"
