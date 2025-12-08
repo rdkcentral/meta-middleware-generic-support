@@ -27,7 +27,7 @@ SRCREV:pn-crashupload = "8e7e22d2cb988ea58b9ba9d85b8b0812c6dc77d2"
 SRCREV:pn-remotedebugger = "300d29e105f6a7244bff81fa0357dac914dd8913"
 SRCREV:pn-memcapture = "0cf90e07af97b70fb1f253ebd0f71edd5a9b8225"
 SRCREV:pn-libsyswrapper = "5143ba5b92f5dc77b436837d51f2f612d5846b7b"
-#SRCREV:pn-commonutilities = "7b0afc44804bc1547f9a7029021e5e2d88d1b0fa"
+#SRCREV:pn-commonutilities = "17f697caef43c91bc34b32183d847af2e4a3ba23"
 #updated util with two stage seperate
 SRCREV:pn-commonutilities = "97af4b7d563f8527ea31163e4fdb3cfbbd439bca" 
 SRCREV_rdkfw = "2166a5279fa59fae5a21ad0f4d9163bd96ba3b42"
