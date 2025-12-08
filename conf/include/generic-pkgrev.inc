@@ -102,6 +102,10 @@ PV:pn-gssdp = "1.6.3"
 PR:pn-gssdp = "r0"
 PACKAGE_ARCH:pn-gssdp = "${MIDDLEWARE_ARCH}"
 
+PV:pn-gupnp = "1.6.6"
+PR:pn-gupnp = "r0"
+PACKAGE_ARCH:pn-gupnp = "${MIDDLEWARE_ARCH}"
+
 PV:pn-rdkfwupgrader = "1.4.0"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
