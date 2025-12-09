@@ -1,4 +1,4 @@
-PV:pn-apparmor-generic="1.1.0"
+PV:pn-apparmor-generic="1.3.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
@@ -18,7 +18,7 @@ PV:pn-iarmbus = "1.0.2"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.1.4"
+PV:pn-iarmmgrs = "1.1.5"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -38,7 +38,7 @@ PV:pn-rbus = "2.9.0"
 PR:pn-rbus = "r0"
 PACKAGE_ARCH:pn-rbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rfc = "1.1.7"
+PV:pn-rfc = "1.1.9"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
@@ -50,7 +50,7 @@ PV:pn-rtremote = "2.0.0"
 PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.6.4"
+PV:pn-telemetry = "1.7.1"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -66,7 +66,7 @@ PV:pn-tr69hostif-headers = "1.2.8"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby = "3.15.0"
+PV:pn-dobby = "3.16.0"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
@@ -86,19 +86,19 @@ PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-core = "1.0.4.0"
+PV:pn-bluetooth-core = "1.0.6"
 PR:pn-bluetooth-core = "r2"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-mgr = "1.0.3"
+PV:pn-bluetooth-mgr = "1.0.6"
 PR:pn-bluetooth-mgr = "r2"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-commonutilities = "1.4.3"
+PV:pn-commonutilities = "1.4.4"
 PR:pn-commonutilities = "r0"
 PACKAGE_ARCH:pn-commonutilities = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkfwupgrader = "1.3.3"
+PV:pn-rdkfwupgrader = "1.4.0"
 PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
@@ -140,11 +140,11 @@ PV:pn-entservices-deviceanddisplay = "3.4.4"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "3.7.0"
+PV:pn-entservices-infra = "3.10.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.5.1"
+PV:pn-entservices-inputoutput = "1.6.6"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
@@ -160,7 +160,7 @@ PV:pn-entservices-runtime = "1.0.1"
 PR:pn-entservices-runtime = "r0"
 PACKAGE_ARCH:pn-entservices-runtime = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-softwareupdate = "1.5.0"
+PV:pn-entservices-softwareupdate = "1.6.0"
 PR:pn-entservices-softwareupdate = "r0"
 PACKAGE_ARCH:pn-entservices-softwareupdate = "${MIDDLEWARE_ARCH}"
 
@@ -168,15 +168,15 @@ PV:pn-rdkshell = "1.0.0"
 PR:pn-rdkshell = "r0"
 PACKAGE_ARCH:pn-rdkshell = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgrfactory = "1.3.0"
+PV:pn-systimemgrfactory = "1.4.0"
 PR:pn-systimemgrfactory = "r0"
 PACKAGE_ARCH:pn-systimemgrfactory = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgr = "1.3.0"
+PV:pn-systimemgr = "1.4.0"
 PR:pn-systimemgr = "r0"
 PACKAGE_ARCH:pn-systimemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-systimemgrinetrface = "1.3.0"
+PV:pn-systimemgrinetrface = "1.4.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
@@ -239,7 +239,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "2.5.0"
+PV:pn-entservices-apis = "2.6.0"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -268,7 +268,7 @@ PV:pn-xdial = "1.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "4.0.1"
+PV:pn-sysint = "4.2.0"
 PR:pn-sysint = "r2"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
@@ -341,7 +341,7 @@ PV:pn-xmidt-agent = "1.0.0"
 PR:pn-xmidt-agent = "r0"
 PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdmagent = "2.1.2"
+PV:pn-rdmagent = "2.1.3"
 PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
