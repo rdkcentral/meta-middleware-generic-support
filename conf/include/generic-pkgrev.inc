@@ -18,7 +18,7 @@ PV:pn-iarmbus = "1.0.2"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.1.4"
+PV:pn-iarmmgrs = "1.1.5"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -66,7 +66,7 @@ PV:pn-tr69hostif-headers = "1.2.8"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby = "3.15.0"
+PV:pn-dobby = "3.16.0"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
@@ -180,11 +180,11 @@ PV:pn-systimemgrinetrface = "1.4.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ctrlm-main = "1.1.6"
+PV:pn-ctrlm-main = "1.1.7"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"
 
-PV:pn-xr-voice-sdk = "1.0.7"
+PV:pn-xr-voice-sdk = "1.0.8"
 PR:pn-xr-voice-sdk = "r0"
 PACKAGE_ARCH:pn-xr-voice-sdk = "${MIDDLEWARE_ARCH}"
 
@@ -239,7 +239,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "2.6.0"
+PV:pn-entservices-apis = "2.7.2"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -341,7 +341,7 @@ PV:pn-xmidt-agent = "1.0.0"
 PR:pn-xmidt-agent = "r0"
 PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdmagent = "2.1.2"
+PV:pn-rdmagent = "2.1.3"
 PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
