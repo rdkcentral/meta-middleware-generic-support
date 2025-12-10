@@ -16,6 +16,7 @@ PR = "r0"
 #Generic components
 RDEPENDS:${PN} = " \
     aamp \
+    xdelta3 \
     audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
@@ -56,7 +57,8 @@ RDEPENDS:${PN} = " \
     rdk-logger \
     rdkat \
     rdkfwupgrader \
-	rdknativescript \
+    rust-hello-world \
+    rdknativescript \
     rdkperf \
     entservices-casting \
     entservices-connectivity \
