@@ -140,7 +140,7 @@ PV:pn-entservices-deviceanddisplay = "3.4.4"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "3.10.0"
+PV:pn-entservices-infra = "3.14.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
@@ -180,11 +180,11 @@ PV:pn-systimemgrinetrface = "1.4.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ctrlm-main = "1.1.6"
+PV:pn-ctrlm-main = "1.1.7"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"
 
-PV:pn-xr-voice-sdk = "1.0.7"
+PV:pn-xr-voice-sdk = "1.0.8"
 PR:pn-xr-voice-sdk = "r0"
 PACKAGE_ARCH:pn-xr-voice-sdk = "${MIDDLEWARE_ARCH}"
 
