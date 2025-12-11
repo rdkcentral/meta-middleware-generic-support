@@ -3,7 +3,7 @@ PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
 LICENSE = "MIT"
 
-inherit packagegroup volatile-bind-gen
+inherit packagegroup volatile-bind-gen rdm-package-info
 
 # For interim development and package depolyment to test should be using pre release tags
 PV = "8.4.2.0"
