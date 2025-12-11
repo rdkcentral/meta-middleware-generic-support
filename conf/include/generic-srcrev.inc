@@ -22,14 +22,14 @@ SRCREV:pn-telemetry = "3827f8819ea45d59a2750b3a80ad6e6c31c8f445"
 #with iarm
 #SRCREV:pn-dcmd = "de4fd57d64b5f6176976a672c6d12ba7476b946a"
 #with copilot branch
-SRCREV:pn-dcmd = "dc79d828b10ea8c1ebbf9be17507634612501c2c"
+SRCREV:pn-dcmd = "92d4c872942bbc06fd67d7839c8f9b420062f8de"
 SRCREV:pn-crashupload = "8e7e22d2cb988ea58b9ba9d85b8b0812c6dc77d2"
 SRCREV:pn-remotedebugger = "300d29e105f6a7244bff81fa0357dac914dd8913"
 SRCREV:pn-memcapture = "0cf90e07af97b70fb1f253ebd0f71edd5a9b8225"
 SRCREV:pn-libsyswrapper = "5143ba5b92f5dc77b436837d51f2f612d5846b7b"
 #SRCREV:pn-commonutilities = "17f697caef43c91bc34b32183d847af2e4a3ba23"
 #updated util with two stage seperate
-SRCREV:pn-commonutilities = "97af4b7d563f8527ea31163e4fdb3cfbbd439bca" 
+SRCREV:pn-commonutilities = "7daab2908296d60eb2f3a706a5e691d7748cf37b" 
 SRCREV_rdkfw = "2166a5279fa59fae5a21ad0f4d9163bd96ba3b42"
 SRCREV:pn-rdkperf = "d802d561c4a2a4456403d572da75e73032d48d91"
 SRCREV:pn-iarm-query-powerstate = "a309758f5721a10ff8cdfa3ef8b957f7614a2d29"
