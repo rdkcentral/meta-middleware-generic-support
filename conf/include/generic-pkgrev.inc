@@ -26,7 +26,7 @@ PV:pn-rtcore = "1.0.1"
 PR:pn-rtcore = "r2"
 PACKAGE_ARCH:pn-rtcore = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdknativescript = "1.0.10"
+PV:pn-rdknativescript = "2.0.0"
 PR:pn-rdknativescript = "r0"
 PACKAGE_ARCH:pn-rdknativescript = "${MIDDLEWARE_ARCH}"
 
