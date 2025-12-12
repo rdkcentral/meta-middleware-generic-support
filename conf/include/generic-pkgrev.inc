@@ -82,6 +82,10 @@ PV:pn-aamp = "2.11.0"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
+PV:pn-pn-player-interface = "1.0.0"
+PR:pn-pn-player-interface = "r0"
+PACKAGE_ARCH:pn-pn-player-interface = "${MIDDLEWARE_ARCH}"
+
 PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
