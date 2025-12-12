@@ -91,11 +91,11 @@ PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-core = "btcore-hotfix-2.16.0-r1_2"
+PV:pn-bluetooth-core = "btcore-2.16.0-r3"
 PR:pn-bluetooth-core = "r1"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-mgr = "btmgr-2.16.0-r3"
+PV:pn-bluetooth-mgr = "btmgr-2.16.0-r4"
 PR:pn-bluetooth-mgr = "r1"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
