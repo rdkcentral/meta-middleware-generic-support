@@ -78,7 +78,7 @@ PV:pn-qtwayland = "5.15.7"
 PR:pn-qtwayland = "r1"
 PACKAGE_ARCH:pn-qtwayland = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.11.0"
+PV:pn-aamp = "2.11.1"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -140,7 +140,7 @@ PV:pn-entservices-deviceanddisplay = "3.4.4"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "3.14.4"
+PV:pn-entservices-infra = "3.14.6"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
@@ -148,7 +148,7 @@ PV:pn-entservices-inputoutput = "1.6.6"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-mediaanddrm = "1.3.13"
+PV:pn-entservices-mediaanddrm = "1.3.16"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
@@ -239,7 +239,7 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-wpeframework = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-apis = "2.7.3"
+PV:pn-entservices-apis = "2.7.8"
 PR:pn-entservices-apis = "r0"
 PACKAGE_ARCH:pn-entservices-apis = "${MIDDLEWARE_ARCH}"
 
@@ -269,7 +269,7 @@ PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
 PV:pn-sysint = "4.2.0"
-PR:pn-sysint = "r2"
+PR:pn-sysint = "r3"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
 PR:pn-bluez5 = "r5"
@@ -302,7 +302,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.2.1"
+PV:pn-thunderstartupservices = "1.2.2"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
@@ -317,7 +317,7 @@ PACKAGE_ARCH:pn-alsa-plugins =  "${MIDDLEWARE_ARCH}"
 PR:pn-pulseaudio = "r0"
 PACKAGE_ARCH:pn-pulseaudio =  "${MIDDLEWARE_ARCH}"
 
-PV:pn-tts = "1.0.4"
+PV:pn-tts = "1.0.5"
 PR:pn-tts = "r0"
 PACKAGE_ARCH:pn-tts = "${MIDDLEWARE_ARCH}"
 
