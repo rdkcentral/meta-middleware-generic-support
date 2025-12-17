@@ -143,6 +143,10 @@ PV:pn-entservices-inputoutput = "1.4.7"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
+PV:pn-entservices-avoutput = "1.0.0"
+PR:pn-entservices-avoutput = "r0"
+PACKAGE_ARCH:pn-entservices-avoutput = "${MIDDLEWARE_ARCH}"
+
 PV:pn-entservices-mediaanddrm = "1.3.6"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
