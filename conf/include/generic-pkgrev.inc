@@ -188,7 +188,7 @@ PV:pn-xr-voice-sdk = "1.0.8"
 PR:pn-xr-voice-sdk = "r0"
 PACKAGE_ARCH:pn-xr-voice-sdk = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkat = "1.0.0"
+PV:pn-rdkat = "1.1.0"
 PR:pn-rdkat = "r0"
 PACKAGE_ARCH:pn-rdkat = "${MIDDLEWARE_ARCH}"
 
