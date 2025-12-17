@@ -64,6 +64,7 @@ RDEPENDS:${PN} = " \
     entservices-infra \
     entservices-appgateway \
     entservices-inputoutput \
+    entservices-avoutput \
     entservices-mediaanddrm \
     entservices-peripherals \
     entservices-runtime \
