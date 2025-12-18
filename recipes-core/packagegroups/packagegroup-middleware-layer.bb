@@ -52,7 +52,7 @@ RDEPENDS:${PN} = " \
     networkmanager-plugin \
     packagemanager \
     parodus \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'build_external_player_interface', "player-interface ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'build_external_player_interface', "player-interface", "", d)} \
     rbus \
     rdk-logger \
     rdkat \
