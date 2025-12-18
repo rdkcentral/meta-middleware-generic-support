@@ -1,7 +1,12 @@
 SRCREV_rdk-apparmor-profiles = "426805b852c28eb22c55fc778527c7843e9362ae"
 SRCREV_rdk-libunpriv = "547d202d421ed83bd60b677b5d057cad3b7ae8ad"
+<<<<<<< HEAD
 SRCREV:pn-rdkat = "1721ae4921dc94d28e36c027c81cb5695b205832"
 SRCREV:pn-ctrlm-main = "fff4de9f33b2e34834cd8075e3a0d11508648c0e"
+=======
+SRCREV:pn-rdkat = "e52ebe05b6703dff7ca700fd286d84c0c72c41ea"
+SRCREV:pn-ctrlm-main = "e50b383bf2b54604e7859335f70fc390965ca312"
+>>>>>>> c0aed1e8 (git hash for fixed ble rcu id range)
 SRCREV:pn-ctrlm-headers = "${SRCREV:pn-ctrlm-main}"
 SRCREV:pn-xr-voice-sdk = "945a67349170e61032c46fb12fe7d3c029f670a1"
 SRCREV:pn-xr-voice-sdk-headers = "${SRCREV:pn-xr-voice-sdk}"
