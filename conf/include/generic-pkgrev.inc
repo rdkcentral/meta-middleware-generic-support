@@ -140,7 +140,7 @@ PV:pn-entservices-deviceanddisplay = "3.7.0"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "3.16.0"
+PV:pn-entservices-infra = "3.17.0"
 PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
@@ -188,7 +188,7 @@ PV:pn-xr-voice-sdk = "1.0.8"
 PR:pn-xr-voice-sdk = "r0"
 PACKAGE_ARCH:pn-xr-voice-sdk = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkat = "1.0.0"
+PV:pn-rdkat = "1.1.0"
 PR:pn-rdkat = "r0"
 PACKAGE_ARCH:pn-rdkat = "${MIDDLEWARE_ARCH}"
 
@@ -219,6 +219,14 @@ PACKAGE_ARCH:pn-memcapture = "${MIDDLEWARE_ARCH}"
 PV:pn-webkitbrowser-plugin = "1.1.30"
 PR:pn-webkitbrowser-plugin = "r0"
 PACKAGE_ARCH:pn-webkitbrowser-plugin = "${MIDDLEWARE_ARCH}"
+
+PV:pn-firebolt-cpp-transport = "0.2.0"
+PR:pn-firebolt-cpp-transport = "r0"
+PACKAGE_ARCH:pn-firebolt-cpp-transport = "${MIDDLEWARE_ARCH}"
+
+PV:pn-firebolt-cpp-client = "0.2.0"
+PR:pn-firebolt-cpp-client = "r0"
+PACKAGE_ARCH:pn-firebolt-cpp-client = "${MIDDLEWARE_ARCH}"
 
 PV:pn-firebolt-ripple = "${RIPPLE_RELEASE_VER}"
 PR:pn-firebolt-ripple = "r1"
