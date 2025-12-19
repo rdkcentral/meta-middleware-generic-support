@@ -143,7 +143,7 @@ PV:pn-entservices-inputoutput = "1.4.7"
 PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-mediaanddrm = "1.3.6-hotfix.1"
+PV:pn-entservices-mediaanddrm = "1.3.6-hotfix.2"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
