@@ -192,6 +192,10 @@ PV:pn-rdkat = "1.1.0"
 PR:pn-rdkat = "r0"
 PACKAGE_ARCH:pn-rdkat = "${MIDDLEWARE_ARCH}"
 
+PV:pn-rdkat-atspi2 = "1.1.0"
+PR:pn-rdkat-atspi2 = "r0"
+PACKAGE_ARCH:pn-rdkat-atspi2 = "${MIDDLEWARE_ARCH}"
+
 PV:pn-rdkversion = "1.0.0"
 PR:pn-rdkversion = "r0"
 PACKAGE_ARCH:pn-rdkversion = "${MIDDLEWARE_ARCH}"
