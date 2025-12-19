@@ -104,7 +104,11 @@ RDEPENDS:${PN} = " \
     lighttpd \
     openssl \
     wpa-supplicant \
-    dnsmasq \
+    bind \
+    bind-dl \
+    bind-utils \
+    bind-named \
+    tcpdump \
     dropbear \
     libopus \
     libwpe \
