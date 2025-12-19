@@ -220,6 +220,14 @@ PV:pn-webkitbrowser-plugin = "1.1.30"
 PR:pn-webkitbrowser-plugin = "r0"
 PACKAGE_ARCH:pn-webkitbrowser-plugin = "${MIDDLEWARE_ARCH}"
 
+PV:pn-firebolt-cpp-transport = "0.2.0"
+PR:pn-firebolt-cpp-transport = "r0"
+PACKAGE_ARCH:pn-firebolt-cpp-transport = "${MIDDLEWARE_ARCH}"
+
+PV:pn-firebolt-cpp-client = "0.2.0"
+PR:pn-firebolt-cpp-client = "r0"
+PACKAGE_ARCH:pn-firebolt-cpp-client = "${MIDDLEWARE_ARCH}"
+
 PV:pn-firebolt-ripple = "${RIPPLE_RELEASE_VER}"
 PR:pn-firebolt-ripple = "r1"
 PACKAGE_ARCH:pn-firebolt-ripple = "${MIDDLEWARE_ARCH}"
