@@ -172,6 +172,7 @@ RDEPENDS:${PN} = " \
     thunder-hang-recovery \
     thunder-plugin-activator \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'ENABLE_MATTER_BARTON', ' barton', '', d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
