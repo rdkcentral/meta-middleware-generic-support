@@ -46,6 +46,7 @@ RDEPENDS:${PN} = " \
     libunpriv \
     logrotate \
     lsof \
+    strace \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'memcapture', 'memcapture', '', d)} \
     remotedebugger \
