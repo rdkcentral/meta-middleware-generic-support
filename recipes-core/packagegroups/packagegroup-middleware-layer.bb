@@ -68,6 +68,7 @@ RDEPENDS:${PN} = " \
     entservices-runtime \
     entservices-softwareupdate \
     entservices-firmwareupdate \
+    entservices-firmwaredownload \
     entservices-mediaanddrm-screencapture \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
