@@ -27,3 +27,7 @@ PR:pn-rdkwindowmanager = "r0"
 PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-packagegroup-youtube-widgets = "${MIDDLEWARE_ARCH}"
+
+PV:pn-aamp = "2.11.1_v1"
+PR:pn-aamp = "r0"
+PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
