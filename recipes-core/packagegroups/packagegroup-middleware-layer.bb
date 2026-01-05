@@ -62,6 +62,7 @@ RDEPENDS:${PN} = " \
     entservices-connectivity \
     entservices-deviceanddisplay \
     entservices-infra \
+    entservices-appgateway \
     entservices-inputoutput \
     entservices-mediaanddrm \
     entservices-peripherals \
