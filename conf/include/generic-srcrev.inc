@@ -1,7 +1,7 @@
 SRCREV:pn-rmfosal = "ea4f0df1edd73cc2d45d453ad445cb2536799684"
 
 SRCREV:pn-audiocapturemgr = "29f81aa9d1c749221a606002a31d669b030028ad"
-SRCREV:pn-player-interface = "d257d45c924b67e5078ef9772be3fc09013e4ff7"
+SRCREV:pn-player-interface = "650f5bf34d202d68b10939a4c5e31573e1fea35a"
 SRCREV_aamp = "33d2efe0939c7d88dc8d1dff7dabf51476557cb0"
 SRCREV_iarmbus = "6dd8bd51b96cec8df3416fd162cee3dd2c089a26"
 SRCREV:pn-iarmmgrs = "a5781a35ac728b4d4b57a8a82e07e9b3b63c65f9"
