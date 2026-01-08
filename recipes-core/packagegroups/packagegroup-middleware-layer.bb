@@ -105,6 +105,7 @@ RDEPENDS:${PN} = " \
     wayland \
     lighttpd \
     openssl \
+	yaml-cpp \
     wpa-supplicant \
     dnsmasq \
     dropbear \
