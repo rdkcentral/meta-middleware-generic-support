@@ -105,7 +105,6 @@ RDEPENDS:${PN} = " \
     wayland \
     lighttpd \
     openssl \
-	yaml-cpp \
     wpa-supplicant \
     dnsmasq \
     dropbear \
@@ -182,5 +181,5 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
              libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
              log4c mbedtls rdkperf cjwt nghttp2 ucresolv fcgi glib-openssl libol \
              graphite2 curl openssl zlib glib-networking glib-2.0 \
-             lighttpd systemd yaml-cpp \
+             lighttpd systemd \
              "
