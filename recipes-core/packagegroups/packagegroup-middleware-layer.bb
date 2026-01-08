@@ -31,6 +31,7 @@ RDEPENDS:${PN} = " \
     dobby-thunderplugin \
     ermgr \
     evtest \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_app_gateway', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
     rdk-gstreamer-utils \
     hdmicec \
@@ -61,7 +62,6 @@ RDEPENDS:${PN} = " \
     entservices-connectivity \
     entservices-deviceanddisplay \
     entservices-infra \
-    entservices-appgateway \
     entservices-inputoutput \
     entservices-mediaanddrm \
     entservices-peripherals \
