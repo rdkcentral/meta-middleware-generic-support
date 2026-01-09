@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package depolyment to test should be using pre release tags
-PV = "8.4.2.1"
+PV = "8.4.4.0"
 
 # PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -63,6 +63,7 @@ RDEPENDS:${PN} = " \
     entservices-deviceanddisplay \
     entservices-infra \
     entservices-rdkappmanagers \
+    entservices-appgateway \
     entservices-inputoutput \
     entservices-mediaanddrm \
     entservices-peripherals \
