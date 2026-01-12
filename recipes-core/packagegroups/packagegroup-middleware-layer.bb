@@ -99,7 +99,6 @@ RDEPENDS:${PN} = " \
     wrp-c \
     xdial \
     xr-voice-sdk \
-    bluez5 \
     lcms \
     libunwind \
     wayland \
