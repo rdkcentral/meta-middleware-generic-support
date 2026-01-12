@@ -3,7 +3,7 @@ PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
 PV:pn-devicesettings = "1.0.24"
-PR:pn-devicesettings = "r0"
+PR:pn-devicesettings = "r1"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
 PV:pn-cpeabs = "2.0.0"
@@ -19,7 +19,7 @@ PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
 PV:pn-iarmmgrs = "1.1.5"
-PR:pn-iarmmgrs = "r0"
+PR:pn-iarmmgrs = "r1"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rtcore = "1.0.1"
