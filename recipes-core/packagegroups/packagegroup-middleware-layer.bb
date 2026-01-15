@@ -173,7 +173,6 @@ RDEPENDS:${PN} = " \
     os-release \
     wlan-p2p \
     thunder-hang-recovery \
-    wpeframework-plugin-activator \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
     "
 
