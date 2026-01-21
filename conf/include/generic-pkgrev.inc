@@ -27,3 +27,7 @@ PR:pn-rdkwindowmanager = "r0"
 PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-packagegroup-youtube-widgets = "${MIDDLEWARE_ARCH}"
+
+PV:pn-reboot-manager = "1.0.0"
+PR:pn-reboot-manager = "r1"
+PACKAGE_ARCH:pn-reboot-manager = "${MIDDLEWARE_ARCH}"
