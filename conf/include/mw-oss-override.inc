@@ -7,9 +7,6 @@ PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 
-PR:pn-bluez5 = "r5"
-PACKAGE_ARCH:pn-bluez5 = "${MIDDLEWARE_ARCH}"
-
 PACKAGE_ARCH:pn-dropbear = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-mpg123 = "${MIDDLEWARE_ARCH}"
