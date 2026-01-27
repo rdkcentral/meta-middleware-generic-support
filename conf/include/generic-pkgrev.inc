@@ -3,7 +3,7 @@ PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
 PV:pn-devicesettings = "1.0.12-hotfix.4"
-PR:pn-devicesettings = "r0"
+PR:pn-devicesettings = "r1"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
 PV:pn-cpeabs = "2.0.0"
