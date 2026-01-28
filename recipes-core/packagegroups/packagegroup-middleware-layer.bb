@@ -153,6 +153,7 @@ RDEPENDS:${PN} = " \
     speex \
     stunnel \
     taglib \
+	trace-cmd \
     tzdata \
     util-linux \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_gdb_support', "gdb ", "", d)} \
