@@ -1,5 +1,8 @@
 # To support layered ipk generation
-MIDDLEWARE_ARCH ??= "${MACHINE}-middleware"
+
+LAYER_EXTENSION = "-middleware"
+
+MIDDLEWARE_ARCH ??= "${MACHINE}${LAYER_EXTENSION}"
 PACKAGE_EXTRA_ARCHS:append = " ${MIDDLEWARE_ARCH}"
 
 DISTRO = "rdk"
