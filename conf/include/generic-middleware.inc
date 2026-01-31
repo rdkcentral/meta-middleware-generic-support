@@ -14,7 +14,9 @@ LAYER_NAME = "MIDDLEWARE"
 DISTRO_FEATURES:append = " enable_wpe-webdriver" 
 
 DISTRO_FEATURES:append = " RDKTV_APP_HIBERNATE"      
-DISTRO_FEATURES:remove = " netflix_cryptanium"           
+DISTRO_FEATURES:remove = " netflix_cryptanium"
+
+#DISTRO_FEATURES:remove = " build_external_player_interface"
 
 PARALLEL_MAKE:pn-breakpad = " -j2 "
 PARALLEL_MAKE:pn-breakpad-native = " -j2 "
