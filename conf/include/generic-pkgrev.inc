@@ -14,8 +14,4 @@ PV:pn-sqlite3see = "1.0.0"
 PR:pn-sqlite3see = "r0"
 PACKAGE_ARCH:pn-sqlite3see = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdkwindowmanager = "1.9.0"
-PR:pn-rdkwindowmanager = "r0"
-PACKAGE_ARCH:pn-rdkwindowmanager = "${MIDDLEWARE_ARCH}"
-
 PACKAGE_ARCH:pn-packagegroup-youtube-widgets = "${MIDDLEWARE_ARCH}"
