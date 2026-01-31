@@ -31,7 +31,7 @@ RDEPENDS:${PN} = " \
     dobby-thunderplugin \
     ermgr \
     evtest \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "virtual/firebolt ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_app_gateway', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
     rdk-gstreamer-utils \
     hdmicec \
@@ -63,7 +63,6 @@ RDEPENDS:${PN} = " \
     entservices-deviceanddisplay \
     entservices-infra \
     entservices-rdkappmanagers \
-    entservices-appgateway \
     entservices-inputoutput \
     entservices-avoutput \
     entservices-mediaanddrm \
