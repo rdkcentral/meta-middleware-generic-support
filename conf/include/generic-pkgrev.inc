@@ -19,7 +19,7 @@ PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
 PV:pn-iarmmgrs = "1.0.13-hotfix.2"
-PR:pn-iarmmgrs = "r0"
+PR:pn-iarmmgrs = "r1_Test"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rtcore = "1.0.1"
@@ -43,7 +43,7 @@ PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
 PV:pn-tr69hostif = "1.1.9v5"
-PR:pn-tr69hostif = "r0"
+PR:pn-tr69hostif = "r1_Test"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rtremote = "2.0.0"
@@ -96,7 +96,7 @@ PR:pn-bluetooth-core = "r1"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
 PV:pn-bluetooth-mgr = "1.0.2"
-PR:pn-bluetooth-mgr = "r1"
+PR:pn-bluetooth-mgr = "r2_Test"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
 PV:pn-commonutilities = "1.2.0"
