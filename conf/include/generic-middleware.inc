@@ -1,6 +1,6 @@
 # To support layered ipk generation
 
-LAYER_EXTENSION = "-middleware"
+LAYER_EXTENSION = "${@'-middleware' if 'STACK_LAYER_OSS_SUPPORT' in d.getVar('DISTRO_FEATURES').split() else ''}"
 
 MIDDLEWARE_ARCH ??= "${MACHINE}${LAYER_EXTENSION}"
 PACKAGE_EXTRA_ARCHS:append = " ${MIDDLEWARE_ARCH}"
