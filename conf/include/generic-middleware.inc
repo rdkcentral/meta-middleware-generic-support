@@ -2,7 +2,7 @@
 
 LAYER_EXTENSION = "${@'-middleware' if 'STACK_LAYER_OSS_SUPPORT' in d.getVar('DISTRO_FEATURES').split() else ''}"
 
-MIDDLEWARE_ARCH ??= "${MACHINE}${LAYER_EXTENSION}"
+MIDDLEWARE_ARCH ??= "${MACHINE}-middleware"
 PACKAGE_EXTRA_ARCHS:append = " ${MIDDLEWARE_ARCH}"
 
 DISTRO = "rdk"
