@@ -3,7 +3,7 @@ PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
 PV:pn-devicesettings = "1.0.12-hotfix.4"
-PR:pn-devicesettings = "r1"
+PR:pn-devicesettings = "r2"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
 PV:pn-cpeabs = "2.0.0"
@@ -15,7 +15,7 @@ PR:pn-hdmicec = "r0"
 PACKAGE_ARCH:pn-hdmicec = "${MIDDLEWARE_ARCH}"
 
 PV:pn-iarmbus = "1.0.1"
-PR:pn-iarmbus = "r0"
+PR:pn-iarmbus = "r1"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
 PV:pn-iarmmgrs = "1.0.13-hotfix.4"
