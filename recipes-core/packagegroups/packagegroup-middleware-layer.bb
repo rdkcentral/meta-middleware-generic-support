@@ -61,10 +61,10 @@ RDEPENDS:${PN} = " \
     entservices-casting \
     entservices-connectivity \
     entservices-deviceanddisplay \
-	entservices-devicediagnostics \
-	entservices-displayinfo \
-	entservices-displaysettings \
-	entservices-warehouse \
+    entservices-devicediagnostics \
+    entservices-displayinfo \
+    entservices-displaysettings \
+    entservices-warehouse \
     entservices-infra \
     entservices-rdkappmanagers \
     entservices-appgateway \
