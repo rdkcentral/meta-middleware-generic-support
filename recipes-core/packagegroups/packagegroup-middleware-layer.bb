@@ -74,7 +74,9 @@ RDEPENDS:${PN} = " \
     entservices-mediaanddrm-screencapture \
     entservices-systemservices \
     entservices-deviceinfo \
+    entservices-displayinfo \
     entservices-displaysettings \
+    entservices-devicediagnostics \
     entservices-framerate \
     entservices-powermanager \
     entservices-systemmode \
