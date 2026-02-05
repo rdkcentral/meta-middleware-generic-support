@@ -80,6 +80,7 @@ RDEPENDS:${PN} = " \
     entservices-deviceinfo \
     entservices-displayinfo \
     entservices-devicediagnostics \
+    entservices-displaysettings \
     entservices-framerate \
     entservices-powermanager \
     entservices-systemmode \
