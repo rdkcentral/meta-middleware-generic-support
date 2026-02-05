@@ -60,6 +60,10 @@ RDEPENDS:${PN} = " \
     rdkperf \
     entservices-casting \
     entservices-connectivity \
+    entservices-devicediagnostics \
+    entservices-displayinfo \
+    entservices-displaysettings \
+    entservices-warehouse \
     entservices-infra \
     entservices-rdkappmanagers \
     entservices-appgateway \
