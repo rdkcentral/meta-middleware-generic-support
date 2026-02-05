@@ -79,7 +79,7 @@ RDEPENDS:${PN} = " \
     entservices-framerate \
     entservices-powermanager \
     entservices-systemmode \
-    entservices-userpreferences \‎
+    entservices-userpreferences \
     entservices-warehouse \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
