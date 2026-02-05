@@ -61,7 +61,6 @@ RDEPENDS:${PN} = " \
     entservices-casting \
     entservices-connectivity \
     entservices-displaysettings \
-    entservices-warehouse \
     entservices-infra \
     entservices-rdkappmanagers \
     entservices-appgateway \
