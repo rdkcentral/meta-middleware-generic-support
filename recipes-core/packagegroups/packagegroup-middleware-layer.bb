@@ -77,6 +77,14 @@ RDEPENDS:${PN} = " \
     entservices-firmwareupdate \
     entservices-mediaanddrm-screencapture \
     entservices-systemservices \
+    entservices-deviceinfo \
+    entservices-displayinfo \
+    entservices-devicediagnostics \
+    entservices-framerate \
+    entservices-powermanager \
+    entservices-systemmode \
+    entservices-userpreferences \‎
+    entservices-warehouse \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
