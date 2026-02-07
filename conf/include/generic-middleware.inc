@@ -1,5 +1,5 @@
 # To support layered ipk generation
-MIDDLEWARE_ARCH ??= "${MACHINE}-middleware"
+MIDDLEWARE_ARCH ??= "rdktv-us-armv7a-middleware"
 PACKAGE_EXTRA_ARCHS:append = " ${MIDDLEWARE_ARCH}"
 
 DISTRO = "rdk"
