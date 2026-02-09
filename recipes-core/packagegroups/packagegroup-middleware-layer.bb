@@ -134,6 +134,7 @@ RDEPENDS:${PN} = " \
     gdk-pixbuf \
     gupnp \
     iptables \
+	yaml-cpp \
     iw \
     wireless-tools \
     libcroco \
