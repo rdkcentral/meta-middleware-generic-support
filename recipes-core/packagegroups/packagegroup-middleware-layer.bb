@@ -181,3 +181,9 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
              graphite2 curl openssl zlib glib-networking glib-2.0 \
              lighttpd systemd \
              "
+
+SYNC_SERVICE = "${@bb.utils.contains('DISTRO_FEATURES', 'chrony', 'chrony', 'systemd-timesyncd', d)}"
+IMAGE_INSTALL:append = " ${SYNC_SERVICE}"
+
+# Remove timesyncd if chrony enabled, for extra safety
+IMAGE_INSTALL:chrony:remove = "systemd-timesyncd"
