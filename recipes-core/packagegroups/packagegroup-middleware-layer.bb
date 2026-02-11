@@ -73,7 +73,6 @@ RDEPENDS:${PN} = " \
     entservices-firmwaredownload \
     entservices-firmwareupdate \
     entservices-frontpanel \
-    entservices-screencapture-screencapture \
     entservices-cryptography \
     entservices-opencdmi \
     entservices-playerinfo \
