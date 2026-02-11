@@ -162,6 +162,7 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_cobalt_plugin', 'cobalt-plugin', '', d) } \
     rdkwpasupplicantconfig \
     cpeabs \
+    chrony \
     virtual/ca-certificates-trust-store \
     xmidt-agent \
     bootversion-loader \
@@ -182,8 +183,8 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
              lighttpd systemd \
              "
 
-SYNC_SERVICE = "${@bb.utils.contains('DISTRO_FEATURES', 'chrony', 'chrony', 'systemd-timesyncd', d)}"
-IMAGE_INSTALL:append = " ${SYNC_SERVICE}"
+#SYNC_SERVICE = "${@bb.utils.contains('DISTRO_FEATURES', 'chrony', 'chrony', 'systemd-timesyncd', d)}"
+#IMAGE_INSTALL:append = " ${SYNC_SERVICE}"
 
 # Remove timesyncd if chrony enabled, for extra safety
-IMAGE_INSTALL:chrony:remove = "systemd-timesyncd"
+#IMAGE_INSTALL:chrony:remove = "systemd-timesyncd"
