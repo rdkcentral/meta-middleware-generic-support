@@ -188,3 +188,4 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
 
 # Remove timesyncd if chrony enabled, for extra safety
 #IMAGE_INSTALL:chrony:remove = "systemd-timesyncd"
+RDEPENDS:${PN}:remove = "${@bb.utils.contains('DISTRO_FEATURES', 'chrony', 'systemd-timesyncd', '', d)}"
