@@ -71,6 +71,7 @@ RDEPENDS:${PN} = " \
     entservices-softwareupdate \
     entservices-firmwaredownload \
     entservices-firmwareupdate \
+    entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
     entservices-systemservices \
     entservices-deviceinfo \
