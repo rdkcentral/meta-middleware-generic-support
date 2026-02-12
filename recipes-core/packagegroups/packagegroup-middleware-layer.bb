@@ -60,7 +60,6 @@ RDEPENDS:${PN} = " \
     rdkperf \
     entservices-casting \
     entservices-connectivity \
-    entservices-deviceanddisplay \
     entservices-infra \
     entservices-rdkappmanagers \
     entservices-appgateway \
@@ -74,6 +73,16 @@ RDEPENDS:${PN} = " \
     entservices-firmwareupdate \
     entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
+    entservices-systemservices \
+    entservices-deviceinfo \
+    entservices-displayinfo \
+    entservices-displaysettings \
+    entservices-devicediagnostics \
+    entservices-framerate \
+    entservices-powermanager \
+    entservices-systemmode \
+    entservices-userpreferences \
+    entservices-warehouse \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
