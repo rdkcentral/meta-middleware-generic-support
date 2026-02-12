@@ -63,7 +63,7 @@ RDEPENDS:${PN} = " \
     entservices-infra \
     entservices-rdkappmanagers \
     entservices-appgateway \
-    entservices-inputoutput \
+    entservices-avinput \
     entservices-avoutput \
     entservices-mediaanddrm \
     entservices-peripherals \
@@ -86,6 +86,9 @@ RDEPENDS:${PN} = " \
     entservices-opencdmi \
     entservices-playerinfo \
     entservices-screencapture \
+    entservices-hdcpprofile \
+    entservices-hdmicecsource \
+    entservices-hdmicecsink \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
