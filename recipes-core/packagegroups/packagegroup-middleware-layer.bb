@@ -78,7 +78,6 @@ RDEPENDS:${PN} = " \
     entservices-opencdmi \
     entservices-playerinfo \
     entservices-avinput \
-    entservices-cryptography \
     entservices-devicediagnostics \
     entservices-deviceinfo  \
     entservices-displayinfo  \
