@@ -74,7 +74,6 @@ RDEPENDS:${PN} = " \
     entservices-firmwareupdate \
     entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
-	entservices-migration \
 	entservices-ocicontainer \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
