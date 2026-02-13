@@ -60,7 +60,6 @@ RDEPENDS:${PN} = " \
     rdkperf \
     entservices-casting \
     entservices-connectivity \
-    entservices-cryptography \
     entservices-deviceanddisplay \
     entservices-infra \
     entservices-rdkappmanagers \
@@ -74,8 +73,10 @@ RDEPENDS:${PN} = " \
     entservices-firmwaredownload \
     entservices-firmwareupdate \
     entservices-frontpanel \
-    entservices-mediaanddrm-screencapture \
+    entservices-cryptography \
     entservices-opencdmi \
+    entservices-playerinfo \
+    entservices-screencapture \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
