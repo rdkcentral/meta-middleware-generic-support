@@ -74,7 +74,7 @@ RDEPENDS:${PN} = " \
     entservices-cryptography \
     entservices-opencdmi \
     entservices-playerinfo \
-    entservices-screncapture \
+    entservices-screencapture \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
