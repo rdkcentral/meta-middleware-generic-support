@@ -75,6 +75,7 @@ RDEPENDS:${PN} = " \
     entservices-firmwareupdate \
     entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
+    entservices-opencdmi \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
