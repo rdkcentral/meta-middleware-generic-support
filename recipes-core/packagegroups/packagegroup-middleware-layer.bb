@@ -5,10 +5,10 @@ LICENSE = "MIT"
 
 inherit packagegroup volatile-bind-gen
 
-# For interim development and package depolyment to test should be using pre release tags
+# For interim development and package deployment to test should be using pre release tags
 PV = "8.5.1.1"
 
-# PRs are prefered to be be incremented during development stages for any updates in corresponding
+# PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
 PR = "r0"
