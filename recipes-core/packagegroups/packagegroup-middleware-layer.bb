@@ -77,7 +77,23 @@ RDEPENDS:${PN} = " \
     entservices-cryptography \
     entservices-opencdmi \
     entservices-playerinfo \
-    entservices-screencapture \
+    entservices-avinput \
+    entservices-cryptography \
+    entservices-devicediagnostics \
+    entservices-deviceinfo  \
+    entservices-displayinfo  \
+    entservices-displaysettings  \
+    entservices-framerate  \
+    entservices-hdcpprofile  \
+    entservices-hdmicecsink  \
+    entservices-hdmicecsource  \
+    entservices-opencdmi  \
+    entservices-playerinfo  \
+    entservices-powermanager  \
+    entservices-systemservices  \
+    entservices-systemmode  \
+    entservices-userpreferences  \
+    entservices-warehouse  \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
