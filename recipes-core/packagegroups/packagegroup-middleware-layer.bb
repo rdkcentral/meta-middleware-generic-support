@@ -75,8 +75,6 @@ RDEPENDS:${PN} = " \
     entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
     entservices-cryptography \
-    entservices-opencdmi \
-    entservices-playerinfo \
     entservices-avinput \
     entservices-devicediagnostics \
     entservices-deviceinfo  \
