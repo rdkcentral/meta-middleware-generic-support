@@ -5,6 +5,8 @@ LAYER_EXTENSION = "${@'-middleware' if 'STACK_LAYER_OSS_SUPPORT' in d.getVar('DI
 MIDDLEWARE_ARCH ??= "${MACHINE}-middleware"
 PACKAGE_EXTRA_ARCHS:append = " ${MIDDLEWARE_ARCH}"
 
+OPKG_ARCH_PRIORITY:${OSS_LAYER_ARCH} = "405"
+
 DISTRO = "rdk"
 require conf/distro/include/rdkv.inc
 
