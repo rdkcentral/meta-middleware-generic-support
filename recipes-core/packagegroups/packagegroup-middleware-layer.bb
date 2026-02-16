@@ -5,10 +5,10 @@ LICENSE = "MIT"
 
 inherit packagegroup volatile-bind-gen
 
-# For interim development and package deployment to test should be using pre release tags
+# For interim development and package depolyment to test should be using pre release tags
 PV = "8.5.1.1"
 
-# PRs are preferred to be incremented during development stages for any updates in corresponding
+# PRs are prefered to be be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
 PR = "r0"
@@ -60,11 +60,10 @@ RDEPENDS:${PN} = " \
     rdkperf \
     entservices-casting \
     entservices-connectivity \
-    entservices-deviceanddisplay \
     entservices-infra \
     entservices-rdkappmanagers \
     entservices-appgateway \
-    entservices-inputoutput \
+    entservices-avinput \
     entservices-avoutput \
     entservices-mediaanddrm \
     entservices-peripherals \
@@ -73,7 +72,23 @@ RDEPENDS:${PN} = " \
     entservices-firmwaredownload \
     entservices-firmwareupdate \
     entservices-frontpanel \
-    entservices-mediaanddrm-screencapture \
+    entservices-systemservices \
+    entservices-deviceinfo \
+    entservices-displayinfo \
+    entservices-displaysettings \
+    entservices-devicediagnostics \
+    entservices-framerate \
+    entservices-powermanager \
+    entservices-systemmode \
+    entservices-userpreferences \
+    entservices-warehouse \
+    entservices-cryptography \
+    entservices-opencdmi \
+    entservices-playerinfo \
+    entservices-screencapture \
+    entservices-hdcpprofile \
+    entservices-hdmicecsource \
+    entservices-hdmicecsink \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
