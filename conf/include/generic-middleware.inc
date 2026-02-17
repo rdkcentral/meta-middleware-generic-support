@@ -28,7 +28,7 @@ BBMASK += "|meta-rdk/recipes-qt/qt5/qtwebsockets_5.1.1.bb"
 RDK_MW_ARCH ??= "${MACHINE}"
 
 MIDDLEWARE_ARCH = "${RDK_MW_ARCH}-middleware"
-PACKAGE_EXTRA_ARCHS:append = " ${MIDDLEWARE_ARCH}"
+
 STACK_LAYER_EXTENSION = "${MIDDLEWARE_ARCH}"
 RELEASE_NUM = "8.4.4.4"
 
