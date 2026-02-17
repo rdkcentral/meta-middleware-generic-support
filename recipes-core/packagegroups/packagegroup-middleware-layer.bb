@@ -5,10 +5,10 @@ LICENSE = "MIT"
 
 inherit packagegroup volatile-bind-gen
 
-# For interim development and package depolyment to test should be using pre release tags
-PV = "8.4.2.1"
+# For interim development and package deployment to test should be using pre release tags
+PV = "8.5.1.1"
 
-# PRs are prefered to be be incremented during development stages for any updates in corresponding
+# PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
 PR = "r0"
@@ -62,11 +62,17 @@ RDEPENDS:${PN} = " \
     entservices-connectivity \
     entservices-deviceanddisplay \
     entservices-infra \
+    entservices-rdkappmanagers \
+    entservices-appgateway \
     entservices-inputoutput \
+    entservices-avoutput \
     entservices-mediaanddrm \
     entservices-peripherals \
     entservices-runtime \
     entservices-softwareupdate \
+    entservices-firmwaredownload \
+    entservices-firmwareupdate \
+    entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
@@ -171,6 +177,7 @@ RDEPENDS:${PN} = " \
     wlan-p2p \
     thunder-hang-recovery \
     thunder-plugin-activator \
+    sqlite3 \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
     "
 
@@ -179,5 +186,5 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
              libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
              log4c mbedtls rdkperf cjwt nghttp2 ucresolv fcgi glib-openssl libol \
              graphite2 curl openssl zlib glib-networking glib-2.0 \
-             lighttpd systemd \
+             lighttpd systemd sqlite3 \
              "
