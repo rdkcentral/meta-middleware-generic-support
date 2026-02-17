@@ -75,6 +75,7 @@ RDEPENDS:${PN} = " \
     entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
     entservices-usbdevice \
+    entservices-usbmassstorage \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
