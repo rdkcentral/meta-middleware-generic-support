@@ -13,7 +13,6 @@ PACKAGE_ARCH:pn-sqlite3see = "${MIDDLEWARE_ARCH}"
 PV:pn-gssdp:enable-libsoup3 = "1.6.3"
 PR:pn-gssdp:enable-libsoup3 = "r0"
 PACKAGE_ARCH:pn-gssdp:enable-libsoup3 = "${MIDDLEWARE_ARCH}"
- 
 PV:pn-gupnp:enable-libsoup3 = "1.6.6"
 PR:pn-gupnp:enable-libsoup3 = "r0"
 PACKAGE_ARCH:pn-gupnp:enable-libsoup3 = "${MIDDLEWARE_ARCH}"
