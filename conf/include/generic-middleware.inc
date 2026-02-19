@@ -35,4 +35,4 @@ RELEASE_NUM = "8.4.4.4"
 MW_IPK_PATH ?= "middleware-rel/${RELEASE_NUM}"
 MW_IPK_SERVER_PATH ?= "${RDK_ARTIFACTS_BASE_URL}/${MW_IPK_PATH}/${RDK_MW_ARCH}/ipks/${BUILD_VARIANT}"
 
-IPK_FEED_URIS += "${STACK_LAYER_EXTENSION}##${MW_IPK_SERVER_PATH}"
+IPK_FEED_URIS += "${STACK_LAYER_EXTENSION}##https://partners.artifactory.comcast.com/artifactory/middleware-dbg/chrony-8.4/xione-uk/ipks/debug"
