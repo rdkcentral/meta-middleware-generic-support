@@ -58,7 +58,8 @@ RDEPENDS:${PN} = " \
     rdkfwupgrader \
 	rdknativescript \
     rdkperf \
-    entservices-casting \
+    entservices-xcast \
+    entservices-miracast \
     entservices-connectivity \
     entservices-deviceanddisplay \
     entservices-infra \
@@ -72,6 +73,7 @@ RDEPENDS:${PN} = " \
     entservices-softwareupdate \
     entservices-firmwaredownload \
     entservices-firmwareupdate \
+    entservices-ledcontrol \
     entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
     entservices-usbdevice \
