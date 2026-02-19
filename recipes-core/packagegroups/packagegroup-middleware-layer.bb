@@ -59,7 +59,8 @@ RDEPENDS:${PN} = " \
     rdkfwupgrader \
 	rdknativescript \
     rdkperf \
-    entservices-casting \
+    entservices-xcast \
+    entservices-miracast \
     entservices-connectivity \
     entservices-deviceanddisplay \
     entservices-infra \
