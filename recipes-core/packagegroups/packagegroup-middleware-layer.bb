@@ -77,6 +77,9 @@ RDEPENDS:${PN} = " \
     entservices-ledcontrol \
     entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
+	entservices-migration \
+	entservices-persistentstore \
+    entservices-ocicontainer \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
