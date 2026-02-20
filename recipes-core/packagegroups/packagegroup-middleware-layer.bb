@@ -62,11 +62,9 @@ RDEPENDS:${PN} = " \
     entservices-xcast \
     entservices-miracast \
     entservices-connectivity \
-    entservices-deviceanddisplay \
     entservices-infra \
     entservices-rdkappmanagers \
     entservices-appgateway \
-    entservices-inputoutput \
     entservices-avoutput \
     entservices-mediaanddrm \
     entservices-peripherals \
@@ -77,6 +75,20 @@ RDEPENDS:${PN} = " \
     entservices-ledcontrol \
     entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
+    entservices-avinput \
+    entservices-devicediagnostics \
+    entservices-deviceinfo  \
+    entservices-displayinfo  \
+    entservices-displaysettings  \
+    entservices-framerate  \
+    entservices-hdcpprofile  \
+    entservices-hdmicecsink  \
+    entservices-hdmicecsource  \
+    entservices-powermanager  \
+    entservices-systemservices  \
+    entservices-systemmode  \
+    entservices-userpreferences  \
+    entservices-warehouse  \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
