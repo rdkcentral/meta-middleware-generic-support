@@ -77,6 +77,7 @@ RDEPENDS:${PN} = " \
     entservices-ledcontrol \
     entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
+    entservices-cloudstore \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
