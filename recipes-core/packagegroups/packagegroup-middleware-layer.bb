@@ -63,6 +63,9 @@ RDEPENDS:${PN} = " \
     entservices-miracast \
     entservices-connectivity \
     entservices-deviceanddisplay \
+	entservices-devicediagnostics \
+	entservices-displayinfo \
+	entservices-warehouse \
     entservices-infra \
     entservices-rdkappmanagers \
     entservices-appgateway \
