@@ -77,6 +77,17 @@ RDEPENDS:${PN} = " \
     entservices-ledcontrol \
     entservices-frontpanel \
     entservices-mediaanddrm-screencapture \
+    entservices-usersettings \
+    entservices-usbmassstorage \
+    entservices-usbdevice \
+    entservices-telemetry \
+    entservices-sharedstorage \
+    entservices-persistentstore \
+    entservices-ocicontainer \
+    entservices-monitor \
+    entservices-migration \
+    entservices-messagecontrol \
+    entservices-cloudstore \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
