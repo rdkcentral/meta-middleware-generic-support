@@ -162,7 +162,7 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_cobalt_plugin', 'cobalt-plugin', '', d) } \
     rdkwpasupplicantconfig \
     cpeabs \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'chrony', 'chrony rdk_chrony_libctrl', 'systemd-timesyncd', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'chrony', 'chrony rdkchronylibctrl', 'systemd-timesyncd', d)} \
     virtual/ca-certificates-trust-store \
     xmidt-agent \
     bootversion-loader \
