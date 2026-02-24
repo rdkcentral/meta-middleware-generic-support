@@ -120,6 +120,7 @@ RDEPENDS:${PN} = " \
     thunderstartupservices \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wpe_r4_4', 'packagemanager', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_STB', "tenablehdcp ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'chrony', 'chrony ', ' ', d)} \
     breakpad-wrapper \
     ctemplate \
     ebtables \
