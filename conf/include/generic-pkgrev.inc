@@ -10,6 +10,10 @@ PV:pn-cpeabs = "2.0.0"
 PR:pn-cpeabs = "r0"
 PACKAGE_ARCH:pn-cpeabs = "${MIDDLEWARE_ARCH}"
 
+PV:pn-chrony = "4.2"
+PR:pn-chrony = "r0"
+PACKAGE_ARCH:pn-chrony = "${MIDDLEWARE_ARCH}"
+
 PV:pn-hdmicec = "1.0.7"
 PR:pn-hdmicec = "r0"
 PACKAGE_ARCH:pn-hdmicec = "${MIDDLEWARE_ARCH}"
