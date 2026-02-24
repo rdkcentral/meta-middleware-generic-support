@@ -52,13 +52,15 @@ RDEPENDS:${PN} = " \
     networkmanager-plugin \
     packagemanager \
     parodus \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'build_external_player_interface', "player-interface", "", d)} \
     rbus \
     rdk-logger \
     rdkat \
     rdkfwupgrader \
 	rdknativescript \
     rdkperf \
-    entservices-casting \
+    entservices-xcast \
+    entservices-miracast \
     entservices-connectivity \
     entservices-deviceanddisplay \
     entservices-infra \
@@ -72,6 +74,7 @@ RDEPENDS:${PN} = " \
     entservices-softwareupdate \
     entservices-firmwaredownload \
     entservices-firmwareupdate \
+    entservices-ledcontrol \
     entservices-frontpanel \
     entservices-remotecontrol \
     entservices-voicecontrol \
