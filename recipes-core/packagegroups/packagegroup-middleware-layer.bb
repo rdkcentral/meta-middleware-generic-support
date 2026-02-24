@@ -120,7 +120,6 @@ RDEPENDS:${PN} = " \
     thunderstartupservices \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wpe_r4_4', 'packagemanager', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_STB', "tenablehdcp ", "", d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'chrony', 'chrony ', ' ', d)} \
     breakpad-wrapper \
     ctemplate \
     ebtables \
@@ -163,6 +162,7 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_cobalt_plugin', 'cobalt-plugin', '', d) } \
     rdkwpasupplicantconfig \
     cpeabs \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'chrony', 'chrony', 'systemd-timesyncd', d)} \
     virtual/ca-certificates-trust-store \
     xmidt-agent \
     bootversion-loader \
