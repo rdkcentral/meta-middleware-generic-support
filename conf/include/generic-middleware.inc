@@ -11,6 +11,7 @@ OVERRIDES:append = ":entos"
 
 LAYER_NAME = "MIDDLEWARE"
 
+DISTRO_FEATURES:append = " chrony"
 DISTRO_FEATURES:append = " enable_wpe-webdriver" 
 
 DISTRO_FEATURES:append = " RDKTV_APP_HIBERNATE"      
