@@ -173,15 +173,15 @@ PR:pn-rdkshell = "r0"
 PACKAGE_ARCH:pn-rdkshell = "${MIDDLEWARE_ARCH}"
 
 PV:pn-systimemgrfactory = "1.4.0"
-PR:pn-systimemgrfactory = "r1"
+PR:pn-systimemgrfactory = "r0"
 PACKAGE_ARCH:pn-systimemgrfactory = "${MIDDLEWARE_ARCH}"
 
 PV:pn-systimemgr = "1.4.0"
-PR:pn-systimemgr = "r1"
+PR:pn-systimemgr = "r0"
 PACKAGE_ARCH:pn-systimemgr = "${MIDDLEWARE_ARCH}"
 
 PV:pn-systimemgrinetrface = "1.4.0"
-PR:pn-systimemgrinetrface = "r1"
+PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
 PV:pn-ctrlm-main = "1.1.7"
