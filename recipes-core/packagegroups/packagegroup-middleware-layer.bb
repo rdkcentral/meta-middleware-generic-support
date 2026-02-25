@@ -13,7 +13,6 @@ PV = "8.4.4.0"
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
 PR = "r0"
 
-VOLATILE_BINDS:append = "/var/volatile/rdk_chrony.conf /etc/rdk_chrony.conf\n"
 
 #Generic components
 RDEPENDS:${PN} = " \
