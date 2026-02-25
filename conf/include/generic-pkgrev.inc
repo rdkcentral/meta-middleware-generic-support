@@ -18,8 +18,8 @@ PV:pn-iarmbus = "1.0.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.0.13-hotfix.2"
-PR:pn-iarmmgrs = "r1_Test"
+PV:pn-iarmmgrs = "1.0.13-hotfix.3"
+PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rtcore = "1.0.1"
@@ -42,8 +42,8 @@ PV:pn-rfc = "1.1.0v3"
 PR:pn-rfc = "r0"
 PACKAGE_ARCH:pn-rfc = "${MIDDLEWARE_ARCH}"
 
-PV:pn-tr69hostif = "1.1.9v5"
-PR:pn-tr69hostif = "r1_Test"
+PV:pn-tr69hostif = "1.1.9v5_1"
+PR:pn-tr69hostif = "r0"
 PACKAGE_ARCH:pn-tr69hostif = "${MIDDLEWARE_ARCH}"
 
 PV:pn-rtremote = "2.0.0"
@@ -95,8 +95,8 @@ PV:pn-bluetooth-core = "btcore-hotfix-2.16.0-r1_2"
 PR:pn-bluetooth-core = "r1"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-mgr = "1.0.2"
-PR:pn-bluetooth-mgr = "r2_Test"
+PV:pn-bluetooth-mgr = "1.0.2.1"
+PR:pn-bluetooth-mgr = "r0"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
 PV:pn-commonutilities = "1.2.0"
@@ -108,15 +108,15 @@ PR:pn-rdkfwupgrader = "r0"
 PACKAGE_ARCH:pn-rdkfwupgrader = "${MIDDLEWARE_ARCH}"
 
 
-PV:pn-iarm-event-sender = "1.0.4"
+PV:pn-iarm-event-sender = "1.0.4.1"
 PR:pn-iarm-event-sender = "r0"
 PACKAGE_ARCH:pn-iarm-event-sender = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-query-powerstate = "1.0.4"
+PV:pn-iarm-query-powerstate = "1.0.4.1"
 PR:pn-iarm-query-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-query-powerstate = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarm-set-powerstate = "1.0.4"
+PV:pn-iarm-set-powerstate = "1.0.4.1"
 PR:pn-iarm-set-powerstate = "r0"
 PACKAGE_ARCH:pn-iarm-set-powerstate = "${MIDDLEWARE_ARCH}"
 
@@ -128,32 +128,32 @@ PV:pn-librsvg = "2.40.21"
 PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-casting = "1.0.11"
-PR:pn-entservices-casting = "r1_Test"
+PV:pn-entservices-casting = "1.0.11.1"
+PR:pn-entservices-casting = "r0"
 PACKAGE_ARCH:pn-entservices-casting = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-connectivity = "1.0.1"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.0.4.1"
-PR:pn-entservices-deviceanddisplay = "r1_Test"
+PV:pn-entservices-deviceanddisplay = "3.0.4.2"
+PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-infra = "1.4.4.4"
-PR:pn-entservices-infra = "r1_Test"
+PV:pn-entservices-infra = "1.4.4.5"
+PR:pn-entservices-infra = "r0"
 PACKAGE_ARCH:pn-entservices-infra = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-inputoutput = "1.1.1.3"
-PR:pn-entservices-inputoutput = "r1_Test"
+PV:pn-entservices-inputoutput = "1.1.1.4"
+PR:pn-entservices-inputoutput = "r0"
 PACKAGE_ARCH:pn-entservices-inputoutput = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-mediaanddrm = "1.1.2.4"
 PR:pn-entservices-mediaanddrm = "r0"
 PACKAGE_ARCH:pn-entservices-mediaanddrm = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-peripherals = "1.0.5.1"
-PR:pn-entservices-peripherals = "r1_Test"
+PV:pn-entservices-peripherals = "1.0.5.2"
+PR:pn-entservices-peripherals = "r0"
 PACKAGE_ARCH:pn-entservices-peripherals = "${MIDDLEWARE_ARCH}"
 
 PV:pn-entservices-runtime = "1.0.1"
@@ -312,8 +312,8 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.0.15.3"
-PR:pn-thunderstartupservices = "r1_Test"
+PV:pn-thunderstartupservices = "1.0.15.4"
+PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-uwebsockets = "${MIDDLEWARE_ARCH}"
