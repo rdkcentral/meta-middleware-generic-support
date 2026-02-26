@@ -134,7 +134,7 @@ RDEPENDS:${PN} = " \
     gdk-pixbuf \
     gupnp \
     iptables \
-	yaml-cpp \
+	"${@bb.utils.contains_any('DISTRO_FEATURES', 'enable_rdkappmanagers_runtimeconfig', 'yaml-cpp', '', d)}" \
     iw \
     wireless-tools \
     libcroco \
