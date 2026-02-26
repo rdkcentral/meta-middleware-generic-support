@@ -90,8 +90,8 @@ PV:pn-bluetooth-core = "1.0.8"
 PR:pn-bluetooth-core = "r2"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-mgr = "1.0.8"
-PR:pn-bluetooth-mgr = "r2"
+PV:pn-bluetooth-mgr = "1.0.8.2"
+PR:pn-bluetooth-mgr = "r4"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
 PV:pn-commonutilities = "1.4.4"
