@@ -13,6 +13,7 @@ PV = "8.4.4.4"
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
 PR = "r0"
 
+
 #Generic components
 RDEPENDS:${PN} = " \
     aamp \
@@ -162,6 +163,7 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_cobalt_plugin', 'cobalt-plugin', '', d) } \
     rdkwpasupplicantconfig \
     cpeabs \
+    chrony \
     virtual/ca-certificates-trust-store \
     xmidt-agent \
     bootversion-loader \
