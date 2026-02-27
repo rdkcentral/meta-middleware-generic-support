@@ -99,6 +99,7 @@ RDEPENDS:${PN} = " \
     wpe-backend-rdk \
     wpeframework \
     wpeframework-clientlibraries \
+    wpeframework-extensions \
     entservices-apis \
     wpeframework-ui \
     wpe-webkit \
