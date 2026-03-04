@@ -75,7 +75,6 @@ RDEPENDS:${PN} = " \
     entservices-firmwareupdate \
     entservices-ledcontrol \
     entservices-frontpanel \
-    entservices-mediaanddrm-screencapture \
     entservices-usersettings \
     entservices-usbmassstorage \
     entservices-usbdevice \
