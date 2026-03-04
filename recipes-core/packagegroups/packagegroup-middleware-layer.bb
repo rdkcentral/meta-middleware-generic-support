@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package deployment to test should be using pre release tags
-PV = "8.5.1.1"
+PV = "8.5.2.0"
 
 # PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -62,11 +62,10 @@ RDEPENDS:${PN} = " \
     entservices-xcast \
     entservices-miracast \
     entservices-connectivity \
-    entservices-deviceanddisplay \
     entservices-infra \
     entservices-rdkappmanagers \
     entservices-appgateway \
-    entservices-inputoutput \
+    entservices-avinput \
     entservices-avoutput \
     entservices-mediaanddrm \
     entservices-peripherals \
@@ -88,6 +87,23 @@ RDEPENDS:${PN} = " \
     entservices-migration \
     entservices-messagecontrol \
     entservices-cloudstore \
+    entservices-systemservices \
+    entservices-deviceinfo \
+    entservices-displayinfo \
+    entservices-displaysettings \
+    entservices-devicediagnostics \
+    entservices-framerate \
+    entservices-powermanager \
+    entservices-systemmode \
+    entservices-userpreferences \
+    entservices-warehouse \
+    entservices-cryptography \
+    entservices-opencdmi \
+    entservices-playerinfo \
+    entservices-screencapture \
+    entservices-hdcpprofile \
+    entservices-hdmicecsource \
+    entservices-hdmicecsink \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
