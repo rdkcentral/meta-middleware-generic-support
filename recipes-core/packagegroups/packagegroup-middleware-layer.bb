@@ -204,7 +204,7 @@ RDEPENDS:${PN} = " \
 RDEPENDS:${PN}:remove = "${@bb.utils.contains('DISTRO_FEATURES', 'community_app_migration', ' \
     aamp rdknativescript cobalt-plugin \
     wpe-webkit libwpe webkitbrowser-plugin wpe-backend-rdk wpe-webkit-web-inspector-plugin \
-    wpeframework-ui\
+    wpeframework-ui \
     ', '', d)}"
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
