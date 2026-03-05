@@ -202,9 +202,8 @@ RDEPENDS:${PN} = " \
 # Community is migrating to DAC2.0 based applications - RALF based: base + runtime + app bundles
 # With new DAC2.0, AppManager & RALF enabled -  we don't need the following in middleware.
 RDEPENDS:${PN}:remove = "${@bb.utils.contains('DISTRO_FEATURES', 'community_app_migration', ' \
-    aamp rdknativescript cobalt-plugin \
+    cobalt-plugin \
     wpe-webkit libwpe webkitbrowser-plugin wpe-backend-rdk wpe-webkit-web-inspector-plugin \
-    wpeframework-ui \
     ', '', d)}"
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
