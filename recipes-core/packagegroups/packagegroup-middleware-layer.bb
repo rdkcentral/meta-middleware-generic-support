@@ -193,7 +193,7 @@ RDEPENDS:${PN} = " \
     thunder-plugin-activator \
     sqlite3 \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'aamp cobalt-plugin rdknativescript', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'aamp rdknativescript', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-webkit libwpe webkitbrowser-plugin', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-backend-rdk wpe-webkit-web-inspector-plugin', d)} \
     "
