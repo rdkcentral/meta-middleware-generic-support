@@ -13,9 +13,11 @@ PV = "8.5.2.0"
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
 PR = "r0"
 
+# Community is migrating to DAC2.0 based BOLT applications : base + runtime + app bundles
+# 'enable_bolt_apps' is used to remove the runtimes in that case to reduce the rootfs size.
+
 #Generic components
 RDEPENDS:${PN} = " \
-    aamp \
     audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
@@ -57,7 +59,6 @@ RDEPENDS:${PN} = " \
     rdk-logger \
     rdkat \
     rdkfwupgrader \
-	rdknativescript \
     rdkperf \
     entservices-xcast \
     entservices-miracast \
@@ -111,13 +112,10 @@ RDEPENDS:${PN} = " \
     ucresolv \
     webconfig-framework\
     wdmp-c \
-    wpe-backend-rdk \
     wpeframework \
     wpeframework-clientlibraries \
     entservices-apis \
     wpeframework-ui \
-    wpe-webkit \
-    wpe-webkit-web-inspector-plugin \
     wrp-c \
     xdial \
     xr-voice-sdk \
@@ -131,12 +129,10 @@ RDEPENDS:${PN} = " \
     dnsmasq \
     dropbear \
     libopus \
-    libwpe \
     mdns \
     mtd-utils \
     nopoll \
     trower-base64 \
-    webkitbrowser-plugin \
     mfr-utils \
     webcfg \
     systimemgrfactory \
@@ -197,14 +193,10 @@ RDEPENDS:${PN} = " \
     thunder-plugin-activator \
     sqlite3 \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'aamp cobalt-plugin rdknativescript', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-webkit libwpe webkitbrowser-plugin', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-backend-rdk wpe-webkit-web-inspector-plugin', d)} \
     "
-
-# Community is migrating to DAC2.0 based applications - RALF based: base + runtime + app bundles
-# With new DAC2.0, AppManager & RALF enabled -  we don't need the following in middleware.
-RDEPENDS:${PN}:remove = "${@bb.utils.contains('DISTRO_FEATURES', 'community_app_migration', ' \
-    cobalt-plugin \
-    wpe-webkit libwpe webkitbrowser-plugin wpe-backend-rdk wpe-webkit-web-inspector-plugin \
-    ', '', d)}"
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
              jpeg linenoise nanomsg ne10 nopoll libopus libpam  \
