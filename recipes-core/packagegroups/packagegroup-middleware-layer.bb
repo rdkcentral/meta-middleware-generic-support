@@ -100,6 +100,7 @@ RDEPENDS:${PN} = " \
     entservices-opencdmi \
     entservices-playerinfo \
     entservices-screencapture \
+    entservices-account \
     entservices-hdcpprofile \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
