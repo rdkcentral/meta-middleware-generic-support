@@ -208,6 +208,7 @@ RDEPENDS:${PN} = " \
     thunder-plugin-activator \
     sqlite3 \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'chrony', 'chrony', '', d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
