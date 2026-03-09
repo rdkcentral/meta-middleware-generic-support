@@ -26,3 +26,8 @@ PARALLEL_MAKE:pn-qtbase = " -j10 "
 BBMASK += "|poky/meta/recipes-multimedia/gstreamer"
 BBMASK += "|meta-openembedded/meta-multimedia/recipes-multimedia/gstreamer-1.0"
 BBMASK += "|meta-rdk/recipes-qt/qt5/qtwebsockets_5.1.1.bb"
+
+
+STACK_LAYER_EXTENSION = "${MIDDLEWARE_ARCH}"
+IPK_FEED_URIS += "${STACK_LAYER_EXTENSION}##https://partners.artifactory.comcast.com/artifactory/middleware-dbg/chrony-8.4/xione-uk/ipks/debug"
+
