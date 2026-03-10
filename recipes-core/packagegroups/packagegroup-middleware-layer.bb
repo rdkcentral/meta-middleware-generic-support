@@ -43,6 +43,7 @@ RDEPENDS:${PN} = " \
     iarmbus \
     iarmmgrs \
     key-simulator \
+    power-state-monitor \
     libparodus \
     libsyswrapper \
     libunpriv \
