@@ -164,6 +164,7 @@ RDEPENDS:${PN} = " \
     rdkwpasupplicantconfig \
     cpeabs \
     chrony \
+    chronyc \
     virtual/ca-certificates-trust-store \
     xmidt-agent \
     bootversion-loader \
