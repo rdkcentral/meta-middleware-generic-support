@@ -185,6 +185,7 @@ RDEPENDS:${PN} = " \
     stunnel \
     taglib \
     tzdata \
+    wasmedge \
     util-linux \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_gdb_support', "gdb ", "", d)} \
     jquery \
