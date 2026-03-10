@@ -86,7 +86,9 @@ RDEPENDS:${PN} = " \
     entservices-monitor \
     entservices-migration \
     entservices-messagecontrol \
-    entservices-cloudstore \
+    ${@bb.utils.contains_any('DISTRO_FEATURES', \
+    'RDKE_REGION_UK RDKE_REGION_IT RDKE_REGION_DE RDKE_REGION_AU RDKE_REGION_US', \
+    'entservices-cloudstore', '', d)} \
     entservices-systemservices \
     entservices-deviceinfo \
     entservices-displayinfo \
