@@ -157,7 +157,7 @@ RDEPENDS:${PN} = " \
     fribidi \
     gdbm \
     gdk-pixbuf \
-    gupnp \
+    gupnp-1.2 \
     iptables \
     iw \
     wireless-tools \
@@ -209,7 +209,7 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-backend-rdk wpe-webkit-web-inspector-plugin', d)} \
     "
 
-DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
+DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp-1.2 harfbuzz hiredis \
              jpeg linenoise nanomsg ne10 nopoll libopus libpam  \
              libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
              log4c mbedtls rdkperf cjwt nghttp2 ucresolv fcgi glib-openssl libol \
