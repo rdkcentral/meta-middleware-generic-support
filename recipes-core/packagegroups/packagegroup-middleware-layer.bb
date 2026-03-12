@@ -18,6 +18,8 @@ PR = "r0"
 
 #Generic components
 RDEPENDS:${PN} = " \
+    calc \
+    gstreamerman \
     audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
