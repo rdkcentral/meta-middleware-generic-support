@@ -70,8 +70,8 @@ PV:pn-dobby = "3.16.2"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby-thunderplugin = "3.16.2"
-PR:pn-dobby-thunderplugin = "r0"
+PV:pn-dobby-thunderplugin = "${PV:pn-dobby}"
+PR:pn-dobby-thunderplugin = "${PR:pn-dobby}"
 PACKAGE_ARCH:pn-dobby-thunderplugin = "${MIDDLEWARE_ARCH}"
 
 PV:pn-qtwayland = "5.15.7"
