@@ -77,6 +77,17 @@ RDEPENDS:${PN} = " \
     entservices-firmwareupdate \
     entservices-ledcontrol \
     entservices-frontpanel \
+    entservices-usersettings \
+    entservices-usbmassstorage \
+    entservices-usbdevice \
+    entservices-telemetry \
+    entservices-sharedstorage \
+    entservices-persistentstore \
+    entservices-ocicontainer \
+    entservices-monitor \
+    entservices-migration \
+    entservices-messagecontrol \
+    ${@bb.utils.contains_any('DISTRO_FEATURES','RDKE_REGION_UK RDKE_REGION_IT RDKE_REGION_DE RDKE_REGION_AU RDKE_REGION_US', 'entservices-cloudstore', '', d)} \
     entservices-systemservices \
     entservices-deviceinfo \
     entservices-displayinfo \
@@ -149,6 +160,7 @@ RDEPENDS:${PN} = " \
     gdk-pixbuf \
     gupnp \
     iptables \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rdkappmanagers_runtimeconfig', 'yaml-cpp', '', d)} \
     iw \
     wireless-tools \
     libcroco \
@@ -193,6 +205,7 @@ RDEPENDS:${PN} = " \
     thunder-hang-recovery \
     thunder-plugin-activator \
     sqlite3 \
+    chrony \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'aamp rdknativescript', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-webkit libwpe webkitbrowser-plugin', d)} \
