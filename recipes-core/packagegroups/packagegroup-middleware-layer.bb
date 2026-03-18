@@ -6,16 +6,18 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package deployment to test should be using pre release tags
-PV = "8.5.1.1"
+PV = "8.5.2.1"
 
 # PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
 PR = "r0"
 
+# Community is migrating to DAC2.0 based BOLT applications : base + runtime + app bundles
+# 'enable_bolt_apps' is used to remove the runtimes in that case to reduce the rootfs size.
+
 #Generic components
 RDEPENDS:${PN} = " \
-    aamp \
     audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
@@ -31,7 +33,6 @@ RDEPENDS:${PN} = " \
     dobby-thunderplugin \
     ermgr \
     evtest \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
     rdk-gstreamer-utils \
     hdmicec \
@@ -57,16 +58,14 @@ RDEPENDS:${PN} = " \
     rdk-logger \
     rdkat \
     rdkfwupgrader \
-	rdknativescript \
     rdkperf \
     entservices-xcast \
     entservices-miracast \
     entservices-connectivity \
-    entservices-deviceanddisplay \
     entservices-infra \
     entservices-rdkappmanagers \
     entservices-appgateway \
-    entservices-inputoutput \
+    entservices-avinput \
     entservices-avoutput \
     entservices-mediaanddrm \
     entservices-peripherals \
@@ -76,7 +75,36 @@ RDEPENDS:${PN} = " \
     entservices-firmwareupdate \
     entservices-ledcontrol \
     entservices-frontpanel \
-    entservices-mediaanddrm-screencapture \
+    entservices-usersettings \
+    entservices-usbmassstorage \
+    entservices-usbdevice \
+    entservices-telemetry \
+    entservices-sharedstorage \
+    entservices-persistentstore \
+    entservices-ocicontainer \
+    entservices-monitor \
+    entservices-migration \
+    entservices-messagecontrol \
+    ${@bb.utils.contains_any('DISTRO_FEATURES','RDKE_REGION_UK RDKE_REGION_IT RDKE_REGION_DE RDKE_REGION_AU RDKE_REGION_US', 'entservices-cloudstore', '', d)} \
+    entservices-systemservices \
+    entservices-deviceinfo \
+    entservices-displayinfo \
+    entservices-displaysettings \
+    entservices-devicediagnostics \
+    entservices-framerate \
+    entservices-powermanager \
+    entservices-systemmode \
+    entservices-userpreferences \
+    entservices-warehouse \
+    entservices-cryptography \
+    entservices-opencdmi \
+    entservices-playerinfo \
+    entservices-screencapture \
+    entservices-account \
+    entservices-backupmanager \
+    entservices-hdcpprofile \
+    entservices-hdmicecsource \
+    entservices-hdmicecsink \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
@@ -96,13 +124,10 @@ RDEPENDS:${PN} = " \
     ucresolv \
     webconfig-framework\
     wdmp-c \
-    wpe-backend-rdk \
     wpeframework \
     wpeframework-clientlibraries \
     entservices-apis \
     wpeframework-ui \
-    wpe-webkit \
-    wpe-webkit-web-inspector-plugin \
     wrp-c \
     xdial \
     xr-voice-sdk \
@@ -116,12 +141,10 @@ RDEPENDS:${PN} = " \
     dnsmasq \
     dropbear \
     libopus \
-    libwpe \
     mdns \
     mtd-utils \
     nopoll \
     trower-base64 \
-    webkitbrowser-plugin \
     mfr-utils \
     webcfg \
     systimemgrfactory \
@@ -137,6 +160,7 @@ RDEPENDS:${PN} = " \
     gdk-pixbuf \
     gupnp \
     iptables \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rdkappmanagers_runtimeconfig', 'yaml-cpp', '', d)} \
     iw \
     wireless-tools \
     libcroco \
@@ -181,7 +205,11 @@ RDEPENDS:${PN} = " \
     thunder-hang-recovery \
     thunder-plugin-activator \
     sqlite3 \
+    chrony \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'aamp rdknativescript', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-webkit libwpe webkitbrowser-plugin', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-backend-rdk wpe-webkit-web-inspector-plugin', d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
