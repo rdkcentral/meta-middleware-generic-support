@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package deployment to test should be using pre release tags
-PV = "8.5.2.0"
+PV = "8.5.2.1"
 
 # PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -33,7 +33,6 @@ RDEPENDS:${PN} = " \
     dobby-thunderplugin \
     ermgr \
     evtest \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
     rdk-gstreamer-utils \
     hdmicec \
@@ -78,6 +77,17 @@ RDEPENDS:${PN} = " \
     entservices-frontpanel \
     entservices-remotecontrol \
     entservices-voicecontrol \
+    entservices-usersettings \
+    entservices-usbmassstorage \
+    entservices-usbdevice \
+    entservices-telemetry \
+    entservices-sharedstorage \
+    entservices-persistentstore \
+    entservices-ocicontainer \
+    entservices-monitor \
+    entservices-migration \
+    entservices-messagecontrol \
+    ${@bb.utils.contains_any('DISTRO_FEATURES','RDKE_REGION_UK RDKE_REGION_IT RDKE_REGION_DE RDKE_REGION_AU RDKE_REGION_US', 'entservices-cloudstore', '', d)} \
     entservices-systemservices \
     entservices-deviceinfo \
     entservices-displayinfo \
@@ -92,6 +102,8 @@ RDEPENDS:${PN} = " \
     entservices-opencdmi \
     entservices-playerinfo \
     entservices-screencapture \
+    entservices-account \
+    entservices-backupmanager \
     entservices-hdcpprofile \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
@@ -150,6 +162,7 @@ RDEPENDS:${PN} = " \
     gdk-pixbuf \
     gupnp \
     iptables \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rdkappmanagers_runtimeconfig', 'yaml-cpp', '', d)} \
     iw \
     wireless-tools \
     libcroco \
@@ -194,6 +207,7 @@ RDEPENDS:${PN} = " \
     thunder-hang-recovery \
     thunder-plugin-activator \
     sqlite3 \
+    chrony \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'aamp rdknativescript', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-webkit libwpe webkitbrowser-plugin', d)} \
