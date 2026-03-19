@@ -204,7 +204,6 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     os-release \
     wlan-p2p \
-    thunder-hang-recovery \
     thunder-plugin-activator \
     sqlite3 \
     chrony \
