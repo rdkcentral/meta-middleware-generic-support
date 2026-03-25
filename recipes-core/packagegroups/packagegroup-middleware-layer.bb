@@ -187,6 +187,7 @@ RDEPENDS:${PN} = " \
     tzdata \
     util-linux \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_gdb_support', "gdb ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_tracecmd_support', "trace-cmd ", "", d)} \
     jquery \
     ndisc6-rdnssd \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_heaptrack', " heaptrack ", "", d)} \
