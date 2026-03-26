@@ -50,8 +50,8 @@ RDEPENDS:${PN} = " \
     lsof \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'memcapture', 'memcapture', '', d)} \
-    meminsight \
-    processmonitor \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'rdm', 'meminsight', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'rdm', 'processmonitor', '', d)} \
     remotedebugger \
     networkmanager-plugin \
     packagemanager \
