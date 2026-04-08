@@ -29,3 +29,4 @@ MULTILIB_VARIANTS:pn-os-release = " multilib "
 PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
+PACKAGE_ARCH:pn-trace-cmd = "${MIDDLEWARE_ARCH}"
