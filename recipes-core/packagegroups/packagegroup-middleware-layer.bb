@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package deployment to test should be using pre release tags
-PV = "8.5.2.1"
+PV = "8.5.3.0"
 
 # PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -50,6 +50,8 @@ RDEPENDS:${PN} = " \
     lsof \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'memcapture', 'memcapture', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'rdm', 'meminsight', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_processmonitor_support', 'processmonitor', '', d)} \
     remotedebugger \
     networkmanager-plugin \
     packagemanager \
@@ -186,6 +188,7 @@ RDEPENDS:${PN} = " \
     tzdata \
     util-linux \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_gdb_support', "gdb ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_tracecmd_support', "trace-cmd ", "", d)} \
     jquery \
     ndisc6-rdnssd \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_heaptrack', " heaptrack ", "", d)} \
