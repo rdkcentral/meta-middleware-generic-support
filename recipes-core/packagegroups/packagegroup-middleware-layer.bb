@@ -13,6 +13,7 @@ PV = "8.5.3.0"
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
 PR = "r1"
 
+#dummy ci check
 # Community is migrating to DAC2.0 based BOLT applications : base + runtime + app bundles
 # 'enable_bolt_apps' is used to remove the runtimes in that case to reduce the rootfs size.
 
