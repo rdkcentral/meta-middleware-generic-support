@@ -37,18 +37,5 @@ dobby_generic_config_patch(){
     fi
 }
 
-legacy_entos_support_patch(){
-    if [ -f "${IMAGE_ROOTFS}${sysconfdir}/common.properties" ]; then
-        rm -f ${IMAGE_ROOTFS}${sysconfdir}/common.properties
-    fi
-    if [ -f "${IMAGE_ROOTFS}/lib/rdk/imageFlasher.sh" ]; then
-        rm -f ${IMAGE_ROOTFS}/lib/rdk/imageFlasher.sh  
-    fi
-    if [ -f "${IMAGE_ROOTFS}/lib/rdk/init-zram.sh" ]; then
-        rm -f ${IMAGE_ROOTFS}/lib/rdk/init-zram.sh
-    fi
-}
-
 ROOTFS_POSTPROCESS_COMMAND += "wpeframework_binding_patch; "
 ROOTFS_POSTPROCESS_COMMAND += "dobby_generic_config_patch; "
-ROOTFS_POSTPROCESS_COMMAND += "legacy_entos_support_patch; "
