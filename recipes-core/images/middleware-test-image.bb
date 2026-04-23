@@ -42,7 +42,7 @@ legacy_entos_support_patch(){
         rm -f ${IMAGE_ROOTFS}${sysconfdir}/common.properties
     fi
     if [ -f "${IMAGE_ROOTFS}/lib/rdk/imageFlasher.sh" ]; then
-        rm -f ${IMAGE_ROOTFS}/lib/rdk/imageFlasher.sh  
+        rm -f ${IMAGE_ROOTFS}/lib/rdk/imageFlasher.sh
     fi
     if [ -f "${IMAGE_ROOTFS}/lib/rdk/init-zram.sh" ]; then
         rm -f ${IMAGE_ROOTFS}/lib/rdk/init-zram.sh
