@@ -224,19 +224,21 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
 
 # Prime widget variant selection based on PMICONFIG
 # Dynamically determines which amazon-prime-widget variants to build based on platform capabilities
-python get_prime_widget_variants_for_pmiconfig() {
+def get_prime_widget_variants_for_pmiconfig(d):
     import json
     
     build_number = d.getVar('BUILD_NUMBER')
     if not build_number or build_number == '' or build_number == '0':
-        return 'amazon-prime-widget amazon-prime-widget+rialto'
+        return ''
     
     pmiconfig = d.getVar('PMICONFIG')
     if not pmiconfig:
+        import bb
         bb.note('packagegroup-middleware-layer: No PMICONFIG set, building base Prime widgets only')
         return 'amazon-prime-widget amazon-prime-widget+rialto'
     
     try:
+        import bb
         platform_filter_json = d.getVar('PLATFORM_FILTER_JSON')
         prime_catalogue_json = d.getVar('PRIME_CATALOGUE_JSON_PRIME')
         
@@ -276,8 +278,8 @@ python get_prime_widget_variants_for_pmiconfig() {
         bb.note('packagegroup-middleware-layer: Prime widgets for PMICONFIG=%s: %s' % (pmiconfig, result))
         return result
     except Exception as e:
+        import bb
         bb.warn('packagegroup-middleware-layer: Failed to parse Prime JSON configs: %s - building base Prime widgets only' % str(e))
         return 'amazon-prime-widget amazon-prime-widget+rialto'
-}
 
-DEPENDS += "${@get_prime_widget_variants_for_pmiconfig(d) if d.getVar('BUILD_NUMBER') not in [None, '', '0'] else ''}"
+DEPENDS += "${@get_prime_widget_variants_for_pmiconfig(d)}"
