@@ -221,3 +221,63 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
              graphite2 curl openssl zlib glib-networking glib-2.0 \
              lighttpd systemd sqlite3 \
              "
+
+# Prime widget variant selection based on PMICONFIG
+# Dynamically determines which amazon-prime-widget variants to build based on platform capabilities
+python get_prime_widget_variants_for_pmiconfig() {
+    import json
+    
+    build_number = d.getVar('BUILD_NUMBER')
+    if not build_number or build_number == '' or build_number == '0':
+        return 'amazon-prime-widget amazon-prime-widget+rialto'
+    
+    pmiconfig = d.getVar('PMICONFIG')
+    if not pmiconfig:
+        bb.note('packagegroup-middleware-layer: No PMICONFIG set, building base Prime widgets only')
+        return 'amazon-prime-widget amazon-prime-widget+rialto'
+    
+    try:
+        platform_filter_json = d.getVar('PLATFORM_FILTER_JSON')
+        prime_catalogue_json = d.getVar('PRIME_CATALOGUE_JSON_PRIME')
+        
+        if not platform_filter_json or not prime_catalogue_json:
+            bb.warn('packagegroup-middleware-layer: PLATFORM_FILTER_JSON or PRIME_CATALOGUE_JSON_PRIME not available, building base Prime widgets only')
+            return 'amazon-prime-widget amazon-prime-widget+rialto'
+        
+        platform_filter = json.loads(platform_filter_json)
+        prime_catalogue = json.loads(prime_catalogue_json)
+        
+        variants = set()
+        variants.add('amazon-prime-widget')
+        variants.add('amazon-prime-widget+rialto')
+        
+        # Collect capability combinations from all groups matching PMICONFIG
+        capability_combinations = set()
+        for pmi_obj in platform_filter.get('pmis', []):
+            for group in pmi_obj.get('groups', []):
+                if group.get('id') == pmiconfig:
+                    for pmi_entry in group.get('pmis', []):
+                        caps_tuple = tuple(sorted(pmi_entry.get('capabilities', [])))
+                        if caps_tuple:
+                            capability_combinations.add(caps_tuple)
+        
+        # Generate widget variants for each capability combination x catalogue
+        for hw_caps in capability_combinations:
+            for catalogue in prime_catalogue.get('catalogues', []):
+                catalogue_id = catalogue.get('id')
+                variant_suffix = '+' + catalogue_id + ''.join(['+' + c for c in sorted(hw_caps)])
+                variants.add('amazon-prime-widget' + variant_suffix)
+                
+                if 'rialto' not in hw_caps:
+                    variant_suffix_rialto = variant_suffix + '+rialto'
+                    variants.add('amazon-prime-widget' + variant_suffix_rialto)
+        
+        result = ' '.join(sorted(variants))
+        bb.note('packagegroup-middleware-layer: Prime widgets for PMICONFIG=%s: %s' % (pmiconfig, result))
+        return result
+    except Exception as e:
+        bb.warn('packagegroup-middleware-layer: Failed to parse Prime JSON configs: %s - building base Prime widgets only' % str(e))
+        return 'amazon-prime-widget amazon-prime-widget+rialto'
+}
+
+DEPENDS += "${@get_prime_widget_variants_for_pmiconfig(d) if d.getVar('BUILD_NUMBER') not in [None, '', '0'] else ''}"
