@@ -13,7 +13,7 @@ IMAGE_INSTALL += "gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-go
 IMAGE_INSTALL += "packagegroup-xfce-base packagegroup-xfce-extended"
 IMAGE_INSTALL += "alsa-lib alsa-plugins alsa-state alsa-utils alsa-utils-scripts libsdl2 libbinder"
 
-IMAGE_INSTALL:append = " packagegroup-middleware-layer "
+IMAGE_INSTALL:append = " packagegroup-middleware-layer-core-xfce "
 
 IMAGE_FEATURES:append = " ssh-server-dropbear"
 IMAGE_FEATURES:append = " x11-base"
