@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package deployment to test should be using pre release tags
-PV = "8.5.3.0"
+PV = "8.6.1.0"
 
 # PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -42,6 +42,7 @@ RDEPENDS:${PN} = " \
     iarmbus \
     iarmmgrs \
     key-simulator \
+    power-state-monitor \
     libparodus \
     libsyswrapper \
     libunpriv \
@@ -49,6 +50,8 @@ RDEPENDS:${PN} = " \
     lsof \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'memcapture', 'memcapture', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'rdm', 'meminsight', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_processmonitor_support', 'processmonitor', '', d)} \
     remotedebugger \
     networkmanager-plugin \
     packagemanager \
@@ -75,6 +78,8 @@ RDEPENDS:${PN} = " \
     entservices-firmwareupdate \
     entservices-ledcontrol \
     entservices-frontpanel \
+    entservices-remotecontrol \
+    entservices-voicecontrol \
     entservices-usersettings \
     entservices-usbmassstorage \
     entservices-usbdevice \
@@ -184,6 +189,7 @@ RDEPENDS:${PN} = " \
     tzdata \
     util-linux \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_gdb_support', "gdb ", "", d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_tracecmd_support', "trace-cmd ", "", d)} \
     jquery \
     ndisc6-rdnssd \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_heaptrack', " heaptrack ", "", d)} \
@@ -202,7 +208,6 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'rdkwindowmanager', " rdkwindowmanager ", "", d)} \
     os-release \
     wlan-p2p \
-    thunder-hang-recovery \
     thunder-plugin-activator \
     sqlite3 \
     chrony \
