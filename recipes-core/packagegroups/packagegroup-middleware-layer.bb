@@ -33,6 +33,7 @@ RDEPENDS:${PN} = " \
     evtest \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
+    gst-init-service \
     rdk-gstreamer-utils \
     hdmicec \
     iarm-event-sender \
