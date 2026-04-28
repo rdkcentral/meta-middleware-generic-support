@@ -66,6 +66,7 @@ RDEPENDS:${PN} = " \
     entservices-miracast \
     entservices-connectivity \
     entservices-infra \
+    entservices-resourcemanager \
     entservices-rdkappmanagers \
     entservices-appgateway \
     entservices-avinput \
