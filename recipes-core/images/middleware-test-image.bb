@@ -37,5 +37,24 @@ dobby_generic_config_patch(){
     fi
 }
 
+create_symlink_rialto() {
+   mkdir -p ${IMAGE_ROOTFS}/opt/Rialto/
+
+   cp -f ${IMAGE_ROOTFS}/usr/lib/libRialtoServerManager.so.1.0.0 ${IMAGE_ROOTFS}/usr/lib/gstreamer-1.0
+   cp -f ${IMAGE_ROOTFS}/usr/lib/libRialtoClient.so.1.0.0 ${IMAGE_ROOTFS}/usr/lib/gstreamer-1.0
+   cp -f ${IMAGE_ROOTFS}/usr/bin/RialtoServer ${IMAGE_ROOTFS}/usr/lib/gstreamer-1.0
+
+   rm ${IMAGE_ROOTFS}/usr/lib/libRialtoServerManager.so.1.0.0 ${IMAGE_ROOTFS}/usr/lib/libRialtoClient.so.1.0.0 ${IMAGE_ROOTFS}/usr/bin/RialtoServer
+
+   touch ${IMAGE_ROOTFS}/opt/Rialto/libRialtoServerManager.so.1.0.0
+   touch ${IMAGE_ROOTFS}/opt/Rialto/libRialtoClient.so.1.0.0
+
+   ln -sf /opt/Rialto/libRialtoServerManager.so.1.0.0 ${IMAGE_ROOTFS}/usr/lib/libRialtoServerManager.so.1.0.0
+   ln -sf /opt/Rialto/libRialtoClient.so.1.0.0 ${IMAGE_ROOTFS}/usr/lib/libRialtoClient.so.1.0.0
+   ln -sf /opt/Rialto/RialtoServer ${IMAGE_ROOTFS}/usr/bin/RialtoServer
+}
+
+ROOTFS_POSTPROCESS_COMMAND += "create_symlink_rialto; "
+
 ROOTFS_POSTPROCESS_COMMAND += "wpeframework_binding_patch; "
 ROOTFS_POSTPROCESS_COMMAND += "dobby_generic_config_patch; "
