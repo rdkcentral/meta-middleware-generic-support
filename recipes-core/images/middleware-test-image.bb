@@ -39,16 +39,24 @@ dobby_generic_config_patch(){
 
 legacy_entos_support_patch(){
     if [ -f "${IMAGE_ROOTFS}${sysconfdir}/common.properties" ]; then
-        rm -f ${IMAGE_ROOTFS}${sysconfdir}/common.properties
+        rm -f ${IMAGE_ROOTFS}${sysconfdir}/common-generic.properties
+    else
+        mv ${IMAGE_ROOTFS}/${sysconfdir}/common-generic.properties ${IMAGE_ROOTFS}/${sysconfdir}/common.properties
     fi
+    
     if [ -f "${IMAGE_ROOTFS}/lib/rdk/imageFlasher.sh" ]; then
-        rm -f ${IMAGE_ROOTFS}/lib/rdk/imageFlasher.sh
+        rm -f ${IMAGE_ROOTFS}/lib/rdk/imageFlasher_generic.sh
+    else
+        mv ${IMAGE_ROOTFS}/lib/rdk/imageFlasher_generic.sh ${IMAGE_ROOTFS}/lib/rdk/imageFlasher.sh
     fi
+
     if [ -f "${IMAGE_ROOTFS}/lib/rdk/init-zram.sh" ]; then
         rm -f ${IMAGE_ROOTFS}/lib/rdk/init-zram.sh
-    fi
+    else
+        mv ${IMAGE_ROOTFS}/lib/rdk/int-zram_generic.sh ${IMAGE_ROOTFS}/lib/rdk/init-zram.sh
+    fi    
 }
 
 ROOTFS_POSTPROCESS_COMMAND += "wpeframework_binding_patch; "
 ROOTFS_POSTPROCESS_COMMAND += "dobby_generic_config_patch; "
-ROOTFS_POSTPROCESS_COMMAND:append = "${@bb.utils.contains('DISTRO_FEATURES', 'legacy_entos_support', ' legacy_entos_support_patch; ', '', d)}"
+ROOTFS_POSTPROCESS_COMMAND:append = "legacy_entos_support_patch;"
