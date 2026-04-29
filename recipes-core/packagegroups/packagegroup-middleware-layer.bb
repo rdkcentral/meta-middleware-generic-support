@@ -34,6 +34,7 @@ RDEPENDS:${PN} = " \
     ermgr \
     evtest \
     gst-plugins-rdk \
+    gst-init-service \
     rdk-gstreamer-utils \
     hdmicec \
     iarm-event-sender \
