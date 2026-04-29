@@ -182,7 +182,6 @@ RDEPENDS:${PN} = " \
     mtd-utils-ubifs \
     mpg123 \
     mtdev \
-    smcroute \
     speex \
     stunnel \
     taglib \
