@@ -110,6 +110,7 @@ RDEPENDS:${PN} = " \
     entservices-hdcpprofile \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
+    entservices-helpers \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
