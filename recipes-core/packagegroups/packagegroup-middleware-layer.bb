@@ -21,6 +21,7 @@ RDEPENDS:${PN} = " \
     audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
+    bluetoothsdk \
     cimplog \
     cjwt \
     commonutilities \
