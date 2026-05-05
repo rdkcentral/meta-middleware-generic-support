@@ -51,9 +51,9 @@ legacy_entos_support_patch(){
     fi
 
     if [ -f "${IMAGE_ROOTFS}/lib/rdk/init-zram.sh" ]; then
-        rm -f ${IMAGE_ROOTFS}/lib/rdk/int-zram_generic.sh
+        rm -f ${IMAGE_ROOTFS}/lib/rdk/init-zram_generic.sh
     else
-        mv ${IMAGE_ROOTFS}/lib/rdk/int-zram_generic.sh ${IMAGE_ROOTFS}/lib/rdk/init-zram.sh
+        mv ${IMAGE_ROOTFS}/lib/rdk/init-zram_generic.sh ${IMAGE_ROOTFS}/lib/rdk/init-zram.sh
     fi    
 }
 
