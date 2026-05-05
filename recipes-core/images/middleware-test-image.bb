@@ -37,7 +37,7 @@ dobby_generic_config_patch(){
     fi
 }
 
-# Vendor provided files will be used if found Else used from Middleware
+# Vendor provided scripts,properies file will be used if found Else used from Middleware
 legacy_entos_support_patch(){
     if [ -f "${IMAGE_ROOTFS}${sysconfdir}/common.properties" ]; then
         rm -f ${IMAGE_ROOTFS}${sysconfdir}/common-generic.properties
