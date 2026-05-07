@@ -1,4 +1,7 @@
 # To support layered ipk generation
+
+LAYER_EXTENSION = "${@'-middleware' if 'STACK_LAYER_OSS_SUPPORT' in d.getVar('DISTRO_FEATURES').split() else ''}"
+
 MIDDLEWARE_ARCH ??= "${MACHINE}-middleware"
 PACKAGE_EXTRA_ARCHS:append = " ${MIDDLEWARE_ARCH}"
 
@@ -14,7 +17,7 @@ LAYER_NAME = "MIDDLEWARE"
 DISTRO_FEATURES:append = " enable_wpe-webdriver" 
 
 DISTRO_FEATURES:append = " RDKTV_APP_HIBERNATE"      
-DISTRO_FEATURES:remove = " netflix_cryptanium"           
+DISTRO_FEATURES:remove = " netflix_cryptanium"
 
 PARALLEL_MAKE:pn-breakpad = " -j2 "
 PARALLEL_MAKE:pn-breakpad-native = " -j2 "
