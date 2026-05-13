@@ -20,6 +20,7 @@ PR = "r1"
 RDEPENDS:${PN} = " \
     devicesettings \
     entservices-hdmicecsource \
+    entservices-ledcontrol \
     hdmicec \
     iarmbus \
     iarmmgrs \
