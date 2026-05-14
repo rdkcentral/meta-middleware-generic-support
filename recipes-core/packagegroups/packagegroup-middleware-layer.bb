@@ -28,6 +28,7 @@ RDEPENDS:${PN} = " \
     ctrlm-headers \
     ctrlm-main \
     dcmd \
+    bcc \
     devicesettings \
     dobby \
     dobby-thunderplugin \
