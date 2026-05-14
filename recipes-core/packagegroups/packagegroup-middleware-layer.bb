@@ -67,6 +67,7 @@ RDEPENDS:${PN} = " \
     entservices-miracast \
     entservices-connectivity \
     entservices-infra \
+    entservices-resourcemanager \
     entservices-rdkappmanagers \
     entservices-appgateway \
     entservices-avinput \
@@ -114,6 +115,7 @@ RDEPENDS:${PN} = " \
     rdksysctl \
     rdkversion \
     rdmagent \
+    reboot-manager \
     rfc \
     rtcore \
     rtremote \
