@@ -8,6 +8,8 @@ inherit core-image custom-rootfs-creation
 IMAGE_INSTALL = " \
                  packagegroup-vendor-layer \
                  packagegroup-middleware-layer \
+                 bcc \
+                 lib32-bcc \
                  "
 
 IMAGE_ROOTFS_SIZE ?= "8192"
