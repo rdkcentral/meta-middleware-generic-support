@@ -34,6 +34,7 @@ RDEPENDS:${PN} = " \
     ermgr \
     evtest \
     gst-plugins-rdk \
+    gst-init-service \
     rdk-gstreamer-utils \
     hdmicec \
     iarm-event-sender \
@@ -115,6 +116,7 @@ RDEPENDS:${PN} = " \
     rdksysctl \
     rdkversion \
     rdmagent \
+    reboot-manager \
     rfc \
     rtcore \
     rtremote \
@@ -157,7 +159,6 @@ RDEPENDS:${PN} = " \
     systimemgrinetrface \
     thunderstartupservices \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wpe_r4_4', 'packagemanager', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'RDKE_PLATFORM_STB', "tenablehdcp ", "", d)} \
     breakpad-wrapper \
     ctemplate \
     ebtables \
