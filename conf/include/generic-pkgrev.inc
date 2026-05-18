@@ -79,7 +79,7 @@ PR:pn-qtwayland = "r1"
 PACKAGE_ARCH:pn-qtwayland = "${MIDDLEWARE_ARCH}"
 
 PV:pn-aamp = "2.11.10e"
-PR:pn-aamp = "r0"
+PR:pn-aamp = "r0.0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
 PV:pn-audiocapturemgr = "1.0.0"
