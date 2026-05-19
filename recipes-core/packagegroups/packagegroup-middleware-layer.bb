@@ -72,6 +72,7 @@ RDEPENDS:${PN} = " \
     rdksysctl \
     rdkversion \
     rdmagent \
+    monit \
     rfc \
     rtcore \
     rtremote \
