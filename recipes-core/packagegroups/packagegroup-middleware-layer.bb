@@ -55,6 +55,7 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_processmonitor_support', 'processmonitor', '', d)} \
     remotedebugger \
     networkmanager-plugin \
+    neo \
     packagemanager \
     parodus \
     ${@bb.utils.contains('DISTRO_FEATURES', 'build_external_player_interface', "player-interface", "", d)} \
