@@ -53,5 +53,6 @@ dedup_reboot_reason_syslog_ng_patch() {
     fi
 }
 
+ROOTFS_POSTPROCESS_COMMAND += "dedup_reboot_reason_syslog_ng_patch; "
 ROOTFS_POSTPROCESS_COMMAND += "wpeframework_binding_patch; "
 ROOTFS_POSTPROCESS_COMMAND += "dobby_generic_config_patch; "
