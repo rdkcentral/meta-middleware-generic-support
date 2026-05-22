@@ -54,6 +54,7 @@ RDEPENDS:${PN} = " \
     networkmanager-plugin \
     packagemanager \
     parodus \
+    perf-tools \
     ${@bb.utils.contains('DISTRO_FEATURES', 'build_external_player_interface', "player-interface", "", d)} \
     rbus \
     rdk-logger \
