@@ -18,12 +18,9 @@ PR = "r1"
 
 #Generic components
 RDEPENDS:${PN} = " \
-    devicesettings \
     entservices-hdmicecsource \
     hdmicec \
     iarmbus \
-    iarmmgrs \
-    safec \
     telemetry \
     wpeframework \
     wpeframework-clientlibraries \ 
