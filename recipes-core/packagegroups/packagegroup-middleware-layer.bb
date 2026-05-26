@@ -41,6 +41,7 @@ RDEPENDS:${PN} = " \
     iarm-query-powerstate \
     iarmbus \
     iarmmgrs \
+    iostat_monitor \
     key-simulator \
     libparodus \
     libsyswrapper \
