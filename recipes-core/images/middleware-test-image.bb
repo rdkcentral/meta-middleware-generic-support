@@ -60,4 +60,4 @@ legacy_entos_support_patch(){
 
 ROOTFS_POSTPROCESS_COMMAND += "wpeframework_binding_patch; "
 ROOTFS_POSTPROCESS_COMMAND += "dobby_generic_config_patch; "
-ROOTFS_POSTPROCESS_COMMAND:append = "legacy_entos_support_patch;"
+ROOTFS_POSTPROCESS_COMMAND += "legacy_entos_support_patch; "
