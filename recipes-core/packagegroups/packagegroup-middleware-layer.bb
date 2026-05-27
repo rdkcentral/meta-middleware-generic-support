@@ -112,6 +112,9 @@ RDEPENDS:${PN} = " \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
     entservices-helpers \
+    entservices-watermark \
+    entservices-contentprotection \
+    entservices-storagemanager \
     ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
