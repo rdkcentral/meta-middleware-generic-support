@@ -329,7 +329,7 @@ PV:pn-rialto = "0.15.2-r9"
 PR:pn-rialto = "r0"
 PACKAGE_ARCH:pn-rialto = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto-gstreamer = "v0.14.0-r4"
+PV:pn-rialto-gstreamer = "0.14.0-r4"
 PR:pn-rialto-gstreamer = "r0"
 PACKAGE_ARCH:pn-rialto-gstreamer = "${MIDDLEWARE_ARCH}"
 
