@@ -34,7 +34,6 @@ RDEPENDS:${PN} = " \
     ermgr \
     evtest \
     gst-plugins-rdk \
-    gst-init-service \
     rdk-gstreamer-utils \
     hdmicec \
     iarm-event-sender \
@@ -212,8 +211,8 @@ RDEPENDS:${PN} = " \
     chrony \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'aamp rdknativescript', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-webkit libwpe webkitbrowser-plugin', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-backend-rdk wpe-webkit-web-inspector-plugin', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'webkitbrowser-plugin', bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-webkit libwpe webkitbrowser-plugin', d), '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'webkitbrowser-plugin', bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-backend-rdk wpe-webkit-web-inspector-plugin', d), '', d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
