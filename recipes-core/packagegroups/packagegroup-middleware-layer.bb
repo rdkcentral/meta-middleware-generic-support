@@ -67,6 +67,7 @@ RDEPENDS:${PN} = " \
     entservices-miracast \
     entservices-connectivity \
     entservices-infra \
+    entservices-resourcemanager \
     entservices-rdkappmanagers \
     entservices-appgateway \
     entservices-avinput \
@@ -111,7 +112,6 @@ RDEPENDS:${PN} = " \
     entservices-hdcpprofile \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
     rdmagent \
