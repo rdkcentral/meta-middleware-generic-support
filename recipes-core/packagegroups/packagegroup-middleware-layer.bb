@@ -116,6 +116,7 @@ RDEPENDS:${PN} = " \
     rdkversion \
     rdmagent \
     sysstat \
+    atop \
     reboot-manager \
     rfc \
     rtcore \
