@@ -90,7 +90,7 @@ PV:pn-bluetooth-core = "btcore-hotfix-8.3.4-r2"
 PR:pn-bluetooth-core = "r2"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-mgr = "1.0.3.3"
+PV:pn-bluetooth-mgr = "1.0.3.4"
 PR:pn-bluetooth-mgr = "r5"
 PACKAGE_ARCH:pn-bluetooth-mgr = "${MIDDLEWARE_ARCH}"
 
