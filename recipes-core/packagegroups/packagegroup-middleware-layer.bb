@@ -73,6 +73,7 @@ RDEPENDS:${PN} = " \
     rdkversion \
     rdmagent \
 	sysstat \
+	atop \
     rfc \
     rtcore \
     rtremote \
