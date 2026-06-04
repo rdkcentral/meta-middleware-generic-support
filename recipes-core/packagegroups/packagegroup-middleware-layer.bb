@@ -74,6 +74,7 @@ RDEPENDS:${PN} = " \
     rdmagent \
 	sysstat \
 	atop \
+	nethogs \
     rfc \
     rtcore \
     rtremote \
