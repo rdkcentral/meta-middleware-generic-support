@@ -19,7 +19,7 @@ PR = "r0"
 #Generic components
 RDEPENDS:${PN} = " \
     entservices-hdmicecsource \
-    hdmicecmiddlware \
+    hdmicec \
     iarmbus \
     telemetry \
     wpeframework \
