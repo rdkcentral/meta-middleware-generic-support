@@ -23,5 +23,5 @@ RDEPENDS:${PN} = " \
     iarmbus \
     telemetry \
     wpeframework \
-    wpeframework-clientlibraries \ 
+    wpeframework-clientlibraries \
     "
