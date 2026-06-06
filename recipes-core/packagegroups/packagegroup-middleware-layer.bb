@@ -89,9 +89,6 @@ RDEPENDS:${PN} = " \
     entservices-sharedstorage \
     entservices-persistentstore \
     entservices-helpers \
-    entservices-watermark \
-    entservices-contentprotection \
-    entservices-storagemanager \
     entservices-ocicontainer \
     entservices-monitor \
     entservices-migration \
