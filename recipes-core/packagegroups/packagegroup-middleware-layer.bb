@@ -88,6 +88,7 @@ RDEPENDS:${PN} = " \
     entservices-telemetry \
     entservices-sharedstorage \
     entservices-persistentstore \
+    entservices-helpers \
     entservices-ocicontainer \
     entservices-monitor \
     entservices-migration \
