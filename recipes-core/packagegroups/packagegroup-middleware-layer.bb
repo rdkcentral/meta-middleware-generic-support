@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package deployment to test should be using pre release tags
-PV = "8.6.1.0"
+PV = "8.6.2.0"
 
 # PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -68,6 +68,7 @@ RDEPENDS:${PN} = " \
     entservices-miracast \
     entservices-connectivity \
     entservices-infra \
+    entservices-resourcemanager \
     entservices-rdkappmanagers \
     entservices-appgateway \
     entservices-avinput \
@@ -75,7 +76,7 @@ RDEPENDS:${PN} = " \
     entservices-mediaanddrm \
     entservices-peripherals \
     entservices-runtime \
-    entservices-softwareupdate \
+    entservices-maintenancemanager \
     entservices-firmwaredownload \
     entservices-firmwareupdate \
     entservices-ledcontrol \
@@ -88,6 +89,7 @@ RDEPENDS:${PN} = " \
     entservices-telemetry \
     entservices-sharedstorage \
     entservices-persistentstore \
+    entservices-helpers \
     entservices-ocicontainer \
     entservices-monitor \
     entservices-migration \
@@ -112,7 +114,6 @@ RDEPENDS:${PN} = " \
     entservices-hdcpprofile \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'DAC_SUPPORT', 'entservices-lisa', '', d)} \
     rdksysctl \
     rdkversion \
     rdmagent \
