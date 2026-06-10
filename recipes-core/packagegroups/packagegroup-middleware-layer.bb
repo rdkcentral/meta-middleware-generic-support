@@ -143,7 +143,6 @@ RDEPENDS:${PN} = " \
     lcms \
     libunwind \
     wayland \
-    lighttpd \
     openssl \
     wpa-supplicant \
     dnsmasq \
@@ -216,6 +215,7 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'aamp rdknativescript', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-webkit libwpe webkitbrowser-plugin', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-backend-rdk wpe-webkit-web-inspector-plugin', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'lighttpd', d)} \
     "
 
 DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hiredis \
@@ -223,5 +223,6 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
              libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
              log4c mbedtls rdkperf cjwt nghttp2 ucresolv fcgi glib-openssl libol \
              graphite2 curl openssl zlib glib-networking glib-2.0 \
-             lighttpd systemd sqlite3 \
+             systemd sqlite3 \
+             ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'lighttpd', d)} \
              "
