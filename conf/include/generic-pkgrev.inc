@@ -50,7 +50,7 @@ PV:pn-rtremote = "2.0.0"
 PR:pn-rtremote = "r3"
 PACKAGE_ARCH:pn-rtremote = "${MIDDLEWARE_ARCH}"
 
-PV:pn-telemetry = "1.7.3v2"
+PV:pn-telemetry = "1.7.3v3"
 PR:pn-telemetry = "r0"
 PACKAGE_ARCH:pn-telemetry = "${MIDDLEWARE_ARCH}"
 
@@ -78,7 +78,7 @@ PV:pn-qtwayland = "5.15.7"
 PR:pn-qtwayland = "r1"
 PACKAGE_ARCH:pn-qtwayland = "${MIDDLEWARE_ARCH}"
 
-PV:pn-aamp = "2.11.12e"
+PV:pn-aamp = "2.11.13e"
 PR:pn-aamp = "r0"
 PACKAGE_ARCH:pn-aamp = "${MIDDLEWARE_ARCH}"
 
@@ -268,7 +268,7 @@ PV:pn-xdial = "1.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "4.2.1v12"
+PV:pn-sysint = "4.2.1v16"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
