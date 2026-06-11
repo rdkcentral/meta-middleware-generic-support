@@ -37,6 +37,7 @@ RDEPENDS:${PN} = " \
     gst-init-service \
     rdk-gstreamer-utils \
     hdmicec \
+    rdk-halif-aidl \
     iarm-event-sender \
     iarm-set-powerstate \
     iarm-query-powerstate \
