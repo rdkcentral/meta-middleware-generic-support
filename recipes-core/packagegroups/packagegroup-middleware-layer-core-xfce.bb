@@ -1,4 +1,4 @@
-SUMMARY = "Packagegroup for middleware layer"
+SUMMARY = "Packagegroup for middleware layer for vdevice XFCE image"
 PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 
 LICENSE = "MIT"
