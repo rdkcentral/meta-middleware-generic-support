@@ -17,11 +17,16 @@ PR = "r1"
 # 'enable_bolt_apps' is used to remove the runtimes in that case to reduce the rootfs size.
 
 #Generic components
+
+DEPENDS = "pseudo-native"
+
 RDEPENDS:${PN} = " \
     entservices-hdmicecsource \
     hdmicecmiddlware \
     iarmbus \
     telemetry \
     wpeframework \
-    wpeframework-clientlibraries \ 
+    wpeframework-clientlibraries \
     "
+
+do_fix_ownership[depends] += "pseudo-native:do_populate_sysroot"
