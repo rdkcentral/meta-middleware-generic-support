@@ -15,3 +15,5 @@ PR:pn-chrony = "r0"
 PACKAGE_ARCH:pn-chrony = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-packagegroup-youtube-widgets = "${MIDDLEWARE_ARCH}"
+
+PACKAGE_ARCH:pn-libbinder = "${MIDDLEWARE_ARCH}"
