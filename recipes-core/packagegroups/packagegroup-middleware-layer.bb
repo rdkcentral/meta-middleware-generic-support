@@ -11,7 +11,7 @@ PV = "8.6.2.0"
 # PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
-PR = "r0"
+PR = "r1"
 
 # Community is migrating to DAC2.0 based BOLT applications : base + runtime + app bundles
 # 'enable_bolt_apps' is used to remove the runtimes in that case to reduce the rootfs size.
@@ -92,7 +92,6 @@ RDEPENDS:${PN} = " \
     entservices-ocicontainer \
     entservices-monitor \
     entservices-migration \
-    entservices-messagecontrol \
     ${@bb.utils.contains_any('DISTRO_FEATURES','RDKE_REGION_UK RDKE_REGION_IT RDKE_REGION_DE RDKE_REGION_AU RDKE_REGION_US', 'entservices-cloudstore', '', d)} \
     entservices-systemservices \
     entservices-deviceinfo \
