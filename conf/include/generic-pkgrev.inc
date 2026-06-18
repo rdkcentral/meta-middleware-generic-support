@@ -14,11 +14,11 @@ PV:pn-hdmicec = "1.0.5"
 PR:pn-hdmicec = "r0"
 PACKAGE_ARCH:pn-hdmicec = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmbus = "1.0.1"
+PV:pn-iarmbus = "1.0.1-hotfix.1"
 PR:pn-iarmbus = "r1"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.1.2-hotfix.4"
+PV:pn-iarmmgrs = "1.1.2-hotfix.5"
 PR:pn-iarmmgrs = "r1"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
