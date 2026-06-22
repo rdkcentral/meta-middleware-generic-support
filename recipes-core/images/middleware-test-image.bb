@@ -47,7 +47,7 @@ Requires=systemd-journald.service
 
 [Service]
 Type=simple
-ExecStart=/bin/sh -c 'mkdir -p /opt/logs; exec /bin/journalctl -f -o short-iso >> /opt/logs/unified_logging.txt'
+ExecStart=/bin/sh -c 'mkdir -p /opt/logs; exec /bin/journalctl -f -o short-iso >> /opt/logs/unified-logging.txt'
 Restart=always
 RestartSec=2
 
