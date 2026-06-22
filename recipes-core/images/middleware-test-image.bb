@@ -37,5 +37,30 @@ dobby_generic_config_patch(){
     fi
 }
 
+install_journal_export_service() {
+    install -d ${IMAGE_ROOTFS}/etc/systemd/system
+    cat > ${IMAGE_ROOTFS}/etc/systemd/system/journal-export.service << 'EOF'
+[Unit]
+Description=Export journal logs to unified file
+After=systemd-journald.service
+Requires=systemd-journald.service
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c 'mkdir -p /opt/logs; exec /bin/journalctl -f -o short-iso >> /opt/logs/unified_logging.txt'
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+    install -d ${IMAGE_ROOTFS}/opt/logs
+    install -d ${IMAGE_ROOTFS}/etc/systemd/system/multi-user.target.wants
+    ln -sf ../journal-export.service \
+      ${IMAGE_ROOTFS}/etc/systemd/system/multi-user.target.wants/journal-export.service
+}
+
 ROOTFS_POSTPROCESS_COMMAND += "wpeframework_binding_patch; "
 ROOTFS_POSTPROCESS_COMMAND += "dobby_generic_config_patch; "
+ROOTFS_POSTPROCESS_COMMAND += "install_journal_export_service;"
