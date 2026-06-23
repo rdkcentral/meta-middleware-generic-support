@@ -37,30 +37,33 @@ dobby_generic_config_patch(){
     fi
 }
 
-install_journal_export_service() {
-    install -d ${IMAGE_ROOTFS}/etc/systemd/system
-    cat > ${IMAGE_ROOTFS}/etc/systemd/system/journal-export.service << 'EOF'
+
+
+replace_syslogng_service_with_journal_export() {
+install -d ${IMAGE_ROOTFS}${systemd_unitdir}/system
+install -d ${IMAGE_ROOTFS}/opt/logs
+cat > ${IMAGE_ROOTFS}${systemd_unitdir}/system/syslog-ng.service << 'EOF'
+
 [Unit]
-Description=Export journal logs to unified file
+Description=Journal Log Exporter
+Documentation=man:journalctl(1)
 After=systemd-journald.service
 Requires=systemd-journald.service
+DefaultDependencies=no
 
 [Service]
+ExecStartPre=/bin/mkdir -p /opt/logs
+ExecStart=/bin/sh -c 'exec /bin/journalctl -f -o short-iso >> /opt/logs/unified-logging.txt'
 Type=simple
-ExecStart=/bin/sh -c 'mkdir -p /opt/logs; exec /bin/journalctl -f -o short-iso >> /opt/logs/unified-logging.txt'
-Restart=always
+StandardOutput=journal
+StandardError=journal
+Restart=on-failure
 RestartSec=2
 
 [Install]
 WantedBy=multi-user.target
 EOF
-
-    install -d ${IMAGE_ROOTFS}/opt/logs
-    install -d ${IMAGE_ROOTFS}/etc/systemd/system/multi-user.target.wants
-    ln -sf ../journal-export.service \
-      ${IMAGE_ROOTFS}/etc/systemd/system/multi-user.target.wants/journal-export.service
 }
-
+ROOTFS_POSTPROCESS_COMMAND += "replace_syslogng_service_with_journal_export;"
 ROOTFS_POSTPROCESS_COMMAND += "wpeframework_binding_patch; "
 ROOTFS_POSTPROCESS_COMMAND += "dobby_generic_config_patch; "
-ROOTFS_POSTPROCESS_COMMAND += "install_journal_export_service;"
