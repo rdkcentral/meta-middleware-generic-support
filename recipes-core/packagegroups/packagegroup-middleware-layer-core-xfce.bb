@@ -24,4 +24,5 @@ RDEPENDS:${PN} = " \
     telemetry \
     wpeframework \
     wpeframework-clientlibraries \
+    entservices-ledcontrol \
     "
