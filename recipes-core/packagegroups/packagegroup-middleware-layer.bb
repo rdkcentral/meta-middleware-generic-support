@@ -169,6 +169,7 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rdkappmanagers_runtimeconfig', 'yaml-cpp', '', d)} \
     iw \
     wireless-tools \
+    libbinder \
     libcroco \
     libevdev \
     rdkcertconfig \
