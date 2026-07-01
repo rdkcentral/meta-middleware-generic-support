@@ -1,3 +1,4 @@
 SRCREV:pn-rmfosal = "ea4f0df1edd73cc2d45d453ad445cb2536799684"
 SRCREV:pn-rdkperf = "d802d561c4a2a4456403d572da75e73032d48d91"
 SRCREV_starboard = "d23e2da63e840f04a1bfa5cf1f2a1e7b0c261102"
+SRCREV_aamp = "23bb2a3a8e7a4e953da550c3f210d1d46d34ce6b"
