@@ -77,7 +77,6 @@ RDEPENDS:${PN} = " \
     entservices-maintenancemanager \
     entservices-firmwaredownload \
     entservices-firmwareupdate \
-    entservices-ledcontrol \
     entservices-frontpanel \
     entservices-remotecontrol \
     entservices-voicecontrol \
