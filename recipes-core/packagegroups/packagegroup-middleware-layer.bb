@@ -11,7 +11,7 @@ PV = "8.6.3.0"
 # PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
 # With release prior to release, PV gets reset to production semver and PR gets reset to r0
-PR = "r0"
+PR = "r1"
 
 # Community is migrating to DAC2.0 based BOLT applications : base + runtime + app bundles
 # 'enable_bolt_apps' is used to remove the runtimes in that case to reduce the rootfs size.
@@ -51,7 +51,6 @@ RDEPENDS:${PN} = " \
     lsof \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'memcapture', 'memcapture', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'rdm', 'meminsight', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_processmonitor_support', 'processmonitor', '', d)} \
     remotedebugger \
     networkmanager-plugin \
@@ -78,7 +77,6 @@ RDEPENDS:${PN} = " \
     entservices-maintenancemanager \
     entservices-firmwaredownload \
     entservices-firmwareupdate \
-    entservices-ledcontrol \
     entservices-frontpanel \
     entservices-remotecontrol \
     entservices-voicecontrol \
