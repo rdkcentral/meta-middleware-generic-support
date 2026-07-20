@@ -18,7 +18,6 @@ PR = "r1"
 
 #Generic components
 RDEPENDS:${PN} = " \
-    test-otel-jsonrpc \
     otel-plugin-test \
     audiocapturemgr \
     bluetooth-core \
