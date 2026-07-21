@@ -35,6 +35,7 @@ RDEPENDS:${PN} = " \
     evtest \
     gst-plugins-rdk \
     rdk-gstreamer-utils \
+    gst-init-service \
     hdmicec \
     iarm-event-sender \
     iarm-set-powerstate \
