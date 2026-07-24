@@ -33,3 +33,5 @@ PACKAGE_ARCH:pn-os-release = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-gdb = "${MIDDLEWARE_ARCH}"
 PACKAGE_ARCH:pn-trace-cmd = "${MIDDLEWARE_ARCH}"
+
+PACKAGE_ARCH:pn-yaml-cpp = "${MIDDLEWARE_ARCH}"
