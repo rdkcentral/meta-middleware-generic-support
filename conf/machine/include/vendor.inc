@@ -38,3 +38,4 @@ IPK_FEED_URIS += " ${VENDOR_OSS}##${VENDOR_OSS_IPK_SERVER_PATH} "
 
 # This will be included only in vendor dev projects
 include conf/machine/include/vendor-dev.inc
+include conf/dynamic_sha.inc
