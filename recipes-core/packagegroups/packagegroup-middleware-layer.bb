@@ -162,6 +162,7 @@ RDEPENDS:${PN} = " \
     fribidi \
     gdbm \
     gdk-pixbuf \
+    rdk-diagserver \
     gupnp \
     iptables \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rdkappmanagers', 'yaml-cpp', '', d)} \
