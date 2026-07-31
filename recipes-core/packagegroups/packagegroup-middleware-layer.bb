@@ -157,6 +157,7 @@ RDEPENDS:${PN} = " \
     systimemgrfactory \
     systimemgrinetrface \
     thunderstartupservices \
+    wpeframework-es1benchmark \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wpe_r4_4', 'packagemanager', '', d)} \
     breakpad-wrapper \
     ctemplate \
