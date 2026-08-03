@@ -18,7 +18,7 @@ PV:pn-iarmbus = "1.0.2.1"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.1.5-hotfix.2"
+PV:pn-iarmmgrs = "1.1.5-hotfix.3"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
