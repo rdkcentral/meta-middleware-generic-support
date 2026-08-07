@@ -112,6 +112,7 @@ RDEPENDS:${PN} = " \
     entservices-hdcpprofile \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
+    es1test-jsonrpc-benchmark \
     rdksysctl \
     rdkversion \
     rdmagent \
