@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package deployment to test should be using pre release tags
-PV = "8.6.3.0"
+PV = "8.7.1.0"
 
 # PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -51,7 +51,6 @@ RDEPENDS:${PN} = " \
     lsof \
     ${@bb.utils.contains('DISTRO_FEATURES', 'RDKTV_APP_HIBERNATE', "memcr ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'memcapture', 'memcapture', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'rdm', 'meminsight', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_processmonitor_support', 'processmonitor', '', d)} \
     remotedebugger \
     networkmanager-plugin \
@@ -78,7 +77,6 @@ RDEPENDS:${PN} = " \
     entservices-maintenancemanager \
     entservices-firmwaredownload \
     entservices-firmwareupdate \
-    entservices-ledcontrol \
     entservices-frontpanel \
     entservices-remotecontrol \
     entservices-voicecontrol \
@@ -112,6 +110,7 @@ RDEPENDS:${PN} = " \
     entservices-hdcpprofile \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
+    entservices-tools \
     es1test-jsonrpc-benchmark \
     rdksysctl \
     rdkversion \
@@ -167,7 +166,7 @@ RDEPENDS:${PN} = " \
     gdk-pixbuf \
     gupnp \
     iptables \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rdkappmanagers_runtimeconfig', 'yaml-cpp', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rdkappmanagers', 'yaml-cpp', '', d)} \
     iw \
     wireless-tools \
     libcroco \
