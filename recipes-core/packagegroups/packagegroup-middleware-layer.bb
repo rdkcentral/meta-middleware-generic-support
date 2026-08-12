@@ -18,6 +18,9 @@ PR = "r0"
 
 #Generic components
 RDEPENDS:${PN} = " \
+    opentelemetry-cpp \
+    rdk-otel-collector \
+    test-iarm-otel \
     audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
