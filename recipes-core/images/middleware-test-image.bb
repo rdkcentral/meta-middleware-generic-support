@@ -5,6 +5,7 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 inherit core-image custom-rootfs-creation
 inherit manifest-srcuri
+inherit extract-sha256-cve
 
 IMAGE_INSTALL = " \
                  packagegroup-vendor-layer \
