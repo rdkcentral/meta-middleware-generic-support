@@ -5,7 +5,8 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 inherit core-image custom-rootfs-creation
 inherit manifest-srcuri
-inherit extract-sha256-cve
+INHERIT_CVE = "${@oe.utils.conditional('INHERIT', 'cve-check', 'extract-sha256-cve', '', d)}"
+inherit ${INHERIT_CVE}
 
 IMAGE_INSTALL = " \
                  packagegroup-vendor-layer \
