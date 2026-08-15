@@ -325,7 +325,7 @@ PV:pn-rdkwpasupplicantconfig = "1.0.0"
 PR:pn-rdkwpasupplicantconfig = "r0"
 PACKAGE_ARCH:pn-rdkwpasupplicantconfig = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rialto = "v0.15.2-r11"
+PV:pn-rialto = "v0.15.2-r12"
 PR:pn-rialto = "r0"
 PACKAGE_ARCH:pn-rialto = "${MIDDLEWARE_ARCH}"
 
