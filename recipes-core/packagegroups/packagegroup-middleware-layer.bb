@@ -74,6 +74,7 @@ RDEPENDS:${PN} = " \
     entservices-mediaanddrm \
     entservices-peripherals \
     entservices-runtime \
+    entservices-audiooutput \
     entservices-maintenancemanager \
     entservices-firmwaredownload \
     entservices-firmwareupdate \
