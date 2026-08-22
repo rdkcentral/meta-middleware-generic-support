@@ -71,7 +71,6 @@ RDEPENDS:${PN} = " \
     entservices-appgateway \
     entservices-avinput \
     entservices-avoutput \
-    entservices-avmonitor \
     entservices-mediaanddrm \
     entservices-peripherals \
     entservices-runtime \
@@ -225,3 +224,6 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
              graphite2 curl openssl zlib glib-networking glib-2.0 \
              lighttpd systemd sqlite3 \
              "
+
+DEPENDS += "entservices-avmonitor wpeframework-clientlibraries-avm"
+RDEPENDS:${PN} += "entservices-avmonitor wpeframework-clientlibraries-avm"
