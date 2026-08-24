@@ -225,5 +225,5 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
              lighttpd systemd sqlite3 \
              "
 
-DEPENDS += "entservices-avmonitor wpeframework-clientlibraries-avm"
-RDEPENDS:${PN} += "entservices-avmonitor wpeframework-clientlibraries-avm"
+DEPENDS += "entservices-resourcemonitor entservices-avmonitor wpeframework-clientlibraries-avm"
+RDEPENDS:${PN} += "entservices-resourcemonitor entservices-avmonitor wpeframework-clientlibraries-avm"
