@@ -133,6 +133,7 @@ RDEPENDS:${PN} = " \
     webconfig-framework\
     wdmp-c \
     wpeframework \
+    wpeframework-extensions \
     wpeframework-clientlibraries \
     entservices-apis \
     wpeframework-ui \
