@@ -212,6 +212,8 @@ RDEPENDS:${PN} = " \
     thunder-plugin-activator \
     sqlite3 \
     chrony \
+    audit \
+    auditd \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'aamp rdknativescript', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-webkit libwpe webkitbrowser-plugin', d)} \
