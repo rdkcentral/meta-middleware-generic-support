@@ -28,7 +28,6 @@ RDEPENDS:${PN} = " \
     ctrlm-headers \
     ctrlm-main \
     dcmd \
-    devicesettings \
     dobby \
     dobby-thunderplugin \
     ermgr \
@@ -111,6 +110,7 @@ RDEPENDS:${PN} = " \
     entservices-hdcpprofile \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
+    entservices-devicesettings \
     entservices-tools \
     rdksysctl \
     rdkversion \
@@ -225,3 +225,6 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
              graphite2 curl openssl zlib glib-networking glib-2.0 \
              lighttpd systemd sqlite3 \
              "
+
+# sky-nrdplugin not compatible with lib32 — netflix_5.3.1 build disabled
+DEPENDS:remove = "${@'sky-nrdplugin' if d.getVar('MLPREFIX') == 'lib32-' else ''}"
