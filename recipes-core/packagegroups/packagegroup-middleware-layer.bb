@@ -62,6 +62,7 @@ RDEPENDS:${PN} = " \
     rdkat \
     rdkfwupgrader \
     rdkperf \
+    strace \
     entservices-xcast \
     entservices-miracast \
     entservices-connectivity \
