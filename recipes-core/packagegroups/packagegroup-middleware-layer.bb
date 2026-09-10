@@ -4,6 +4,8 @@ PACKAGE_ARCH = "${MIDDLEWARE_ARCH}"
 LICENSE = "MIT"
 
 inherit packagegroup volatile-bind-gen
+INHERIT_CVE = "${@bb.utils.contains('INHERIT', 'cve-check', 'extract-sha256-cve', '', d)}"
+inherit ${INHERIT_CVE}
 
 # For interim development and package deployment to test should be using pre release tags
 PV = "8.7.1.0"
