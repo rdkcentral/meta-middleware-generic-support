@@ -112,6 +112,7 @@ RDEPENDS:${PN} = " \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
     entservices-tools \
+    entservices-devicesettings \
     rdksysctl \
     rdkversion \
     rdmagent \
