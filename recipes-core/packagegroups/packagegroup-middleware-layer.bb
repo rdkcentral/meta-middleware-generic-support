@@ -147,6 +147,7 @@ RDEPENDS:${PN} = " \
     openssl \
     wpa-supplicant \
     dnsmasq \
+    unbound \
     dropbear \
     libopus \
     mdns \
