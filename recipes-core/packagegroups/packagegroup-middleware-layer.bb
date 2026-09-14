@@ -112,6 +112,7 @@ RDEPENDS:${PN} = " \
     entservices-hdcpprofile \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'es1bench', 'es1test-jsonrpc-benchmark', '', d)} \
     rdksysctl \
     rdkversion \
     rdmagent \
