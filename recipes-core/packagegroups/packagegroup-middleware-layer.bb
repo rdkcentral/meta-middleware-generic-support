@@ -18,6 +18,7 @@ PR = "r0"
 
 #Generic components
 RDEPENDS:${PN} = " \
+    test-iarm-otel \
     audiocapturemgr \
     bluetooth-core \
     bluetooth-mgr \
