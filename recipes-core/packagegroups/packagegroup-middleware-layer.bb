@@ -148,6 +148,7 @@ RDEPENDS:${PN} = " \
     openssl \
     wpa-supplicant \
     dnsmasq \
+    tcpdump \
     unbound \
     dropbear \
     libopus \
