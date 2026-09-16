@@ -27,5 +27,6 @@ RDEPENDS:${PN} = " \
     wpeframework-clientlibraries \
     entservices-avinput \
     entservices-devicesettings \
+    entservices-powermanager \
     entservices-ledcontrol \
     "
