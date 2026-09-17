@@ -215,6 +215,7 @@ RDEPENDS:${PN} = " \
     chrony \
     entservices-resourcemonitor \
     entservices-avmonitor \
+    wpeframework-clientlibraries-avm \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'aamp rdknativescript', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_bolt_apps', '', 'wpe-webkit libwpe webkitbrowser-plugin', d)} \
@@ -226,5 +227,5 @@ DEPENDS += " cjson crun jsonrpc libarchive libdash libevent gssdp harfbuzz hired
              libpcre libseccomp  libsoup-2.4 trower-base64 libxkbcommon \
              log4c mbedtls rdkperf cjwt nghttp2 ucresolv fcgi glib-openssl libol \
              graphite2 curl openssl zlib glib-networking glib-2.0 \
-             lighttpd systemd sqlite3 entservices-resourcemonitor entservices-avmonitor \
+             lighttpd systemd sqlite3 entservices-resourcemonitor entservices-avmonitor wpeframework-clientlibraries-avm \
              "
