@@ -67,6 +67,7 @@ RDEPENDS:${PN} = " \
     entservices-connectivity \
     entservices-infra \
     entservices-resourcemanager \
+    entservices-audiooutput \
     entservices-rdkappmanagers \
     entservices-appgateway \
     entservices-avinput \
