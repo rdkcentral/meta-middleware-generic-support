@@ -180,7 +180,7 @@ PV:pn-systimemgrinetrface = "1.4.0"
 PR:pn-systimemgrinetrface = "r0"
 PACKAGE_ARCH:pn-systimemgrinetrface = "${MIDDLEWARE_ARCH}"
 
-PV:pn-ctrlm-main = "1.1.7.2"
+PV:pn-ctrlm-main = "1.1.7.4"
 PR:pn-ctrlm-main = "r0"
 PACKAGE_ARCH:pn-ctrlm-main = "${MIDDLEWARE_ARCH}"
 
@@ -302,7 +302,7 @@ PV:pn-packagemanager = "4.4.1"
 PR:pn-packagemanager = "r0"
 PACKAGE_ARCH:pn-packagemanager = "${MIDDLEWARE_ARCH}"
 
-PV:pn-thunderstartupservices = "1.2.2.1"
+PV:pn-thunderstartupservices = "1.2.2.2"
 PR:pn-thunderstartupservices = "r0"
 PACKAGE_ARCH:pn-thunderstartupservices = "${MIDDLEWARE_ARCH}"
 
