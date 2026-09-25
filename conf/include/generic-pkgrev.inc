@@ -2,7 +2,7 @@ PV:pn-apparmor-generic="1.3.0"
 PR:pn-apparmor-generic = "r0"
 PACKAGE_ARCH:pn-apparmor-generic = "${MIDDLEWARE_ARCH}"
 
-PV:pn-devicesettings = "1.0.24-hotfix.1"
+PV:pn-devicesettings = "1.0.24-hotfix.5"
 PR:pn-devicesettings = "r0"
 PACKAGE_ARCH:pn-devicesettings = "${MIDDLEWARE_ARCH}"
 
@@ -14,11 +14,11 @@ PV:pn-hdmicec = "1.0.7"
 PR:pn-hdmicec = "r0"
 PACKAGE_ARCH:pn-hdmicec = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmbus = "1.0.2.1"
+PV:pn-iarmbus = "1.0.2.2"
 PR:pn-iarmbus = "r0"
 PACKAGE_ARCH:pn-iarmbus = "${MIDDLEWARE_ARCH}"
 
-PV:pn-iarmmgrs = "1.1.5"
+PV:pn-iarmmgrs = "1.1.5-hotfix.4"
 PR:pn-iarmmgrs = "r0"
 PACKAGE_ARCH:pn-iarmmgrs = "${MIDDLEWARE_ARCH}"
 
@@ -136,7 +136,7 @@ PV:pn-entservices-connectivity = "1.1.0"
 PR:pn-entservices-connectivity = "r0"
 PACKAGE_ARCH:pn-entservices-connectivity = "${MIDDLEWARE_ARCH}"
 
-PV:pn-entservices-deviceanddisplay = "3.4.4.8"
+PV:pn-entservices-deviceanddisplay = "3.4.4.11"
 PR:pn-entservices-deviceanddisplay = "r0"
 PACKAGE_ARCH:pn-entservices-deviceanddisplay = "${MIDDLEWARE_ARCH}"
 
@@ -268,7 +268,7 @@ PV:pn-xdial = "1.0.1"
 PR:pn-xdial = "r0"
 PACKAGE_ARCH:pn-xdial = "${MIDDLEWARE_ARCH}"
 
-PV:pn-sysint = "4.2.1v11"
+PV:pn-sysint = "4.2.1v13"
 PR:pn-sysint = "r0"
 PACKAGE_ARCH:pn-sysint = "${MIDDLEWARE_ARCH}"
 
