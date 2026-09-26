@@ -34,6 +34,7 @@ RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'enable_ripple', "virtual/firebolt ", "", d)} \
     gst-plugins-rdk \
     rdk-gstreamer-utils \
+    gst-init-service \
     hdmicec \
     iarm-event-sender \
     iarm-set-powerstate \
