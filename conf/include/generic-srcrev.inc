@@ -1,4 +1,4 @@
 SRCREV:pn-rmfosal = "ea4f0df1edd73cc2d45d453ad445cb2536799684"
 SRCREV:pn-rdkperf = "d802d561c4a2a4456403d572da75e73032d48d91"
 SRCREV_starboard = "d23e2da63e840f04a1bfa5cf1f2a1e7b0c261102"
-SRCREV:pn-rialto = "bfdf77742533ae417b56fb6061ee8fe1736d0a57"
+SRCREV:pn-rialto = "79deccfa2513171cf66f626c66c71da4596e383c"
