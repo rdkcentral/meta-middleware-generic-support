@@ -66,7 +66,7 @@ PV:pn-tr69hostif-headers = "1.2.8v10"
 PR:pn-tr69hostif-headers = "r0"
 PACKAGE_ARCH:pn-tr69hostif-headers = "${MIDDLEWARE_ARCH}"
 
-PV:pn-dobby = "3.16.2"
+PV:pn-dobby = "3.16.3"
 PR:pn-dobby = "r0"
 PACKAGE_ARCH:pn-dobby = "${MIDDLEWARE_ARCH}"
 
