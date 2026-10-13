@@ -114,6 +114,7 @@ RDEPENDS:${PN} = " \
     entservices-hdmicecsink \
     ${@bb.utils.contains('DISTRO_FEATURES', 'es1bench', 'es1test-jsonrpc-benchmark', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'es1bench', 'es1benchmark-async', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'es1bench', 'es1benchmark-sync', '', d)} \
     rdksysctl \
     rdkversion \
     rdmagent \
