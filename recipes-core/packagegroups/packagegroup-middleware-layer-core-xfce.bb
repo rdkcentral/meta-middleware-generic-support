@@ -29,4 +29,10 @@ RDEPENDS:${PN} = " \
     entservices-devicesettings \
     entservices-powermanager \
     entservices-ledcontrol \
+    entservices-avoutput \
+    entservices-displayinfo \
+    entservices-deviceinfo \
+    entservices-hdcpprofile \
+    entservices-displaysettings \
+    entservices-framerate \
     "
