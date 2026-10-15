@@ -30,7 +30,6 @@ RDEPENDS:${PN} = " \
     entservices-powermanager \
     entservices-ledcontrol \
     entservices-avoutput \
-    entservices-displayinfo \
     entservices-deviceinfo \
     entservices-hdcpprofile \
     entservices-displaysettings \
