@@ -65,6 +65,7 @@ RDEPENDS:${PN} = " \
     entservices-infra \
     entservices-inputoutput \
     entservices-mediaanddrm \
+    entservices-monitor \
     entservices-peripherals \
     entservices-runtime \
     entservices-softwareupdate \
