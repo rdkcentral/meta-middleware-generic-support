@@ -7,6 +7,7 @@ inherit core-image custom-rootfs-creation
 
 
 IMAGE_INSTALL = " \
+                 packagegroup-vendor-layer \
                  packagegroup-middleware-layer \
                  "
 
