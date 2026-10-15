@@ -7,9 +7,7 @@ inherit core-image custom-rootfs-creation
 
 
 IMAGE_INSTALL = " \
-                 packagegroup-core-boot \
-                 packagegroup-vdevice-vendor \
-                 packagegroup-middleware-layer-core-xfce \
+                 packagegroup-middleware-layer \
                  "
 
 IMAGE_ROOTFS_SIZE ?= "8192"
