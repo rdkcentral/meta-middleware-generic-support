@@ -112,6 +112,7 @@ RDEPENDS:${PN} = " \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
     entservices-tools \
+    entservices-devicesettings \
     rdksysctl \
     rdkversion \
     rdmagent \
@@ -167,7 +168,7 @@ RDEPENDS:${PN} = " \
     gdk-pixbuf \
     gupnp \
     iptables \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rdkappmanagers', 'yaml-cpp', '', d)} \
+    yaml-cpp \
     iw \
     wireless-tools \
     libcroco \
