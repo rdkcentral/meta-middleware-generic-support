@@ -25,5 +25,8 @@ RDEPENDS:${PN} = " \
     telemetry \
     wpeframework \
     wpeframework-clientlibraries \
+    entservices-avinput \
+    entservices-devicesettings \
+    entservices-powermanager \
     entservices-ledcontrol \
     "
