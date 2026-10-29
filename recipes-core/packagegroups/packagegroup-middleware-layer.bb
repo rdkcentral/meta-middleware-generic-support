@@ -8,7 +8,7 @@ INHERIT_CVE = "${@bb.utils.contains('INHERIT', 'cve-check', 'extract-sha256-cve'
 inherit ${INHERIT_CVE}
 
 # For interim development and package deployment to test should be using pre release tags
-PV = "8.7.2.0"
+PV = "8.7.3.1"
 
 # PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
