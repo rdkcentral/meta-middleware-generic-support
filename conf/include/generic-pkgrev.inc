@@ -10,6 +10,9 @@ PV:pn-sqlite3see = "1.0.0"
 PR:pn-sqlite3see = "r0"
 PACKAGE_ARCH:pn-sqlite3see = "${MIDDLEWARE_ARCH}"
 
+PR:pn-audit = "r0"
+PACKAGE_ARCH:pn-audit = "${MIDDLEWARE_ARCH}"
+
 PV:pn-chrony = "4.2"
 PR:pn-chrony = "r0"
 PACKAGE_ARCH:pn-chrony = "${MIDDLEWARE_ARCH}"
