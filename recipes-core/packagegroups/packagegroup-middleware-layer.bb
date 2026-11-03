@@ -99,7 +99,7 @@ RDEPENDS:${PN} = " \
     entservices-devicediagnostics \
     entservices-framerate \
     entservices-powermanager \
-    powercontroller \
+    entservices-powercontroller \
     entservices-systemmode \
     entservices-userpreferences \
     entservices-warehouse \
