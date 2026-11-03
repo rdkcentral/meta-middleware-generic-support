@@ -211,6 +211,7 @@ RDEPENDS:${PN} = " \
     os-release \
     wlan-p2p \
     thunder-plugin-activator \
+    thunder-opentelemetry-example \
     sqlite3 \
     chrony \
     ${@bb.utils.contains('DISTRO_FEATURES', 'sceneset', " sceneset ", "", d)} \
