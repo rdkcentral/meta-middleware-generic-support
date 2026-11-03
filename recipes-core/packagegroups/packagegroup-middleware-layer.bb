@@ -136,6 +136,7 @@ RDEPENDS:${PN} = " \
     wpeframework-extensions \
     wpeframework-clientlibraries \
     entservices-apis \
+    entservices-powercontroller \
     wpeframework-ui \
     wrp-c \
     xdial \
