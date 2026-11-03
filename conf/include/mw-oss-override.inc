@@ -6,8 +6,6 @@ PR:pn-librsvg = "r0"
 PACKAGE_ARCH:pn-librsvg = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
-PACKAGE_ARCH:pn-libmicrohttpd = "${MIDDLEWARE_ARCH}"
-PACKAGE_ARCH:pn-libyaml = "${MIDDLEWARE_ARCH}"
 
 PR:pn-bluez5 = "r5"
 PACKAGE_ARCH:pn-bluez5 = "${MIDDLEWARE_ARCH}"
