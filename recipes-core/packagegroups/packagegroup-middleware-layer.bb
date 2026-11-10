@@ -6,7 +6,7 @@ LICENSE = "MIT"
 inherit packagegroup volatile-bind-gen
 
 # For interim development and package deployment to test should be using pre release tags
-PV = "8.7.1.0"
+PV = "8.7.3.1"
 
 # PRs are preferred to be incremented during development stages for any updates in corresponding
 #  contributing component revision intakes.
@@ -112,6 +112,7 @@ RDEPENDS:${PN} = " \
     entservices-hdmicecsource \
     entservices-hdmicecsink \
     entservices-tools \
+    entservices-devicesettings \
     rdksysctl \
     rdkversion \
     rdmagent \
@@ -167,7 +168,7 @@ RDEPENDS:${PN} = " \
     gdk-pixbuf \
     gupnp \
     iptables \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'enable_rdkappmanagers', 'yaml-cpp', '', d)} \
+    yaml-cpp \
     iw \
     wireless-tools \
     libcroco \
