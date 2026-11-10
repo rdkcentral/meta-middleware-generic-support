@@ -17,10 +17,12 @@ IMAGE_ROOTFS_EXTRA_SPACE:append = "${@bb.utils.contains("DISTRO_FEATURES", "syst
 
 ROOTFS_POSTPROCESS_COMMAND += "create_init_link; "
 
-# Prebuilt kernel IPK ships no .bin; qemuboot.conf expects one.
+# Prebuilt kernel IPK ships no .bin; qemuboot.conf expects one. <IMAGE_NAME>.bin is the raw bootable kernel for QEMU -kernel.
 create_kernel_bin() {
         if [ -f "${DEPLOY_DIR_IMAGE}/bzImage" ]; then
                 cp -fL ${DEPLOY_DIR_IMAGE}/bzImage ${DEPLOY_DIR_IMAGE}/bzImage-${MACHINE}.bin
+                cp -fL ${DEPLOY_DIR_IMAGE}/bzImage ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.bin
+                ln -sf ${IMAGE_NAME}.bin ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.bin
         fi
 }
 do_copy_boot_files[postfuncs] += "create_kernel_bin"
