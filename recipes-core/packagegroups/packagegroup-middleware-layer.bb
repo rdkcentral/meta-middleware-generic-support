@@ -68,6 +68,7 @@ RDEPENDS:${PN} = " \
     entservices-infra \
     entservices-resourcemanager \
     entservices-rdkappmanagers \
+    eyil-secure-gateway \
     entservices-appgateway \
     entservices-avinput \
     entservices-avoutput \
