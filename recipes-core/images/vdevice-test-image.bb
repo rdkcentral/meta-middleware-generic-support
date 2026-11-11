@@ -50,6 +50,6 @@ dobby_generic_config_patch(){
 }
 IMAGE_FSTYPES += "cpio.gz"
 IMAGE_FEATURES:append = " ssh-server-openssh"
-IMAGE_INSTALL:append = " openssh openssh-sftp-server net-init"
+IMAGE_INSTALL:append = " openssh openssh-sftp-server net-init python3 python3-core"
 ROOTFS_POSTPROCESS_COMMAND += "wpeframework_binding_patch; "
 ROOTFS_POSTPROCESS_COMMAND += "dobby_generic_config_patch; "
