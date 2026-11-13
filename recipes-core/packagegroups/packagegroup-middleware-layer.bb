@@ -151,7 +151,6 @@ RDEPENDS:${PN} = " \
     dnsmasq \
     dropbear \
     libopus \
-    mdns \
     mtd-utils \
     nopoll \
     trower-base64 \
