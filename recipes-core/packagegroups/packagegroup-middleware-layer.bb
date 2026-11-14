@@ -131,6 +131,7 @@ RDEPENDS:${PN} = " \
     tr69hostif-headers \
     tts \
     ucresolv \
+    webrtc-audio-processing \
     webconfig-framework\
     wdmp-c \
     wpeframework \
