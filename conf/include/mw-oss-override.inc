@@ -9,6 +9,10 @@ PACKAGE_ARCH:pn-libflac = "${MIDDLEWARE_ARCH}"
 PACKAGE_ARCH:pn-libmicrohttpd = "${MIDDLEWARE_ARCH}"
 PACKAGE_ARCH:pn-libyaml = "${MIDDLEWARE_ARCH}"
 
+# Release Eyil's patched transport and its runtime dependency with middleware.
+PACKAGE_ARCH:pn-zeromq = "${MIDDLEWARE_ARCH}"
+PACKAGE_ARCH:pn-libsodium = "${MIDDLEWARE_ARCH}"
+
 PR:pn-bluez5 = "r5"
 PACKAGE_ARCH:pn-bluez5 = "${MIDDLEWARE_ARCH}"
 
