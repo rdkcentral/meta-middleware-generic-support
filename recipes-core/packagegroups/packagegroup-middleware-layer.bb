@@ -100,6 +100,7 @@ RDEPENDS:${PN} = " \
     entservices-devicediagnostics \
     entservices-framerate \
     entservices-powermanager \
+    entservices-powercontroller \
     entservices-systemmode \
     entservices-userpreferences \
     entservices-warehouse \
@@ -151,7 +152,6 @@ RDEPENDS:${PN} = " \
     dnsmasq \
     dropbear \
     libopus \
-    mdns \
     mtd-utils \
     nopoll \
     trower-base64 \
