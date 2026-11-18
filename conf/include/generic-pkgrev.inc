@@ -86,7 +86,7 @@ PV:pn-audiocapturemgr = "1.0.0"
 PR:pn-audiocapturemgr = "r0"
 PACKAGE_ARCH:pn-audiocapturemgr = "${MIDDLEWARE_ARCH}"
 
-PV:pn-bluetooth-core = "1.0.8"
+PV:pn-bluetooth-core = "1.0.8_1"
 PR:pn-bluetooth-core = "r2"
 PACKAGE_ARCH:pn-bluetooth-core = "${MIDDLEWARE_ARCH}"
 
