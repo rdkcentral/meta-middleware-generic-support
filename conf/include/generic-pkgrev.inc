@@ -341,7 +341,7 @@ PV:pn-xmidt-agent = "1.0.0"
 PR:pn-xmidt-agent = "r0"
 PACKAGE_ARCH:pn-xmidt-agent = "${MIDDLEWARE_ARCH}"
 
-PV:pn-rdmagent = "2.1.3v2"
+PV:pn-rdmagent = "2.1.3v4"
 PR:pn-rdmagent = "r0"
 PACKAGE_ARCH:pn-rdmagent = "${MIDDLEWARE_ARCH}"
 
@@ -440,4 +440,3 @@ PR:pn-packager-headers = "r0"
 PACKAGE_ARCH:pn-packager-headers = "${MIDDLEWARE_ARCH}"
 
 PACKAGE_ARCH:pn-packagegroup-youtube-widgets = "${MIDDLEWARE_ARCH}"
-
