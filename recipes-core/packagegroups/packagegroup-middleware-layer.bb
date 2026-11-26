@@ -129,6 +129,7 @@ RDEPENDS:${PN} = " \
     tr69hostif \
     tr69hostif-conf \
     tr69hostif-headers \
+    start-parodus \
     tts \
     ucresolv \
     webconfig-framework\
